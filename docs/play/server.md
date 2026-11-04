@@ -53,3 +53,22 @@ A restart (deploy, reset.sh) is seen by open tabs (frames meta `boot`): they fet
   higher baseline (Lightsail's larger bundles, or a non-burstable instance). The baseline share of this bundle
   was not checked.
 
+
+## Where the CPU goes (11-04, profiled on the user's campaign city, May 1088 BC, 315 walkers, 675 buildings)
+Tools: `python3 tools/profile_sim.py SAVE_COPY [--live --rate 15]` (cProfile over N ticks: the sim alone, or with
+the live server's recording) and `python3 tools/profile_live.py SAVE_COPY --port P --secs S` (a whole live server
+under one cProfile while a tab drives it: CPU per request path, gzip, autosaves).
+On a laptop (Apple silicon), per tick at 1x:
+- the simulation: 0.57 ms (1,754 ticks/s alone);
+- recording the frame the tab draws (every tick at <= 2x, `frame_every`): 2.8 ms before, 1.5 ms after the fixes
+  below. It was the biggest cost: 1x with recording ran 293 ticks/s, now 491. Its parts after the fixes: the walker
+  records 0.43 ms (315 walkers), their JSON 0.3 ms, the episode's build-menu table 0.25 ms, deltas and houses the rest;
+- serving: frames.json polls (15/s at 1x locally), gzip 0.2 % of a core, the 5 s autosave 8 ms each: small.
+A live server at 1x with one tab used ~6 % of a laptop core; the 2 vCPU burstable instance is ~3x slower per core.
+Fixed: the build-menu table (sim/allowed.py `unavailable`, every frame) scanned every building for each good's
+stock (12 times a frame) and for the palace / venue per rule: the stocks are now taken once per read (`_memo`)
+and the scans once per table; comms.dumps reuses one C JSON encoder (JSONEncoder.encode built one per call).
+Output unchanged (tests, state hash, comms_check verify). Left, by size: frames every tick at <= 2x (a frame every
+3 ticks would cut recording ~3x; the tab moves walkers by their step records, but per-tick animations were tuned
+against per-tick frames: needs a look), reusing unchanged walkers' JSON between frames, and the exe's timing for
+the menu table (buildings_availability 0x00402B80 runs at episode start and a few events, ours every frame).

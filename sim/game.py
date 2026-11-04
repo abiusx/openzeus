@@ -1365,7 +1365,7 @@ class Game:
         return out
 
     # --- persistence ------------------------------------------------------------------------
-    CACHES = ("_undo_pre", "_kinds", "_win", "_trees", "_rtrees", "_roadl", "_flagl", "_desl", "_walk", "_wild", "_fields", "_burning", "_des_sig", "_entry_reach", "_shipgrid", "_godfx", "_hero_water_ok", "_moves", "_monster_ok", "_listed", "_stumps", "_tlseq")    # rebuilt on demand
+    CACHES = ("_undo_pre", "_kinds", "_win", "_trees", "_rtrees", "_roadl", "_flagl", "_desl", "_walk", "_wild", "_fields", "_burning", "_des_sig", "_entry_reach", "_shipgrid", "_godfx", "_hero_water_ok", "_moves", "_monster_ok", "_listed", "_astock", "_stumps", "_tlseq")    # rebuilt on demand
 
     def sd(self, name, default):
         """setdefault for game attributes (not via __dict__: that slows every attribute under PyPy)."""

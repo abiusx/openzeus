@@ -51,13 +51,36 @@ def resources(g):
 RAW_OF = {"wine": "grapes", "olive_oil": "olives", "armor": "bronze", "sculpture": "bronze"}
 
 
-def _stock(g, k):
-    """FUN_0040F810: the city's stock of a good (trade buildings + storehouses + granaries)."""
-    n = 0
+def _stock_all(g):
+    """FUN_0040F810 for every good in one pass: {good: stock in trade buildings + storehouses + granaries}."""
+    t = {}
     for b in g.buildings.values():
         if b.kind in ("storage", "trade") and not g.cat.spec(b.key).get("endless"):
-            n += b.goods.get(k, 0)
-    return n
+            for k, v in b.goods.items():
+                t[k] = t.get(k, 0) + v
+    return t
+
+
+def _stock(g, k):
+    """FUN_0040F810: the city's stock of a good (trade buildings + storehouses + granaries). Inside _memo: the
+    totals taken once for the whole read (frames list the menus every tick: 12 scans of every building each)."""
+    t = g.__dict__.get("_astock")
+    return (t if t is not None else _stock_all(g)).get(k, 0)
+
+
+class _memo:
+    """One read of the lists / menus (goods_list, food_list, mark, unavailable): the stocks are taken once. Reads
+    only, so nothing changes the stocks inside; nests (the outermost one sets and drops it)."""
+    def __init__(self, g):
+        self.g, self.mine = g, False
+
+    def __enter__(self):
+        if "_astock" not in self.g.__dict__:
+            self.g.__dict__["_astock"], self.mine = _stock_all(self.g), True
+
+    def __exit__(self, *a):
+        if self.mine:
+            self.g.__dict__.pop("_astock", None)
 
 
 def _sold(g, k):
@@ -133,14 +156,16 @@ def goods_list(g):
     Ours: a Poseidon good is not listed while Poseidon is off (economy.good_on)."""
     from .systems.economy import good_on
     once = g.__dict__.get("goods_listed", ())
-    return [k for k in _order() if (k in once or _listed(g, k)) and good_on(g, k)]
+    with _memo(g):
+        return [k for k in _order() if (k in once or _listed(g, k)) and good_on(g, k)]
 
 
 def food_list(g):
     """g_city_food_list: the foods 1..8 by the same tests (no god), plus the foods once listed (0x00FEB0D2 =
     City.foods_listed, kept by sim/systems/agora.py city_foods). Read only."""
     from .empire.model import FOODS
-    return [k for k in FOODS if k in g.city.foods_listed or _listed(g, k, food=True)]
+    with _memo(g):
+        return [k for k in FOODS if k in g.city.foods_listed or _listed(g, k, food=True)]
 
 
 def mark(g):
@@ -151,7 +176,8 @@ def mark(g):
     if table(g) is None:
         return
     once = g.sd("goods_listed", set())
-    once.update(k for k in _order() if k not in once and _listed(g, k))
+    with _memo(g):
+        once.update(k for k in _order() if k not in once and _listed(g, k))
 
 
 # --- the derivation --------------------------------------------------------------------------------------------
@@ -176,6 +202,9 @@ def _lists(g, ctx):
 
 def _holds(g, c, ctx):
     from . import gods
+    if "palace" not in ctx:                     # one read (unavailable: ~90 rules): the building scans once
+        ks = {b.key for b in g.buildings.values()}
+        ctx["palace"], ctx["venue"] = "palace" in ks, bool(ks & {"stadium", "museum"})
     for k, v in c.items():
         if k in ("flag", "flag2"):
             if not flag(g, v):
@@ -198,10 +227,10 @@ def _holds(g, c, ctx):
             if bool(getattr(g, "poseidon", False)) != v:
                 return False
         elif k == "no_palace":
-            if any(b.key == "palace" for b in g.buildings.values()):
+            if ctx["palace"]:
                 return False
         elif k == "no_venue":
-            if any(b.key in ("stadium", "museum") for b in g.buildings.values()):
+            if ctx["venue"]:
                 return False
         elif k == "guild":
             if not _guild(g):
@@ -227,7 +256,8 @@ def unavailable(g):
     if table(g) is None:
         return None
     ctx = {}
-    return sorted(k for k in data()["rules"] if not available(g, k, ctx))
+    with _memo(g):
+        return sorted(k for k in data()["rules"] if not available(g, k, ctx))
 
 
 def check(g, key):

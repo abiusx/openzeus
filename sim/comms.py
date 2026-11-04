@@ -18,6 +18,7 @@ changes some exported objects in place, and Python's == takes True for 1. encode
 (join() of them is byte-identical to json.dumps of the whole), delta() compares two encodings.
 """
 import json
+import json.encoder as je
 
 FRAME_KEYED = {"walkers": 0, "houses": 0}          # live.record_frame: [id, ...] per walker / house
 STATE_KEYED = {"buildings": "id", "walkers": "id"}  # export.snapshot: dicts with "id"
@@ -26,10 +27,17 @@ TERRAIN_GRIDS = ("ids", "draw", "elev", "flags", "road", "des")   # live.terrain
 
 _ENC = json.JSONEncoder(default=int, separators=(",", ":"))   # one encoder (json.dumps builds one per call)
 _SCALAR = (str, int, float, bool, type(None))
+# JSONEncoder.encode builds a C encoder on every call; frames call dumps ~600 times each (one per walker record):
+# this one is built once (same output as _ENC; no circular check, which our plain data never needs, and stateless
+# so the server's threads can share it). Falls back to _ENC where the C accelerator is missing.
+_C = je.c_make_encoder(None, int, je.encode_basestring_ascii, None, ":", ",", False, False, True) \
+    if je.c_make_encoder is not None else None
 
 
 def dumps(obj):
-    return _ENC.encode(obj).encode()
+    if _C is None:
+        return _ENC.encode(obj).encode()
+    return "".join(_C(obj, 0)).encode()
 
 
 def _same(a, b):
