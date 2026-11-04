@@ -2,16 +2,16 @@
 # OpenZeus shared server (Ubuntu 24.04, e.g. as cloud-init user data): installs from the public repo and the public asset packs,
 # then runs one shared city on port 8080 as a systemd service. Log: /var/log/openzeus-setup.log
 exec > /var/log/openzeus-setup.log 2>&1
-set -eux
+set -euxo pipefail
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y git curl ca-certificates
 useradd -m -s /bin/bash openzeus || true
-sudo -iu openzeus bash -eux <<'EOS'
+sudo -iu openzeus bash -euxo pipefail <<'EOS'
 curl -LsSf https://astral.sh/uv/install.sh | sh
 export PATH="$HOME/.local/bin:$PATH"
 uv python install 3.14
-git clone https://github.com/abiusx/openzeus.git ~/openzeus
+test -d ~/openzeus/.git || git clone https://github.com/abiusx/openzeus.git ~/openzeus   # a rerun keeps it
 cd ~/openzeus
 uv venv --python 3.14 ~/venv
 . ~/venv/bin/activate
@@ -35,6 +35,8 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 EOF
+# images with ufw on (Vultr's Ubuntu: only ssh open): open the city's port
+if command -v ufw >/dev/null && ufw status | grep -q "Status: active"; then ufw allow 8080/tcp; fi
 systemctl daemon-reload
 systemctl enable --now openzeus
 echo "OPENZEUS SETUP DONE"

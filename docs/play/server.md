@@ -22,6 +22,24 @@ Put the city you want visitors to start from in `saves/` as `default.pkl` (with 
 - `sudo tools/server/reset.sh`: puts the default city back (it replaces `shared*.pkl` and restarts the service);
 - `sudo tools/server/reset.sh --keep`: makes the current city the new default.
 
+## On your own KVM host
+`sudo tools/server/kvm_vm.sh NAME NET PUBLIC_IP HOST_PORT BASE_IMAGE SSH_PUBKEY --cloudflare-only` makes a libvirt
+guest (2 vCPU, 2 GB, 20 GB) on its own NAT network 192.168.NET.0/24 (the VM at .10), set up on first boot by
+setup.sh through cloud-init, autostarted with the host; on a ufw host it adds the port forward HOST_PORT -> the VM's
+8080 (`/etc/ufw/before.rules`, a backup next to it), DHCP / DNS on the VM's bridge and route rules, the port open to
+Cloudflare's addresses only. Then the CDN's origin port for the site's host name is HOST_PORT. The script's comments
+list each step. (11-04: the firewall must come before the VM's first boot: setup.sh needs the network then; a
+failed setup can be run again in the VM: `bash /root/setup.sh`.)
+
+## Hosts compared (11-04, the same campaign city, tools/profile_sim.py: the sim alone / 1x with frame recording)
+| Host | sim alone | 1x recording | Notes |
+|---|---|---|---|
+| 1 shared vCPU AMD EPYC Genoa (a $6 cloud plan, no credit) | 1,490 ticks/s | 445 | direct sync check: 1x-4x smooth, 8x 106 of 120 |
+| KVM guest, 2 vCPU of an AMD EPYC 7502P (busy host) | 905-935 | 270-285 | through the CDN: 1x 14.7, 2x 29.9, 4x 59.0 t/s (<= 1 stall >= 50 ms in 20 s), 8x 92.6 of 120 |
+| 2 vCPU burstable (credit left) | 690-730 | 186-203 | credit runs out under load (below) |
+| a recent laptop (Apple silicon) | 1,754 | 554 | |
+The sim is one Python thread: per-core speed decides, not core count.
+
 ## In front of it
 A CDN such as Cloudflare can proxy the server: the sprite sheets (`play/atlas/*.png`, `.bin`) are served cacheable
 for a day, so the CDN serves them after the first visitor. Proxy HTTP to the server's port 8080.
