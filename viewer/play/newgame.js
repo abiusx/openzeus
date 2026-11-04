@@ -45,8 +45,10 @@ const NewGame = (() => {
   // page load: a stored leader goes straight to the city (its name to the server); none: the main menu (user 11-01).
   // A shared server (`sim live --shared`, its / adds ?shared=1): straight to the city, and no visitor's name is sent,
   // so nobody renames the city's ruler (ours, 11-04)
-  function boot() {
-    const n = leader(), shared = new URLSearchParams(location.search).has("shared");
+  async function boot() {
+    const n = leader();
+    let shared = new URLSearchParams(location.search).has("shared");
+    if (!shared) try { shared = !!(await getJSON("/server.json")).shared; } catch (e) { }   // any address of a shared server
     if (shared) return;
     if (n) tellServer(n); else open("main");
   }

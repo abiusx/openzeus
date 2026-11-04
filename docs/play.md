@@ -66,7 +66,7 @@ python3 -m sim campaign win saves/eu.pkl                      # TEST COMMAND: wi
   city of the episode before (play through, or use `campaign win` while testing).
 
 ## Watching (viewer)
-- Animated: `python3 -m sim live saves/me.pkl [--script S] [--speed TICKS/S] [--port P] [--host H]`, open http://127.0.0.1:8765/ (the game, play.html; the developer map viewer is /index.html). `--host 0.0.0.0` serves other machines too (default 127.0.0.1: this machine only). `--shared`: one city for every visitor, e.g. a public server: / opens the city directly (no main menu, the visitor's leader name is not sent). Sprite sheets (play/atlas/*.png, .bin) are served cacheable for a day, so a CDN in front of a remote server serves them.
+- Animated: `python3 -m sim live saves/me.pkl [--script S] [--speed TICKS/S] [--port P] [--host H]`, open http://127.0.0.1:8765/ (the game, play.html; the developer map viewer is /index.html). `--host 0.0.0.0` serves other machines too (default 127.0.0.1: this machine only). `--shared`: one city for every visitor, e.g. a public server: every address opens the city directly (no main menu, the visitor's leader name is not sent; /server.json says so), and the city stands still once no tab has polled for 10 s (SHARED_IDLE; a hidden tab still counts). Sprite sheets (play/atlas/*.png, .bin) are served cacheable for a day, so a CDN in front of a remote server serves them.
   Runs the game itself; every walker (immigrants, carts, shepherds, woodcutters, sheep...) moves on the
   map. Works like a video: the timeline bar under the map shows what has been simulated (light part);
   click/drag to seek back, click past the light part to fast-forward (the server simulates at full

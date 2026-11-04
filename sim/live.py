@@ -72,6 +72,7 @@ STATE_EVERY = 408        # ticks between building snapshots (8 days) when nothin
 STATE_WALL = 0.5         # ...and at most this many wall-clock seconds (>= 2 frames apart): a guard's effect on
                          # unrest shows within a moment at any speed, not 8 game days later
 CHUNK = 2040             # ticks simulated per lock hold
+SHARED_IDLE = 10.0       # --shared: the city stands still once no tab has polled for this many seconds (user 11-04)
 DRIVE_TIMEOUT = 1.0      # synced live: a tab that polled within this many seconds drives the clock
 TIME_OPS = ("step", "wait", "days", "months", "until")
 VIEWS = ("status", "look", "info", "history", "map", "catalog", "houses", "coverage", "risk", "report")
@@ -1389,6 +1390,8 @@ class Runner:
             game.live_player = messages.PLAYER
         game.hover = None             # the build tool over the map (walkers.shoo): a tab's, set again on its next move
         self.driven_at = 0.0          # synced live: when a tab last asked for ticks (docs/play-mode.md)
+        self.seen_at = time.time()    # when any tab last polled frames (visible or not): --shared pauses without one
+        self.shared = getattr(self, "shared", False)   # sim live --shared (a public server, set by live())
         self.held_at = 0.0            # when a driving tab last said a screen holds its playhead (hold=1: world map,
                                       # advisors, help ... play.js screenPauses): the stall watcher skips that time
         self.lock = TimedLock(self)
@@ -1654,6 +1657,7 @@ class Runner:
             now, tick = time.time(), self.g.tick
             g = self.g
             running = not self.paused and not ("campaign" in g.__dict__ and campaign_screen(g)) \
+                and not (self.shared and now - self.seen_at > SHARED_IDLE) \
                 and not (self.driven() and self.held_at >= last_t)
             if running and (self.driven() or not self.driven_at) and tick >= last_tick:
                 want = self.rate * (now - last_t)
@@ -1671,7 +1675,8 @@ class Runner:
         while True:
             try:
                 now = time.time()
-                if not self.paused and not self.driven():
+                idle = self.shared and now - self.seen_at > SHARED_IDLE   # --shared: no tab open -> the city waits
+                if not self.paused and not self.driven() and not idle:
                     target += self.rate * (now - last)
                 last = now
                 target = min(max(target, self.g.tick), self.g.tick + 2 * self.rate)   # no debt if we fell behind
@@ -1928,6 +1933,7 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
     else:
         g = Game(map_name, seed)
     r = Runner(g, save, script, speed)
+    r.shared = shared
     threading.Thread(target=r.run, daemon=True).start()
     threading.Thread(target=r.watch, daemon=True).start()   # stalls: stderr + /stalls.json
 
@@ -1979,6 +1985,8 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
                 self.send_header("Location", "/play.html" + ("?" + q0 if q0 else ""))
                 self.end_headers()
                 return
+            if path == "/server.json":          # what kind of server this is (newgame.js boot: --shared skips the menu)
+                return self.send_bytes(_dumps(dict(shared=r.shared)))
             if path == "/frame.json":
                 with r.lock:
                     live_tick = r.g.tick
@@ -2057,6 +2065,7 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
                 with r.lock:
                     return self.send_bytes(_dumps(empire.export(r.g)))
             if path == "/frames.json":            # play mode: a window of frames + live meta
+                r.seen_at = time.time()
                 if "want" in q:                   # synced live: the tab's playhead + its margin drives the sim
                     r.driven_at = time.time()
                     if q.get("hold"):             # a screen pauses the tab (play.js screenPauses): not "slow"
