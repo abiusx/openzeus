@@ -36,6 +36,13 @@
   #tip { position: fixed; pointer-events: none; padding: 4px 8px; background: var(--panel);
          border: 1px solid var(--line); border-radius: 3px; display: none; white-space: pre; font-size: 12px; }
   #loading { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  /* the start screen's download bar (play.js showLoading): sheets and MB done / total, speed, time left */
+  #loading .box { min-width: 360px; max-width: calc(100vw - 32px); padding: 12px 16px; background: var(--panel);
+                  border: 1px solid var(--line); border-radius: 3px; text-align: center; }
+  #loading .box div { margin-top: 10px; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  #loading .box i { display: block; height: 100%; width: 0; background: var(--gold); transition: width .2s; }
+  #loading .num, #loading .hi { display: block; margin-top: 8px; min-height: 1.2em; font-size: 13px; color: var(--muted); }
+  #loading .hi:empty { display: none; }
   /* hi-res sprite loading (play.js hiresProgress): above the loading screen and the game */
   #hiprog { position: fixed; left: 50%; bottom: 64px; transform: translateX(-50%); z-index: 1000; min-width: 280px;
             padding: 8px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 3px; font-size: 13px; }
@@ -44,6 +51,8 @@
   #hiprog i { display: block; height: 100%; width: 0; background: var(--gold); }
   #hiprog span.set { display: block; margin-top: 8px; }
   #hiprog span.all:empty, #hiprog span.all:empty + div { display: none; }
+  #hiprog span.dl { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); }
+  #hiprog span.dl:empty { display: none; }
   canvas#view.building { cursor: crosshair; }
   #build { position: fixed; top: 40px; right: 8px; bottom: 8px; width: 230px; display: flex; flex-direction: column;
            background: var(--panel); border: 1px solid var(--line); border-radius: 3px; user-select: none; z-index: 10; }
@@ -180,8 +189,8 @@
 <div id="sync" hidden><div class="spin"></div><div id="synct"></div></div>
 <div id="cityload" hidden><div class="spin"></div><div>Loading the city...</div></div>
 <div id="tip"></div>
-<div id="loading">loading the original's sprites…</div>
-<div id="hiprog" hidden><span class="all"></span><div class="all"><i></i></div><span class="set"></span><div><i></i></div></div>
+<div id="loading"><div class="box"><span>Loading the sprites…</span><div><i></i></div><span class="num"></span><span class="hi"></span></div></div>
+<div id="hiprog" hidden><span class="all"></span><div class="all"><i></i></div><span class="set"></span><div><i></i></div><span class="dl"></span></div>
 <script src="play/gl.js"></script>
 <script src="play/audio.js"></script>
 <script src="play/order.js"></script>

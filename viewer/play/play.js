@@ -46,13 +46,14 @@ async function loadAtlases(r, files) {
 }
 async function loadAtlasesNow(r, files) {
   const C = await atlasCompressed(), ix = await hiresIndex();
-  const loaded = (await Promise.all(files.filter(f => !atlas[f]).map(async f => {   // all files at once
-    let j;
-    try { j = await (await fetch(`play/atlas/${f}.json`)).json(); } catch (e) { console.warn("no atlas", f); return null; }
-    return [f, j, await Promise.all(j.sheets.map(s => C && C.sheets[s]
-      ? (u => loadBuffer(u).then(buf => ({ buf, w: C.sheets[s][0], h: C.sheets[s][1], url: u })))(`play/atlas/${s.replace(/\.png$/, C.suffix)}?v=${C.version}`)
-      : (u => loadImage(u).then(img => ({ img, w: img.width, h: img.height, url: u })))(`play/atlas/${s}`)))];
+  // all files at once: first every file's json, then every sheet (so the download bar knows them all from the
+  // start: a GPU sheet is width x height bytes, compressed.json)
+  const jsons = (await Promise.all(files.filter(f => !atlas[f]).map(async f => {
+    try { return [f, await (await fetch(`play/atlas/${f}.json`)).json()]; } catch (e) { console.warn("no atlas", f); return null; }
   }))).filter(Boolean);
+  const loaded = await Promise.all(jsons.map(async ([f, j]) => [f, j, await Promise.all(j.sheets.map(s => C && C.sheets[s]
+    ? (u => loadBuffer(u, C.sheets[s][0] * C.sheets[s][1]).then(buf => ({ buf, w: C.sheets[s][0], h: C.sheets[s][1], url: u })))(`play/atlas/${s.replace(/\.png$/, C.suffix)}?v=${C.version}`)
+    : (u => loadImage(u).then(img => ({ img, w: img.width, h: img.height, url: u })))(`play/atlas/${s}`)))]));
   const setOf = f => Object.keys(ix.sets).find(s => (ix.sets[s].files || []).includes(f)), demand = !!STARTUP.atlases;
   const groups = new Map();                       // "<set or file>/<format>" -> [{f, k, sheet}]
   for (const [f, j, sheets] of loaded) {
@@ -171,9 +172,67 @@ async function atlasCompressed() {
 }
 
 // decoded images by url, so a download started early (hiresPrefetch) is picked up where it is used
+// Download progress (ours, user 11-04: a first visit over a slow link takes minutes, "fine if you display a proper
+// loading bar"): the sprite sheets come through fetchCounted, which counts the bytes as they stream in, per kind
+// (orig: the original's sheets; hires: the hi-res sets'). The start screen (#loading, showLoading) and the hi-res
+// box (hiresProgress) show sheets and MB done / total, a bar and the time left. The total grows while the sheets'
+// answers start (Content-Length), within about a round trip of the first sheet, as every sheet is asked at once.
+const DL = { orig: { got: 0, total: 0, files: 0, done: 0, t0: 0 }, hires: { got: 0, total: 0, files: 0, done: 0, t0: 0 } };
+async function fetchCounted(url, expect = 0) {   // the body (ArrayBuffer); expect: its size if known before
+  const c = DL[url.includes("play/atlas/hires/") ? "hires" : "orig"];
+  if (!c.t0) c.t0 = performance.now();
+  c.files++;
+  c.total += expect;
+  let got = 0, len = 0;
+  try {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(`${url}: ${r.status}`);
+    // a compressed answer's Content-Length is not the size of what the stream yields: counted as it comes
+    len = r.headers.get("Content-Encoding") ? 0 : +r.headers.get("Content-Length") || 0;
+    c.total += len - expect;
+    expect = 0;
+    if (!r.body) { const b = await r.arrayBuffer(); got = b.byteLength; c.got += got; if (!len) c.total += got; return b; }
+    const rd = r.body.getReader(), parts = [];
+    for (;;) {
+      const { done, value } = await rd.read();
+      if (done) break;
+      parts.push(value); got += value.length; c.got += value.length;
+      if (!len) c.total += value.length;
+    }
+    c.done++;
+    if (parts.length === 1 && parts[0].byteOffset === 0 && parts[0].byteLength === parts[0].buffer.byteLength) return parts[0].buffer;
+    const out = new Uint8Array(got);
+    let o = 0;
+    for (const p of parts) { out.set(p, o); o += p.length; }
+    return out.buffer;
+  } catch (e) {
+    c.got -= got; c.total -= expect + (len || got);   // a failed sheet is asked again later (resumeSheet): not counted
+    throw e;
+  } finally { c.files--; }
+}
+const mbText = b => (b / 1048576).toFixed(b < 10485760 ? 1 : 0);
+function dlText(c) {                              // "12 / 43 sheets · 45 / 124 MB · 2.1 MB/s · about 1 min left"
+  const now = performance.now(), secs = (now - c.t0) / 1000, rate = secs > 1 ? c.got / secs : 0;
+  const left = rate > 0 && c.total > c.got ? (c.total - c.got) / rate : 0;
+  const eta = left > 90 ? `about ${Math.round(left / 60)} min left` : left > 3 ? `about ${Math.round(left)} s left` : "";
+  return [`${c.done} / ${c.done + c.files} sheets`, c.total ? `${mbText(c.got)} / ${mbText(c.total)} MB` : "",
+          rate > 0 ? `${mbText(rate)} MB/s` : "", eta].filter(Boolean).join(" · ");
+}
+function showLoading() {                          // the start screen's bar (until the city shows): all sheets,
+  const el = $("loading");                        // a line per kind (the chosen hi-res sets download alongside)
+  if (!el) return false;
+  const o = DL.orig, h = DL.hires, total = o.total + h.total, f = total ? Math.min(1, (o.got + h.got) / total) : 0;
+  el.querySelector("i").style.width = `${Math.round(100 * f)}%`;
+  el.querySelector(".num").textContent = o.done + o.files ? (h.done + h.files ? "Original: " : "") + dlText(o) : "";
+  el.querySelector(".hi").textContent = h.done + h.files ? "Hi-res: " + dlText(h) : "";
+  return true;
+}
 const IMAGES = new Map();
-function loadImage(url) {
-  if (!IMAGES.has(url)) IMAGES.set(url, (async () => { const img = new Image(); img.src = url; await img.decode(); return img; })());
+function loadImage(url) {                         // (fetched, so its bytes are counted: fetchCounted)
+  if (!IMAGES.has(url)) IMAGES.set(url, (async () => {
+    const u = URL.createObjectURL(new Blob([await fetchCounted(url)], { type: "image/png" }));
+    try { const img = new Image(); img.src = u; await img.decode(); return img; } finally { URL.revokeObjectURL(u); }
+  })());
   return IMAGES.get(url);
 }
 
@@ -208,8 +267,8 @@ const hiresCmp = S => { const f = texFormat(), c = S.compressed && S.compressed[
 const hiresUrl = (ix, dir, sheet, cmp) =>
   `${dir}/${cmp ? sheet.replace(/\.png$/, cmp.suffix) : sheet}?v=${ix.version || 0}`;
 const BUFFERS = new Map();                        // like IMAGES, for the .astc.bin / .bc7.bin downloads
-function loadBuffer(url) {
-  if (!BUFFERS.has(url)) BUFFERS.set(url, fetch(url).then(r => { if (!r.ok) throw new Error(url); return r.arrayBuffer(); }));
+function loadBuffer(url, expect = 0) {
+  if (!BUFFERS.has(url)) BUFFERS.set(url, fetchCounted(url, expect));
   return BUFFERS.get(url);
 }
 
@@ -231,13 +290,17 @@ function hiresIndex() {
 }
 // the progress box (#hiprog): the set's text and 0..1 (null hides the box); with HIRES.all = {done, total}
 // (startup: several sets, in layers) an overall bar on top, each set counting its layers
+let hiresShown = null;                            // the last hiresProgress arguments (refreshed by the bytes timer)
 function hiresProgress(text, frac, layers = 1) {
   const box = $("hiprog");
   if (!box) return;
   box.hidden = text == null;
+  hiresShown = text == null ? null : [text, frac, layers];
   if (text == null) return;
   const pct = f => `${Math.round(100 * Math.max(0, Math.min(1, f)))}%`, bars = box.querySelectorAll("i"), A = HIRES.all;
-  box.querySelector("span.set").textContent = text;
+  const c = DL.hires;
+  box.querySelector("span.set").textContent = text + (c.files && c.total ? ` · ${mbText(c.got)} / ${mbText(c.total)} MB` : "");
+  box.querySelector("span.dl").textContent = c.files ? dlText(c) : "";
   bars[1].style.width = pct(frac);
   box.querySelector("span.all").textContent = A ? `Loading hi-res sprites: ${pct((A.done + frac * layers) / A.total)}` : "";
   if (A) bars[0].style.width = pct((A.done + frac * layers) / A.total);
@@ -918,10 +981,12 @@ async function getJSON(u, ms = 8000) {
 }
 
 async function loadMaps() {
-  for (const k of ["buildings", "walkers", "audio", "monuments", "ui", "fonts", "strings_ui", "info_panels", "walker_info", "military"]) {
-    try { MAP[k] = await getJSON(`/data/play/${k}.json`); } catch (e) { MAP[k] = null; }
-  }
-  try { Scene.setResources(await getJSON("/data/resources.json")); } catch (e) { }
+  // all at once (one after another cost a round trip each: ~2.5 s over a far link)
+  const keys = ["buildings", "walkers", "audio", "monuments", "ui", "fonts", "strings_ui", "info_panels", "walker_info", "military"];
+  const [maps, res] = await Promise.all([Promise.all(keys.map(k => getJSON(`/data/play/${k}.json`).catch(() => null))),
+                                         getJSON("/data/resources.json").catch(() => null)]);
+  keys.forEach((k, i) => { MAP[k] = maps[i]; });
+  if (res) Scene.setResources(res);
   if (window.Military) Military.init();           // military.json roles over walkers.json (military.js)
   if (window.Gods) await Gods.init();             // gods.json roles over walkers.json (gods.js)
   if (window.Heroes) await Heroes.init();         // heroes.json roles over walkers.json (heroes.js)
@@ -937,12 +1002,28 @@ P.window = 75;                                    // server: how far behind live
 const LAG = 30;                                   // the timeline slider: this close to live = live
 const REC = 15;                                   // server frame grid (ticks)
 const AHEAD_Q = +new URLSearchParams(location.search).get("ahead");   // ?ahead=N: a fixed margin (testing)
-// the margin: the next frame (frames every P.every ticks) + the play time one poll cycle takes (its round trip
-// + a drawn frame, x 1.5), 0.1..0.4 s. The server simulates only up to playhead + margin, so a margin shorter
-// than the cycle caps the city at margin / cycle ticks per second at every speed (a slow tab got ~4x; bug 468)
-let pollRtt = 0.03;                               // s, smoothed round trip of the driving polls (pollFrames)
-const leadSecs = () => Math.min(0.4, Math.max(0.1, 1.5 * (pollRtt + 1 / Math.max(5, fps))));
-function ahead() { return AHEAD_Q > 0 ? AHEAD_Q : (P.every || 1) + Math.ceil(P.rate * leadSecs()); }
+// the margin: the next frame (frames every P.every ticks) + twice the play time one poll cycle takes. The server
+// simulates only up to playhead + margin, and one poll is in flight at a time: a poll leaves when half the margin
+// is left in the buffer, so that half must cover the cycle and the other half is what the answer adds. The cycle:
+// the network round trip of the driving polls (smoothed, + 3x its mean deviation: a slow answer now and then must
+// not empty the buffer either) + a drawn frame + the server's simulation of the ticks the poll asks (meta.work /
+// meta.ran: its cost per tick x the ticks; at a speed the sim barely keeps up with, the margin grows by
+// 1 / (1 - the sim's share of real time)). Before (bug 468) the margin was 1.5 x (round trip + frame), at most
+// 0.4 s: over a ~300 ms link (the shared server behind a CDN) the buffer ran dry on every poll, the walkers stopped
+// ~100-170 ms three times a second and the city ran at ~75 % of its speed (bugs.md 482). At most LEAD_MAX s of
+// play, and a third of the live window less its frames (the catch-up jump in advance() needs window - 2 x margin;
+// commands are accepted within the window, sim/live.py live_window)
+let pollRtt = 0.03, pollDev = 0.005, tickCost = 0;   // s: network round trip, its deviation; s of sim per tick
+const LEAD_MAX = 1;
+const leadSecs = () => {
+  const cycle = pollRtt + 3 * pollDev + 1 / Math.max(5, fps), load = Math.min(0.9, P.rate * tickCost);
+  return Math.min(LEAD_MAX, Math.max(0.1, 2 * cycle / (1 - load)));
+};
+function ahead() {
+  if (AHEAD_Q > 0) return AHEAD_Q;
+  const every = P.every || 1, cap = Math.max(every + 1, Math.floor(((P.window || 75) - 2 * REC) / 3));
+  return Math.min(cap, every + Math.ceil(P.rate * leadSecs()));
+}
 
 function jumpTo(tick) {                           // drop the buffer unless the tick is inside it
   if (tick <= bufEnd() && tick >= (FRAMES[0] ? FRAMES[0].tick : 0)) { P.t = tick; return; }
@@ -1007,9 +1088,19 @@ async function pollFrames() {
     const v2 = PROTO >= 2 ? `&v=2${last && last.fs != null && frameBase ? `&base=${last.fs}` : ""}` : "";
     const r = await getJSON(`frames.json?from=${from}&to=${to}&at=${Math.floor(P.t)}${drive}${v2}`, 4000);
     P.okAt = performance.now();
-    if (drive) pollRtt = pollRtt * 0.8 + Math.min(1, (P.okAt - polledAt) / 1000) * 0.2;
+    if (drive) {                                  // (the TCP way: deviation first, from the old mean)
+      const work = r.meta.work || 0, rtt = Math.min(2, Math.max(0, (P.okAt - polledAt) / 1000 - work));
+      if (r.meta.ran > 0) tickCost = tickCost * 0.8 + (work / r.meta.ran) * 0.2;
+      pollDev = pollDev * 0.75 + Math.abs(rtt - pollRtt) * 0.25;
+      pollRtt = pollRtt * 0.8 + rtt * 0.2;
+    }
     P.error = r.meta.error || "";
-    if (r.meta.live_tick < P.liveTick - 60 || (FRAMES.length && r.meta.first > bufEnd() + REC)) {
+    // a new server process (a restart, a deploy: meta.boot) or a new city / a loaded save: start over. The ids the
+    // tab holds (frame fs, snapshot seq, terrain tid) are another process's (bugs.md 481: an open tab kept the
+    // terrain of the city before the restart, roads and all)
+    const reboot = r.meta.boot != null && P.boot != null && r.meta.boot !== P.boot;
+    if (r.meta.boot != null) P.boot = r.meta.boot;
+    if (reboot || r.meta.live_tick < P.liveTick - 60 || (FRAMES.length && r.meta.first > bufEnd() + REC)) {
       resetPlayback();                            // the server started a new city or loaded a save
       P.t = Math.max(r.meta.first, r.meta.live_tick - ahead());
     }
@@ -1545,6 +1636,8 @@ $("uisharp").onchange = e => { uiSetSize(+$("uiscale").value, e.target.checked);
   R.onMissing = resumeSheet;                      // a draw needs a freed texture (loadAtlases)
   { const u = +new URLSearchParams(location.search).get("units"); if (u > 0) R.unitBudget = Math.min(u, R.units); }   // tests: split draws
   setInterval(evictIdle, 1000);
+  // the download bars (showLoading, hiresProgress) move while a big sheet streams in
+  const dlTimer = setInterval(() => { showLoading(); if (hiresShown) hiresProgress(...hiresShown); }, 250);
   hiresPrefetch((prefs().hires || {}).choice);    // not awaited: downloads while the rest loads
   await loadMaps();
   STARTUP.maps = performance.now();
@@ -1592,6 +1685,8 @@ $("uisharp").onchange = e => { uiSetSize(+$("uiscale").value, e.target.checked);
   addEventListener("pagehide", () => R.release());
   addEventListener("pageshow", e => { if (e.persisted) location.reload(); });
   document.getElementById("loading").remove();
+  clearInterval(dlTimer);
+  setInterval(() => { if (hiresShown) hiresProgress(...hiresShown); }, 250);   // (a set switched on later)
   STARTUP.ready = performance.now();                // ms since navigation (docs/play/hires.md "Startup")
   setInterval(pollFrames, 100);
   requestAnimationFrame(frame);

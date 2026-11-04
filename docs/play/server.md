@@ -25,8 +25,17 @@ Put the city you want visitors to start from in `saves/` as `default.pkl` (with 
 ## In front of it
 A CDN such as Cloudflare can proxy the server: the sprite sheets (`play/atlas/*.png`, `.bin`) are served cacheable
 for a day, so the CDN serves them after the first visitor. Proxy HTTP to the server's port 8080.
+A CDN caches per location: the first visitor at each one gets the sheets from the server itself (~0.9 MB/s measured
+from the developer's machine to the one below, so ~2 min for the original's 124 MB); later ones from the CDN (5-17 MB/s:
+~12 s to the city). The start screen shows a bar with MB done / total and the time left (bugs.md 483).
+
+A restart (deploy, reset.sh) is seen by open tabs (frames meta `boot`): they fetch the new city whole
+(bugs.md 481; before, a tab open over a restart could keep the old city's terrain).
 
 ## Measured (11-04, 2 vCPU burstable, 1 GB RAM, a campaign city of 6,700 people)
 - The simulation alone: 423 ticks/s (a recent laptop: about 1,260).
 - Through the CDN from another continent, polls take 200 to 350 ms. The city reached 25 ticks/s at 2x, 47 at 4x,
-  86 at 8x, 154 at 16x and 203 at 32x: smooth up to about 8x.
+  86 at 8x, 154 at 16x and 203 at 32x (before bugs.md 482: the tab's margin was shorter than a poll cycle there, so
+  it also stopped briefly on most polls). After 482: see "Measured after 482" below.
+- Smoothness over a slow link: `node tools/sync_check.mjs URL --rates 15,30,60 --secs 30` (docs/play/comms.md
+  "Margin over a slow link").

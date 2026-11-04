@@ -74,6 +74,12 @@ STATE_WALL = 0.5         # ...and at most this many wall-clock seconds (>= 2 fra
 CHUNK = 2040             # ticks simulated per lock hold
 SHARED_IDLE = 10.0       # --shared: the city stands still once no tab has polled for this many seconds (user 11-04)
 DRIVE_TIMEOUT = 1.0      # synced live: a tab that polled within this many seconds drives the clock
+# The ids a tab sends back as protocol 2's base (frame fs, snapshot seq, terrain tid; docs/play/comms.md) start at
+# this process's start time << 20, so they never repeat across server restarts (a restart's ids from 1 matched the
+# old process's: a tab open over a restart took {"_b": tid} for "you have it" and kept the old city's terrain, and
+# deltas built on another document; bugs.md 481). They grow across restarts (the page compares seq order), and stay
+# below 2^53 (exact in JS) for 200 years; a process would need 2^20 ids per second of its life to reach the next.
+BOOT = int(time.time()) << 20
 TIME_OPS = ("step", "wait", "days", "months", "until")
 VIEWS = ("status", "look", "info", "history", "map", "catalog", "houses", "coverage", "risk", "report")
 
@@ -1479,7 +1485,7 @@ class Runner:
 
     def record_frame(self):
         g = self.g
-        self.fserial = getattr(self, "fserial", 0) + 1
+        self.fserial = getattr(self, "fserial", BOOT) + 1
         f = dict(tick=g.tick, fs=self.fserial, date=g.date(), treasury=g.city.treasury, population=g.city.population,
                  sentiment=g.city.sentiment, version=getattr(g, "map_version", 0),
                  poseidon=bool(getattr(g, "poseidon", False)),     # build menus hide Poseidon buildings when off
@@ -1541,7 +1547,7 @@ class Runner:
         snap = export.snapshot(g, with_terrain=False)
         snap.pop("history", None)
         # a snapshot can be re-recorded at the same tick (a command right after one): seq tells them apart
-        self.seq = getattr(self, "seq", 0) + 1
+        self.seq = getattr(self, "seq", BOOT) + 1
         snap["seq"] = self.seq
         enc = comms.encode(snap, comms.STATE_KEYED, sub=True)
         data = comms.join(enc)
@@ -1634,9 +1640,11 @@ class Runner:
 
     # --- loop ----------------------------------------------------------------------------------
     def live_window(self):
-        """How far behind live a tab may be and still count as live (its commands are accepted):
-        about a second of play plus the frame interval and polling."""
-        return max(45, self.rate) + 2 * REC
+        """How far behind live a tab may be and still count as live (its commands are accepted): three seconds of
+        play (at least 45 ticks) plus the frame interval and polling. A synced tab trails the city by its margin,
+        up to a third of this (play.js ahead: twice its poll cycle, at most 1 s of play); it was one second, which
+        capped the margin of a tab on a slow link below its round trip (bugs.md 482)."""
+        return max(45, 3 * self.rate) + 2 * REC
 
     def note_stall(self, kind, ms, where, **extra):
         """One stall: kept for GET /stalls.json and printed (the server's own watcher, user 11-03)."""
@@ -2066,12 +2074,15 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
                     return self.send_bytes(_dumps(empire.export(r.g)))
             if path == "/frames.json":            # play mode: a window of frames + live meta
                 r.seen_at = time.time()
+                work, ran = 0.0, 0
                 if "want" in q:                   # synced live: the tab's playhead + its margin drives the sim
                     r.driven_at = time.time()
                     if q.get("hold"):             # a screen pauses the tab (play.js screenPauses): not "slow"
                         r.held_at = r.driven_at
                     if not r.paused and not r.error:
+                        t0, k0 = time.perf_counter(), r.g.tick
                         r.advance(min(int(float(q["want"])), r.g.tick + max(2 * r.rate, REC)))
+                        work, ran = time.perf_counter() - t0, r.g.tick - k0
                     with r.lock:              # the tab wants only ticks the sim has passed, and its newest frame is
                         # behind the sim (the sim stood between two frames): one at the sim's tick, else both wait
                         # for each other (bugs.md 344). Not when want == tick: that is every poll at high speed.
@@ -2088,6 +2099,10 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
                     if ck:
                         meta["campaign"] = ck
                     meta["proto"] = 2            # the newest protocol this server speaks (docs/play/comms.md)
+                    meta["boot"] = BOOT          # this server process: a new one (restart) = start over (play.js)
+                    # the time this answer spent simulating (s) and the ticks it simulated: the tab tells its
+                    # round trip from the sim's work (play.js ahead; bugs.md 482)
+                    meta["work"], meta["ran"] = round(work, 4), ran
                     v2 = q.get("v") == "2"
                     base = int(q["base"]) if v2 and q.get("base", "").isdigit() else None
                     return self.send_bytes(b'{"frames":' + r.frames_range(a, b, v2, base) + b',"meta":' + _dumps(meta) + b"}")
@@ -2138,7 +2153,7 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
                             from .terrain_view import TerrainView
                             r._tview = TerrainView(r.g)
                         # tid: a serial unique across new games / loads (protocol 2's base; map_version restarts)
-                        r.tserial = getattr(r, "tserial", 0) + 1
+                        r.tserial = getattr(r, "tserial", BOOT) + 1
                         enc = comms.encode(dict(terrain(r.g, r._tview), tid=r.tserial), grids=comms.TERRAIN_GRIDS)
                         r._terrain = (v, comms.join(enc))
                         r._terrains = (r._terrains + [(r.tserial, enc)])[-3:]

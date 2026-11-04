@@ -24,8 +24,20 @@ STATE_KEYED = {"buildings": "id", "walkers": "id"}  # export.snapshot: dicts wit
 TERRAIN_GRIDS = ("ids", "draw", "elev", "flags", "road", "des")   # live.terrain: one int per tile
 
 
+_ENC = json.JSONEncoder(default=int, separators=(",", ":"))   # one encoder (json.dumps builds one per call)
+_SCALAR = (str, int, float, bool, type(None))
+
+
 def dumps(obj):
-    return json.dumps(obj, default=int, separators=(",", ":")).encode()
+    return _ENC.encode(obj).encode()
+
+
+def _same(a, b):
+    """Two values of json.loads output (plain types only) have the same JSON text: scalars of one type compare
+    directly (True vs 1 differ by type), the rest as text."""
+    if type(a) is not type(b):
+        return False
+    return a == b if type(a) in _SCALAR else dumps(a) == dumps(b)
 
 
 def encode(obj, keyed=None, grids=(), sub=False):
@@ -79,10 +91,8 @@ def _keyed(q, p, key):
                 A, B = json.loads(pr), json.loads(r)
                 fields = [dumps(key) + b":" + dumps(k)]
                 for f, v in B.items():
-                    if f != key:
-                        vb = dumps(v)
-                        if f not in A or dumps(A[f]) != vb:
-                            fields.append(dumps(f) + b":" + vb)
+                    if f != key and (f not in A or not _same(A[f], v)):
+                        fields.append(dumps(f) + b":" + dumps(v))
                 gone = [f for f in A if f not in B]
                 if gone:
                     fields.append(b'"_x":' + dumps(gone))

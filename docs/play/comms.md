@@ -24,6 +24,14 @@ Each document has an id the tab sends back as `base`:
 - snapshots: `seq` (as before);
 - terrain: `tid`, a serial of the terrains the server built (map_version restarts with a new city, tid does not).
 
+The three serials start at the server process's start time << 20 (sim/live.py BOOT), so they never repeat across
+server restarts, and grow (the page compares seq order). Before (11-04, bugs.md 481) they started at 1 in every
+process: a tab open over a restart or deploy asked `terrain.json?base=1`, the new process's first terrain was also
+tid 1, so the answer was `{"_b": 1}` ("you have it") and the tab kept the old city's terrain (roads missing under
+the new city's buildings); frame and snapshot deltas could build on another process's documents the same way.
+`/frames.json` meta also carries `boot` (BOOT): a tab that sees it change starts over (play.js resetPlayback: whole
+frames, snapshot and terrain).
+
 Requests:
 - `GET /frames.json?from=A&to=B&at=T[&want=W[&hold=1]]&v=2[&base=FS]` (hold: a screen pauses the tab, the stall
   watcher skips that time; bugs.md 467): the frames as before, but a frame whose predecessor in
@@ -72,6 +80,7 @@ Polling (play.js pollDue, protocol 2):
 - live, visible tab: when the buffer (newest frame - playhead) is below half of `ahead()` (the poll asks
   `want = playhead + ahead()` as before), or 250 ms after the last poll (pause, speed, other tabs' commands).
   ~15 polls/s at speed 30, ~22 at 120; the tab now trails the city by 2.5-3 ticks at speed 30 (3.5 before);
+  the margin `ahead()` (11-04, bugs.md 482, see "Margin" below) is sized from the measured round trip;
 - replaying tab: when less than `rate + 45` ticks are buffered, or every 500 ms (the timeline's live end);
 - hidden tab: every interval tick (100 ms; Chrome throttles it to 1 s), as before.
 State and terrain are asked when the frames' meta says they changed, as before.
@@ -162,6 +171,42 @@ command re-record race at one tick, `again` in record_frame, not proven) and the
   delta. It could go, or come from the frames.
 - Frames are still JSON with gzip only above 2 KB; a binary walker record would be ~4x smaller again. Not needed at
   ~25 KB/s.
+
+## Margin over a slow link (11-04, bugs.md 482)
+One poll is in flight at a time, and the server simulates only up to the `want` it carries. For the playhead never
+to wait, the buffer left when a poll leaves must last until its answer is in (one cycle), and the answer must add
+a cycle of play: the margin is twice the cycle. play.js `leadSecs`:
+`2 x (rtt + 3 x dev + 1 frame) / (1 - load)`, 0.1 .. LEAD_MAX (1 s) of play, and at most a third of the live window
+less 2 x REC (advance()'s catch-up jump needs window - 2 x margin):
+- rtt, dev: smoothed network round trip of the driving polls and its mean deviation (as TCP), the server's work
+  taken out: `/frames.json` meta `work` (s spent simulating in that request) and `ran` (ticks simulated);
+- load = rate x (work / ran, smoothed), at most 0.9: the share of real time the sim needs. A poll asking more ticks
+  takes longer to answer; without this term a fast speed fed its own sim time back into the margin.
+The live window (sim/live.py live_window, commands accepted within it) is now 3 s of play (at least 45 ticks)
++ 2 x REC; it was 1 s, which capped the margin below the round trip of a far tab.
+
+Before, the margin was 1.5 x (round trip + frame), at most 0.4 s (bug 468). Over a 300 ms link the buffer ran dry
+on every poll: the poll left at half the margin (~0.2 s of play) and its answer took 0.3 s.
+`node tools/sync_check.mjs URL --rates 15,30,60,120,240 --secs 20 --latency 300` (own server, copy of the shared
+city, Chrome adds 300 ms to every request), old code (a worktree of 2c9a447) -> new:
+
+| rate (ticks/s) | city t/s | stalls >= 50 ms in 20 s (total) | longest | margin (ticks) |
+|---|---|---|---|---|
+| 15 (1x) | 11.3 -> 14.9 | 33 (3.4 s) -> 0 | 121 ms -> 0 | 7 -> 12 |
+| 30 (2x) | 21.0 -> 30.1 | 33 (5.6 s) -> 0 | 186 ms -> 0 | 13 -> 22 |
+| 60 (4x) | 43.2 -> 59.0 | 33 (5.1 s) -> 0 | 170 ms -> 0 | 27 -> 44 |
+| 120 (8x) | 81.0 -> 120.2 | 62 (6.1 s) -> 0 | 142 ms -> 0 | 53 -> 87 |
+| 240 (16x) | 169.5 -> 241.2 | 33 (5.8 s) -> 0 | 176 ms -> 0 | 111 -> 191 |
+
+Local (no added latency), tools/speed_check.mjs on a copy of the same city, rates 60..960, old code (worktree of
+2c9a447) -> new: server 62/116/244/464/792 -> 63/115/238/494/909 t/s, margin 9/17/39/63/154 -> 9/17/39/63/227 ticks,
+poll round trip medians unchanged (6/7/12/36/48 -> 5/6/12/26/45 ms).
+
+The server's side of the same cycle (bugs.md 482): a building snapshot (record_state) is taken every 30 ticks or
+0.5 s inside the driving poll, under the lock: ~37 ms here, ~120 ms on the shared server's CPU (its stall log showed
+"lock 120 ms at advance" every 30 ticks, 2 s at 1x). terrain_string is now numpy (15 -> 0.7 ms) and comms.delta
+compares the fields of a changed record directly when they are scalars of one type (json.dumps of each field
+before; one JSONEncoder instead of one per call): record_state 37 -> 13.5 ms (median, same city).
 
 ## Stall watcher (11-03)
 The live server times its lock (sim/live.py TimedLock): any hold of 100 ms or more (STALL_MS; the tab keeps ~130 ms of

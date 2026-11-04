@@ -80,7 +80,8 @@ rules in JS.
   - Pause and speed stay on the server (`/control`), so every tab and a restart agree.
   - Scripts and agents (`run`, `live --script`) are unchanged.
   - Implemented: `/frames.json?...&want=T` (sim/live.py `driven()`, `frame_every()`, DRIVE_TIMEOUT); client
-    `ahead()` = frame interval + ceil(rate x 0.1), or `play.html?ahead=N` for a fixed margin. Snapshots carry
+    `ahead()` = frame interval + ceil(rate x 0.1) (since 11-04 sized from the round trip: docs/play/comms.md
+    "Margin over a slow link"), or `play.html?ahead=N` for a fixed margin. Snapshots carry
     `seq` (re-recorded at the same tick after a command); `/cmd` returns the seq, pending values compare S.seq.
     Measured 2026-10-28 (copy of the playtest city): exact rate at 30/120/480/1920 ticks/s, 0 stalled frames;
     the tab trails the server by 3 / 12 / 47 / 167 ticks; a placed building is real (right click) 16-35 ms

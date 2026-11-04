@@ -12,11 +12,22 @@ _TERRAIN_CODE = {k: v for k, v in TERRAIN_CH.items()}
 
 
 def terrain_string(g):
+    """One character per tile, rows joined: "=" road, else _TERRAIN_CODE[world.kind] (the same rules, in numpy: the
+    live server takes it with every building snapshot, and the per-tile loop cost ~15 ms there, ~45 ms on a small
+    cloud machine, under the lock; bugs.md 482)."""
+    from .world import OFFMAP, WATER, CLIFF, WALL, ROCK, MARBLE, TREE, RUBBLE, MEADOW, BEACH
     w = g.world
-    rows = []
-    for y in range(w.flags.shape[0]):
-        rows.append("".join("=" if w.road[y, x] else _TERRAIN_CODE[w.kind(x, y)] for x in range(w.flags.shape[1])))
-    return "".join(rows)
+    f = w.flags.astype(np.int64)
+    c = _TERRAIN_CODE
+    ore = f & 0x300000
+    rock = np.where(f & MARBLE, ord(c["marble"]), np.where(ore == 0x100000, ord(c["copper"]),
+                                                          np.where(ore == 0x200000, ord(c["silver"]), ord(c["rock"]))))
+    out = np.select([f & OFFMAP != 0, f & WATER != 0, f & CLIFF != 0, f & WALL != 0, f & ROCK != 0, f & TREE != 0,
+                     f & RUBBLE != 0, f & (MEADOW | BEACH) != 0],
+                    [ord(c["offmap"]), ord(c["water"]), ord(c["cliff"]), ord(c["wall"]), rock, ord(c["tree"]),
+                     ord(c["rubble"]), ord(c["meadow"])], ord(c["land"]))
+    out = np.where(w.road != 0, ord("="), out).astype(np.uint8)
+    return out.tobytes().decode("ascii")
 
 
 def _halls(g):
