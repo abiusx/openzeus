@@ -2124,14 +2124,19 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
                     meta["work"], meta["ran"] = round(work, 4), ran
                     v2 = q.get("v") == "2"
                     base = int(q["base"]) if v2 and q.get("base", "").isdigit() else None
-                    return self.send_bytes(b'{"frames":' + r.frames_range(a, b, v2, base) + b',"meta":' + _dumps(meta) + b"}")
+                    body = b'{"frames":' + r.frames_range(a, b, v2, base) + b',"meta":' + _dumps(meta) + b"}"
+                # gzip and the socket write outside the lock: a slow client (or the CDN) held every request
+                # and the sim up to ~190 ms on the shared server (bugs.md 482); the same for state and terrain
+                return self.send_bytes(body)
             if path == "/state.json":
                 with r.lock:
                     t = int(float(q.get("t", r.g.tick)))
                     if q.get("lite"):           # play mode: buildings only (v=2&base=SEQ: deltas on SEQ)
-                        return self.send_bytes(r.state_lite(t, q.get("v") == "2",
-                                                            int(q["base"]) if q.get("base", "").lstrip("-").isdigit() else None))
-                    return self.send_bytes(r.state_at(t))
+                        body = r.state_lite(t, q.get("v") == "2",
+                                            int(q["base"]) if q.get("base", "").lstrip("-").isdigit() else None)
+                    else:
+                        body = r.state_at(t)
+                return self.send_bytes(body)
             if path.startswith("/data/") and path.endswith(".json") and ".." not in path:
                 f = os.path.join(os.path.dirname(VIEWER), path.lstrip("/"))     # play mode: data + mapping tables
                 if os.path.exists(f):
@@ -2166,17 +2171,19 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
                 return self.wfile.write(body[a:b + 1])
             if path == "/terrain.json":          # play mode (viewer/play.html): the map's terrain images
                 with r.lock:
-                    r.terrain_doc()
+                    body = r.terrain_doc()
                     base = q.get("base", "")
                     if q.get("v") == "2" and base.isdigit():   # protocol 2: a delta on the terrain the tab holds
                         if r._terrains and r._terrains[-1][0] == int(base):
-                            return self.send_bytes(b'{"_b":' + base.encode() + b"}")   # the tab has it
-                        for tid, enc in r._terrains[:-1]:
-                            if tid == int(base):
-                                dl = comms.delta(enc, r._terrains[-1][1], tid)
-                                if len(dl) < len(r._terrain[1]):
-                                    return self.send_bytes(dl)
-                    return self.send_bytes(r._terrain[1])
+                            body = b'{"_b":' + base.encode() + b"}"   # the tab has it
+                        else:
+                            for tid, enc in r._terrains[:-1]:
+                                if tid == int(base):
+                                    dl = comms.delta(enc, r._terrains[-1][1], tid)
+                                    if len(dl) < len(body):
+                                        body = dl
+                                    break
+                return self.send_bytes(body)
             if path == "/saves.json":
                 return self.send_bytes(_dumps(list_saves()))
             if path == "/stalls.json":          # the server's stall watcher: lock holds >= STALL_MS, slow clock
