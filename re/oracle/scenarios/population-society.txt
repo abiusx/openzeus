@@ -1,0 +1,5 @@
+# Population advisor, society view (FUN_00593D20), "See a working city" at 1024x768: the history/society toggle
+# 0x00665E30 is poked to 1 at tick 5 (scripted clicks on the advisor's text button do not reach it); frame at
+# (137,194). Replace DIR; empty --write-dir; ZEUS_POKE=DIR/poke.txt with the line "5 665E30 4 1";
+# --state-log /dev/null; --seconds 69.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:click 90,10; 52:click 120,41; 55:click 320,253; 61:move 866,41; 61.3:down 866,41; 61.6:up 866,41; 63:move 1004,289; 63.5:down 1004,289; 64:up 1004,289; 66:move 700,700; 67:shot DIR/society.bmp

@@ -1,0 +1,13 @@
+struct	offset	type	name
+Figure	size	0x184
+Figure	0x08	u16	next_on_tile
+Figure	0x0a	u8	type
+Figure	0x0e	u8	state
+Figure	0x14	i16	x
+Figure	0x16	i16	y
+Figure	0x20	i32	tile
+Figure	0x38	u8	action
+Figure	0x4a	i16	fine_x
+Figure	0x4c	i16	fine_y
+Figure	0x5a	i16	building_id
+Figure	0x86	i16	serial

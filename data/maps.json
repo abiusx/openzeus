@@ -1,0 +1,9 @@
+{
+ "_doc": "Maps a new game can start on (sim/world.py MAPS, play). difficulty = the map's default (docs/logic/difficulty.md 'Per map'); python3 -m sim new --difficulty, POST /control {new, difficulty} override it. episode = 'CAMPAIGN#SLOT' of data/campaign: the open play's own episode, applied at a new game as the exe does (its player city's raw goods and allowed table: sandbox hides the carrot and onion farms and the urchin quay; oracle runs sandbox-food, sandbox2-food). map = play another entry's map and data (scenario, empire) without its episode: everything buildable (ours, 2026-10-31; the benchmarks scripts/*.txt and saves made before 10-31). title / note: the new-game screen's name and description line for ours. Hand-edited.",
+ "sandbox": {"file": "zeus-original/app/Adventures/}Open Play Sandbox.pak", "difficulty": "Normal", "episode": "open_play_sandbox#0"},
+ "sandbox_open": {"map": "sandbox", "difficulty": "Normal", "ours": true, "title": "Sandbox (ours)",
+                  "note": "Ours: every building can be built (the original's sandbox has no carrot or onion farm and no urchin quay)."},
+ "sandbox2": {"file": "zeus-original/app/Adventures/Open Play Sandbox 2/Open Play Sandbox 2P.map", "difficulty": "Normal", "episode": "open_play_sandbox_2#0"},
+ "sandbox2_open": {"map": "sandbox2", "difficulty": "Normal", "ours": true, "title": "Sandbox 2 (ours)",
+                   "note": "Ours: every building can be built (the original's Sandbox 2 has no carrot or onion farm, no fishery and no urchin quay)."}
+}

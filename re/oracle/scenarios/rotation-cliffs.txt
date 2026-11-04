@@ -1,0 +1,6 @@
+# Cliffs in the 4 views (docs/play/rotation.md "Verification"): Open Play Sandbox (as rotation-sandbox.txt, 800x600) with
+# the camera poked at tick 5 to the cliffs near (110,190): DIR/poke.txt = two lines "5 da2f64 4 70" and "5 da2f68 4 282"
+# (top-left view cell, 0x00DA2F64/68); ZEUS_POKE=DIR/poke.txt --state-log DIR/state.txt. Shots c0a (view 0), PgUp:
+# c2, c4, c6, c0. The same with "5 da2f64 4 100" / "5 da2f68 4 20" (the map's top edge; the exe's scroll limits
+# 0x0051CC70 keep the off-map black out of every view). Replace DIR; empty --write-dir; --seconds 75.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:rclick 300,300; 50:shot DIR/c0a.bmp; 54:rclick 400,330; 55:key 33; 58:shot DIR/c2.bmp; 59:rclick 400,330; 60:key 33; 63:shot DIR/c4.bmp; 64:rclick 400,330; 65:key 33; 68:shot DIR/c6.bmp; 69:rclick 400,330; 70:key 33; 73:shot DIR/c0.bmp

@@ -1,0 +1,69 @@
+address	name	kind	type	evidence
+00420390	episode_start_load	function		copies the adventure episode's events (+0x9C00+ep*18600) over g_events, count, gods block (+0x8B98+ep*300) into g_scenario_gods, scenario 2032 B; docs/logic/events.md
+004214f0	screen_start_game	function		(name: hypothesis) when 0x00F2A6DD == 0x35 -> episode_start_load; '4' colony start; called by screen_input
+0042b710	adventure_episode_events	function		thiscall adventure object: +0x9C00 + ep*0x48A8 (ep 10..13 colonies)
+0042b760	adventure_episode_event_count	function		thiscall: +0xC366C + ep*4
+0042b4d0	adventure_episode_gods	function		thiscall: +0x8B98 + ep*300 (scenario god block)
+0042b460	adventure_episode_scenario	function		thiscall: +0x1BE4 + ep*0x7F0 (2032-byte scenario block)
+00425d00	adventure_read	function		.set/.pak header reader with version fix-ups (v<25 request kind 7 -> item 24; v<26 type-4 byte +0x7A = 0)
+00467660	event_resolve_at_start	function		resolves the 5 value groups (+4,+0xC,+0x14,+0x1C,+0x58), countdown +0x2E = month + year, +0x61 = rng%5+4, +0x62 = rng&1
+004673c0	event_value_resolve	function		value group (v,a,b,c): a>=0,b<0 -> a; a,b>=0 -> random of a,b(,c); a<0 -> random in [b,c]; quirk a<0,b==c -> a
+00482820	event_quest	function		type 4: god +0x60, quest +0x7A, hero slot +0x36, statue variant +0x38; states 0 wait, 6 hero away, 7 returning, 10 done; chain +0x24 = reward
+00482360	quest_title_text	function		phrase id per (god, quest): 0xA42 zeus_quest_title ...
+004825c0	quest_statue_variant	function		(god, quest, +0x38 1|2) -> commemorative variant 10..65
+004fda40	quest_hero_text	function		(god, quest) -> hero-needed text index
+00586c40	scenario_hero_of_monster_slot	function		ECX=g_scenario_gods; 0/1 -> hero of the monster of god slot 0/1; 2 -> hero of the independent monster
+00472ec0	event_mark_done_and_chain	function		types 6,7,10,11 (sea/land trade problem, contaminated water, copper mine collapse): on date flag 4 and chain only
+004732b0	event_landslide	function		type 5
+004733f0	event_clay_pit_flood	function		type 12
+0046d790	event_sink_land	function		type 28
+0050f3c0	event_goods_remap	function		old (<303) goods numbers of one event -> new (used by goods_remap_all)
+00468da0	event_has_goods_item	function		event type uses +4 as a good
+004467a0	disasters_create_objects	function		map start: one object per disaster point 0x00902CBC/CCC by its tile's terrain (0x2000000 quake, 0x10 lava, 0x100 tidal); docs/logic/events.md "Terrain disasters"
+00446ae0	disaster_pick_point	function		thiscall map objects: random untried slot of lo..hi (rng_15 % n), enabled, vtable+8 == event type -> disaster_start
+004474e0	disaster_start	function		started (table 0x0078C578 +0x18), the event; message 0xDE (phrase base vt+0x28: title, +2 / +1 by god), alert vt+0xC, music/sound
+00447390	disaster_object_ctor	function		base ctor, vtable 0x005D9140; +0x18 slot, +0x1C/+0x20 point, then disaster_region_build
+00447470	disaster_region_build	function		flood fill disaster_region_add from the point; start node ring 1 unless +0x2D (a node near the play edge); disaster_rings
+00447a50	disaster_region_add	function		recursive 8-neighbour (0x005D90B8) fill of tiles with vt+0x24 bit; node vt+0x2C; owner grid 0x0078C658
+00447b70	disaster_rings	function		BFS rings by 8-neighbours; edge = < 4 N/E/S/W region neighbours; +0x28 ring count; segments vt+0x34, crack list vt+0x30; nodes inserted by g_grid_random
+00447710	disaster_object_update	function		started: vt+0x38 update, alerts FUN_00521520(3) / FUN_0049BBB0(0), vt+0x3C post; returns running (2..5)
+00447790	disaster_post_step	function		vt+0x3C: states 2..5: segment vt+0xC with vt+0x40 progress, a random earlier segment vt+0x10, segment 0 vt+0x14, crack list vt+0xC(0x6E) (visual)
+00447f10	disaster_current_segment	function		vt+0x18: min(table +0, rings - 1), >= 0
+00447f50	disaster_set_state	function		vt+0x44: table +0x14 = state
+00447230	disaster_list_advance	function		segment vt+4 (step, skip%, all): applies nodes (vt+8) from the cursor; +0x2F alert on rock 0x300002 w/o piece 0x80, +0x30 on 0x20; true at the end
+004471f0	disaster_list_insert	function		segment vt+8: node into the list sorted by g_grid_random (FUN_00447E50)
+00447150	disaster_list_clear	function		segment vt+0x18
+00447e50	sorted_list_insert	function		key <= head: front; key < tail: before the first >= key; else back
+0056db50	quake_ctor	function		earthquake object, vtable 0x005E4898 (type 3, kind 3, mask 0x2000000, sets 0x300002, phrase 0x52E)
+0056dba0	quake_make_node	function		vt+0x2C: node 0x24 (vtable 0x005E4858), ring 1 if within 1 of the play edge (map_near_play_edge d 1)
+0056dc30	quake_make_crack_list	function		vt+0x30
+0056dca0	quake_make_segments	function		vt+0x34: +0x28 segments of 0x1C (vtable 0x005E487C)
+0056dd40	quake_update	function		vt+0x38: state 0 -> 2; every 20 calls segment[+0] advanced (all its nodes), +0 ++, crack list advanced; +0 >= rings -> 7
+0056de40	quake_clear_edge_flags	function		vt+0x1C (at disaster_rings' start): node +0x20 = 0
+0056d300	quake_node_crack	function		node vt+8: inner node or edge node of the current ring: building_destroyed_by_attack (not a ruin 0xA9, not state 6), terrain & 0xFACFA710 | 0x300002, piece |= 0x80, grids, images +-2, collapse_debris_spawn(x, y, 1, 0, (rng&1)+1, 0), figures on the tile die but types 6/0xE/0x22 (FUN_004E1AE0)
+0056d5a0	quake_segment_dust	function		segment vt+0xC (visual): (rng&3)+5 random nodes vt+0xC
+00507370	lava_ctor	function		lava object, vtable 0x005D94D0 (type 24, kind 1, mask 0x10, sets 0x1000000, phrase 0x522)
+005073a0	lava_make_node	function		vt+0x2C: node 0x28 (vtable 0x005D9490); a node on a fault 0x2000000: object +0x2E, node ring 1
+005076d0	lava_seed_rings	function		vt+0x1C: 10 random interior nodes (rng&7 == 0, 1 ring-1 neighbour of 8) become ring 1 (100 passes); +0x2E: fault nodes only
+00507560	lava_update	function		vt+0x38: state 2 as the quake (20 calls a ring) -> 3: 300 calls -> 7
+00506d80	lava_node_burn	function		node vt+8: as quake_node_crack without debris: terrain & 0xFBCFA710 | 0x1000000, draw |= 0x40, piece &= 0x70
+004e4640	tidal_ctor	function		tidal wave object, vtable 0x005D93A0 (type 25, kind 2, mask 0x100, phrase 0x528 / Poseidon 0x1022 by event +0x79)
+004e4680	tidal_make_node	function		vt+0x2C: node 0x24 (vtable 0x005D9360)
+004e4890	tidal_update	function		vt+0x38: 2: a ring every 5 calls -> 4: waits 10 calls -> 5 (back, a ring every 5 calls, apply(0)) or 7 (+0x79)
+004e4b40	tidal_terrain_pass	function		vt+0x1C
+004e4de0	tidal_phrase	function		vt+0x28: 0x528, 0x1022 when the event's +0x79
+004e4e40	tidal_set_state	function		vt+0x44: state 7 clears the table entry unless +0x79
+00506330	landslide_spread	function		(was read as the quake's) callers FUN_00505FF0 / FUN_005061A0 / FUN_00506BE0: the landslide's boulder path
+004104d0	effect_spawn	function		type-6 effect figure, only within 200 px of the view and < 750 live (bugs.md 362)
+004106a0	effect_motion	function		effect figure motion: fine x/y, polar (flags 1), height, gravity (flags 8)
+00410e50	effect_picture	function		effect figure picture by subtype, counter, death (bugs.md 362)
+00410430	effect_sincos_init	function		sin/cos tables x256 (0x00666408 / 0x00666008)
+00411920	effect_lava_splash	function		subtype 1: fine spot from progress along the node direction
+00411be0	effect_lava_drops	function		subtype 2: polar drift from the middle
+00411dd0	effect_lava_blob	function		subtype 3: ballistic, deleted by effect_picture at once
+00412080	effect_tidal_spray	function		subtype 4: as effect_lava_splash
+00506f40	lava_segment_splashes	function		lava segment vtable +0xC: k nodes from a random one
+00506d00	lava_node_splash	function		lava node +0xC: not edge or lava tile -> effect_lava_splash
+00507170	lava_segment_drops	function		lava segment +0x10: one random node -> effect_lava_drops
+00507270	lava_segment_blob	function		lava segment +0x14: one random node -> effect_lava_blob
+004e4480	tidal_segment_spray	function		tidal segment +0xC: (rng&3)+4 nodes -> effect_tidal_spray

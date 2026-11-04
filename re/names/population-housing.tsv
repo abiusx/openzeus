@@ -1,0 +1,121 @@
+address	name	kind	type	evidence
+004fe290	houses_evolve	function		step 39: per-type handler table 0x0063B91C, consumption at month_tick 0/7; docs/logic/housing.md
+004fe360	house_evolve_hut	function		type 2 handler: needs occupants, gate+reqs, +1 -> type 3, no devolve; housing.md
+004fe3f0	house_evolve_shack	function		type 3 handler (occupants>0), devolve after 3 fails (b+0x82); housing.md
+004fe4e0	house_evolve_hovel	function		type 4 handler, ->3/->5
+004fe5b0	house_evolve_homestead	function		type 5 handler, ->4/->6
+004fe680	house_evolve_tenement	function		type 6 handler, ->5/->7
+004fe750	house_evolve_apartment	function		type 7 handler, ->6/->8
+004fe820	house_evolve_townhouse	function		type 8 handler, devolve only
+004fe8e0	house_evolve_elite_vacant	function		type 9 handler: calls 0x004843D0(b,2), result ignored
+004fe900	house_evolve_elite_devolved	function		type 10 handler: no desirability gate, ->11 when level-9 reqs met
+004fe9c0	house_evolve_residence	function		type 11 handler, devolve after 10 fails ->10, ->12
+004fea90	house_evolve_mansion	function		type 12 handler ->11/->13
+004feb60	house_evolve_manor	function		type 13 handler ->12/->14
+004fec30	house_evolve_estate	function		type 14 handler, devolve only ->13
+004843d0	house_requirements_met	function		bool(b, step): water/culture/edu/food types/arms/wine/fleece/oil/horses of row level+step; sim version of 0x00484660
+00484250	house_editor_freeze	function		if 0x00B1E8BC: refresh sprite if b+4==0, return 1 (skip evolution)
+00484d10	house_counters_clear	function		zeroes 0x00FEAD80 and 0x00FEAD8C (food-fail count)
+00484c50	house_consume_luxuries	function		wine col11, fleece col9, oil col10 subtracted (floor 0) if occupants
+00494ea0	house_set_type	function		type/level change + sprite; common<->elite refused; elite -> 0x004FECF0
+00494e70	house_level_image_of	function		0x00494E40(b.house_level)
+004fecf0	elite_house_place_sprites	function		4 x 2x2 sprites by view orientation, tables 0x0063B934/0x0063B94C/0x0063B988
+00495000	house_reset_to_lot	function		empty house: common -> type 2 lot image, elite -> type 10
+00494d40	building_validate_position	function		re-finds building on grid 0x00D26E98, state 4 if missing; counters 0x0091EA40/44
+0048b8d0	houses_eat_food	function		monthly: occupants*25/100 per food type (/nf), horses eat 1, b+0x7F food types eaten; housing.md
+004e5ef0	food_consumption_rate	function		returns 25
+004ff7b0	house_food_total	function		sum of house food slots over city food list
+0040d160	vendor_supply_houses	function		vendor gives food/fleece/oil/wine/arms/horses to houses in 5x5; caps in housing.md
+00564560	building_problem_flags_update	function		writes b+0x110 problem bits (UI overlay); calls house_evolve_check only for display
+00570b20	building_info_panel_prepare	function		info panel: staffing % 0x00FFA148, house reason via house_evolve_check
+00486050	house_list_build	function		0x0091F5B8 list of active houses (b+5), count 0x0091EC7C
+004860a0	house_room_update	function		step 22 (was cycle_houses_pass_22): b+0x1E = cap - occupants, totals 0x00FE6A8C/90
+00486190	city_population_update	function		step 23 (was cycle_city_pass_23): migration, births/deaths, labor pool, milestones
+004871b0	house_evict_overcrowded	function		step 24 (was cycle_houses_pass_24): room<0 -> homeless figure type 3
+00487160	spawn_homeless	function		figure type 3 at house, +0x64 count, population_evict
+00567450	migration_rate_update	function		sentiment -> rate 0x00FE9184, immigrants/emigrants due, cooldowns
+00486860	send_immigrants	function		passes A/B/C over house list, spawn_immigrant up to 4 each
+00486c50	spawn_immigrant	function		figure type 1 at entry 0x00902CB4/B6, 2 inline RNG draws
+00486ab0	send_emigrants	function		lowest levels first, 4 per house; blocked by Aphrodite sanctuary
+00486e40	house_emigrate	function		occupants -= k, figure type 2, reset to lot if empty
+004ea710	god_sanctuary_complete	function		ECX god record: sanctuary progress (0x0053ECA0) > 99
+00566d30	population_year_end	function		sets 0x00FE916C, sums occupants
+00566d40	population_births_deaths	function		yearly: health-based %, Hera +3, births/deaths
+00486ef0	house_births	function		adds people to common houses from rotating cursor 0x00FE9170
+00487020	house_deaths	function		removes people from common houses from cursor 0x00FE9174
+00566e30	population_yearly_average	function		0x00FE915C/68/58
+00566930	population_record	function		max population -> 0x00FEB0EC
+00567650	population_add	function		g_population += n (>=0), record
+00567620	population_sub	function		g_population -= n (>=0), record
+005675b0	population_change	function		0x00FE9154 = n; population_add(n)
+00567600	population_evict	function		homeless += n; population_sub(n)
+005675e0	population_rehouse	function		homeless -= n; population_add(n)
+005675d0	population_sub_thunk	function		population_sub
+00487110	houses_occupants_sum	function		sum occupants of houses with state not 0,2,5,6
+005676d0	population_history_push	function		monthly sample into ring 0x00FE6A94[2400]
+00566b90	health_step	function		0x00FE6A70 moves 1 toward 0x00FE6A6C each cycle (hypothesis: health)
+00566c00	health_target_update	function		monthly: occupant-weighted b+0x78/b+0x7F + population table 0x00641ED0
+00566f20	houses_crime_update	function		b+0xF4 crime += col14 + (40-sentiment)/2, min col15, max 100; hunger counter b+0xCC
+00567910	city_military_manpower	function		step 13 (was houses_capacity_totals): col5 % of occupants -> rabble/hoplites/horsemen, ECX=city
+00566d20	house_totals_clear	function		zeroes 0x00FE6A8C, 0x00FE6A90
+004865a0	labor_pool_compute	function		workforce 0x00FE9580 from occupants x (diff+wage+health)%, minus 6/rabble, towers/wharves first
+00569610	wage_level_index	function		index of array *0x00FE6928 nearest *0x00FE6934 (hypothesis: wage)
+00487240	labor_needs_collect	function		step 25a (was cycle_labor_25a): category needs 0x00FE9584 records
+00487630	labor_unemployment_update	function		step 25b (was cycle_labor_25b): smoothed unemployment 0x00FE9658, message
+00487750	labor_allocate	function		priority-based split of workforce over 8 categories
+00487ba0	labor_assign_buildings	function		step 25c (was cycle_labor_25c): employees b+0x40 per building
+004873f0	building_industry_halted	function		industry shut down / not operating, per type
+004e8d50	building_is_sanctuary	function		type 0x54..0x62
+0091f5b8	g_house_list	data	u16[4000]	house list (rank 73)
+0091ec7c	g_house_list_count	data	i32	
+0091ec78	g_houses_evolve_index	data	i32	loop index of houses_evolve
+0091ec28	g_house_evolve_result	data	i32	-1/0/1 of current house
+00fead8c	g_house_food_fail_count	data	i32	houses failing food types in house_requirements_met
+010dfdac	g_city_food_list	data	i32[23]	food resource ids available in city; count 0x010DFDA8
+010dfda8	g_city_food_list_count	data	i32	
+00fe6a7c	g_population	data	i32	city+0x24
+00feb0ec	g_population_max	data	i32	
+00fe6a68	g_city_sentiment	data	i32	city+0x10, 0..100, init 60
+00fe6a6c	g_health_target	data	i32	city+0x14 (hypothesis: health)
+00fe6a70	g_health	data	i32	city+0x18 (hypothesis: health)
+00fe6a8c	g_house_capacity_total	data	i32	
+00fe6a90	g_house_room_total	data	i32	
+00fe9184	g_migration_rate	data	i32	-25..100
+00fe9140	g_immigrants_due	data	i32	
+00fe9144	g_emigrants_due	data	i32	
+00fe914c	g_immigrants_pending	data	i32	
+00fe9148	g_emigrants_pending	data	i32	
+00fe918c	g_emigration_cooldown	data	i32	
+00fe9190	g_immigration_cooldown	data	i32	
+00fe9178	g_settled_this_cycle	data	i32	
+00fe917c	g_emigrated_this_cycle	data	i32	
+00fe9180	g_turned_away_this_cycle	data	i32	
+00fe9194	g_immigrants_this_month	data	i32	copied to 0x00FEB1AC monthly
+00feb1ac	g_immigrants_last_month	data	i32	
+00fe9150	g_homeless	data	i32	
+00fe9154	g_population_last_change	data	i32	
+00fe916c	g_year_end_flag	data	i32	
+00fe9158	g_population_year_avg	data	i32	
+00fe6a94	g_population_history	data	i32[2400]	monthly samples
+00fe9014	g_population_history_index	data	i32	
+00fe9018	g_population_history_count	data	i32	
+00fe9170	g_births_cursor	data	i32	
+00fe9174	g_deaths_cursor	data	i16	
+00feb0db	g_population_over_349	data	u8	
+00feb02c	g_food_eaten_month	data	i32	
+00902cb4	g_map_entry_x	data	i16	immigrant spawn
+00902cb6	g_map_entry_y	data	i16	
+00fe9580	g_labor_pool	data	i32	workforce
+00fe9584	g_labor_categories	data	LaborCategory[10]	
+00fe964c	g_labor_employed	data	i32	
+00fe9650	g_labor_unemployed	data	i32	
+00fe9654	g_unemployment_pct	data	i32	
+00fe9658	g_unemployment_pct_shown	data	i32	
+00fe965c	g_labor_jobs_unfilled	data	i32	
+006335c4	g_labor_pct_by_difficulty	data	i32[5]	50,45,40,37,35
+006335d8	g_labor_pct_by_wage	data	i32[6]	-10,-6,-3,0,3,5
+006335f0	g_labor_pct_by_health	data	i32[5]	-2,-1,0,1,2
+005f6368	g_building_type_info	data	i32[8][221]	32-byte rows: +0 size, +8 image, +0x10 labor category (0x005F6378), +0x14 info panel id
+0063b91c	g_house_evolve_handlers	data	ptr[15]	index = type 2..14
+005e8578	g_vendor_goods_table	data	i32[13][6]	vendor type, resource, house slot, seller field, house col
+00f2a988	g_difficulty	data	i32	hypothesis

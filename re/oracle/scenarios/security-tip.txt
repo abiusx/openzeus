@@ -1,0 +1,10 @@
+# Track leftovers 2 (docs/play/pages.md "16 security", bugs.md 261): See security's tooltip lines (0x005638A0). As
+# security.txt's second run (runs/1D-security2: same DIR/poke.txt, arms / horses of houses 426, 427, 429 poked), then
+# the mouse on each quadrant (N, E, S, W) of two Estates, a shot 2 s later: runs/lo2-security-tip t{a,b}{N,E,S,W}.bmp
+# (file names differ in a/b, not case: macOS is case-insensitive). Empty --write-dir, --seconds 94, ZEUS_POKE.
+# Script = runs/1D-security2/script.txt with DIR replaced, then:
+# 69:move 450,135; 71:shot DIR/taN.bmp; 72:move 510,165; 74:shot DIR/taE.bmp; 75:move 450,195; 77:shot DIR/taS.bmp;
+# 78:move 390,165; 80:shot DIR/taW.bmp; 81:move 270,220; 83:shot DIR/tbN.bmp; 84:move 330,250; 86:shot DIR/tbE.bmp;
+# 87:move 270,280; 89:shot DIR/tbS.bmp; 90:move 210,250; 92:shot DIR/tbW.bmp
+# Seen: aN '4 warriors in this house lack armor.', aE 'This house has 3 spare horses.', aS / aW none; bN / bE none,
+# bS '1 horseman and 3 hoplites live here.', bW 'This house has 2 spare suits of armor.'

@@ -1,0 +1,3 @@
+# Dumps for tools/e1_ramp_check.py (bugs.md 211): "See a working city", ZEUS_STATE_DUMP_EVERY=1, --seconds 296 (410 ticks;
+# its figures cross the ramps at (108,132..134), (115..116,116), (119,105..108)). Replace DIR (re/oracle/runs/e1-ramps).
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 60:click 568,574; 90:click 568,574; 120:click 568,574; 150:click 568,574; 180:click 568,574; 210:click 568,574; 240:click 568,574; 270:click 568,574; 295:shot DIR/end2.bmp

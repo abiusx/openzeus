@@ -1,0 +1,6 @@
+# Military page balloons (FUN_0051B470 hover ids 0x5DC..0x5DF -> FUN_004F5DE0): "See a working city" at 800x600 (as
+# balloons-panel.txt), the Military page (button (626,370)); the mouse on a company icon (kind-4 tip "The Wolves"),
+# At palace (68:171), Crew all (68:173), the city, Crew all again (no balloon), the empty list area, At palace
+# again (shown). Finding: right after the page click or after the city, the page's at-once balloons do not show
+# until the mouse has been over the panel without a widget (bugs.md 242). DIR = run dir; --seconds 59.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 48:move 626,370; 48.3:down 626,370; 48.5:up 626,370; 50:move 651,101; 51:shot DIR/a.bmp; 51.2:move 701,257; 52:shot DIR/b.bmp; 52.2:move 700,274; 53:shot DIR/c.bmp; 53.2:move 300,300; 54:shot DIR/d.bmp; 54.2:move 700,274; 55:shot DIR/e.bmp; 55.2:move 700,180; 56:shot DIR/f.bmp; 56.2:move 701,257; 57:shot DIR/g.bmp; 57.2:move 765,258; 58:shot DIR/h.bmp

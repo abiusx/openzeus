@@ -1,0 +1,4 @@
+# Oracle of Apollo info window, "See a working city" tutorial at 800x600 (docs/play/info.md "monument"): window at
+# (68,96), understaffed (58 of 60): 132:1, no sacrifice line, Consult Oracle + prayer buttons, workers box.
+# Replace DIR; empty --write-dir; --state-log /dev/null; --seconds 78.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 69:move 200,200; 70:rclick 200,200; 76:shot DIR/s.bmp

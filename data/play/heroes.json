@@ -1,0 +1,2179 @@
+{
+ "source": "tools/play_heroes.py",
+ "roles": {
+  "monster": {
+   "by": "good",
+   "map": {
+    "m0": "monster_0",
+    "m1": "monster_1",
+    "m2": "monster_2",
+    "m3": "monster_3",
+    "m4": "monster_4",
+    "m5": "monster_5",
+    "m6": "monster_6",
+    "m7": "monster_7",
+    "m8": "monster_8",
+    "m9": "monster_9",
+    "m10": "monster_10",
+    "m11": "monster_11",
+    "m12": "monster_12",
+    "m13": "monster_13",
+    "m14": "monster_14",
+    "m15": "monster_15"
+   },
+   "fallback_role": "monster_11"
+  },
+  "hero": {
+   "by": "good",
+   "map": {
+    "h0": "hero_0",
+    "h1": "hero_1",
+    "h2": "hero_2",
+    "h3": "hero_3",
+    "h4": "hero_4",
+    "h5": "hero_5",
+    "h6": "hero_6",
+    "h7": "hero_7"
+   },
+   "fallback_role": "hero_0"
+  },
+  "monster_0": {
+   "file": "zeus_hydra",
+   "walk": {
+    "file": "zeus_hydra",
+    "start": 1,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_hydra",
+    "start": 121,
+    "dirs": 8,
+    "frames": 21,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_hydra",
+    "start": 289,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_hydra",
+    "start": 449,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_hydra",
+     "start": 449,
+     "dirs": 8,
+     "frames": 20,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Hydra (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_1": {
+   "file": "zeus_kraken",
+   "walk": {
+    "file": "zeus_kraken",
+    "start": 1,
+    "dirs": 8,
+    "frames": 21,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_kraken",
+    "start": 169,
+    "dirs": 1,
+    "frames": 31,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "zeus_kraken",
+    "start": 200,
+    "dirs": 8,
+    "frames": 35,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_kraken",
+    "start": 480,
+    "dirs": 8,
+    "frames": 31,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_kraken",
+     "start": 480,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Kraken (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_2": {
+   "file": "zeus_cerberus",
+   "walk": {
+    "file": "zeus_cerberus",
+    "start": 1,
+    "dirs": 8,
+    "frames": 23,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_cerberus",
+    "start": 185,
+    "dirs": 8,
+    "frames": 22,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_cerberus",
+    "start": 361,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_cerberus",
+    "start": 481,
+    "dirs": 8,
+    "frames": 19,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_cerberus",
+     "start": 481,
+     "dirs": 8,
+     "frames": 19,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Cerberus (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_3": {
+   "file": "zeus_cyclops",
+   "walk": {
+    "file": "zeus_cyclops",
+    "start": 1,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_cyclops",
+    "start": 121,
+    "dirs": 8,
+    "frames": 21,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_cyclops",
+    "start": 289,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_cyclops",
+    "start": 425,
+    "dirs": 8,
+    "frames": 16,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_cyclops",
+     "start": 425,
+     "dirs": 8,
+     "frames": 16,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Cyclops (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_4": {
+   "file": "zeus_minotaur",
+   "walk": {
+    "file": "zeus_minotaur",
+    "start": 1,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_minotaur",
+    "start": 161,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_minotaur",
+    "start": 321,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_minotaur",
+    "start": 481,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_minotaur",
+     "start": 481,
+     "dirs": 8,
+     "frames": 20,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Minotaur (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_5": {
+   "file": "zeus_medusa",
+   "walk": {
+    "file": "zeus_medusa",
+    "start": 1,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_medusa",
+    "start": 137,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_medusa",
+    "start": 273,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_medusa",
+    "start": 409,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_medusa",
+     "start": 409,
+     "dirs": 8,
+     "frames": 17,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Medusa (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_6": {
+   "file": "zeus_calydonianboar",
+   "walk": {
+    "file": "zeus_calydonianboar",
+    "start": 1,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_calydonianboar",
+    "start": 97,
+    "dirs": 8,
+    "frames": 13,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_calydonianboar",
+    "start": 201,
+    "dirs": 8,
+    "frames": 16,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_calydonianboar",
+    "start": 329,
+    "dirs": 8,
+    "frames": 16,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_calydonianboar",
+     "start": 329,
+     "dirs": 8,
+     "frames": 16,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Calydonian Boar (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_7": {
+   "file": "zeus_dragon",
+   "walk": {
+    "file": "zeus_dragon",
+    "start": 1,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_dragon",
+    "start": 161,
+    "dirs": 8,
+    "frames": 31,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_dragon",
+    "start": 409,
+    "dirs": 8,
+    "frames": 18,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_dragon",
+    "start": 553,
+    "dirs": 8,
+    "frames": 18,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_dragon",
+     "start": 553,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Dragon (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_8": {
+   "file": "zeus_talos",
+   "walk": {
+    "file": "zeus_talos",
+    "start": 1,
+    "dirs": 8,
+    "frames": 18,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_talos",
+    "start": 145,
+    "dirs": 8,
+    "frames": 16,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_talos",
+    "start": 273,
+    "dirs": 8,
+    "frames": 16,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_talos",
+    "start": 401,
+    "dirs": 8,
+    "frames": 18,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_talos",
+     "start": 401,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Talos (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_9": {
+   "file": "zeus_hector",
+   "walk": {
+    "file": "zeus_hector",
+    "start": 1,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_hector",
+    "start": 121,
+    "dirs": 8,
+    "frames": 10,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_hector",
+    "start": 201,
+    "dirs": 8,
+    "frames": 16,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_hector",
+    "start": 329,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_hector",
+     "start": 329,
+     "dirs": 8,
+     "frames": 17,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Hector (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_10": {
+   "file": "zeus_scylla",
+   "walk": {
+    "file": "zeus_scylla",
+    "start": 1,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_scylla",
+    "start": 161,
+    "dirs": 1,
+    "frames": 31,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "zeus_scylla",
+    "start": 192,
+    "dirs": 8,
+    "frames": 30,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_scylla",
+    "start": 432,
+    "dirs": 8,
+    "frames": 31,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_scylla",
+     "start": 432,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Scylla (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_11": {
+   "file": "zeus_maenads",
+   "walk": {
+    "file": "zeus_maenads",
+    "start": 1,
+    "dirs": 8,
+    "frames": 16,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_maenads",
+    "start": 129,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_maenads",
+    "start": 289,
+    "dirs": 8,
+    "frames": 21,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_maenads",
+    "start": 457,
+    "dirs": 8,
+    "frames": 13,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "zeus_maenads",
+     "start": 457,
+     "dirs": 8,
+     "frames": 13,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Maenad (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_12": {
+   "file": "Poseidon_Sphinx",
+   "walk": {
+    "file": "Poseidon_Sphinx",
+    "start": 1,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Sphinx",
+    "start": 137,
+    "dirs": 8,
+    "frames": 23,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "Poseidon_Sphinx",
+    "start": 321,
+    "dirs": 8,
+    "frames": 26,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "Poseidon_Sphinx",
+    "start": 529,
+    "dirs": 8,
+    "frames": 33,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "Poseidon_Sphinx",
+     "start": 529,
+     "dirs": 8,
+     "frames": 33,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Sphinx (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_13": {
+   "file": "Poseidon_Chimera",
+   "walk": {
+    "file": "Poseidon_Chimera",
+    "start": 1,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Chimera",
+    "start": 121,
+    "dirs": 8,
+    "frames": 21,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "Poseidon_Chimera",
+    "start": 289,
+    "dirs": 8,
+    "frames": 25,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "Poseidon_Chimera",
+    "start": 489,
+    "dirs": 8,
+    "frames": 19,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "Poseidon_Chimera",
+     "start": 489,
+     "dirs": 8,
+     "frames": 19,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Chimera (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_14": {
+   "file": "Poseidon_Harpie",
+   "walk": {
+    "file": "Poseidon_Harpie",
+    "start": 1,
+    "dirs": 8,
+    "frames": 40,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Harpie",
+    "start": 321,
+    "dirs": 8,
+    "frames": 37,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "Poseidon_Harpie",
+    "start": 617,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "Poseidon_Harpie",
+    "start": 777,
+    "dirs": 8,
+    "frames": 19,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "Poseidon_Harpie",
+     "start": 777,
+     "dirs": 8,
+     "frames": 19,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Harpy (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "monster_15": {
+   "file": "Poseidon_Echidna",
+   "walk": {
+    "file": "Poseidon_Echidna",
+    "start": 1,
+    "dirs": 8,
+    "frames": 19,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Echidna",
+    "start": 153,
+    "dirs": 8,
+    "frames": 24,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "Poseidon_Echidna",
+    "start": 345,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "Poseidon_Echidna",
+    "start": 505,
+    "dirs": 8,
+    "frames": 18,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "special": {
+     "file": "Poseidon_Echidna",
+     "start": 505,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "offset": 1
+    }
+   },
+   "orig": "Echidna (0x44)",
+   "frame_rule": "tick",
+   "die_rate": 2
+  },
+  "hero_0": {
+   "file": "zeus_achilles",
+   "walk": {
+    "file": "zeus_achilles",
+    "start": 1,
+    "dirs": 8,
+    "frames": 31,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_achilles",
+    "start": 249,
+    "dirs": 8,
+    "frames": 26,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_achilles",
+    "start": 457,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_achilles",
+    "start": 577,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "Achilles (0x45)",
+   "frame_rule": "tick",
+   "die_rate": 1
+  },
+  "hero_1": {
+   "file": "zeus_heracles",
+   "walk": {
+    "file": "zeus_heracles",
+    "start": 1,
+    "dirs": 8,
+    "frames": 23,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_heracles",
+    "start": 185,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_heracles",
+    "start": 345,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_heracles",
+    "start": 481,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "Hercules (0x45)",
+   "frame_rule": "tick",
+   "die_rate": 1
+  },
+  "hero_2": {
+   "file": "zeus_jason",
+   "walk": {
+    "file": "zeus_jason",
+    "start": 1,
+    "dirs": 8,
+    "frames": 31,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_jason",
+    "start": 249,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_jason",
+    "start": 409,
+    "dirs": 8,
+    "frames": 31,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_jason",
+    "start": 657,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "Jason (0x45)",
+   "frame_rule": "tick",
+   "die_rate": 1
+  },
+  "hero_3": {
+   "file": "zeus_odysseus",
+   "walk": {
+    "file": "zeus_odysseus",
+    "start": 1,
+    "dirs": 8,
+    "frames": 30,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_odysseus",
+    "start": 241,
+    "dirs": 8,
+    "frames": 31,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_odysseus",
+    "start": 489,
+    "dirs": 8,
+    "frames": 35,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_odysseus",
+    "start": 769,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "Odysseus (0x45)",
+   "frame_rule": "tick",
+   "die_rate": 1
+  },
+  "hero_4": {
+   "file": "zeus_perseus",
+   "walk": {
+    "file": "zeus_perseus",
+    "start": 1,
+    "dirs": 8,
+    "frames": 16,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_perseus",
+    "start": 129,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_perseus",
+    "start": 289,
+    "dirs": 8,
+    "frames": 16,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_perseus",
+    "start": 417,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "Perseus (0x45)",
+   "frame_rule": "tick",
+   "die_rate": 1
+  },
+  "hero_5": {
+   "file": "zeus_theseus",
+   "walk": {
+    "file": "zeus_theseus",
+    "start": 1,
+    "dirs": 8,
+    "frames": 23,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "zeus_theseus",
+    "start": 185,
+    "dirs": 8,
+    "frames": 28,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "zeus_theseus",
+    "start": 409,
+    "dirs": 8,
+    "frames": 22,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "zeus_theseus",
+    "start": 585,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "Theseus (0x45)",
+   "frame_rule": "tick",
+   "die_rate": 1
+  },
+  "hero_6": {
+   "file": "Poseidon_Atalanta",
+   "walk": {
+    "file": "Poseidon_Atalanta",
+    "start": 1,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Atalanta",
+    "start": 161,
+    "dirs": 8,
+    "frames": 21,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "Poseidon_Atalanta",
+    "start": 329,
+    "dirs": 8,
+    "frames": 18,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "Poseidon_Atalanta",
+    "start": 473,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "Atalanta (0x45)",
+   "frame_rule": "tick",
+   "die_rate": 1
+  },
+  "hero_7": {
+   "file": "Poseidon_Bellerophon",
+   "walk": {
+    "file": "Poseidon_Bellerophon",
+    "start": 1,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Bellerophon",
+    "start": 121,
+    "dirs": 8,
+    "frames": 21,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "Poseidon_Bellerophon",
+    "start": 289,
+    "dirs": 8,
+    "frames": 30,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "special": {
+    "file": "Poseidon_Bellerophon",
+    "start": 529,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "Bellerophon (0x45)",
+   "frame_rule": "tick",
+   "die_rate": 1
+  }
+ },
+ "files": [
+  "zeus_hydra",
+  "zeus_kraken",
+  "zeus_cerberus",
+  "zeus_cyclops",
+  "zeus_minotaur",
+  "zeus_medusa",
+  "zeus_calydonianboar",
+  "zeus_dragon",
+  "zeus_talos",
+  "zeus_hector",
+  "zeus_scylla",
+  "zeus_maenads",
+  "Poseidon_Sphinx",
+  "Poseidon_Chimera",
+  "Poseidon_Harpie",
+  "Poseidon_Echidna",
+  "zeus_achilles",
+  "zeus_heracles",
+  "zeus_jason",
+  "zeus_odysseus",
+  "zeus_perseus",
+  "zeus_theseus",
+  "Poseidon_Atalanta",
+  "Poseidon_Bellerophon"
+ ],
+ "hall_statue": {
+  "file": "Zeus_General",
+  "first": 1461,
+  "count": 6,
+  "dx": 43,
+  "dy": -72,
+  "src": "building_extra_draw 0x0044F320: SPR_HERO_STATUES + hero id at the draw point + (0x2B, -0x48)"
+ },
+ "hall_firepot": {
+  "file": "SprAmbient",
+  "first": 2105,
+  "frames": 12,
+  "stride": 1,
+  "ms": 80,
+  "dx": 125,
+  "dy": 60,
+  "src": "0x0045C580: SprAmbient rank 69 at the draw point + (0x7D - ax, 0x3C - ay) while the hero exists"
+ },
+ "hero_raft": {
+  "file": "SprAmbient",
+  "first": 2790,
+  "frames": 4,
+  "stride": 16,
+  "ms": 120,
+  "dx": -2,
+  "dy": -10,
+  "src": "figure_hero_update 0x004C8F50 tail: on deep water (not a bridge) sprite_extra = sprite_anim_step(0x2057 = SprAmbient rank 87, a per-figure counter, view dir * 2, 100): image first + frame * stride + 2 * dir, at the plain point (picture point - (2, 10)), under the hero except facing S (walker_draw 0x0044FEF0)"
+ },
+ "missile": {
+  "file": "destruction",
+  "start": 1212,
+  "frames": 8,
+  "dirs": 8,
+  "packed": "0x222f",
+  "ticks_per_frame": 4
+ }
+}

@@ -1,0 +1,6 @@
+# 1L-3: 36 months in debt: Zeus and Europa, Mortal, episode 1; 1L3-debt.poke sets the treasury to -100 (0x00FE6A64)
+# and the debt months to 35 (0x00FEB27C) at tick 20, day 15 -> debt_months_update makes 36 at the month change and
+# the check loses (0x00FEB160 = 0xB91 PHRASE_lose_economical). ZEUS_STATE_DUMP_EVERY=1 FROM=40 TO=130, --seconds 120.
+# The month change opens the Hydra message (a modal event message): closed by its check mark (566,573).
+# Check: python3 tools/campaign_flow_check.py debt DIR
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 26:move 590,260; 26.5:click 590,260; 33:move 315,442; 33.5:click 315,442; 75:move 656,491; 75.5:click 656,491; 80:shot DIR/d80.bmp; 81:move 566,573; 81.5:click 566,573; 86:shot DIR/d86.bmp; 88:move 566,573; 88.5:click 566,573; 94:shot DIR/d94.bmp; 96:move 566,573; 96.5:click 566,573; 104:shot DIR/d104.bmp; 112:shot DIR/d112.bmp; 118:shot DIR/d118.bmp

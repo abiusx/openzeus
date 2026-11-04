@@ -1,0 +1,5 @@
+Ghidra scripts for re/ghidra/headless.sh (ours; written against the Ghidra API).
+ApplyNames.java       re/names/*.tsv (+ the fetched upstream names, re/names/.upstream/) and re/structs/*.tsv -> the project
+DecompileAll.java every function's C -> re/decomp/zeus.c (re/ghidra/refresh.sh)
+DecompAt.java         decompile at addresses, creating the function where Ghidra has none (-readOnly project)
+Decomp.java           the shared decompiler session and block format of the two above

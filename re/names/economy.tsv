@@ -1,0 +1,190 @@
+address	name	kind	type	evidence
+00494960	storage_create	function		allocates storages[] record, default orders/limits per type; storage.md §1
+0048afa0	storehouse_stock	function		sum of bay +0x3C holding good over +0x3A chain
+004894e0	storage_cannot_accept	function		rename of storage_find_goods: 1 if order/trade state or limit refuses amount
+004895b0	storehouse_add_goods	function		adds unit by unit into fullest non-full bay; returns accepted
+00489cc0	storehouse_remove_goods	function		rename of storage_select: removes from smallest bay; returns shortfall
+00488a80	city_stock_add	function		rename of storage_goods_take: adds to city totals 0xFEB33C/0xFEB2AC/0xFE9844
+00488b20	city_stock_sub	function		rename of storage_goods_give: subtracts from same totals
+00488bc0	storage_counts_as_storage	function		rename of storage_find: 0 for trade buildings whose trade_state is 7 or 9
+0048b680	granary_add_food	function		adds food into granary +0x56 slots, limited by limit and free space
+0048b830	granary_remove_food	function		removes food, returns shortfall, updates 0xFEB088
+0048a880	workshop_accepts_input	function		input code matches +0x12 and stock+pending < cap
+0048c410	workshop_add_input	function		adds delivered input to +0x3C up to stock cap
+0048c3b0	orichalc_deliver	function		Poseidon orichalc to type 0x84/0x88, sets +0xC4 bit 0x20, returns 100
+004cca50	cart_find_destination	function		priority orichalc/workshop/storehouse/granary/granary-any; result to fig +0x5E
+0048c250	find_orichalc_consumer	function		candidates type 0x84/0x88, nearest
+0048bc80	find_workshop_for_input	function		workshops needing res, least stocked then nearest; reserves +0x114/+0x116
+00488e20	find_storehouse_bay	function		bays of storehouses accepting res, staff>=50%, nearest
+0048b330	find_granary	function		granaries accepting food, staff>=50%, free>=100, nearest; reserves
+004ccaf0	cart_after_unload	function		releases reservation, returns home or re-searches with remainder
+004cd870	walker_after_unload	function		same for storehouseman/deliveryman
+004cdac0	storage_walker_find_destination	function		workshop -> granary -> storehouse bay -> 0x48BFE0
+0048b570	cycle_granary_supply_list	function		step 8: list 0x91ED14 of granaries with food>100, totals 0x91EC84
+00488c30	cycle_storage_city_totals	function		step 16: storehouse road access +0x44 and city stock totals
+005b4b40	storage_spawn_walkers	function		granary/storehouse deliveryman and storehouseman spawning
+0048aac0	storehouse_pick_for_workshop	function		good to send to a workshop by deliveryman fig 0x24
+0048aeb0	granary_empty_target	function		0 if Get pending, else first food with order Empty and stock
+0048a580	storehouse_empty_target	function		0 if Get pending (sets 0x91EA0C), else first bay good with order Empty
+00489e60	storage_get_targets	function		two lowest-filled Get goods with a source
+0048a140	storage_find_source	function		other storage holding >= min of good, nearest
+0048ca00	storage_get_worker_plan	function		number of storehousemen from fill percentages
+005b12c0	storage_goods_list	function		goods handled by a storage/trade/agora building
+005b4670	storehouse_has_room	function		total < cap and a bay is free for good
+0048cf10	building_second_walker_alive	function		checks +0xB8 figure of type p2/p3 belonging to building
+004adf30	cart_spawn_helpers	function		heavy-goods cart spawns helper figures 0x1C, sets action
+004ae160	figure_cart_pusher	function		handler of figure type 4 (not decompiled)
+004b0080	figure_storehouseman	function		handler of figure type 9 (not decompiled)
+004b87c0	figure_deliveryman	function		handler of figure type 36 (not decompiled)
+009214f8	g_storages	data	Storage[200]	sav rank 81
+0091ebf0	g_storages_high	data	i32	highest used storage index
+00fe94e0	g_stockpile	data	i32[23]	stockpile flag per resource; blocks workshop/granary delivery
+00feb33c	g_stock_storehouses	data	i32[23]	city totals from storehouse bays (step 16)
+00feb2ac	g_stock_trade	data	i32[23]	city totals in trade buildings counted as storage
+00fe9844	g_stock_trade_reserved	data	i32[23]	city totals in trade buildings with trade_state 7/9
+00feb088	g_stock_granaries	data	i32[23]	granary food totals (decremented by granary_remove_food)
+0091ed14	g_granary_supply_list	data	i16[100]	step 8
+0091ede0	g_granary_supply_count	data	i32	step 8
+0091ec84	g_granary_food_totals	data	i32[36]	step 8, per food
+00ef57b8	g_dest_rejected_staff	data	i32	count of storages rejected for staff<50% during last search
+0040a4c0	vendor_update	function		step-31 handler of stall types 68..73: timer, sends buyer fig 37; distribution.md
+0040aa20	is_vendor_type	function		type matches a vendor descriptor
+0040aa70	vendor_agora_stock	function		stock of the stall's good in its agora (+0x56 base)
+0040ab10	vendor_order_active	function		agora order byte for the stall's resource not 1/4
+0040ace0	vendor_parent_agora	function		parent (0x0049B920) if type 63/64 else 0
+0040af80	vendor_demolish	function		stall -> empty stall 66, order 4
+0040b5f0	agora_panel_vendor_draw	function		agora info panel row per vendor (UI)
+0040bd10	agora_order_set_buy	function		0x0040CE00(agora,res,0)
+0040bd30	agora_order_set_removed	function		0x0040CE00(agora,res,4), zeroes stock
+0040bd50	agora_find_stall	function		walk +0x3A chain for a stall type
+0040c7d0	agora_stall_employees	function		sum stall +0x40 (res -1 = all)
+0040c8c0	agora_stall_employees_needed	function		sum model employees of stalls
+0040ca40	agora_wants_more	function		food<1000(400) / horses,arms,chariots<300 / else<200
+0040cac0	agora_food_total	function		sum agora +0x56 slots over food list 0x010DFDAC
+0040cc10	agora_stock	function		agora +0x56 + 2*slot(res)
+0040cd00	agora_total_stock	function		food total + vendors 1..5 stock
+0040cd60	agora_order_get	function		order byte 0x00921502[rec*0x10C+res]
+0040ce00	agora_order_set	function		writes order byte(s); value 4 zeroes stock
+0040d0e0	agora_stall_count	function		number of stalls
+0040d160	peddler_serve	function		gives food and goods to houses in 5x5 square; returns houses served
+0040d620	agora_update	function		step-31: spawns peddler fig 26
+0040d840	buyer_food_list	function		up to 5 food slots for the buyer
+0040dae0	buyer_goods_list	function		goods slots wanted (wine, armor, fleece, oil)
+0040dc50	buyer_horse_list	function		slot 15 (or 19 Poseidon)
+0040dd00	buyer_pick_food_source	function		chooses food slot, sets agora+0xAE
+0040e090	buyer_pick_goods_source	function		goods priority, sets agora+0xAE
+0040e210	buyer_pick_horse_source	function		sets agora+0xAE
+0040e2a0	buyer_research_sources	function		re-run source search from current storage
+0040ead0	vendor_find_source	function		storages within Chebyshev 40 holding the good; nearest by distance grid
+004ce9b0	buyer_at_storage	function		takes loads per wanted slot, spawns assistants
+004ced40	buyer_food_loads	function		storehouse food loads: min(bucket(stock,8), max(1,(1100-carried-agoratotal)/100))
+004ceeb0	buyer_food_loads_granary	function		same, granary stock by resource id
+004cec80	buyer_goods_loads	function		room 400, bucket 4
+004ceb40	buyer_horse_loads	function		room 400, building_fields_test bucket 4
+004ce760	buyer_chariot_loads	function		min(+0xDC,+0x74)/100 bucket 4
+004cf570	buyer_take_food	function		removes n*100 from storage, spawns n fig 47
+004ce300	buyer_next_goods_storage	function		up to 3 storages
+004ce410	buyer_food_done	function		food buyer goes home after one storage
+004ce2d0	buyer_go_home_or_die	function		home if carrying else state 2
+004dfb70	walker_service_tile	function		per-tile service dispatch by figure type; adds result to building +0x18 (cap 300)
+004ff7b0	house_food_total	function		sum house +0x54 slots over food list
+0048b8d0	houses_consume_food	function		month_advance: ration pop*25/100 per food type, horses eat 1
+004e5ef0	food_ration_percent	function		returns 25
+0057b190	resource_is_food	function		1..8
+005baaf0	rebuild_goods_lists	function		fills 0x010DFE40 (goods available) and 0x010DFDAC (foods available)
+005e8578	g_vendor_desc	data	i32[78]	6 x 13 ints vendor descriptors
+005e86b0	g_vendor_desc_poseidon5	data	i32[13]	Poseidon replacement of entry 5
+010dfda8	g_food_list_count	data	i32	count of 0x010DFDAC
+010dfdac	g_food_list	data	i32[23]	foods available to city (ascending id)
+010dfe3c	g_goods_list_count	data	i32	count of 0x010DFE40
+010dfe40	g_goods_list	data	i32[23]	resources 1..22 available to city
+00921502	g_storage_orders	data	u8[]	storage record +0x0A+res order byte (rank 81 base 0x009214F8)
+00feb02c	g_food_eaten_month	data	i32	total food consumed last month
+00485360	cycle_production_progress_20	function		rename of cycle_buildings_pass_20: crop/tree growth and workshop progress +0x54; production.md
+004855d0	workshop_progress_done	function		+0x54 >= (320 if +0x12 else 160)
+00485610	workshop_consume_input	function		+0x54=0; +0x3C -= 100 (400 sculpture) if input
+00485310	workshop_lacks_input	function		+0x12 set and +0x3C < 100 (400 sculpture)
+004873f0	industry_halted	function		g_industry_halted[+0x43] with per-type exceptions
+004a9590	type_is_crop	function		types 0x1F,0x20,0x21,0x23,0x24,0xD9
+004a9680	building_is_crop	function		type_is_crop(b.type)
+004a96e0	building_is_tree	function		types 0x23,0x24,0xD9
+004a96b0	crop_is_irrigated	function		crop and 3x3 touches terrain 0x10000
+004aa5d0	building_area_irrigated	function		0x004AA5A0(x,y,3,3) terrain bit 0x10000
+004aa5a0	area_has_flag_10000	function		wrapper of 0x004AA4F0 with mask 0x10000
+004aa4f0	area_has_terrain_flag	function		any tile of w*h area has terrain mask (or blocked tile object)
+004a97d0	crop_grow	function		+0x54 += growth, cap 1920; curse zeroes
+004a9720	crop_growth_rate	function		pct*10/100 (x2 if +0xAB); trees via 0x004AA780
+004aa780	tree_growth_rate	function		0 / 8 / 19 by tending byte of +0xB6
+004a9880	crop_growth_percent	function		+0x54*100/1920
+004a9a30	farm_harvest_amount	function		if +0xB6&0x8000: (pct<<3), reset growth
+004a9aa0	harvest_flags_update	function		fastcall ECX=0x00DB68AA; flag[k]=month==harvest month; calls 0x004A9B00 on month_tick 0
+004a9b00	farms_mark_harvest	function		sets +0xB6|=0x8000 on crop farms of kind k
+004a98c0	tree_mark_harvest	function		thiscall ECX=flags; month_tick 0: +0xB6|=0x8000
+004aa150	crop_redraw	function		0x004A9F50 at building x,y
+004aa640	trees_tending_decay	function		cycle end: every tree tending byte -1
+004aa690	tree_tending_decay	function		+0xB6 low byte -1 min 0
+004aa6d0	orchards_rot_unpicked	function		end of month 2/11: olives (2), grapes (11), oranges test month 0 never true
+004aa740	tree_rot	function		clears harvest flag and growth
+004aa350	crop_next_harvest_month	function		UI: next harvest month (irrigated: 0x006998E0)
+004ab210	lodge_send_growers	function		grower lodge 0x25 / 0xD6: interval and pickers/tenders by pct
+004ab080	tree_pick	function		grower takes +0x54*100/1920 into Figure+0x6F
+004aaf60	lodge_receive_fruit	function		olives/oranges +0x3C, grapes +0xDC, clamp 500
+004ab6f0	grower_tend_done	function		tree tending byte = 160
+004ab640	grower_next_tree_to_tend	function		next tree bound to the grower, action 7
+004ab770	grower_next_ripe_tree	function		action 0xB
+004ab830	grower_pick_done	function		tree_pick then go home (action 0xD)
+004aa7d0	grower_find_assigned_tree	function		tree with +0x2A == grower
+004f77a0	herd_send_herders	function		sheep/goat farm interval and herders
+004f7770	herd_max_herders	function		2 (>=100%), 1 (>=50%), 0
+004f7180	herd_find_ready_animals	function		animals of type with Figure+0x92 >= 100, reachable
+004f7f60	herder_take_from_animal	function		animal readiness 0, herder carries 100
+004f8050	building_stock_add	function		+0x3C += Figure+0x6F, clamp stock_cap(type)
+004f7030	producer_cart_ready	function		+0x3C >= 100 and no live cart
+004f70b0	producer_send_cart	function		cart of 100 (400 blessed) of +0x43
+004f9e90	corral_update	function		cattle processing: 200 meat per cow, calf timer
+004f9960	corral_send_ranchers	function		ranchers (77) to cattle (76), max 2
+00495b20	chariot_workshop_buy_horses	function		sends figure 37 buyer for horses when +0x74 < 201
+0048cb30	artisans_guild_update	function		sends artisans (58)
+0048ced0	building_count_walkers	function		live figures of type owned by building
+0048cdb0	resource_search_from_spawn	function		resource_tile_search_call from spawn tile with mask
+004a3fd0	building_water_exit	function		adjacent water with >= 8 connected tiles -> spawn tile
+004e5eb0	curse_timers_decay	function		cycle end: g_type_curse[t] -= 1; may set 0x00EF6163
+004ab100	building_is_farm	function		rename of building_field_check: type 0x1F..0x21
+0040f630	building_count_nonzero_56	function		rename of building_fields_test: +0xA8 = nonzero i16 among +0x56[36] (horse ranch horses)
+00430200	urchin_collector_step_a	function		urchin collector action helper (anim timer)
+004302d0	urchin_collector_dive	function		dives >= 408 ticks
+00430390	urchin_collector_arrive	function		+0x36 = 200, quay +0x54 = 1
+00430400	urchin_collector_unload	function		quay +0x3C += 100 clamp 500, collector removed
+004aecf0	figure_grower	function		handler figure 5 (not decompiled)
+004b5f10	figure_fishing_boat	function		handler figure 25; catch time 204..1020 ticks; sets wharf +0x3C=100
+004b6cf0	figure_shepherd	function		handler figure 30
+004b72c0	figure_goat_herder	function		handler figure 31
+004ba080	figure_horse	function		handler figure 43
+004baab0	figure_urchin_collector	function		handler figure 44
+004bc380	figure_sheep	function		handler figure 49
+004bcaf0	figure_goat	function		handler figure 50
+004be260	figure_hunter	function		handler figure 53; +100 meat on return
+004bf060	figure_wood_cutter	function		handler figure 55; 408 ticks chop; +25 wood
+004c1310	figure_miner	function		handler figure 62; 408 ticks (+25) or 1632/1077 ticks (+800 marble)
+004cb350	figure_cattle	function		handler figure 76
+004cbb00	figure_rancher	function		handler figure 77
+0063969c	g_figure_handlers	data	i32[780]	78 records x 40 bytes; +0 handler
+00ef60b0	g_type_curse	data	u8[221]	sav rank 126; per building type curse timer
+00ef6163	g_production_stop	data	u8	= g_type_curse[179]; nonzero stops all producers (hypothesis)
+00fe930e	g_industry_halted	data	i16[24]	per resource shut-down toggle
+00fe97b4	g_produced	data	i32[23]	units produced per resource
+005d9288	g_harvest_months	data	i32[24]	6 crops x 4 months (-1 end)
+00db68aa	g_harvest_due	data	u8[6]	crop k in harvest month
+00fe91ac	g_city_cattle	data	i32	cattle in corrals
+00fe97f0	g_city_horses	data	i32	ranch horses
+004f83e0	animal_pick_dest	function		(fig, action, radius): up to 100 random square tiles on reachable meadow with regrowth>=50; sets dest+action
+004f8b90	animal_idle_wander	function		action 0x11: every 128..159 ticks, 1/4 short walk radius 2
+004d0140	ranch_horse_pick_dest	function		100 tries, -4..3 window, must be own paddock tile (type 0x86)
+004d03d0	ranch_horse_rest	function		action 7: timer; 1/4 chance move else wait 20..69
+0056b240	rand_range	function		(lo,hi) one draw: lo + rng_a&0x7fff % (hi-lo+1)
+0056b420	boar_pick_home	function		herd point + rand(-4,4)^2, retry until passable
+0056b550	boar_idle_tick	function		action 0x11 with restlessness counter f+0x5c
+0056b5d0	boar_passive_tick	function		action 0x10
+0056b6c0	boar_walk_tick	function		action 7
+0056b360	wildlife_enter_action	function		vtable 0x5E4810 [1]: per-action timers/dest for boar
+004574c0	granary_draw_food_piles	function		city draw: food piles in the 8 roof slots (docs/play/buildings.md 7)

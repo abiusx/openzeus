@@ -1,0 +1,7 @@
+# tick address size value (tools/oracle_tile_order.py away)
+1 da2f64 4 156
+1 da2f68 4 184
+30 da2f64 4 156
+30 da2f68 4 184
+60 da2f64 4 156
+60 da2f68 4 184

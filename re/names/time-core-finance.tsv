@@ -1,0 +1,116 @@
+address	name	kind	type	evidence
+# time-core-finance subsystem; docs/logic/time-core.md, docs/logic/finance.md
+00496330	random_grid_fill	function		fills rank-22 grid 0x00CA7FF8 with (u8)(rng_a&0x7FFF), one draw per tile, 51984 tiles
+00496120	map_grids_reset	function		zeroes the map grids then calls random_grid_fill; callers 0x0042B230 0x0050E610 0x0051D010 0x0051D530
+0050b980	app_init	function		creates the window; seeds rng_a=0x54657687 rng_b=0x72641663
+005cc7a2	crt_rand	function		MSVC LCG seed*0x343FD+0x269EC3; sounds only (game_turn)
+00484f10	year_random_draw	function		one RNG draw at year end, 0x0091EC48 = rng_a & 7
+00447ff0	plague_roll	function		health table 0x005F84A8, caps by plagues this/last year, 4 decimal-digit RNG draws < chance
+004481b0	plague_start	function		plague_this_month++, plagues_this_year++, 0x00448490(houses*2/5)
+00566950	city_record_reset	function		zeroes rank 4 then defaults: tax 9, wage 30, sentiment 60, health 80
+00566b90	health_step_toward_target	function		city+0x18 moves 1 toward city+0x14 each day; clamp 0..100
+00566c00	health_target_update	function		monthly: pop-weighted 50*(b+0x78)+50*(b+0x7F) + small-city bonus table 0x00641ED0
+00487110	houses_population_sum	function		sum of b+0x1C over house records with state not in {0,2,5,6}
+00567620	population_decrease	function		city.population -= n, clamp 0, update peak
+00566930	population_peak_update	function		rename of population_record: city+0x4694 = max(city+0x4694, city.population)
+00488250	taxes_collect_monthly	function		monthly tax from houses with b+0x4E coverage; treasury += rate*base/100*50/100; finance.md 3.2
+004885b0	taxes_this_year_refresh	function		taxes_this_year and taxes_projected; finance.md 3.3
+004886e0	taxes_year_rollover	function		taxes_last_year; zero tax accumulators; clears b+0x88
+00488740	wages_pay_monthly	function		treasury -= wage_rate*employed/120
+00488790	wages_year_rollover	function		wages_last = wages_acc; acc = 0
+00488900	wages_this_year_refresh	function		wages_this_year, wages_projected
+004887b0	trade_ledger_year_rollover	function		exports/imports this -> last
+004887e0	construction_year_rollover	function		construction this -> last
+00488800	gifts_given_year_rollover	function		gifts given this -> last
+00488820	plagues_year_rollover	function		plagues this -> last (city+0x449C -> +0x4498)
+00488840	ledger_year_rollover	function		other ledger lines this -> last; last-year totals; balance_last = treasury
+004888e0	yearly_stats_rollover	function		36 ints city+0x2D5C -> city+0x2CCC then zero
+00488960	ledger_totals_refresh	function		this-year total income/expenses/net/balance
+00483b20	debt_months_update	function		monthly: months_in_debt++, years_in_debt++ every 12, message; reset when treasury >= 0
+005676a0	treasury_spend_construction	function		treasury -= cost; construction_this_year += cost (not in editor)
+005b9810	trade_export_sell	function		storage of type 0x3D/0x3E sells a batch: treasury += goods_price[g]; exports_this_year
+005b9da0	trade_import_pay	function		treasury -= goods_price[g]; imports_this_year
+0056fd30	hippodrome_income_monthly	function		ECX=0x00FF80D0; income table 0x006429F4 by 0x00782F18 bracket
+004f0010	figure_drain_treasury	function		figure timer +0x36; treasury -= max(t/10,1000) if >1000 else 0; then action 0x37
+0046daa0	event_pay_tribute_or_gift	function		treasury -= amount; tribute_paid (type byte 0x1E) or gifts_given; draws RNG
+005671a0	city_sentiment_update	function		days 0 and 8: sum of 6 components + drift; finance.md 8
+00567120	sentiment_from_taxes	function		tax_sentiment[level or 0 if coverage<11][difficulty]
+00567170	sentiment_from_wages	function		wage_sentiment 0x00641F20[wage level]
+005670d0	sentiment_from_unemployment	function		+1/0/-1/-2/-3 by unemployment pct
+00566f20	sentiment_from_houses	function		per-house crime b+0xF4 update and feeding counter b+0xCC average
+00566e70	sentiment_from_military	function		0..-5 from war counters city+0x49E8..
+00566ef0	sentiment_from_debt	function		-4/-3/-2 by years_in_debt, -2 if treasury<0
+00567680	sentiment_reason_copy	function		city+0x4410 = min(city+0x4538, 7)
+005676d0	population_history_push	function		city+0x3C[2400] ring, index city+0x25BC, count city+0x25C0
+005697f0	tax_level_index	function		index of nearest value in tax_slider table
+00569610	wage_level_index	function		index of nearest value in wage_slider table
+00569850	tax_level_text	function		text of nearest tax level (group 286)
+00569670	wage_level_text	function		text of nearest wage level (group 285)
+005697c0	tax_slider_init	function		static init: {0x00641F50, 7, 286, &city.tax_rate}
+005695e0	wage_slider_init	function		static init: {0x00641F38, 6, 285, &city.wage_rate}
+005b10f0	load_tax_sentiment_model	function		parses Model/Tax_Sentiment_Model.txt into 0x00641F50 and 0x00FE695C
+0046d380	scenario_events_monthly	function		ECX=0x009173F0; dispatches every enabled scenario event (rank 13) each month
+00472f00	event_wage_increase	function		type 8 (text 156:8): standard_wage += amount if < 46
+004730a0	event_wage_decrease	function		type 9 (text 156:9): standard_wage -= amount if > 4
+00472b20	event_price_increase	function		type 15 (text 156:15): goods price table 0x0065B9B0
+00472d00	event_price_decrease	function		type 16 (text 156:16)
+00472540	event_demand_increase	function		type 13 (text 156:13); rank-7 table
+004727c0	event_demand_decrease	function		type 14
+00472030	event_supply_increase	function		type 21
+004722b0	event_supply_decrease	function		type 22
+0046e840	event_favor_increase	function		type 17
+0046e970	event_favor_decrease	function		type 18
+0046d6d0	event_terrain_disaster	function		types 3, 24, 25 (earthquake, lava flow, tidal wave): terrain events rank 115
+00526990	scenario_goals_check	function		goal checks; months_in_debt >= 36 -> lost (-1)
+005123d0	autosave_if_due	function		after every tick when city+0x4714 == 2 (set months 0 and 6)
+004956a0	house_taxes_paid_display	function		(b+0x88 + 5000) / 10000
+004a67c0	tax_collector_visit_area	function		houses in range: b+0x4E = 50, b+0x84 = blessed
+00408c00	advisor_screen_open_refresh	function		opening advisors (screen 7) runs city_totals_refresh outside the tick
+00487750	labor_allocate_sectors	function		workforce -> 10 sector slots city+0x2B2C (stride 20); employed, unemployed, unemployment pct
+005951f0	finance_advisor_draw	function		finance screen, text group 60; maps the ledger lines
+00518420	finance_panel_draw	function		tax rate / estimated yield / coverage / uncollected panel
+00f137e4	rng_a	data	u32	rank 42; the only register whose outputs are read
+00f137e0	rng_b	data	u32	rank 43; stepped but never read
+00f137d0	rng_15	data	u32	rng_a & 0x7FFF after each draw
+00f137d4	rng_7	data	u32	rng_a & 0x7F after each draw; pushed into history at next draw
+00f137d8	rng_3	data	u32	rng_a & 7, never read
+00f137c4	rng_b_15	data	u32	never read
+00f137c8	rng_b_7	data	u32	never read
+00f137cc	rng_b_3	data	u32	never read
+00f13628	rng_history	data	u8[100]	write-only ring of rng_7
+00f13624	rng_history_index	data	i32	0..99
+0091ec14	cycle_step	data	i32	rank 37, 0..50
+0091ec0c	day_of_month	data	i32	rank 38, 0..15
+0091ec10	day_counter	data	i32	rank 39, +1 per month_advance call
+0091ec08	month	data	i32	rank 6, 0..11
+0091ec04	year	data	i32	rank 5
+0091ec48	year_random	data	i32	rng_a & 7 drawn at each new year
+00f2a988	difficulty	data	i32	rank 12; 0 very easy .. 4 very hard; index of tax_sentiment columns
+00f2a774	game_speed	data	i32	10..100 step 10, default 90
+00f2a768	game_paused	data	u8	toggled by the pause key; simulation_due returns 0
+0063da1c	speed_delay_ms	data	i32[11]	0,20,35,55,80,110,160,240,350,500,700 (+2 ms)
+00f9f998	last_tick_time	data	u32	timeGetTime of the last tick
+0063d8b8	screen_pauses_sim	data	i32[]	per screen 0x00F2A6DD: non-zero = no ticks
+00665e2c	editor_mode	data	i32	1 in map editor: cycle skipped, construction free
+00f2aa9c	fast_forward	data	u8	game_turn runs up to 10000 ticks; cleared at year end
+00f1386c	period_768	data	i32	tick_period_counters, never read
+00f13890	period_4	data	i32	tick_period_counters, never read
+00fe6a58	g_city	data	City	rank 4, 19184 bytes; re/structs/city.tsv
+00641f50	tax_levels_pct	data	i32[7]	0,3,7,9,11,15,20
+00fe695c	tax_sentiment	data	i32[35]	[7 levels][5 difficulties] from Tax_Sentiment_Model.txt
+00641f38	wage_levels	data	i32[6]	0,20,26,30,34,40
+00641f20	wage_sentiment	data	i32[6]	-10,-5,-2,0,2,4
+005f7f1c	tax_difficulty_pct	data	i32[5]	50 at every difficulty
+005f7f08	start_funds_difficulty_pct	data	i32[5]	150,100,100,100,80
+00641ed0	health_pop_bonus	data	i32[20]	(pop limit, bonus) pairs 100:80 200:80 300:70 .. 1000:0
+005f84a8	plague_chance_by_health	data	i32[14]	(health limit, chance/10000) 10:300 20:250 30:200 45:100 60:50 75:25 100:0
+006429e8	hippodrome_table	data	i32[35]	7 rows x 5; col 3 (0x006429F4) = monthly income 10..500
+0065b9b0	goods_price	data	i32[36]	rank 8; added/subtracted per export/import batch; changed by price events
+00fe6918	tax_slider	data	i32[4]	{values ptr, count, text group, current ptr}
+00fe6928	wage_slider	data	i32[4]	same for wages
+00902948	scenario_start_funds	data	i32	treasury at start before the difficulty factor
+00902928	scenario_start_year	data	i16	year at scenario start
+00b51544	tax_collector_max_mult	data	i32	largest house col 18 seen by the last collector visit
+00470800	event_request	function		rename of events_random_month: dispatcher case 1 = text 156:1 Request; request slots city+0x4630/+0x4854/+0x48E4 (hypothesis on detail)
+00473680	event_city_status_change	function		rename of events_cities_month: dispatcher case 19 = text 156:19 City Status Change
+00474a80	event_gift	function		rename of events_cities_random: dispatcher case 23 = text 156:23 Gift; adds treasury and gifts_received_this_year

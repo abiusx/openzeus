@@ -1,0 +1,350 @@
+{
+ "source": "game text group 23 (Zeus_Text.eng); docs/logic/production.md, storage-distribution.md",
+ "units": "100 = 1 load",
+ "resource_is_food": "0x0057B190: 1 <= id <= 8",
+ "evolve_food_list": {
+  "address": "0x010DFDAC",
+  "count": "0x010DFDA8",
+  "built_by": "0x005BAAF0 rebuild_goods_lists",
+  "content": "foods 1..8 available to the city (produced/imported/god/tribute/event/stocked), ascending id; sticky once listed; not saved"
+ },
+ "house_slot_map": {
+  "note": "resource -> slot; house goods at Building+0x54+2*slot, agora stock at Building+0x56+2*slot; same switch in 0x00484660, 0x0040CAC0, 0x0040D160, 0x0048B8D0",
+  "map": {
+   "7": 0,
+   "6": 1,
+   "5": 2,
+   "4": 3,
+   "3": 4,
+   "1": 5,
+   "2": 6,
+   "8": 7,
+   "21": 8,
+   "20": 9,
+   "14": 10,
+   "18": 11,
+   "15": 15,
+   "22": 19
+  }
+ },
+ "arrays_indexed_by_resource": {
+  "g_industry_halted": "0x00FE930E i16[24]",
+  "g_produced": "0x00FE97B4 i32[23]",
+  "g_stockpile": "0x00FE94E0 i32[23]",
+  "storage_order": "Storage+0x0A u8[23]",
+  "granary_stock": "Building+0x56+2*id (id 1..8); +0x56 = free space"
+ },
+ "resources": [
+  {
+   "id": 0,
+   "name": "@{t:5:80}",
+   "is_food": false,
+   "house_slot": null,
+   "house_offset": null,
+   "agora_offset": null,
+   "workshop_input_code": null,
+   "producer_types": [],
+   "storage": "none"
+  },
+  {
+   "id": 1,
+   "name": "@{t:23:1}",
+   "is_food": true,
+   "house_slot": 5,
+   "house_offset": "0x5e",
+   "agora_offset": "0x60",
+   "workshop_input_code": null,
+   "producer_types": [
+    45
+   ],
+   "storage": "granary"
+  },
+  {
+   "id": 2,
+   "name": "@{t:23:2}",
+   "is_food": true,
+   "house_slot": 6,
+   "house_offset": "0x60",
+   "agora_offset": "0x62",
+   "workshop_input_code": null,
+   "producer_types": [
+    44
+   ],
+   "storage": "granary"
+  },
+  {
+   "id": 3,
+   "name": "@{t:23:3}",
+   "is_food": true,
+   "house_slot": 4,
+   "house_offset": "0x5c",
+   "agora_offset": "0x5e",
+   "workshop_input_code": null,
+   "producer_types": [
+    46,
+    216
+   ],
+   "storage": "granary"
+  },
+  {
+   "id": 4,
+   "name": "@{t:23:4}",
+   "is_food": true,
+   "house_slot": 3,
+   "house_offset": "0x5a",
+   "agora_offset": "0x5c",
+   "workshop_input_code": null,
+   "producer_types": [
+    42
+   ],
+   "storage": "granary"
+  },
+  {
+   "id": 5,
+   "name": "@{t:23:5}",
+   "is_food": true,
+   "house_slot": 2,
+   "house_offset": "0x58",
+   "agora_offset": "0x5a",
+   "workshop_input_code": null,
+   "producer_types": [
+    33
+   ],
+   "storage": "granary"
+  },
+  {
+   "id": 6,
+   "name": "@{t:23:6}",
+   "is_food": true,
+   "house_slot": 1,
+   "house_offset": "0x56",
+   "agora_offset": "0x58",
+   "workshop_input_code": null,
+   "producer_types": [
+    32
+   ],
+   "storage": "granary"
+  },
+  {
+   "id": 7,
+   "name": "@{t:23:7}",
+   "is_food": true,
+   "house_slot": 0,
+   "house_offset": "0x54",
+   "agora_offset": "0x56",
+   "workshop_input_code": 1,
+   "producer_types": [
+    31
+   ],
+   "storage": "granary"
+  },
+  {
+   "id": 8,
+   "name": "@{t:23:8}",
+   "is_food": true,
+   "house_slot": 7,
+   "house_offset": "0x62",
+   "agora_offset": "0x64",
+   "workshop_input_code": null,
+   "producer_types": [
+    214
+   ],
+   "storage": "granary"
+  },
+  {
+   "id": 9,
+   "name": "@{t:23:9}",
+   "is_food": false,
+   "house_slot": null,
+   "house_offset": null,
+   "agora_offset": null,
+   "workshop_input_code": 2,
+   "producer_types": [
+    51
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 10,
+   "name": "@{t:23:10}",
+   "is_food": false,
+   "house_slot": null,
+   "house_offset": null,
+   "agora_offset": null,
+   "workshop_input_code": 3,
+   "producer_types": [
+    50
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 11,
+   "name": "@{t:23:11}",
+   "is_food": false,
+   "house_slot": null,
+   "house_offset": null,
+   "agora_offset": null,
+   "workshop_input_code": 8,
+   "producer_types": [
+    49
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 12,
+   "name": "@{t:23:12}",
+   "is_food": false,
+   "house_slot": null,
+   "house_offset": null,
+   "agora_offset": null,
+   "workshop_input_code": 4,
+   "producer_types": [
+    37
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 13,
+   "name": "@{t:23:13}",
+   "is_food": false,
+   "house_slot": null,
+   "house_offset": null,
+   "agora_offset": null,
+   "workshop_input_code": 5,
+   "producer_types": [
+    37
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 14,
+   "name": "@{t:23:14}",
+   "is_food": false,
+   "house_slot": 10,
+   "house_offset": "0x68",
+   "agora_offset": "0x6a",
+   "workshop_input_code": 6,
+   "producer_types": [
+    41
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 15,
+   "name": "@{t:23:15}",
+   "is_food": false,
+   "house_slot": 15,
+   "house_offset": "0x72",
+   "agora_offset": "0x74",
+   "workshop_input_code": null,
+   "producer_types": [
+    133
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 16,
+   "name": "@{t:23:16}",
+   "is_food": false,
+   "house_slot": null,
+   "house_offset": null,
+   "agora_offset": null,
+   "workshop_input_code": null,
+   "producer_types": [
+    213
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 17,
+   "name": "@{t:23:17}",
+   "is_food": false,
+   "house_slot": null,
+   "house_offset": null,
+   "agora_offset": null,
+   "workshop_input_code": null,
+   "producer_types": [
+    211
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 18,
+   "name": "@{t:23:18}",
+   "is_food": false,
+   "house_slot": 11,
+   "house_offset": "0x6a",
+   "agora_offset": "0x6c",
+   "workshop_input_code": 7,
+   "producer_types": [
+    135
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 19,
+   "name": "@{t:23:19}",
+   "is_food": false,
+   "house_slot": null,
+   "house_offset": null,
+   "agora_offset": null,
+   "workshop_input_code": 9,
+   "producer_types": [
+    55
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 20,
+   "name": "@{t:23:20}",
+   "is_food": false,
+   "house_slot": 9,
+   "house_offset": "0x66",
+   "agora_offset": "0x68",
+   "workshop_input_code": null,
+   "producer_types": [
+    54
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 21,
+   "name": "@{t:23:21}",
+   "is_food": false,
+   "house_slot": 8,
+   "house_offset": "0x64",
+   "agora_offset": "0x66",
+   "workshop_input_code": null,
+   "producer_types": [
+    53
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 22,
+   "name": "@{t:23:22}",
+   "is_food": false,
+   "house_slot": 19,
+   "house_offset": "0x7a",
+   "agora_offset": "0x7c",
+   "workshop_input_code": null,
+   "producer_types": [
+    212
+   ],
+   "storage": "storehouse"
+  },
+  {
+   "id": 23,
+   "name": "drachmas",
+   "is_food": false,
+   "house_slot": null,
+   "house_offset": null,
+   "agora_offset": null,
+   "workshop_input_code": null,
+   "producer_types": [
+    48
+   ],
+   "storage": "treasury"
+  }
+ ]
+}

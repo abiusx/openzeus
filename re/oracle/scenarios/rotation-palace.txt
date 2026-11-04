@@ -1,0 +1,4 @@
+# "See a working city" at 1024x768 scrolled to the palace (as palace.txt), then PgUp x3: p0/p2/p4/p6 (views 0, 2, 4, 6;
+# the palace stays near the centre). python3 tools/oracle_rotation.py DIR/p*.bmp -s Zeus_General:1163 .. 1176.
+# Replace DIR; empty --write-dir; --seconds 86. docs/play/rotation.md "Verification".
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:click 90,10; 52:click 120,41; 55:click 320,253; 60:key 37; 61:key 37; 62:key 37; 65:key 40; 66:key 40; 69:key 37; 70:key 37; 72:shot DIR/p0.bmp; 73:key 33; 76:shot DIR/p2.bmp; 77:key 33; 80:shot DIR/p4.bmp; 81:key 33; 84:shot DIR/p6.bmp

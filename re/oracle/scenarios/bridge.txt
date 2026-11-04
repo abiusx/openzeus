@@ -1,0 +1,7 @@
+# Bridge (docs/logic/bridges.md "Oracle"). Open Play Sandbox at 800x600 (difficulty: the config default, Easy), dismiss
+# the tribute message, Administration -> Water Crossing, hover (360,440) = tile (78,108): green 7-tile ghost
+# (DIR/ghost.bmp); click: bridge (78,108)..(78,114), cost 84 = 7 x 12 (DIR/bridges.bmp). The start view's top-left
+# cell is (94,160) (0x00DA2F64/68); a tile's centre is at about ((col-94)*60, (row-160)*15+30), col=(230+x-y)/2,
+# row=x+y+1. Run with ZEUS_STATE_DUMP + --state-log: block 21 (0x00CB4B08) holds pieces 12 11 9 10 9 8 7.
+# Empty --write-dir; replace DIR; --seconds 72.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:rclick 300,300; 55:click 570,575; 56:click 638,247; 57:click 675,398; 58:move 360,440; 59.5:shot DIR/ghost.bmp; 60:down 360,440; 60.3:up 360,440; 64:rclick 300,300; 65:move 300,580; 68:shot DIR/bridges.bmp

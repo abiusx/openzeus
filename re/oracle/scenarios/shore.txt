@@ -1,0 +1,13 @@
+# Shore buildings (docs/logic/trade.md "Dock placement", production.md "Shore buildings"). 800x600, empty --write-dir,
+# replace DIR with an absolute run dir. Three runs:
+# 1) "See a working city" -> minimap tab -> minimap (690,265): 9 fishing wharves half on water, boats (DIR/wharves.bmp);
+#    the same with minimap (760,262): dock = pier (108,65) orientation 2 + dock house 4x4 (107,61), trireme wharf (DIR/dock.bmp).
+#    Then Husbandry -> Land and Sea -> Fishery, hover the (beach) shore: red 2x2 ghost (DIR/fishery_ghost_red.bmp).
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 52:move 690,265; 52.3:down 690,265; 52.6:up 690,265; 54:move 300,580; 55:shot DIR/wharves.bmp
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 52:move 760,262; 52.3:down 760,262; 52.6:up 760,262; 54:move 300,580; 55:shot DIR/dock.bmp
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 52:move 750,261; 52.3:down 750,261; 52.6:up 750,261; 56:move 622,80; 57:down 622,80; 57.5:up 622,80; 59:move 737,400; 60:down 737,400; 60.5:up 737,400; 62:click 415,440; 64:move 300,470; 65:shot DIR/fishery_ghost_red.bmp
+# 2) Open Play Sandbox (as trade-window.txt) -> Distribution -> Trade: the list has "Pier: Miletos" (the dock's in-game
+#    name) (DIR/trade_menu.bmp); pick it, hover the start view: every shore tile there is beach, so the 2x2 pier + 4x4 house
+#    ghost is red everywhere (DIR/pier_ghost_red.bmp).
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:rclick 300,300; 48:move 568,574; 48.3:down 568,574; 48.6:up 568,574; 52:move 568,574; 52.3:down 568,574; 52.6:up 568,574; 61:click 622,163; 63:click 747,400; 64:shot DIR/trade_menu.bmp; 65:click 415,415; 66:move 330,300; 67.5:shot DIR/pier_ghost_red.bmp
+# Note: the ghost lags one frame behind a move (shoot >= 1 s after it); moving to x < 30 edge-scrolls the view.

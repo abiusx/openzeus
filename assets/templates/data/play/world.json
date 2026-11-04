@@ -1,0 +1,1024 @@
+{
+ "version": 1,
+ "note": "world map screen (docs/logic/world-map.md 3, docs/play/world.md); tools/play_world.py",
+ "pictures": [
+  "play/atlas/world/Zeus_MapOfGreece01.jpg",
+  "play/atlas/world/Zeus_MapOfGreece02.jpg",
+  "play/atlas/world/Zeus_MapOfGreece03.jpg",
+  "play/atlas/world/Zeus_MapOfGreece04.jpg",
+  "play/atlas/world/Zeus_MapOfGreece05.jpg",
+  "play/atlas/world/Zeus_MapOfGreece06.jpg",
+  "play/atlas/world/Zeus_MapOfGreece07.jpg",
+  "play/atlas/world/Zeus_MapOfGreece08.jpg",
+  "play/atlas/world/Zeus_MapOfGreece09.jpg",
+  "play/atlas/world/Zeus_MapOfGreece10.jpg"
+ ],
+ "picture_size": [
+  838,
+  738
+ ],
+ "side_panel": {
+  "sprite": {
+   "file": "Zeus_Interface",
+   "index": 1600,
+   "group": "SPR_WORLD_SIDE_INT"
+  },
+  "size": [
+   186,
+   768
+  ],
+  "evidence": "exe 0x00597E60, FUN_00597E20: x = panelX (W > 800)"
+ },
+ "widgets": [
+  {
+   "name": "back",
+   "rect": [
+    39,
+    570,
+    139,
+    25
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1601,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    139,
+    25
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1601
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1602
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1603
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1604
+    }
+   },
+   "handler": "0x004081E0"
+  },
+  {
+   "name": "help",
+   "rect": [
+    13,
+    572,
+    27,
+    27
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 533,
+    "group": "SPR_PANEL_ICONS"
+   },
+   "sprite_size": [
+    24,
+    24
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 533
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 534
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 535
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 536
+    }
+   },
+   "tooltip": {
+    "group": 68,
+    "index": 1,
+    "text": "@{t:68:1}"
+   },
+   "handler": "0x004081D0"
+  },
+  {
+   "name": "attitude",
+   "rect": [
+    9,
+    131,
+    173,
+    30
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1605,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    173,
+    30
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1605
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1606
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1607
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1608
+    }
+   },
+   "tooltip": {
+    "group": 68,
+    "index": 4,
+    "text": "@{t:68:4}"
+   },
+   "handler": "0x004068F0"
+  },
+  {
+   "name": "request",
+   "rect": [
+    13,
+    460,
+    51,
+    51
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1609,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    51,
+    51
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1609
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1610
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1611
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1612
+    }
+   },
+   "tooltip": {
+    "group": 68,
+    "index": 5,
+    "text": "@{t:68:5}"
+   },
+   "handler": "0x00406A20"
+  },
+  {
+   "name": "requests",
+   "rect": [
+    70,
+    460,
+    51,
+    51
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1613,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    51,
+    51
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1613
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1614
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1615
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1616
+    }
+   },
+   "tooltip": {
+    "group": 68,
+    "index": 8,
+    "text": "@{t:68:8}"
+   },
+   "handler": "0x00406B00"
+  },
+  {
+   "name": "gift",
+   "rect": [
+    127,
+    460,
+    51,
+    51
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1617,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    51,
+    51
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1617
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1618
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1619
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1620
+    }
+   },
+   "tooltip": {
+    "group": 68,
+    "index": 6,
+    "text": "@{t:68:6}"
+   },
+   "handler": "0x00406A50"
+  },
+  {
+   "name": "raid",
+   "rect": [
+    13,
+    518,
+    79,
+    45
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1621,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    79,
+    45
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1621
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1622
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1623
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1624
+    }
+   },
+   "tooltip": {
+    "group": 44,
+    "index": 312,
+    "text": "@{t:44:312}"
+   },
+   "handler": "0x00406A80"
+  },
+  {
+   "name": "conquer",
+   "rect": [
+    98,
+    518,
+    80,
+    45
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1625,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    80,
+    45
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1625
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1626
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1627
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1628
+    }
+   },
+   "tooltip": {
+    "group": 44,
+    "index": 313,
+    "text": "@{t:44:313}"
+   },
+   "handler": "0x00406AC0"
+  },
+  {
+   "name": "prev",
+   "rect": [
+    11,
+    97,
+    56,
+    32
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1629,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    56,
+    32
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1629
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1630
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1631
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1632
+    }
+   },
+   "handler": "0x00406B30"
+  },
+  {
+   "name": "next",
+   "rect": [
+    119,
+    97,
+    62,
+    32
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1633,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    62,
+    32
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1633
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1634
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1635
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1636
+    }
+   },
+   "handler": "0x00406BB0"
+  },
+  {
+   "name": "history",
+   "rect": [
+    69,
+    89,
+    48,
+    40
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1637,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    48,
+    40
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1637
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1638
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1639
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1640
+    }
+   },
+   "handler": "0x00406930"
+  },
+  {
+   "name": "orders",
+   "rect": [
+    29,
+    202,
+    139,
+    25
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 1601,
+    "group": "SPR_WORLD_SIDE_BUTTONS"
+   },
+   "sprite_size": [
+    139,
+    25
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 1601
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 1602
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 1603
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 1604
+    }
+   },
+   "handler": "0x00406940"
+  }
+ ],
+ "layout": {
+  "evidence": "exe FUN_005981B0 (immediates), seen re/oracle/runs/worldmap; tribute_x and tribute_amount x measured on the oracle shot (+4, +10 vs the immediates)",
+  "box_x": 16,
+  "box_w": 151,
+  "kind_y": 34,
+  "name_y": 50,
+  "leader_y": 69,
+  "our_city_y": 46,
+  "our_name_y": 65,
+  "goods_x": 20,
+  "goods_y": 184,
+  "list_title_y": 247,
+  "box_dx": 24,
+  "row_dy": 20,
+  "icon_dx": 29,
+  "name_dx": 54,
+  "quota_x": 129,
+  "quota_w": 37,
+  "tribute_x": 10,
+  "tribute_y": 412,
+  "tribute_w": 170,
+  "tribute_icon": [
+   12,
+   424
+  ],
+  "tribute_amount": [
+   38,
+   428
+  ],
+  "suspended_y": 444,
+  "click_info_y": 202,
+  "list_bottom": 394
+ },
+ "fonts": {
+  "title": "11C",
+  "leader": "9LTBK",
+  "rows": "9DKBU",
+  "tribute": "9DKBU",
+  "suspended": "9DKYEL",
+  "label": "11C",
+  "evidence": "exe font table 0x012AFBEC entries 1/10, font_group_entry(13), packed 0xE/0xF"
+ },
+ "icons": {
+  "drachmas": {
+   "file": "Zeus_General",
+   "index": 1003,
+   "group": "SPR_REQUEST_CASH_ICON"
+  },
+  "troops": {
+   "file": "Zeus_General",
+   "index": 1002,
+   "group": "SPR_REQUEST_TROOPS_ICON"
+  },
+  "strike": {
+   "file": "Zeus_General",
+   "index": 1002,
+   "group": "SPR_REQUEST_TROOPS_ICON"
+  },
+  "evidence": "exe FUN_005981B0: packed 0x804 drachmas, 0x806 troops/strike; goods: info_panels goods_icons"
+ },
+ "markers": {
+  "standard_offset": "icon top-right",
+  "evidence": "exe world_map_draw 0x00599DA0"
+ },
+ "dialog_icons": {
+  "food": {
+   "file": "Zeus_General",
+   "index": 954,
+   "group": "SPR_GOODS_ICONS"
+  },
+  "can": {
+   "file": "Zeus_Interface",
+   "index": 619,
+   "group": "SPR_REQUEST_COMPLETE"
+  },
+  "cannot": {
+   "file": "Zeus_Interface",
+   "index": 615,
+   "group": "SPR_REQUEST_INCOMPLETE"
+  },
+  "months": {
+   "file": "Zeus_Interface",
+   "index": 1412,
+   "group": "SPR_MOON"
+  },
+  "thumbs": {
+   "file": "Zeus_Interface",
+   "index": 1472,
+   "group": "SPR_THUMBS"
+  },
+  "evidence": "exe FUN_00464C00: food font_group_entry(0x7A)+0x10013; mode 5 entries 12/18 (can / cannot fulfil, FUN_004713E0), 19 months; mode 6 entry 175 + mood 0..5"
+ },
+ "texts": {
+  "20": [
+   "BC",
+   "AD"
+  ],
+  "21": [
+   "@{t:21:0}",
+   "@{t:21:1}",
+   "@{t:21:2}",
+   "@{t:21:3}",
+   "@{t:21:4}",
+   "@{t:21:5}",
+   "@{t:21:6}",
+   "@{t:21:7}",
+   "@{t:21:8}",
+   "@{t:21:9}",
+   "@{t:21:10}",
+   "@{t:21:11}",
+   "@{t:21:12}",
+   "@{t:21:13}",
+   "@{t:21:14}",
+   "@{t:21:15}",
+   "@{t:21:16}",
+   "@{t:21:17}",
+   "@{t:21:18}",
+   "@{t:21:19}",
+   "@{t:21:20}",
+   "@{t:21:21}",
+   "@{t:21:22}",
+   "@{t:21:23}",
+   "@{t:21:24}",
+   "@{t:21:25}",
+   "@{t:21:26}",
+   "@{t:21:27}",
+   "@{t:21:28}",
+   "@{t:21:29}",
+   "@{t:21:30}",
+   "@{t:21:31}",
+   "@{t:21:32}",
+   "@{t:21:33}",
+   "@{t:21:34}",
+   "@{t:21:35}",
+   "@{t:21:36}",
+   "@{t:21:37}",
+   "@{t:21:38}",
+   "@{t:21:39}",
+   "@{t:21:40}",
+   "@{t:21:32}",
+   "@{t:21:42}",
+   "@{t:21:43}",
+   "@{t:21:44}",
+   "@{t:21:45}",
+   "@{t:21:46}",
+   "@{t:21:47}",
+   "@{t:21:48}",
+   "@{t:21:49}",
+   "@{t:21:50}",
+   "@{t:21:51}",
+   "@{t:21:52}",
+   "@{t:21:53}",
+   "@{t:21:54}",
+   "@{t:21:55}",
+   "@{t:21:56}",
+   "@{t:21:57}",
+   "@{t:21:58}",
+   "@{t:21:59}",
+   "@{t:21:60}",
+   "@{t:21:61}",
+   "@{t:21:62}",
+   "@{t:21:63}",
+   "@{t:21:64}",
+   "@{t:21:65}",
+   "@{t:21:66}",
+   "@{t:21:67}",
+   "@{t:21:68}",
+   "@{t:21:69}",
+   "@{t:21:70}",
+   "@{t:21:71}",
+   "@{t:21:72}",
+   "@{t:21:73}",
+   "@{t:21:74}",
+   "@{t:21:75}",
+   "@{t:21:76}",
+   "@{t:21:77}",
+   "@{t:21:78}",
+   "@{t:21:79}",
+   "@{t:21:80}",
+   "@{t:21:81}"
+  ],
+  "23": [
+   "@{t:5:80}",
+   "@{t:23:1}",
+   "@{t:23:2}",
+   "@{t:23:3}",
+   "@{t:23:4}",
+   "@{t:23:5}",
+   "@{t:23:6}",
+   "@{t:23:7}",
+   "@{t:23:8}",
+   "@{t:23:9}",
+   "@{t:23:10}",
+   "@{t:23:11}",
+   "@{t:23:12}",
+   "@{t:23:13}",
+   "@{t:23:14}",
+   "@{t:23:15}",
+   "@{t:23:16}",
+   "@{t:23:17}",
+   "@{t:23:18}",
+   "@{t:23:19}",
+   "@{t:23:20}",
+   "@{t:23:21}",
+   "@{t:23:22}",
+   "drachmas",
+   "@{t:23:24}",
+   "@{t:23:25}",
+   "@{t:23:26}",
+   "-",
+   "-",
+   "@{t:23:21}",
+   "@{t:23:21}",
+   "-",
+   "-",
+   "-",
+   "-",
+   "-",
+   "-",
+   "@{t:23:37}",
+   "@{t:23:20}",
+   "-",
+   "-",
+   "-",
+   "-",
+   "@{t:23:25}"
+  ],
+  "25": [
+   "@{t:25:0}",
+   "@{t:25:1}",
+   "@{t:25:2}",
+   "@{t:25:3}",
+   "@{t:25:4}",
+   "@{t:25:5}",
+   "@{t:25:6}",
+   "@{t:25:7}",
+   "@{t:25:8}",
+   "@{t:25:9}",
+   "@{t:25:10}",
+   "@{t:25:11}"
+  ],
+  "37": [
+   "@{t:37:0}",
+   "@{t:22:68}",
+   "@{t:37:2}",
+   "@{t:37:3}",
+   "@{t:37:4}",
+   "@{t:22:16}",
+   "@{t:37:6}",
+   "@{t:22:69}",
+   "@{t:37:8}",
+   "@{t:37:9}",
+   "@{t:37:10}",
+   "@{t:37:11}",
+   "@{t:37:12}",
+   "@{t:37:13}",
+   "@{t:37:14}",
+   "@{t:37:15}",
+   "@{t:37:16}",
+   "@{t:37:17}",
+   "@{t:37:18}",
+   "@{t:37:19}",
+   "@{t:37:20}",
+   "@{t:37:10}",
+   "@{t:37:22}",
+   "@{t:37:23}",
+   "@{t:37:24}",
+   "@{t:37:25}",
+   "@{t:37:26}",
+   "@{t:37:27}",
+   "@{t:37:28}",
+   "@{t:37:29}",
+   "@{t:37:30}",
+   "@{t:37:31}",
+   "@{t:37:32}"
+  ],
+  "39": [
+   "@{t:39:0}",
+   "@{t:39:1}",
+   "@{t:39:2}",
+   "@{t:39:0}",
+   "@{t:39:4}",
+   "@{t:39:5}",
+   "@{t:39:6}"
+  ],
+  "41": [
+   "@{t:41:0}",
+   "@{t:41:1}",
+   "@{t:41:2}",
+   "@{t:41:3}",
+   "@{t:41:4}",
+   "@{t:41:5}",
+   "@{t:41:6}",
+   "@{t:41:7}",
+   "@{t:41:8}",
+   "@{t:41:9}",
+   "@{t:41:10}",
+   "@{t:41:11}",
+   "@{t:41:12}",
+   "@{t:41:13}",
+   "@{t:41:14}",
+   "@{t:41:15}",
+   "@{t:41:16}",
+   "@{t:41:17}",
+   "@{t:41:18}",
+   "@{t:41:19}",
+   "@{t:41:20}",
+   "@{t:41:21}",
+   "@{t:41:22}",
+   "@{t:41:23}",
+   "@{t:41:24}"
+  ],
+  "47": [
+   "@{t:47:0}",
+   "@{t:44:5}",
+   "@{t:44:36}",
+   "@{t:47:3}",
+   "@{t:47:4}",
+   "@{t:47:5}",
+   "@{t:47:6}",
+   "@{t:47:7}",
+   "@{t:47:8}",
+   "@{t:47:9}",
+   "@{t:47:10}",
+   "@{t:47:11}",
+   "@{t:47:12}",
+   "@{t:47:13}",
+   "@{t:47:14}",
+   "@{t:47:15}",
+   "@{t:47:16}",
+   "@{t:47:17}",
+   "@{t:47:18}",
+   "@{t:47:19}",
+   "@{t:47:20}",
+   "@{t:47:21}",
+   "@{t:47:22}",
+   "@{t:47:23}",
+   "@{t:47:24}",
+   "@{t:47:25}",
+   "@{t:47:26}",
+   "@{t:47:27}"
+  ],
+  "65": [
+   "@{t:65:0}",
+   "@{t:65:1}",
+   "@{t:65:2}",
+   "@{t:65:3}",
+   "@{t:65:4}",
+   "@{t:65:5}",
+   "@{t:65:6}",
+   "@{t:65:3}",
+   "@{t:65:8}",
+   "@{t:65:9}",
+   "@{t:65:10}",
+   "@{t:65:11}",
+   "@{t:65:12}",
+   "@{t:65:13}",
+   "@{t:65:14}",
+   "@{t:65:15}",
+   "@{t:65:16}",
+   "@{t:65:17}",
+   "@{t:65:18}",
+   "@{t:65:19}"
+  ],
+  "92": [
+   "@{t:92:0}",
+   "@{t:92:1}",
+   "@{t:92:2}",
+   "@{t:92:3}",
+   "@{t:92:4}",
+   "@{t:92:5}",
+   "@{t:92:6}",
+   "@{t:92:7}",
+   "@{t:92:8}",
+   "@{t:92:9}",
+   "@{t:92:10}",
+   "@{t:92:11}",
+   "@{t:92:12}",
+   "@{t:92:13}",
+   "@{t:92:14}",
+   "@{t:92:15}",
+   "@{t:92:16}",
+   "@{t:92:17}",
+   "@{t:92:18}",
+   "@{t:92:19}",
+   "@{t:92:20}",
+   "@{t:92:21}",
+   "@{t:92:22}",
+   "@{t:92:23}",
+   "@{t:92:24}",
+   "@{t:92:25}",
+   "@{t:92:26}",
+   "@{t:92:27}",
+   "@{t:92:28}",
+   "@{t:92:29}",
+   "@{t:92:30}",
+   "@{t:92:31}",
+   "@{t:92:32}",
+   "@{t:92:33}",
+   "@{t:92:34}",
+   "@{t:92:35}",
+   "@{t:92:36}",
+   "@{t:92:37}",
+   "@{t:92:38}",
+   "@{t:92:39}",
+   "@{t:92:40}",
+   "@{t:92:41}",
+   "@{t:92:42}",
+   "@{t:92:43}",
+   "@{t:92:44}"
+  ],
+  "98": [
+   "@{t:98:0}",
+   "@{t:98:1}",
+   "@{t:98:2}",
+   "@{t:98:3}",
+   "@{t:98:4}",
+   "@{t:98:5}",
+   "@{t:98:6}",
+   "@{t:98:7}",
+   "@{t:98:8}",
+   "@{t:98:9}",
+   "@{t:98:10}",
+   "@{t:98:11}",
+   "@{t:98:12}",
+   "@{t:98:13}",
+   "@{t:98:14}",
+   "horses",
+   "@{t:98:16}",
+   "@{t:98:17}",
+   "@{t:98:18}",
+   "@{t:98:19}",
+   "@{t:98:20}",
+   "@{t:98:21}",
+   "chariots",
+   "drachmas",
+   "troops",
+   "@{t:98:25}"
+  ],
+  "253": [
+   "@{t:253:0}",
+   "@{t:253:1}",
+   "@{t:253:2}",
+   "@{t:44:254}"
+  ],
+  "44": {
+   "83": "@{t:40:0}",
+   "284": "@{t:44:284}",
+   "285": "@{t:44:285}",
+   "286": "@{t:44:286}",
+   "287": "@{t:44:287}",
+   "288": "@{t:44:288}",
+   "289": "@{t:44:289}",
+   "290": "@{t:44:290}",
+   "291": "@{t:44:291}",
+   "292": "@{t:44:292}",
+   "293": "@{t:44:293}",
+   "294": "@{t:44:294}",
+   "295": "@{t:44:295}",
+   "296": "puny",
+   "297": "vulnerable",
+   "298": "respectable",
+   "299": "stalwart",
+   "300": "mighty",
+   "301": "fragile",
+   "302": "meager",
+   "303": "stable",
+   "304": "developed",
+   "305": "prominent",
+   "306": "invisible",
+   "307": "visible",
+   "308": "@{t:44:308}",
+   "309": "@{t:44:309}",
+   "310": "@{t:44:310}",
+   "311": "@{t:44:311}",
+   "312": "@{t:44:312}",
+   "313": "@{t:44:313}",
+   "314": "@{t:44:314}",
+   "315": "@{t:44:315}",
+   "316": "@{t:44:316}",
+   "317": "@{t:44:317}",
+   "318": "@{t:44:318}",
+   "319": "@{t:44:319}",
+   "320": "@{t:44:320}",
+   "321": "@{t:44:321}",
+   "322": "yearly",
+   "323": "@{t:44:323}",
+   "324": "@{t:44:324}",
+   "325": "@{t:44:325}",
+   "326": "@{t:44:326}",
+   "327": "@{t:44:327}",
+   "328": "@{t:44:328}",
+   "329": "@{t:44:329}"
+  },
+  "68": {
+   "37": "@{t:68:37}",
+   "42": "@{t:68:42}"
+  },
+  "19": {
+   "31": "@{t:19:31}"
+  },
+  "61": {
+   "205": "overdue"
+  },
+  "5": {
+   "72": "@{t:5:72}",
+   "73": "@{t:5:73}",
+   "74": "@{t:5:74}",
+   "75": "@{t:5:75}"
+  }
+ }
+}

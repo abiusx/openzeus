@@ -1,0 +1,7 @@
+# Walls in the 4 views (docs/play/rotation.md "Walls"): Open Play Sandbox (as rotation-sandbox.txt, 800x600) with the
+# wall test layout of tools/oracle_walls.py poked in at tick 10 (ZEUS_POKE=DIR/poke.txt from `oracle_walls.py --poke`,
+# --state-log DIR/state.txt, ZEUS_STATE_DUMP=DIR/dump ZEUS_STATE_DUMP_EVERY=100), then PgUp x4: w2, w4, w6, w0 (each
+# turn recomputes the wall pictures, 0x004A1B70 -> 0x0051D760 -> 0x0049FD70). Check:
+# python3 tools/oracle_walls.py DIR/dump/tick_000100.bin DIR/w0.bmp 0 DIR/w2.bmp 2 DIR/w4.bmp 4 DIR/w6.bmp 6
+# Replace DIR; empty --write-dir; --seconds 75.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:rclick 300,300; 50:shot DIR/before.bmp; 54:rclick 400,330; 55:key 33; 58:shot DIR/w2.bmp; 59:rclick 400,330; 60:key 33; 63:shot DIR/w4.bmp; 64:rclick 400,330; 65:key 33; 68:shot DIR/w6.bmp; 69:rclick 400,330; 70:key 33; 73:shot DIR/w0.bmp

@@ -1,0 +1,114 @@
+address	name	kind	type	evidence
+008fbac0	g_cities	data	WorldCity[22]	sav rank 7, 22 x 0x23C; docs/logic/empire.md
+008febe8	g_world_objects	data	u8[14400]	sav rank 10, 200 x 72; +0 kind (1 city), +1 used, +0x18 city index (0x004621B0)
+0065b9b0	g_trade_price	data	i32[36]	sav rank 8; price per load, treasury +/- in 0x005B9810/0x005B9DA0
+008f9860	g_trade_ledgers	data	TradeLedger[100]	sav rank 69; per-trader visit counters (0x005B9E40/0x005B9E90)
+008f9858	g_trade_ledger_next	data	i32	sav rank 70; ring index, 0x005B9DF0
+00903128	g_player_city_index	data	i32	cache of 0x004621E0
+00782cec	g_dock_count	data	i32	docks counted by buildings_count_by_type, max 10
+00feaeb8	g_dock_list	data	i16[10]	dock building ids
+00feaed4	g_trade_sea_partners	data	i16	reset/incremented in cities_trade_update
+00feaed6	g_trade_land_partners	data	i16	reset/incremented in cities_trade_update
+00feaed8	g_sea_trade_block	data	i16	countdown (cycles); 0x005B8DC0 kind 0/2
+00feaeda	g_land_trade_block	data	i16	countdown (cycles); 0x005B8DC0 kind 1/2
+00feaeec	g_ship_trade_cursor	data	i32	good cursor 1..22 used by 0x005BA3A0
+00fd3784	g_ship_lost_msgs	data	i32	ship-lost message once-flag in trade ship handler
+00fe96bc	g_exports_income	data	i32	city record +0x2C64; += price on export (0x005B9810)
+00fe96c4	g_import_cost	data	i32	city record +0x2C6C; += price on import (0x005B9DA0)
+00902cb4	g_land_entry	data	i16[2]	merchant spawn tile (cities_trade_update)
+00902cb8	g_land_exit	data	i16[2]	merchant leave tile (trader handler action 9)
+00902cdc	g_sea_entry	data	i16[2]	ship spawn and exit tile; -1,-1 = none
+00903114	g_months_elapsed	data	i32	army_target uses months/12 (0x0042D980); ++ in month_advance
+005ec528	g_attitude_table	data	i32[72]	9 rows {lo,hi,mode,d[5]}; 0x0042D5E0
+005ec670	g_army_diff_mult	data	f64[5]	3,4,4.5,5,6; 0x0042D980
+005ec648	g_gift_money_mult	data	f64[5]	5,4,3,2.5,2; 0x0042D870
+005ec4c0	g_tribute_paid_mult	data	f64[5]	1,1.5,2,2.5,3; 0x0042CDD0
+005ec4e8	g_request_pct	data	i32[5]	100,75,67,50,33; 0x0042CFA0
+00632f00	g_money_gift_factor	data	f64[12]	4 treasury tiers x 3 amount tiers; 0x0046FC00
+006429e8	g_hippodrome_favor	data	i32[35]	7 x 5; 0x0056FC60
+0063c2a8	g_cities_converters	data	u32[8]	{0x21C, 22, version 302, 0x0050C7E0}
+0042c9b0	city_has_quota	function		thiscall(city,g): city+0x60[g] != 0
+0042c9c0	city_tradeable	function		kind not 0/5/6, active, visible, relationship != 1 (rival)
+0042c9f0	city_is_trading_partner	function		city_tradeable && trade_open (+5)
+0042ca10	city_init_defaults	function		editor new-city defaults (kind 2, rel 1, att 50, quota 12...)
+0042cae0	city_exists	function		kind not 4/5/6, active, visible
+0042cb10	city_exists_or_partner	function		0x0042CAE0 || 0x0042C9F0
+0042cb30	city_marker_image	function		image id of the world-map marker by kind
+0042cd50	city_tribute_pay_check	function		tribute_mode 1 and rel 2/3 -> 0x004772A0 else mode=0
+0042cda0	city_tribute_claim_check	function		tribute_mode 2, kind != 3 -> 0x00477370
+0042cdd0	city_tribute_claim_amount	function		ftol(+0xE4 * mult[diff])
+0042cdf0	city_sort_good_lists	function		bubble-sorts +0xA8[14], +0xBC[4], +0xC4[4], removing duplicates
+0042ced0	city_attitude_add	function		att = clamp(att + d, 0, 100)
+0042cf10	city_class	function		0 ally 1 vassal 2 rival 3 parent 4 colony 5 self 6 distant 7 other
+0042cfa0	city_pick_aid_good	function		random sell_list good and amount quota*pct/100; fatigue +15 (last entry)
+0042d130	city_request_fatigue_add	function		+0xF0[g] += 15
+0042d140	city_pick_food	function		random food (<9) from sell_list
+0042d260	city_can_be_asked	function		0<g<28, fatigue<41, g==23 or (in sell_list and quota)
+0042d2b0	event_forces_strength	function		strength of forces tied to a scheduled event (military)
+0042d380	city_request_choose	function		picks good/amount for a scheduled request event
+0042d540	city_monthly_update	function		fatigue decay, troops return, army regrowth
+0042d5e0	city_attitude_update	function		attitude table -> streaks -> relationship events
+0042d850	city_attitude_drift	function		attitude 1 step toward 50
+0042d870	city_money_gift_amount	function		ftol((wealth+1)*mult[diff]*200)
+0042d8a0	city_attitude_code	function		descriptor 0..19 for UI
+0042d980	city_army_target	function		ftol(sqrt(min(years,30))*k[diff]*military_strength)
+0042d9c0	city_army	function		returns +0x1E8
+0042da10	city_army_away	function		+0x1EC + +0x1F0 + +0x1F4
+0042da30	city_army_total	function		away + army
+0042dd50	city_request_threshold	function		attitude thresholds per class/kind of request
+0042df90	city_can_request	function		player request feasibility and result code
+0042e130	city_reset_on_map_start	function		army, fatigues, timers reset; distant rel 0; colony tribute
+0042e1b0	cities_reset_on_map_start	function		0x0042E130 for all in-use cities
+0042e270	city_in_buy_list	function		g in +0xBC[4]
+0042e2a0	city_in_sell_list	function		g in +0xC4[4]
+004614a0	city_has_pending_event	function		hypothesis: scheduled event for the player city (+0x140 == 2)
+00461460	cities_reset_yearly_trade	function		used[1..22] = 0 (Jan)
+004614f0	city_find_by_id	function		index of the city whose +4 == id
+004621b0	world_object_city	function		world object -> city record (kind 1, index < 22)
+004621e0	player_city_index	function		first in-use city with kind 0 (cached)
+00462280	colony_index_nth	function		index of the n-th colony
+004622c0	colonies_inactive_count	function		colonies with active == 0
+0046fc00	city_receive_gift	function		player gift: attitude gain formula, gift fatigue
+0047f420	city_schedule_relation_event	function		event type 0x1F with subtype
+004771e0	cities_tribute_yearly	function		Jan tick 2
+00477210	cities_monthly_update	function		tick 2 each month -> 0x0042D540
+00477240	cities_attitude_update	function		ticks 0,4,8,12 -> 0x0042D5E0
+00477270	cities_attitude_drift	function		Jan and Jul -> 0x0042D850
+004772a0	city_schedule_tribute_in	function		event type 0x1D (city pays)
+00477370	city_schedule_tribute_out	function		event type 0x1E (player pays drachmas)
+00477610	city_schedule_aid	function		event type 0x17 with 0x0042CFA0 good/amount
+00472b20	event_price_rise	function		price[g] += amount
+00472d00	event_price_drop	function		price[g] -= amount, floor 2
+0050c7e0	cities_convert_v302	function		converter for pre-302 city records
+0050ee00	goods_remap_i32	function		Zeus->Poseidon good renumbering of an i32 table
+0050ef70	goods_remap_u8	function		same for a u8 table
+0050f7e0	goods_remap_all	function		applies the renumbering to cities, prices, city record arrays
+00570a40	trade_post_orders_default	function		order 9 -> 6 or 8 by city sells/buys
+005b18d0	trade_post_order_toggle	function		5<->6, 7<->8, else 9
+005b8dc0	trade_block_set	function		kind 0 sea, 1 land, 2 both
+005b8e00	trade_ledger_full	function		ledger count*unit >= storage limit
+005b8ee0	trade_import_ok	function		order != 6, room, ledger, city_sells
+005b8f90	trade_post_choose	function		merchant destination check and cursor advance
+005b92e0	city_buys_good	function		player may export g to city
+005b9350	city_nth_other	function		n-th existing city other than the player's
+005b93a0	city_trades_nothing	function		no listed good with quota
+005b9460	trade_building_type_for_city	function		0x3C dock if sea route else 0x3E
+005b9480	trade_building_label	function		"<building> (<city>)" label
+005b95c0	trade_building_of_city	function		first dock/trading post with +0x12 == city
+005b9610	trade_can_export	function		trader may buy from post
+005b9810	trade_export_one	function		one load sold to the city
+005b9930	city_sells_good	function		player may import g from city
+005b9990	trade_can_import	function		trader may sell to post
+005b9bd0	trade_import_one	function		one load bought from the city
+005b9da0	trade_pay_import	function		treasury -= price
+005b9dd0	trade_ledgers_clear	function		rank 69/70 cleared
+005b9df0	trade_ledger_alloc	function		figure +0x7F = next ledger
+005b9e40	trade_ledger_import	function		ledger import counters
+005b9e90	trade_ledger_export	function		ledger export counters
+005ba3a0	trade_dock_choose	function		ship destination (berth by orientation)
+005baa40	city_any_sells_listed	function		some existing city lists g in sell_list with quota
+005baa90	city_pays_tribute_good	function		some city pays tribute in good g
+005bad20	trade_status_recheck	function		global per-good status 5/7 -> 9 when no partner
+004b49b0	figure_merchant_update	function		type 0x13 handler (not in zeus.c)
+004b4f60	figure_trade_ship_update	function		type 0x14 handler (not in zeus.c)
+004b5750	figure_donkey_update	function		type 0x15 handler (not in zeus.c)

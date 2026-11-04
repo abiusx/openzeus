@@ -1,0 +1,5 @@
+# Event-message window (screen 5, layout 2): "See a working city" at 800x600 (as messages-goals.txt), open the
+# Messages list, click its one message ("Employees needed"). DIR = the run dir; --seconds 66.
+# Shots: window.bmp (the message, mouse off it), close-hover.bmp (mouse on the close button), list-after.bmp
+# (back in the list after a right click: the row marked read).
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:move 770,494; 50.5:click 770,494; 52:move 250,177; 52.5:click 250,177; 54:move 700,10; 55:shot DIR/window.bmp; 56:move 520,560; 57:shot DIR/move1.bmp; 58:rclick 700,10; 60:move 700,10; 61:shot DIR/list-after.bmp; 62:rclick 700,10; 64:shot DIR/after.bmp

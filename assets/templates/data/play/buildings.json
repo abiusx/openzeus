@@ -1,0 +1,4554 @@
+{
+ "elite_house": {
+  "file": "Zeus_General",
+  "size": 4,
+  "kind": "elite_house",
+  "src": "exe elite_house_place_sprites 0x004FECF0",
+  "levels": [
+   {
+    "level": 7,
+    "label": "vacant lot",
+    "file": "Zeus_General",
+    "group": "SPR_B_ELITE_HOUSE0A",
+    "first": 1021
+   },
+   {
+    "level": 8,
+    "label": "devolved",
+    "file": "Zeus_General",
+    "group": "SPR_B_ELITE_HOUSE0B",
+    "first": 1026
+   },
+   {
+    "level": 9,
+    "label": "@{t:28:11}",
+    "file": "Zeus_General",
+    "group": "SPR_B_ELITE_HOUSE1",
+    "first": 1031
+   },
+   {
+    "level": 10,
+    "label": "@{t:28:12}",
+    "file": "Zeus_General",
+    "group": "SPR_B_ELITE_HOUSE2",
+    "first": 1036
+   },
+   {
+    "level": 11,
+    "label": "@{t:28:13}",
+    "file": "Zeus_General",
+    "group": "SPR_B_ELITE_HOUSE3",
+    "first": 1041
+   },
+   {
+    "level": 12,
+    "label": "@{t:28:14}",
+    "file": "Zeus_General",
+    "group": "SPR_B_ELITE_HOUSE4",
+    "first": 1046
+   }
+  ],
+  "poseidon_levels": [
+   {
+    "level": 7,
+    "file": "Poseidon_Loaded",
+    "group": "SPR_B_POS_ELITE_HOUSE0A",
+    "first": 1172
+   },
+   {
+    "level": 8,
+    "file": "Poseidon_Loaded",
+    "group": "SPR_B_POS_ELITE_HOUSE0B",
+    "first": 1177
+   },
+   {
+    "level": 9,
+    "file": "Poseidon_Loaded",
+    "group": "SPR_B_POS_ELITE_HOUSE1",
+    "first": 1182
+   },
+   {
+    "level": 10,
+    "file": "Poseidon_Loaded",
+    "group": "SPR_B_POS_ELITE_HOUSE2",
+    "first": 1187
+   },
+   {
+    "level": 11,
+    "file": "Poseidon_Loaded",
+    "group": "SPR_B_POS_ELITE_HOUSE3",
+    "first": 1192
+   },
+   {
+    "level": 12,
+    "file": "Poseidon_Loaded",
+    "group": "SPR_B_POS_ELITE_HOUSE4",
+    "first": 1197
+   }
+  ],
+  "quadrants": [
+   {
+    "dx": 0,
+    "dy": 0,
+    "image": 3
+   },
+   {
+    "dx": 0,
+    "dy": 2,
+    "image": "0|1 by grid_random[tile]&1"
+   },
+   {
+    "dx": 2,
+    "dy": 0,
+    "image": 4
+   },
+   {
+    "dx": 2,
+    "dy": 2,
+    "image": 2
+   }
+  ],
+  "notes": "4x4 = four 2x2 images (118 wide each), image index = first + n within the level's 5-image group. Each quadrant is drawn as a 2x2 object at (x+dx, y+dy). Default view only. The house itself is the (0,2) quadrant; the other three show walls/gardens."
+ },
+ "flower_garden": {
+  "file": "Zeus_General",
+  "base": 221,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 60,
+  "img_tiles": 2,
+  "group": "SPR_B_REC_AREA2",
+  "src": "exe type table"
+ },
+ "gazebo": {
+  "file": "Zeus_General",
+  "base": 222,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 84,
+  "img_tiles": 2,
+  "group": "SPR_B_REC_AREA2",
+  "src": "exe type table"
+ },
+ "hedge_maze": {
+  "file": "Zeus_General",
+  "base": 223,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 90,
+  "img_tiles": 3,
+  "group": "SPR_B_REC_AREA2",
+  "src": "exe type table",
+  "note": "exe: hedge_maze = SPR_B_REC_AREA2[2], topiary = Poseidon SPR_REC8 (tools/viewer_sprites.py has them swapped)"
+ },
+ "fish_pond": {
+  "file": "Zeus_General",
+  "base": 224,
+  "size": 4,
+  "img_w": 238,
+  "img_h": 124,
+  "img_tiles": 4,
+  "group": "SPR_B_REC_AREA2",
+  "src": "exe type table",
+  "overlay": {
+   "file": "SprAmbient",
+   "first": 2759,
+   "frames": 31,
+   "ms_per_frame": 60,
+   "x": 120,
+   "y": 42,
+   "note": "fish jumping (exe 0x0045B500), always; top-left = draw point (base_left, base_top + h - 15*(n+1)) + (x - anchor_x, y - anchor_y)"
+  }
+ },
+ "tall_obelisk": {
+  "file": "Poseidon_Loaded",
+  "base": 311,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 95,
+  "img_tiles": 1,
+  "group": "SPR_REC6",
+  "src": "exe type table"
+ },
+ "sundial": {
+  "file": "Poseidon_Loaded",
+  "base": 312,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 60,
+  "img_tiles": 2,
+  "group": "SPR_REC_SUNDIAL",
+  "src": "exe type table"
+ },
+ "topiary": {
+  "file": "Poseidon_Loaded",
+  "base": 313,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 90,
+  "img_tiles": 3,
+  "group": "SPR_REC8",
+  "src": "exe type table"
+ },
+ "spring": {
+  "file": "Poseidon_Loaded",
+  "base": 314,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 93,
+  "img_tiles": 3,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 315,
+   "count": 6,
+   "dx": 0,
+   "dy": 0,
+   "speed": 6,
+   "ms_per_frame": 120
+  },
+  "group": "SPR_REC_FOUNTAIN",
+  "src": "exe type table"
+ },
+ "stone_circle": {
+  "file": "Poseidon_Loaded",
+  "base": 321,
+  "size": 4,
+  "img_w": 238,
+  "img_h": 120,
+  "img_tiles": 4,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 322,
+   "count": 5,
+   "dx": 102,
+   "dy": 53,
+   "speed": 7,
+   "ms_per_frame": 140
+  },
+  "group": "SPR_REC_POND",
+  "src": "exe type table"
+ },
+ "short_obelisk": {
+  "file": "Poseidon_Loaded",
+  "base": 357,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 64,
+  "img_tiles": 1,
+  "group": "SPR_REC_11",
+  "src": "exe type table"
+ },
+ "water_park": {
+  "file": "Poseidon_Loaded",
+  "base": 358,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 60,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 359,
+   "count": 7,
+   "dx": 23,
+   "dy": 10,
+   "speed": 10,
+   "ms_per_frame": 200
+  },
+  "group": "SPR_WATERPARK",
+  "src": "exe type table",
+  "variant_stride": 8
+ },
+ "wheat_farm": {
+  "file": "Zeus_General",
+  "base": 509,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 114,
+  "img_tiles": 3,
+  "group": "SPR_B_FARM",
+  "src": "exe table + farm_place_images 0x004A9F50",
+  "crop": {
+   "file": "Zeus_General",
+   "first": 510,
+   "stages": 6,
+   "patch_offsets": [
+    [
+     -2,
+     0
+    ],
+    [
+     -1,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "draw_order": [
+    0,
+    4,
+    1,
+    3,
+    2
+   ],
+   "stage_rule": "p = min(growth_percent, 100)//4 (0..25); patch order 0..4 each takes min(5, p) then p -= 5; image = first + that",
+   "patch_xy": "patch top-left = base_top_left + (60 + dx*30, 55 + dy*15 - (h - 30)); visually verified"
+  }
+ },
+ "onion_farm": {
+  "file": "Zeus_General",
+  "base": 509,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 114,
+  "img_tiles": 3,
+  "group": "SPR_B_FARM",
+  "src": "exe table + farm_place_images 0x004A9F50",
+  "crop": {
+   "file": "Zeus_General",
+   "first": 522,
+   "stages": 6,
+   "patch_offsets": [
+    [
+     -2,
+     0
+    ],
+    [
+     -1,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "draw_order": [
+    0,
+    4,
+    1,
+    3,
+    2
+   ],
+   "stage_rule": "p = min(growth_percent, 100)//4 (0..25); patch order 0..4 each takes min(5, p) then p -= 5; image = first + that",
+   "patch_xy": "patch top-left = base_top_left + (60 + dx*30, 55 + dy*15 - (h - 30)); visually verified"
+  }
+ },
+ "carrot_farm": {
+  "file": "Zeus_General",
+  "base": 509,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 114,
+  "img_tiles": 3,
+  "group": "SPR_B_FARM",
+  "src": "exe table + farm_place_images 0x004A9F50",
+  "crop": {
+   "file": "Zeus_General",
+   "first": 516,
+   "stages": 6,
+   "patch_offsets": [
+    [
+     -2,
+     0
+    ],
+    [
+     -1,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     0
+    ]
+   ],
+   "draw_order": [
+    0,
+    4,
+    1,
+    3,
+    2
+   ],
+   "stage_rule": "p = min(growth_percent, 100)//4 (0..25); patch order 0..4 each takes min(5, p) then p -= 5; image = first + that",
+   "patch_xy": "patch top-left = base_top_left + (60 + dx*30, 55 + dy*15 - (h - 30)); visually verified"
+  }
+ },
+ "grapevine": {
+  "file": "Zeus_General",
+  "base": 503,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 47,
+  "img_tiles": 1,
+  "group": "SPR_GRAPEVINE",
+  "src": "exe FUN_004A9C90",
+  "stages": {
+   "file": "Zeus_General",
+   "first": 503,
+   "count": 6,
+   "rule": "min(5, growth_percent // 20); growth = goods_0*100/0x780 (ripe = last)"
+  }
+ },
+ "olive_tree": {
+  "file": "Zeus_General",
+  "base": 497,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 36,
+  "img_tiles": 1,
+  "group": "SPR_OLIVE_TREE",
+  "src": "exe FUN_004A9C90",
+  "stages": {
+   "file": "Zeus_General",
+   "first": 497,
+   "count": 6,
+   "rule": "min(5, growth_percent // 20); growth = goods_0*100/0x780 (ripe = last)"
+  }
+ },
+ "growers_lodge": {
+  "file": "Zeus_General",
+  "base": 587,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 87,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 588,
+   "count": 10,
+   "dx": 21,
+   "dy": 32,
+   "speed": 6,
+   "ms_per_frame": 120
+  },
+  "group": "SPR_B_GROWERS_LODGE",
+  "src": "exe type table",
+  "stock_pics": [
+   {
+    "good": "olives",
+    "file": "Zeus_General",
+    "first": 921,
+    "rule": "ge100",
+    "max": 0,
+    "dx": 41,
+    "dy": 10
+   },
+   {
+    "good": "grapes",
+    "file": "Zeus_General",
+    "first": 918,
+    "rule": "ge100",
+    "max": 0,
+    "dx": 45,
+    "dy": 22
+   }
+  ]
+ },
+ "sheep_farm": {
+  "file": "Zeus_General",
+  "base": 552,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 80,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 553,
+   "count": 12,
+   "dx": 34,
+   "dy": 33,
+   "speed": 7,
+   "ms_per_frame": 140
+  },
+  "group": "SPR_B_SHEARER",
+  "src": "exe type table",
+  "stock_pics": [
+   {
+    "good": "fleece",
+    "file": "Zeus_General",
+    "first": 885,
+    "rule": "std",
+    "max": 4,
+    "dx": 12,
+    "dy": -13
+   }
+  ]
+ },
+ "goat_farm": {
+  "file": "Zeus_General",
+  "base": 565,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 85,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 566,
+   "count": 21,
+   "dx": 49,
+   "dy": 20,
+   "speed": 5,
+   "ms_per_frame": 100
+  },
+  "group": "SPR_B_DAIRY",
+  "src": "exe type table",
+  "stock_pics": [
+   {
+    "good": "cheese",
+    "file": "Zeus_General",
+    "first": 895,
+    "rule": "std",
+    "max": 4,
+    "dx": 43,
+    "dy": 16
+   }
+  ]
+ },
+ "fishing_wharf": {
+  "file": "Zeus_General",
+  "base": 544,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 99,
+  "img_tiles": 2,
+  "group": "SPR_B_FISHERY",
+  "src": "exe FUN_00496CA0: group first + orientation (b.orient; saves before 10-28: none = 0)",
+  "orient_stride": 1,
+  "loops": [
+   {
+    "file": "SprAmbient",
+    "frames": 20,
+    "ms_per_frame": 80,
+    "when": "act",
+    "act": "unload",
+    "src": "0x0045AB70 table 0x5F8DA8: its boat moored (action 10); boat building (goods_0, 0x5F8E08) not in ours",
+    "by_orient": [
+     [
+      910,
+      78,
+      -3
+     ],
+     [
+      950,
+      72,
+      13
+     ],
+     [
+      930,
+      41,
+      14
+     ],
+     [
+      890,
+      45,
+      0
+     ]
+    ]
+   },
+   {
+    "file": "SprAmbient",
+    "frames": 12,
+    "ms_per_frame": 120,
+    "when": "staffed",
+    "dirs": 8,
+    "dir": "2o",
+    "src": "0x0045AB70 table 0x5F8D48",
+    "by_orient": [
+     [
+      2117,
+      62,
+      7
+     ],
+     [
+      2117,
+      65,
+      31
+     ],
+     [
+      2117,
+      45,
+      33
+     ],
+     [
+      2117,
+      54,
+      4
+     ]
+    ]
+   }
+  ]
+ },
+ "urchin_quay": {
+  "file": "Zeus_General",
+  "base": 548,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 93,
+  "img_tiles": 2,
+  "group": "SPR_B_URCHIN_COLLECTOR",
+  "src": "exe FUN_00496CA0: group first + orientation (b.orient; saves before 10-28: none = 0)",
+  "orient_stride": 1,
+  "loops": [
+   {
+    "file": "SprAmbient",
+    "frames": 50,
+    "ms_per_frame": 80,
+    "when": "act",
+    "act": "unload",
+    "src": "0x0045ADE0 table 0x5F8EC8 while the collector unloads (200 ticks; urchin_collector_unload 0x00430400 steps it)",
+    "by_orient": [
+     [
+      730,
+      61,
+      20
+     ],
+     [
+      830,
+      61,
+      32
+     ],
+     [
+      780,
+      44,
+      25
+     ],
+     [
+      680,
+      64,
+      14
+     ]
+    ]
+   },
+   {
+    "file": "SprAmbient",
+    "frames": 12,
+    "ms_per_frame": 120,
+    "when": "staffed",
+    "dirs": 8,
+    "dir": "2o",
+    "src": "0x0045ADE0 table 0x5F8E68",
+    "by_orient": [
+     [
+      2117,
+      65,
+      -1
+     ],
+     [
+      2117,
+      72,
+      23
+     ],
+     [
+      2117,
+      48,
+      20
+     ],
+     [
+      2117,
+      48,
+      4
+     ]
+    ]
+   }
+  ]
+ },
+ "hunting_lodge": {
+  "file": "Zeus_General",
+  "base": 528,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 95,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 529,
+   "count": 15,
+   "dx": 13,
+   "dy": 30,
+   "speed": 6,
+   "ms_per_frame": 120
+  },
+  "group": "SPR_B_HUNTING_LODGE",
+  "src": "exe type table",
+  "stock_pics": [
+   {
+    "good": "meat",
+    "file": "Zeus_General",
+    "first": 890,
+    "rule": "std",
+    "max": 4,
+    "dx": 63,
+    "dy": 7
+   }
+  ]
+ },
+ "mint": {
+  "file": "Zeus_General",
+  "base": 618,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 73,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 619,
+   "count": 10,
+   "dx": -1,
+   "dy": -39,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_MINT",
+  "src": "exe type table",
+  "idle": {
+   "dx": 35,
+   "dy": 11,
+   "dir": 0,
+   "figures": [
+    {
+     "file": "SprAmbient",
+     "first": 2437,
+     "frames": 12,
+     "dirs": 8,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2277,
+     "frames": 20,
+     "dirs": 8,
+     "ms_per_frame": 160
+    }
+   ],
+   "src": "exe 0x0044EAB0; figures[grid_random & 1]"
+  },
+  "stock_pics": [
+   {
+    "good": "silver",
+    "file": "Zeus_General",
+    "first": 629,
+    "rule": "mint",
+    "max": 2,
+    "dx": 85,
+    "dy": 3
+   }
+  ]
+ },
+ "marble_quarry": {
+  "file": "Zeus_General",
+  "base": 609,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 85,
+  "img_tiles": 2,
+  "group": "SPR_B_STONECUTTER_LODGE",
+  "src": "exe type table",
+  "yard": {
+   "good": "marble",
+   "idle": {
+    "dx": 59,
+    "dy": 27,
+    "dir": 3,
+    "figures": [
+     {
+      "file": "SprAmbient",
+      "first": 2437,
+      "frames": 12,
+      "dirs": 8,
+      "ms_per_frame": 120
+     },
+     {
+      "file": "SprAmbient",
+      "first": 2277,
+      "frames": 20,
+      "dirs": 8,
+      "ms_per_frame": 160
+     }
+    ]
+   },
+   "cutters": [
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 7,
+     "dx": 59,
+     "dy": 41,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 0,
+     "dx": 63,
+     "dy": 50,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 6,
+     "dx": 55,
+     "dy": 45,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 7,
+     "dx": 59,
+     "dy": 51,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 7,
+     "dx": 59,
+     "dy": 37,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 0,
+     "dx": 62,
+     "dy": 41,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 6,
+     "dx": 61,
+     "dy": 37,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 1937,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 7,
+     "dx": 63,
+     "dy": 51,
+     "ms_per_frame": 80
+    }
+   ],
+   "src": "city_draw case 0x31/0xD5 (staffed, not burning) -> FUN_0045C170; cutters[stock // 100 - 1]"
+  },
+  "stock_pics": [
+   {
+    "good": "marble",
+    "file": "Zeus_General",
+    "first": 610,
+    "rule": "std",
+    "max": 7,
+    "dx": 33,
+    "dy": 0,
+    "reverse": true,
+    "before_anim": true,
+    "offsets": {
+     "0": [
+      43,
+      9
+     ],
+     "1": [
+      43,
+      9
+     ],
+     "2": [
+      33,
+      9
+     ],
+     "3": [
+      33,
+      9
+     ]
+    }
+   }
+  ]
+ },
+ "foundry": {
+  "file": "Zeus_General",
+  "base": 633,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 85,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 634,
+   "count": 12,
+   "dx": -1,
+   "dy": -29,
+   "speed": 6,
+   "ms_per_frame": 120
+  },
+  "group": "SPR_B_FOUNDRY",
+  "src": "exe type table",
+  "idle": {
+   "dx": 10,
+   "dy": 34,
+   "dir": 2,
+   "figures": [
+    {
+     "file": "SprAmbient",
+     "first": 2437,
+     "frames": 12,
+     "dirs": 8,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2277,
+     "frames": 20,
+     "dirs": 8,
+     "ms_per_frame": 160
+    }
+   ],
+   "src": "exe 0x0044EAB0; figures[grid_random & 1]"
+  },
+  "stock_pics": [
+   {
+    "good": "bronze",
+    "file": "Zeus_General",
+    "first": 913,
+    "rule": "any",
+    "max": 0,
+    "dx": 25,
+    "dy": -10
+   }
+  ]
+ },
+ "timber_mill": {
+  "file": "Zeus_General",
+  "base": 598,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 102,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 599,
+   "count": 10,
+   "dx": -1,
+   "dy": -7,
+   "speed": 5,
+   "ms_per_frame": 100
+  },
+  "group": "SPR_B_TIMBER_MILL",
+  "src": "exe type table",
+  "idle": {
+   "dx": 4,
+   "dy": 36,
+   "dir": 3,
+   "figures": [
+    {
+     "file": "SprAmbient",
+     "first": 2437,
+     "frames": 12,
+     "dirs": 8,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2277,
+     "frames": 20,
+     "dirs": 8,
+     "ms_per_frame": 160
+    }
+   ],
+   "src": "exe 0x0044EAB0; figures[grid_random & 1]"
+  },
+  "stock_pics": [
+   {
+    "good": "wood",
+    "file": "Zeus_General",
+    "first": 908,
+    "rule": "any",
+    "max": 0,
+    "dx": 65,
+    "dy": 3
+   }
+  ]
+ },
+ "winery": {
+  "file": "Zeus_General",
+  "base": 670,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 94,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 671,
+   "count": 12,
+   "dx": 31,
+   "dy": 12,
+   "speed": 6,
+   "ms_per_frame": 120
+  },
+  "group": "SPR_B_WINERY",
+  "src": "exe type table",
+  "idle": {
+   "dx": 30,
+   "dy": 2,
+   "dir": 2,
+   "figures": [
+    {
+     "file": "SprAmbient",
+     "first": 2437,
+     "frames": 12,
+     "dirs": 8,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2277,
+     "frames": 20,
+     "dirs": 8,
+     "ms_per_frame": 160
+    }
+   ],
+   "src": "exe 0x0044EAB0; figures[grid_random & 1]"
+  },
+  "stock_pics": [
+   {
+    "good": "grapes",
+    "file": "Zeus_General",
+    "first": 918,
+    "rule": "std",
+    "max": 2,
+    "dx": 73,
+    "dy": -15
+   }
+  ]
+ },
+ "oil_press": {
+  "file": "Zeus_General",
+  "base": 657,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 102,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 658,
+   "count": 12,
+   "dx": 3,
+   "dy": -9,
+   "speed": 7,
+   "ms_per_frame": 140
+  },
+  "group": "SPR_B_OILER",
+  "src": "exe type table",
+  "idle": {
+   "dx": 0,
+   "dy": 28,
+   "dir": 2,
+   "figures": [
+    {
+     "file": "SprAmbient",
+     "first": 2437,
+     "frames": 12,
+     "dirs": 8,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2277,
+     "frames": 20,
+     "dirs": 8,
+     "ms_per_frame": 160
+    }
+   ],
+   "src": "exe 0x0044EAB0; figures[grid_random & 1]"
+  },
+  "stock_pics": [
+   {
+    "good": "olives",
+    "file": "Zeus_General",
+    "first": 921,
+    "rule": "std",
+    "max": 2,
+    "dx": 47,
+    "dy": 8
+   }
+  ]
+ },
+ "sculpture_studio": {
+  "file": "Zeus_General",
+  "base": 683,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 139,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 684,
+   "count": 35,
+   "dx": 22,
+   "dy": 16,
+   "speed": 6,
+   "ms_per_frame": 120
+  },
+  "group": "SPR_B_SCULPT_STUDIO",
+  "src": "exe type table",
+  "idle": {
+   "dx": -5,
+   "dy": 31,
+   "dir": 3,
+   "figures": [
+    {
+     "file": "SprAmbient",
+     "first": 2437,
+     "frames": 12,
+     "dirs": 8,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2277,
+     "frames": 20,
+     "dirs": 8,
+     "ms_per_frame": 160
+    }
+   ],
+   "src": "exe 0x0044EAB0; figures[grid_random & 1]"
+  },
+  "stock_pics": [
+   {
+    "good": "bronze",
+    "file": "Zeus_General",
+    "first": 913,
+    "rule": "std",
+    "max": 4,
+    "dx": 39,
+    "dy": 7
+   }
+  ]
+ },
+ "artisans_guild": {
+  "file": "Zeus_General",
+  "base": 646,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 83,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 647,
+   "count": 10,
+   "dx": 44,
+   "dy": 16,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_CONS_GUILD",
+  "src": "exe type table"
+ },
+ "granary": {
+  "file": "Zeus_General",
+  "base": 473,
+  "size": 4,
+  "img_w": 238,
+  "img_h": 180,
+  "img_tiles": 4,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 474,
+   "count": 16,
+   "dx": 125,
+   "dy": 130,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_GRANARY",
+  "src": "exe table",
+  "goods": {
+   "file": "Zeus_General",
+   "first": 490,
+   "order": [
+    "urchin",
+    "fish",
+    "meat",
+    "cheese",
+    "carrots",
+    "onions",
+    "wheat"
+   ],
+   "poseidon": {
+    "8": [
+     "Poseidon_Loaded",
+     999
+    ]
+   },
+   "capacity": 3200,
+   "slots": [
+    [
+     57,
+     -49
+    ],
+    [
+     77,
+     -56
+    ],
+    [
+     97,
+     -63
+    ],
+    [
+     51,
+     -32
+    ],
+    [
+     71,
+     -39
+    ],
+    [
+     91,
+     -46
+    ],
+    [
+     111,
+     -53
+    ],
+    [
+     131,
+     -60
+    ]
+   ],
+   "adjust": {
+    "1": [
+     3,
+     0
+    ],
+    "2": [
+     0,
+     0
+    ],
+    "3": [
+     3,
+     1
+    ],
+    "4": [
+     4,
+     -2
+    ],
+    "5": [
+     0,
+     2
+    ],
+    "6": [
+     4,
+     2
+    ],
+    "7": [
+     2,
+     0
+    ],
+    "8": [
+     5,
+     3
+    ]
+   },
+   "rule": "exe FUN_004574C0: foods by ascending zeus id; piles n = 1 if stock<=400 else stock//400; when the granary is full (free 0) and fewer than 8 piles, +1 pile for the food with the largest stock%400 (first on ties); piles take slots in order; image = first + id - 1 (fruit 8: Poseidon SPR_SMALL_FRUIT_ICON); pile top-left = cell point + slot + adjust[id], cell point = (base_left, base_top + h - 75) (left tile of the 4x4)"
+  },
+  "notes": "the 16 anim frames (37x38) are the idle wheel/flag animation at (125,130). Goods piles: 8 roof openings (goods.rule), drawn even unstaffed."
+ },
+ "storehouse": {
+  "file": "Zeus_General",
+  "size": 3,
+  "kind": "storage",
+  "src": "exe FUN_00496CA0 case 0x3A",
+  "root": {
+   "dx": 0,
+   "dy": 0,
+   "file": "Zeus_General",
+   "base": 467,
+   "img_tiles": 1
+  },
+  "bays": "the other 8 tiles of the 3x3, each a 1x1 image from 'bay_images'",
+  "bay_images": {
+   "file": "Zeus_General",
+   "empty": 934,
+   "goods_first": {
+    "1": 813,
+    "2": 817,
+    "3": 821,
+    "4": 825,
+    "5": 829,
+    "6": 833,
+    "7": 837,
+    "9": 841,
+    "10": 845,
+    "11": 849,
+    "12": 853,
+    "13": 857,
+    "14": 861,
+    "15": 865,
+    "18": 869,
+    "19": 873,
+    "20": 877,
+    "21": 881
+   },
+   "poseidon_goods_first": {
+    "8": [
+     "Poseidon_Loaded",
+     964
+    ],
+    "16": [
+     "Poseidon_Loaded",
+     968
+    ],
+    "17": [
+     "Poseidon_Loaded",
+     972
+    ]
+   },
+   "band_rule": "band = 0 if amount<200, 1 if <300, 2 if <400, 3 at 400; image = goods_first[resource] + band (sculpture 19: no band, 1 image); amount 0 -> empty",
+   "note": "keys are resource zeus ids (data/resources.json). Horses (15) images are blank in the file: draw nothing/empty. src exe FUN_004898C0/00489B50"
+  },
+  "loops": [
+   {
+    "file": "SprAmbient",
+    "frames": 24,
+    "ms_per_frame": 100,
+    "when": "staffed",
+    "src": "0x0044BE90 table 0x5F8924, at the 1x1 root",
+    "first": 269,
+    "dx": 31,
+    "dy": 5
+   }
+  ]
+ },
+ "dock": {
+  "file": "Zeus_General",
+  "size": 4,
+  "kind": "storage",
+  "src": "exe FUN_00496CA0 case 0x3C (pier) / 0x3D (dock house)",
+  "root": {
+   "dx": 0,
+   "dy": 0,
+   "file": "Zeus_General",
+   "base": 469,
+   "img_tiles": 1
+  },
+  "bays": "the other 15 tiles of the 4x4 dock house, 1x1 bay images",
+  "bay_images": {
+   "file": "Zeus_General",
+   "empty": 934,
+   "goods_first": {
+    "1": 813,
+    "2": 817,
+    "3": 821,
+    "4": 825,
+    "5": 829,
+    "6": 833,
+    "7": 837,
+    "9": 841,
+    "10": 845,
+    "11": 849,
+    "12": 853,
+    "13": 857,
+    "14": 861,
+    "15": 865,
+    "18": 869,
+    "19": 873,
+    "20": 877,
+    "21": 881
+   },
+   "poseidon_goods_first": {
+    "8": [
+     "Poseidon_Loaded",
+     964
+    ],
+    "16": [
+     "Poseidon_Loaded",
+     968
+    ],
+    "17": [
+     "Poseidon_Loaded",
+     972
+    ]
+   },
+   "band_rule": "band = 0 if amount<200, 1 if <300, 2 if <400, 3 at 400; image = goods_first[resource] + band (sculpture 19: no band, 1 image); amount 0 -> empty",
+   "note": "keys are resource zeus ids (data/resources.json). Horses (15) images are blank in the file: draw nothing/empty. src exe FUN_004898C0/00489B50"
+  },
+  "pier": {
+   "file": "Zeus_General",
+   "first": 463,
+   "img_tiles": 2,
+   "rule": "2x2 at b.pier, image first + b.orient: 463 SPR_B_DOCK (o0), 464 _E, 465 _S, 466 _W (seen: oracle re/oracle/runs/shore/dock.bmp, o2 = SPR_B_DOCK_S)"
+  },
+  "note": "the sim's dock is the 4x4 dock house at (x, y) plus its pier (b.pier, b.orient); docks of saves before 10-28 have no pier and draw as the house only",
+  "loops": [
+   {
+    "file": "SprAmbient",
+    "frames": 39,
+    "ms_per_frame": 100,
+    "when": "staffed",
+    "at": "root",
+    "src": "dock house 0x3D: 0x0044BFA0, at the 1x1 root of the house",
+    "first": 230,
+    "dx": 31,
+    "dy": 5
+   }
+  ],
+  "pier_loops": [
+   {
+    "file": "SprAmbient",
+    "frames": 34,
+    "ms_per_frame": 40,
+    "when": "act",
+    "act": "trade",
+    "src": "0x0044C0B0 table 0x5F89E4 while a ship trades (dock_trade_anim, figure_trade_ship_update); speed 4 + 1 per redraw: ours 40 ms",
+    "by_orient": [
+     [
+      395,
+      70,
+      18
+     ],
+     [
+      327,
+      81,
+      12
+     ],
+     [
+      293,
+      45,
+      12
+     ],
+     [
+      361,
+      53,
+      0
+     ]
+    ]
+   },
+   {
+    "file": "SprAmbient",
+    "frames": 32,
+    "ms_per_frame": 100,
+    "when": "staffed",
+    "src": "0x0044C0B0 table 0x5F8A44",
+    "by_orient": [
+     [
+      198,
+      70,
+      9
+     ],
+     [
+      134,
+      60,
+      18
+     ],
+     [
+      102,
+      47,
+      19
+     ],
+     [
+      166,
+      50,
+      4
+     ]
+    ]
+   }
+  ]
+ },
+ "trading_post": {
+  "file": "Zeus_General",
+  "size": 4,
+  "kind": "storage",
+  "src": "exe FUN_00496CA0 case 0x3E",
+  "root": {
+   "dx": 0,
+   "dy": 0,
+   "file": "Zeus_General",
+   "base": 471,
+   "img_tiles": 1
+  },
+  "bays": "the other 15 tiles of the 4x4, 1x1 bay images",
+  "bay_images": {
+   "file": "Zeus_General",
+   "empty": 934,
+   "goods_first": {
+    "1": 813,
+    "2": 817,
+    "3": 821,
+    "4": 825,
+    "5": 829,
+    "6": 833,
+    "7": 837,
+    "9": 841,
+    "10": 845,
+    "11": 849,
+    "12": 853,
+    "13": 857,
+    "14": 861,
+    "15": 865,
+    "18": 869,
+    "19": 873,
+    "20": 877,
+    "21": 881
+   },
+   "poseidon_goods_first": {
+    "8": [
+     "Poseidon_Loaded",
+     964
+    ],
+    "16": [
+     "Poseidon_Loaded",
+     968
+    ],
+    "17": [
+     "Poseidon_Loaded",
+     972
+    ]
+   },
+   "band_rule": "band = 0 if amount<200, 1 if <300, 2 if <400, 3 at 400; image = goods_first[resource] + band (sculpture 19: no band, 1 image); amount 0 -> empty",
+   "note": "keys are resource zeus ids (data/resources.json). Horses (15) images are blank in the file: draw nothing/empty. src exe FUN_004898C0/00489B50"
+  },
+  "loops": [
+   {
+    "file": "SprAmbient",
+    "frames": 39,
+    "ms_per_frame": 100,
+    "when": "staffed",
+    "src": "0x0044C2F0 table 0x5F8AA4; the exe steps it every 2nd redraw (tile byte 0x00CB4B08), rate unknown: ours 100 ms (the file's speed 5); the trading variant (0x5F8B04, group_3) needs Building+0xE0, never set for a trading post (hypothesis)",
+    "first": 43,
+    "dx": 31,
+    "dy": -35
+   }
+  ]
+ },
+ "empty_stall": {
+  "file": "Zeus_General",
+  "size": 2,
+  "kind": "stall",
+  "variants": [
+   460,
+   461,
+   462
+  ],
+  "img_tiles": 2,
+  "notes": "variant by tile random; base=variants[0]",
+  "base": 460
+ },
+ "food_vendor": {
+  "file": "Zeus_General",
+  "base": 445,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 84,
+  "img_tiles": 2,
+  "group": "SPR_B_STALL_FOOD",
+  "src": "exe type table",
+  "stock_overlay": {
+   "file": "Zeus_General",
+   "index": 446,
+   "dx": 2,
+   "dy": 11,
+   "note": "exe 0x0040ABF0: drawn while the agora holds the stall's good; offset = vendor table [9], [10] from the draw point (base_left, base_top + h - 45)"
+  },
+  "vendor": {
+   "file": "SprAmbient",
+   "first": 2651,
+   "frames": 12,
+   "x": 67,
+   "y": 20,
+   "ms_per_frame": 100,
+   "note": "exe city_draw case 0x44..0x49: vendor person while stocked and staffed; top-left = (base_left, base_top + h - 45) + (x - anchor_x, y - anchor_y) of the frame"
+  }
+ },
+ "fleece_vendor": {
+  "file": "Zeus_General",
+  "base": 447,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 83,
+  "img_tiles": 2,
+  "group": "SPR_B_STALL_FLEECE",
+  "src": "exe type table",
+  "stock_overlay": {
+   "file": "Zeus_General",
+   "index": 448,
+   "dx": 9,
+   "dy": 15,
+   "note": "exe 0x0040ABF0: drawn while the agora holds the stall's good; offset = vendor table [9], [10] from the draw point (base_left, base_top + h - 45)"
+  },
+  "vendor": {
+   "file": "SprAmbient",
+   "first": 2639,
+   "frames": 12,
+   "x": 62,
+   "y": 5,
+   "ms_per_frame": 100,
+   "note": "exe city_draw case 0x44..0x49: vendor person while stocked and staffed; top-left = (base_left, base_top + h - 45) + (x - anchor_x, y - anchor_y) of the frame"
+  }
+ },
+ "oil_vendor": {
+  "file": "Zeus_General",
+  "base": 449,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 73,
+  "img_tiles": 2,
+  "group": "SPR_B_STALL_OIL",
+  "src": "exe type table",
+  "stock_overlay": {
+   "file": "Zeus_General",
+   "index": 450,
+   "dx": 16,
+   "dy": -9,
+   "note": "exe 0x0040ABF0: drawn while the agora holds the stall's good; offset = vendor table [9], [10] from the draw point (base_left, base_top + h - 45)"
+  },
+  "vendor": {
+   "file": "SprAmbient",
+   "first": 2679,
+   "frames": 40,
+   "x": 56,
+   "y": -4,
+   "ms_per_frame": 80,
+   "note": "exe city_draw case 0x44..0x49: vendor person while stocked and staffed; top-left = (base_left, base_top + h - 45) + (x - anchor_x, y - anchor_y) of the frame"
+  }
+ },
+ "wine_vendor": {
+  "file": "Zeus_General",
+  "base": 451,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 91,
+  "img_tiles": 2,
+  "group": "SPR_B_STALL_WINE",
+  "src": "exe type table",
+  "stock_overlay": {
+   "file": "Zeus_General",
+   "index": 452,
+   "dx": 5,
+   "dy": 26,
+   "note": "exe 0x0040ABF0: drawn while the agora holds the stall's good; offset = vendor table [9], [10] from the draw point (base_left, base_top + h - 45)"
+  },
+  "vendor": {
+   "file": "SprAmbient",
+   "first": 429,
+   "frames": 24,
+   "x": 77,
+   "y": 11,
+   "ms_per_frame": 100,
+   "note": "exe city_draw case 0x44..0x49: vendor person while stocked and staffed; top-left = (base_left, base_top + h - 45) + (x - anchor_x, y - anchor_y) of the frame"
+  }
+ },
+ "arms_vendor": {
+  "file": "Zeus_General",
+  "base": 453,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 94,
+  "img_tiles": 2,
+  "group": "SPR_B_STALL_ARMOR",
+  "src": "exe type table",
+  "stock_overlay": {
+   "file": "Zeus_General",
+   "index": 454,
+   "dx": 15,
+   "dy": 31,
+   "note": "exe 0x0040ABF0: drawn while the agora holds the stall's good; offset = vendor table [9], [10] from the draw point (base_left, base_top + h - 45)"
+  },
+  "vendor": {
+   "file": "SprAmbient",
+   "first": 2719,
+   "frames": 40,
+   "x": 74,
+   "y": 11,
+   "ms_per_frame": 80,
+   "note": "exe city_draw case 0x44..0x49: vendor person while stocked and staffed; top-left = (base_left, base_top + h - 45) + (x - anchor_x, y - anchor_y) of the frame"
+  }
+ },
+ "horse_trainer": {
+  "file": "Zeus_General",
+  "base": 455,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 101,
+  "img_tiles": 2,
+  "group": "SPR_B_STALL_HORSE",
+  "src": "exe type table",
+  "stock_overlay": {
+   "file": "Zeus_General",
+   "index": 456,
+   "dx": 68,
+   "dy": 35,
+   "note": "exe 0x0040ABF0: drawn while the agora holds the stall's good; offset = vendor table [9], [10] from the draw point (base_left, base_top + h - 45)"
+  },
+  "vendor": {
+   "file": "SprAmbient",
+   "first": 2663,
+   "frames": 16,
+   "x": 59,
+   "y": 0,
+   "ms_per_frame": 80,
+   "note": "exe city_draw case 0x44..0x49: vendor person while stocked and staffed; top-left = (base_left, base_top + h - 45) + (x - anchor_x, y - anchor_y) of the frame"
+  }
+ },
+ "fountain": {
+  "file": "Zeus_General",
+  "base": 1055,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 94,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 1056,
+   "count": 6,
+   "dx": 36,
+   "dy": 41,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_FOUNTAIN1",
+  "src": "exe type table",
+  "note": "fountain overlay frames are 48x28 water drawn at anchor (36,41)"
+ },
+ "infirmary": {
+  "file": "Zeus_General",
+  "base": 1062,
+  "size": 4,
+  "img_w": 238,
+  "img_h": 137,
+  "img_tiles": 4,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 1063,
+   "count": 12,
+   "dx": 79,
+   "dy": 43,
+   "speed": 6,
+   "ms_per_frame": 120
+  },
+  "group": "SPR_B_INFIRMARY",
+  "src": "exe type table"
+ },
+ "college": {
+  "file": "Zeus_General",
+  "base": 332,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 144,
+  "img_tiles": 3,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 333,
+   "count": 24,
+   "dx": 49,
+   "dy": 38,
+   "speed": 6,
+   "ms_per_frame": 120
+  },
+  "group": "SPR_B_COLLEGE",
+  "src": "exe type table"
+ },
+ "drama_school": {
+  "file": "Zeus_General",
+  "base": 390,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 180,
+  "img_tiles": 3,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 391,
+   "count": 24,
+   "dx": 42,
+   "dy": 66,
+   "speed": 5,
+   "ms_per_frame": 100
+  },
+  "group": "SPR_B_DRAMA_SCHOOL",
+  "src": "exe type table"
+ },
+ "gymnasium": {
+  "file": "Zeus_General",
+  "base": 357,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 117,
+  "img_tiles": 3,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 358,
+   "count": 32,
+   "dx": 58,
+   "dy": 10,
+   "speed": 5,
+   "ms_per_frame": 100
+  },
+  "group": "SPR_B_GYMNASIUM",
+  "src": "exe type table"
+ },
+ "stadium": {
+  "file": "Zeus_General",
+  "base": 441,
+  "size": 5,
+  "img_w": 298,
+  "img_h": 157,
+  "img_tiles": 5,
+  "group": "SPR_B_STADIUM_N",
+  "src": "exe type table",
+  "parts": {
+   "file": "Zeus_General",
+   "v": [
+    [
+     0,
+     0,
+     442
+    ],
+    [
+     0,
+     5,
+     441
+    ]
+   ],
+   "h": [
+    [
+     0,
+     0,
+     443
+    ],
+    [
+     5,
+     0,
+     444
+    ]
+   ],
+   "note": "[dx, dy, image] per 5x5 half, each drawn on its own half (exe FUN_005AFB40, ghost FUN_005AFD80)"
+  },
+  "show": {
+   "file": "SprAmbient",
+   "S": [
+    {
+     "first": 1492,
+     "frames": 18,
+     "ms_per_frame": 80,
+     "dx": 67,
+     "dy": 28,
+     "set": 0,
+     "phase": null,
+     "src": "0x2035"
+    },
+    {
+     "first": 1701,
+     "frames": 24,
+     "ms_per_frame": 100,
+     "dx": 169,
+     "dy": 54,
+     "set": null,
+     "phase": 6,
+     "src": "0x203d"
+    }
+   ],
+   "N": [
+    {
+     "first": 1510,
+     "frames": 20,
+     "ms_per_frame": 80,
+     "dx": 222,
+     "dy": -14,
+     "set": 1,
+     "phase": null,
+     "src": "0x2036"
+    },
+    {
+     "first": 1530,
+     "frames": 17,
+     "ms_per_frame": 80,
+     "dx": 171,
+     "dy": -11,
+     "set": 2,
+     "phase": null,
+     "src": "0x2037"
+    },
+    {
+     "first": 1677,
+     "frames": 24,
+     "ms_per_frame": 100,
+     "dx": 126,
+     "dy": -33,
+     "set": null,
+     "phase": 12,
+     "src": "0x203c"
+    }
+   ]
+  }
+ },
+ "podium": {
+  "file": "Zeus_General",
+  "base": 415,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 130,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 416,
+   "count": 24,
+   "dx": 44,
+   "dy": 40,
+   "speed": 6,
+   "ms_per_frame": 120
+  },
+  "group": "SPR_B_PODIUM",
+  "src": "exe type table"
+ },
+ "theatre": {
+  "file": "Zeus_General",
+  "base": 440,
+  "size": 5,
+  "img_w": 298,
+  "img_h": 205,
+  "img_tiles": 5,
+  "group": "SPR_B_THEATER",
+  "src": "exe type table",
+  "loops": [
+   {
+    "file": "SprAmbient",
+    "frames": 24,
+    "ms_per_frame": 80,
+    "when": "show",
+    "src": "city_draw case 0x52 -> FUN_0044CB80 (timer Building+0x98), only when staffed and venue_shows != 0: actors on the stage",
+    "first": 656,
+    "dx": 150,
+    "dy": -26
+   }
+  ]
+ },
+ "avenue": {
+  "file": "Zeus_General",
+  "size": 2,
+  "kind": "avenue",
+  "road_images": [
+   239,
+   49
+  ],
+  "status": "UNVERIFIED: eZeus selection tree (49 ids over SPR_BOUL_ROAD) + side pieces SPR_BOUL_SIDE_*; the exe uses its own pattern table (not decoded)"
+ },
+ "commemorative_monument": {
+  "file": "Zeus_General",
+  "base": 224,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 148,
+  "img_tiles": 3,
+  "group": "SPR_B_COMMEM_MONU",
+  "src": "exe type table",
+  "variant_stride": 1,
+  "statues": {
+   "tile": [
+    "Zeus_General",
+    1447
+   ],
+   "small": [
+    "Zeus_General",
+    1399
+   ],
+   "small_special": {
+    "1": [
+     "Poseidon_Loaded",
+     1018
+    ],
+    "12": [
+     "Poseidon_Loaded",
+     1008
+    ],
+    "13": [
+     "Poseidon_Loaded",
+     1012
+    ]
+   },
+   "large": [
+    [
+     "Zeus_God01",
+     201
+    ],
+    [
+     "Zeus_God02",
+     201
+    ],
+    [
+     "Zeus_God04",
+     201
+    ],
+    [
+     "Zeus_God07",
+     201
+    ],
+    [
+     "Zeus_God06",
+     201
+    ],
+    [
+     "Zeus_God08",
+     201
+    ],
+    [
+     "Zeus_God10",
+     201
+    ],
+    [
+     "Zeus_God11",
+     201
+    ],
+    [
+     "Zeus_God05",
+     201
+    ],
+    [
+     "Zeus_God09",
+     201
+    ],
+    [
+     "Zeus_God12",
+     201
+    ],
+    [
+     "Zeus_God03",
+     201
+    ],
+    [
+     "Poseidon_HeraStat",
+     201
+    ],
+    [
+     "Poseidon_AtlasStat",
+     201
+    ]
+   ],
+   "sculpture": [
+    0,
+    1,
+    3,
+    6,
+    5,
+    7,
+    9,
+    10,
+    4,
+    8,
+    11,
+    2,
+    12,
+    13
+   ],
+   "god": {
+    "10": 0,
+    "11": 1,
+    "12": 2,
+    "13": 3,
+    "14": 4,
+    "15": 5,
+    "16": 6,
+    "17": 7,
+    "18": 8,
+    "19": 9,
+    "20": 10,
+    "21": 11,
+    "22": 0,
+    "23": 1,
+    "24": 2,
+    "25": 3,
+    "26": 4,
+    "27": 5,
+    "28": 6,
+    "29": 7,
+    "30": 8,
+    "31": 9,
+    "32": 10,
+    "33": 11,
+    "34": 12,
+    "35": 13,
+    "36": 12,
+    "37": 13,
+    "38": 0,
+    "39": 1,
+    "40": 2,
+    "41": 3,
+    "42": 4,
+    "43": 5,
+    "44": 6,
+    "45": 7,
+    "46": 8,
+    "47": 9,
+    "48": 10,
+    "49": 11,
+    "50": 0,
+    "51": 1,
+    "52": 2,
+    "53": 3,
+    "54": 4,
+    "55": 5,
+    "56": 6,
+    "57": 7,
+    "58": 8,
+    "59": 9,
+    "60": 10,
+    "61": 11,
+    "62": 12,
+    "63": 13,
+    "64": 12,
+    "65": 13
+   },
+   "large_variants": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    36,
+    37,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    64,
+    65
+   ],
+   "note": "variant -> god (0 Zeus .. 11 Hades, 12 Hera, 13 Atlas): FUN_0051B9D0; s = sculpture[god]; images [file, atlas index]; see the comment in tools/play_buildings.py and docs/play/monuments.md 9"
+  }
+ },
+ "maintenance": {
+  "file": "Zeus_General",
+  "base": 1075,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 93,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 1076,
+   "count": 44,
+   "dx": 15,
+   "dy": -30,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_MAINTENANCE_OFFICE",
+  "src": "exe type table"
+ },
+ "tax_office": {
+  "file": "Zeus_General",
+  "base": 1120,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 88,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 1121,
+   "count": 18,
+   "dx": 55,
+   "dy": 40,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_TAX_OFFICE",
+  "src": "exe type table"
+ },
+ "roadblock": {
+  "file": "Zeus_General",
+  "base": 1150,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 30,
+  "img_tiles": 1,
+  "group": "SPR_B_ROADBLOCK",
+  "src": "exe type 123"
+ },
+ "guardpost": {
+  "file": "Zeus_General",
+  "base": 1139,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 108,
+  "img_tiles": 2,
+  "group": "SPR_B_WATCHPOST",
+  "src": "exe type table",
+  "note": "the 9 images after the base are green 'LI n' label boxes (unused placeholders): not drawn",
+  "loops": [
+   {
+    "file": "SprAmbient",
+    "frames": 53,
+    "ms_per_frame": 80,
+    "when": "staffed",
+    "src": "animation_draw case 0x7C (0x0045D140): a pacing sentry instead of the base's 10 frames (LI placeholder boxes), via 0x0044DDE0 (dx -5, dy 8 from the base centre)",
+    "first": 2958,
+    "dx": 54,
+    "dy": 8
+   }
+  ]
+ },
+ "heroes_hall": {
+  "file": "Zeus_General",
+  "base": 1460,
+  "size": 4,
+  "img_w": 238,
+  "img_h": 160,
+  "img_tiles": 4,
+  "group": "SPR_B_HEROES_HALL",
+  "src": "exe type table"
+ },
+ "boulevard": {
+  "file": "Zeus_General",
+  "size": 3,
+  "kind": "avenue",
+  "road_images": [
+   239,
+   49
+  ],
+  "status": "UNVERIFIED: eZeus selection tree (49 ids over SPR_BOUL_ROAD) + side pieces SPR_BOUL_SIDE_*; the exe uses its own pattern table (not decoded)"
+ },
+ "bench": {
+  "file": "Zeus_General",
+  "base": 220,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 30,
+  "img_tiles": 1,
+  "group": "SPR_B_REC_AREA1",
+  "src": "exe table"
+ },
+ "gardens": {
+  "file": "Zeus_General",
+  "size": 1,
+  "kind": "ground",
+  "variants": [
+   212,
+   213,
+   214,
+   215,
+   216,
+   217,
+   218,
+   219
+  ],
+  "base": 212,
+  "notes": "8 variants (58x30); original picks by neighbours (8 images) - rule unknown, use random per tile"
+ },
+ "doric_column": {
+  "file": "Zeus_General",
+  "base": 234,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 62,
+  "img_tiles": 1,
+  "group": "SPR_DORIC_COLUMN",
+  "src": "exe type table",
+  "connectors": {
+   "ns": 237,
+   "ew": 238,
+   "note": "31x19 / 30x22 beams drawn between adjacent columns; offsets unknown"
+  }
+ },
+ "wall": {
+  "file": "Zeus_General",
+  "size": 1,
+  "kind": "wall",
+  "base": 792,
+  "first": 777,
+  "count": 36,
+  "status": "isolated post = first+15 (exe table offset 15); the neighbour->image rule for the other 35 is not decoded (36 = 4 views x 9?)"
+ },
+ "tower": {
+  "file": "Zeus_General",
+  "base": 774,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 174,
+  "img_tiles": 2,
+  "group": "SPR_STONE_TOWERS",
+  "src": "exe table"
+ },
+ "horse_ranch": {
+  "file": "Zeus_General",
+  "base": 723,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 116,
+  "img_tiles": 3,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 724,
+   "count": 16,
+   "dx": 22,
+   "dy": 42,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_RANCH_HOUSE",
+  "src": "exe type table",
+  "idle": {
+   "dx": 0,
+   "dy": 48,
+   "dir": 3,
+   "figures": [
+    {
+     "file": "SprAmbient",
+     "first": 2437,
+     "frames": 12,
+     "dirs": 8,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2277,
+     "frames": 20,
+     "dirs": 8,
+     "ms_per_frame": 160
+    }
+   ],
+   "src": "exe 0x0044EAB0; figures[grid_random & 1]"
+  },
+  "stock_pics": [
+   {
+    "good": "wheat",
+    "file": "Zeus_General",
+    "first": 900,
+    "rule": "std",
+    "max": 7,
+    "dx": 75,
+    "dy": 16
+   }
+  ],
+  "corral": {
+   "file": "Zeus_General",
+   "base": 759,
+   "img_tiles": 4,
+   "rule": "4x4 at b.corral (exe building 0x86, FUN_00496CA0 case 0x85), one picture for every orientation"
+  },
+  "note": "ranch 3x3 house + its 4x4 corral (b.corral; production.md 'Horse ranch parts', bugs.md 134); ranches of old saves without room for a corral draw the house only"
+ },
+ "armory": {
+  "file": "Zeus_General",
+  "base": 740,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 124,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 741,
+   "count": 18,
+   "dx": 42,
+   "dy": 51,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_ARMORY",
+  "src": "exe type table",
+  "idle": {
+   "dx": 3,
+   "dy": 36,
+   "dir": 1,
+   "figures": [
+    {
+     "file": "SprAmbient",
+     "first": 2437,
+     "frames": 12,
+     "dirs": 8,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2277,
+     "frames": 20,
+     "dirs": 8,
+     "ms_per_frame": 160
+    }
+   ],
+   "src": "exe 0x0044EAB0; figures[grid_random & 1]"
+  },
+  "stock_pics": [
+   {
+    "good": "bronze",
+    "file": "Zeus_General",
+    "first": 913,
+    "rule": "std",
+    "max": 2,
+    "dx": 44,
+    "dy": 9
+   }
+  ]
+ },
+ "trireme_wharf": {
+  "file": "Zeus_General",
+  "base": 719,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 114,
+  "img_tiles": 3,
+  "group": "SPR_B_WARSHIP_WHARF",
+  "src": "exe FUN_00496CA0: group first + orientation (b.orient; saves before 10-28: none = 0)",
+  "orient_stride": 1,
+  "stock_pics": [
+   {
+    "good": "wood",
+    "file": "Zeus_General",
+    "first": 908,
+    "rule": "std",
+    "max": 4,
+    "dx": 0,
+    "dy": 0,
+    "by_orient": [
+     [
+      84,
+      30
+     ],
+     [
+      7,
+      -6
+     ],
+     [
+      24,
+      0
+     ],
+     [
+      112,
+      -12
+     ]
+    ]
+   },
+   {
+    "good": "armor",
+    "file": "Zeus_General",
+    "first": 924,
+    "rule": "std",
+    "max": 4,
+    "dx": 0,
+    "dy": 0,
+    "by_orient": [
+     [
+      104,
+      25
+     ],
+     [
+      27,
+      9
+     ],
+     [
+      44,
+      15
+     ],
+     [
+      132,
+      3
+     ]
+    ]
+   }
+  ]
+ },
+ "ionic_column": {
+  "file": "Zeus_General",
+  "base": 235,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 62,
+  "img_tiles": 1,
+  "group": "SPR_IONIC_COLUMN",
+  "src": "exe type table",
+  "connectors": {
+   "ns": 237,
+   "ew": 238,
+   "note": "31x19 / 30x22 beams drawn between adjacent columns; offsets unknown"
+  }
+ },
+ "corinthian_column": {
+  "file": "Zeus_General",
+  "base": 236,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 62,
+  "img_tiles": 1,
+  "group": "SPR_CORIN_COLUMN",
+  "src": "exe type table",
+  "connectors": {
+   "ns": 237,
+   "ew": 238,
+   "note": "31x19 / 30x22 beams drawn between adjacent columns; offsets unknown"
+  }
+ },
+ "dolphin_sculpture": {
+  "file": "Poseidon_Loaded",
+  "base": 327,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 102,
+  "img_tiles": 3,
+  "group": "SPR_REC_12",
+  "src": "exe type table"
+ },
+ "orrery": {
+  "file": "Poseidon_Loaded",
+  "base": 328,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 135,
+  "img_tiles": 3,
+  "group": "SPR_REC_13",
+  "src": "exe type table"
+ },
+ "shell_garden": {
+  "file": "Poseidon_Loaded",
+  "base": 329,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 60,
+  "img_tiles": 2,
+  "group": "SPR_REC_14",
+  "src": "exe type table"
+ },
+ "baths": {
+  "file": "Poseidon_Loaded",
+  "base": 330,
+  "size": 4,
+  "img_w": 238,
+  "img_h": 151,
+  "img_tiles": 4,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 331,
+   "count": 16,
+   "dx": 23,
+   "dy": 67,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_REC_15",
+  "src": "exe type table"
+ },
+ "bird_bath": {
+  "file": "Poseidon_Loaded",
+  "base": 347,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 34,
+  "img_tiles": 1,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 348,
+   "count": 9,
+   "dx": 12,
+   "dy": -11,
+   "speed": 8,
+   "ms_per_frame": 160
+  },
+  "group": "SPR_REC_16",
+  "src": "exe type table",
+  "note": "SPR_REC_16: base + 9 frames, animated like other bases"
+ },
+ "race_track": {
+  "file": "Poseidon_Loaded",
+  "base": 422,
+  "size": 4,
+  "img_w": 238,
+  "img_h": 120,
+  "img_tiles": 4,
+  "group": "SPR_B_RACETRACK",
+  "src": "exe type table"
+ },
+ "bibliotheke": {
+  "file": "Poseidon_Loaded",
+  "base": 540,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 152,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 541,
+   "count": 35,
+   "dx": 61,
+   "dy": 87,
+   "speed": 5,
+   "ms_per_frame": 100
+  },
+  "group": "SPR_B_BIBLIOTHECA",
+  "src": "exe type table"
+ },
+ "observatory": {
+  "file": "Poseidon_Loaded",
+  "base": 576,
+  "size": 5,
+  "img_w": 298,
+  "img_h": 199,
+  "img_tiles": 5,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 577,
+   "count": 20,
+   "dx": 74,
+   "dy": -83,
+   "speed": 8,
+   "ms_per_frame": 160
+  },
+  "group": "SPR_B_OBSERVATORY",
+  "src": "exe type table"
+ },
+ "university": {
+  "file": "Poseidon_Loaded",
+  "base": 436,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 197,
+  "img_tiles": 3,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 437,
+   "count": 24,
+   "dx": 23,
+   "dy": 88,
+   "speed": 3,
+   "ms_per_frame": 60
+  },
+  "group": "SPR_B_UNIVERSITY",
+  "src": "exe type table"
+ },
+ "laboratory": {
+  "file": "Poseidon_Loaded",
+  "base": 461,
+  "size": 4,
+  "img_w": 238,
+  "img_h": 209,
+  "img_tiles": 4,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 462,
+   "count": 40,
+   "dx": 58,
+   "dy": 14,
+   "speed": 3,
+   "ms_per_frame": 60
+  },
+  "group": "SPR_B_LABORATORY",
+  "src": "exe type table"
+ },
+ "inventors_workshop": {
+  "file": "Poseidon_Loaded",
+  "base": 502,
+  "size": 3,
+  "img_w": 178,
+  "img_h": 207,
+  "img_tiles": 3,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 503,
+   "count": 37,
+   "dx": 104,
+   "dy": 121,
+   "speed": 3,
+   "ms_per_frame": 60
+  },
+  "group": "SPR_B_INVENTORS_WORKSHOP",
+  "src": "exe type table"
+ },
+ "museum": {
+  "file": "Poseidon_Loaded",
+  "base": 597,
+  "size": 6,
+  "img_w": 358,
+  "img_h": 351,
+  "img_tiles": 6,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 598,
+   "count": 22,
+   "dx": 35,
+   "dy": -13,
+   "speed": 3,
+   "ms_per_frame": 60
+  },
+  "group": "SPR_B_MUSEUM",
+  "src": "exe type table"
+ },
+ "orichalc_refinery": {
+  "file": "Poseidon_Loaded",
+  "base": 665,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 131,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 666,
+   "count": 13,
+   "dx": 1,
+   "dy": -34,
+   "speed": 6,
+   "ms_per_frame": 120
+  },
+  "group": "SPR_B_ORICHALC_REFINERY",
+  "src": "exe type table"
+ },
+ "chariot_workshop": {
+  "file": "Poseidon_Loaded",
+  "base": 679,
+  "size": 4,
+  "img_w": 238,
+  "img_h": 196,
+  "img_tiles": 4,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 680,
+   "count": 20,
+   "dx": 99,
+   "dy": 128,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_CHARIOT_FACTORY",
+  "src": "exe type table"
+ },
+ "black_marble_shop": {
+  "file": "Poseidon_Loaded",
+  "base": 700,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 85,
+  "img_tiles": 2,
+  "group": "SPR_B_BLACK_MARBLE_SHOP",
+  "src": "exe type table",
+  "yard": {
+   "good": "black_marble",
+   "idle": {
+    "dx": 59,
+    "dy": 27,
+    "dir": 3,
+    "figures": [
+     {
+      "file": "SprAmbient",
+      "first": 2437,
+      "frames": 12,
+      "dirs": 8,
+      "ms_per_frame": 120
+     },
+     {
+      "file": "SprAmbient",
+      "first": 2277,
+      "frames": 20,
+      "dirs": 8,
+      "ms_per_frame": 160
+     }
+    ]
+   },
+   "cutters": [
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 7,
+     "dx": 59,
+     "dy": 41,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 0,
+     "dx": 63,
+     "dy": 50,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 6,
+     "dx": 55,
+     "dy": 45,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 7,
+     "dx": 59,
+     "dy": 51,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 7,
+     "dx": 59,
+     "dy": 37,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 0,
+     "dx": 62,
+     "dy": 41,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 2017,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 6,
+     "dx": 61,
+     "dy": 37,
+     "ms_per_frame": 80
+    },
+    {
+     "file": "SprAmbient",
+     "first": 1937,
+     "frames": 10,
+     "dirs": 8,
+     "dir": 7,
+     "dx": 63,
+     "dy": 51,
+     "ms_per_frame": 80
+    }
+   ],
+   "src": "city_draw case 0x31/0xD5 (staffed, not burning) -> FUN_0045C170; cutters[stock // 100 - 1]"
+  },
+  "stock_pics": [
+   {
+    "good": "black_marble",
+    "file": "Poseidon_Loaded",
+    "first": 701,
+    "rule": "std",
+    "max": 7,
+    "dx": 33,
+    "dy": 0,
+    "reverse": true,
+    "before_anim": true,
+    "offsets": {
+     "0": [
+      43,
+      9
+     ],
+     "1": [
+      43,
+      9
+     ],
+     "2": [
+      33,
+      9
+     ],
+     "3": [
+      33,
+      9
+     ]
+    }
+   }
+  ]
+ },
+ "fruit_lodge": {
+  "file": "Poseidon_Loaded",
+  "base": 928,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 85,
+  "img_tiles": 2,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 929,
+   "count": 35,
+   "dx": 16,
+   "dy": 24,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_FRUIT_LODGE",
+  "src": "exe type table"
+ },
+ "chariot_vendor": {
+  "file": "Poseidon_Loaded",
+  "base": 926,
+  "size": 2,
+  "img_w": 118,
+  "img_h": 100,
+  "img_tiles": 2,
+  "group": "SPR_B_CHARIOT_VENDOR",
+  "src": "exe type table",
+  "stock_overlay": {
+   "file": "Poseidon_Loaded",
+   "index": 927,
+   "dx": null,
+   "dy": null
+  }
+ },
+ "corral": {
+  "file": "Poseidon_Loaded",
+  "base": 878,
+  "size": 4,
+  "img_w": 238,
+  "img_h": 166,
+  "img_tiles": 4,
+  "anim": {
+   "file": "Poseidon_Loaded",
+   "start": 879,
+   "count": 47,
+   "dx": 126,
+   "dy": 73,
+   "speed": 4,
+   "ms_per_frame": 80
+  },
+  "group": "SPR_B_CORRAL_SLAUGHTER",
+  "src": "exe type table"
+ },
+ "fruit_tree": {
+  "file": "Poseidon_Loaded",
+  "base": 1000,
+  "size": 1,
+  "img_w": 58,
+  "img_h": 38,
+  "img_tiles": 1,
+  "group": "SPR_FRUIT_TREE",
+  "src": "exe FUN_004A9C90",
+  "stages": {
+   "file": "Poseidon_Loaded",
+   "first": 1000,
+   "count": 6,
+   "rule": "min(5, growth_percent // 20); growth = goods_0*100/0x780 (ripe = last)"
+  }
+ },
+ "house": {
+  "file": "Zeus_General",
+  "size": 2,
+  "kind": "house",
+  "src": "exe house_set_type 0x00494EA0 / table 0x005F6078",
+  "levels": [
+   {
+    "level": 0,
+    "file": "Zeus_General",
+    "group": "SPR_B_HOUSE1",
+    "variants": [
+     1006,
+     1007
+    ]
+   },
+   {
+    "level": 1,
+    "file": "Zeus_General",
+    "group": "SPR_B_HOUSE2",
+    "variants": [
+     1008,
+     1009
+    ]
+   },
+   {
+    "level": 2,
+    "file": "Zeus_General",
+    "group": "SPR_B_HOUSE3",
+    "variants": [
+     1010,
+     1011
+    ]
+   },
+   {
+    "level": 3,
+    "file": "Zeus_General",
+    "group": "SPR_B_HOUSE4",
+    "variants": [
+     1012,
+     1013
+    ]
+   },
+   {
+    "level": 4,
+    "file": "Zeus_General",
+    "group": "SPR_B_HOUSE5",
+    "variants": [
+     1014,
+     1015
+    ]
+   },
+   {
+    "level": 5,
+    "file": "Zeus_General",
+    "group": "SPR_B_HOUSE6",
+    "variants": [
+     1016,
+     1017
+    ]
+   },
+   {
+    "level": 6,
+    "file": "Zeus_General",
+    "group": "SPR_B_HOUSE7",
+    "variants": [
+     1018,
+     1019
+    ]
+   }
+  ],
+  "vacant": {
+   "file": "Zeus_General",
+   "base": 1020
+  },
+  "poseidon_levels": {
+   "2": {
+    "file": "Poseidon_Loaded",
+    "variants": [
+     1162,
+     1163
+    ]
+   },
+   "3": {
+    "file": "Poseidon_Loaded",
+    "variants": [
+     1164,
+     1165
+    ]
+   },
+   "4": {
+    "file": "Poseidon_Loaded",
+    "variants": [
+     1166,
+     1167
+    ]
+   },
+   "5": {
+    "file": "Poseidon_Loaded",
+    "variants": [
+     1168,
+     1169
+    ]
+   },
+   "6": {
+    "file": "Poseidon_Loaded",
+    "variants": [
+     1170,
+     1171
+    ]
+   }
+  },
+  "variant_rule": "variants[grid_random[tile] & 1] (a fixed per-tile bit, never changes)",
+  "notes": "level = sim house level 0..6 (Hut..Townhouse). A house with 0 people (and no plague) shows 'vacant'. Poseidon game uses poseidon_levels for levels 2..6 (redrawn art); levels 0,1 are the same."
+ },
+ "endless_warehouse": {
+  "file": "Zeus_General",
+  "size": 3,
+  "kind": "storage",
+  "src": "exe FUN_00496CA0 case 0x3A",
+  "root": {
+   "dx": 0,
+   "dy": 0,
+   "file": "Zeus_General",
+   "base": 467,
+   "img_tiles": 1
+  },
+  "bays": "the other 8 tiles of the 3x3, each a 1x1 image from 'bay_images'",
+  "bay_images": {
+   "file": "Zeus_General",
+   "empty": 934,
+   "goods_first": {
+    "1": 813,
+    "2": 817,
+    "3": 821,
+    "4": 825,
+    "5": 829,
+    "6": 833,
+    "7": 837,
+    "9": 841,
+    "10": 845,
+    "11": 849,
+    "12": 853,
+    "13": 857,
+    "14": 861,
+    "15": 865,
+    "18": 869,
+    "19": 873,
+    "20": 877,
+    "21": 881
+   },
+   "poseidon_goods_first": {
+    "8": [
+     "Poseidon_Loaded",
+     964
+    ],
+    "16": [
+     "Poseidon_Loaded",
+     968
+    ],
+    "17": [
+     "Poseidon_Loaded",
+     972
+    ]
+   },
+   "band_rule": "band = 0 if amount<200, 1 if <300, 2 if <400, 3 at 400; image = goods_first[resource] + band (sculpture 19: no band, 1 image); amount 0 -> empty",
+   "note": "keys are resource zeus ids (data/resources.json). Horses (15) images are blank in the file: draw nothing/empty. src exe FUN_004898C0/00489B50"
+  },
+  "notes": "test sink; draw like a storehouse"
+ },
+ "agora": {
+  "file": "Zeus_General",
+  "size": 0,
+  "kind": "agora",
+  "src": "exe type 65 (agora road), 66 (empty vendor)",
+  "road_tiles": [
+   457,
+   458,
+   459
+  ],
+  "stall": "empty_stall",
+  "notes": "6x3: a 6-tile strip drawn with road_tiles[random%3] per tile (1x1 images) + 3 stalls of 2x2 on the stall side. A vendor built on a stall replaces that stall's image by the vendor base."
+ },
+ "grand_agora": {
+  "file": "Zeus_General",
+  "size": 0,
+  "kind": "agora",
+  "src": "exe type 65 (agora road), 66 (empty vendor)",
+  "road_tiles": [
+   457,
+   458,
+   459
+  ],
+  "stall": "empty_stall",
+  "notes": "6x5: strip in the middle, stalls (2x2) on both sides; same images as agora"
+ },
+ "gatehouse": {
+  "file": "Zeus_General",
+  "size": 2,
+  "kind": "gate",
+  "base": 768,
+  "orientations": 2,
+  "front": 770,
+  "back": 772,
+  "overlay": 775,
+  "status": "base only; front/back are the 1x1 road tiles under the gate"
+ },
+ "bridge": {
+  "file": "Zeus_General",
+  "size": 1,
+  "kind": "bridge",
+  "flat": [
+   1161,
+   1162
+  ],
+  "ramps": [
+   1151,
+   10
+  ],
+  "status": "UNVERIFIED mapping: flat deck images (58x31, two orientations) = SPR_QUAKE_BRIDGE; SPR_BRIDGE 10x(119x100) are the ramps/high spans (exe: bridge piece 1..14 in grid 0x00CB4B08)"
+ },
+ "ruin": {
+  "file": "Zeus_Terrain",
+  "size": 1,
+  "kind": "ruin",
+  "base": 615,
+  "variants": [
+   615,
+   616,
+   617,
+   618,
+   619,
+   620,
+   621,
+   622
+  ],
+  "flames": {
+   "choices": [
+    {
+     "file": "destruction",
+     "first": 37,
+     "frames": 26,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "PoseidonImps",
+     "first": 1,
+     "frames": 26,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "destruction",
+     "first": 63,
+     "frames": 26,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "PoseidonImps",
+     "first": 27,
+     "frames": 26,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "destruction",
+     "first": 89,
+     "frames": 26,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "PoseidonImps",
+     "first": 53,
+     "frames": 26,
+     "ms_per_frame": 120
+    },
+    {
+     "file": "destruction",
+     "first": 115,
+     "frames": 18,
+     "ms_per_frame": 120
+    },
+    null,
+    {
+     "file": "destruction",
+     "first": 133,
+     "frames": 24,
+     "ms_per_frame": 120
+    },
+    null
+   ],
+   "offsets": {
+    "1": [
+     [
+      0,
+      0
+     ]
+    ],
+    "2": [
+     [
+      30,
+      -15
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      60,
+      0
+     ],
+     [
+      30,
+      15
+     ]
+    ],
+    "3": [
+     [
+      60,
+      -30
+     ],
+     [
+      30,
+      -15
+     ],
+     [
+      90,
+      -15
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      60,
+      0
+     ],
+     [
+      120,
+      0
+     ],
+     [
+      30,
+      15
+     ],
+     [
+      90,
+      15
+     ],
+     [
+      60,
+      30
+     ]
+    ],
+    "4": [
+     [
+      90,
+      -45
+     ],
+     [
+      60,
+      -30
+     ],
+     [
+      120,
+      -30
+     ],
+     [
+      30,
+      -15
+     ],
+     [
+      90,
+      -15
+     ],
+     [
+      150,
+      -15
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      60,
+      0
+     ],
+     [
+      120,
+      0
+     ],
+     [
+      180,
+      0
+     ],
+     [
+      30,
+      15
+     ],
+     [
+      90,
+      15
+     ],
+     [
+      150,
+      15
+     ],
+     [
+      60,
+      30
+     ],
+     [
+      120,
+      30
+     ],
+     [
+      90,
+      45
+     ]
+    ],
+    "5": [
+     [
+      120,
+      -60
+     ],
+     [
+      90,
+      -45
+     ],
+     [
+      150,
+      -45
+     ],
+     [
+      60,
+      -30
+     ],
+     [
+      120,
+      -30
+     ],
+     [
+      180,
+      -30
+     ],
+     [
+      30,
+      -15
+     ],
+     [
+      90,
+      -15
+     ],
+     [
+      150,
+      -15
+     ],
+     [
+      210,
+      -15
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      60,
+      0
+     ],
+     [
+      120,
+      0
+     ],
+     [
+      180,
+      0
+     ],
+     [
+      240,
+      0
+     ],
+     [
+      30,
+      15
+     ],
+     [
+      90,
+      15
+     ],
+     [
+      150,
+      15
+     ],
+     [
+      210,
+      15
+     ],
+     [
+      60,
+      30
+     ],
+     [
+      120,
+      30
+     ],
+     [
+      180,
+      30
+     ],
+     [
+      90,
+      45
+     ],
+     [
+      150,
+      45
+     ],
+     [
+      120,
+      60
+     ]
+    ],
+    "6": [
+     [
+      150,
+      -75
+     ],
+     [
+      120,
+      -60
+     ],
+     [
+      180,
+      -60
+     ],
+     [
+      90,
+      -45
+     ],
+     [
+      150,
+      -45
+     ],
+     [
+      210,
+      -45
+     ],
+     [
+      60,
+      -30
+     ],
+     [
+      120,
+      -30
+     ],
+     [
+      180,
+      -30
+     ],
+     [
+      240,
+      -30
+     ],
+     [
+      30,
+      -15
+     ],
+     [
+      90,
+      -15
+     ],
+     [
+      150,
+      -15
+     ],
+     [
+      210,
+      -15
+     ],
+     [
+      270,
+      -15
+     ],
+     [
+      0,
+      0
+     ],
+     [
+      60,
+      0
+     ],
+     [
+      120,
+      0
+     ],
+     [
+      180,
+      0
+     ],
+     [
+      240,
+      0
+     ],
+     [
+      300,
+      0
+     ],
+     [
+      30,
+      15
+     ],
+     [
+      90,
+      15
+     ],
+     [
+      150,
+      15
+     ],
+     [
+      210,
+      15
+     ],
+     [
+      270,
+      15
+     ],
+     [
+      60,
+      30
+     ],
+     [
+      120,
+      30
+     ],
+     [
+      180,
+      30
+     ],
+     [
+      240,
+      30
+     ],
+     [
+      90,
+      45
+     ],
+     [
+      150,
+      45
+     ],
+     [
+      210,
+      45
+     ],
+     [
+      120,
+      60
+     ],
+     [
+      180,
+      60
+     ],
+     [
+      150,
+      75
+     ]
+    ]
+   },
+   "src": "exe FUN_0045A8E0 (city_draw: a burning building's tiles)"
+  },
+  "dust": {
+   "file": "destruction",
+   "groups": [
+    [
+     1,
+     9
+    ],
+    [
+     10,
+     9
+    ],
+    [
+     19,
+     9
+    ],
+    [
+     28,
+     9
+    ]
+   ],
+   "note": "collapse dust 60x60 pivot (32,40)"
+  },
+  "status": "rubble variants = SPR_RUBBLE (terrain); flames: see 'flames' (every burning building, not only ruins)"
+ },
+ "sheep": {
+  "kind": "animal",
+  "size": 1,
+  "status": "NOT a building sprite: draw as a walker (docs/play/walkers.md); exe group id 26179"
+ },
+ "goat": {
+  "kind": "animal",
+  "size": 1,
+  "status": "NOT a building sprite: draw as a walker (docs/play/walkers.md); exe group id 26341"
+ },
+ "cattle": {
+  "kind": "animal",
+  "size": 1,
+  "status": "NOT a building sprite: draw as a walker (docs/play/walkers.md); exe group id 27189"
+ },
+ "sanctuary_zeus": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_poseidon": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_demeter": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_apollo": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_artemis": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_ares": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_aphrodite": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_hermes": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_athena": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_hephaistos": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_dionysus": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_hades": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_hera": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_atlas": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "sanctuary_poseidon_grand": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "palace": {
+  "kind": "monument",
+  "size": 0,
+  "file": "Zeus_General",
+  "front": 1163,
+  "back": 1174,
+  "front2": 1176,
+  "back2": 1175,
+  "corner": 1188,
+  "flag_pole": 1187,
+  "anim": {
+   "file": "Zeus_General",
+   "start": 1164,
+   "count": 10,
+   "dx": 104,
+   "dy": -20,
+   "speed": 0,
+   "ms_per_frame": null
+  },
+  "status": "superseded by data/play/monuments.json (Monuments.draw places all 24 pieces + the guard animation); the 10 'anim' frames of SPR_B_PALACE1_FRONT are placeholder boxes ('LI 1'..'LI 10'), the exe draws SprAmbient guard frames instead (docs/play/monuments.md)"
+ },
+ "pyramid_01": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_02": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_03": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_04": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_05": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_06": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_07": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_08": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_09": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_10": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_11": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_12": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_13": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_14": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "pyramid_15": {
+  "kind": "monument",
+  "size": 0,
+  "status": "mapped per piece in data/play/monuments.json (tools/play_monuments.py, viewer/play/monuments.js Monuments.draw, docs/play/monuments.md)"
+ },
+ "road": {
+  "file": "Zeus_Terrain",
+  "size": 1,
+  "kind": "road",
+  "kinds": [
+   {
+    "name": "rutted",
+    "desirability": "< 0",
+    "first": 1052,
+    "count": 49,
+    "table": "tab48"
+   },
+   {
+    "name": "dirt",
+    "desirability": "0..15",
+    "first": 897,
+    "count": 18,
+    "table": "tab17"
+   },
+   {
+    "name": "paved",
+    "desirability": "16..29",
+    "first": 915,
+    "count": 49,
+    "table": "tab48"
+   },
+   {
+    "name": "plaza",
+    "desirability": ">= 30",
+    "first": 201,
+    "file": "Zeus_General",
+    "count": 7,
+    "table": null,
+    "variant": "grid_random[tile] % 7"
+   }
+  ],
+  "neighbours": "bits in order N,NE,E,SE,S,SW,W,NW = tiles (x,y-1),(x+1,y-1),(x+1,y),(x+1,y+1),(x,y+1),(x-1,y+1),(x-1,y),(x-1,y-1); pattern char per neighbour: '1' must be a road, '0' must not, '.' any; first matching row of the table wins; image = kind.first + offset",
+  "neighbour_is_road": "terrain flag 0x40 (road) or 0x08000000 (exe mask 0x8000040)",
+  "tab17": [
+   [
+    "1.1.1.1.",
+    17,
+    [
+     17,
+     17,
+     17,
+     17
+    ]
+   ],
+   [
+    "1.1.1.0.",
+    13,
+    [
+     13,
+     16,
+     15,
+     14
+    ]
+   ],
+   [
+    "0.1.1.1.",
+    14,
+    [
+     14,
+     13,
+     16,
+     15
+    ]
+   ],
+   [
+    "1.0.1.1.",
+    15,
+    [
+     15,
+     14,
+     13,
+     16
+    ]
+   ],
+   [
+    "1.1.0.1.",
+    16,
+    [
+     16,
+     15,
+     14,
+     13
+    ]
+   ],
+   [
+    "1.1.0.0.",
+    4,
+    [
+     4,
+     7,
+     6,
+     5
+    ]
+   ],
+   [
+    "0.1.1.0.",
+    5,
+    [
+     5,
+     4,
+     7,
+     6
+    ]
+   ],
+   [
+    "0.0.1.1.",
+    6,
+    [
+     6,
+     5,
+     4,
+     7
+    ]
+   ],
+   [
+    "1.0.0.1.",
+    7,
+    [
+     7,
+     6,
+     5,
+     4
+    ]
+   ],
+   [
+    "1.0.1.0.",
+    0,
+    [
+     0,
+     1,
+     0,
+     1
+    ]
+   ],
+   [
+    "0.1.0.1.",
+    1,
+    [
+     1,
+     0,
+     1,
+     0
+    ]
+   ],
+   [
+    "1.0.0.0.",
+    8,
+    [
+     8,
+     11,
+     10,
+     9
+    ]
+   ],
+   [
+    "0.1.0.0.",
+    9,
+    [
+     9,
+     8,
+     11,
+     10
+    ]
+   ],
+   [
+    "0.0.1.0.",
+    10,
+    [
+     10,
+     9,
+     8,
+     11
+    ]
+   ],
+   [
+    "0.0.0.1.",
+    11,
+    [
+     11,
+     10,
+     9,
+     8
+    ]
+   ],
+   [
+    "0.0.0.0.",
+    12,
+    [
+     12,
+     12,
+     12,
+     12
+    ]
+   ],
+   [
+    "........",
+    12,
+    [
+     12,
+     12,
+     12,
+     12
+    ]
+   ]
+  ],
+  "tab48": [
+   [
+    "10101010",
+    17,
+    [
+     17,
+     17,
+     17,
+     17
+    ]
+   ],
+   [
+    "10101.0.",
+    13,
+    [
+     13,
+     16,
+     15,
+     14
+    ]
+   ],
+   [
+    "11111.0.",
+    18,
+    [
+     18,
+     21,
+     20,
+     19
+    ]
+   ],
+   [
+    "10111.0.",
+    26,
+    [
+     26,
+     33,
+     32,
+     31
+    ]
+   ],
+   [
+    "11101.0.",
+    30,
+    [
+     30,
+     29,
+     28,
+     27
+    ]
+   ],
+   [
+    "0.10101.",
+    14,
+    [
+     14,
+     13,
+     16,
+     15
+    ]
+   ],
+   [
+    "0.11111.",
+    19,
+    [
+     19,
+     18,
+     21,
+     20
+    ]
+   ],
+   [
+    "0.10111.",
+    31,
+    [
+     31,
+     26,
+     33,
+     32
+    ]
+   ],
+   [
+    "0.11101.",
+    27,
+    [
+     27,
+     30,
+     29,
+     28
+    ]
+   ],
+   [
+    "1.0.1010",
+    15,
+    [
+     15,
+     14,
+     13,
+     16
+    ]
+   ],
+   [
+    "1.0.1111",
+    20,
+    [
+     20,
+     19,
+     18,
+     21
+    ]
+   ],
+   [
+    "1.0.1011",
+    32,
+    [
+     32,
+     31,
+     26,
+     33
+    ]
+   ],
+   [
+    "1.0.1110",
+    28,
+    [
+     28,
+     27,
+     30,
+     29
+    ]
+   ],
+   [
+    "101.0.10",
+    16,
+    [
+     16,
+     15,
+     14,
+     13
+    ]
+   ],
+   [
+    "111.0.11",
+    21,
+    [
+     21,
+     20,
+     19,
+     18
+    ]
+   ],
+   [
+    "111.0.10",
+    33,
+    [
+     33,
+     32,
+     31,
+     26
+    ]
+   ],
+   [
+    "101.0.11",
+    29,
+    [
+     29,
+     28,
+     27,
+     30
+    ]
+   ],
+   [
+    "111.000.",
+    22,
+    [
+     22,
+     25,
+     24,
+     23
+    ]
+   ],
+   [
+    "0.111.00",
+    23,
+    [
+     23,
+     22,
+     25,
+     24
+    ]
+   ],
+   [
+    "000.111.",
+    24,
+    [
+     24,
+     23,
+     22,
+     25
+    ]
+   ],
+   [
+    "1.000.11",
+    25,
+    [
+     25,
+     24,
+     23,
+     22
+    ]
+   ],
+   [
+    "10101111",
+    34,
+    [
+     34,
+     37,
+     36,
+     35
+    ]
+   ],
+   [
+    "11101011",
+    35,
+    [
+     35,
+     34,
+     37,
+     36
+    ]
+   ],
+   [
+    "11111010",
+    36,
+    [
+     36,
+     35,
+     34,
+     37
+    ]
+   ],
+   [
+    "10111110",
+    37,
+    [
+     37,
+     36,
+     35,
+     34
+    ]
+   ],
+   [
+    "10101011",
+    38,
+    [
+     38,
+     41,
+     40,
+     39
+    ]
+   ],
+   [
+    "11101010",
+    39,
+    [
+     39,
+     38,
+     41,
+     40
+    ]
+   ],
+   [
+    "10111010",
+    40,
+    [
+     40,
+     39,
+     38,
+     41
+    ]
+   ],
+   [
+    "10101110",
+    41,
+    [
+     41,
+     40,
+     39,
+     38
+    ]
+   ],
+   [
+    "11111011",
+    42,
+    [
+     42,
+     45,
+     44,
+     43
+    ]
+   ],
+   [
+    "11111110",
+    43,
+    [
+     43,
+     42,
+     45,
+     44
+    ]
+   ],
+   [
+    "10111111",
+    44,
+    [
+     44,
+     43,
+     42,
+     45
+    ]
+   ],
+   [
+    "11101111",
+    45,
+    [
+     45,
+     44,
+     43,
+     42
+    ]
+   ],
+   [
+    "11101110",
+    46,
+    [
+     46,
+     47,
+     46,
+     47
+    ]
+   ],
+   [
+    "10111011",
+    47,
+    [
+     47,
+     46,
+     47,
+     46
+    ]
+   ],
+   [
+    "1.1.0.0.",
+    4,
+    [
+     4,
+     7,
+     6,
+     5
+    ]
+   ],
+   [
+    "0.1.1.0.",
+    5,
+    [
+     5,
+     4,
+     7,
+     6
+    ]
+   ],
+   [
+    "0.0.1.1.",
+    6,
+    [
+     6,
+     5,
+     4,
+     7
+    ]
+   ],
+   [
+    "1.0.0.1.",
+    7,
+    [
+     7,
+     6,
+     5,
+     4
+    ]
+   ],
+   [
+    "1.0.1.0.",
+    0,
+    [
+     0,
+     1,
+     0,
+     1
+    ]
+   ],
+   [
+    "0.1.0.1.",
+    1,
+    [
+     1,
+     0,
+     1,
+     0
+    ]
+   ],
+   [
+    "1.0.0.0.",
+    8,
+    [
+     8,
+     11,
+     10,
+     9
+    ]
+   ],
+   [
+    "0.1.0.0.",
+    9,
+    [
+     9,
+     8,
+     11,
+     10
+    ]
+   ],
+   [
+    "0.0.1.0.",
+    10,
+    [
+     10,
+     9,
+     8,
+     11
+    ]
+   ],
+   [
+    "0.0.0.1.",
+    11,
+    [
+     11,
+     10,
+     9,
+     8
+    ]
+   ],
+   [
+    "00000000",
+    12,
+    [
+     12,
+     12,
+     12,
+     12
+    ]
+   ],
+   [
+    "11111111",
+    48,
+    [
+     48,
+     48,
+     48,
+     48
+    ]
+   ],
+   [
+    "........",
+    12,
+    [
+     12,
+     12,
+     12,
+     12
+    ]
+   ]
+  ],
+  "src": "exe FUN_004A0190 (choice by desirability FUN_004A0450), pattern engine FUN_004A6920, tables 0x00637098 (17 rows) and 0x006371F0 (48 rows)",
+  "confidence": "table rows and offsets verified from the exe; which 49-image group is 'rutted' vs 'paved' and the desirability thresholds inferred (medium)"
+ }
+}

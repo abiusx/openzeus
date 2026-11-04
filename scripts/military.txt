@@ -1,0 +1,39 @@
+# Military test scenario (docs/play/military.md "Test scenario"): the full city (scripts/full.txt: rabble,
+# hoplite and horsemen companies, towers and walls, a gatehouse, a trireme wharf), moved onto the test world
+# data/world/wartest.json (partners' 8 allies + the rivals Sparta by land and Troy by sea;
+# tools/make_world_wartest.py), with armies on the way.
+# Make the save:  python3 -m sim run scripts/military.txt --save saves/military.pkl
+# Play it:        cp saves/military.pkl saves/military-play.pkl
+#                 python3 -m sim live saves/military-play.pkl --port 8792
+include full.txt
+empire on wartest --migrate
+# the rivals' and the ally's armies (sandbox cheat; a spontaneous invasion is army * 3 / 5 strong)
+empire army Sparta 60
+empire army Troy 40
+empire army Sardis 80
+empire attitude Sardis 90
+# the navy: the wharf's crew back, wood bought from Sardis (armor is made in the city) for a trireme
+staff 50 84 on
+trade 143 107 wood import 400
+# the west shore road (wharf, Miletus dock) joins the city's roads north of the Corinth dock; a storehouse by the
+# wharf fetches its wood and armor (Get orders)
+road 108 99 120 99
+build storehouse 52 77
+storage 52 77 wood get 400
+storage 52 77 armor get 400
+# a second tower on the west wall line, south of the gatehouse
+wall 80 157 80 160
+wall 81 157 81 160
+build tower 80 157
+road 79 157 79 162
+months 6
+# what comes next: Sparta's army by land and Troy's ships both arrive in 2 months (announced now); Sardis' soldiers
+# arrive as an offer (Accept / Decline) in 1-2 months
+cityinvade Sparta 30
+cityinvade Troy 30
+request Sardis troops
+days 4
+status
+companies
+navy
+offers

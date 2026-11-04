@@ -1,0 +1,36 @@
+address	name	kind	type	evidence
+0047fa60	expedition_event_create	function		world map raid(1)/conquer(0): event type 1, item 0x18, request_kind 9, flags 0x100 (|0x4000 raid), then army dialog
+0047f910	event_is_player_expedition	function		type 1 && item 0x18 && request_kind 9
+0042e1e0	city_can_be_attacked	function		city_exists and class ally/rival, or vassal/colony in rebellion
+005bd950	army_dialog_open	function		dialog object 0x01608BE8 +8 = event index -> 0x005BBB60
+005bbb60	army_dialog_build	function		screen 0x21: horsemen(0xD)/hoplite(0xC) companies, triremes, heroes, formations 31..34, up to 2 allies (strike code 3)
+005be0e0	army_dialog_dispatch	function		marks formations +0x67 / figures +2 selected, ally joins (0x00483790), event_pay_tribute_or_gift
+005bde70	army_dialog_dispatch_btn	function		confirm 0xAF (expedition) / 0x4C / 0xE, or message 0xC when nothing selected
+005bdfd0	army_dialog_plunder_btn	function		raid only: choose plunder good (city_can_be_asked) -> event+0x70
+00483790	expedition_ally_join	function		ally sends 2/5 army: event+0x75 city, +0x76 troops, flag 0x8000; attitude as strike request
+004deb30	expedition_send_forces	function		selected companies march to the land exit (action 0xD), formation+0x82 = event; triremes (sea), heroes; event+0x77 = min(strength,100)
+004dee60	expedition_forces_home	function		formation+0x82 = -1, back to their fort; triremes to wharf; heroes action 0xF
+004dea00	event_sent_forces_strength	function		members (horsemen and formations 33,34 x2) + 6 per trireme + ally troops
+0042d2b0	event_plunder_capacity	function		was event_forces_strength: 50 per hoplite, 100 per horseman, 600 per trireme
+004df120	expedition_casualties	function		kill pct% of each sent company; trireme damage tiers; ally troops lose ally_pct%
+0046d950	event_travel_months	function		route between event city and player: route_travel_months
+004625a0	route_travel_months	function		max(2, route+0x134 points * route+0 speed / 200)
+00462910	route_between	function		ECX=0x009034F8; route record 1..231 with both cities and +0x142 set
+0046ed70	event_troops_request_update	function		type 1 item 0x18 state machine (city requests and player expeditions): 0 announced, 6 away, 7/8/9 returning, 10 done
+00483110	expedition_attitude_effects	function		win/loss attitude changes for target and other cities (tables 0x00633354..0x00633434)
+00480240	expedition_conquer_success	function		target becomes vassal (colony rel 3), tribute 1, trade open, attitude 31; Conquest monument
+00480470	expedition_conquer_failed	function		messages 0x44A / 0x3EC
+0047f930	plunder_delivery_create	function		event type 0x20 with event+0x70 good, +0x72 amount, flags 0x4100, dispatched now
+004752a0	event_delivery_update	function		type 0x20: goods/drachmas/troops from a city arrive (troops -> allied army on map)
+00480a00	event_ally_strike_update	function		type 0x22: ally attacks rival for the player; win -> rival becomes player's vassal
+0047fd90	city_request_attitude_effects	function		attitude change on request (tables 0x006332AC/D0/F4)
+0047ff80	city_player_request_create	function		player request: event 0x20 (0x21 refused demand) or 0x22 strike
+00474160	event_rival_army_away	function		type 0x14: rival sends 3/5 army away for 12 months
+0042e230	city_army_away_12	function		+0xCA = 12, +0xCB = 3/5 army moved to away_b
+004694e0	event_world_map_position	function		route and progress % of an army event (types 1/4 item 0x18/0x1A, 2, 0x22)
+00599740	world_map_draw_army	function		army/navy marker on the route point, heroes beside it, hover rect list 0x010DF2F8
+00599590	world_map_army_sprite	function		SPR_EMP_ARMY_*/SPR_EMP_NAVY_* by player/sea/nation, + size 0..2
+00482200	city_conquers_player	function		tribute_mode 2 (second time: episode lost via 0x0052B610)
+00481e80	city_army_sent_home	function		enemy figures of that city leave the map; message 0x442/0x445
+0042d9d0	city_army_three_fifths	function		army*3/5
+0042d9f0	city_army_two_fifths	function		army*2/5 (troops a city lends)

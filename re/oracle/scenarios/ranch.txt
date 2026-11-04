@@ -1,0 +1,3 @@
+# "See a working city" (800x600) -> minimap tab -> minimap (737,233): the horse ranch (76,60) o0 with its corral
+# (79,59) and horses (docs/logic/production.md "Horse ranch parts"). Empty --write-dir; replace DIR.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 52:move 737,233; 52.3:down 737,233; 52.6:up 737,233; 54:move 300,580; 55:shot DIR/ranch.bmp; 60:shot DIR/ranch_b.bmp; 65:shot DIR/ranch_c.bmp

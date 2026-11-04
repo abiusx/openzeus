@@ -1,0 +1,5 @@
+# Balloon help on the control panel (screen 1, at-once texts of FUN_004F5F00): "See a working city" at 800x600 (as
+# messages-window.txt); the Distribution page (button (626,165)): the mouse on goods rows 0 and 2 (hover ids
+# 1100 + row, 68:168/169); then the Military page (button (626,370)), a plain shot and the mouse on its three
+# buttons (ids 0x5DC..0x5DE, at panelX+0x46 = 668). DIR = run dir; --seconds 75.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 48:move 626,165; 48.3:down 626,165; 48.5:up 626,165; 50:move 700,90; 51:shot DIR/dist0.bmp; 52:move 700,114; 53:shot DIR/dist2.bmp; 54:move 626,370; 54.3:down 626,370; 54.5:up 626,370; 56:move 300,300; 57:shot DIR/mil.bmp; 58:move 712,252; 59:shot DIR/mil0.bmp; 60:move 712,269; 61:shot DIR/mil1.bmp; 62:move 712,286; 63:shot DIR/mil2.bmp; 64:move 712,303; 65:shot DIR/mil3.bmp; 66:move 700,240; 67:shot DIR/mil4.bmp

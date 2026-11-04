@@ -1,0 +1,294 @@
+{
+ "format": "world",
+ "version": 1,
+ "name": "partners",
+ "note": "The 8 partners of data/trade.json as allies, for saves from before the world module (`empire on partners --migrate`). Positions, paths, nations and the player's name are invented (tools/make_world_partners.py); goods and routes are data/trade.json's.",
+ "picture": 8,
+ "cities": [
+  {
+   "name": "Ephesus",
+   "kind": "player",
+   "map": {
+    "x": 680,
+    "y": 420,
+    "label": "right"
+   }
+  },
+  {
+   "name": "Sardis",
+   "kind": "foreign",
+   "relation": "ally",
+   "route": "land",
+   "nation": 2,
+   "buys": {
+    "wine": 12,
+    "olive_oil": 12,
+    "armor": 12,
+    "sculpture": 12
+   },
+   "sells": {
+    "bronze": 12,
+    "marble": 12,
+    "wood": 12
+   },
+   "attitude": 60,
+   "map": {
+    "x": 730,
+    "y": 300,
+    "label": "right"
+   },
+   "path": [
+    [
+     705,
+     360
+    ]
+   ]
+  },
+  {
+   "name": "Babylon",
+   "kind": "foreign",
+   "relation": "ally",
+   "route": "land",
+   "nation": 2,
+   "buys": {
+    "fleece": 12,
+    "olive_oil": 12,
+    "wine": 12
+   },
+   "sells": {
+    "wheat": 24,
+    "onions": 12,
+    "carrots": 12,
+    "black_marble": 12
+   },
+   "attitude": 60,
+   "map": {
+    "x": 810,
+    "y": 380,
+    "label": "left"
+   },
+   "path": [
+    [
+     750,
+     400
+    ]
+   ]
+  },
+  {
+   "name": "Susa",
+   "kind": "foreign",
+   "relation": "ally",
+   "route": "land",
+   "nation": 2,
+   "buys": {
+    "sculpture": 12,
+    "armor": 12,
+    "chariot": 12,
+    "olives": 12
+   },
+   "sells": {
+    "fleece": 12,
+    "cheese": 12,
+    "meat": 12,
+    "orichalc": 12
+   },
+   "attitude": 60,
+   "map": {
+    "x": 810,
+    "y": 470,
+    "label": "left"
+   },
+   "path": [
+    [
+     755,
+     455
+    ]
+   ]
+  },
+  {
+   "name": "Ecbatana",
+   "kind": "foreign",
+   "relation": "ally",
+   "route": "land",
+   "nation": 2,
+   "buys": {
+    "wheat": 12,
+    "marble": 12,
+    "wood": 12,
+    "bronze": 12,
+    "grapes": 12
+   },
+   "sells": {
+    "chariot": 12,
+    "armor": 12,
+    "olive_oil": 12
+   },
+   "attitude": 60,
+   "map": {
+    "x": 800,
+    "y": 200,
+    "label": "left"
+   },
+   "path": [
+    [
+     760,
+     280
+    ],
+    [
+     715,
+     355
+    ]
+   ]
+  },
+  {
+   "name": "Tyre",
+   "kind": "foreign",
+   "relation": "ally",
+   "route": "sea",
+   "nation": 2,
+   "buys": {
+    "fish": 12,
+    "urchin": 12,
+    "meat": 12,
+    "cheese": 12,
+    "black_marble": 12
+   },
+   "sells": {
+    "wine": 12,
+    "sculpture": 12,
+    "grapes": 12
+   },
+   "attitude": 60,
+   "map": {
+    "x": 795,
+    "y": 655,
+    "label": "left"
+   },
+   "path": [
+    [
+     720,
+     610
+    ],
+    [
+     640,
+     545
+    ],
+    [
+     612,
+     470
+    ]
+   ]
+  },
+  {
+   "name": "Miletus",
+   "kind": "foreign",
+   "relation": "ally",
+   "route": "sea",
+   "nation": 0,
+   "buys": {
+    "onions": 12,
+    "carrots": 12,
+    "fleece": 24,
+    "orichalc": 12,
+    "wine": 12
+   },
+   "sells": {
+    "fish": 12,
+    "urchin": 12,
+    "olives": 12
+   },
+   "attitude": 60,
+   "map": {
+    "x": 640,
+    "y": 482,
+    "label": "left"
+   },
+   "path": [
+    [
+     652,
+     452
+    ]
+   ]
+  },
+  {
+   "name": "Memphis",
+   "kind": "foreign",
+   "relation": "ally",
+   "route": "sea",
+   "nation": 2,
+   "buys": {
+    "wood": 12,
+    "bronze": 12,
+    "chariot": 12,
+    "grapes": 12,
+    "olives": 12
+   },
+   "sells": {
+    "wheat": 24,
+    "marble": 12
+   },
+   "attitude": 60,
+   "map": {
+    "x": 520,
+    "y": 705,
+    "label": "right"
+   },
+   "path": [
+    [
+     590,
+     655
+    ],
+    [
+     610,
+     560
+    ],
+    [
+     598,
+     470
+    ]
+   ]
+  },
+  {
+   "name": "Corinth",
+   "kind": "foreign",
+   "relation": "ally",
+   "route": "sea",
+   "nation": 0,
+   "buys": {
+    "armor": 12,
+    "sculpture": 12,
+    "olive_oil": 12,
+    "black_marble": 12
+   },
+   "sells": {
+    "wood": 12,
+    "bronze": 12,
+    "fleece": 12
+   },
+   "attitude": 60,
+   "map": {
+    "x": 298,
+    "y": 368,
+    "label": "top"
+   },
+   "path": [
+    [
+     335,
+     385
+    ],
+    [
+     420,
+     420
+    ],
+    [
+     520,
+     440
+    ],
+    [
+     610,
+     432
+    ]
+   ]
+  }
+ ]
+}

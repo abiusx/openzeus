@@ -1,0 +1,2933 @@
+{
+ "source": "Zeus.exe GOG; table 0x00639698, 78 rows x 0x28 bytes; walkers_update calls *(0x0063969C + type*0x28)",
+ "columns": {
+  "+0x00": "enum name string",
+  "+0x04": "handler (called once per tick by walkers_update 0x004CC8C0)",
+  "+0x08": "image/sprite refresh fn (0x004CC3D0 clears +0x04/+0x180; 0x004CC3F0 for type 1), called by 0x004CC360",
+  "+0x0C": "coverage_channel: 2-bit field index in grid 0x00B1E8F8 (-1 = none)",
+  "+0x10": "text_id (info text; overridden per building by 0x004E3750) - hypothesis",
+  "+0x14": "flags: byte0 (0x006396AC) and byte1 (0x006396AD) read by 0x005ABB90 (selection/draw) - meaning unknown",
+  "+0x18": "name_group: names counter index for 0x004DD040 (counter table 0x00EF5800, size table 0x00F27F34)",
+  "+0x1C,+0x20,+0x24": "sprite/image group ids (e.g. culture handler uses +0x1C/+0x20) - rendering"
+ },
+ "route_modes_set/max_roam_set": "immediates the handler writes to figure +0x72 / +0x42 (static scan of the handler bytes up to the next known function; register stores shown as such)",
+ "figures": [
+  {
+   "type": 0,
+   "enum": "FIG_NULL",
+   "model_name": "@{t:64:0}",
+   "model_speed": 0,
+   "handler": "0x00401000",
+   "handler_bytes": 320,
+   "kind": "none",
+   "notes": "empty_function (single ret); type 0 = no figure",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_00401140",
+    "FUN_0046d9f0",
+    "FUN_0046da30",
+    "FUN_0049a460"
+   ]
+  },
+  {
+   "type": 1,
+   "enum": "FIG_IMMIGRANT",
+   "model_name": "@{t:64:1}",
+   "model_speed": 6,
+   "handler": "0x004AC810",
+   "handler_bytes": 1344,
+   "kind": "destination/population",
+   "notes": "immigrant: walks to a house (population subsystem)",
+   "image_fn": "0x004CC3F0",
+   "coverage_channel": -1,
+   "text_id": 202,
+   "flags": "0x1",
+   "name_group": 265,
+   "sprite_groups": [
+    26139,
+    26139,
+    26140
+   ],
+   "route_modes_set": [
+    0
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_00494ea0",
+    "FUN_004a3b40",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "FUN_005675b0",
+    "FUN_005af5f0",
+    "figure_type_value",
+    "house_param"
+   ]
+  },
+  {
+   "type": 2,
+   "enum": "FIG_EMMIGRANT",
+   "model_name": "@{t:64:2}",
+   "model_speed": 6,
+   "handler": "0x004ACD50",
+   "handler_bytes": 832,
+   "kind": "destination/population",
+   "notes": "emigrant: leaves the city",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 203,
+   "flags": "0x1",
+   "name_group": 265,
+   "sprite_groups": [
+    26121,
+    26121,
+    26122
+   ],
+   "route_modes_set": [
+    "bl (register)"
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "FUN_005af5f0",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 3,
+   "enum": "FIG_VAGRANT",
+   "model_name": "@{t:64:3}",
+   "model_speed": 6,
+   "handler": "0x004AD090",
+   "handler_bytes": 1504,
+   "kind": "destination/population",
+   "notes": "homeless/vagrant",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 204,
+   "flags": "0x1",
+   "name_group": 254,
+   "sprite_groups": [
+    26133,
+    26133,
+    26134
+   ],
+   "route_modes_set": [
+    3
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x486b80",
+    "0x5675e0",
+    "FUN_00494ea0",
+    "FUN_004a3b40",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "FUN_005af5f0",
+    "figure_type_value",
+    "house_param"
+   ]
+  },
+  {
+   "type": 4,
+   "enum": "FIG_CART",
+   "model_name": "Cart pusher",
+   "model_speed": 6,
+   "handler": "0x004AE160",
+   "handler_bytes": 2960,
+   "kind": "delivery",
+   "notes": "cart pusher: carries goods between buildings (economy)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 230,
+   "flags": "0x1",
+   "name_group": 254,
+   "sprite_groups": [
+    26203,
+    26203,
+    26204
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x4ae100",
+    "FUN_004895b0",
+    "FUN_0048b680",
+    "FUN_0048c3b0",
+    "FUN_0048c410",
+    "FUN_0049b920",
+    "FUN_004a9680",
+    "FUN_004aa5d0",
+    "FUN_004ad760",
+    "FUN_004adba0",
+    "FUN_004adf30",
+    "FUN_004cca50",
+    "FUN_004ccaf0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d7340",
+    "FUN_004d8990",
+    "FUN_004dca70",
+    "FUN_00534b50",
+    "FUN_00543c30",
+    "FUN_005465b0",
+    "FUN_00546600",
+    "figure_tile_list",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 5,
+   "enum": "FIG_GROWER",
+   "model_name": "@{t:64:5}",
+   "model_speed": 6,
+   "handler": "0x004AECF0",
+   "handler_bytes": 2112,
+   "kind": "gatherer",
+   "notes": "grower: orchard worker (economy)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 216,
+   "flags": "0x101",
+   "name_group": 254,
+   "sprite_groups": [
+    26216,
+    26216,
+    26217
+   ],
+   "route_modes_set": [
+    17
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004aaf60",
+    "FUN_004ab640",
+    "FUN_004ab6f0",
+    "FUN_004ab770",
+    "FUN_004ab830",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_0058cff0",
+    "FUN_005af5f0",
+    "building_type_composite",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 6,
+   "enum": "FIG_AMBIENT",
+   "model_name": "Ambient Sprite (Various)",
+   "model_speed": 0,
+   "handler": "0x004AF530",
+   "handler_bytes": 32,
+   "kind": "ambient",
+   "notes": "ambient sprite; 32-byte stub handler",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": []
+  },
+  {
+   "type": 7,
+   "enum": "FIG_CLERK",
+   "model_name": "@{t:64:7}",
+   "model_speed": 6,
+   "handler": "0x004AF550",
+   "handler_bytes": 992,
+   "kind": "roaming service (own handler)",
+   "notes": "clerk = tax collector; roam with 0x004D6790, early-return test 0x004CDE80, coverage 0x004A67C0",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 6,
+   "text_id": 242,
+   "flags": "0x101",
+   "name_group": 277,
+   "sprite_groups": [
+    26201,
+    26201,
+    26202
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    3072
+   ],
+   "callees": [
+    "0x4cde80",
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6630",
+    "FUN_004d6790",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "FUN_005af5f0",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 8,
+   "enum": "FIG_SUPERINTENDENT",
+   "model_name": "@{t:64:8}",
+   "model_speed": 6,
+   "handler": "0x004AF930",
+   "handler_bytes": 1872,
+   "kind": "roaming service (own handler)",
+   "notes": "superintendent (maintenance: fire/damage risk), coverage 0x004A5D90",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 1,
+   "text_id": 240,
+   "flags": "0x101",
+   "name_group": 275,
+   "sprite_groups": [
+    26123,
+    26123,
+    26125
+   ],
+   "route_modes_set": [
+    0,
+    1
+   ],
+   "max_roam_set": [
+    3840
+   ],
+   "callees": [
+    "FUN_0049b920",
+    "FUN_004a39d0",
+    "FUN_004cd450",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6630",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "FUN_0058cff0",
+    "FUN_005a3d00",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 9,
+   "enum": "FIG_WAREHOUSEMAN",
+   "model_name": "@{t:64:9}",
+   "model_speed": 6,
+   "handler": "0x004B0080",
+   "handler_bytes": 2048,
+   "kind": "delivery",
+   "notes": "storehouseman (economy)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 230,
+   "flags": "0x1",
+   "name_group": 254,
+   "sprite_groups": [
+    26203,
+    26203,
+    26204
+   ],
+   "route_modes_set": [
+    1,
+    3
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004895b0",
+    "FUN_00489e60",
+    "FUN_0048a140",
+    "FUN_0048b680",
+    "FUN_0048b830",
+    "FUN_0048c3b0",
+    "FUN_0048c410",
+    "FUN_004ad760",
+    "FUN_004adaa0",
+    "FUN_004adba0",
+    "FUN_004adf30",
+    "FUN_004cd870",
+    "FUN_004cdac0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "figure_type_value",
+    "storage_select"
+   ]
+  },
+  {
+   "type": 10,
+   "enum": "FIG_FIRE",
+   "model_name": "Fire",
+   "model_speed": 6,
+   "handler": "0x004B0880",
+   "handler_bytes": 112,
+   "kind": "effect",
+   "notes": "fire figure; 112-byte stub",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": []
+  },
+  {
+   "type": 11,
+   "enum": "FIG_RABBLE",
+   "model_name": "Rabble/Archer",
+   "model_speed": 8,
+   "handler": "0x004B31F0",
+   "handler_bytes": 3088,
+   "kind": "soldier",
+   "notes": "rabble/archer, formation member (military)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 246,
+   "flags": "0x1",
+   "name_group": 254,
+   "sprite_groups": [
+    26238,
+    26240,
+    26239
+   ],
+   "route_modes_set": [
+    0
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x4b17f0",
+    "FUN_004b08f0",
+    "FUN_004b0b60",
+    "FUN_004b1330",
+    "FUN_004b1630",
+    "FUN_004b1780",
+    "FUN_004b2f70",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004dca70",
+    "FUN_004ffb70",
+    "FUN_00501940",
+    "FUN_0058d1f0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "figure_tile_list",
+    "figure_type_value",
+    "poseidon_game"
+   ]
+  },
+  {
+   "type": 12,
+   "enum": "FIG_HOPLITE",
+   "model_name": "Hoplite/Spearman",
+   "model_speed": 6,
+   "handler": "0x004B26B0",
+   "handler_bytes": 2240,
+   "kind": "soldier",
+   "notes": "hoplite/spearman, formation member (military)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 245,
+   "flags": "0x1",
+   "name_group": 254,
+   "sprite_groups": [
+    26242,
+    26244,
+    26243
+   ],
+   "route_modes_set": [
+    0
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x4b17f0",
+    "FUN_004b08f0",
+    "FUN_004b0b60",
+    "FUN_004b10a0",
+    "FUN_004b1330",
+    "FUN_004b1630",
+    "FUN_004b1780",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004db3d0",
+    "FUN_004dca70",
+    "FUN_004e17a0",
+    "FUN_004e2480",
+    "FUN_004ffb70",
+    "FUN_0058d1f0",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "figure_tile_list",
+    "figure_type_value",
+    "poseidon_game"
+   ]
+  },
+  {
+   "type": 13,
+   "enum": "FIG_HORSEMAN",
+   "model_name": "Horseman/Chariot",
+   "model_speed": 12,
+   "handler": "0x004B1840",
+   "handler_bytes": 3696,
+   "kind": "soldier",
+   "notes": "horseman/chariot, formation member (military)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 244,
+   "flags": "0x1",
+   "name_group": 254,
+   "sprite_groups": [
+    26245,
+    26247,
+    26246
+   ],
+   "route_modes_set": [
+    0
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x4b17f0",
+    "FUN_004b08f0",
+    "FUN_004b0b60",
+    "FUN_004b10a0",
+    "FUN_004b1330",
+    "FUN_004b1630",
+    "FUN_004b1780",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004dca70",
+    "FUN_004dd6d0",
+    "FUN_004e17a0",
+    "FUN_004e2320",
+    "FUN_004e2480",
+    "FUN_004e24a0",
+    "FUN_004e2500",
+    "FUN_005017a0",
+    "FUN_005af770",
+    "figure_tile_list",
+    "figure_type_value",
+    "poseidon_game"
+   ]
+  },
+  {
+   "type": 14,
+   "enum": "FIG_STANDARD",
+   "model_name": "@{t:64:14}",
+   "model_speed": 0,
+   "handler": "0x004B3E00",
+   "handler_bytes": 1392,
+   "kind": "formation",
+   "notes": "standard bearer of a formation (military)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    0
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x481d40",
+    "FUN_004dca70",
+    "FUN_004de080",
+    "FUN_004de980",
+    "FUN_004e2a60",
+    "FUN_005248d0",
+    "figure_tile_list"
+   ]
+  },
+  {
+   "type": 15,
+   "enum": "FIG_COMPETITOR",
+   "model_name": "@{t:64:15}",
+   "model_speed": 6,
+   "handler": "0x004B4370",
+   "handler_bytes": 1600,
+   "kind": "culture: roam + venue",
+   "notes": "shared culture handler 0x004B4370; coverage 0x004A60E0 (b+0x6C)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 3,
+   "text_id": 235,
+   "flags": "0x101",
+   "name_group": 263,
+   "sprite_groups": [
+    26329,
+    26329,
+    26330
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    3072
+   ],
+   "callees": [
+    "0x491630",
+    "0x491ef0",
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 16,
+   "enum": "FIG_PHILOSOPHER",
+   "model_name": "@{t:64:16}",
+   "model_speed": 6,
+   "handler": "0x004B4370",
+   "handler_bytes": 1600,
+   "kind": "culture: roam + venue",
+   "notes": "shared culture handler; coverage 0x004A6210 (b+0x6D)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 9,
+   "text_id": 236,
+   "flags": "0x101",
+   "name_group": 264,
+   "sprite_groups": [
+    26353,
+    26353,
+    26354
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    3072
+   ],
+   "callees": [
+    "0x491630",
+    "0x491ef0",
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 17,
+   "enum": "FIG_ATHLETE",
+   "model_name": "@{t:64:17}",
+   "model_speed": 6,
+   "handler": "0x004B4370",
+   "handler_bytes": 1600,
+   "kind": "culture: roam + venue",
+   "notes": "shared culture handler; coverage 0x004A6340 (b+0x6F)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 10,
+   "text_id": 234,
+   "flags": "0x101",
+   "name_group": 263,
+   "sprite_groups": [
+    26327,
+    26327,
+    26328
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    3072
+   ],
+   "callees": [
+    "0x491630",
+    "0x491ef0",
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 18,
+   "enum": "FIG_ACTOR",
+   "model_name": "@{t:64:18}",
+   "model_speed": 6,
+   "handler": "0x004B4370",
+   "handler_bytes": 1600,
+   "kind": "culture: roam + venue",
+   "notes": "shared culture handler; coverage 0x004A6470 (b+0x71)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 11,
+   "text_id": 233,
+   "flags": "0x101",
+   "name_group": 270,
+   "sprite_groups": [
+    26115,
+    26115,
+    26116
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    3072
+   ],
+   "callees": [
+    "0x491630",
+    "0x491ef0",
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 19,
+   "enum": "FIG_CARAVAN",
+   "model_name": "Caravan: Merchant",
+   "model_speed": 6,
+   "handler": "0x004B49B0",
+   "handler_bytes": 1456,
+   "kind": "trade (land)",
+   "notes": "caravan merchant (trade subsystem)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 232,
+   "flags": "0x1",
+   "name_group": 262,
+   "sprite_groups": [
+    26222,
+    26222,
+    26223
+   ],
+   "route_modes_set": [
+    3
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_005af770",
+    "FUN_005b8f90",
+    "FUN_005b9610",
+    "FUN_005b9810",
+    "FUN_005b9990",
+    "FUN_005b9bd0",
+    "FUN_005b9e40",
+    "FUN_005b9e90",
+    "figure_type_value",
+    "model_building_value"
+   ]
+  },
+  {
+   "type": 20,
+   "enum": "FIG_TRADESHIP",
+   "model_name": "@{t:64:20}",
+   "model_speed": 11,
+   "handler": "0x004B4F60",
+   "handler_bytes": 2032,
+   "kind": "trade (water)",
+   "notes": "trade ship (trade subsystem)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 231,
+   "flags": "0x1",
+   "name_group": 261,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004a3fd0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_00521a70",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "FUN_005b9610",
+    "FUN_005b9810",
+    "FUN_005b9990",
+    "FUN_005b9bd0",
+    "FUN_005b9e40",
+    "FUN_005b9e90",
+    "FUN_005ba3a0",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 21,
+   "enum": "FIG_VAN_FOLLOWER",
+   "model_name": "Caravan: Donkey",
+   "model_speed": 6,
+   "handler": "0x004B5750",
+   "handler_bytes": 720,
+   "kind": "follower",
+   "notes": "caravan donkey: follows the merchant",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": 262,
+   "sprite_groups": [
+    8211,
+    8211,
+    8212
+   ],
+   "route_modes_set": [
+    3
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x4cde40",
+    "0x4d1530",
+    "FUN_004d7110",
+    "FUN_005af770",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 22,
+   "enum": "FIG_DISGRUNT_CITIZEN",
+   "model_name": "@{t:64:22}",
+   "model_speed": 6,
+   "handler": "0x004B5A20",
+   "handler_bytes": 336,
+   "kind": "roaming (generic 0x004CDEE0)",
+   "notes": "disgruntled citizen (criminal); ignores roadblocks",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 209,
+   "flags": "0x1",
+   "name_group": 256,
+   "sprite_groups": [
+    26224,
+    26226,
+    26225
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    2304
+   ],
+   "callees": [
+    "0x4cdee0",
+    "FUN_004db3d0",
+    "FUN_005af770",
+    "FUN_005af8c0"
+   ]
+  },
+  {
+   "type": 23,
+   "enum": "FIG_THIEF",
+   "model_name": "@{t:64:23}",
+   "model_speed": 6,
+   "handler": "0x004B5B70",
+   "handler_bytes": 784,
+   "kind": "criminal",
+   "notes": "thief",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 207,
+   "flags": "0x1",
+   "name_group": 256,
+   "sprite_groups": [
+    26224,
+    26226,
+    26225
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004db3d0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "FUN_005c0030",
+    "FUN_005c00c0",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 24,
+   "enum": "FIG_ZGUY",
+   "model_name": "Z-Guy (INVISIBLE)",
+   "model_speed": 0,
+   "handler": "0x004B5E80",
+   "handler_bytes": 48,
+   "kind": "ambient",
+   "notes": "invisible Z-guy; stub",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": []
+  },
+  {
+   "type": 25,
+   "enum": "FIG_FISHING_BOAT",
+   "model_name": "@{t:64:25}",
+   "model_speed": 6,
+   "handler": "0x004B5F10",
+   "handler_bytes": 2064,
+   "kind": "gatherer (water)",
+   "notes": "fishing boat",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 214,
+   "flags": "0x101",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004a40e0",
+    "FUN_004a41c0",
+    "FUN_004b5eb0",
+    "FUN_004d1170",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_005af5f0",
+    "FUN_005af8c0",
+    "figure_type_value",
+    "god_sanctuary_finished",
+    "model_building_value"
+   ]
+  },
+  {
+   "type": 26,
+   "enum": "FIG_PEDDLER",
+   "model_name": "@{t:64:26}",
+   "model_speed": 6,
+   "handler": "0x004B6720",
+   "handler_bytes": 400,
+   "kind": "roaming (generic 0x004CDEE0)",
+   "notes": "peddler: agora seller; tile effect 0x0040D160 (economy)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 7,
+   "text_id": 229,
+   "flags": "0x1",
+   "name_group": 259,
+   "sprite_groups": [
+    26113,
+    26113,
+    26114
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    3840
+   ],
+   "callees": [
+    "0x4cdee0",
+    "FUN_0040cd00",
+    "FUN_005af770"
+   ]
+  },
+  {
+   "type": 27,
+   "enum": "FIG_MUGGER",
+   "model_name": "@{t:64:27}",
+   "model_speed": 6,
+   "handler": "0x004B68B0",
+   "handler_bytes": 336,
+   "kind": "roaming (generic 0x004CDEE0)",
+   "notes": "mugger (criminal); ignores roadblocks",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 5,
+   "text_id": 208,
+   "flags": "0x1",
+   "name_group": 256,
+   "sprite_groups": [
+    26224,
+    26226,
+    26225
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    2304
+   ],
+   "callees": [
+    "0x4cdee0",
+    "FUN_004db3d0",
+    "FUN_005af770",
+    "FUN_005af8c0"
+   ]
+  },
+  {
+   "type": 28,
+   "enum": "FIG_OXCART",
+   "model_name": "Water bubbles",
+   "model_speed": 0,
+   "handler": "0x004C3680",
+   "handler_bytes": 1616,
+   "kind": "delivery (Poseidon)",
+   "notes": "FIG_OXCART (model row text says 'Water bubbles'); uses delivery helper 0x004AD760",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    26203,
+    26203,
+    26204
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004ad760",
+    "FUN_004c3600",
+    "FUN_004c3660",
+    "FUN_004d7340",
+    "FUN_004dca70",
+    "FUN_005af8c0",
+    "figure_tile_list",
+    "figure_type_value",
+    "poseidon_game"
+   ]
+  },
+  {
+   "type": 29,
+   "enum": "FIG_VANDAL",
+   "model_name": "@{t:64:29}",
+   "model_speed": 6,
+   "handler": "0x004B6A00",
+   "handler_bytes": 752,
+   "kind": "criminal",
+   "notes": "vandal",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 4,
+   "text_id": 206,
+   "flags": "0x1",
+   "name_group": 256,
+   "sprite_groups": [
+    26224,
+    26226,
+    26225
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004db3d0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "FUN_005c02c0",
+    "FUN_005c0360",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 30,
+   "enum": "FIG_SHEARER",
+   "model_name": "@{t:64:30}",
+   "model_speed": 6,
+   "handler": "0x004B6CF0",
+   "handler_bytes": 1488,
+   "kind": "herder",
+   "notes": "shepherd (economy)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 212,
+   "flags": "0x101",
+   "name_group": 254,
+   "sprite_groups": [
+    26181,
+    26181,
+    26182
+   ],
+   "route_modes_set": [
+    0
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004f7c40",
+    "FUN_004f7ce0",
+    "FUN_004f7db0",
+    "FUN_004f7f60",
+    "FUN_004f7ff0",
+    "FUN_004f8050",
+    "FUN_005af770",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 31,
+   "enum": "FIG_MILKER",
+   "model_name": "Goat Herder",
+   "model_speed": 6,
+   "handler": "0x004B72C0",
+   "handler_bytes": 1504,
+   "kind": "herder",
+   "notes": "goatherd (economy)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 213,
+   "flags": "0x101",
+   "name_group": 254,
+   "sprite_groups": [
+    26150,
+    26150,
+    26151
+   ],
+   "route_modes_set": [
+    0
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004f7c40",
+    "FUN_004f7ce0",
+    "FUN_004f7db0",
+    "FUN_004f7f60",
+    "FUN_004f7ff0",
+    "FUN_004f8050",
+    "FUN_005af770",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 32,
+   "enum": "FIG_HEALER",
+   "model_name": "@{t:64:32}",
+   "model_speed": 6,
+   "handler": "0x004B78A0",
+   "handler_bytes": 304,
+   "kind": "roaming (generic 0x004CDEE0)",
+   "notes": "healer; coverage 0x004A66B0 (b+0x78)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 8,
+   "text_id": 239,
+   "flags": "0x101",
+   "name_group": 272,
+   "sprite_groups": [
+    26248,
+    26248,
+    26249
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    2304
+   ],
+   "callees": [
+    "0x4cdee0",
+    "FUN_005af770"
+   ]
+  },
+  {
+   "type": 33,
+   "enum": "FIG_WORKER",
+   "model_name": "@{t:64:33}",
+   "model_speed": 6,
+   "handler": "0x004B79D0",
+   "handler_bytes": 96,
+   "kind": "stub",
+   "notes": "worker: only validates its home building, never moves",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": 254,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    2304
+   ],
+   "callees": []
+  },
+  {
+   "type": 34,
+   "enum": "FIG_MAP_FLAG",
+   "model_name": "@{t:64:34}",
+   "model_speed": 0,
+   "handler": "0x004B7A30",
+   "handler_bytes": 1760,
+   "kind": "decoration",
+   "notes": "map flag",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": 254,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004dca70",
+    "figure_tile_list"
+   ]
+  },
+  {
+   "type": 35,
+   "enum": "FIG_FLOTSAM",
+   "model_name": "@{t:5:80}",
+   "model_speed": 0,
+   "handler": "0x004B8110",
+   "handler_bytes": 1712,
+   "kind": "water debris",
+   "notes": "flotsam (model 'Nothing')",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    0
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004dca70",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 36,
+   "enum": "FIG_DELIVERYMAN",
+   "model_name": "@{t:64:4}",
+   "model_speed": 6,
+   "handler": "0x004B87C0",
+   "handler_bytes": 1488,
+   "kind": "delivery",
+   "notes": "deliveryman (economy)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 230,
+   "flags": "0x1",
+   "name_group": 254,
+   "sprite_groups": [
+    26203,
+    26203,
+    26204
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004895b0",
+    "FUN_0048bc80",
+    "FUN_0048bfe0",
+    "FUN_0048c250",
+    "FUN_0048c3b0",
+    "FUN_0048c410",
+    "FUN_004ad760",
+    "FUN_004adaa0",
+    "FUN_004adba0",
+    "FUN_004adf30",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 37,
+   "enum": "FIG_AGORAVENDOR",
+   "model_name": "Agora Vendors (VARIOUS)",
+   "model_speed": 6,
+   "handler": "0x004B8D90",
+   "handler_bytes": 864,
+   "kind": "destination",
+   "notes": "agora vendor: buys for the agora (economy)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x1",
+   "name_group": -2,
+   "sprite_groups": [
+    26160,
+    26160,
+    26161
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    4800
+   ],
+   "callees": [
+    "FUN_0040aa20",
+    "FUN_0040ace0",
+    "FUN_004ce9b0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_005af770",
+    "figure_type_value",
+    "poseidon_game"
+   ]
+  },
+  {
+   "type": 38,
+   "enum": "FIG_NOBLEMAN",
+   "model_name": "@{t:64:38}",
+   "model_speed": 6,
+   "handler": "0x004B90F0",
+   "handler_bytes": 320,
+   "kind": "roaming (generic 0x004CDEE0)",
+   "notes": "nobleman",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 2,
+   "text_id": 210,
+   "flags": "0x101",
+   "name_group": 257,
+   "sprite_groups": [
+    26227,
+    26229,
+    26228
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    2400
+   ],
+   "callees": [
+    "0x4cdee0",
+    "FUN_005af770",
+    "FUN_005af8c0"
+   ]
+  },
+  {
+   "type": 39,
+   "enum": "FIG_WALLGUY",
+   "model_name": "@{t:64:39}",
+   "model_speed": 5,
+   "handler": "0x004B9230",
+   "handler_bytes": 1920,
+   "kind": "wall patrol",
+   "notes": "wall sentry; route mode 4 = wall grid",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 243,
+   "flags": "0x1",
+   "name_group": 254,
+   "sprite_groups": [
+    26193,
+    26195,
+    26194
+   ],
+   "route_modes_set": [
+    0,
+    4
+   ],
+   "max_roam_set": [
+    4800
+   ],
+   "callees": [
+    "0x4d0080",
+    "FUN_004cfd80",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d7cc0",
+    "FUN_004d8990",
+    "FUN_004d9d20",
+    "FUN_004d9d70",
+    "FUN_004dca70",
+    "FUN_00501940",
+    "FUN_0058d1f0",
+    "FUN_005af770",
+    "figure_tile_list",
+    "figure_type_value",
+    "poseidon_game"
+   ]
+  },
+  {
+   "type": 40,
+   "enum": "FIG_ENEMY_ARCHER",
+   "model_name": "Unused (enemy unit)",
+   "model_speed": 0,
+   "handler": "0x004B99B0",
+   "handler_bytes": 624,
+   "kind": "enemy",
+   "notes": "enemy archer (military)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -2,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "0x500b70",
+    "FUN_004ffb70",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0"
+   ]
+  },
+  {
+   "type": 41,
+   "enum": "FIG_ENEMY_INFANTRY",
+   "model_name": "Unused (enemy unit)",
+   "model_speed": 0,
+   "handler": "0x004B9C20",
+   "handler_bytes": 512,
+   "kind": "enemy",
+   "notes": "enemy infantry (military)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -2,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "0x500b70",
+    "FUN_004db3d0",
+    "FUN_004ffb70",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0"
+   ]
+  },
+  {
+   "type": 42,
+   "enum": "FIG_ENEMY_HORSEMAN",
+   "model_name": "Unused (enemy unit)",
+   "model_speed": 0,
+   "handler": "0x004B9E20",
+   "handler_bytes": 608,
+   "kind": "enemy",
+   "notes": "enemy horseman (military)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -2,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "0x500b70",
+    "0x501480",
+    "FUN_004ffb70",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 43,
+   "enum": "FIG_HORSE",
+   "model_name": "Horse/Jockey",
+   "model_speed": 7,
+   "handler": "0x004BA080",
+   "handler_bytes": 2608,
+   "kind": "race",
+   "notes": "horse/jockey; exempt from the 0x80000 override",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    26208,
+    26208,
+    26209
+   ],
+   "route_modes_set": [
+    18,
+    9
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d0140",
+    "FUN_004d03d0",
+    "FUN_004d1170",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_0056f9e0",
+    "FUN_0056fe40"
+   ]
+  },
+  {
+   "type": 44,
+   "enum": "FIG_URCHIN_COLLECTOR",
+   "model_name": "Urchin Collector",
+   "model_speed": 6,
+   "handler": "0x004BAAB0",
+   "handler_bytes": 560,
+   "kind": "gatherer (water)",
+   "notes": "urchin collector",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 215,
+   "flags": "0x101",
+   "name_group": 254,
+   "sprite_groups": [
+    26312,
+    26312,
+    26318
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_00430200",
+    "FUN_00430270",
+    "FUN_004302d0",
+    "FUN_00430400",
+    "FUN_004abb60",
+    "FUN_004d5f10",
+    "FUN_005af8c0",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 45,
+   "enum": "FIG_PLAYER_MISSILE",
+   "model_name": "Player's Missile (Actual Projectile)",
+   "model_speed": 0,
+   "handler": "0x004BACE0",
+   "handler_bytes": 2768,
+   "kind": "projectile",
+   "notes": "player missile",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "0x413190",
+    "0x4dce00",
+    "FUN_004ccd40",
+    "FUN_004d54d0",
+    "FUN_004d9750",
+    "FUN_004dc180",
+    "FUN_005a3d00",
+    "FUN_005a4c00",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "poseidon_game"
+   ]
+  },
+  {
+   "type": 46,
+   "enum": "FIG_BALLISTA",
+   "model_name": "Tower Sentry",
+   "model_speed": 0,
+   "handler": "0x004BB7B0",
+   "handler_bytes": 1456,
+   "kind": "tower",
+   "notes": "tower sentry / ballista",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    4
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d9d20",
+    "FUN_004d9d70",
+    "FUN_004dca70",
+    "FUN_00501940",
+    "FUN_0058d1f0",
+    "FUN_005a3d00",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "figure_tile_list",
+    "figure_type_value",
+    "poseidon_game"
+   ]
+  },
+  {
+   "type": 47,
+   "enum": "FIG_VENDOR_ASSISTANT",
+   "model_name": "Vendor Assistant",
+   "model_speed": 6,
+   "handler": "0x004BBD60",
+   "handler_bytes": 1232,
+   "kind": "helper",
+   "notes": "vendor assistant",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 228,
+   "flags": "0x1",
+   "name_group": 260,
+   "sprite_groups": [
+    26129,
+    26129,
+    26130
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x4ada60",
+    "0x4d05b0",
+    "FUN_0040aa20",
+    "FUN_0040ace0",
+    "FUN_0040bcf0",
+    "FUN_004895b0",
+    "FUN_0048b680",
+    "FUN_004d1170",
+    "FUN_004d7110",
+    "FUN_004d7340",
+    "FUN_004d8990",
+    "FUN_004e75e0",
+    "FUN_005af770",
+    "building_type_composite"
+   ]
+  },
+  {
+   "type": 48,
+   "enum": "FIG_SHIPWRECK",
+   "model_name": "@{t:64:48}",
+   "model_speed": 0,
+   "handler": "0x004BC230",
+   "handler_bytes": 336,
+   "kind": "decoration",
+   "notes": "shipwreck",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "0x4a4340",
+    "FUN_004dca70",
+    "figure_tile_list"
+   ]
+  },
+  {
+   "type": 49,
+   "enum": "FIG_SHEEP",
+   "model_name": "@{t:28:40}",
+   "model_speed": 6,
+   "handler": "0x004BC380",
+   "handler_bytes": 1904,
+   "kind": "animal (grazing)",
+   "notes": "sheep",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    26177,
+    26179,
+    26178
+   ],
+   "route_modes_set": [
+    15
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x4f8d80",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004f83e0",
+    "FUN_004f8b90",
+    "figure_graze",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 50,
+   "enum": "FIG_GOAT",
+   "model_name": "@{t:28:39}",
+   "model_speed": 5,
+   "handler": "0x004BCAF0",
+   "handler_bytes": 1344,
+   "kind": "animal (grazing)",
+   "notes": "goat",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    26338,
+    26341,
+    26339
+   ],
+   "route_modes_set": [
+    15
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x4f8d80",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004f83e0",
+    "FUN_004f8b90",
+    "figure_graze",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 51,
+   "enum": "FIG_BOAR",
+   "model_name": "@{t:49:28}",
+   "model_speed": 7,
+   "handler": "0x004BD030",
+   "handler_bytes": 1136,
+   "kind": "animal (wild)",
+   "notes": "boar",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    26319,
+    26321,
+    26320
+   ],
+   "route_modes_set": [
+    5
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004abaf0",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004dab30",
+    "FUN_004db3d0",
+    "FUN_0056b550",
+    "FUN_0056b5d0",
+    "FUN_0056b6c0",
+    "FUN_0056b8a0",
+    "FUN_0056b960",
+    "FUN_0056ba30",
+    "FUN_0056bb50",
+    "FUN_0056bc30",
+    "FUN_005af8c0",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 52,
+   "enum": "FIG_ENEMY_MISSILE",
+   "model_name": "Enemy's Missile(Actual Projectile)",
+   "model_speed": 0,
+   "handler": "0x004BD970",
+   "handler_bytes": 2288,
+   "kind": "projectile",
+   "notes": "enemy missile",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "0x4dce20",
+    "0x4dcf20",
+    "FUN_00492830",
+    "FUN_004ccd40",
+    "FUN_004d54d0",
+    "FUN_004d9750",
+    "FUN_004db7a0",
+    "FUN_004dc180",
+    "FUN_005a3d00",
+    "FUN_005a4c00",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0"
+   ]
+  },
+  {
+   "type": 53,
+   "enum": "FIG_HUNTER",
+   "model_name": "@{t:64:53}",
+   "model_speed": 8,
+   "handler": "0x004BE260",
+   "handler_bytes": 3552,
+   "kind": "gatherer",
+   "notes": "hunter",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 211,
+   "flags": "0x101",
+   "name_group": 254,
+   "sprite_groups": [
+    26348,
+    26350,
+    26349
+   ],
+   "route_modes_set": [
+    3
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0xe36df029",
+    "0xe7e4f01d",
+    "FUN_004895b0",
+    "FUN_0048b680",
+    "FUN_004d05f0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004db3d0",
+    "FUN_004e3280",
+    "FUN_0058d1f0",
+    "FUN_005af770",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 54,
+   "enum": "FIG_HUNTER_SPEAR",
+   "model_name": "@{t:64:54}",
+   "model_speed": 0,
+   "handler": "0x004BF040",
+   "handler_bytes": 32,
+   "kind": "projectile",
+   "notes": "hunter spear; stub",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": []
+  },
+  {
+   "type": 55,
+   "enum": "FIG_WOODCUTTER",
+   "model_name": "Wood Cutter",
+   "model_speed": 6,
+   "handler": "0x004BF060",
+   "handler_bytes": 1120,
+   "kind": "gatherer",
+   "notes": "woodcutter",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 217,
+   "flags": "0x101",
+   "name_group": 254,
+   "sprite_groups": [
+    26197,
+    26199,
+    26198
+   ],
+   "route_modes_set": [
+    3
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004dbfd0",
+    "FUN_005af770",
+    "figure_type_value",
+    "resource_tile_search_call",
+    "terrain_resource_image"
+   ]
+  },
+  {
+   "type": 56,
+   "enum": "FIG_CONTESTANT",
+   "model_name": "@{t:64:56}",
+   "model_speed": 6,
+   "handler": "0x004C30D0",
+   "handler_bytes": 1328,
+   "kind": "games",
+   "notes": "contestant",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x101",
+   "name_group": 263,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    "bl (register)"
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_00568700",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 57,
+   "enum": "FIG_TRIREME",
+   "model_name": "@{t:8:50}",
+   "model_speed": 7,
+   "handler": "0x004BF4C0",
+   "handler_bytes": 2976,
+   "kind": "military ship",
+   "notes": "trireme",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 247,
+   "flags": "0x1",
+   "name_group": 269,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004a3fd0",
+    "FUN_004ac7c0",
+    "FUN_004d0800",
+    "FUN_004d0b30",
+    "FUN_004d0c60",
+    "FUN_004d1170",
+    "FUN_004d16a0",
+    "FUN_004d1860",
+    "FUN_004d1b20",
+    "FUN_004d1c00",
+    "FUN_004d1dd0",
+    "FUN_004d1e70",
+    "FUN_004d1f70",
+    "FUN_004d2260",
+    "FUN_004d22e0",
+    "FUN_004d2350",
+    "FUN_004d23f0",
+    "FUN_004d24c0",
+    "FUN_004d24d0",
+    "FUN_004d2550",
+    "FUN_004d2690",
+    "FUN_004d2700",
+    "FUN_004d2840",
+    "FUN_004d8990",
+    "FUN_004d8a80",
+    "FUN_005af5f0",
+    "FUN_005af6b0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "figure_type_value",
+    "poseidon_game"
+   ]
+  },
+  {
+   "type": 58,
+   "enum": "FIG_ARTISAN",
+   "model_name": "@{t:64:58}",
+   "model_speed": 6,
+   "handler": "0x004C0060",
+   "handler_bytes": 2912,
+   "kind": "roam then work",
+   "notes": "artisan: roams (0x004D6790) and works on composite sites",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 221,
+   "flags": "0x101",
+   "name_group": 255,
+   "sprite_groups": [
+    26135,
+    26135,
+    26136
+   ],
+   "route_modes_set": [
+    1,
+    13,
+    3,
+    7
+   ],
+   "max_roam_set": [
+    3072
+   ],
+   "callees": [
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004dbfd0",
+    "FUN_004e1060",
+    "FUN_0053e630",
+    "FUN_005465e0",
+    "FUN_00546600",
+    "FUN_005af770",
+    "building_road_entry",
+    "building_type_composite",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 59,
+   "enum": "FIG_WOLF",
+   "model_name": "@{t:64:59}",
+   "model_speed": 7,
+   "handler": "0x004BD4A0",
+   "handler_bytes": 1232,
+   "kind": "animal (wild)",
+   "notes": "wolf",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    26343,
+    26345,
+    26344
+   ],
+   "route_modes_set": [
+    16
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004abaf0",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_00569e10",
+    "FUN_0056a130",
+    "FUN_0056a3a0",
+    "FUN_0056a960",
+    "FUN_0056a9f0",
+    "FUN_0056ad20",
+    "FUN_0056ae50",
+    "FUN_0056af80",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 60,
+   "enum": "FIG_WATERBEARER",
+   "model_name": "@{t:64:60}",
+   "model_speed": 6,
+   "handler": "0x004C0BC0",
+   "handler_bytes": 304,
+   "kind": "roaming (generic 0x004CDEE0)",
+   "notes": "water bearer (fountain); coverage 0x004A65A0 (b+0x77)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 0,
+   "text_id": 238,
+   "flags": "0x101",
+   "name_group": 271,
+   "sprite_groups": [
+    26236,
+    26236,
+    26237
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    2304
+   ],
+   "callees": [
+    "0x4cdee0",
+    "FUN_005af770"
+   ]
+  },
+  {
+   "type": 61,
+   "enum": "FIG_WATCHMAN",
+   "model_name": "@{t:64:61}",
+   "model_speed": 6,
+   "handler": "0x004C0CF0",
+   "handler_bytes": 1568,
+   "kind": "roaming service (own handler)",
+   "notes": "watchman (guard post); coverage 0x004A5F70 (b+0xF4)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 2,
+   "text_id": 241,
+   "flags": "0x1",
+   "name_group": 273,
+   "sprite_groups": [
+    26147,
+    26149,
+    26148
+   ],
+   "route_modes_set": [
+    0,
+    1
+   ],
+   "max_roam_set": [
+    3840
+   ],
+   "callees": [
+    "0x4cd5b0",
+    "0x4d9e70",
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6630",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "FUN_005af770",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 62,
+   "enum": "FIG_MINER",
+   "model_name": "@{t:64:62}",
+   "model_speed": 6,
+   "handler": "0x004C1310",
+   "handler_bytes": 4576,
+   "kind": "gatherer",
+   "notes": "miner",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x101",
+   "name_group": 254,
+   "sprite_groups": [
+    26155,
+    26155,
+    26156
+   ],
+   "route_modes_set": [
+    11,
+    13,
+    3
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_0049b9e0",
+    "FUN_004a6ca0",
+    "FUN_004a8650",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d7110",
+    "FUN_004d8990",
+    "FUN_004dbfd0",
+    "FUN_004ea490",
+    "FUN_0058cff0",
+    "FUN_0058d1f0",
+    "building_type_composite",
+    "figure_create",
+    "figure_type_value",
+    "god_sanctuary_finished",
+    "regrowth_neighbours_below",
+    "resource_tile_search_call"
+   ]
+  },
+  {
+   "type": 63,
+   "enum": "FIG_ENEMY_TRANSPORT",
+   "model_name": "Unused (enemy unit)",
+   "model_speed": 0,
+   "handler": "0x004C24F0",
+   "handler_bytes": 1168,
+   "kind": "enemy ship",
+   "notes": "enemy transport",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": 291,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "0x4d4790",
+    "FUN_004d24c0",
+    "FUN_004d29d0",
+    "FUN_004d2ab0",
+    "FUN_004d3740",
+    "FUN_004d3870",
+    "FUN_004d3970",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "empty_function"
+   ]
+  },
+  {
+   "type": 64,
+   "enum": "FIG_ENEMY_WARSHIP",
+   "model_name": "Unused (enemy unit)",
+   "model_speed": 0,
+   "handler": "0x004C2980",
+   "handler_bytes": 1056,
+   "kind": "enemy ship",
+   "notes": "enemy warship",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": 291,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": [
+    "0x4d4790",
+    "FUN_004d24c0",
+    "FUN_004d3b70",
+    "FUN_004d3bf0",
+    "FUN_004d3c40",
+    "FUN_004d3da0",
+    "FUN_004d3f90",
+    "FUN_004d4500",
+    "FUN_004d4730",
+    "FUN_004d47d0",
+    "FUN_004ffb70",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0"
+   ]
+  },
+  {
+   "type": 65,
+   "enum": "FIG_PRIEST",
+   "model_name": "@{t:64:65}",
+   "model_speed": 6,
+   "handler": "0x004CA350",
+   "handler_bytes": 4096,
+   "kind": "religion",
+   "notes": "priest",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 5,
+   "text_id": 237,
+   "flags": "0x1",
+   "name_group": 254,
+   "sprite_groups": [
+    26258,
+    26258,
+    26259
+   ],
+   "route_modes_set": [
+    13,
+    15,
+    7
+   ],
+   "max_roam_set": [
+    3840
+   ],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d7110",
+    "FUN_004d8990",
+    "FUN_004e9930",
+    "FUN_004e99f0",
+    "FUN_004ea140",
+    "FUN_004ea1a0",
+    "FUN_004ea390",
+    "FUN_004ea450",
+    "FUN_004f7c40",
+    "FUN_004f7db0",
+    "FUN_004f83e0",
+    "FUN_004f9590",
+    "FUN_0058cff0",
+    "FUN_005af5f0",
+    "FUN_005af770",
+    "FUN_005af8c0",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 66,
+   "enum": "FIG_PLAGUE_DUDE",
+   "model_name": "Plagued Walker",
+   "model_speed": 1,
+   "handler": "0x004C2DA0",
+   "handler_bytes": 816,
+   "kind": "roaming",
+   "notes": "plague walker: roams (0x004D6790), ignores roadblocks",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 205,
+   "flags": "0x1",
+   "name_group": 254,
+   "sprite_groups": [
+    26355,
+    26355,
+    26356
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    "dx (register)"
+   ],
+   "callees": [
+    "FUN_004a39d0",
+    "FUN_004d60b0",
+    "FUN_004d6630",
+    "FUN_004d6790",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "FUN_004dbfd0",
+    "FUN_005af770"
+   ]
+  },
+  {
+   "type": 67,
+   "enum": "FIG_GOD",
+   "model_name": "@{t:44:215}",
+   "model_speed": 7,
+   "handler": "0x004C5D40",
+   "handler_bytes": 6608,
+   "kind": "god",
+   "notes": "god (religion)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 5,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    10,
+    12,
+    3,
+    6,
+    8
+   ],
+   "max_roam_set": [
+    3840
+   ],
+   "callees": [
+    "0x4ee0c0",
+    "0x4ee2b0",
+    "FUN_004127e0",
+    "FUN_004895b0",
+    "FUN_0048b680",
+    "FUN_004a39d0",
+    "FUN_004abb60",
+    "FUN_004c3cd0",
+    "FUN_004c4090",
+    "FUN_004c43c0",
+    "FUN_004c46d0",
+    "FUN_004c4910",
+    "FUN_004c4bc0",
+    "FUN_004c4d20",
+    "FUN_004c4d50",
+    "FUN_004c4ef0",
+    "FUN_004c4f20",
+    "FUN_004c51e0",
+    "FUN_004c5420",
+    "FUN_004c5690",
+    "FUN_004c56f0",
+    "FUN_004c5d00",
+    "FUN_004d05f0",
+    "FUN_004d1170",
+    "FUN_004d6630",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "FUN_004d9d20",
+    "FUN_004d9d70",
+    "FUN_004dab30",
+    "FUN_004dc180",
+    "FUN_004ddff0",
+    "FUN_004e2a60",
+    "FUN_004e3220",
+    "FUN_004e3280",
+    "FUN_004ea4e0",
+    "FUN_004eba10",
+    "FUN_004ede40",
+    "FUN_004ef770",
+    "FUN_004f1720",
+    "FUN_004f18c0",
+    "FUN_004f2000",
+    "FUN_004f20c0",
+    "FUN_004f2220",
+    "FUN_00568700",
+    "FUN_0058cff0",
+    "FUN_0058d1f0",
+    "figure_type_value",
+    "route_tile_check"
+   ]
+  },
+  {
+   "type": 68,
+   "enum": "FIG_MONSTER",
+   "model_name": "Monster",
+   "model_speed": 7,
+   "handler": "0x004C8760",
+   "handler_bytes": 1872,
+   "kind": "monster",
+   "notes": "monster (military/religion)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    3,
+    6,
+    "bl (register)"
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x532290",
+    "FUN_004abaf0",
+    "FUN_004abb60",
+    "FUN_004ac7c0",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004db3d0",
+    "FUN_0052f150",
+    "FUN_0052f190",
+    "FUN_0052f370",
+    "FUN_005304b0",
+    "FUN_00530ed0",
+    "FUN_00531050",
+    "FUN_00531550",
+    "FUN_005318b0",
+    "FUN_00532670",
+    "FUN_00532700",
+    "FUN_005327a0",
+    "FUN_00532c70",
+    "FUN_00533070",
+    "FUN_00533340",
+    "FUN_005335e0",
+    "FUN_00533670",
+    "FUN_00533890",
+    "FUN_00533a80",
+    "FUN_00533b60",
+    "FUN_00534150",
+    "FUN_005af770",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 69,
+   "enum": "FIG_HERO",
+   "model_name": "@{t:23:26}",
+   "model_speed": 7,
+   "handler": "0x004C8F50",
+   "handler_bytes": 4000,
+   "kind": "hero",
+   "notes": "hero (religion)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 1,
+   "text_id": -1,
+   "flags": "0x101",
+   "name_group": 254,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    0,
+    1,
+    "bl (register)"
+   ],
+   "max_roam_set": [
+    3840
+   ],
+   "callees": [
+    "FUN_004a39d0",
+    "FUN_004c8eb0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6630",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "FUN_004db3d0",
+    "FUN_004dca70",
+    "FUN_004e3220",
+    "FUN_004fa860",
+    "FUN_004fcf90",
+    "FUN_004fd2b0",
+    "FUN_004fdc10",
+    "FUN_005af8c0",
+    "figure_tile_list",
+    "figure_type_value",
+    "route_tile_check"
+   ]
+  },
+  {
+   "type": 70,
+   "enum": "FIG_TURNED_TO_STONE",
+   "model_name": "Stoned",
+   "model_speed": 0,
+   "handler": "0x004C9EF0",
+   "handler_bytes": 64,
+   "kind": "stub",
+   "notes": "turned to stone",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [],
+   "max_roam_set": [],
+   "callees": []
+  },
+  {
+   "type": 71,
+   "enum": "FIG_PIPER_FOLLOWER",
+   "model_name": "Entranced",
+   "model_speed": 6,
+   "handler": "0x004C9F30",
+   "handler_bytes": 1056,
+   "kind": "follower",
+   "notes": "entranced (piper follower)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    10
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004d8990",
+    "FUN_00533b60",
+    "FUN_005af770",
+    "FUN_005af8c0"
+   ]
+  },
+  {
+   "type": 72,
+   "enum": "FIG_SCHOLAR",
+   "model_name": "@{t:64:72}",
+   "model_speed": 6,
+   "handler": "0x004B4370",
+   "handler_bytes": 1600,
+   "kind": "culture: roam + venue",
+   "notes": "shared culture handler; coverage 0x004A6340 (b+0x6F)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 3,
+   "text_id": 345,
+   "flags": "0x101",
+   "name_group": 296,
+   "sprite_groups": [
+    27181,
+    27181,
+    27182
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    3072
+   ],
+   "callees": [
+    "0x491630",
+    "0x491ef0",
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 73,
+   "enum": "FIG_ASTRONOMER",
+   "model_name": "@{t:64:73}",
+   "model_speed": 6,
+   "handler": "0x004B4370",
+   "handler_bytes": 1600,
+   "kind": "culture: roam + venue",
+   "notes": "shared culture handler; coverage 0x004A6210 (b+0x6D)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 9,
+   "text_id": 346,
+   "flags": "0x101",
+   "name_group": 297,
+   "sprite_groups": [
+    27140,
+    27140,
+    27141
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    3072
+   ],
+   "callees": [
+    "0x491630",
+    "0x491ef0",
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 74,
+   "enum": "FIG_INVENTOR",
+   "model_name": "@{t:64:74}",
+   "model_speed": 6,
+   "handler": "0x004B4370",
+   "handler_bytes": 1600,
+   "kind": "culture: roam + venue",
+   "notes": "shared culture handler; coverage 0x004A6470 (b+0x71)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 10,
+   "text_id": 347,
+   "flags": "0x101",
+   "name_group": 298,
+   "sprite_groups": [
+    27199,
+    27199,
+    27200
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    3072
+   ],
+   "callees": [
+    "0x491630",
+    "0x491ef0",
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 75,
+   "enum": "FIG_CURATOR",
+   "model_name": "@{t:64:75}",
+   "model_speed": 6,
+   "handler": "0x004B4370",
+   "handler_bytes": 1600,
+   "kind": "culture: roam + venue",
+   "notes": "shared culture handler; coverage 0x004A60E0 (b+0x6C)",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": 11,
+   "text_id": 348,
+   "flags": "0x101",
+   "name_group": 361,
+   "sprite_groups": [
+    27201,
+    27201,
+    27202
+   ],
+   "route_modes_set": [
+    1
+   ],
+   "max_roam_set": [
+    3072
+   ],
+   "callees": [
+    "0x491630",
+    "0x491ef0",
+    "FUN_004a39d0",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d6790",
+    "FUN_004d8990",
+    "FUN_004d9750",
+    "FUN_004d9980",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 76,
+   "enum": "FIG_CATTLE",
+   "model_name": "@{t:28:220}",
+   "model_speed": 5,
+   "handler": "0x004CB350",
+   "handler_bytes": 1968,
+   "kind": "animal (grazing)",
+   "notes": "cattle",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": -1,
+   "flags": "0x0",
+   "name_group": -1,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    15
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "0x4caa60",
+    "0x4f8d80",
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d7340",
+    "FUN_004d8990",
+    "FUN_004f83e0",
+    "FUN_004f8b90",
+    "FUN_005af770",
+    "figure_graze",
+    "figure_type_value"
+   ]
+  },
+  {
+   "type": 77,
+   "enum": "FIG_RANCHER",
+   "model_name": "@{t:64:77}",
+   "model_speed": 6,
+   "handler": "0x004CBB00",
+   "handler_bytes": 1632,
+   "kind": "herder",
+   "notes": "rancher",
+   "image_fn": "0x004CC3D0",
+   "coverage_channel": -1,
+   "text_id": 342,
+   "flags": "0x101",
+   "name_group": 294,
+   "sprite_groups": [
+    0,
+    0,
+    0
+   ],
+   "route_modes_set": [
+    0
+   ],
+   "max_roam_set": [],
+   "callees": [
+    "FUN_004d1170",
+    "FUN_004d5f10",
+    "FUN_004d60b0",
+    "FUN_004d8990",
+    "FUN_004e3220",
+    "FUN_004f7ff0",
+    "FUN_004f9c50",
+    "FUN_005af770",
+    "figure_type_value"
+   ]
+  }
+ ]
+}

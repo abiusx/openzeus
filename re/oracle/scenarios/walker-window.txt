@@ -1,0 +1,9 @@
+# Walker window figure crops (FUN_00572FE0; docs/play/info.md "Walker window"): "See a working city" (800x600), camera
+# poked to the waiting carts as cartwait.txt (DIR/poke.txt = "20 da2f64 4 96", "20 da2f68 4 240", "23 da2f64 4 96",
+# "23 da2f68 4 240"; ZEUS_POKE=DIR/poke.txt, --state-log /dev/null, empty --write-dir, --seconds 77; replace DIR).
+# b.bmp = the map at 60 s; right click on the fishery cart waiting at tile (116,149) (tile point (120,405)) -> s.bmp:
+# the land window (road) at (68,32), its one figure box (RIMS 52x52 at (93,77), crop at (95,79)). Result
+# (re/oracle/runs/1D-walker): the crop is b.bmp's 48x48 at (144,391), 100 % equal = the pusher picture's top-left
+# (SprMain 4729, NE, frame 0 at crop (0,0)); pushers at tile point + (31,25) (bugs.md 251).
+# Play: tools/walker_crop_check.mjs + tools/walker_crop_compare.py (docs/play/info.md "Walker window").
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 57.5:move 300,12; 60:shot DIR/b.bmp; 69:move 150,420; 70:rclick 150,420; 76:shot DIR/s.bmp

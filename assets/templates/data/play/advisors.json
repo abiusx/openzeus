@@ -1,0 +1,4717 @@
+{
+ "version": 1,
+ "note": "advisor screens (docs/play/advisors.md); tools/play_advisors.py",
+ "hygiene": {
+  "evidence": "exe FUN_00594080 (+ FUN_00594000 outbreak words, FUN_00594040 crime words); oracle runs/advisors/p4.bmp",
+  "title": {
+   "pos": [
+    30,
+    12
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    56,
+    0
+   ]
+  },
+  "health": {
+   "pos": [
+    35,
+    54
+   ],
+   "text_base": [
+    56,
+    24
+   ],
+   "rule": "24 + health/10",
+   "font": "SPR_FONTS_9LTBK",
+   "font_low": "SPR_FONTS_9LTYEL",
+   "low_below": 30
+  },
+  "inset1": {
+   "pos": [
+    35,
+    72
+   ],
+   "cols": 32,
+   "rows": 3
+  },
+  "healer": {
+   "pos": [
+    40,
+    84
+   ],
+   "font": "SPR_FONTS_9DKBU",
+   "text_base": [
+    56,
+    35
+   ],
+   "rule": "35 + (healer people*100/population)/10"
+  },
+  "food": {
+   "pos": [
+    40,
+    100
+   ],
+   "font": "SPR_FONTS_9DKBU",
+   "text_base": [
+    56,
+    46
+   ],
+   "rule": "fed == 0: 46; else 46 + clamp((fed*100/population)/10, 1, 10)"
+  },
+  "crises": {
+   "pos": [
+    45,
+    134
+   ],
+   "font": "SPR_FONTS_9LTBU",
+   "text": [
+    56,
+    57
+   ]
+  },
+  "plague": {
+   "pos": [
+    45,
+    166
+   ],
+   "font": "SPR_FONTS_9LTBK",
+   "text_base": [
+    56,
+    58
+   ],
+   "rule": "0: 58, <3: 59, <6: 60, <9: 61, else 62"
+  },
+  "infected": {
+   "pos": [
+    45,
+    182
+   ],
+   "font": "SPR_FONTS_9LTBK",
+   "pre": [
+    56,
+    68
+   ],
+   "post": [
+    56,
+    69
+   ],
+   "post_one": [
+    56,
+    70
+   ]
+  },
+  "safety": {
+   "pos": [
+    30,
+    202
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    56,
+    71
+   ]
+  },
+  "inset2": {
+   "pos": [
+    40,
+    240
+   ],
+   "cols": 32,
+   "rows": 3
+  },
+  "maintenance": {
+   "pos": [
+    45,
+    252
+   ],
+   "font": "SPR_FONTS_9DKBU",
+   "text": [
+    56,
+    72
+   ],
+   "text_one": [
+    56,
+    73
+   ]
+  },
+  "watchposts": {
+   "pos": [
+    45,
+    268
+   ],
+   "font": "SPR_FONTS_9DKBU",
+   "text": [
+    56,
+    74
+   ],
+   "text_one": [
+    56,
+    75
+   ]
+  },
+  "crimes": {
+   "pos": [
+    50,
+    312
+   ],
+   "font": "SPR_FONTS_9LTBU",
+   "text": [
+    56,
+    76
+   ]
+  },
+  "crime_rows": [
+   {
+    "key": "vandalisms",
+    "pos": [
+     50,
+     328
+    ],
+    "text": [
+     56,
+     77
+    ]
+   },
+   {
+    "key": "thefts",
+    "pos": [
+     50,
+     344
+    ],
+    "text": [
+     56,
+     78
+    ]
+   },
+   {
+    "key": "muggings",
+    "pos": [
+     50,
+     360
+    ],
+    "text": [
+     56,
+     79
+    ]
+   }
+  ],
+  "crime_font": "SPR_FONTS_9LTBK",
+  "crime_word_base": [
+   56,
+   80
+  ],
+  "crime_word_rule": "0: 80 No, <3: 81, <6: 82, <9: 83, else 84"
+ },
+ "culture": {
+  "evidence": "exe FUN_00594B70; oracle runs/advisors/p6.bmp",
+  "title": {
+   "pos": [
+    30,
+    12
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    58,
+    0
+   ]
+  },
+  "headers": [
+   {
+    "pos": [
+     35,
+     54
+    ],
+    "font": "SPR_FONTS_11C",
+    "text": [
+     58,
+     25
+    ]
+   },
+   {
+    "pos": [
+     335,
+     54
+    ],
+    "font": "SPR_FONTS_11C",
+    "text": [
+     58,
+     26
+    ]
+   }
+  ],
+  "inset": {
+   "pos": [
+    35,
+    70
+   ],
+   "cols": 28,
+   "rows": 6
+  },
+  "rows": [
+   {
+    "key": "podium",
+    "cov": "philosophy",
+    "text": [
+     58,
+     27
+    ],
+    "text_one": [
+     58,
+     28
+    ]
+   },
+   {
+    "key": "gymnasium",
+    "cov": "athletics",
+    "text": [
+     58,
+     29
+    ],
+    "text_one": [
+     58,
+     30
+    ]
+   },
+   {
+    "key": "theatre",
+    "cov": "drama",
+    "text": [
+     58,
+     31
+    ],
+    "text_one": [
+     58,
+     32
+    ]
+   },
+   {
+    "key": "stadium",
+    "cov": null,
+    "text": [
+     58,
+     33
+    ],
+    "text_one": [
+     58,
+     33
+    ]
+   }
+  ],
+  "row_x": 45,
+  "row_y": 86,
+  "row_step": 16,
+  "font": "SPR_FONTS_11C2",
+  "cov_x": 335,
+  "cov_w": 100,
+  "cov_words": [
+   [
+    0,
+    55
+   ],
+   [
+    1,
+    57
+   ],
+   [
+    20,
+    59
+   ],
+   [
+    40,
+    60
+   ],
+   [
+    60,
+    62
+   ],
+   [
+    80,
+    64
+   ],
+   [
+    100,
+    66
+   ]
+  ],
+  "cov_rule": "coverage % (people reached / people in houses): <1 None 55, <20 57, <40 59, <60 60, <80 62, <100 64, else 66"
+ },
+ "finance": {
+  "evidence": "exe 0x005951F0; oracle runs/advisors/p5.bmp",
+  "title": {
+   "pos": [
+    20,
+    12
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    60,
+    0
+   ]
+  },
+  "font": "SPR_FONTS_11C",
+  "cols": [
+   250,
+   390
+  ],
+  "label_x": 40,
+  "head_x": 20,
+  "headers": [
+   {
+    "pos": [
+     230,
+     57
+    ],
+    "text": [
+     60,
+     6
+    ]
+   },
+   {
+    "pos": [
+     360,
+     57
+    ],
+    "text": [
+     60,
+     7
+    ]
+   }
+  ],
+  "income": {
+   "y": 72,
+   "text": [
+    60,
+    10
+   ]
+  },
+  "income_rows": [
+   {
+    "key": "taxes",
+    "y": 87,
+    "text": [
+     60,
+     8
+    ]
+   },
+   {
+    "key": "exports",
+    "y": 102,
+    "text": [
+     60,
+     9
+    ]
+   },
+   {
+    "key": "gifts",
+    "y": 117,
+    "text": [
+     60,
+     20
+    ]
+   },
+   {
+    "key": "mint",
+    "y": 132,
+    "text": [
+     60,
+     24
+    ]
+   },
+   {
+    "key": "tribute_in",
+    "y": 147,
+    "text": [
+     60,
+     16
+    ]
+   }
+  ],
+  "hippodrome": {
+   "key": "races",
+   "y": 162,
+   "text": [
+    60,
+    27
+   ],
+   "rule": "only when the hippodrome is allowed (0x00902D88)"
+  },
+  "income_rule_y": 175,
+  "income_total": {
+   "y": 180,
+   "text": [
+    60,
+    25
+   ]
+  },
+  "shift_without_hippodrome": -15,
+  "expenses": {
+   "y": 220,
+   "text": [
+    60,
+    17
+   ]
+  },
+  "expense_rows": [
+   {
+    "key": "imports",
+    "y": 235,
+    "text": [
+     60,
+     11
+    ]
+   },
+   {
+    "key": "wages",
+    "y": 250,
+    "text": [
+     60,
+     12
+    ]
+   },
+   {
+    "key": "construction",
+    "y": 265,
+    "text": [
+     60,
+     13
+    ]
+   },
+   {
+    "key": "tribute_out",
+    "y": 280,
+    "text": [
+     60,
+     21
+    ]
+   },
+   {
+    "key": "aid",
+    "y": 295,
+    "text": [
+     60,
+     22
+    ]
+   }
+  ],
+  "expense_rule_y": 308,
+  "expense_total": {
+   "y": 313,
+   "text": [
+    60,
+    26
+   ]
+  },
+  "net": {
+   "y": 335,
+   "text": [
+    60,
+    18
+   ]
+  },
+  "balance": {
+   "y": 358,
+   "text": [
+    60,
+    19
+   ]
+  },
+  "rules": [
+   [
+    250,
+    320
+   ],
+   [
+    390,
+    460
+   ]
+  ],
+  "rule_note": "FUN_00509700 colour 0: 1-px black line x0..x1"
+ },
+ "husbandry": {
+  "evidence": "exe FUN_00597720 (estimate FUN_00518FF0, imports FUN_00518E40); oracle runs/advisors/p1.bmp",
+  "title": {
+   "pos": [
+    30,
+    12
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    57,
+    0
+   ]
+  },
+  "head": {
+   "pos": [
+    50,
+    45
+   ],
+   "font": "SPR_FONTS_11C",
+   "text": [
+    57,
+    29
+   ]
+  },
+  "head_loads": {
+   "pos": [
+    200,
+    45
+   ],
+   "width": 150,
+   "font": "SPR_FONTS_11C",
+   "text": [
+    57,
+    30
+   ],
+   "rule": "paragraph_draw_centered 0x005086E0"
+  },
+  "head_people": {
+   "pos": [
+    350,
+    45
+   ],
+   "width": 150,
+   "font": "SPR_FONTS_11C",
+   "text": [
+    57,
+    31
+   ]
+  },
+  "font": "SPR_FONTS_11C",
+  "row_y": 100,
+  "row_step": 16,
+  "count_x": 15,
+  "name_x": 60,
+  "loads_x": 200,
+  "people_x": 350,
+  "col_w": 140,
+  "imported": [
+   57,
+   41
+  ],
+  "total": [
+   57,
+   42
+  ],
+  "none": {
+   "pos": [
+    50,
+    100
+   ],
+   "width": 140,
+   "text": [
+    57,
+    44
+   ]
+  },
+  "rule": "rows: resources 1..8 with a working producer (count, loads/100, people), corrals (57:40) after 3; then imports '57:41 ' + 23:res; total at row_y + (rows+1)*16: loads = sum(loads*100)/100"
+ },
+ "mythology": {
+  "evidence": "exe FUN_00596FB0, FUN_00595F20, FUN_004F0130 (state texts), FUN_004F00A0 (god mood); oracle p7.bmp",
+  "title": {
+   "pos": [
+    30,
+    12
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    59,
+    0
+   ]
+  },
+  "worship": {
+   "pos": [
+    35,
+    44
+   ],
+   "font": "SPR_FONTS_11C",
+   "text": [
+    59,
+    18
+   ]
+  },
+  "inset": {
+   "pos": [
+    35,
+    66
+   ],
+   "cols": 29
+  },
+  "row_y": 71,
+  "row_step": 20,
+  "god_x": 40,
+  "god_font": "SPR_FONTS_11C2",
+  "state_x": 190,
+  "others": [
+   59,
+   41
+  ],
+  "unfriendly": [
+   59,
+   50
+  ],
+  "label_x": 40,
+  "label_font": "SPR_FONTS_11C",
+  "name_font": "SPR_FONTS_11LTBLUE",
+  "state_fonts": {
+   "4": "SPR_FONTS_11C3",
+   "5": "SPR_FONTS_11CB"
+  },
+  "pct_format": "%s %d %% %s (59:31, percent, 59:32)",
+  "height_rule": "h = 0x52 or 20n+99; + (others+1)*16; + (unfriendly+1)*16; + 10 if unfriendly or heroes; rows = h/16 + 2"
+ },
+ "population": {
+  "evidence": "exe FUN_00593740, FUN_00593A80, FUN_00593D20, FUN_00593EE0 (scale), FUN_00567710/FUN_00567750, button FUN_00593A30 (rims) + hit table 0x005EE5A8 (wm_sub_408d70 toggles 0x00665E30); oracle p0.bmp",
+  "inset": {
+   "pos": [
+    49,
+    59
+   ],
+   "cols": 27,
+   "rows": 13
+  },
+  "title": {
+   "pos": [
+    30,
+    12
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    [
+     55,
+     0
+    ],
+    [
+     55,
+     1
+    ]
+   ]
+  },
+  "caption": {
+   "pos": [
+    60,
+    280
+   ],
+   "width": 400,
+   "font": "SPR_FONTS_11C",
+   "text": [
+    [
+     55,
+     4
+    ],
+    [
+     55,
+     5
+    ]
+   ]
+  },
+  "button": {
+   "pos": [
+    49,
+    310
+   ],
+   "width": 432,
+   "font": "SPR_FONTS_11C",
+   "text": [
+    [
+     55,
+     3
+    ],
+    [
+     55,
+     2
+    ]
+   ],
+   "rims": [
+    49,
+    304,
+    432,
+    20
+   ],
+   "hit": [
+    49,
+    310,
+    481,
+    330
+   ]
+  },
+  "graph": [
+   64,
+   64
+  ],
+  "scale_x": -66,
+  "scale_w": 60,
+  "scale_y": [
+   -3,
+   96,
+   196
+  ],
+  "label_font": "SPR_FONTS",
+  "month_x": [
+   -20,
+   380
+  ],
+  "label_y": 210,
+  "bar_bottom": 200,
+  "fill": [
+   248,
+   0,
+   0
+  ],
+  "fill_note": "0xF800 (RGB565 red) then a black outline",
+  "society_labels": [
+   {
+    "x": -80,
+    "width": 200,
+    "text": [
+     55,
+     6
+    ]
+   },
+   {
+    "x": 280,
+    "width": 200,
+    "text": [
+     55,
+     7
+    ]
+   }
+  ]
+ },
+ "aesthetics": {
+  "evidence": "exe FUN_00596180, FUN_0051BD00/FUN_0051BDD0 (lines), wm_sub_4663b0 (type names); oracle p9.bmp",
+  "title": {
+   "pos": [
+    32,
+    12
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    133,
+    0
+   ]
+  },
+  "sub": {
+   "pos": [
+    32,
+    42
+   ],
+   "font": "SPR_FONTS_11LTBLUE",
+   "text": [
+    133,
+    0
+   ]
+  },
+  "inset": {
+   "pos": [
+    32,
+    62
+   ],
+   "cols": 29,
+   "rows": 14
+  },
+  "comm": {
+   "pos": [
+    32,
+    296
+   ],
+   "font": "SPR_FONTS_11C",
+   "text": [
+    133,
+    1
+   ]
+  },
+  "none": {
+   "font": "SPR_FONTS_9DKYEL",
+   "text": [
+    133,
+    2
+   ]
+  },
+  "line_x": 42,
+  "line_dy": 14,
+  "line_step": 12,
+  "per_col": 8,
+  "col_step": 140,
+  "line_font": "SPR_FONTS_9LTBU",
+  "one": [
+   133,
+   3
+  ],
+  "many": [
+   133,
+   4
+  ],
+  "type_text": {
+   "1": 5,
+   "2": 7,
+   "3": 10,
+   "5": 8,
+   "6": 11,
+   "7": 6,
+   "8": 9,
+   "9": 12,
+   "4": 13
+  },
+  "order": [
+   1,
+   2,
+   3,
+   5,
+   6,
+   7,
+   8,
+   9,
+   4
+  ],
+  "order_note": "types 0..8 except 4, 9 (none for 0); god types (none here); 9; 4"
+ },
+ "trade": {
+  "evidence": "exe FUN_005BAD80, FUN_005BAEF0, rebuild_goods_lists 0x005BAAF0, hit tables 0x0065BAD0 / 0x0065BCB0 (handlers 0x005BA720 go to the post, 0x005BA7D0 more); oracle p3.bmp",
+  "title": {
+   "pos": [
+    10,
+    12
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    54,
+    0
+   ]
+  },
+  "prices": {
+   "pos": [
+    115,
+    39
+   ],
+   "width": 100,
+   "font": "SPR_FONTS_11LTBLUE",
+   "text": [
+    54,
+    9
+   ]
+  },
+  "inset": {
+   "pos": [
+    16,
+    52
+   ],
+   "cols": 35,
+   "rows": 23
+  },
+  "row_y": 57,
+  "row_step": 22,
+  "max_rows": 17,
+  "icon_x": 22,
+  "text_dy": 4,
+  "name_x": 44,
+  "price_x": 115,
+  "price_w": 100,
+  "state_x": 204,
+  "city_x": 340,
+  "more_x": 450,
+  "more_text_x": 454,
+  "font": "SPR_FONTS_11C2",
+  "city_font": "SPR_FONTS_11CB",
+  "city_hover": "SPR_FONTS_11C2",
+  "city_off": "SPR_FONTS_11C3",
+  "city_rect": [
+   0,
+   0,
+   110,
+   22
+  ],
+  "more": [
+   54,
+   10
+  ],
+  "state_text": {
+   "5": 1,
+   "7": 2
+  },
+  "avail": {
+   "both": 5,
+   "sells": 3,
+   "buys": 4
+  }
+ },
+ "overview": {
+  "evidence": "exe FUN_005B7760 + status fns popularity_advisor_text 0x005B5AF0, 0x005B5FA0, 0x005B6260, 0x005B5E10, 0x005B6350, 0x005B65C0, 0x005B6690 (unrest 0x00FEB544 from 0x00519880), 0x005B6730, 0x005B6830, 0x005B69D0, 0x005B6AE0; oracle p10.bmp",
+  "title": {
+   "pos": [
+    32,
+    12
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    61,
+    0
+   ]
+  },
+  "inset": {
+   "pos": [
+    32,
+    40
+   ],
+   "cols": 33,
+   "rows": 16
+  },
+  "bullet_x": 40,
+  "label_x": 55,
+  "status_x": 189,
+  "label_font": "SPR_FONTS_11C2",
+  "para_w": 394,
+  "rows": [
+   {
+    "key": "popularity",
+    "y": 56,
+    "label": 1
+   },
+   {
+    "key": "migration",
+    "y": 92,
+    "label": 2
+   },
+   {
+    "key": "food_production",
+    "y": 128,
+    "label": 3
+   },
+   {
+    "key": "food_level",
+    "y": 146,
+    "label": 4
+   },
+   {
+    "key": "employment",
+    "y": 164,
+    "label": 5
+   },
+   {
+    "key": "hygiene",
+    "y": 182,
+    "label": 6
+   },
+   {
+    "key": "unrest",
+    "y": 200,
+    "label": 7
+   },
+   {
+    "key": "finances",
+    "y": 218,
+    "label": 8
+   },
+   {
+    "key": "culture",
+    "y": 236,
+    "label": 9
+   },
+   {
+    "key": "mythology",
+    "y": 254,
+    "label": 11
+   },
+   {
+    "key": "security",
+    "y": 272,
+    "label": 12
+   }
+  ],
+  "second_y": 74,
+  "requests": {
+   "pos": [
+    35,
+    299
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    61,
+    195
+   ]
+  },
+  "hint": {
+   "y": 310,
+   "font": "SPR_FONTS_11C",
+   "text": [
+    61,
+    207
+   ]
+  },
+  "req_frame": {
+   "pos": [
+    35,
+    331
+   ],
+   "cols": 33,
+   "rows": 12
+  },
+  "req": {
+   "icon_y": 341,
+   "text_y": 345,
+   "step": 23,
+   "max": 8,
+   "goods_dx": 22,
+   "amount_dx": 48,
+   "good_dx": 78,
+   "city_dx": 168,
+   "class_dx": 253,
+   "stock_dx": 328,
+   "due_dx": 448,
+   "more": {
+    "width": 130,
+    "text": [
+     61,
+     196
+    ]
+   },
+   "quest": {
+    "god_dx": 26,
+    "hero_dx": 76,
+    "title_dx": 166,
+    "godname_dx": 423,
+    "fonts": [
+     "3",
+     "5"
+    ]
+   }
+  },
+  "fonts": {
+   "3": "SPR_FONTS_11C2",
+   "4": "SPR_FONTS_11C3",
+   "5": "SPR_FONTS_11CB",
+   "8": "SPR_FONTS_9B",
+   "13": "SPR_FONTS_9DKBU",
+   "14": "SPR_FONTS_9DKYEL"
+  }
+ },
+ "military": {
+  "evidence": "exe FUN_00591C30 (+ FUN_00591610 status, FUN_0051ABE0 type icon, FUN_005917A0 thin button, FUN_00591680 crew); oracle p8.bmp",
+  "army": {
+   "pos": [
+    20,
+    12
+   ],
+   "width": 280,
+   "font": "SPR_FONTS_11C",
+   "text": [
+    51,
+    13
+   ]
+  },
+  "col_x": 20,
+  "col_cols": 17,
+  "first_y": 28,
+  "head_dx": 5,
+  "troops_x": 194,
+  "head_font": "SPR_FONTS_9DKBU",
+  "row_dy": 17,
+  "row_step": 16,
+  "sections": [
+   {
+    "type": "horseman",
+    "text": [
+     51,
+     14
+    ]
+   },
+   {
+    "type": "hoplite",
+    "text": [
+     51,
+     15
+    ]
+   },
+   {
+    "type": "rabble",
+    "text": [
+     51,
+     16
+    ]
+   }
+  ],
+  "troops": [
+   51,
+   17
+  ],
+  "flag_dx": 5,
+  "icon_x": 53,
+  "name_dx": 54,
+  "name_font": "SPR_FONTS_9B",
+  "status_font": "SPR_FONTS_9LTBK",
+  "status_plain": "SPR_FONTS_9B",
+  "gap": 32,
+  "right_x": 300,
+  "navy": {
+   "text": [
+    51,
+    32
+   ],
+   "y": 12,
+   "inset_y": 28,
+   "rows": 7,
+   "row_y": 33
+  },
+  "other": {
+   "text": [
+    51,
+    54
+   ],
+   "y": 145,
+   "inset_y": 161,
+   "rows": 12,
+   "head_y": 166,
+   "row_y": 178,
+   "text_merc": [
+    51,
+    67
+   ]
+  },
+  "myth": {
+   "inset_dy": 192,
+   "rows": 6,
+   "head_dy": 197,
+   "row_dy": 209,
+   "text": [
+    51,
+    68
+   ]
+  },
+  "none": [
+   58,
+   55
+  ],
+  "none_font": "SPR_FONTS_9B",
+  "lines": {
+   "bullet_x": 41,
+   "y": [
+    486,
+    506,
+    526
+   ],
+   "text_x": 61,
+   "count_x": 53,
+   "in_dx": 61,
+   "comp_dx": 51,
+   "tri_dx": 191,
+   "font": "SPR_FONTS_11C"
+  },
+  "tables": {
+   "horseman": [
+    [
+     0,
+     0,
+     170,
+     16
+    ],
+    [
+     188,
+     0,
+     262,
+     16
+    ],
+    [
+     0,
+     16,
+     170,
+     32
+    ],
+    [
+     188,
+     16,
+     262,
+     32
+    ],
+    [
+     0,
+     32,
+     170,
+     48
+    ],
+    [
+     188,
+     32,
+     262,
+     48
+    ],
+    [
+     0,
+     48,
+     170,
+     64
+    ],
+    [
+     188,
+     48,
+     262,
+     64
+    ],
+    [
+     0,
+     64,
+     170,
+     80
+    ],
+    [
+     188,
+     64,
+     262,
+     80
+    ],
+    [
+     0,
+     80,
+     170,
+     96
+    ],
+    [
+     188,
+     80,
+     262,
+     96
+    ],
+    [
+     0,
+     96,
+     170,
+     112
+    ],
+    [
+     188,
+     96,
+     262,
+     112
+    ],
+    [
+     0,
+     112,
+     170,
+     128
+    ],
+    [
+     188,
+     112,
+     262,
+     128
+    ],
+    [
+     0,
+     128,
+     170,
+     144
+    ],
+    [
+     188,
+     128,
+     262,
+     144
+    ],
+    [
+     0,
+     144,
+     170,
+     160
+    ],
+    [
+     188,
+     144,
+     262,
+     160
+    ],
+    [
+     0,
+     160,
+     170,
+     176
+    ],
+    [
+     188,
+     160,
+     262,
+     176
+    ],
+    [
+     0,
+     176,
+     170,
+     192
+    ],
+    [
+     188,
+     176,
+     262,
+     192
+    ],
+    [
+     0,
+     192,
+     170,
+     208
+    ],
+    [
+     188,
+     192,
+     262,
+     208
+    ],
+    [
+     0,
+     208,
+     170,
+     224
+    ],
+    [
+     188,
+     208,
+     262,
+     224
+    ],
+    [
+     0,
+     224,
+     170,
+     240
+    ],
+    [
+     188,
+     224,
+     262,
+     240
+    ],
+    [
+     0,
+     240,
+     170,
+     256
+    ],
+    [
+     188,
+     240,
+     262,
+     256
+    ],
+    [
+     0,
+     256,
+     170,
+     272
+    ],
+    [
+     188,
+     256,
+     262,
+     272
+    ],
+    [
+     0,
+     272,
+     170,
+     288
+    ],
+    [
+     188,
+     272,
+     262,
+     288
+    ],
+    [
+     0,
+     288,
+     170,
+     304
+    ],
+    [
+     188,
+     288,
+     262,
+     304
+    ],
+    [
+     0,
+     304,
+     170,
+     320
+    ],
+    [
+     188,
+     304,
+     262,
+     320
+    ]
+   ],
+   "hoplite": [
+    [
+     0,
+     0,
+     170,
+     16
+    ],
+    [
+     188,
+     0,
+     262,
+     16
+    ],
+    [
+     0,
+     16,
+     170,
+     32
+    ],
+    [
+     188,
+     16,
+     262,
+     32
+    ],
+    [
+     0,
+     32,
+     170,
+     48
+    ],
+    [
+     188,
+     32,
+     262,
+     48
+    ],
+    [
+     0,
+     48,
+     170,
+     64
+    ],
+    [
+     188,
+     48,
+     262,
+     64
+    ],
+    [
+     0,
+     64,
+     170,
+     80
+    ],
+    [
+     188,
+     64,
+     262,
+     80
+    ],
+    [
+     0,
+     80,
+     170,
+     96
+    ],
+    [
+     188,
+     80,
+     262,
+     96
+    ],
+    [
+     0,
+     96,
+     170,
+     112
+    ],
+    [
+     188,
+     96,
+     262,
+     112
+    ],
+    [
+     0,
+     112,
+     170,
+     128
+    ],
+    [
+     188,
+     112,
+     262,
+     128
+    ],
+    [
+     0,
+     128,
+     170,
+     144
+    ],
+    [
+     188,
+     128,
+     262,
+     144
+    ],
+    [
+     0,
+     144,
+     170,
+     160
+    ],
+    [
+     188,
+     144,
+     262,
+     160
+    ],
+    [
+     0,
+     160,
+     170,
+     176
+    ],
+    [
+     188,
+     160,
+     262,
+     176
+    ],
+    [
+     0,
+     176,
+     170,
+     192
+    ],
+    [
+     188,
+     176,
+     262,
+     192
+    ],
+    [
+     0,
+     192,
+     170,
+     208
+    ],
+    [
+     188,
+     192,
+     262,
+     208
+    ],
+    [
+     0,
+     208,
+     170,
+     224
+    ],
+    [
+     188,
+     208,
+     262,
+     224
+    ],
+    [
+     0,
+     224,
+     170,
+     240
+    ],
+    [
+     188,
+     224,
+     262,
+     240
+    ],
+    [
+     0,
+     240,
+     170,
+     256
+    ],
+    [
+     188,
+     240,
+     262,
+     256
+    ],
+    [
+     0,
+     256,
+     170,
+     272
+    ],
+    [
+     188,
+     256,
+     262,
+     272
+    ],
+    [
+     0,
+     272,
+     170,
+     288
+    ],
+    [
+     188,
+     272,
+     262,
+     288
+    ],
+    [
+     0,
+     288,
+     170,
+     304
+    ],
+    [
+     188,
+     288,
+     262,
+     304
+    ],
+    [
+     0,
+     304,
+     170,
+     320
+    ],
+    [
+     188,
+     304,
+     262,
+     320
+    ]
+   ],
+   "rabble": [
+    [
+     0,
+     0,
+     170,
+     16
+    ],
+    [
+     188,
+     0,
+     262,
+     16
+    ],
+    [
+     0,
+     16,
+     170,
+     32
+    ],
+    [
+     188,
+     16,
+     262,
+     32
+    ],
+    [
+     0,
+     32,
+     170,
+     48
+    ],
+    [
+     188,
+     32,
+     262,
+     48
+    ],
+    [
+     0,
+     48,
+     170,
+     64
+    ],
+    [
+     188,
+     48,
+     262,
+     64
+    ],
+    [
+     0,
+     64,
+     170,
+     80
+    ],
+    [
+     188,
+     64,
+     262,
+     80
+    ],
+    [
+     0,
+     80,
+     170,
+     96
+    ],
+    [
+     188,
+     80,
+     262,
+     96
+    ],
+    [
+     0,
+     96,
+     170,
+     112
+    ],
+    [
+     188,
+     96,
+     262,
+     112
+    ],
+    [
+     0,
+     112,
+     170,
+     128
+    ],
+    [
+     188,
+     112,
+     262,
+     128
+    ],
+    [
+     0,
+     128,
+     170,
+     144
+    ],
+    [
+     188,
+     128,
+     262,
+     144
+    ],
+    [
+     0,
+     144,
+     170,
+     160
+    ],
+    [
+     188,
+     144,
+     262,
+     160
+    ],
+    [
+     0,
+     160,
+     170,
+     176
+    ],
+    [
+     188,
+     160,
+     262,
+     176
+    ],
+    [
+     0,
+     176,
+     170,
+     192
+    ],
+    [
+     188,
+     176,
+     262,
+     192
+    ],
+    [
+     0,
+     192,
+     170,
+     208
+    ],
+    [
+     188,
+     192,
+     262,
+     208
+    ],
+    [
+     0,
+     208,
+     170,
+     224
+    ],
+    [
+     188,
+     208,
+     262,
+     224
+    ],
+    [
+     0,
+     224,
+     170,
+     240
+    ],
+    [
+     188,
+     224,
+     262,
+     240
+    ],
+    [
+     0,
+     240,
+     170,
+     256
+    ],
+    [
+     188,
+     240,
+     262,
+     256
+    ],
+    [
+     0,
+     256,
+     170,
+     272
+    ],
+    [
+     188,
+     256,
+     262,
+     272
+    ],
+    [
+     0,
+     272,
+     170,
+     288
+    ],
+    [
+     188,
+     272,
+     262,
+     288
+    ],
+    [
+     0,
+     288,
+     170,
+     304
+    ],
+    [
+     188,
+     288,
+     262,
+     304
+    ],
+    [
+     0,
+     304,
+     170,
+     320
+    ],
+    [
+     188,
+     304,
+     262,
+     320
+    ]
+   ],
+   "merc": [
+    [
+     0,
+     0,
+     188,
+     16
+    ],
+    [
+     188,
+     0,
+     262,
+     16
+    ],
+    [
+     0,
+     16,
+     188,
+     32
+    ],
+    [
+     188,
+     16,
+     262,
+     32
+    ],
+    [
+     0,
+     32,
+     188,
+     48
+    ],
+    [
+     188,
+     32,
+     262,
+     48
+    ],
+    [
+     0,
+     48,
+     188,
+     64
+    ],
+    [
+     188,
+     48,
+     262,
+     64
+    ],
+    [
+     0,
+     64,
+     188,
+     80
+    ],
+    [
+     188,
+     64,
+     262,
+     80
+    ],
+    [
+     0,
+     80,
+     188,
+     96
+    ],
+    [
+     188,
+     80,
+     262,
+     96
+    ],
+    [
+     0,
+     96,
+     188,
+     112
+    ],
+    [
+     188,
+     96,
+     262,
+     112
+    ],
+    [
+     0,
+     112,
+     188,
+     128
+    ],
+    [
+     188,
+     112,
+     262,
+     128
+    ],
+    [
+     0,
+     128,
+     188,
+     144
+    ],
+    [
+     188,
+     128,
+     262,
+     144
+    ],
+    [
+     0,
+     144,
+     188,
+     160
+    ],
+    [
+     188,
+     144,
+     262,
+     160
+    ],
+    [
+     0,
+     0,
+     170,
+     16
+    ],
+    [
+     188,
+     0,
+     262,
+     16
+    ],
+    [
+     0,
+     16,
+     170,
+     32
+    ],
+    [
+     188,
+     16,
+     262,
+     32
+    ],
+    [
+     0,
+     32,
+     170,
+     48
+    ],
+    [
+     188,
+     32,
+     262,
+     48
+    ],
+    [
+     0,
+     48,
+     170,
+     64
+    ],
+    [
+     188,
+     48,
+     262,
+     64
+    ],
+    [
+     0,
+     0,
+     150,
+     20
+    ],
+    [
+     150,
+     0,
+     464,
+     20
+    ],
+    [
+     0,
+     20,
+     150,
+     40
+    ],
+    [
+     150,
+     20,
+     464,
+     40
+    ],
+    [
+     0,
+     40,
+     150,
+     60
+    ],
+    [
+     150,
+     40,
+     464,
+     60
+    ],
+    [
+     0,
+     60,
+     150,
+     80
+    ],
+    [
+     150,
+     60,
+     464,
+     80
+    ],
+    [
+     0,
+     0,
+     464,
+     32
+    ],
+    [
+     0,
+     32,
+     464,
+     64
+    ],
+    [
+     0,
+     64,
+     464,
+     96
+    ],
+    [
+     0,
+     96,
+     464,
+     128
+    ]
+   ],
+   "myth": [
+    [
+     0,
+     0,
+     170,
+     16
+    ],
+    [
+     188,
+     0,
+     262,
+     16
+    ],
+    [
+     0,
+     16,
+     170,
+     32
+    ],
+    [
+     188,
+     16,
+     262,
+     32
+    ],
+    [
+     0,
+     32,
+     170,
+     48
+    ],
+    [
+     188,
+     32,
+     262,
+     48
+    ],
+    [
+     0,
+     48,
+     170,
+     64
+    ],
+    [
+     188,
+     48,
+     262,
+     64
+    ],
+    [
+     0,
+     0,
+     150,
+     20
+    ],
+    [
+     150,
+     0,
+     464,
+     20
+    ],
+    [
+     0,
+     20,
+     150,
+     40
+    ],
+    [
+     150,
+     20,
+     464,
+     40
+    ],
+    [
+     0,
+     40,
+     150,
+     60
+    ],
+    [
+     150,
+     40,
+     464,
+     60
+    ],
+    [
+     0,
+     60,
+     150,
+     80
+    ],
+    [
+     150,
+     60,
+     464,
+     80
+    ],
+    [
+     0,
+     0,
+     464,
+     32
+    ],
+    [
+     0,
+     32,
+     464,
+     64
+    ],
+    [
+     0,
+     64,
+     464,
+     96
+    ],
+    [
+     0,
+     96,
+     464,
+     128
+    ],
+    [
+     0,
+     128,
+     464,
+     160
+    ],
+    [
+     0,
+     160,
+     464,
+     192
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     123,
+     12
+    ],
+    [
+     0,
+     12,
+     123,
+     24
+    ],
+    [
+     0,
+     24,
+     123,
+     36
+    ],
+    [
+     0,
+     36,
+     123,
+     48
+    ],
+    [
+     0,
+     48,
+     123,
+     60
+    ],
+    [
+     0,
+     60,
+     123,
+     72
+    ],
+    [
+     0,
+     72,
+     123,
+     84
+    ],
+    [
+     0,
+     84,
+     123,
+     96
+    ],
+    [
+     140,
+     0,
+     263,
+     12
+    ],
+    [
+     140,
+     12,
+     263,
+     24
+    ],
+    [
+     140,
+     24,
+     263,
+     36
+    ],
+    [
+     140,
+     36,
+     263,
+     48
+    ],
+    [
+     140,
+     48,
+     263,
+     60
+    ],
+    [
+     140,
+     60,
+     263,
+     72
+    ],
+    [
+     140,
+     72,
+     263,
+     84
+    ],
+    [
+     140,
+     84,
+     263,
+     96
+    ]
+   ],
+   "navy": [
+    [
+     0,
+     0,
+     170,
+     16
+    ],
+    [
+     188,
+     0,
+     262,
+     16
+    ],
+    [
+     0,
+     16,
+     170,
+     32
+    ],
+    [
+     188,
+     16,
+     262,
+     32
+    ],
+    [
+     0,
+     32,
+     170,
+     48
+    ],
+    [
+     188,
+     32,
+     262,
+     48
+    ],
+    [
+     0,
+     48,
+     170,
+     64
+    ],
+    [
+     188,
+     48,
+     262,
+     64
+    ],
+    [
+     0,
+     64,
+     170,
+     80
+    ],
+    [
+     188,
+     64,
+     262,
+     80
+    ],
+    [
+     0,
+     80,
+     115,
+     96
+    ],
+    [
+     188,
+     80,
+     262,
+     96
+    ],
+    [
+     0,
+     0,
+     188,
+     16
+    ],
+    [
+     188,
+     0,
+     262,
+     16
+    ],
+    [
+     0,
+     16,
+     188,
+     32
+    ],
+    [
+     188,
+     16,
+     262,
+     32
+    ],
+    [
+     0,
+     32,
+     188,
+     48
+    ],
+    [
+     188,
+     32,
+     262,
+     48
+    ],
+    [
+     0,
+     48,
+     188,
+     64
+    ],
+    [
+     188,
+     48,
+     262,
+     64
+    ]
+   ]
+  },
+  "tables_note": "pairs [name rect, status rect] per row (navy: [hull text rect, crew button rect])"
+ },
+ "sprites": {
+  "bullet": {
+   "file": "Zeus_Interface",
+   "index": 229,
+   "group": "SPR_BULLET_POINTS"
+  },
+  "flags": {
+   "file": "Zeus_Interface",
+   "index": 1377,
+   "group": "SPR_MIL_ADVISOR_FLAGS"
+  },
+  "types": {
+   "file": "Zeus_Interface",
+   "index": 1406,
+   "group": "SPR_MIL_SM_ADVISOR_TYPES"
+  },
+  "thin_button": {
+   "file": "Zeus_Interface",
+   "index": 1460,
+   "group": "SPR_THIN_BUTTON"
+  },
+  "request_open": {
+   "file": "Zeus_Interface",
+   "index": 615,
+   "group": "SPR_REQUEST_INCOMPLETE"
+  },
+  "request_done": {
+   "file": "Zeus_Interface",
+   "index": 619,
+   "group": "SPR_REQUEST_COMPLETE"
+  },
+  "god_icons": {
+   "file": "Zeus_General",
+   "index": 990,
+   "group": "SPR_GOD_QUEST_ICON"
+  },
+  "rims": {
+   "file": "Zeus_Interface",
+   "index": 548,
+   "group": "SPR_RIMS"
+  }
+ },
+ "sprites_note": "bullet: interface entry 152 (0x4C0/8); flags 26 + banner; type icons 0x217 (+0 horse, 1 hoplite, 2 rabble; mercenaries 0/5/4; +3 trireme); thin button 24 (+0 left, +4 middle, +8 right, +1 hover; 13 px a piece); requests 18 / 12; rims 123 (window_highlight_draw)",
+ "origin": "frame position = ((W-640)/2 + dx, (H-480)/2 + dy) (0x00F2A6AC/A8, set in app_init 0x0050B980 and FUN_0050BD20)",
+ "page_advisor": [
+  7,
+  9,
+  1,
+  6,
+  8,
+  12,
+  10,
+  11,
+  2,
+  15,
+  13
+ ],
+ "page_advisor_evidence": "exe 0x0063E488 (index = control-panel page)",
+ "advisors": {
+  "1": {
+   "draw": "0x005906C0",
+   "frame": [
+    -58,
+    -10,
+    35,
+    33
+   ],
+   "title": [
+    50,
+    0
+   ],
+   "title_text": "@{t:50:0}",
+   "implemented": true
+  },
+  "2": {
+   "draw": "0x00591C30",
+   "frame": [
+    -75,
+    -28,
+    37,
+    35
+   ],
+   "title": [
+    51,
+    0
+   ],
+   "title_text": "@{t:51:0}",
+   "implemented": true
+  },
+  "6": {
+   "draw": "0x005BAD80",
+   "frame": [
+    -80,
+    0,
+    37,
+    29
+   ],
+   "title": [
+    54,
+    0
+   ],
+   "title_text": "@{t:54:0}",
+   "implemented": true
+  },
+  "7": {
+   "draw": "0x00593740",
+   "frame": [
+    -55,
+    50,
+    35,
+    22
+   ],
+   "title": [
+    55,
+    0
+   ],
+   "title_text": "@{t:55:0}",
+   "implemented": true
+  },
+  "8": {
+   "draw": "0x00594080",
+   "frame": [
+    -80,
+    50,
+    36,
+    25
+   ],
+   "title": [
+    56,
+    0
+   ],
+   "title_text": "@{t:56:0}",
+   "implemented": true
+  },
+  "9": {
+   "draw": "0x00597720",
+   "frame": [
+    -30,
+    0,
+    32,
+    24
+   ],
+   "title": [
+    57,
+    0
+   ],
+   "title_text": "@{t:4:6}",
+   "implemented": true
+  },
+  "10": {
+   "draw": "0x00594B70",
+   "frame": [
+    -40,
+    50,
+    32,
+    13
+   ],
+   "title": [
+    58,
+    0
+   ],
+   "title_text": "@{t:44:129}",
+   "implemented": true
+  },
+  "11": {
+   "draw": "0x00596FB0",
+   "frame": [
+    -30,
+    0,
+    33,
+    27
+   ],
+   "title": [
+    59,
+    0
+   ],
+   "title_text": "@{t:4:10}",
+   "implemented": true
+  },
+  "12": {
+   "draw": "0x005951F0",
+   "frame": [
+    -30,
+    0,
+    33,
+    27
+   ],
+   "title": [
+    60,
+    0
+   ],
+   "title_text": "@{t:60:0}",
+   "implemented": true
+  },
+  "13": {
+   "draw": "0x005B7760",
+   "frame": [
+    -75,
+    -28,
+    37,
+    35
+   ],
+   "title": [
+    61,
+    0
+   ],
+   "title_text": "@{t:61:0}",
+   "implemented": true
+  },
+  "15": {
+   "draw": "0x00596180",
+   "frame": [
+    -30,
+    0,
+    33,
+    27
+   ],
+   "title": [
+    133,
+    0
+   ],
+   "title_text": "@{t:88:9}",
+   "implemented": true
+  }
+ },
+ "buttons": [
+  {
+   "name": "help",
+   "rect": [
+    11,
+    -7,
+    27,
+    27
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 533,
+    "group": "SPR_PANEL_ICONS"
+   },
+   "sprite_size": [
+    24,
+    24
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 533
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 534
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 535
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 536
+    }
+   },
+   "handler": "0x005169F0",
+   "y_rule": "(rows-2)*16 + rect.y"
+  },
+  {
+   "name": "exit",
+   "rect": [
+    11,
+    -7,
+    24,
+    24
+   ],
+   "sprite": {
+    "file": "Zeus_Interface",
+    "index": 537,
+    "group": "SPR_PANEL_ICONS"
+   },
+   "sprite_size": [
+    24,
+    24
+   ],
+   "states": {
+    "normal": {
+     "file": "Zeus_Interface",
+     "index": 537
+    },
+    "hover": {
+     "file": "Zeus_Interface",
+     "index": 538
+    },
+    "selected": {
+     "file": "Zeus_Interface",
+     "index": 539
+    },
+    "disabled": {
+     "file": "Zeus_Interface",
+     "index": 540
+    }
+   },
+   "handler": "0x004066D0",
+   "x_rule": "cols*16 - 36",
+   "y_rule": "(rows-2)*16 + rect.y"
+  }
+ ],
+ "labor": {
+  "evidence": "exe FUN_005906C0, FUN_00590920, FUN_00590C30; oracle re/oracle/runs/labor-advisor (a.bmp at 1024x768)",
+  "title": {
+   "pos": [
+    15,
+    12
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    50,
+    0
+   ]
+  },
+  "headers": [
+   {
+    "text": [
+     50,
+     18
+    ],
+    "pos": [
+     70,
+     46
+    ],
+    "font": "SPR_FONTS_9LTBK"
+   },
+   {
+    "text": [
+     50,
+     19
+    ],
+    "pos": [
+     172,
+     46
+    ],
+    "font": "SPR_FONTS_9LTBK"
+   },
+   {
+    "text": [
+     50,
+     10
+    ],
+    "pos": [
+     376,
+     46
+    ],
+    "font": "SPR_FONTS_9LTBK"
+   },
+   {
+    "text": [
+     50,
+     11
+    ],
+    "pos": [
+     426,
+     46
+    ],
+    "font": "SPR_FONTS_9LTBK"
+   }
+  ],
+  "rows_inset": {
+   "pos": [
+    25,
+    60
+   ],
+   "cols": 28,
+   "rows": 11
+  },
+  "arrows_origin": [
+   40,
+   68
+  ],
+  "arrows": [
+   {
+    "rect": [
+     17,
+     0,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 576,
+     "group": "SPR_SM_BUTTON_UP"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 577
+    },
+    "dir": "up",
+    "row": 0,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     0,
+     0,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 578,
+     "group": "SPR_SM_BUTTON_DOWN"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 579
+    },
+    "dir": "down",
+    "row": 0,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     17,
+     20,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 576,
+     "group": "SPR_SM_BUTTON_UP"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 577
+    },
+    "dir": "up",
+    "row": 1,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     0,
+     20,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 578,
+     "group": "SPR_SM_BUTTON_DOWN"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 579
+    },
+    "dir": "down",
+    "row": 1,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     17,
+     40,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 576,
+     "group": "SPR_SM_BUTTON_UP"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 577
+    },
+    "dir": "up",
+    "row": 2,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     0,
+     40,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 578,
+     "group": "SPR_SM_BUTTON_DOWN"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 579
+    },
+    "dir": "down",
+    "row": 2,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     17,
+     60,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 576,
+     "group": "SPR_SM_BUTTON_UP"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 577
+    },
+    "dir": "up",
+    "row": 3,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     0,
+     60,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 578,
+     "group": "SPR_SM_BUTTON_DOWN"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 579
+    },
+    "dir": "down",
+    "row": 3,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     17,
+     80,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 576,
+     "group": "SPR_SM_BUTTON_UP"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 577
+    },
+    "dir": "up",
+    "row": 4,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     0,
+     80,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 578,
+     "group": "SPR_SM_BUTTON_DOWN"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 579
+    },
+    "dir": "down",
+    "row": 4,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     17,
+     100,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 576,
+     "group": "SPR_SM_BUTTON_UP"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 577
+    },
+    "dir": "up",
+    "row": 5,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     0,
+     100,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 578,
+     "group": "SPR_SM_BUTTON_DOWN"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 579
+    },
+    "dir": "down",
+    "row": 5,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     17,
+     120,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 576,
+     "group": "SPR_SM_BUTTON_UP"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 577
+    },
+    "dir": "up",
+    "row": 6,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     0,
+     120,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 578,
+     "group": "SPR_SM_BUTTON_DOWN"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 579
+    },
+    "dir": "down",
+    "row": 6,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     17,
+     140,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 576,
+     "group": "SPR_SM_BUTTON_UP"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 577
+    },
+    "dir": "up",
+    "row": 7,
+    "handler": "0x00590580"
+   },
+   {
+    "rect": [
+     0,
+     140,
+     17,
+     17
+    ],
+    "sprite": {
+     "file": "Zeus_Interface",
+     "index": 578,
+     "group": "SPR_SM_BUTTON_DOWN"
+    },
+    "pressed": {
+     "file": "Zeus_Interface",
+     "index": 579
+    },
+    "dir": "down",
+    "row": 7,
+    "handler": "0x00590580"
+   }
+  ],
+  "row_step": 20,
+  "priority": {
+   "x": 78,
+   "y": 74,
+   "text_base": [
+    50,
+    24
+   ],
+   "font_rule": "0 -> 9B, 1..3 -> 9DKBU, 4..5 -> 9DKYEL",
+   "fonts": {
+    "0": "SPR_FONTS_9B",
+    "1": "SPR_FONTS_9DKBU",
+    "2": "SPR_FONTS_9DKBU",
+    "3": "SPR_FONTS_9DKBU",
+    "4": "SPR_FONTS_9DKYEL",
+    "5": "SPR_FONTS_9DKYEL"
+   }
+  },
+  "name": {
+   "x": 160,
+   "y": 70,
+   "font": "SPR_FONTS_11C2",
+   "text_base": [
+    50,
+    1
+   ],
+   "poseidon_culture": {
+    "text": [
+     50,
+     9
+    ],
+    "note": "row 5 reads 'Science' in a Poseidon game (y = 0xAA, font 3)"
+   }
+  },
+  "need": {
+   "x": 372,
+   "y": 70,
+   "font": "SPR_FONTS_11C2"
+  },
+  "have": {
+   "x": 422,
+   "y": 70,
+   "font": "SPR_FONTS_11C2",
+   "font_short": "SPR_FONTS_11C3",
+   "rule": "have != need -> 11C3 (orange)"
+  },
+  "industry_title": {
+   "pos": [
+    15,
+    244
+   ],
+   "font": "SPR_FONTS_22C",
+   "text": [
+    50,
+    22
+   ]
+  },
+  "industry_hint": {
+   "pos": [
+    15,
+    270
+   ],
+   "font": "SPR_FONTS_9LTBK",
+   "text": [
+    50,
+    23
+   ]
+  },
+  "industry_inset": {
+   "pos": [
+    25,
+    282
+   ],
+   "cols": 32,
+   "rows": 13
+  },
+  "industry_origin": [
+   28,
+   284
+  ],
+  "industry_rects": [
+   [
+    0,
+    0,
+    245,
+    19
+   ],
+   [
+    0,
+    20,
+    245,
+    39
+   ],
+   [
+    0,
+    40,
+    245,
+    59
+   ],
+   [
+    0,
+    60,
+    245,
+    79
+   ],
+   [
+    0,
+    80,
+    245,
+    99
+   ],
+   [
+    0,
+    100,
+    245,
+    119
+   ],
+   [
+    0,
+    120,
+    245,
+    139
+   ],
+   [
+    0,
+    140,
+    245,
+    159
+   ],
+   [
+    0,
+    160,
+    245,
+    179
+   ],
+   [
+    0,
+    180,
+    245,
+    199
+   ],
+   [
+    255,
+    0,
+    500,
+    19
+   ],
+   [
+    255,
+    20,
+    500,
+    39
+   ],
+   [
+    255,
+    40,
+    500,
+    59
+   ],
+   [
+    255,
+    60,
+    500,
+    79
+   ],
+   [
+    255,
+    80,
+    500,
+    99
+   ],
+   [
+    255,
+    100,
+    500,
+    119
+   ],
+   [
+    255,
+    120,
+    500,
+    139
+   ],
+   [
+    255,
+    140,
+    500,
+    159
+   ],
+   [
+    255,
+    160,
+    500,
+    179
+   ],
+   [
+    255,
+    180,
+    500,
+    199
+   ]
+  ],
+  "industry_max": 20,
+  "industry_row": {
+   "icon_dy": 5,
+   "text_dx": 26,
+   "text_dy": 8,
+   "status_dx": 115,
+   "name_font": "SPR_FONTS_9DKBU",
+   "status": {
+    "on": [
+     50,
+     30
+    ],
+    "off": [
+     50,
+     31
+    ],
+    "on_font": "SPR_FONTS_9DKBU",
+    "off_font": "SPR_FONTS_9DKYEL"
+   }
+  },
+  "industry_none": {
+   "text": [
+    50,
+    32
+   ],
+   "pos": [
+    28,
+    294
+   ],
+   "center": 512,
+   "font": "SPR_FONTS_9DKYEL"
+  },
+  "industries": [
+   {
+    "res": 18,
+    "key": "armor",
+    "name": "armor"
+   },
+   {
+    "res": 19,
+    "key": "sculpture",
+    "name": "sculpture"
+   },
+   {
+    "res": 20,
+    "key": "olive_oil",
+    "name": "@{t:50:35}"
+   },
+   {
+    "res": 21,
+    "key": "wine",
+    "name": "wine"
+   },
+   {
+    "res": 1,
+    "key": "urchin",
+    "name": "urchins"
+   },
+   {
+    "res": 2,
+    "key": "fish",
+    "name": "fish"
+   },
+   {
+    "res": 3,
+    "key": "meat",
+    "name": "@{t:50:39}"
+   },
+   {
+    "res": 4,
+    "key": "cheese",
+    "name": "cheese"
+   },
+   {
+    "res": 5,
+    "key": "carrots",
+    "name": "carrots"
+   },
+   {
+    "res": 6,
+    "key": "onions",
+    "name": "onions"
+   },
+   {
+    "res": 7,
+    "key": "wheat",
+    "name": "wheat"
+   },
+   {
+    "res": 9,
+    "key": "wood",
+    "name": "wood"
+   },
+   {
+    "res": 10,
+    "key": "bronze",
+    "name": "bronze"
+   },
+   {
+    "res": 11,
+    "key": "marble",
+    "name": "marble"
+   },
+   {
+    "res": 12,
+    "key": "grapes",
+    "name": "grapes"
+   },
+   {
+    "res": 13,
+    "key": "olives",
+    "name": "olives"
+   },
+   {
+    "res": 14,
+    "key": "fleece",
+    "name": "fleece"
+   },
+   {
+    "res": 15,
+    "key": "horses",
+    "name": "horses"
+   },
+   {
+    "res": 8,
+    "key": "oranges",
+    "name": "oranges"
+   },
+   {
+    "res": 16,
+    "key": "black_marble",
+    "name": "@{t:50:52}"
+   },
+   {
+    "res": 17,
+    "key": "orichalc",
+    "name": "orichalc"
+   },
+   {
+    "res": 22,
+    "key": "chariot",
+    "name": "chariot"
+   },
+   {
+    "res": 23,
+    "key": "silver",
+    "name": "silver"
+   },
+   {
+    "res": 24,
+    "key": "meat_beef",
+    "name": "@{t:50:56}"
+   }
+  ],
+  "icons": {
+   "1": {
+    "file": "Zeus_General",
+    "index": 936,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "2": {
+    "file": "Zeus_General",
+    "index": 937,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "3": {
+    "file": "Zeus_General",
+    "index": 938,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "4": {
+    "file": "Zeus_General",
+    "index": 939,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "5": {
+    "file": "Zeus_General",
+    "index": 940,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "6": {
+    "file": "Zeus_General",
+    "index": 941,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "7": {
+    "file": "Zeus_General",
+    "index": 942,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "8": {
+    "file": "Poseidon_Loaded",
+    "index": 991,
+    "group": "SPR_FRUIT_ICON"
+   },
+   "9": {
+    "file": "Zeus_General",
+    "index": 943,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "10": {
+    "file": "Zeus_General",
+    "index": 944,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "11": {
+    "file": "Zeus_General",
+    "index": 945,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "12": {
+    "file": "Zeus_General",
+    "index": 946,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "13": {
+    "file": "Zeus_General",
+    "index": 947,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "14": {
+    "file": "Zeus_General",
+    "index": 948,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "15": {
+    "file": "Zeus_General",
+    "index": 949,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "16": {
+    "file": "Poseidon_Loaded",
+    "index": 993,
+    "group": "SPR_BLACK_MARBLE_ICON"
+   },
+   "17": {
+    "file": "Poseidon_Loaded",
+    "index": 992,
+    "group": "SPR_ORICHALC_ICON"
+   },
+   "18": {
+    "file": "Zeus_General",
+    "index": 950,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "19": {
+    "file": "Zeus_General",
+    "index": 951,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "20": {
+    "file": "Zeus_General",
+    "index": 952,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "21": {
+    "file": "Zeus_General",
+    "index": 953,
+    "group": "SPR_GOODS_ICONS"
+   },
+   "22": {
+    "file": "Poseidon_Loaded",
+    "index": 994,
+    "group": "SPR_CHARIOT_ICON"
+   },
+   "23": {
+    "file": "Zeus_General",
+    "index": 1003,
+    "group": "SPR_REQUEST_CASH_ICON"
+   },
+   "24": {
+    "file": "Zeus_General",
+    "index": 938,
+    "group": "SPR_GOODS_ICONS"
+   }
+  },
+  "industry_shown": "a resource is listed while the city has a producer of it (0x0091EB58[res] > 0, buildings_count_by_type 0x00491820); fish/urchin/grapes...: same rule (FUN_005905D0)"
+ },
+ "texts": {
+  "50": [
+   "@{t:50:0}",
+   "@{t:4:6}",
+   "@{t:4:1}",
+   "@{t:50:3}",
+   "@{t:4:7}",
+   "@{t:4:11}",
+   "@{t:44:129}",
+   "@{t:4:10}",
+   "@{t:4:2}",
+   "@{t:50:9}",
+   "@{t:50:10}",
+   "@{t:50:11}",
+   "@{t:50:12}",
+   "@{t:50:13}",
+   "@{t:50:14}",
+   "@{t:50:15}",
+   "@{t:50:16}",
+   "@{t:50:17}",
+   "@{t:50:18}",
+   "@{t:50:19}",
+   "@{t:50:20}",
+   "@{t:50:21}",
+   "@{t:50:22}",
+   "@{t:50:23}",
+   "@{t:50:24}",
+   "@{t:50:25}",
+   "low",
+   "moderate",
+   "high",
+   "@{t:50:29}",
+   "@{t:50:30}",
+   "@{t:50:31}",
+   "@{t:50:32}",
+   "armor",
+   "sculpture",
+   "@{t:50:35}",
+   "wine",
+   "urchins",
+   "fish",
+   "@{t:50:39}",
+   "cheese",
+   "carrots",
+   "onions",
+   "wheat",
+   "wood",
+   "bronze",
+   "marble",
+   "grapes",
+   "olives",
+   "fleece",
+   "horses",
+   "oranges",
+   "@{t:50:52}",
+   "orichalc",
+   "chariot",
+   "silver",
+   "@{t:50:56}"
+  ],
+  "88": [
+   "@{t:88:0}",
+   "@{t:4:6}",
+   "@{t:4:1}",
+   "@{t:4:5}",
+   "@{t:88:4}",
+   "@{t:4:11}",
+   "@{t:44:129}",
+   "@{t:4:10}",
+   "@{t:4:2}",
+   "@{t:88:9}",
+   "@{t:88:10}"
+  ],
+  "56": [
+   "@{t:56:0}",
+   "@{t:56:1}",
+   "@{t:56:2}",
+   "@{t:56:3}",
+   "@{t:56:4}",
+   "@{t:44:195}",
+   "@{t:56:6}",
+   "Ok",
+   "@{t:44:197}",
+   "@{t:56:9}",
+   "@{t:44:198}",
+   "@{t:56:11}",
+   "@{t:44:199}",
+   "@{t:56:13}",
+   "@{t:56:14}",
+   "@{t:56:15}",
+   "@{t:56:16}",
+   "@{t:56:17}",
+   "@{t:56:18}",
+   "@{t:56:18}",
+   "@{t:56:20}",
+   "@{t:56:20}",
+   "@{t:56:22}",
+   "@{t:56:23}",
+   "@{t:56:24}",
+   "@{t:56:25}",
+   "@{t:56:26}",
+   "@{t:56:27}",
+   "@{t:56:28}",
+   "@{t:56:29}",
+   "@{t:56:30}",
+   "@{t:56:31}",
+   "@{t:56:32}",
+   "@{t:56:33}",
+   "@{t:56:34}",
+   "@{t:56:35}",
+   "@{t:56:36}",
+   "@{t:56:37}",
+   "@{t:56:38}",
+   "@{t:56:39}",
+   "@{t:56:40}",
+   "@{t:56:41}",
+   "@{t:56:42}",
+   "@{t:56:43}",
+   "@{t:56:44}",
+   "@{t:56:45}",
+   "@{t:56:46}",
+   "@{t:56:47}",
+   "@{t:56:48}",
+   "@{t:56:49}",
+   "@{t:56:50}",
+   "@{t:56:51}",
+   "@{t:56:52}",
+   "@{t:56:53}",
+   "@{t:56:54}",
+   "@{t:56:55}",
+   "@{t:56:56}",
+   "@{t:56:57}",
+   "@{t:56:58}",
+   "@{t:56:59}",
+   "@{t:56:60}",
+   "@{t:56:61}",
+   "@{t:56:62}",
+   "@{t:56:63}",
+   "@{t:56:64}",
+   "@{t:56:65}",
+   "@{t:56:66}",
+   "@{t:56:67}",
+   "@{t:56:68}",
+   "@{t:56:69}",
+   "@{t:56:70}",
+   "@{t:56:71}",
+   "@{t:56:72}",
+   "@{t:56:73}",
+   "@{t:56:74}",
+   "@{t:56:75}",
+   "@{t:56:76}",
+   "@{t:56:77}",
+   "thefts",
+   "muggings",
+   "No",
+   "@{t:56:81}",
+   "@{t:56:82}",
+   "@{t:56:83}",
+   "@{t:56:84}"
+  ],
+  "58": [
+   "@{t:44:129}",
+   "@{t:58:1}",
+   "@{t:58:2}",
+   "@{t:58:3}",
+   "@{t:58:4}",
+   "@{t:28:138}",
+   "@{t:58:6}",
+   "@{t:28:27}",
+   "@{t:58:8}",
+   "@{t:44:240}",
+   "@{t:58:10}",
+   "@{t:58:11}",
+   "OK",
+   "@{t:44:195}",
+   "@{t:56:3}",
+   "@{t:58:15}",
+   "@{t:28:137}",
+   "@{t:28:138}",
+   "@{t:28:27}",
+   "@{t:58:19}",
+   "@{t:58:10}",
+   "@{t:58:11}",
+   "OK",
+   "@{t:44:195}",
+   "@{t:56:3}",
+   "@{t:58:25}",
+   "@{t:58:26}",
+   "@{t:8:37}",
+   "@{t:8:36}",
+   "@{t:58:29}",
+   "@{t:28:79}",
+   "@{t:58:31}",
+   "@{t:28:82}",
+   "@{t:8:34}",
+   "@{t:58:34}",
+   "@{t:58:35}",
+   "@{t:58:36}",
+   "@{t:58:37}",
+   "@{t:58:38}",
+   "@{t:58:39}",
+   "@{t:58:40}",
+   "@{t:58:41}",
+   "@{t:58:42}",
+   "@{t:58:43}",
+   "@{t:58:44}",
+   "@{t:58:45}",
+   "@{t:58:46}",
+   "@{t:58:47}",
+   "@{t:58:48}",
+   "@{t:58:49}",
+   "@{t:58:50}",
+   "@{t:58:51}",
+   "@{t:58:52}",
+   "@{t:58:53}",
+   "@{t:58:54}",
+   "@{t:40:0}",
+   "@{t:58:56}",
+   "@{t:58:57}",
+   "@{t:44:195}",
+   "@{t:58:59}",
+   "@{t:40:2}",
+   "@{t:40:2}",
+   "@{t:58:62}",
+   "@{t:44:197}",
+   "@{t:56:9}",
+   "@{t:44:198}",
+   "@{t:44:199}",
+   "@{t:22:45}",
+   "@{t:58:68}",
+   "@{t:22:43}",
+   "@{t:58:70}",
+   "@{t:58:71}",
+   "@{t:58:72}",
+   "@{t:58:73}",
+   "@{t:50:9}",
+   "@{t:58:75}",
+   "@{t:28:208}",
+   "@{t:58:77}",
+   "@{t:58:78}",
+   "@{t:58:79}",
+   "@{t:58:80}",
+   "@{t:58:81}",
+   "@{t:28:203}",
+   "@{t:58:83}",
+   "@{t:28:202}",
+   "@{t:58:85}",
+   "@{t:28:205}",
+   "@{t:28:207}"
+  ],
+  "60": [
+   "@{t:60:0}",
+   "@{t:60:1}",
+   "@{t:60:2}",
+   "@{t:60:3}",
+   "@{t:60:4}",
+   "@{t:60:5}",
+   "@{t:60:6}",
+   "@{t:60:7}",
+   "@{t:60:8}",
+   "@{t:60:9}",
+   "@{t:60:10}",
+   "@{t:60:11}",
+   "@{t:60:12}",
+   "@{t:60:13}",
+   "@{t:60:14}",
+   "@{t:60:15}",
+   "@{t:60:16}",
+   "@{t:60:17}",
+   "@{t:60:18}",
+   "@{t:60:19}",
+   "@{t:60:20}",
+   "@{t:60:21}",
+   "@{t:60:22}",
+   "@{t:60:23}",
+   "@{t:60:24}",
+   "@{t:60:25}",
+   "@{t:60:26}",
+   "@{t:28:199}"
+  ],
+  "8": [
+   "@{t:8:0}",
+   "@{t:8:1}",
+   "@{t:8:2}",
+   "@{t:8:3}",
+   "@{t:8:4}",
+   "@{t:8:5}",
+   "@{t:8:6}",
+   "@{t:8:7}",
+   "@{t:8:8}",
+   "@{t:8:9}",
+   "@{t:8:10}",
+   "@{t:8:11}",
+   "@{t:8:12}",
+   "@{t:8:13}",
+   "@{t:8:14}",
+   "@{t:8:15}",
+   "@{t:8:16}",
+   "@{t:8:17}",
+   "@{t:8:18}",
+   "@{t:8:19}",
+   "@{t:8:20}",
+   "@{t:8:21}",
+   "@{t:8:22}",
+   "@{t:8:23}",
+   "@{t:8:24}",
+   "@{t:8:25}",
+   "@{t:8:26}",
+   "@{t:8:27}",
+   "@{t:8:28}",
+   "@{t:8:29}",
+   "@{t:8:30}",
+   "@{t:8:31}",
+   "@{t:8:32}",
+   "@{t:8:33}",
+   "@{t:8:34}",
+   "@{t:8:35}",
+   "@{t:8:36}",
+   "@{t:8:37}",
+   "@{t:8:38}",
+   "@{t:8:39}",
+   "@{t:8:40}",
+   "@{t:8:41}",
+   "@{t:8:42}",
+   "@{t:2:13}",
+   "@{t:8:44}",
+   "@{t:8:45}",
+   "@{t:8:46}",
+   "@{t:8:47}",
+   "@{t:8:48}",
+   "@{t:8:49}",
+   "@{t:8:50}",
+   "@{t:8:51}",
+   "@{t:8:52}",
+   "@{t:8:53}",
+   "load",
+   "loads",
+   "@{t:8:56}",
+   "@{t:8:57}",
+   "@{t:8:58}",
+   "@{t:8:59}",
+   "@{t:8:60}",
+   "@{t:8:61}",
+   "@{t:8:62}",
+   "@{t:8:63}"
+  ],
+  "20": [
+   "BC",
+   "AD"
+  ],
+  "23": [
+   "@{t:5:80}",
+   "@{t:23:1}",
+   "@{t:23:2}",
+   "@{t:23:3}",
+   "@{t:23:4}",
+   "@{t:23:5}",
+   "@{t:23:6}",
+   "@{t:23:7}",
+   "@{t:23:8}",
+   "@{t:23:9}",
+   "@{t:23:10}",
+   "@{t:23:11}",
+   "@{t:23:12}",
+   "@{t:23:13}",
+   "@{t:23:14}",
+   "@{t:23:15}",
+   "@{t:23:16}",
+   "@{t:23:17}",
+   "@{t:23:18}",
+   "@{t:23:19}",
+   "@{t:23:20}",
+   "@{t:23:21}",
+   "@{t:23:22}",
+   "drachmas",
+   "@{t:23:24}",
+   "@{t:23:25}",
+   "@{t:23:26}",
+   "-",
+   "-",
+   "@{t:23:21}",
+   "@{t:23:21}",
+   "-",
+   "-",
+   "-",
+   "-",
+   "-",
+   "-",
+   "@{t:23:37}",
+   "@{t:23:20}",
+   "-",
+   "-",
+   "-",
+   "-",
+   "@{t:23:25}"
+  ],
+  "25": [
+   "@{t:25:0}",
+   "@{t:25:1}",
+   "@{t:25:2}",
+   "@{t:25:3}",
+   "@{t:25:4}",
+   "@{t:25:5}",
+   "@{t:25:6}",
+   "@{t:25:7}",
+   "@{t:25:8}",
+   "@{t:25:9}",
+   "@{t:25:10}",
+   "@{t:25:11}"
+  ],
+  "51": [
+   "@{t:51:0}",
+   "@{t:51:1}",
+   "@{t:51:2}",
+   "@{t:51:3}",
+   "@{t:51:4}",
+   "@{t:51:5}",
+   "@{t:51:6}",
+   "@{t:51:7}",
+   "@{t:51:8}",
+   "towers",
+   "tower",
+   "manning",
+   "@{t:51:12}",
+   "@{t:51:13}",
+   "@{t:51:14}",
+   "@{t:51:15}",
+   "@{t:51:16}",
+   "@{t:23:24}",
+   "@{t:51:18}",
+   "@{t:51:19}",
+   "@{t:51:20}",
+   "@{t:51:21}",
+   "@{t:51:22}",
+   "@{t:51:23}",
+   "@{t:51:24}",
+   "@{t:51:25}",
+   "@{t:51:26}",
+   "@{t:51:26}",
+   "@{t:51:28}",
+   "@{t:51:29}",
+   "@{t:51:30}",
+   "@{t:51:31}",
+   "@{t:51:32}",
+   "@{t:51:33}",
+   "@{t:51:34}",
+   "@{t:51:35}",
+   "disembarking",
+   "returning",
+   "repairing",
+   "fighting",
+   "abroad",
+   "@{t:51:41}",
+   "@{t:51:42}",
+   "@{t:51:42}",
+   "@{t:51:44}",
+   "@{t:51:45}",
+   "@{t:51:46}",
+   "@{t:51:47}",
+   "@{t:51:48}",
+   "undamaged",
+   "leaky",
+   "damaged",
+   "mangled",
+   "@{t:51:53}",
+   "@{t:51:54}",
+   "@{t:51:55}",
+   "@{t:51:56}",
+   "@{t:51:57}",
+   "@{t:51:58}",
+   "@{t:51:59}",
+   "@{t:51:60}",
+   "@{t:51:61}",
+   "@{t:51:62}",
+   "@{t:51:63}",
+   "@{t:51:64}",
+   "@{t:51:65}",
+   "@{t:51:66}",
+   "@{t:51:67}",
+   "@{t:51:68}",
+   "@{t:51:69}",
+   "@{t:51:70}",
+   "@{t:51:71}",
+   "@{t:51:72}",
+   "@{t:51:73}",
+   "@{t:51:74}",
+   "@{t:51:75}",
+   "@{t:51:76}",
+   "@{t:51:77}",
+   "@{t:51:78}",
+   "@{t:51:79}",
+   "@{t:51:80}",
+   "@{t:51:81}",
+   "@{t:51:82}",
+   "@{t:51:83}",
+   "@{t:51:84}",
+   "@{t:51:85}",
+   "@{t:51:86}",
+   "@{t:51:87}",
+   "@{t:51:88}"
+  ],
+  "54": [
+   "@{t:54:0}",
+   "@{t:54:1}",
+   "@{t:54:2}",
+   "@{t:54:3}",
+   "@{t:54:4}",
+   "@{t:54:5}",
+   "@{t:54:6}",
+   "@{t:54:7}",
+   "@{t:54:8}",
+   "@{t:54:9}",
+   "@{t:54:10}"
+  ],
+  "55": [
+   "@{t:55:0}",
+   "@{t:55:1}",
+   "@{t:55:2}",
+   "@{t:55:3}",
+   "@{t:55:4}",
+   "@{t:55:5}",
+   "@{t:55:6}",
+   "@{t:55:7}",
+   "@{t:55:8}",
+   "@{t:55:9}",
+   "@{t:55:10}",
+   "@{t:55:11}",
+   "@{t:55:12}",
+   "@{t:55:13}",
+   "@{t:55:14}",
+   "@{t:55:15}",
+   "@{t:55:16}",
+   "@{t:55:17}",
+   "@{t:55:18}",
+   "@{t:55:19}",
+   "@{t:55:20}",
+   "@{t:55:21}",
+   "@{t:55:22}",
+   "@{t:55:23}",
+   "@{t:55:24}",
+   "@{t:55:25}",
+   "@{t:55:26}",
+   "@{t:55:27}",
+   "@{t:55:28}",
+   "@{t:55:29}",
+   "@{t:55:30}"
+  ],
+  "57": [
+   "@{t:4:6}",
+   "@{t:57:1}",
+   "people",
+   "@{t:57:3}",
+   "@{t:57:4}",
+   "@{t:57:5}",
+   "@{t:57:6}",
+   "plenty",
+   "surplus",
+   "@{t:57:9}",
+   "@{t:57:10}",
+   "@{t:57:11}",
+   "@{t:57:9}",
+   "@{t:57:10}",
+   "@{t:57:11}",
+   "@{t:57:9}",
+   "@{t:57:10}",
+   "@{t:57:11}",
+   "@{t:57:9}",
+   "@{t:57:10}",
+   "@{t:57:11}",
+   "@{t:57:9}",
+   "@{t:57:10}",
+   "@{t:57:11}",
+   "@{t:57:9}",
+   "@{t:57:10}",
+   "@{t:57:11}",
+   "@{t:57:27}",
+   "months",
+   "@{t:57:29}",
+   "@{t:57:30}",
+   "@{t:57:31}",
+   "@{t:57:32}",
+   "@{t:57:33}",
+   "@{t:57:34}",
+   "@{t:57:35}",
+   "@{t:57:36}",
+   "@{t:57:37}",
+   "@{t:57:38}",
+   "@{t:57:39}",
+   "@{t:57:40}",
+   "@{t:57:41}",
+   "@{t:57:42}",
+   "@{t:57:43}",
+   "@{t:57:44}"
+  ],
+  "59": [
+   "@{t:4:10}",
+   "@{t:28:83}",
+   "@{t:59:2}",
+   "@{t:59:3}",
+   "@{t:59:4}",
+   "@{t:59:5}",
+   "@{t:59:6}",
+   "@{t:59:7}",
+   "@{t:59:8}",
+   "@{t:59:9}",
+   "@{t:59:9}",
+   "@{t:59:11}",
+   "@{t:59:12}",
+   "@{t:59:13}",
+   "@{t:59:14}",
+   "@{t:59:15}",
+   "@{t:59:16}",
+   "@{t:59:17}",
+   "@{t:59:18}",
+   "@{t:59:19}",
+   "@{t:59:20}",
+   "@{t:59:21}",
+   "@{t:59:22}",
+   "@{t:59:23}",
+   "@{t:59:24}",
+   "@{t:59:25}",
+   "@{t:59:26}",
+   "@{t:59:27}",
+   "@{t:59:28}",
+   "@{t:59:29}",
+   "@{t:59:30}",
+   "@{t:59:31}",
+   "complete",
+   "rebuilt",
+   "@{t:59:34}",
+   "@{t:59:34}",
+   "@{t:59:36}",
+   "@{t:59:34}",
+   "@{t:59:38}",
+   "@{t:59:39}",
+   "@{t:59:40}",
+   "@{t:59:41}",
+   "@{t:44:176}",
+   "@{t:59:43}",
+   "@{t:59:44}",
+   "@{t:59:45}",
+   "@{t:59:46}",
+   "@{t:59:47}",
+   "@{t:59:48}",
+   "@{t:59:49}",
+   "@{t:59:50}",
+   "@{t:59:51}",
+   "@{t:59:52}",
+   "@{t:59:53}",
+   "@{t:59:54}",
+   "@{t:59:55}",
+   "@{t:59:56}",
+   "@{t:59:57}",
+   "@{t:59:58}",
+   "@{t:59:59}",
+   "@{t:59:60}",
+   "@{t:59:61}",
+   "@{t:59:62}",
+   "@{t:59:63}",
+   "@{t:59:64}",
+   "@{t:59:65}",
+   "@{t:59:66}",
+   "@{t:59:67}",
+   "@{t:59:68}"
+  ],
+  "61": [
+   "@{t:61:0}",
+   "@{t:61:1}",
+   "@{t:61:2}",
+   "@{t:61:3}",
+   "@{t:61:4}",
+   "@{t:61:5}",
+   "@{t:56:0}",
+   "@{t:56:17}",
+   "@{t:61:8}",
+   "@{t:44:129}",
+   "@{t:50:9}",
+   "@{t:4:10}",
+   "@{t:61:12}",
+   "@{t:61:13}",
+   "@{t:61:14}",
+   "@{t:61:15}",
+   "@{t:61:16}",
+   "@{t:61:17}",
+   "@{t:61:18}",
+   "@{t:61:19}",
+   "@{t:61:20}",
+   "@{t:61:21}",
+   "@{t:61:22}",
+   "@{t:61:23}",
+   "@{t:61:24}",
+   "@{t:61:25}",
+   "@{t:61:26}",
+   "@{t:56:3}",
+   "@{t:61:28}",
+   "@{t:61:28}",
+   "@{t:56:4}",
+   "@{t:56:4}",
+   "@{t:44:195}",
+   "Ok",
+   "@{t:44:197}",
+   "@{t:44:197}",
+   "@{t:44:86}",
+   "@{t:61:37}",
+   "@{t:61:38}",
+   "@{t:61:39}",
+   "@{t:61:40}",
+   "@{t:61:41}",
+   "@{t:61:42}",
+   "@{t:61:43}",
+   "@{t:61:44}",
+   "@{t:61:45}",
+   "@{t:61:46}",
+   "@{t:61:47}",
+   "@{t:61:48}",
+   "@{t:61:49}",
+   "@{t:61:50}",
+   "@{t:61:51}",
+   "@{t:61:52}",
+   "@{t:61:53}",
+   "@{t:61:54}",
+   "@{t:61:55}",
+   "@{t:61:56}",
+   "@{t:61:57}",
+   "@{t:61:58}",
+   "@{t:61:59}",
+   "@{t:61:60}",
+   "@{t:61:61}",
+   "@{t:61:62}",
+   "@{t:61:63}",
+   "@{t:61:64}",
+   "@{t:61:65}",
+   "@{t:61:66}",
+   "@{t:61:67}",
+   "@{t:61:68}",
+   "@{t:61:69}",
+   "@{t:61:70}",
+   "@{t:61:71}",
+   "@{t:61:72}",
+   "@{t:61:73}",
+   "@{t:61:74}",
+   "@{t:61:75}",
+   "@{t:61:76}",
+   "@{t:61:77}",
+   "@{t:61:78}",
+   "@{t:61:79}",
+   "@{t:61:80}",
+   "@{t:61:81}",
+   "@{t:61:82}",
+   "@{t:61:83}",
+   "@{t:61:84}",
+   "@{t:61:85}",
+   "@{t:61:86}",
+   "@{t:61:87}",
+   "@{t:61:88}",
+   "@{t:61:89}",
+   "@{t:61:90}",
+   "@{t:61:91}",
+   "@{t:61:92}",
+   "good",
+   "@{t:61:94}",
+   "low",
+   "low",
+   "good",
+   "@{t:61:98}",
+   "@{t:61:98}",
+   "@{t:61:98}",
+   "@{t:61:98}",
+   "@{t:61:102}",
+   "@{t:61:102}",
+   "@{t:61:102}",
+   "@{t:61:102}",
+   "@{t:61:106}",
+   "unemployment",
+   "unemployment",
+   "unemployment",
+   "unemployment",
+   "@{t:61:111}",
+   "@{t:61:111}",
+   "@{t:61:111}",
+   "@{t:61:111}",
+   "@{t:61:115}",
+   "@{t:61:116}",
+   "@{t:61:117}",
+   "@{t:61:118}",
+   "@{t:61:119}",
+   "@{t:61:120}",
+   "@{t:61:121}",
+   "@{t:61:122}",
+   "@{t:61:123}",
+   "@{t:61:124}",
+   "@{t:61:125}",
+   "@{t:61:126}",
+   "@{t:56:2}",
+   "@{t:56:3}",
+   "@{t:56:4}",
+   "@{t:44:195}",
+   "@{t:56:6}",
+   "Ok",
+   "@{t:44:197}",
+   "@{t:56:9}",
+   "@{t:44:198}",
+   "@{t:61:37}",
+   "@{t:44:199}",
+   "@{t:61:138}",
+   "@{t:61:138}",
+   "@{t:19:171}",
+   "@{t:19:171}",
+   "@{t:19:173}",
+   "@{t:56:23}",
+   "severe",
+   "severe",
+   "high",
+   "high",
+   "low",
+   "none",
+   "@{t:61:150}",
+   "@{t:61:151}",
+   "@{t:61:152}",
+   "up",
+   "ok",
+   "down",
+   "@{t:61:156}",
+   "@{t:61:157}",
+   "@{t:61:158}",
+   "@{t:61:159}",
+   "@{t:61:160}",
+   "@{t:61:161}",
+   "@{t:61:162}",
+   "@{t:61:163}",
+   "@{t:61:164}",
+   "@{t:61:165}",
+   "@{t:61:166}",
+   "@{t:61:167}",
+   "@{t:61:168}",
+   "@{t:61:169}",
+   "@{t:61:170}",
+   "@{t:61:171}",
+   "@{t:61:172}",
+   "@{t:61:173}",
+   "@{t:61:174}",
+   "@{t:61:175}",
+   "@{t:61:176}",
+   "@{t:61:177}",
+   "@{t:61:178}",
+   "@{t:61:179}",
+   "@{t:61:180}",
+   "@{t:61:181}",
+   "@{t:61:182}",
+   "@{t:61:183}",
+   "@{t:61:184}",
+   "@{t:61:185}",
+   "@{t:61:186}",
+   "@{t:61:187}",
+   "@{t:61:188}",
+   "@{t:61:189}",
+   "@{t:61:190}",
+   "@{t:61:191}",
+   "@{t:61:192}",
+   "@{t:61:193}",
+   "@{t:61:194}",
+   "@{t:44:40}",
+   "@{t:61:196}",
+   "@{t:61:197}",
+   "@{t:61:198}",
+   "@{t:61:199}",
+   "@{t:61:200}",
+   "@{t:61:201}",
+   "@{t:61:202}",
+   "@{t:61:203}",
+   "@{t:61:204}",
+   "overdue",
+   "@{t:61:206}",
+   "@{t:61:207}"
+  ],
+  "133": [
+   "@{t:88:9}",
+   "@{t:68:31}",
+   "@{t:133:2}",
+   "@{t:133:3}",
+   "@{t:133:4}",
+   "@{t:133:5}",
+   "@{t:133:6}",
+   "@{t:133:7}",
+   "@{t:133:8}",
+   "@{t:133:9}",
+   "@{t:44:254}",
+   "@{t:133:11}",
+   "@{t:64:72}",
+   "@{t:64:17}",
+   "@{t:133:14}",
+   "@{t:133:15}",
+   "@{t:133:16}",
+   "@{t:133:17}",
+   "@{t:133:18}",
+   "@{t:133:19}",
+   "@{t:132:131}",
+   "@{t:133:21}",
+   "@{t:133:22}",
+   "@{t:133:23}",
+   "@{t:133:24}",
+   "@{t:133:25}"
+  ],
+  "138": [
+   "@{t:138:0}",
+   "@{t:138:1}",
+   "@{t:138:2}",
+   "@{t:138:3}",
+   "@{t:138:4}",
+   "@{t:138:5}",
+   "@{t:138:6}",
+   "@{t:138:7}",
+   "@{t:138:8}",
+   "@{t:138:9}",
+   "@{t:138:10}",
+   "@{t:138:11}",
+   "@{t:138:12}",
+   "@{t:138:13}",
+   "@{t:138:14}",
+   "@{t:138:15}",
+   "@{t:138:16}",
+   "@{t:138:17}",
+   "@{t:138:18}",
+   "@{t:138:19}",
+   "@{t:138:20}",
+   "@{t:138:21}",
+   "@{t:138:22}",
+   "@{t:138:23}",
+   "@{t:138:24}",
+   "@{t:138:25}",
+   "@{t:138:26}",
+   "@{t:138:27}",
+   "@{t:138:28}",
+   "@{t:138:29}",
+   "@{t:138:30}",
+   "@{t:138:31}",
+   "@{t:37:10}",
+   "@{t:138:33}",
+   "@{t:55:6}",
+   "@{t:138:35}",
+   "@{t:138:36}",
+   "@{t:138:37}",
+   "@{t:138:38}",
+   "@{t:138:39}",
+   "@{t:138:40}",
+   "@{t:138:41}",
+   "@{t:138:42}",
+   "@{t:138:43}",
+   "@{t:138:44}",
+   "@{t:138:45}",
+   "@{t:138:46}",
+   "@{t:138:47}",
+   "@{t:138:48}",
+   "@{t:138:49}",
+   "@{t:138:50}",
+   "@{t:138:51}",
+   "@{t:138:52}",
+   "@{t:138:53}",
+   "@{t:138:54}",
+   "@{t:138:55}",
+   "@{t:138:56}",
+   "@{t:138:57}",
+   "@{t:138:58}",
+   "@{t:138:59}",
+   "@{t:138:60}",
+   "@{t:138:61}",
+   "@{t:138:62}",
+   "@{t:138:63}",
+   "@{t:138:64}",
+   "@{t:138:65}",
+   "@{t:138:66}",
+   "@{t:138:67}",
+   "@{t:138:68}",
+   "@{t:8:50}",
+   "@{t:51:88}",
+   "@{t:138:36}",
+   "@{t:138:72}",
+   "@{t:8:51}",
+   "@{t:138:74}",
+   "@{t:8:62}",
+   "@{t:8:63}",
+   "@{t:138:77}",
+   "@{t:51:87}",
+   "@{t:138:79}",
+   "@{t:51:86}"
+  ],
+  "157": [
+   "@{t:5:139}",
+   "@{t:157:1}",
+   "@{t:157:2}",
+   "@{t:157:3}",
+   "@{t:157:4}",
+   "@{t:72:5}",
+   "@{t:157:6}",
+   "@{t:157:7}",
+   "@{t:157:8}",
+   "@{t:157:9}",
+   "@{t:157:10}",
+   "@{t:72:11}",
+   "@{t:72:12}",
+   "@{t:72:13}",
+   "@{t:157:14}"
+  ]
+ }
+}

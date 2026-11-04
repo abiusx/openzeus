@@ -1,0 +1,18 @@
+address	name	kind	type	evidence
+004fa860	hero_sprite_group	function		(hero, anim action) -> image group: g1 walk, g2 die (4), g3 fight (5), g4 swim (0x13); docs/logic/heroes-monsters.md
+00482490	quest_fulfilled_title_text	function		PHRASE_<god>_quest[2]_fulfilled_title table [god + 14 quest]
+005301e0	monster_near_building_tile	function		bad monster: own tile or rings 1..r-1 -> first tile with a building or wall (0xC000)
+00530ae0	monster_wander_dest	function		dest = base (home +0x2C or given) + (rng15%15-8, rng15%15-8) if in play area
+004e3220	figure_place_on_tile	function		puts a figure on a tile (hero out of the hall; hero route lost -> target tile)
+004fa620	hero_hall_buildable	function		build menu 0x17 item: hero of the 3 monster slots, needed, no hall (or cheat 0x00665DF0)
+0057c720	hero_hall_info_draw	function		Hero's Hall info window: title 185:8+h, status, Requires/Status rows, Send For
+0057c630	hero_hall_status_text	function		185:63..70 status line of the hall window
+004fa670	hero_can_send_for	function		not present, not sent for, all met (or cheat)
+00534430	monster_action24_enter	function		on-enter 24: home +0x2C = current position (lost on the way home)
+004d5bc0	hero_duel_hit	function		replaces figure_hit for a hero and his quarry: no damage, +0x68 counts 300
+0045c580	hero_hall_firepot_draw	function		city_draw case 0x7D while hero_record_figure: SprAmbient 0x2045 at draw point + (0x7D - ax, 0x3C - ay); oracle 1I-hero
+004faa70	hero_requirement_row_draw	function		hall window row i: text + value (fonts rank 5 met / 4 unmet); heroes-monsters.md
+005b6690	city_crime_rating	function		*out = 0x00FEB544 (+6 for the 61:k rating text) and its font
+00536d00	palace_piece_damage	function		vt+0x90 of piece classes 3..6: the whole palace to rubble (state 4)
+0053e5b0	monument_part_damaged	function		vt+0x98: b+0x69
+0053e5d0	monument_part_not_started	function		vt+0x9C: conan phase index (vt+0x1C) == 0

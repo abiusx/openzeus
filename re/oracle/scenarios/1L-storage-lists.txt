@@ -1,0 +1,8 @@
+# The storage windows' goods lists (storage_goods_list 0x005B12C0 over g_goods_list, rebuild_goods_lists 0x005BAAF0;
+# docs/play/info.md "Storage window controls"): Open Play Sandbox (its episode's player city: no carrot / onion farm,
+# no urchin quay), camera poked as scrub-granary.txt (DIR/poke.txt = "5 da2f64 4 114", "5 da2f68 4 272"). A storehouse
+# at (330,330) (Distribution page, button (747,345)); a right click cancels the tool, the next one 5 s later opens
+# the window: DIR/store2.bmp (window at (0,32)); then a granary (button (675,343)) at (480,200): DIR/granary.bmp.
+# The Distribution page's goods list (FUN_00517E30) shows in every shot (panel at 598,30). Replace DIR; empty
+# --write-dir; --seconds 100; ZEUS_POKE=DIR/poke.txt --state-log DIR/state.txt. Check: docs/play/info.md.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:rclick 300,300; 55:click 570,575; 56:click 622,165; 57:move 747,345; 57.5:click 747,345; 58:move 330,330; 59:down 330,330; 59.3:up 330,330; 60:rclick 330,350; 62:move 330,350; 63:rclick 330,350; 65:move 700,10; 66:shot DIR/store.bmp; 67:move 330,350; 68:rclick 330,350; 70:move 700,10; 71:shot DIR/store2.bmp; 72:rclick 700,300; 74:move 675,343; 74.5:click 675,343; 76:move 480,200; 77:down 480,200; 77.3:up 480,200; 78:rclick 480,200; 81:move 480,200; 82:rclick 480,200; 84:move 480,200; 85:rclick 480,200; 87:move 700,10; 88:shot DIR/granary.bmp; 90:rclick 700,300; 95:shot DIR/end.bmp

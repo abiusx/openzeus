@@ -1,0 +1,6 @@
+# Walkers crossing roadblocks (docs/play/draw-order.md 6, bugs.md 203): "See a working city" (800x600) as ranch.txt,
+# 4 x down + 3 x right arrow, Build roadblock (the second round icon, 698,453), two roadblocks on the road by the
+# trading area (clicks 470,505 and 520,540), then 41 shots 0.5 s apart (DIR/sh/fNN.bmp, f00 at 63 s); the cart that
+# crosses them is drawn over the roadblock and its post in every shot. Empty --write-dir, --state-log /dev/null,
+# --seconds 85; replace DIR (mkdir DIR/sh first). Shots: append "T:shot DIR/sh/fNN.bmp" for T = 63, 63.5, ... 83.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 52:key 40; 52.5:key 40; 53:key 40; 53.5:key 40; 57:key 39; 57.5:key 39; 58:key 39; 59:click 698,453; 60:move 470,505; 60.5:shot DIR/ghost.bmp; 61:click 470,505; 61.5:click 520,540; 62:rclick 300,300; 62.3:move 300,580

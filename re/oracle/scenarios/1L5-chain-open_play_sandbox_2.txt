@@ -1,0 +1,2 @@
+# 1L-5 (tools/campaign_chain.py): Open Play Sandbox 2, Mortal, episodes [0] by forced wins; --seconds 92, ZEUS_STATE_DUMP_EVERY=10
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 26:move 590,288; 26.5:click 590,288; 30:move 120,194; 30.5:click 120,194; 32:shot DIR/l32.bmp; 33:move 315,442; 33.5:click 315,442; 40:shot DIR/b40.bmp; 75:move 656,491; 75.5:click 656,491; 79:rclick 300,300

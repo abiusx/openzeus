@@ -1,0 +1,6 @@
+# File dialog list arrows hovered / held (docs/play/options.md "File menu and file dialogs"): "See a working city" at
+# 800x600, File > Load (as file-dialogs.txt), empty --write-dir (no saves), --state-log /dev/null, --seconds 65; DIR =
+# run dir. Up arrow (544,180), down arrow (544,362), 26x26 at (ox+464, oy+120) / (ox+464, oy+302), ox,oy = (80,60).
+# Result (runs/1D-filearrows): uhov / uheld / dhov / dheld equal none.bmp on the arrows (an empty list: no hover or
+# pressed picture); play at 80 % / dpr 1.25 with the mouse held there: 0 px vs uheld / dheld (208,100) 384x336.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:move 150,10; 50.5:click 150,10; 51.5:move 20,10; 52:move 30,80; 52.5:click 30,80; 53.5:move 556,192; 55:shot DIR/uhov.bmp; 55.5:down 556,192; 57:shot DIR/uheld.bmp; 57.5:up 556,192; 58:move 556,374; 59.5:shot DIR/dhov.bmp; 60:down 556,374; 61.5:shot DIR/dheld.bmp; 62:up 556,374; 62.5:move 700,580; 64:shot DIR/none.bmp

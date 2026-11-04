@@ -1,0 +1,4 @@
+# "See a working city" tutorial at 1024x768 (as palace.txt), then PgUp four times and PgDn, a shot 3 s after each key
+# (a0 = view 0, a1 = 2, a2 = 4, a3 = 6, a4 = 0, a5 = 6). Banners lag one key. Replace DIR; empty --write-dir;
+# --seconds 96. docs/play/rotation.md "Verification" (run dir used there: rotation2).
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:click 90,10; 52:click 120,41; 55:click 320,253; 58:shot DIR/a0.bmp; 59:key 33; 62:shot DIR/a1.bmp; 67:key 33; 70:shot DIR/a2.bmp; 75:key 33; 78:shot DIR/a3.bmp; 83:key 33; 86:shot DIR/a4.bmp; 91:key 34; 94:shot DIR/a5.bmp

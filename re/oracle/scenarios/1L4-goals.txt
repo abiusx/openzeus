@@ -1,0 +1,6 @@
+# 1L-4: the objectives screen (0x3B, objectives_screen_draw 0x0052C070) with campaign goals: Zeus and Europa, Mortal,
+# episode 1; 1L4-goals.poke writes six goals at tick 5 (Population 1000, Treasury 4000 (met), 2 sanctuaries, Support
+# 4 horsemen, Set aside 3 wood, Time limit 5 years) and 500 wood in the storehouse totals at tick 55 (0x00FEB33C + 9*4), so the Set
+# aside row is lit (FUN_00529D10). Goals button (635,581); the Set aside row (480,234) opens the 0x3F confirm (5:0x1C);
+# OK at (433,257). --seconds 95. Check: docs/play/campaign.md "Checks".
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 26:move 590,260; 26.5:click 590,260; 33:move 315,442; 33.5:click 315,442; 75:move 656,491; 75.5:click 656,491; 77:move 635,581; 77.5:click 635,581; 79:move 700,10; 80:shot DIR/goals.bmp; 81:move 480,234; 82:shot DIR/hover.bmp; 82.5:click 480,234; 84:move 300,450; 85:shot DIR/confirm.bmp; 86:move 433,257; 87:shot DIR/confirm_hover.bmp; 87.5:click 433,257; 89:move 700,10; 90:shot DIR/after.bmp; 91:rclick 700,10; 93:shot DIR/city.bmp

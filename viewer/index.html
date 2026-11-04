@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polis Viewer</title>
+<style>
+  :root {
+    --bg: #14161a; --panel: #1d2026; --line: #2c3038; --text: #e6e2d8; --muted: #9a958a;
+    --accent: #e0b04a; --good: #6fbf73; --bad: #e0675a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 13px/1.4 ui-monospace, Menlo, monospace; }
+  #app { display: grid; grid-template-columns: 1fr 360px; height: 100vh; }
+  #mapwrap { position: relative; overflow: hidden; cursor: grab; }
+  #mapwrap.drag { cursor: grabbing; }
+  canvas#map { position: absolute; inset: 0; }
+  #side { background: var(--panel); border-left: 1px solid var(--line); overflow-y: auto; padding: 12px 14px; }
+  h1 { font-size: 15px; margin: 0 0 2px; color: var(--accent); letter-spacing: .5px; }
+  h2 { font-size: 12px; margin: 14px 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; }
+  .kv b { color: var(--muted); font-weight: normal; }
+  .big { font-size: 18px; }
+  .bar { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
+  .bar span.l { width: 86px; color: var(--muted); }
+  .bar .fill { height: 10px; background: var(--accent); border-radius: 2px; }
+  .bar .n { color: var(--text); }
+  canvas.chart { width: 100%; height: 90px; background: #16181c; border: 1px solid var(--line); border-radius: 3px; }
+  ul { margin: 0; padding-left: 16px; }
+  li { margin: 1px 0; }
+  .muted { color: var(--muted); }
+  #tip { position: absolute; pointer-events: none; background: rgba(20,22,26,.95); border: 1px solid var(--line);
+         padding: 6px 8px; border-radius: 4px; max-width: 360px; white-space: pre-wrap; display: none; z-index: 5; }
+  #controls { position: absolute; left: 10px; bottom: 10px; right: 10px; display: flex; gap: 8px; align-items: center;
+              background: rgba(20,22,26,.85); padding: 6px 10px; border-radius: 4px; border: 1px solid var(--line); }
+  #controls input[type=range] { flex: 1; }
+  #controls { flex-wrap: wrap; }
+  #lout { flex: 0 1 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #tl { position: relative; flex: 1 0 100%; height: 22px; background: rgba(20,22,26,.85);
+        border: 1px solid var(--line); border-radius: 4px; cursor: pointer; overflow: hidden; }
+  #tlbuf { position: absolute; left: 0; top: 0; bottom: 0; background: #3a3f4a; }
+  #tlhead { position: absolute; top: 0; bottom: 0; width: 3px; background: var(--accent); margin-left: -1px; }
+  #tl span { position: absolute; top: 3px; font-size: 11px; color: var(--text); pointer-events: none; text-shadow: 0 0 3px #000; }
+  #tlnow { left: 8px; } #tlend { right: 8px; color: var(--muted) !important; } #tlhover { display: none; }
+  #livectl { display: flex; gap: 8px; align-items: center; flex: 1; }
+  #livectl input { flex: 1; background: #101114; color: var(--text); border: 1px solid var(--line); border-radius: 3px; padding: 3px 6px; font: inherit; }
+  select { background: #2a2e36; color: var(--text); border: 1px solid var(--line); border-radius: 3px; font: inherit; }
+  button { background: #2a2e36; color: var(--text); border: 1px solid var(--line); border-radius: 3px; padding: 3px 9px; cursor: pointer; font: inherit; }
+  button:hover { border-color: var(--accent); }
+  .legend { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; margin-right: 4px; vertical-align: -1px; border-radius: 2px; }
+  #tabs { display: flex; flex-wrap: wrap; gap: 3px; margin: 8px 0 4px; }
+  #tabs button { padding: 2px 6px; font-size: 11px; }
+  #tabs button.on { border-color: var(--accent); color: var(--accent); }
+  #report .warn { color: var(--accent); }
+  #report .kv { grid-template-columns: minmax(80px, 42%) 1fr; }
+  #report .kv b { overflow-wrap: anywhere; }
+  #report table { border-collapse: collapse; width: 100%; font-size: 12px; }
+  #report th { color: var(--muted); font-weight: normal; text-align: left; border-bottom: 1px solid var(--line); }
+  #report td, #report th { padding: 1px 6px 1px 0; vertical-align: top; }
+  #report td.n { text-align: right; }
+  @media (max-width: 800px) { #app { grid-template-columns: 1fr; grid-template-rows: 60vh auto; } }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="mapwrap"><canvas id="map"></canvas><div id="tip"></div>
+    <div id="controls">
+    <div id="tl" hidden title="click or drag to seek; past the light part = fast forward">
+      <div id="tlbuf"></div><div id="tlhead"></div><span id="tlnow"></span><span id="tlhover"></span><span id="tlend"></span>
+    </div>
+      <button id="fit">fit</button>
+    <label title="draw buildings with the original game's sprites (python3 tools/viewer_sprites.py)"><input type="checkbox" id="spr" checked> sprites</label>
+      <span id="mode" class="muted">live</span>
+      <button id="play" hidden>▶</button>
+      <input type="range" id="slider" min="0" max="0" value="0" hidden>
+      <span id="snapdate" class="muted"></span>
+      <span id="livectl" hidden>
+        <button id="lstart" title="back to the start">⏮</button>
+        <button id="lpause" title="play / pause (space)">❚❚</button>
+        <select id="lspeed" title="playback speed presets">
+          <option value="1">1 tick/s</option><option value="5">5 ticks/s</option><option value="15">15 ticks/s (≈ original)</option>
+          <option value="51">1 day/s</option><option value="153" selected>3 days/s</option>
+          <option value="408">½ month/s</option><option value="816">1 month/s</option>
+          <option value="3264">4 months/s</option><option value="9792">1 year/s</option>
+        </select>
+        <input id="lrate" type="number" min="0.1" step="any" value="153" title="ticks per second (any value)" style="width:70px;flex:none"> <span class="muted">ticks/s</span>
+        <button id="llive" title="jump to the newest simulated tick">live ⏭</button>
+        <input id="lcmd" placeholder="command, e.g. build house 140 150" size="30">
+        <span id="lout" class="muted"></span>
+      </span>
+    </div>
+  </div>
+  <div id="side">
+    <h1>Polis — sandbox</h1>
+    <div id="date" class="big">…</div>
+    <div id="tabs"></div>
+    <div id="report" hidden></div>
+    <div id="summary">
+    <h2>City</h2><div id="city" class="kv"></div>
+    <h2>Houses</h2><div id="levels"></div>
+    <h2>Population</h2><canvas class="chart" id="cpop"></canvas>
+    <h2>Treasury</h2><canvas class="chart" id="cmoney"></canvas>
+    <h2>Sentiment</h2><canvas class="chart" id="csent"></canvas>
+    <h2>Storage</h2><div id="stocks" class="kv"></div>
+    <h2>Problems</h2><ul id="problems"></ul>
+    <h2>Messages</h2><ul id="messages"></ul>
+    <h2>Legend</h2><div class="legend" id="legend"></div>
+    </div>
+  </div>
+</div>
+<script>
+const TERRAIN = { ".": "#c9b585", ",": "#a3bd62", "~": "#3b6fae", "T": "#3d6633", "^": "#8a8780", "M": "#d6d3cc", "c": "#b8733a", "s": "#c0c6d0",
+                  "#": "#6b5843", " ": "#101114", "=": "#ebe3cf", "r": "#6e655a", "w": "#8c7a62" };
+const KIND = { monument: "#b9a77a", guild: "#d8833b", ruin: "#3a2a20", service: "#4f8fd6", producer: "#4d7f3a", workshop: "#d8833b", storage: "#8b62c7", vendor: "#e0b04a",
+               decor: "#d97fa8", avenue: "#c9b48a", admin: "#d65a5a", road: "#ebe3cf", herd: "#4d7f3a", lodge: "#4d7f3a",
+               gather: "#7a5a3a", orchard: "#6f8f2a", ranch: "#a0522d",
+               hunt: "#6b4f2a", fishery: "#3a7fa0", urchin: "#7a3fa0", corral: "#a0522d",
+               school: "#3f6fb0", hippodrome: "#b08a3a" };
+const HOUSE = ["#8a6a45", "#9c7b52", "#b08e60", "#c7a873", "#d9c08f", "#e8d9b0", "#f6f0dc",
+               "#5a4a6a", "#6a5a7a", "#9a7fc0", "#b096d6", "#c8b0ea", "#e6d6ff"];   // + elite lot..Estate
+const WALKER = { water: "#5fb3ff", cart: "#ff9a3c", buyer: "#ffd75e", peddler: "#ffe08a", maintenance: "#ff5a5a",
+                 watchman: "#c0c0c0", tax: "#7cff7c", philosophy: "#c79bff", athletics: "#ff8fd0", drama: "#ff6ad5",
+                 competition: "#ff6ad5", healer: "#ffffff", immigrant: "#ffffff", emigrant: "#7d7d7d",
+                 sheep: "#f4f4ee", goat: "#a08060", shepherd: "#6fd06f", goatherd: "#6fd06f",
+                 woodcutter: "#a0703a", stonecutter: "#d0d0d0", grower: "#9acd32", miner: "#c87533",
+                 horse: "#8b5a2b", deer: "#c08040", boar: "#6b4a3a", cattle: "#5a3a1a", hunter: "#ffa040", boat: "#e8e8ff", rabble: "#a04040", hoplite: "#c0c0d0", horseman: "#d0a020",
+                 diver: "#9050d0", rancher: "#6fd06f", trainee: "#ffd0f0",
+                 trader: "#40e0d0", donkey: "#b0a080", ship: "#40e0d0", firefighter: "#ff2020" };
+// building sprites (viewer/sprites, built by tools/viewer_sprites.py; absent = colored boxes)
+const SPR = {}; let sprOn = true;
+fetch("sprites/index.json").then(r => r.ok ? r.json() : {}).then(idx => {
+  for (const k in idx) { const im = new Image(); im.onload = () => draw(); im.src = `sprites/${k}.png`; SPR[k] = im; }
+}).catch(() => {});
+function sprite(b) {
+  const k = b.kind !== "house" ? b.key : b.level >= 7 ? `elite_${Math.max(0, b.level - 8)}`
+          : `house_${b.occupants ? b.level + 1 : 0}`;
+  const im = SPR[k]; return im && im.complete && im.naturalWidth ? im : null;
+}
+const nice = k => k.replace(/_/g, " ");
+const GOOD = { bronze: "#cd7f32", armor: "#9aa4b0", silver: "#d8d8e0", horses: "#8b5a2b", grapes: "#7b3f8f", wood: "#8b6b3a", marble: "#eeeeee", wheat: "#e8c95a", onions: "#c98a5a", carrots: "#ff8c2a", fleece: "#f2f2f2", olives: "#7a8c3a",
+               olive_oil: "#c7c23a", wine: "#9a2f5a", meat: "#b04a3a", fish: "#5aa0c0", cheese: "#f0e0a0" };
+let live = null;   // {prev: Map, cur: Map, t: time of cur frame, dt: interval}
+const cv = document.getElementById("map"), ctx = cv.getContext("2d"), wrap = document.getElementById("mapwrap");
+const tip = document.getElementById("tip");
+let S = null, view = { x: 0, y: 0, z: 4 }, fitted = false, terrainImg = null, terrainKey = "";
+let timeline = [], tIndex = 0, playing = null;
+
+function resize() { cv.width = wrap.clientWidth * devicePixelRatio; cv.height = wrap.clientHeight * devicePixelRatio;
+  cv.style.width = wrap.clientWidth + "px"; cv.style.height = wrap.clientHeight + "px"; draw(); }
+window.addEventListener("resize", resize);
+
+function buildTerrain() {
+  if (!S || !S.terrain) return;
+  const key = S.terrain.length + ":" + hash(S.terrain);
+  if (key === terrainKey) return;
+  terrainKey = key;
+  const n = S.size, c = document.createElement("canvas"); c.width = n; c.height = n;
+  const x2 = c.getContext("2d"), img = x2.createImageData(n, n);
+  for (let i = 0; i < n * n; i++) {
+    const col = TERRAIN[S.terrain[i]] || "#ff00ff";
+    img.data[i*4] = parseInt(col.slice(1,3),16); img.data[i*4+1] = parseInt(col.slice(3,5),16);
+    img.data[i*4+2] = parseInt(col.slice(5,7),16); img.data[i*4+3] = 255;
+  }
+  x2.putImageData(img, 0, 0); terrainImg = c;
+}
+function hash(s) { let h = 0; for (let i = 0; i < s.length; i += 7) h = (h * 31 + s.charCodeAt(i)) | 0; return h; }
+
+function fit() {
+  if (!S) return;
+  let xs = S.buildings.map(b => b.x), ys = S.buildings.map(b => b.y);
+  let x0 = 0, y0 = 0, x1 = S.size, y1 = S.size;
+  if (xs.length) { x0 = Math.min(...xs) - 8; y0 = Math.min(...ys) - 8;
+    x1 = Math.max(...S.buildings.map(b => b.x + b.size)) + 8; y1 = Math.max(...S.buildings.map(b => b.y + b.size)) + 8; }
+  const W = cv.width, H = cv.height;
+  view.z = Math.min(W / (x1 - x0), H / (y1 - y0));
+  view.x = x0 - (W / view.z - (x1 - x0)) / 2; view.y = y0 - (H / view.z - (y1 - y0)) / 2;
+  draw();
+}
+document.getElementById("fit").onclick = fit;
+document.getElementById("spr").onchange = e => { sprOn = e.target.checked; draw(); };
+
+function draw() {
+  if (!S) return;
+  const z = view.z, W = cv.width, H = cv.height;
+  ctx.fillStyle = "#101114"; ctx.fillRect(0, 0, W, H);
+  ctx.imageSmoothingEnabled = false;
+  ctx.save(); ctx.scale(z, z); ctx.translate(-view.x, -view.y);
+  if (terrainImg) ctx.drawImage(terrainImg, 0, 0);
+  for (const b of S.buildings) {
+    const col = b.kind === "house" ? (b.occupants ? HOUSE[b.level] : "#5a4a3a") : (KIND[b.kind] || "#ccc");
+    const im = sprOn ? sprite(b) : null;
+    ctx.globalAlpha = im ? 0.35 : 1;
+    const bw = b.w || b.size, bh = b.h || b.size;
+    ctx.fillStyle = col; ctx.fillRect(b.x + 0.06, b.y + 0.06, bw - 0.12, bh - 0.12);
+    ctx.globalAlpha = 1;
+    if (b.kind === "monument") {      // construction progress: filled from the bottom
+      const f = Math.min(100, b.built || 0) / 100;
+      ctx.fillStyle = "#e8e2d0"; ctx.fillRect(b.x + 0.2, b.y + bh - 0.2 - (bh - 0.4) * f, bw - 0.4, (bh - 0.4) * f);
+      ctx.strokeStyle = "#14161a"; ctx.lineWidth = 0.12; ctx.strokeRect(b.x + 0.2, b.y + 0.2, bw - 0.4, bh - 0.4);
+    }
+    const stage = b.crop ? Math.min(5, Math.floor((b.growth || 0) / 17)) : -1;
+    const crop = sprOn && b.crop && SPR[`${b.kind === "orchard" ? "tree" : "crop"}_${b.crop}_${stage}`];
+    if (crop && crop.complete && crop.naturalWidth) {   // the plot itself is the field: draw the crop
+      ctx.imageSmoothingEnabled = true;
+      for (let dy = 0; dy < b.size; dy++) for (let dx = 0; dx < b.size; dx++) {
+        if (b.kind === "producer" && dx === 0 && dy === 0) continue;      // farmhouse corner
+        ctx.drawImage(crop, b.x + dx, b.y + dy + 1 - Math.min(1.6, crop.naturalHeight / crop.naturalWidth), 1,
+                      Math.min(1.6, crop.naturalHeight / crop.naturalWidth));
+      }
+      if (b.kind === "producer" && im) ctx.drawImage(im, b.x, b.y, 1, Math.min(1.6, im.naturalHeight / im.naturalWidth));
+      ctx.imageSmoothingEnabled = false;
+    } else if (im) {          // isometric art squeezed onto the footprint, bottom-aligned
+      const h = Math.min(b.size * 1.6, b.size * im.naturalHeight / im.naturalWidth);
+      ctx.imageSmoothingEnabled = true;
+      ctx.drawImage(im, b.x, b.y + b.size - h, b.size, h);
+      ctx.imageSmoothingEnabled = false;
+    }
+    if (b.burning) {          // fire: flames grow with the counter (ruins after 16)
+      ctx.globalAlpha = 0.45 + 0.4 * Math.min(1, b.burning / 16);
+      ctx.fillStyle = b.burning > 16 ? "#ff3b1f" : "#ff9a1f";
+      ctx.fillRect(b.x + 0.1, b.y + 0.1, b.size - 0.2, b.size - 0.2);
+      ctx.globalAlpha = 1;
+    }
+    if (b.reason && b.kind !== "house" && !b.reason.startsWith("top")) {
+      ctx.strokeStyle = "#e0675a"; ctx.lineWidth = 0.18; ctx.strokeRect(b.x + 0.15, b.y + 0.15, b.size - 0.3, b.size - 0.3);
+    }
+  }
+  const rbIm = sprOn && SPR.roadblock && SPR.roadblock.complete ? SPR.roadblock : null;
+  for (const [x, y] of S.roadblocks || []) {
+    if (rbIm) { ctx.imageSmoothingEnabled = true; ctx.drawImage(rbIm, x, y + 0.25, 1, 0.5); ctx.imageSmoothingEnabled = false; }
+    else { ctx.strokeStyle = "#d65a5a"; ctx.lineWidth = 0.15; ctx.strokeRect(x + 0.1, y + 0.1, 0.8, 0.8); }
+  }
+  for (const w of walkersNow()) {
+    if (w.role === "cart" || w.role === "buyer") {
+      ctx.fillStyle = GOOD[w.good] || "#ff9a3c";
+      ctx.fillRect(w.x + 0.2, w.y + 0.2, 0.6, 0.6);
+      ctx.strokeStyle = "#14161a"; ctx.lineWidth = 0.08; ctx.strokeRect(w.x + 0.2, w.y + 0.2, 0.6, 0.6);
+      continue;
+    }
+    ctx.fillStyle = WALKER[w.role] || "#fff";
+    const r = w.role === "immigrant" || w.role === "emigrant" ? 0.25 + 0.06 * Math.min(4, w.amount || 1) : 0.32;
+    ctx.beginPath(); ctx.arc(w.x + 0.5, w.y + 0.5, r, 0, 7); ctx.fill();
+    if (w.role === "immigrant") { ctx.strokeStyle = "#14161a"; ctx.lineWidth = 0.08; ctx.stroke(); }
+  }
+  if (S.entry) { ctx.strokeStyle = "#ff4fd8"; ctx.lineWidth = 0.25; ctx.strokeRect(S.entry[0], S.entry[1], 1, 1); }
+  if (S.exit) { ctx.strokeStyle = "#4fd8ff"; ctx.lineWidth = 0.25; ctx.strokeRect(S.exit[0], S.exit[1], 1, 1); }
+  ctx.restore();
+  if (z >= 9) {               // labels when zoomed in
+    ctx.font = `${Math.floor(z * 0.9)}px ui-monospace, monospace`; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    for (const b of S.buildings) {
+      if (sprOn && sprite(b) && b.kind !== "house") continue;   // name is in the tooltip
+      const cx = (b.x + b.size / 2 - view.x) * z, cy = (b.y + b.size / 2 - view.y) * z;
+      if (cx < -50 || cy < -50 || cx > W + 50 || cy > H + 50) continue;
+      ctx.fillStyle = "#14161a";
+      ctx.fillText(b.kind === "house" ? (b.level >= 7 ? "eeRNOS"[b.level - 7] : b.occupants ? b.level + 1 : "·") : b.key.slice(0, b.size * 2), cx, cy);
+    }
+  }
+}
+
+function walkersNow() {
+  if (!live || !live.f0) return S.walkers || [];
+  const W = a => ({ id: a[0], x: a[1], y: a[2], role: a[3], good: a[4], amount: a[5] });
+  const f0 = live.f0, f1 = live.f1;
+  if (!f1 || live.t <= f0.tick) return f0.walkers.map(W);
+  const k = Math.min(1, (live.t - f0.tick) / (f1.tick - f0.tick || 1));
+  const next = new Map(f1.walkers.map(a => [a[0], a]));
+  return f0.walkers.map(a => {
+    const b = next.get(a[0]), w = W(a);
+    if (b && Math.abs(b[1] - a[1]) + Math.abs(b[2] - a[2]) <= 3) { w.x = a[1] + (b[1] - a[1]) * k; w.y = a[2] + (b[2] - a[2]) * k; }
+    return w;
+  });
+}
+
+// --- pan / zoom / hover
+let drag = null;
+cv.addEventListener("mousedown", e => { drag = { x: e.clientX, y: e.clientY, vx: view.x, vy: view.y }; wrap.classList.add("drag"); });
+window.addEventListener("mouseup", () => { drag = null; wrap.classList.remove("drag"); });
+window.addEventListener("mousemove", e => {
+  if (drag) { view.x = drag.vx - (e.clientX - drag.x) * devicePixelRatio / view.z;
+              view.y = drag.vy - (e.clientY - drag.y) * devicePixelRatio / view.z; draw(); return; }
+  hover(e);
+});
+cv.addEventListener("wheel", e => {
+  e.preventDefault();
+  const r = cv.getBoundingClientRect(), mx = (e.clientX - r.left) * devicePixelRatio, my = (e.clientY - r.top) * devicePixelRatio;
+  const wx = view.x + mx / view.z, wy = view.y + my / view.z;
+  view.z = Math.max(1, Math.min(60, view.z * (e.deltaY < 0 ? 1.15 : 1 / 1.15)));
+  view.x = wx - mx / view.z; view.y = wy - my / view.z; draw();
+}, { passive: false });
+function hover(e) {
+  if (!S) return;
+  const r = cv.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right) { tip.style.display = "none"; return; }
+  const tx = Math.floor(view.x + (e.clientX - r.left) * devicePixelRatio / view.z),
+        ty = Math.floor(view.y + (e.clientY - r.top) * devicePixelRatio / view.z);
+  const b = S.buildings.find(b => tx >= b.x && tx < b.x + (b.w || b.size) && ty >= b.y && ty < b.y + (b.h || b.size));
+  let t = `(${tx}, ${ty})`;
+  if (S.entry && tx === S.entry[0] && ty === S.entry[1]) t = "map entry (immigrants arrive here)  " + t;
+  if (S.exit && tx === S.exit[0] && ty === S.exit[1]) t = "map exit (emigrants leave here)  " + t;
+  if (b) {
+    t = `${nice(b.key)} #${b.id}  ` + t;
+    if (b.kind === "house") t += ` — ${Object.keys(S.house_levels)[b.level]}, ${b.occupants}/${b.capacity ?? "?"} people, desirability ${b.desirability}`;
+    else if (b.employees !== undefined) t += ` — ${b.employees} workers`;
+    const goods = Object.entries(b.goods || {}).map(([k, v]) => `${k} ${v}`).join(", ");
+    if (goods) t += `\ngoods: ${goods}`;
+    const cov = Object.keys(b.coverage || {}); if (cov.length) t += `\nserved: ${cov.join(", ")}`;
+    if (b.crop) t += `\ncrop ${b.crop}: ${b.growth}% grown`;
+    if (b.kind === "monument") t += `\nconstruction ${b.built || 0}%`;
+    if (b.burning) t += `\n🔥 burning (day ${b.burning})`;
+    if (b.reason) t += `\n⚠ ${b.reason}`;
+  }
+  tip.textContent = t; tip.style.display = "block";
+  tip.style.left = (e.clientX - wrap.getBoundingClientRect().left + 14) + "px";
+  tip.style.top = (e.clientY - wrap.getBoundingClientRect().top + 14) + "px";
+}
+cv.addEventListener("mouseleave", () => tip.style.display = "none");
+
+// --- side panel
+function chart(id, series, color) {
+  const c = document.getElementById(id), x = c.getContext("2d");
+  c.width = c.clientWidth * devicePixelRatio; c.height = c.clientHeight * devicePixelRatio;
+  x.clearRect(0, 0, c.width, c.height);
+  if (series.length < 2) return;
+  const mn = Math.min(0, ...series), mx = Math.max(...series, 1), W = c.width, H = c.height, p = 6 * devicePixelRatio;
+  x.strokeStyle = color; x.lineWidth = 2 * devicePixelRatio; x.beginPath();
+  series.forEach((v, i) => { const px = p + i * (W - 2 * p) / (series.length - 1), py = H - p - (v - mn) * (H - 2 * p) / (mx - mn || 1);
+    i ? x.lineTo(px, py) : x.moveTo(px, py); });
+  x.stroke();
+  x.fillStyle = "#9a958a"; x.font = `${10 * devicePixelRatio}px ui-monospace`;
+  x.fillText(String(mx), p, 12 * devicePixelRatio); x.fillText(String(series[series.length - 1]), W - 60 * devicePixelRatio, 12 * devicePixelRatio);
+}
+function kv(el, obj) { el.innerHTML = Object.entries(obj).map(([k, v]) => `<b>${k}</b><span>${v}</span>`).join(""); }
+function panel() {
+  const c = S.city;
+  document.getElementById("date").textContent = `${S.date}  ·  tick ${S.tick}`;
+  kv(document.getElementById("city"), {
+    treasury: `${c.treasury} dr`, population: `${c.population}  (vacancies ${c.vacancies})`,
+    sentiment: `${c.sentiment}  (migration ${c.migration > 0 ? "+" : ""}${c.migration}%)`,
+    workers: `${c.employed} / ${c.workforce} employed  (${c.unemployed} unemployed)`,
+    jobs: (() => { const j = Object.entries(c.labor_jobs || {}), n = j.reduce((s, [, v]) => s + v[0], 0),
+                   f = j.reduce((s, [, v]) => s + v[1], 0), open = j.filter(([, v]) => v[0] > v[1]);
+                   return `${f} / ${n} filled` + (open.length ? `  (open: ${open.map(([k, v]) => `${k} ${v[0] - v[1]}`).join(", ")})` : "  (none open)"); })(),
+    "tax / wage": `${c.tax}% / ${c.wage}`,
+    "last month": Object.entries(c.last_month || {}).map(([k, v]) => `${k} ${v}`).join(", ") || "–",
+    mood: Object.entries(c.sentiment_parts || {}).filter(([k, v]) => v).map(([k, v]) => `${k} ${v > 0 ? "+" : ""}${v}`).join(", ") || "–",
+  });
+  const lv = S.house_levels, mxl = Math.max(1, ...Object.values(lv));
+  document.getElementById("levels").innerHTML = Object.entries(lv).map(([k, v], i) =>
+    `<div class="bar"><span class="l">${k}</span><div class="fill" style="width:${v / mxl * 150}px;background:${HOUSE[i]}"></div><span class="n">${v}</span></div>`).join("")
+    + `<div class="muted">${S.houses_total} lots</div>`;
+  const h = S.history || [];
+  chart("cpop", h.map(r => r.population), "#6fbf73");
+  chart("cmoney", h.map(r => r.treasury), "#e0b04a");
+  chart("csent", h.map(r => r.sentiment), "#4f8fd6");
+  kv(document.getElementById("stocks"), Object.keys(S.stocks).length ? S.stocks : { "": "empty" });
+  document.getElementById("problems").innerHTML = Object.entries(S.problems).sort((a, b) => b[1] - a[1])
+    .map(([k, v]) => `<li>${v}× ${k}</li>`).join("") || "<li class=muted>none</li>";
+  document.getElementById("messages").innerHTML = (S.messages || []).slice().reverse().slice(0, 12)
+    .map(m => `<li>${m.text}</li>`).join("") || "<li class=muted>none</li>";
+}
+document.getElementById("legend").innerHTML =
+  Object.entries(KIND).filter(([k]) => k !== "road").map(([k, c]) => `<span><i style="background:${c}"></i>${k}</span>`).join("")
+  + `<span><i style="background:${HOUSE[0]}"></i>hut</span><span><i style="background:${HOUSE[6]}"></i>townhouse</span>`
+  + Object.entries({ water: "water", cart: "cart", maintenance: "maint." }).map(([k, n]) => `<span><i style="background:${WALKER[k]};border-radius:50%"></i>${n}</span>`).join("");
+
+// --- control-panel tabs: Summary (ours) + the original's 11 (sim/reports.py)
+const TABS = [["summary", "Summary"], ["population", "Population"], ["husbandry", "Husbandry"], ["industry", "Industry"],
+  ["distribution", "Distribution"], ["hygiene", "Hygiene/Safety"], ["administration", "Administration"],
+  ["culture", "Culture"], ["mythology", "Mythology"], ["military", "Military"], ["aesthetics", "Aesthetics"],
+  ["overview", "Overview"]];
+let TAB = "summary";
+try { TAB = localStorage.getItem("polis.tab") || "summary"; } catch (e) {}
+const esc = s => String(s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
+function tabs() {
+  document.getElementById("tabs").innerHTML = TABS.map(([k, n]) =>
+    `<button data-tab="${k}" class="${k === TAB ? "on" : ""}">${n}</button>`).join("");
+  document.getElementById("summary").hidden = TAB !== "summary";
+  document.getElementById("report").hidden = TAB === "summary";
+  report();
+}
+document.getElementById("tabs").addEventListener("click", e => {
+  const k = e.target.dataset && e.target.dataset.tab;
+  if (!k) return;
+  TAB = k;
+  try { localStorage.setItem("polis.tab", k); } catch (err) {}
+  tabs();
+});
+function report() {
+  const el = document.getElementById("report");
+  if (TAB === "summary" || !S) return;
+  const secs = (S.reports || {})[TAB];
+  if (!secs) { el.innerHTML = `<div class="muted">no report in this snapshot (restart the server with the new code)</div>`; return; }
+  el.innerHTML = secs.map(s => {
+    let h = `<h2>${esc(s.title)}</h2>`;
+    if (s.rows.length) h += `<div class="kv">` + s.rows.map(([l, v, w]) =>
+      `<b>${esc(l)}</b><span class="${w ? "warn" : ""}">${esc(v)}</span>`).join("") + `</div>`;
+    if (s.table) h += `<table><tr>${s.table.cols.map(c => `<th>${esc(c)}</th>`).join("")}</tr>` +
+      s.table.rows.map(r => `<tr>${r.map(v => `<td class="${typeof v === "number" ? "n" : ""}">${esc(v)}</td>`).join("")}</tr>`).join("") + `</table>`;
+    return h;
+  }).join("");
+}
+tabs();
+
+function show(snap) {
+  if (snap.terrain === undefined && S) snap.terrain = S.terrain;
+  const hadNone = !S || !S.buildings.length;
+  S = snap; buildTerrain();
+  if (!fitted || (hadNone && S.buildings.length)) { fitted = true; resize(); fit(); } else draw();
+  panel();
+  report();
+}
+
+// --- data sources: recorded timeline (slider) or live save (poll)
+async function getJSON(u) { const r = await fetch(u, { cache: "no-store" }); return r.json(); }
+async function start() {
+  resize();
+  let tl = { snapshots: [], live: true };
+  try { tl = await getJSON("timeline.json"); } catch (e) {}
+  timeline = tl.snapshots || [];
+  const slider = document.getElementById("slider"), play = document.getElementById("play");
+  if (tl.server === "live") return startLive();
+  if (timeline.length && !tl.live) {
+    document.getElementById("mode").textContent = "replay";
+    slider.hidden = play.hidden = false; slider.max = timeline.length - 1;
+    const load = async i => { tIndex = i; slider.value = i; show(await getJSON("snap/" + timeline[i]));
+      document.getElementById("snapdate").textContent = `${i + 1}/${timeline.length}`; };
+    slider.oninput = () => load(+slider.value);
+    play.onclick = () => {
+      if (playing) { clearInterval(playing); playing = null; play.textContent = "▶"; return; }
+      play.textContent = "❚❚";
+      playing = setInterval(() => { if (tIndex >= timeline.length - 1) { play.onclick(); return; } load(tIndex + 1); }, 350);
+    };
+    load(0);
+  } else {
+    const poll = async () => { try { show(await getJSON("state.json")); } catch (e) {} };
+    poll(); setInterval(poll, 1500);
+  }
+}
+async function post(u, body) {
+  const r = await fetch(u, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  return r.json();
+}
+function tickDate(t) {      // same calendar as the sim: 51 ticks/day, 16 days/month, start 1000 BC
+  const M = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const m = Math.floor(t / 816), y = 1000 - Math.floor(m / 12), d = Math.floor((t % 816) / 51) + 1;
+  return `${M[m % 12]} ${y} BC, day ${d}`;
+}
+async function startLive() {
+  document.getElementById("mode").textContent = "live";
+  document.getElementById("livectl").hidden = false;
+  const tl = document.getElementById("tl"); tl.hidden = false;
+  const P = { t: 0, rate: 153, playing: true, liveTick: 0, end: 0, f0: null, f1: null, stateTick: -1,
+              wanted: null, follow: true, meta: {} };
+  live = P;
+  const pauseBtn = document.getElementById("lpause"), speedSel = document.getElementById("lspeed"),
+        rateIn = document.getElementById("lrate"), out = document.getElementById("lout"), cmd = document.getElementById("lcmd");
+  const setRate = v => { if (v > 0) { P.rate = v; rateIn.value = v; } };
+  pauseBtn.onclick = () => { P.playing = !P.playing; pauseBtn.textContent = P.playing ? "❚❚" : "▶"; };
+  speedSel.onchange = () => setRate(+speedSel.value);
+  rateIn.onchange = () => setRate(+rateIn.value);
+  document.getElementById("lstart").onclick = () => seek(0);
+  document.getElementById("llive").onclick = () => seek(P.liveTick);
+  window.addEventListener("keydown", e => { if (e.key === " " && document.activeElement.tagName !== "INPUT") { e.preventDefault(); pauseBtn.onclick(); } });
+  cmd.addEventListener("keydown", async e => {
+    if (e.key !== "Enter" || !cmd.value.trim()) return;
+    const r = await post("cmd", { cmd: cmd.value.trim() });
+    out.textContent = (r.ok ? "✓ " : "✗ ") + r.out; out.style.color = r.ok ? "var(--good)" : "var(--bad)";
+    if (r.ok) cmd.value = "";
+    seek(r.tick); P.stateTick = -1;          // commands apply at the newest tick: jump there
+  });
+  // --- timeline
+  const span = () => Math.max(P.liveTick + P.meta.script_left || 0, P.liveTick, P.t, 816) * 1.02;
+  const tickAt = e => { const r = tl.getBoundingClientRect(); return Math.max(0, Math.round((e.clientX - r.left) / r.width * span())); };
+  let scrub = false;
+  tl.addEventListener("mousedown", e => { scrub = true; seek(tickAt(e)); e.stopPropagation(); });
+  window.addEventListener("mouseup", () => { scrub = false; });
+  tl.addEventListener("mousemove", e => { if (scrub) seek(tickAt(e));
+    const h = document.getElementById("tlhover"); h.style.display = "block"; h.style.left = (e.clientX - tl.getBoundingClientRect().left + 8) + "px";
+    h.textContent = tickDate(tickAt(e)); });
+  tl.addEventListener("mouseleave", () => { document.getElementById("tlhover").style.display = "none"; });
+  function seek(t) { P.t = Math.max(0, t); P.f0 = P.f1 = null; poll(); }
+  function drawTimeline() {
+    const sp = span();
+    document.getElementById("tlbuf").style.width = (P.liveTick / sp * 100) + "%";
+    document.getElementById("tlhead").style.left = (P.t / sp * 100) + "%";
+    const ahead = P.t > P.liveTick + 15 ? `  — computing… (${tickDate(P.liveTick)})` : "";
+    document.getElementById("tlnow").textContent = `${tickDate(Math.floor(P.t))} · tick ${Math.floor(P.t)}${ahead}`;
+    document.getElementById("tlend").textContent = P.meta.script_running
+      ? `script: ${P.meta.waiting ? "until " + P.meta.waiting : "to ~" + tickDate(P.liveTick + (P.meta.script_left || 0))}`
+      : "sandbox (endless)";
+  }
+  // --- data
+  let busy = false;
+  async function poll() {
+    if (busy) return; busy = true;
+    try {
+      const r = await getJSON(`frame.json?t=${Math.floor(P.t)}&rate=${P.playing ? P.rate : 0}`);
+      P.f0 = r.f0; P.f1 = r.f1; P.meta = r.meta; P.liveTick = r.meta.live_tick;
+      if (r.f0 && P.t < r.f0.tick) P.t = r.f0.tick;     // nothing recorded earlier (server resumed from a save)
+      if (r.meta.state_tick !== P.stateTick) {
+        P.stateTick = r.meta.state_tick;
+        show(await getJSON(`state.json?t=${Math.floor(P.t)}`));
+      }
+      if (r.meta.log && r.meta.log.length && !out.textContent) out.textContent = r.meta.log[r.meta.log.length - 1];
+    } catch (e) {}
+    busy = false;
+  }
+  setInterval(poll, 100);
+  let last = performance.now();
+  (function anim(now) {
+    const dt = (now - last) / 1000; last = now;
+    if (P.playing && P.f0 && P.t <= P.liveTick) P.t = Math.min(P.liveTick, P.t + P.rate * dt);
+    if (S && P.f0) {
+      const f = P.f1 && P.t >= P.f1.tick ? P.f1 : P.f0;
+      S.tick = Math.floor(P.t); S.date = f.date; S.city.treasury = f.treasury; S.city.population = f.population; S.city.sentiment = f.sentiment;
+      const h = new Map(f.houses.map(([id, lv, occ, cap]) => [id, [lv, occ, cap]]));
+      for (const b of S.buildings) if (h.has(b.id)) { const [lv, occ, cap] = h.get(b.id); b.level = lv; b.occupants = occ; if (cap !== undefined) b.capacity = cap; }
+      document.getElementById("date").textContent = `${tickDate(Math.floor(P.t))}  ·  tick ${Math.floor(P.t)}` + (P.playing ? "" : "  (paused)");
+    }
+    drawTimeline(); draw();
+    requestAnimationFrame(anim);
+  })(last);
+}
+start();
+</script>
+</body>
+</html>

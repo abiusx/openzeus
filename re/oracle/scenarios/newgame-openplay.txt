@@ -1,0 +1,3 @@
+# The exe's open-play start at 800x600: Play Zeus, leader "N", Adventures, "Open Play Sandbox" row (100,306), Begin
+# Adventure (315,442). DIR = the run dir; --seconds 44. Shots: b1 (row chosen), b2..b4 after Begin.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 24:move 590,260; 24.5:click 590,260; 28:move 100,306; 28.5:click 100,306; 30:move 700,580; 31:shot DIR/b1.bmp; 32:move 315,442; 32.5:click 315,442; 35:shot DIR/b2.bmp; 39:shot DIR/b3.bmp; 43:shot DIR/b4.bmp

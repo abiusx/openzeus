@@ -1,0 +1,8 @@
+# bugs.md 400 (ground under sanctuary step tiles): tutorial 15 (tutorial15.sav, as 1L5-tut15.txt) with the camera poked
+# (DIR/poke.txt) to the Apollo sanctuary ("2 da2f64 4 100", "2 da2f68 4 186": shot DIR/apollo.bmp at 38 s, tick 4)
+# and then to the Ares sanctuary's terrace edge ("10 da2f64 4 108", "10 da2f68 4 172": DIR/ares.bmp at 46 s), then
+# PgUp (key 33) three times: DIR/ares2.bmp, ares4.bmp, ares6.bmp (views 2, 4, 6; the camera of each from the dump of
+# the shot's tick, 0x00DA2F64 / 0x00DA2F68). --seconds 70, empty --write-dir, --state-log /dev/null,
+# ZEUS_STATE_DUMP_EVERY=1 ZEUS_STATE_DUMP_TO=200; keep stderr in DIR/run.log; replace DIR.
+# Compare: tools/oracle_view_compare.py SHOT URL COL ROW [--view V].
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 32:click 588,475; 36:rclick 300,300; 38:shot DIR/apollo.bmp; 46:shot DIR/ares.bmp; 47:rclick 590,575; 48:key 33; 51:shot DIR/ares2.bmp; 52:rclick 590,575; 53:key 33; 56:shot DIR/ares4.bmp; 57:rclick 700,250; 58:key 33; 61:shot DIR/ares6.bmp

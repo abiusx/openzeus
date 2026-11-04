@@ -1,0 +1,8 @@
+# A building on scrub (docs/play/draw-order.md 7, bugs.md 185): Open Play Sandbox (as rotation-sandbox.txt, 800x600),
+# camera poked at tick 5 to a scrub plain: DIR/poke.txt = "5 da2f64 4 114" and "5 da2f68 4 272" (top-left view cell);
+# ZEUS_POKE=DIR/poke.txt --state-log DIR/state.txt (ZEUS_STATE_DUMP=DIR/dump ZEUS_STATE_DUMP_EVERY=20 to read the
+# building grid: the granary stands on (150,141)-(153,144)). Close the tribute message, Distribution -> Granary,
+# click (330,330), right click, mouse off the map; DIR/built.bmp. Replace DIR; empty --write-dir; --seconds 64.
+# Play mode: python3 -m sim new COPY.pkl; python3 -m sim do COPY.pkl "build granary 150 141"; serve it on your own
+# port; python3 tools/oracle_view_compare.py DIR/built.bmp http://127.0.0.1:PORT/play.html 114 272 --box 200,340,460,440
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:rclick 300,300; 55:click 570,575; 56:click 622,165; 57:click 675,343; 58:move 330,330; 59:down 330,330; 59.3:up 330,330; 60:rclick 300,300; 60.5:move 300,580; 63:shot DIR/built.bmp

@@ -1,0 +1,8 @@
+# Lifted figures (+0x1D) in the exe's draw order (docs/play/draw-order.md 3.7, bugs.md 178): gate-walk.txt run again
+# with every figure's +0x1D set from tick 200 to 1100, shots up to 110 s:
+#   (cat re/oracle/runs/gate-walk/poke.txt; python3 tools/oracle_poke_lifted.py 200 1100 80) > DIR/poke.txt
+#   ZEUS_POKE=DIR/poke.txt zeus-run ... --seconds 112 --state-log DIR/state.txt --script "<gate-walk.txt up to 110 s, DIR replaced>"
+# Compare DIR/shots/v0_0NN.bmp with re/oracle/runs/gate-walk/keep/v0_0NN.bmp: 10-29, shots 025/026/027/029 differ
+# (965 / 1492 / 1722 / 301 px): the lifted immigrant cart is drawn over the gatehouse's arch and front tower, where the
+# plain one is hidden; the others are equal. So a +0x1D figure is drawn after the objects 2 rows down, with no
+# exception for buildings in front.

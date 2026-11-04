@@ -1,0 +1,10 @@
+# See security over elite houses (FUN_00563240; docs/play/pages.md "16 security"): "See a working city" (800x600), its six
+# Estates (buildings 425..430, tiles (96,77) (96,83) (96,89) (103,80) (103,86) (103,92), elevation 1, pop 20, arms 4,
+# horses 4). Camera poked: DIR/poke.txt = "20 da2f64 4 117", "20 da2f68 4 166" (and at tick 23); ZEUS_POKE=DIR/poke.txt,
+# ZEUS_STATE_DUMP=DIR/dump ZEUS_STATE_DUMP_EVERY=25, --state-log DIR/state.txt, empty --write-dir, --seconds 77.
+# Military page (642,370) twice, See security (729,59) -> s.bmp (runs/1D-security: 4 chariots on every pad; n.bmp the
+# map before). Second run (runs/1D-security2, --seconds 69, shot at 68): also poke Building+0x6A arms / +0x72 horses
+# (B = 0x0092E658 + 0x118 i, size 2) at ticks 25, 30, 35, 40: 426 = 6 / 1, 427 = 0 / 3, 429 = 2 / 0.
+# Pads at (330,100) (150,190) (270,340) (90,430) = the house tile point + (-90,-35).
+# Play: an elite house injected at (160,160) on a new sandbox, the pad placed at the shot's place (docs/play/pages.md).
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 57.5:move 300,12; 60:shot DIR/n.bmp; 61:move 642,370; 61.3:down 642,370; 61.6:up 642,370; 63:move 642,370; 63.3:down 642,370; 63.6:up 642,370; 65:move 729,59; 65.3:down 729,59; 65.6:up 729,59; 66.5:move 300,12; 68:shot DIR/s.bmp

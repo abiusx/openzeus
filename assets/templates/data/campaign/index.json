@@ -1,0 +1,757 @@
+{
+ "_doc": "Built by tools/build_campaign.py (docs/campaign-format.md).",
+ "adventures": [
+  {
+   "id": "the_birth_of_atlantis",
+   "name": "#The Birth of Atlantis",
+   "file": "zeus-original/app/Adventures/#The Birth of Atlantis.pak",
+   "kind": "poseidon_campaign",
+   "game": "poseidon",
+   "set_version": 26,
+   "picture": 12,
+   "title": "@{mm:166:0}",
+   "order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    "colony",
+    5,
+    "colony",
+    6
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "zeus_and_europa",
+   "name": "#Zeus and Europa",
+   "file": "zeus-original/app/Adventures/#Zeus and Europa.pak",
+   "kind": "zeus_campaign",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 6,
+   "title": "@{mm:498:0}",
+   "order": [
+    0,
+    1,
+    2,
+    "colony",
+    3,
+    4,
+    5,
+    6
+   ],
+   "tutorial": null,
+   "colonies": 1,
+   "maps": 2
+  },
+  {
+   "id": "enlightenment_in_the_west",
+   "name": "&Enlightenment in the West",
+   "file": "zeus-original/app/Adventures/&Enlightenment in the West.pak",
+   "kind": "poseidon_campaign",
+   "game": "poseidon",
+   "set_version": 26,
+   "picture": 10,
+   "title": "@{mm:186:0}",
+   "order": [
+    0,
+    "colony",
+    1,
+    "colony",
+    2,
+    "colony",
+    3
+   ],
+   "tutorial": null,
+   "colonies": 4,
+   "maps": 5
+  },
+  {
+   "id": "perseus_and_medusa",
+   "name": "&Perseus and Medusa",
+   "file": "zeus-original/app/Adventures/&Perseus and Medusa.pak",
+   "kind": "zeus_campaign",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 3,
+   "title": "@{t:27:0}",
+   "order": [
+    0,
+    1,
+    "colony",
+    2,
+    "colony",
+    3
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "athens_through_the_ages",
+   "name": "@Athens through the Ages",
+   "file": "zeus-original/app/Adventures/@Athens through the Ages.pak",
+   "kind": "zeus_campaign",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 5,
+   "title": "@{mm:497:0}",
+   "order": [
+    0,
+    1,
+    "colony",
+    2,
+    "colony",
+    3,
+    4,
+    5
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "life_in_the_mediterranean",
+   "name": "@Life in the Mediterranean",
+   "file": "zeus-original/app/Adventures/@Life in the Mediterranean.pak",
+   "kind": "poseidon_campaign",
+   "game": "poseidon",
+   "set_version": 26,
+   "picture": 14,
+   "title": "@{mm:204:0}",
+   "order": [
+    0,
+    1,
+    "colony",
+    2,
+    "colony",
+    3
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "open_play_economic_2",
+   "name": "Open Play Economic 2",
+   "file": "zeus-original/app/Adventures/Open Play Economic 2/Open Play Economic 2.pak",
+   "kind": "folder",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 0,
+   "title": null,
+   "order": [
+    0,
+    "colony",
+    1,
+    "colony",
+    2
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "open_play_military_2",
+   "name": "Open Play Military 2",
+   "file": "zeus-original/app/Adventures/Open Play Military 2/Open Play Military 2.pak",
+   "kind": "folder",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 0,
+   "title": null,
+   "order": [
+    0,
+    "colony",
+    1
+   ],
+   "tutorial": null,
+   "colonies": 1,
+   "maps": 2
+  },
+  {
+   "id": "open_play_sandbox_2",
+   "name": "Open Play Sandbox 2",
+   "file": "zeus-original/app/Adventures/Open Play Sandbox 2/Open Play Sandbox 2.pak",
+   "kind": "folder",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 0,
+   "title": null,
+   "order": [
+    0
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 1
+  },
+  {
+   "id": "the_founding_of_troy",
+   "name": "The Founding of Troy",
+   "file": "zeus-original/app/Adventures/The Founding of Troy/The Founding of Troy.pak",
+   "kind": "folder",
+   "game": "poseidon",
+   "set_version": 26,
+   "picture": 14,
+   "title": null,
+   "order": [
+    0,
+    "colony",
+    1,
+    "colony",
+    2
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "the_mayan_revolution",
+   "name": "The Mayan Revolution",
+   "file": "zeus-original/app/Adventures/The Mayan Revolution/The Mayan Revolution.pak",
+   "kind": "folder",
+   "game": "poseidon",
+   "set_version": 26,
+   "picture": 14,
+   "title": null,
+   "order": [
+    0,
+    1
+   ],
+   "tutorial": null,
+   "colonies": 1,
+   "maps": 1
+  },
+  {
+   "id": "the_odyssey",
+   "name": "The Odyssey",
+   "file": "zeus-original/app/Adventures/The Odyssey/The Odyssey.pak",
+   "kind": "folder",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 7,
+   "title": null,
+   "order": [
+    0,
+    1,
+    "colony",
+    2,
+    "colony",
+    3,
+    4
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "the_sinking_of_atlantis",
+   "name": "The Sinking of Atlantis",
+   "file": "zeus-original/app/Adventures/The Sinking of Atlantis/The Sinking of Atlantis.pak",
+   "kind": "folder",
+   "game": "poseidon",
+   "set_version": 26,
+   "picture": 14,
+   "title": "@{mm:0:0}",
+   "order": [
+    0,
+    1,
+    2
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 1
+  },
+  {
+   "id": "the_youngest_twins",
+   "name": "The Youngest Twins",
+   "file": "zeus-original/app/Adventures/The Youngest Twins/The Youngest Twins.pak",
+   "kind": "folder",
+   "game": "poseidon",
+   "set_version": 26,
+   "picture": 14,
+   "title": null,
+   "order": [
+    0,
+    "colony",
+    1
+   ],
+   "tutorial": null,
+   "colonies": 1,
+   "maps": 2
+  },
+  {
+   "id": "atlantis_reborn",
+   "name": "[Atlantis Reborn",
+   "file": "zeus-original/app/Adventures/[Atlantis Reborn.pak",
+   "kind": "poseidon_campaign",
+   "game": "poseidon",
+   "set_version": 26,
+   "picture": 13,
+   "title": "@{mm:230:0}",
+   "order": [
+    0,
+    1,
+    2,
+    "colony",
+    3,
+    "colony",
+    4,
+    5
+   ],
+   "tutorial": null,
+   "colonies": 4,
+   "maps": 3
+  },
+  {
+   "id": "the_voyages_of_jason",
+   "name": "[The Voyages of Jason",
+   "file": "zeus-original/app/Adventures/[The Voyages of Jason.pak",
+   "kind": "zeus_campaign",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 2,
+   "title": "@{mm:494:0}",
+   "order": [
+    0,
+    1,
+    2,
+    "colony",
+    3
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "hercules_labors",
+   "name": "]Hercules Labors",
+   "file": "zeus-original/app/Adventures/]Hercules Labors.pak",
+   "kind": "zeus_campaign",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 1,
+   "title": "@{mm:493:0}",
+   "order": [
+    0,
+    "colony",
+    1,
+    "colony",
+    2,
+    "colony",
+    3
+   ],
+   "tutorial": null,
+   "colonies": 3,
+   "maps": 4
+  },
+  {
+   "id": "proetus_and_bellerophon",
+   "name": "]Proetus and Bellerophon",
+   "file": "zeus-original/app/Adventures/]Proetus and Bellerophon.pak",
+   "kind": "poseidon_campaign",
+   "game": "poseidon",
+   "set_version": 26,
+   "picture": 9,
+   "title": "@{mm:248:0}",
+   "order": [
+    0,
+    1,
+    "colony",
+    2,
+    3,
+    4,
+    5
+   ],
+   "tutorial": null,
+   "colonies": 1,
+   "maps": 2
+  },
+  {
+   "id": "the_peloponnesian_war",
+   "name": "^The Peloponnesian War",
+   "file": "zeus-original/app/Adventures/^The Peloponnesian War.pak",
+   "kind": "zeus_campaign",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 7,
+   "title": "@{mm:499:0}",
+   "order": [
+    0,
+    1,
+    2,
+    "colony",
+    3
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "two_worlds_collide",
+   "name": "^Two Worlds Collide",
+   "file": "zeus-original/app/Adventures/^Two Worlds Collide.pak",
+   "kind": "poseidon_campaign",
+   "game": "poseidon",
+   "set_version": 26,
+   "picture": 4,
+   "title": "@{mm:264:0}",
+   "order": [
+    0,
+    1,
+    2,
+    "colony",
+    3,
+    "colony",
+    4,
+    5
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "agora",
+   "name": "agora",
+   "file": "zeus-original/app/Adventures/agora.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:556:0}",
+   "order": [
+    0
+   ],
+   "tutorial": 2,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "bigcity",
+   "name": "bigcity",
+   "file": "zeus-original/app/Adventures/bigcity.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:963:0}",
+   "order": [
+    0,
+    1
+   ],
+   "tutorial": 15,
+   "colonies": 1,
+   "maps": 1
+  },
+  {
+   "id": "colony",
+   "name": "colony",
+   "file": "zeus-original/app/Adventures/colony.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:961:0}",
+   "order": [
+    0,
+    "colony",
+    1
+   ],
+   "tutorial": 13,
+   "colonies": 1,
+   "maps": 2
+  },
+  {
+   "id": "culture",
+   "name": "culture",
+   "file": "zeus-original/app/Adventures/culture.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:584:0}",
+   "order": [
+    0
+   ],
+   "tutorial": 3,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "firstcity",
+   "name": "firstcity",
+   "file": "zeus-original/app/Adventures/firstcity.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:696:0}",
+   "order": [
+    0
+   ],
+   "tutorial": 7,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "food",
+   "name": "food",
+   "file": "zeus-original/app/Adventures/food.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:949:0}",
+   "order": [
+    0
+   ],
+   "tutorial": 1,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "goods",
+   "name": "goods",
+   "file": "zeus-original/app/Adventures/goods.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:640:0}",
+   "order": [
+    0
+   ],
+   "tutorial": 5,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "housing",
+   "name": "housing",
+   "file": "zeus-original/app/Adventures/housing.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:500:0}",
+   "order": [
+    0
+   ],
+   "tutorial": 0,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "hygiene",
+   "name": "hygiene",
+   "file": "zeus-original/app/Adventures/hygiene.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:612:0}",
+   "order": [
+    0
+   ],
+   "tutorial": 4,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "interface",
+   "name": "interface",
+   "file": "zeus-original/app/Adventures/interface.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:956:0}",
+   "order": [
+    0
+   ],
+   "tutorial": 8,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "oliveoil",
+   "name": "oliveoil",
+   "file": "zeus-original/app/Adventures/oliveoil.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:668:0}",
+   "order": [
+    0
+   ],
+   "tutorial": 6,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "palace",
+   "name": "palace",
+   "file": "zeus-original/app/Adventures/palace.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:808:0}",
+   "order": [
+    0,
+    1
+   ],
+   "tutorial": 10,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "peacewar",
+   "name": "peacewar",
+   "file": "zeus-original/app/Adventures/peacewar.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:962:0}",
+   "order": [
+    0,
+    1
+   ],
+   "tutorial": 14,
+   "colonies": 1,
+   "maps": 1
+  },
+  {
+   "id": "sanctuary",
+   "name": "sanctuary",
+   "file": "zeus-original/app/Adventures/sanctuary.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:958:0}",
+   "order": [
+    0,
+    1,
+    2
+   ],
+   "tutorial": 12,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "trade",
+   "name": "trade",
+   "file": "zeus-original/app/Adventures/trade.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:957:0}",
+   "order": [
+    0
+   ],
+   "tutorial": 9,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "warrior",
+   "name": "warrior",
+   "file": "zeus-original/app/Adventures/warrior.pak",
+   "kind": "tutorial",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 8,
+   "title": "@{mm:836:0}",
+   "order": [
+    0,
+    1
+   ],
+   "tutorial": 11,
+   "colonies": 0,
+   "maps": 1
+  },
+  {
+   "id": "the_trojan_war",
+   "name": "{The Trojan War",
+   "file": "zeus-original/app/Adventures/{The Trojan War.pak",
+   "kind": "zeus_campaign",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 4,
+   "title": "@{mm:496:0}",
+   "order": [
+    0,
+    1,
+    "colony",
+    2,
+    "colony",
+    3
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "open_play_economic",
+   "name": "}Open Play Economic",
+   "file": "zeus-original/app/Adventures/}Open Play Economic.pak",
+   "kind": "zeus_campaign",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 0,
+   "title": "@{mm:510:0}",
+   "order": [
+    0,
+    "colony",
+    1,
+    "colony",
+    2
+   ],
+   "tutorial": null,
+   "colonies": 2,
+   "maps": 3
+  },
+  {
+   "id": "open_play_military",
+   "name": "}Open Play Military",
+   "file": "zeus-original/app/Adventures/}Open Play Military.pak",
+   "kind": "zeus_campaign",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 0,
+   "title": "@{mm:516:0}",
+   "order": [
+    0,
+    "colony",
+    1
+   ],
+   "tutorial": null,
+   "colonies": 1,
+   "maps": 2
+  },
+  {
+   "id": "open_play_sandbox",
+   "name": "}Open Play Sandbox",
+   "file": "zeus-original/app/Adventures/}Open Play Sandbox.pak",
+   "kind": "zeus_campaign",
+   "game": "zeus",
+   "set_version": 5,
+   "picture": 0,
+   "title": "@{mm:518:0}",
+   "order": [
+    0
+   ],
+   "tutorial": null,
+   "colonies": 1,
+   "maps": 1
+  }
+ ]
+}

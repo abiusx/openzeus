@@ -1,0 +1,162 @@
+{
+ "prices": {
+  "urchin": 36,
+  "fish": 36,
+  "meat": 45,
+  "cheese": 45,
+  "carrots": 40,
+  "onions": 40,
+  "wheat": 30,
+  "oranges": 40,
+  "wood": 75,
+  "bronze": 110,
+  "marble": 84,
+  "grapes": 42,
+  "olives": 38,
+  "fleece": 60,
+  "black_marble": 150,
+  "orichalc": 200,
+  "armor": 200,
+  "sculpture": 640,
+  "olive_oil": 145,
+  "wine": 160,
+  "chariot": 250
+ },
+ "units": {
+  "sculpture": 400
+ },
+ "land_every_days": 4,
+ "sea_every_days": 30,
+ "max_loads": {
+  "land": 8,
+  "sea": 12
+ },
+ "trade_ticks": 11,
+ "wait_ticks": 20,
+ "partners": [
+  {
+   "name": "Sardis",
+   "route": "land",
+   "buys": {
+    "wine": 12,
+    "olive_oil": 12,
+    "armor": 12,
+    "sculpture": 12
+   },
+   "sells": {
+    "bronze": 12,
+    "marble": 12,
+    "wood": 12
+   }
+  },
+  {
+   "name": "Babylon",
+   "route": "land",
+   "buys": {
+    "fleece": 12,
+    "olive_oil": 12,
+    "wine": 12
+   },
+   "sells": {
+    "wheat": 24,
+    "onions": 12,
+    "carrots": 12,
+    "black_marble": 12
+   }
+  },
+  {
+   "name": "Susa",
+   "route": "land",
+   "buys": {
+    "sculpture": 12,
+    "armor": 12,
+    "chariot": 12,
+    "olives": 12
+   },
+   "sells": {
+    "fleece": 12,
+    "cheese": 12,
+    "meat": 12,
+    "orichalc": 12
+   }
+  },
+  {
+   "name": "Ecbatana",
+   "route": "land",
+   "buys": {
+    "wheat": 12,
+    "marble": 12,
+    "wood": 12,
+    "bronze": 12,
+    "grapes": 12
+   },
+   "sells": {
+    "chariot": 12,
+    "armor": 12,
+    "olive_oil": 12
+   }
+  },
+  {
+   "name": "Tyre",
+   "route": "sea",
+   "buys": {
+    "fish": 12,
+    "urchin": 12,
+    "meat": 12,
+    "cheese": 12,
+    "black_marble": 12
+   },
+   "sells": {
+    "wine": 12,
+    "sculpture": 12,
+    "grapes": 12
+   }
+  },
+  {
+   "name": "Miletus",
+   "route": "sea",
+   "buys": {
+    "onions": 12,
+    "carrots": 12,
+    "fleece": 24,
+    "orichalc": 12,
+    "wine": 12
+   },
+   "sells": {
+    "fish": 12,
+    "urchin": 12,
+    "olives": 12
+   }
+  },
+  {
+   "name": "Memphis",
+   "route": "sea",
+   "buys": {
+    "wood": 12,
+    "bronze": 12,
+    "chariot": 12,
+    "grapes": 12,
+    "olives": 12
+   },
+   "sells": {
+    "wheat": 24,
+    "marble": 12
+   }
+  },
+  {
+   "name": "Corinth",
+   "route": "sea",
+   "buys": {
+    "armor": 12,
+    "sculpture": 12,
+    "olive_oil": 12,
+    "black_marble": 12
+   },
+   "sells": {
+    "wood": 12,
+    "bronze": 12,
+    "fleece": 12
+   }
+  }
+ ]
+}

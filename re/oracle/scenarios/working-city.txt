@@ -1,0 +1,4 @@
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 60:click 568,574; 75:click 568,574; 90:click 568,574; 105:click 568,574; 120:click 568,574; 135:click 568,574; 150:click 568,574; 165:click 568,574; 180:click 568,574; 195:click 568,574; 210:click 568,574; 225:click 568,574; 240:click 568,574; 255:click 568,574; 270:click 568,574; 285:click 568,574; 100:key 39; 101:key 39; 102:key 40; 160:key 37; 161:key 38
+# 300 ticks. The "See a working city" tutorial (the last one): a large city with sanctuaries, a stadium, a god
+# and a monster walking about; the clicks open it from the main menu, close the messages, then the keys scroll.
+# Our reference run re/oracle/runs/working-city (docs/re/oracle.md).

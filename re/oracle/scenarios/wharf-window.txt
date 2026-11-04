@@ -1,0 +1,6 @@
+# Trireme Wharf info window (FUN_00583C60; docs/play/info.md "Trireme wharf", bugs.md 319): trireme-overlays.txt's
+# start (the working city at 1024x768) with re/oracle/scenarios/wharf-window.poke: the camera's top-left cell
+# 0x00DA2F64 / 0x00DA2F68 = (131, 249) at tick 24 (the wharf at logical (114,66) and its trireme in view, crew home:
+# action 0x18), then right clicks on two tiles of the wharf's footprint (the picture's roof stands over road tiles). Shots w.bmp, w2.bmp. Replace DIR with an absolute run dir;
+# empty --write-dir; ZEUS_POKE=re/oracle/scenarios/wharf-window.poke; --seconds 82 --state-log /dev/null.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 66:move 540,378; 68:rclick 540,378; 71:move 790,590; 73:shot DIR/w.bmp; 74:rclick 700,560; 76:move 565,368; 77:rclick 565,368; 79:move 790,590; 80:shot DIR/w2.bmp

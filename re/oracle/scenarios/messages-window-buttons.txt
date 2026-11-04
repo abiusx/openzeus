@@ -1,0 +1,10 @@
+# Event-message window with action buttons / the go-to button: messages-window.txt with a poke (ZEUS_POKE) into the
+# one message's queue entry (slot 0 at 0x00FD3838, 0x3C bytes) before the list is opened: +0x26 flags (0x00FD385E)
+# or +0x0A record (0x00FD3842). Runs (one poke line each, tick 5: the run has 12..18 ticks before the clicks):
+#   messages-window-b7    "5 FD385E 2 7"     Accept / Postpone / Decline
+#   messages-window-b38   "5 FD385E 2 56"    Surrender / Bribe / Fight
+#   messages-window-b1c0  "5 FD385E 2 448"   Dispatch now / Postpone / Refuse
+#   messages-window-goto  "5 FD3842 2 220"   record 220 (type 1): "Go to site of event" + go-to button
+# DIR = the run dir; --seconds 62. Shots: window.bmp (mouse on the top bar), hover.bmp (mouse on the middle button /
+# the go-to button).
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:move 770,494; 50.5:click 770,494; 52:move 250,177; 52.5:click 250,177; 54:move 700,10; 55:shot DIR/window.bmp; 56:move HX,HY; 57:shot DIR/hover.bmp; 59:move 700,10; 60:shot DIR/end2.bmp

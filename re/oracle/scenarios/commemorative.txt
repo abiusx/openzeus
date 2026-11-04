@@ -1,0 +1,8 @@
+# Commemorative god statues in the 4 views (docs/play/monuments.md 9): "See a working city" at 800x600 with its building
+# 435 (Population Monument) poked to a statue variant/orientation and the camera centred on it at tick 5:
+# python3 tools/oracle_commemorative.py --poke V O > DIR/poke.txt; ZEUS_POKE=DIR/poke.txt --state-log DIR/state.txt.
+# s0a = view 0 before any turn (still the old picture: the exe re-places only on a turn), PgUp: s2, s4, s6, s0.
+# Runs (10-29): commem-a (10, o1), commem-b2 (22, o1), commem-c (11, o0), commem-d (22, o2), commem-e (36, o0),
+# commem-f (12, o3). Check: re/venv/bin/python tools/oracle_commemorative.py DIR/sN.bmp FILE:INDEX ... (all 4 facings).
+# Replace DIR; empty --write-dir; --seconds 72.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:shot DIR/s0a.bmp; 51:rclick 400,330; 52:key 33; 55:shot DIR/s2.bmp; 56:rclick 400,330; 57:key 33; 60:shot DIR/s4.bmp; 61:rclick 400,330; 62:key 33; 65:shot DIR/s6.bmp; 66:rclick 400,330; 67:key 33; 70:shot DIR/s0.bmp

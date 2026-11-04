@@ -1,0 +1,9 @@
+# Control-panel Aesthetics page (0x0051BEE0, bugs.md 194): "See a working city" at 800x600, the panel's 10th page
+# button (626,411), mouse moved off. Optional pokes of g_commemorative_placed (u8[75] at 0x00665C7C, index = the
+# commemorative variant) at tick 5 (ZEUS_POKE, one "5 ADDR 1 COUNT" line per variant). Runs (10-29):
+#   aesthetics-a  no poke (the city's own monuments)
+#   aesthetics-b  v1..9 = 1, 2 (v2), statues v10 (Zeus) 2, v0x17 (Poseidon) 1, v0x22 (Hera) 1: 13 rows
+#   aesthetics-c  v1..9 = 1, statues of 10 gods (v10..19): 19 rows, gods merged (133:14)
+#   aesthetics-d  v1..9 = 1, statues of 7 gods (v10..16): 16 rows, Scholar + Athlete merged (133:15)
+# DIR = the run dir; --seconds 52. Shot: page.bmp.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:move 626,411; 47.5:click 626,411; 49:move 700,10; 50:shot DIR/page.bmp

@@ -1,0 +1,3 @@
+# Help menu -> Help (record 1 Table of Contents) -> toc.bmp; right click; Help menu -> About (record 0) -> about.bmp.
+# "See a working city" at 800x600. Replace DIR; empty --write-dir; --seconds 66.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:move 150,10; 50.5:click 150,10; 52:move 160,42; 52.5:click 160,42; 56:shot DIR/toc.bmp; 57:move 300,560; 57.5:rclick 300,560; 59:move 150,10; 59.5:click 150,10; 61:move 160,101; 61.5:click 160,101; 64:shot DIR/about.bmp

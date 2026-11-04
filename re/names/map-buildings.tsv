@@ -1,0 +1,114 @@
+address	name	kind	type	evidence
+00493e70	building_create	function		(type,x,y,parts,id): first free id not reserved by undo (consecutive run of `parts` ids for composites); sets state 3, size from 0x005F6368; docs/logic/buildings.md
+00493e50	buildings_clear_all	function		zeroes all 4000 records (280000 dwords), buildings_high=0, buildings_created=0; NOT single-building delete
+00494620	building_free	function		building_on_remove then zero the 280-byte record (unless type kept by 0x0040AA20/0x0040ACE0); called by cycle pass 40 for states 2/4/5/6
+00494690	building_on_remove	function		per-type cleanup on removal (storage slot +0xD1, agora, palace globals, horse ranch figures, warship count...)
+004a04b0	building_footprint_place	function		(id,x,y,w,h,image,terrain_bits): terrain=(t&0x93872F90)|bits, building grid=id, piece flags=size-1, draw flags, anchor 0x40 by orientation 0x00FA05E8
+004a07c0	building_footprint_to_rubble	function		clears the tiles owned by a building; terrain=(t&0x93873F90)|0x1000 (rubble) on land, t&0x93872F94 on water; grid 0x00C688A8=type byte (+0x45)
+004a09f0	building_footprint_clear	function		clears footprint grids on demolition, terrain &= 0x93872F94 (no rubble)
+004a4500	building_adjacent_to_water	function		(x,y,size): 1 if a tile of the edge-adjacent ring (table 0x005F1680) has terrain 0x4; stored in +0xD0
+004a3b40	house_find_road_access	function		(x,y,size): road tile (0x40 and not 0x4) in edge-adjacent ring, best ranked road network; result in 0x00F13944/0x00F13940
+004a4560	building_find_road_access	function		(x,y,size): like house_find_road_access but needs route distance >0; fallback = adjacent tile with smallest positive distance; returns tile+1
+004a47d0	building_adjacent_reachable_water	function		(x,y,size): adjacent water tile with route distance != 0 (docks, warship wharf)
+00485670	building_water_access_check	function		BFS from 0x00902CDC then building_adjacent_reachable_water(x,y,3)
+00491fe0	road_networks_update	function		cycle step 7: flood-fills road networks into 0x00C4F288, keeps 10 largest (id,size) at 0x00FEB0FC
+00492120	road_network_flood	function		BFS over route grid 0x0105FE40 (&0x10C, ramp rule), 4-neighbours 0x005F2318, queue 1000 at 0x0091D894
+00492260	buildings_fire_collapse_risk	function		cycle step 44: damage risk +col7, fire risk +col6*(1..5) on 1/8 of cycles, ignite >999, collapse >=1000
+00493140	buildings_fire_burn	function		cycle step 43: fire counter +0x4A ++, convert to ruins at 17, burn out at 33, spread to wind-side neighbours
+00493040	building_type_flammable	function		false for 119,164..167,15..24,127,148..152,100..114,199; true otherwise
+004950b0	building_ignite	function		(id,cause,to_ruins): zero risks, set fire counter (+0x4D&7)+1, fireproof flag, spawn fire figures per footprint tile
+00492f30	building_parts_to_burning_ruins	function		walks parent/next-part chain and calls building_to_burning_ruins on each part
+00492be0	building_to_burning_ruins	function		building becomes type 169 size 1 burning; one burning ruin per other land tile of the footprint
+00492f90	building_parts_destroy_or_ignite	function		(id,ignite): for each part from root: ignite (1) or footprint_to_rubble + state 4 (0)
+0049b920	building_root	function		follows +0x38 (parent part) up to 500 times; returns the root id
+00484f10	wind_direction_draw	function		one RNG draw; 0x0091EC48 = e4 & 7; called once a year from month_advance
+00498910	build_commit	function		(orientation,x1,y1,x2,y2,tool): placement checks per tool, creation, cost deduction
+00405700	build_tool_release	function		mouse release: calls build_commit
+00405650	build_tool_drag	function		mouse drag: preview (0x004964B0) or editor paint (0x0049DA10)
+00404330	build_tool_select	function		sets tool flags: 0x00665DAC farms/orchards/animals (meadow), 0x00665D9C tower (on wall), 0x00665D98 roadblock (on road)
+00496490	build_tool_allows_beach	function		true for tools 28,29,123: map_area_buildable may straddle/allow terrain 0x10000
+004a5950	terrain_area_any	function		(x,y,size,margin,mask): any tile of the square has mask
+004a5be0	terrain_area_all	function		(x,y,size,margin,mask): every tile of the square has mask
+004dcf60	enemies_near_rect	function		figure types 0x28,0x29,0x2A,0x3F,0x40 at |dx|<13 and |dy|<13 of either drag corner -> building refused (msg 0x21)
+005676a0	treasury_spend_construction	function		treasury (0x00FE6A64) -= cost; 0x00FE96E4 += cost; skipped in editor
+00499e20	houses_drag_place	function		tool 2: places a 2x2 hut plot at every buildable top-left in the dragged rectangle, row-major
+0049a120	clear_land_tool	function		tool 29: confirmation dialogs then clear_land_commit
+0049a460	clear_land_commit	function		tool 29: demolished buildings get state 6, terrain cleared; count in 0x00DA23CC
+0049acb0	roads_drag_place	function		tool 28: validates endpoints then routes road with 0x0058C3E0/0x0058CE40
+004a6cc0	undo_begin	function		snapshots grids/buildings for undo, clears undo list 0x00D7FC08
+004a6fd0	undo_arm	function		undo available for 500 ticks (0x00DA2368), 0x00DA236C=1
+004a6e90	undo_record_building	function		adds a building id + 280-byte snapshot to the undo list (500 slots)
+004a6f80	undo_id_reserved	function		building id is in the undo list while undo is armed -> building_create skips it
+004a7a50	undo_expire	function		per tick: counts down undo window, invalidates undo when listed buildings changed
+004a4900	terrain_ring_density	function		(x,y,R,mask): weighted share of tiles with mask in rings 1..R (weight 100/r), 0..100 (float)
+004a4a50	meadow_density	function		terrain_ring_density(x,y,4,0x800)
+004a9f50	farm_place_images	function		farm/orchard field images (economy)
+00496120	map_grids_reset	function		clears the map grids, regrowth=255, then 0x004962E0 and 0x00496330
+004962e0	map_mark_off_diamond	function		terrain = 0x80005 on every raw tile outside the playable diamond
+00496330	map_random_grid_fill	function		one RNG draw per tile (228x228 row-major), 0x00CA7FF8[i] = low byte of (e4 & 0x7FFF)
+0049cc10	editor_paint_dirt	function		tool 170: terrain &= 0xF9C8F710 and clears tile grids
+0049cca0	editor_paint_trees	function		tool 171: terrain = (t&0xF9C8F791)|1 (|0x80 if scrub grid != 0)
+0049cd10	editor_paint_rock	function		tools 192..195,219: rock type bits 0x300002 (2 rock,0x100002 copper,0x200002 silver,0x300002 cliff rock,0x300000 orichalc)
+0049cd80	editor_paint_scrub	function		tool 174: scrub amount 0x00C29158 and terrain 0x80
+0049ceb0	editor_paint_meadow	function		tool 176: terrain = (t&0xFBC8FF90)|0x800
+0049cf20	editor_paint_marsh	function		tool 196: terrain = (t&0xFBCEF710)|0x40000
+0049cf80	editor_paint_beach	function		tool 188: terrain = (t&0xF9C9F710)|0x10000
+0049cfe0	editor_paint_water	function		tool 172: terrain = (t&0xFDC8F714)|4
+0049d050	editor_paint_earthquake	function		tool 173: terrain = (t&0xFBC9F7D0)|0x2000000
+0049d0b0	editor_paint_road	function		tool 179: terrain = (t&0xFBC9F7D0)|0x40
+0049d110	editor_toggle_lava	function		tool 159: toggles 0x10, clears 0x100
+0049d190	editor_toggle_flood	function		tool 160: toggles 0x100 (not on rocks), clears 0x10
+0049d210	editor_paint_marble	function		tools 144/218: sets/clears 0x20000 (marble) / 0x120000 (black marble)
+0049da10	editor_paint	function		editor brush dispatcher on tool 0x00665DCC
+00495fb0	rings_size1_build	function		builds the size-1 ring dx/dy tables (rings 1..12) at 0x0078A3FC.. (pointer table 0x00637D6C)
+004a52f0	rings_offsets_build	function		builds ring tile-offset tables 0x0078AD6C (size1), 0x0078ABEC..0x0078A40C (sizes 2..6)
+00534d60	pyramid_parts_animate	function		state machine on +0xB6..+0xBF of pyramid parts (no RNG)
+00540020	composite_parts_count	function		thiscall: number of building records a composite (sanctuary/palace/pyramid) occupies
+005344a0	building_type_composite	function		true for types 84..98 and 117
+0040bcf0	building_type_agora	function		true for types 63, 64 (agora small/large)
+004928c0	building_destroyed_by_attack	function		(military) wall/building destroyed by enemies
+00492830	wall_damage_add	function		(military) adds to wall damage grid 0x00C753B8, destroys when above threshold
+004a5d90	maintenance_walker_reduce_risk	function		(services) subtracts col9 of type 121 from +0x46/+0x48 of buildings in range and from wall damage grid
+004cdb50	fire_figure_spawn	function		creates figure type 10 (flames) on a tile of a burning building; RNG via figure_create
+004ccd40	collapse_debris_spawn	function		creates debris figures after a collapse/burn-out (walkers)
+005f6368	g_building_type_info	data	i32[221][8]	per-type static table, 32 bytes: size, fireproof, image group, image offset, labor category, info panel, sound, help id
+005f1560	g_footprint_offsets	data	i32[6][6][2]	(tile offset r*228+c, r*8+c) for footprints up to 6x6
+005f1680	g_adjacent_ring	data	i32[7][24]	per size: offsets of the edge-adjacent tiles (no corners), 0-terminated
+005f19b0	g_footprint_dxdy	data	i32[36][2]	(dx,dy) of footprint tiles, row-major
+005f079e	g_ring_counts_size1	data	i16[13]	tiles in ring r around a size-1 footprint (8r)
+005f07b6	g_ring_counts_size2_6	data	i16[5][6]	ring tile counts for sizes 2..6 (12 entries per size table incl. header)
+0064324c	g_dir8_offsets	data	i32[8]	N,NE,E,SE,S,SW,W,NW tile offsets (fire spread)
+005f2318	g_dir4_offsets	data	i32[4]	-228,1,228,-1
+00c9b4e8	g_grid_desirability	data	i8[51984]	sav rank 23
+00cce128	g_grid_terrain	data	u32[51984]	sav rank 17
+00d26e98	g_grid_building	data	i16[51984]	sav rank 16
+00d00d68	g_grid_piece	data	u8[51984]	sav rank 20; low nibble size-1, 0x80 with rock = desirability source
+00d404b8	g_grid_draw	data	u8[51984]	sav rank 15; 0x40 anchor
+00ca7ff8	g_grid_random	data	u8[51984]	sav rank 22
+00c1c648	g_grid_regrowth	data	u8[51984]	sav rank 102
+00c29158	g_grid_scrub	data	u8[51984]	sav rank 109; scrub amount (editor tool 174) / ring depth from 0x004A8E10
+00c35c68	g_grid_meadow	data	u8[51984]	sav rank 99; meadow value int((int(D*0.11)+1)/12*99)
+00c688a8	g_grid_ruin_type	data	u8[51984]	sav rank 108; type byte of the building that stood on the tile (ruins image)
+00c753b8	g_grid_wall_damage	data	u16[51984]	sav rank 25; wall damage (military/services)
+00c4f288	g_grid_road_network	data	u8[51984]	road network id (not saved, cycle step 7)
+00c42778	g_grid_road_network_step	data	u8[51984]	flood step counter (not saved)
+008e01fa	g_grid_elevation	data	i8[51984]	sav rank 111
+01079460	g_grid_route_distance	data	i32[51984]	distance of the last route BFS (walkers); 0 = unreachable
+00feb0fc	g_road_networks_top10	data	i32[10][2]	(network id, tile count) sorted by size desc
+0091ec48	g_wind_direction	data	i32	0..7, index into g_dir8_offsets
+00902d00	g_scenario_climate	data	u8	0 humid, 1 normal, 2 arid (text group 44 #76..78)
+00b1e8bc	g_fire_collapse_disabled	data	i32	==1 skips buildings_fire_collapse_risk
+0091ec44	g_buildings_burning_count	data	i32	recomputed by step 43 (sav rank 61)
+0091f1d0	g_buildings_burning_list	data	i16[500]	ids of burning buildings, step 43 (sav rank 71)
+0091ec3c	g_buildings_burning_list_len	data	i32	length of g_buildings_burning_list, step 43
+00fd3778	g_fires_count	data	i32	+1 per ignition (step 44)
+00fd377c	g_collapses_count	data	i32	+1 per collapse (step 44)
+00665dcc	g_build_tool	data	i32	current build tool = BUILD_* id
+00da23d8	g_build_cost	data	i32	cost being charged (col0 x count)
+00da23cc	g_build_count	data	i32	items placed by the last drag tool
+00d7fc08	g_undo_building_ids	data	i16[500]	undo list (0x004A6E90)
+00da2368	g_undo_ticks_left	data	i32	500 after a build
+00fe6a64	g_treasury	data	i32	city+0x0C
+00fe96e4	g_construction_spent	data	i32	+= cost on every build
+0045a8e0	building_flames_draw	function		city_draw for a part with +0x4A != 0: per footprint tile (size from grid_piece & 0xF, pixel tables 0x005F5D08..) a flame loop by grid_random % 10 at draw point + (dx + 20 - ax, dy + 20 - ay); docs/play/buildings.md "Fire"
+005af8c0	sprite_anim_step	function		(packed group, &frame, 0, pct): frame += 1 on the first image speed byte +0x3A, wraps at +0x1E frames; returns the frame image

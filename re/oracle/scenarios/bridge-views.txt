@@ -1,0 +1,8 @@
+# Bridge ghost in the 4 views (docs/logic/bridges.md "Ghost", bugs.md 212): bridge.txt's start (Open Play Sandbox, Easy,
+# Administration -> Water Crossing), then the ghost from (78,108) (dir 4) and (80,113) (dir 0) in view 0, PgUp (key 33)
+# keeping the tool, (78,108) in view 2, both in view 4, (78,108) in view 6; after each view a shot with the cursor on the
+# panel (no ghost) = the reference for the ghost's pixels. Hover points from the view cameras of docs/play/rotation.md
+# "Verification" (v0 (94,160), v2 (84,242), v4 (126,258), v6 (133,178)): the tile's diamond centre + (0, 4).
+# Compare: tools/oracle_view_compare.py SHOT URL COL ROW --view V --eval '<bridge tool, hover>' --mask N.bmp.
+# Empty --write-dir; replace DIR; --seconds 80.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:rclick 300,300; 55:click 570,575; 56:click 638,247; 57:click 675,398; 58:move 359,439; 59.5:shot DIR/g0a.bmp; 60:move 269,544; 61.5:shot DIR/g0b.bmp; 62:move 700,580; 63:shot DIR/g0n.bmp; 64:key 33; 65:move 569,304; 66.5:shot DIR/g2a.bmp; 67:move 700,580; 68:shot DIR/g2n.bmp; 69:key 33; 70:move 239,199; 71.5:shot DIR/g4a.bmp; 72:move 329,94; 73.5:shot DIR/g4b.bmp; 74:move 700,580; 75:shot DIR/g4n.bmp; 76:key 33; 77:move 89,364; 78.5:shot DIR/g6a.bmp; 79:move 700,580; 79.8:shot DIR/g6n.bmp

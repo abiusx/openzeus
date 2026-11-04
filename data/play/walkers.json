@@ -1,0 +1,4290 @@
+{
+ "version": 1,
+ "note": "Walker sprite mapping. Sprite refs use the atlas index of 'file' (extracted/sprites/<file>/atlas.json). Rules: docs/play/walkers.md.",
+ "dir_order": [
+  "NE",
+  "E",
+  "SE",
+  "S",
+  "SW",
+  "W",
+  "NW",
+  "N"
+ ],
+ "dir_tile_delta": [
+  [
+   0,
+   -1
+  ],
+  [
+   1,
+   -1
+  ],
+  [
+   1,
+   0
+  ],
+  [
+   1,
+   1
+  ],
+  [
+   0,
+   1
+  ],
+  [
+   -1,
+   1
+  ],
+  [
+   -1,
+   0
+  ],
+  [
+   -1,
+   -1
+  ]
+ ],
+ "convention": {
+  "walk_index": "start + frame*dirs + dir (frame-major); dir 0..7 = NE,E,SE,S,SW,W,NW,N = the original's direction code 0..7 (0 = tile y-1) with the camera unrotated",
+  "frames": "walk groups have 12 frames; anim_frame advances +1 every sim tick and wraps at 12 (not tied to movement)",
+  "mirrors": "the extracted PNGs of the mirrored directions (SW,W,NW) already exist and are already flipped; just use the PNG of the index (atlas mirror_of is informational)",
+  "anchor": "draw the image so that its (anchor_x, anchor_y) pixel sits on the walker position (tile diamond centre + sub-tile offset)",
+  "shadow": "pure red (255,0,0) pixels in the PNGs are the shadow mask; draw them as a translucent dark shadow (not verified in the exe blitter)",
+  "die": "die blocks are direction-less: frame = min(ticks since death, frames-1); the exe deletes the walker after 127 ticks",
+  "shared_dir_less_blocks": "blocks with dirs=1 are plain frame sequences (index = start + frame)"
+ },
+ "roles": {
+  "contestant_philosopher": {"file": "SprMain", "walk": {"file": "SprMain", "start": 12128, "dirs": 8, "frames": 12, "order": "frame-major", "dir_order": ["NE", "E", "SE", "S", "SW", "W", "NW", "N"]}, "die": {"file": "SprMain", "start": 12224, "dirs": 1, "frames": 8, "order": "frame"}, "orig": "FIG_CONTESTANT (type 56), resource 77/81: packed 0x66f1/0x66f2 (fig_handler_contestant 0x004c30d0)"},
+  "contestant_athlete": {"file": "SprMain", "walk": {"file": "SprMain", "start": 10588, "dirs": 8, "frames": 12, "order": "frame-major", "dir_order": ["NE", "E", "SE", "S", "SW", "W", "NW", "N"]}, "die": {"file": "SprMain", "start": 10684, "dirs": 1, "frames": 8, "order": "frame"}, "orig": "FIG_CONTESTANT (type 56), resource 79: packed 0x66d7/0x66d8 (fig_handler_contestant 0x004c30d0)"},
+  "contestant_competitor": {"file": "SprMain", "walk": {"file": "SprMain", "start": 10692, "dirs": 8, "frames": 12, "order": "frame-major", "dir_order": ["NE", "E", "SE", "S", "SW", "W", "NW", "N"]}, "die": {"file": "SprMain", "start": 10788, "dirs": 1, "frames": 8, "order": "frame"}, "orig": "FIG_CONTESTANT (type 56), resource 80: packed 0x66d9/0x66da (fig_handler_contestant 0x004c30d0)"},
+  "contestant_actor": {"file": "SprMain", "walk": {"file": "SprMain", "start": 105, "dirs": 8, "frames": 12, "order": "frame-major", "dir_order": ["NE", "E", "SE", "S", "SW", "W", "NW", "N"]}, "die": {"file": "SprMain", "start": 201, "dirs": 1, "frames": 8, "order": "frame"}, "orig": "FIG_CONTESTANT (type 56), resource 78: packed 0x6603/0x6604 (fig_handler_contestant 0x004c30d0)"},
+  "contestant": {"by": "good", "map": {"college": "contestant_philosopher", "podium": "contestant_philosopher", "gymnasium": "contestant_athlete", "stadium": "contestant_competitor", "drama_school": "contestant_actor"}, "fallback_role": "contestant_actor", "orig": "FIG_CONTESTANT (type 56): picture by resource (the sending building's type); hidden while waiting its timer (tools/play_contestants.py)"},
+  "immigrant": {
+   "file": "SprMain",
+   "walk": {
+    "start": 1793,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 1889,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_IMMIGRANT (type 1)",
+   "alt": {
+    "walk": {
+     "start": 505,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "emigrant": {
+   "file": "SprMain",
+   "walk": {
+    "start": 505,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 601,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_EMMIGRANT (type 2)"
+  },
+  "homeless": {
+   "file": "SprMain",
+   "walk": {
+    "start": 1441,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 1537,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_VAGRANT (type 3)"
+  },
+  "cart": {
+   "file": "SprMain",
+   "walk": {
+    "start": 4729,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 4825,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "carry": {
+    "empty": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8428,
+      "levels": 1,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "urchin": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8436,
+      "levels": 3,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "fish": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8460,
+      "levels": 3,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "meat": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8484,
+      "levels": 3,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "cheese": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8508,
+      "levels": 3,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "carrots": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8532,
+      "levels": 3,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "onions": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8556,
+      "levels": 3,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "wheat": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8580,
+      "levels": 3,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "bronze": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8604,
+      "levels": 2,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "grapes": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8620,
+      "levels": 3,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "olives": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8644,
+      "levels": 3,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "fleece": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8668,
+      "levels": 2,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "armor": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8684,
+      "levels": 2,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "olive_oil": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8700,
+      "levels": 2,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "wine": {
+     "overlay": {
+      "file": "SprMain",
+      "start": 8716,
+      "levels": 2,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "oranges": {
+     "overlay": {
+      "file": "PoseidonImps",
+      "start": 1091,
+      "levels": 3,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "orichalc": {
+     "overlay": {
+      "file": "PoseidonImps",
+      "start": 1115,
+      "levels": 2,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        19,
+        4
+       ],
+       [
+        30,
+        15
+       ],
+       [
+        22,
+        26
+       ],
+       [
+        2,
+        28
+       ],
+       [
+        -16,
+        24
+       ],
+       [
+        -26,
+        15
+       ],
+       [
+        -18,
+        5
+       ],
+       [
+        4,
+        -3
+       ]
+      ]
+     }
+    },
+    "wood": {
+     "heavy": true,
+     "walker": {
+      "file": "SprMain",
+      "walk": {
+       "start": 1337,
+       "dirs": 8,
+       "frames": 12,
+       "order": "frame-major",
+       "dir_order": [
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N"
+       ]
+      }
+     },
+     "ox": {
+      "file": "SprMain",
+      "walk": {
+       "start": 209,
+       "dirs": 8,
+       "frames": 12,
+       "order": "frame-major",
+       "dir_order": [
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N"
+       ]
+      },
+      "slopes": {"up": 305, "down": 401, "note": "group_5 0x6606 while slope_target != 0 (going up), group_6 0x6607 going down, same walk layout (12 frames x 8 dirs); rule 0x004D7580, scene.js oxSlope"},
+      "src": "exe figure_oxcart 0x004C3680 action 6: packed 0x6605 = SprMain atlas group_4 (packed n = atlas n-1; slopes 0x6606/0x6607 = group_5 305 / group_6 401, dying 0x6608 = group_7 497)"
+     },
+     "trailer": {
+      "file": "SprMain",
+      "start": 2999,
+      "levels": 2,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        -30,
+        34
+       ],
+       [
+        -35,
+        18
+       ],
+       [
+        -27,
+        7
+       ],
+       [
+        0,
+        -5
+       ],
+       [
+        30,
+        3
+       ],
+       [
+        36,
+        18
+       ],
+       [
+        28,
+        34
+       ],
+       [
+        0,
+        40
+       ]
+      ]
+     }
+    },
+    "marble": {
+     "heavy": true,
+     "walker": {
+      "file": "SprMain",
+      "walk": {
+       "start": 1337,
+       "dirs": 8,
+       "frames": 12,
+       "order": "frame-major",
+       "dir_order": [
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N"
+       ]
+      }
+     },
+     "ox": {
+      "file": "SprMain",
+      "walk": {
+       "start": 209,
+       "dirs": 8,
+       "frames": 12,
+       "order": "frame-major",
+       "dir_order": [
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N"
+       ]
+      },
+      "slopes": {"up": 305, "down": 401, "note": "group_5 0x6606 while slope_target != 0 (going up), group_6 0x6607 going down, same walk layout (12 frames x 8 dirs); rule 0x004D7580, scene.js oxSlope"},
+      "src": "exe figure_oxcart 0x004C3680 action 6: packed 0x6605 = SprMain atlas group_4 (packed n = atlas n-1; slopes 0x6606/0x6607 = group_5 305 / group_6 401, dying 0x6608 = group_7 497)"
+     },
+     "trailer": {
+      "file": "SprMain",
+      "start": 3015,
+      "levels": 2,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        -30,
+        34
+       ],
+       [
+        -35,
+        18
+       ],
+       [
+        -27,
+        7
+       ],
+       [
+        0,
+        -5
+       ],
+       [
+        30,
+        3
+       ],
+       [
+        36,
+        18
+       ],
+       [
+        28,
+        34
+       ],
+       [
+        0,
+        40
+       ]
+      ]
+     }
+    },
+    "sculpture": {
+     "heavy": true,
+     "walker": {
+      "file": "SprMain",
+      "walk": {
+       "start": 1337,
+       "dirs": 8,
+       "frames": 12,
+       "order": "frame-major",
+       "dir_order": [
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N"
+       ]
+      }
+     },
+     "ox": {
+      "file": "SprMain",
+      "walk": {
+       "start": 209,
+       "dirs": 8,
+       "frames": 12,
+       "order": "frame-major",
+       "dir_order": [
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N"
+       ]
+      },
+      "slopes": {"up": 305, "down": 401, "note": "group_5 0x6606 while slope_target != 0 (going up), group_6 0x6607 going down, same walk layout (12 frames x 8 dirs); rule 0x004D7580, scene.js oxSlope"},
+      "src": "exe figure_oxcart 0x004C3680 action 6: packed 0x6605 = SprMain atlas group_4 (packed n = atlas n-1; slopes 0x6606/0x6607 = group_5 305 / group_6 401, dying 0x6608 = group_7 497)"
+     },
+     "trailer": {
+      "file": "SprMain",
+      "start": 3031,
+      "levels": 1,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        -30,
+        34
+       ],
+       [
+        -35,
+        18
+       ],
+       [
+        -27,
+        7
+       ],
+       [
+        0,
+        -5
+       ],
+       [
+        30,
+        3
+       ],
+       [
+        36,
+        18
+       ],
+       [
+        28,
+        34
+       ],
+       [
+        0,
+        40
+       ]
+      ]
+     }
+    },
+    "black_marble": {
+     "heavy": true,
+     "walker": {
+      "file": "SprMain",
+      "walk": {
+       "start": 1337,
+       "dirs": 8,
+       "frames": 12,
+       "order": "frame-major",
+       "dir_order": [
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N"
+       ]
+      }
+     },
+     "ox": {
+      "file": "SprMain",
+      "walk": {
+       "start": 209,
+       "dirs": 8,
+       "frames": 12,
+       "order": "frame-major",
+       "dir_order": [
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N"
+       ]
+      },
+      "slopes": {"up": 305, "down": 401, "note": "group_5 0x6606 while slope_target != 0 (going up), group_6 0x6607 going down, same walk layout (12 frames x 8 dirs); rule 0x004D7580, scene.js oxSlope"},
+      "src": "exe figure_oxcart 0x004C3680 action 6: packed 0x6605 = SprMain atlas group_4 (packed n = atlas n-1; slopes 0x6606/0x6607 = group_5 305 / group_6 401, dying 0x6608 = group_7 497)"
+     },
+     "trailer": {
+      "file": "PoseidonImps",
+      "start": 1027,
+      "levels": 2,
+      "dirs": 8,
+      "order": "level-major (index = start + level*8 + dir)",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "offsets": [
+       [
+        -30,
+        34
+       ],
+       [
+        -35,
+        18
+       ],
+       [
+        -27,
+        7
+       ],
+       [
+        0,
+        -5
+       ],
+       [
+        30,
+        3
+       ],
+       [
+        36,
+        18
+       ],
+       [
+        28,
+        34
+       ],
+       [
+        0,
+        40
+       ]
+      ]
+     }
+    }
+   },
+   "orig": "FIG_CART (type 4), also 9 storehouseman, 28 oxcart, 36 deliveryman (same pusher group 4729)",
+   "draw": "pusher sprite at the walker position + cart overlay at position + offsets[dir]; for dir S (3) the cart is drawn after (over) the pusher, for every other dir before (under). Heavy goods (heavy:true): handler walk 1337 at the walker position, trailer overlay at offsets[dir] (behind), ox (walk 209) between them (hypothesis: about half the trailer offset); draw order trailer, ox, handler except dirs SE,S,SW (2,3,4) where handler first. Level: units<=200 -> 0, <=400 -> 1, else 2 (clamped to levels-1); 1 load = 100 units, so sim carts are level 0."
+  },
+  "buyer": {
+   "file": "SprMain",
+   "walk": {
+    "start": 2887,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 2983,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "carry": {
+    "urchin": {
+     "file": "SprMain",
+     "walk": {
+      "start": 2887,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2983,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "fish": {
+     "file": "SprMain",
+     "walk": {
+      "start": 2887,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2983,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "meat": {
+     "file": "SprMain",
+     "walk": {
+      "start": 2887,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2983,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "cheese": {
+     "file": "SprMain",
+     "walk": {
+      "start": 2887,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2983,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "carrots": {
+     "file": "SprMain",
+     "walk": {
+      "start": 2887,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2983,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "onions": {
+     "file": "SprMain",
+     "walk": {
+      "start": 2887,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2983,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "wheat": {
+     "file": "SprMain",
+     "walk": {
+      "start": 2887,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2983,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "oranges": {
+     "file": "SprMain",
+     "walk": {
+      "start": 2887,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2983,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "fleece": {
+     "file": "SprMain",
+     "walk": {
+      "start": 1897,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 1993,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "olive_oil": {
+     "file": "SprMain",
+     "walk": {
+      "start": 5297,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 5393,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "wine": {
+     "file": "SprMain",
+     "walk": {
+      "start": 5401,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 5497,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "armor": {
+     "file": "SprMain",
+     "walk": {
+      "start": 2105,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2201,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "horses": {
+     "file": "SprMain",
+     "walk": {
+      "start": 1129,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 1225,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    "chariot": {
+     "file": "PoseidonImps",
+     "walk": {
+      "start": 7876,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 7972,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    }
+   },
+   "fallback_role": "cart",
+   "orig": "FIG_AGORAVENDOR (type 37): one sprite set per vendor kind (food 2887, fleece 1897, oil 5297, wine 5401, arms 2105, horses 1129; Poseidon chariot vendor 7876). Goods without a vendor (wood, marble, bronze, grapes, olives, ...) are fetched by the storehouse/trade-post staff = cart pusher (role cart, same sprite group 4729).",
+   "followers": {
+    "role": "vendor_assistant",
+    "by_good": {
+     "horses": "horse"
+    },
+    "draw": "frame walker field 7 = count (sim/export.followers: agora stall buyer, one per 100 units carried); the client lines them up behind the buyer one tile apart along its recent path (viewer/play/scene.js)."
+   }
+  },
+  "peddler": {
+   "file": "SprMain",
+   "walk": {
+    "start": 1,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 97,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_PEDDLER (type 26), agora vendor with a push stall"
+  },
+  "water": {
+   "file": "SprMain",
+   "walk": {
+    "start": 6737,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 6833,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_WATERBEARER (type 60)"
+  },
+  "healer": {
+   "file": "SprMain",
+   "walk": {
+    "start": 7473,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 7569,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_HEALER (type 32)"
+  },
+  "philosophy": {
+   "file": "SprMain",
+   "walk": {
+    "start": 12128,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 12224,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_PHILOSOPHER (type 16)"
+  },
+  "athletics": {
+   "file": "SprMain",
+   "walk": {
+    "start": 10588,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 10684,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_ATHLETE (type 17)"
+  },
+  "drama": {
+   "file": "SprMain",
+   "walk": {
+    "start": 105,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 201,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_ACTOR (type 18)"
+  },
+  "competition": {
+   "file": "SprMain",
+   "walk": {
+    "start": 10692,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 10788,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_COMPETITOR (type 15)"
+  },
+  "maintenance": {
+   "file": "SprMain",
+   "walk": {
+    "start": 609,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 801,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "carry": {
+    "water": {
+     "file": "SprMain",
+     "start": 705,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "work": {
+    "fire": {
+     "file": "SprMain",
+     "start": 809,
+     "dirs": 8,
+     "frames": 40,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_SUPERINTENDENT (type 8) = eZeus fire fighter; 705 = walking with a bucket (hypothesis), 809 = putting out fire (40 frames)"
+  },
+  "watchman": {
+   "file": "SprMain",
+   "walk": {
+    "start": 2209,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 2305,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 2313,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_WATCHMAN (type 61)"
+  },
+  "tax": {
+   "file": "SprMain",
+   "walk": {
+    "start": 4625,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 4721,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_CLERK (type 7)"
+  },
+  "trainee": {
+   "by": "good",
+   "map": {
+    "drama": "drama",
+    "philosophy": "philosophy",
+    "athletics": "athletics",
+    "competition": "competition"
+   },
+   "fallback_role": "drama",
+   "orig": "Zeus has no separate trainee: a school sends the same figure the venue uses (actor, philosopher, athlete, competitor); Poseidon ones are scholar/astronomer/inventor/curator (types 72-75, PoseidonImps 2082/79/3442/79)"
+  },
+  "scholar": {
+   "file": "PoseidonImps",
+   "walk": {
+    "start": 2082,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 2178,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_SCHOLAR (type 72)"
+  },
+  "astronomer": {
+   "file": "PoseidonImps",
+   "walk": {
+    "start": 79,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 175,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_ASTRONOMER (type 73); curator (75) shares the group"
+  },
+  "inventor": {
+   "file": "PoseidonImps",
+   "walk": {
+    "start": 3442,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 3538,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_INVENTOR (type 74)"
+  },
+  "artisan": {
+   "file": "SprMain",
+   "walk": {
+    "start": 1545,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 1641,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "build": {
+     "file": "SprMain",
+     "start": 1649,
+     "dirs": 8,
+     "frames": 9,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "loop": 6,
+     "ticks_per_frame": 2,
+     "exe": "figure_artisan 0x004C0060 action 8, materials on site: SprMain group 24, first + (anim/2)*8 + dir, frames 0..5, 2 ticks each"
+    },
+    "build_standing": {
+     "file": "SprMain",
+     "start": 1721,
+     "dirs": 8,
+     "frames": 9,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "exe": "SprMain group 25: not used by the artisan handler 0x004C0060"
+    },
+    "wait": {
+     "file": "SprMain",
+     "start": 1569,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "exe": "action 8 waiting for materials: the walk group's frame 3 (first + 0x18 + dir), standing still"
+    }
+   },
+   "orig": "FIG_ARTISAN (type 58)"
+  },
+  "woodcutter": {
+   "file": "SprMain",
+   "walk": {
+    "start": 4329,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 4425,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "chop": {
+     "file": "SprMain",
+     "start": 4433,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "carry": {
+    "wood": {
+     "file": "SprMain",
+     "start": 4529,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_WOODCUTTER (type 55)"
+  },
+  "stonecutter": {
+   "file": "SprMain",
+   "walk": {
+    "start": 11044,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 11140,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "cut": {
+     "file": "SprMain",
+     "start": 11148,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "marble miner (stonecutter); FIG_MINER (62) in the exe, sprite set chosen by the handler (eZeus 11044)"
+  },
+  "miner": {
+   "file": "SprMain",
+   "walk": {
+    "start": 2595,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 2691,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "pause": {"file": "SprMain", "start": 2699, "dirs": 1, "frames": 13, "order": "frame", "ticks_per_frame": 2, "clamp": 12, "src": "figure_miner 0x004C1310 action 0xD: group first + timer / 2 (tools/play_miner_pause.py)"},
+    "pause_silver": {"file": "SprMain", "start": 3845, "dirs": 1, "frames": 13, "order": "frame", "ticks_per_frame": 2, "clamp": 12, "src": "figure_miner 0x004C1310 action 0xD: group first + timer / 2 (tools/play_miner_pause.py)"},
+    "mine": {
+     "file": "SprMain",
+     "start": 2807,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "mine_silver": {
+     "file": "SprMain",
+     "start": 3953,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "carry": {
+    "bronze": {
+     "file": "SprMain",
+     "start": 2711,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "by_good": {
+    "bronze": {
+     "file": "SprMain",
+     "walk": {
+      "start": 2595,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2691,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     },
+     "work": {
+      "mine": {
+       "file": "SprMain",
+       "start": 2807,
+       "dirs": 8,
+       "frames": 10,
+       "order": "frame-major",
+       "dir_order": [
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N"
+       ]
+      }
+     },
+     "carry": {
+      "file": "SprMain",
+      "start": 2711,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     }
+    },
+    "silver": {
+     "file": "SprMain",
+     "walk": {
+      "start": 3741,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 3837,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     },
+     "work": {
+      "mine": {
+       "file": "SprMain",
+       "start": 3953,
+       "dirs": 8,
+       "frames": 10,
+       "order": "frame-major",
+       "dir_order": [
+        "NE",
+        "E",
+        "SE",
+        "S",
+        "SW",
+        "W",
+        "NW",
+        "N"
+       ]
+      }
+     },
+     "carry": {
+      "file": "SprMain",
+      "start": 3857,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     }
+    }
+   },
+   "orig": "FIG_MINER (type 62); copper (bronze) miner 2595, silver miner 3741"
+  },
+  "shepherd": {
+   "file": "SprMain",
+   "walk": {
+    "start": 3415,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 3511,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "shear": {
+     "file": "SprMain",
+     "start": 3519,
+     "dirs": 1,
+     "frames": 12,
+     "order": "frame"
+    },
+    "guard": {
+     "file": "SprMain",
+     "start": 3627,
+     "dirs": 1,
+     "frames": 10,
+     "order": "frame"
+    }
+   },
+   "carry": {
+    "fleece": {
+     "file": "SprMain",
+     "start": 3531,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_SHEARER (type 30); shear = group 70 (sheep inside the sprite), guard = group 72 (tending, action 8); figure_shepherd 0x004B6CF0"
+  },
+  "goatherd": {
+   "file": "SprMain",
+   "walk": {
+    "start": 2377,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 2473,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "milk": {
+     "file": "SprMain",
+     "start": 2481,
+     "dirs": 1,
+     "frames": 8,
+     "order": "frame"
+    },
+    "guard": {
+     "file": "SprMain",
+     "start": 2585,
+     "dirs": 1,
+     "frames": 10,
+     "order": "frame"
+    }
+   },
+   "carry": {
+    "cheese": {
+     "file": "SprMain",
+     "start": 2489,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_MILKER (type 31); milk = group 39, guard = group 41 (tending, action 8); figure_goat_herder 0x004B72C0"
+  },
+  "grower": {
+   "file": "SprMain",
+   "walk": {
+    "start": 5505,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 5601,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "tend_grapes": {
+     "file": "SprMain",
+     "start": 5609,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "tend_olives": {
+     "file": "SprMain",
+     "start": 5689,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "pick_grapes": {
+     "file": "SprMain",
+     "start": 5769,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "pick_olives": {
+     "file": "SprMain",
+     "start": 5849,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "tend_oranges": {
+     "file": "PoseidonImps",
+     "start": 1315,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "pick_oranges": {
+     "file": "PoseidonImps",
+     "start": 1411,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GROWER (type 5); figure_grower 0x004AECF0: walk = group 103 (also walking home with the fruit, no carry sprite), die 104, tend (action 8) 105 grapes / 106 olives, pick (action 0xC) 107 / 108 (the pole and the falling fruit/leaves are in the pick sprite), 10 frames x 8 dirs, 1 frame per tick; orange growers: PoseidonImps groups 28 walk, 29 die, 30 tend, 31 pick. The set is chosen by the tree (export grower_look).",
+   "trees": {
+    "oranges": {
+     "file": "PoseidonImps",
+     "walk": {
+      "start": 1211,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 1307,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    }
+   }
+  },
+  "hunter": {
+   "file": "SprMain",
+   "walk": {
+    "start": 11820,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 11916,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "hunt": {
+     "file": "SprMain",
+     "start": 11924,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "butcher": {
+     "file": "SprMain",
+     "start": 12020,
+     "dirs": 1,
+     "frames": 12,
+     "order": "frame"
+    }
+   },
+   "carry": {
+    "meat": {
+     "file": "SprMain",
+     "start": 12032,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_HUNTER (type 53)"
+  },
+  "rancher": {
+   "file": "PoseidonImps",
+   "walk": {
+    "start": 2186,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 2282,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_RANCHER (type 77): the exe draws it from a PoseidonImps group chosen at run time; die group id 47 and walk group id 46 (2186) = eZeus 'butcher'. Walk/die verified, which Poseidon group the handler picks for the walk is inferred."
+  },
+  "diver": {
+   "file": "SprMain",
+   "walk": {
+    "start": 9508,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 10116,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "dive": {"file": "SprMain", "dirs": 8, "frames": 12, "order": "frame-major", "dir_order": ["NE", "E", "SE", "S", "SW", "W", "NW", "N"], "chain": [{"start": 9604, "frames": 12}, {"start": 9700, "frames": 12, "repeat": 5}, {"start": 9796, "frames": 8}], "last": [{"start": 9604, "frames": 12}, {"start": 9700, "frames": 12, "repeat": 5}, {"start": 9796, "frames": 16}], "src": "figure_urchin_collector 0x004BAAB0 actions 7/8/9 (tools/play_diver.py)", "cycles": 5},
+    "collect": {
+     "file": "SprMain",
+     "start": 9604,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "deposit": {
+     "file": "SprMain",
+     "start": 10020,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "carry": {
+    "urchin": {
+     "file": "SprMain",
+     "start": 9924,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_URCHIN_COLLECTOR (type 44); swims"
+  },
+  "trader": {
+   "file": "SprMain",
+   "walk": {
+    "start": 5929,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 6025,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_CARAVAN (type 19)"
+  },
+  "donkey": {
+   "file": "SprAmbient",
+   "walk": {
+    "start": 529,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 625,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_VAN_FOLLOWER (type 21): collection 16 = SprAmbient group id 18"
+  },
+  "ship": {
+   "file": "SprMain",
+   "walk": {
+    "start": 10421,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major, 16 images per frame (index = start + frame*16 + 2*dir)",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "note": "the group holds 16 headings per frame (k=0..15, k=0 is NNE, 22.5 degree steps); the exe uses the odd ones (k = 2*dir+1) for the 8 tile directions; the even ones are the in-between headings and are unused"
+   },
+   "die": {
+    "start": 10484,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "stand": {
+    "start": 10580,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "anim": "frame = anim_frame // 3 (anim_frame counts 0..11), i.e. 4 frames of 3 ticks",
+   "orig": "FIG_TRADESHIP (type 20); exe: sprite = group_first + 1 + 2*(dir + 8*(anim_frame/3))"
+  },
+  "boat": {
+   "file": "SprMain",
+   "walk": {
+    "start": 10797,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major, 16 images per frame (index = start + frame*16 + 2*dir)",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "note": "the group holds 16 headings per frame (k=0..15, k=0 is NNE, 22.5 degree steps); the exe uses the odd ones (k = 2*dir+1) for the 8 tile directions; the even ones are the in-between headings and are unused"
+   },
+   "die": {
+    "start": 10948,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "stand": {
+    "start": 10940,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "fish": {
+     "file": "SprMain",
+     "start": 10860,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "anim": "swim frame = anim_frame // 3 (hypothesis, same code shape as the trade ship)",
+   "orig": "FIG_FISHING_BOAT (type 25); 10860 = fishing/hauling net (10 frames x 8 dirs)"
+  },
+  "trireme": {
+   "file": "SprMain",
+   "walk": {
+    "start": 6570,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major, 16 images per frame (index = start + frame*16 + 2*dir)",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "note": "the group holds 16 headings per frame (k=0..15, k=0 is NNE, 22.5 degree steps); the exe uses the odd ones (k = 2*dir+1) for the 8 tile directions; the even ones are the in-between headings and are unused"
+   },
+   "die": {
+    "start": 6633,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "stand": {
+    "start": 6729,
+    "dirs": 8,
+    "frames": 1,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_TRIREME (type 57)"
+  },
+  "sheep": {
+   "file": "SprMain",
+   "walk": {
+    "start": 3183,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 3279,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "lay_down": {
+     "file": "SprMain",
+     "start": 3351,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 3287,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "shorn": {
+    "file": "SprMain",
+    "walk": {
+     "start": 7873,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "die": {
+     "start": 7969,
+     "dirs": 1,
+     "frames": 8,
+     "order": "frame"
+    },
+    "lay_down": {
+     "start": 8041,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "fight": {
+     "start": 7977,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_SHEEP (type 49), fleece on; 'shorn' = nude sheep after shearing"
+  },
+  "goat": {
+   "file": "SprMain",
+   "walk": {
+    "start": 11228,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 11324,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 11332,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "lay_down": {
+     "file": "SprMain",
+     "start": 11460,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOAT (type 50)"
+  },
+  "cattle": {
+   "file": "PoseidonImps",
+   "walk": {
+    "start": 2290,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 2482,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "variants": [
+    {
+     "walk": {
+      "start": 2290,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "stand": {
+      "start": 2386,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2482,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    {
+     "walk": {
+      "start": 2490,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "stand": {
+      "start": 2586,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2682,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    },
+    {
+     "walk": {
+      "start": 2690,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "stand": {
+      "start": 2786,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     },
+     "die": {
+      "start": 2882,
+      "dirs": 1,
+      "frames": 8,
+      "order": "frame"
+     }
+    }
+   ],
+   "orig": "FIG_CATTLE (type 76): three cattle looks (PoseidonImps 2290/2490/2690), pick by walker id % 3"
+  },
+  "bull": {
+   "file": "PoseidonImps",
+   "walk": {
+    "start": 2890,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "Poseidon bull (eZeus 2890; stand 2986, attack 3090)"
+  },
+  "horse": {
+   "file": "SprMain",
+   "walk": {
+    "start": 5001,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 5097,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "stand": {
+    "start": 5105,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_HORSE (type 43, horse/jockey; walk 5001, idle/graze 5105 and 5201)"
+  },
+  "boar": {
+   "file": "SprMain",
+   "walk": {
+    "start": 10124,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 10220,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 10228,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_BOAR (type 51)",
+   "work": {
+    "stand": {
+     "file": "SprMain",
+     "start": 10292,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "deer": {
+   "file": "PoseidonImps",
+   "walk": {
+    "start": 531,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 627,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "Poseidon deer (eZeus fDeer 531; not in the figure table of the exe)"
+  },
+  "wolf": {
+   "file": "SprMain",
+   "walk": {
+    "start": 11524,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 11620,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_WOLF (type 59)"
+  },
+  "thief": {
+   "file": "SprMain",
+   "walk": {
+    "start": 6033,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 6129,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 6137,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_THIEF (type 23): all four types share the same sprite groups (51,112/113/114)"
+  },
+  "vandal": {
+   "file": "SprMain",
+   "walk": {
+    "start": 6033,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 6129,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 6137,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_VANDAL (type 29): all four types share the same sprite groups (51,112/113/114)"
+  },
+  "mugger": {
+   "file": "SprMain",
+   "walk": {
+    "start": 6033,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 6129,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 6137,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_MUGGER (type 27): all four types share the same sprite groups (51,112/113/114)"
+  },
+  "disgruntled": {
+   "file": "SprMain",
+   "walk": {
+    "start": 6033,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 6129,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 6137,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_DISGRUNT_CITIZEN (type 22): all four types share the same sprite groups (51,112/113/114)"
+  },
+  "plagued": {
+   "file": "SprMain",
+   "walk": {
+    "start": 12232,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 12328,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 12336,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "note_extra_images": 1
+   },
+   "orig": "FIG_PLAGUE_DUDE (type 66)"
+  },
+  "rabble": {
+   "file": "SprMain",
+   "walk": {
+    "start": 6841,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 6937,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 7041,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight2": {
+    "file": "SprMain",
+    "start": 6945,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_RABBLE (type 11) = slinger/rock thrower"
+  },
+  "hoplite": {
+   "file": "SprMain",
+   "walk": {
+    "start": 7105,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 7201,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 7209,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_HOPLITE (type 12)"
+  },
+  "horseman": {
+   "file": "SprMain",
+   "walk": {
+    "start": 7273,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 7369,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 7377,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_HORSEMAN (type 13)"
+  },
+  "nobleman": {
+   "file": "SprMain",
+   "walk": {
+    "start": 6201,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 6297,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 6305,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_NOBLEMAN (type 38) / elite citizen"
+  },
+  "vendor_assistant": {
+   "file": "SprMain",
+   "walk": {
+    "start": 1233,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 1329,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_VENDOR_ASSISTANT (type 47, table 0x00639698 groups 51:17 / 51:18): a child carrying sacks, one per load an agora buyer takes at the storage (buyer_take_food 0x004CF570), each following the one ahead (leader +0x68). Handler 0x004BBD60 image: group 0x6611 (51:17) for every slot except horses (slot 15) = 0x6660 (51:96, the horse walk, role horse); chariots (slot 19) special, not mapped."
+  }
+ },
+ "water_life": {"fish": {"file": "SprAmbient", "first": 453, "frames": 40, "ticks_per_frame": 3, "phase": 32, "at": [0.5333333333333333, 0.5333333333333333], "px": [2, -20], "src": "0x2010 at fishing points (FUN_00412B60, subtype 0x0D)"}, "urchin": {"file": "SprAmbient", "first": 3035, "frames": 16, "ticks_per_frame": 3, "phase": 32, "at": [0.5333333333333333, 0.5333333333333333], "px": [2, -20], "src": "0x205C at urchin points (FUN_00412C60, subtype 0x13)"}},
+ "effects": {"debris": {"file": "destruction", "groups": [157, 1, 10, 19, 28], "frames": 9, "src": "collapse_debris_spawn 0x004CCD40, subtype 0 of FUN_00410E50"}, "lava": {"file": "destruction", "groups": [166, 184, 202, 219, 238, 255], "frames": [18, 18, 17, 19, 17, 19], "src": "FUN_00411920, subtype 1"}, "drops": {"file": "destruction", "groups": [274, 286, 299, 314], "frames": [12, 13, 15, 15], "src": "FUN_00411BE0, subtype 2"}, "spray": {"file": "destruction", "groups": [1660, 1676], "frames": 20, "src": "FUN_00412080, subtype 4: 0x2236 frames 1..9, then 0x2238 frames 0..9 (counter 10..19)"}}
+}

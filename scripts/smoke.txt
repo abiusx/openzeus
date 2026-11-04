@@ -1,0 +1,57 @@
+# Smoke test: a small town near the entry of the Zeus sandbox map.
+# the sandbox's own road (bugs.md 233: x=167 from the land entry north to y=106, east to the exit) is cleared
+# first (2 dr a tile): the palace (167 151) stands on it. The town is the one from before 1K (10-30)
+clear 167 106 167 173
+clear 168 106 218 106
+road 166 169 166 150
+road 166 150 136 150
+road 166 145 136 145
+road 150 150 150 112
+# houses between the two streets (rows 146-147 face y=145, rows 148-149 face y=150)
+build house 138 146
+build house 140 146
+build house 142 146
+build house 144 146
+build house 146 146
+build house 152 146
+build house 154 146
+build house 156 146
+build house 158 146
+build house 160 146
+build house 138 148
+build house 140 148
+build house 142 148
+build house 144 148
+build house 146 148
+build house 152 148
+build house 154 148
+build house 156 148
+build house 158 148
+build house 160 148
+# services north of y=145
+build fountain 146 143
+build fountain 156 143
+build maintenance 162 143
+build palace 167 151
+build tax_office 160 143
+build agora 138 143 up
+build fleece_vendor 138 143
+build food_vendor 140 143
+build podium 144 143
+# food & wool on the meadow along the spine
+build granary 151 140
+build wheat_farm 151 120
+build onion_farm 151 124
+build carrot_farm 151 128
+build wheat_farm 147 120
+build sheep_farm 148 124
+build storehouse 147 136
+status
+months 3
+status
+months 6
+status
+look 134 112 36 42
+months 6
+status
+history

@@ -1,0 +1,5589 @@
+{
+ "dir": "zeus-original/app/Audio",
+ "formats": {
+  "wav": "all 703 .wav (Ambient 245, Wavs 455, Music 3) are PCM 16-bit, valid headers (mostly mono 22050 Hz; 9 files 44100 Hz; 3 stereo): browser-playable, no conversion",
+  "mp3": "Music/Voice are MP3 (music 44100 Hz stereo 160 kb/s): browser-playable"
+ },
+ "music": {
+  "city": [
+   "Music/Amolfi.mp3",
+   "Music/Perifanos.mp3",
+   "Music/Proi.mp3",
+   "Music/Tamagia.mp3",
+   "Music/Eplitha.mp3",
+   "Music/Eilavia.mp3",
+   "Music/Pnevma.mp3",
+   "Music/Mnimio.mp3",
+   "Music/Oyonos.mp3",
+   "Music/Zoi.mp3",
+   "Music/Iremos.mp3",
+   "Music/Afigisi.mp3",
+   "Music/Naoss.mp3",
+   "Music/Fengari.mp3"
+  ],
+  "combat_short": [
+   "Music/Battle1.mp3",
+   "Music/Battle2.mp3",
+   "Music/Battle3.mp3",
+   "Music/Battle4.mp3"
+  ],
+  "combat_long": [
+   "Music/Battle_long.mp3",
+   "Music/Battle_long2.mp3"
+  ],
+  "special": {
+   "mon1": "Music/S_mon1.mp3",
+   "mon2": "Music/S_mon2.mp3",
+   "dis": "Music/S_dis.mp3",
+   "games": "Music/S_games.mp3"
+  },
+  "menu": "Music/Setup.mp3",
+  "mission_intro": "Music/mission_intro.wav",
+  "mission_victory": "Music/mission_victory.wav",
+  "campaign_victory": "Music/campaign_victory.wav",
+  "rules": {
+   "order": "general list is played sequentially in music.txt order (index starts at -1, +1 per finished track, wraps); NOT shuffled (eZeus shuffles; the exe does not)",
+   "combat_trigger": "enemy units alive > 0, or enemy warships > 0, or two other condition functions (FUN_004E5E50(2,1), FUN_0052EEB0; unidentified, probably active invasion/monster event) -> state 1",
+   "combat_pick": "alternate long / short: first short (toggle starts 0 -> 1 = short), then long, then short...; random track inside the chosen list; when the track ends the next combat track starts",
+   "combat_timeout_ms": 600000,
+   "after_combat": "when the 10 min combat window ends or the threat is gone, the interrupted city track resumes at its saved position (state 3 -> resume)",
+   "special_events": "one-shot stingers (state 2) that pause the city track and resume it after: mon1 = monster/ hero-of-event arrival messages (arg 0,1,4), mon2 = monster slain / events (2,5), dis = disaster messages (3,6), games = games/ victory-type message (7); see docs/play/audio.md",
+   "volume": "music on/off DAT_00f2a76c; no per-track fade logic found in the exe (eZeus fades 1 s on switch)"
+  }
+ },
+ "ambient": {
+  "layer1": {
+   "dir": "Ambient/Layer1",
+   "per_frame_denominator": 2000,
+   "entries": [
+    {
+     "file": "Ambient/Layer1/wind1.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "L",
+     "a": 1.0,
+     "b": 3.0,
+     "dir": "CCW",
+     "speed": 0.025,
+     "secs_min": 4,
+     "secs_max": 9
+    },
+    {
+     "file": "Ambient/Layer1/wind2.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "L",
+     "a": 5.0,
+     "b": 1.0,
+     "dir": "RCW",
+     "speed": 0.025,
+     "secs_min": 9,
+     "secs_max": 18
+    },
+    {
+     "file": "Ambient/Layer1/wind3.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "L",
+     "a": 1.0,
+     "b": 3.0,
+     "dir": "RCW",
+     "speed": 0.025,
+     "secs_min": 7,
+     "secs_max": 14
+    },
+    {
+     "file": "Ambient/Layer1/wind4.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "L",
+     "a": 3.0,
+     "b": 1.0,
+     "dir": "CW",
+     "speed": 0.025,
+     "secs_min": 5,
+     "secs_max": 10
+    },
+    {
+     "file": "Ambient/Layer1/wind5.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "L",
+     "a": 7.0,
+     "b": 5.0,
+     "dir": "RCW",
+     "speed": 0.025,
+     "secs_min": 5,
+     "secs_max": 10
+    },
+    {
+     "file": "Ambient/Layer1/wind6.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "L",
+     "a": 7.0,
+     "b": 3.0,
+     "dir": "RCW",
+     "speed": 0.025,
+     "secs_min": 5,
+     "secs_max": 5
+    },
+    {
+     "file": "Ambient/Layer1/wind7.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "L",
+     "a": 0.0,
+     "b": 4.0,
+     "dir": "RCW",
+     "speed": 0.025,
+     "secs_min": 5,
+     "secs_max": 9
+    },
+    {
+     "file": "Ambient/Layer1/shimmer3.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "B",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 2.0,
+     "secs_min": 3,
+     "secs_max": 3
+    },
+    {
+     "file": "Ambient/Layer1/wind_sparkle2.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 1.0,
+     "secs_min": 5,
+     "secs_max": 5
+    },
+    {
+     "file": "Ambient/Layer1/dark2.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 1.0,
+     "secs_min": 4,
+     "secs_max": 4
+    },
+    {
+     "file": "Ambient/Layer1/bells.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 1.0,
+     "secs_min": 3,
+     "secs_max": 3
+    },
+    {
+     "file": "Ambient/Layer1/space_bells7.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 2.0,
+     "secs_min": 4,
+     "secs_max": 4
+    },
+    {
+     "file": "Ambient/Layer1/space_bells10.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 2.0,
+     "secs_min": 5,
+     "secs_max": 5
+    },
+    {
+     "file": "Ambient/Layer1/space_bells12.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 2.0,
+     "secs_min": 5,
+     "secs_max": 5
+    },
+    {
+     "file": "Ambient/Layer1/space_bells13.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 2.0,
+     "secs_min": 5,
+     "secs_max": 5
+    },
+    {
+     "file": "Ambient/Layer1/space_bells14.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 2.0,
+     "secs_min": 5,
+     "secs_max": 9
+    },
+    {
+     "file": "Ambient/Layer1/space_bells4a.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 2.0,
+     "secs_min": 4,
+     "secs_max": 4
+    },
+    {
+     "file": "Ambient/Layer1/chime2.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 1.0,
+     "secs_min": 4,
+     "secs_max": 4
+    },
+    {
+     "file": "Ambient/Layer1/voice.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 180.0,
+     "dir": "RCW",
+     "speed": 1.0,
+     "secs_min": 3,
+     "secs_max": 3
+    },
+    {
+     "file": "Ambient/Layer1/shimmer6.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "C",
+     "a": 0.0,
+     "b": 270.0,
+     "dir": "CCW",
+     "speed": 1.0,
+     "secs_min": 8,
+     "secs_max": 8
+    },
+    {
+     "file": "Ambient/Layer1/shimmer7.wav",
+     "jitter": 0,
+     "flag": "F",
+     "pos_scale": [
+      2,
+      0,
+      2
+     ],
+     "mode": "B",
+     "a": 0.0,
+     "b": 0.0,
+     "dir": "CW",
+     "speed": 150.0,
+     "secs_min": 3,
+     "secs_max": 3
+    }
+   ],
+   "rules": "1 draw per rendered frame: rand % 2000 == 1 -> if no layer-1 sound is currently playing, pick one entry uniformly (rand % count) and play it positioned in 3D around the listener for secs_min..secs_max seconds (rand), volume = ambient slider; only in normal city view"
+  },
+  "layer2": {
+   "dir": "Ambient/Layer2",
+   "per_frame_denominator": 300,
+   "categories": {
+    "0": {
+     "name": "COMMON_HOUSING",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/wagon1.wav",
+      "Ambient/Layer2/wagon2.wav",
+      "Ambient/Layer2/wagon3.wav",
+      "Ambient/Layer2/city1.wav",
+      "Ambient/Layer2/city3.wav",
+      "Ambient/Layer2/city4.wav",
+      "Ambient/Layer2/city5.wav",
+      "Ambient/Layer2/city8.wav",
+      "Ambient/Layer2/city9.wav"
+     ]
+    },
+    "1": {
+     "name": "ELITE_HOUSING",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/elite1.wav",
+      "Ambient/Layer2/elite2.wav",
+      "Ambient/Layer2/city2.wav",
+      "Ambient/Layer2/city7.wav"
+     ]
+    },
+    "2": {
+     "name": "FARMING (also receives ORCHARD, FARMLAND and the terrain list named FARMLAND)",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/dig3.wav",
+      "Ambient/Layer2/dig4.wav",
+      "Ambient/Layer2/dig5.wav",
+      "Ambient/Layer2/dig6.wav",
+      "Ambient/Layer2/dig7.wav",
+      "Ambient/Layer2/dig8.wav",
+      "Ambient/Layer2/bird1.wav",
+      "Ambient/Layer2/bird2.wav",
+      "Ambient/Layer2/rustling1.wav",
+      "Ambient/Layer2/rustling2.wav",
+      "Ambient/Layer2/orchard1.wav",
+      "Ambient/Layer2/orchard2.wav",
+      "Ambient/Layer2/bird1.wav",
+      "Ambient/Layer2/bird2.wav",
+      "Ambient/Layer2/bird4.wav",
+      "Ambient/Layer2/rustling1.wav",
+      "Ambient/Layer2/rustling2.wav"
+     ]
+    },
+    "3": {
+     "name": "ORCHARD (unused slot; the file name ORCHARD never matches, its sounds go to FARMING)",
+     "weight": 0,
+     "files": []
+    },
+    "6": {
+     "name": "SHEEP_FARM",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/shearing1.wav",
+      "Ambient/Layer2/shearing2.wav",
+      "Ambient/Layer2/shearing3.wav"
+     ]
+    },
+    "7": {
+     "name": "GOAT_FARM",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/goatherd1.wav",
+      "Ambient/Layer2/goatherd2.wav",
+      "Ambient/Layer2/goatherd3.wav"
+     ]
+    },
+    "8": {
+     "name": "SEA",
+     "weight": 100,
+     "files": [
+      "Ambient/Layer2/dock1.wav",
+      "Ambient/Layer2/dock2.wav",
+      "Ambient/Layer2/dock3.wav",
+      "Ambient/Layer2/urchin1.wav",
+      "Ambient/Layer2/urchin2.wav",
+      "Ambient/Layer2/urchin3.wav"
+     ]
+    },
+    "9": {
+     "name": "TRIREME_WHARF",
+     "weight": 30,
+     "files": [
+      "Ambient/Layer2/trireme1.wav",
+      "Ambient/Layer2/trireme2.wav",
+      "Ambient/Layer2/trireme3.wav",
+      "Ambient/Layer2/trireme4.wav"
+     ]
+    },
+    "10": {
+     "name": "HUNTING",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/hunting1.wav",
+      "Ambient/Layer2/hunting2.wav"
+     ]
+    },
+    "11": {
+     "name": "TIMBER_MILL",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/timber_mill1.wav",
+      "Ambient/Layer2/timber_mill2.wav",
+      "Ambient/Layer2/timber_mill3.wav"
+     ]
+    },
+    "12": {
+     "name": "STONE_CUTTER (no sounds in the file)",
+     "weight": 0,
+     "files": []
+    },
+    "13": {
+     "name": "MINT",
+     "weight": 100,
+     "files": [
+      "Ambient/Layer2/mint1.wav",
+      "Ambient/Layer2/mint2.wav",
+      "Ambient/Layer2/mint3.wav",
+      "Ambient/Layer2/mint4.wav"
+     ]
+    },
+    "14": {
+     "name": "FOUNDRY",
+     "weight": 40,
+     "files": [
+      "Ambient/Layer2/foundry1.wav",
+      "Ambient/Layer2/foundry2.wav",
+      "Ambient/Layer2/foundry3.wav",
+      "Ambient/Layer2/foundry4.wav",
+      "Ambient/Layer2/foundry5.wav"
+     ]
+    },
+    "15": {
+     "name": "WORKSHOPS",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/wagon4.wav",
+      "Ambient/Layer2/wagon5.wav",
+      "Ambient/Layer2/wagon6.wav",
+      "Ambient/Layer2/wagon7.wav"
+     ]
+    },
+    "16": {
+     "name": "STORAGE",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/chest1.wav",
+      "Ambient/Layer2/chest2.wav",
+      "Ambient/Layer2/chest3.wav",
+      "Ambient/Layer2/shovel.wav",
+      "Ambient/Layer2/drop_wood.wav",
+      "Ambient/Layer2/storage_cart1.wav",
+      "Ambient/Layer2/warehouse.wav"
+     ]
+    },
+    "17": {
+     "name": "AGORA_FOOD",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/agora_food1.wav",
+      "Ambient/Layer2/agora_food2.wav",
+      "Ambient/Layer2/agora_food3.wav",
+      "Ambient/Layer2/agora_food4.wav"
+     ]
+    },
+    "18": {
+     "name": "AGORA_FLEECE",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/agora_fleece1.wav",
+      "Ambient/Layer2/agora_fleece2.wav"
+     ]
+    },
+    "19": {
+     "name": "AGORA_OIL",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/agora_oil.wav",
+      "Ambient/Layer2/agora_gen1.wav"
+     ]
+    },
+    "20": {
+     "name": "AGORA_WINE",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/agora_wine1.wav",
+      "Ambient/Layer2/agora_wine2.wav"
+     ]
+    },
+    "21": {
+     "name": "AGORA_ARMS",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/agora_arms1.wav",
+      "Ambient/Layer2/agora_arms2.wav",
+      "Ambient/Layer2/agora_gen2.wav"
+     ]
+    },
+    "22": {
+     "name": "AGORA_HORSE",
+     "weight": 40,
+     "files": [
+      "Ambient/Layer2/agora_horse1.wav",
+      "Ambient/Layer2/agora_horse2.wav"
+     ]
+    },
+    "23": {
+     "name": "TRADE",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/trade1.wav",
+      "Ambient/Layer2/trade2.wav",
+      "Ambient/Layer2/trade3.wav",
+      "Ambient/Layer2/trade4.wav"
+     ]
+    },
+    "24": {
+     "name": "MUNICIPAL",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/tax1.wav",
+      "Ambient/Layer2/tax2.wav",
+      "Ambient/Layer2/tax3.wav"
+     ]
+    },
+    "25": {
+     "name": "PALACE",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/palace1.wav",
+      "Ambient/Layer2/palace2.wav",
+      "Ambient/Layer2/palace3.wav"
+     ]
+    },
+    "26": {
+     "name": "DEFENSIVE",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/defensive1.wav",
+      "Ambient/Layer2/defensive2.wav",
+      "Ambient/Layer2/defensive3.wav"
+     ]
+    },
+    "27": {
+     "name": "INFIRMARY",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/infirmary1.wav",
+      "Ambient/Layer2/infirmary2.wav",
+      "Ambient/Layer2/infirmary3.wav",
+      "Ambient/Layer2/infirmary4.wav"
+     ]
+    },
+    "28": {
+     "name": "THEATRE",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/drama1.wav",
+      "Ambient/Layer2/flying.wav",
+      "Ambient/Layer2/thtr_spear1.wav"
+     ]
+    },
+    "29": {
+     "name": "DRAMA",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/thtr_mumbl1.wav",
+      "Ambient/Layer2/thtr_mumbl2.wav",
+      "Ambient/Layer2/thtr_mumbl3.wav",
+      "Ambient/Layer2/thtr_spear2.wav",
+      "Ambient/Layer2/thtr_spin1.wav",
+      "Ambient/Layer2/thtr_spin2.wav",
+      "Ambient/Layer2/thtr_women.wav"
+     ]
+    },
+    "30": {
+     "name": "PHILOSOPHY",
+     "weight": 10,
+     "files": [
+      "Ambient/Layer2/Plato.wav",
+      "Ambient/Layer2/Aristotle.wav",
+      "Ambient/Layer2/Socrates.wav",
+      "Ambient/Layer2/college.wav",
+      "Ambient/Layer2/college2.wav",
+      "Ambient/Layer2/podium1.wav"
+     ]
+    },
+    "31": {
+     "name": "GYMNASIUM",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/gym1.wav",
+      "Ambient/Layer2/gym2.wav",
+      "Ambient/Layer2/gym3.wav"
+     ]
+    },
+    "32": {
+     "name": "STADIUM",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/cheer.wav",
+      "Ambient/Layer2/javelin.wav",
+      "Ambient/Layer2/wrestling.wav",
+      "Ambient/Layer2/cheer2.wav"
+     ]
+    },
+    "33": {
+     "name": "SANCTUARY",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/sanctuary1.wav",
+      "Ambient/Layer2/sanctuary2.wav"
+     ]
+    },
+    "34": {
+     "name": "ARMORY",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/armory1.wav",
+      "Ambient/Layer2/armory2.wav",
+      "Ambient/Layer2/armory3.wav"
+     ]
+    },
+    "35": {
+     "name": "HORSE_RANCH",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/horse1.wav",
+      "Ambient/Layer2/horse2.wav",
+      "Ambient/Layer2/horse3.wav",
+      "Ambient/Layer2/horse4.wav",
+      "Ambient/Layer2/horse5.wav"
+     ]
+    },
+    "36": {
+     "name": "BEAUTIFICATION",
+     "weight": 40,
+     "files": [
+      "Ambient/Layer2/win_chime1.wav",
+      "Ambient/Layer2/win_chime2.wav",
+      "Ambient/Layer2/recreation1.wav"
+     ]
+    },
+    "37": {
+     "name": "DESERT",
+     "weight": 10,
+     "files": []
+    },
+    "38": {
+     "name": "MEADOW",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/bird7.wav",
+      "Ambient/Layer2/finch2.wav",
+      "Ambient/Layer2/sparrow1.wav",
+      "Ambient/Layer2/bird3.wav"
+     ]
+    },
+    "39": {
+     "name": "BEACH",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/wave1.wav",
+      "Ambient/Layer2/wave2.wav",
+      "Ambient/Layer2/wave3.wav",
+      "Ambient/Layer2/wave4.wav"
+     ]
+    },
+    "40": {
+     "name": "ROCKY",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/rumble.wav",
+      "Ambient/Layer2/rockslide1.wav",
+      "Ambient/Layer2/rockslide2.wav"
+     ]
+    },
+    "41": {
+     "name": "VEGETATION",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/bird3.wav",
+      "Ambient/Layer2/bird4.wav",
+      "Ambient/Layer2/bird5.wav"
+     ]
+    },
+    "42": {
+     "name": "WATER",
+     "weight": 30,
+     "files": [
+      "Ambient/Layer2/water_space1.wav",
+      "Ambient/Layer2/water_space2.wav"
+     ]
+    },
+    "43": {
+     "name": "LAVA",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/lava1.wav",
+      "Ambient/Layer2/lava2.wav",
+      "Ambient/Layer2/lava3.wav"
+     ]
+    },
+    "44": {
+     "name": "MARBLE_QUARRY",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/marble1.wav",
+      "Ambient/Layer2/marble2.wav"
+     ]
+    },
+    "45": {
+     "name": "BOAR",
+     "weight": 100,
+     "files": [
+      "Ambient/Layer2/boar1.wav",
+      "Ambient/Layer2/boar2.wav",
+      "Ambient/Layer2/boar3.wav",
+      "Ambient/Layer2/boar4.wav"
+     ]
+    },
+    "46": {
+     "name": "GOAT",
+     "weight": 100,
+     "files": [
+      "Ambient/Layer2/goat1.wav",
+      "Ambient/Layer2/goat2.wav",
+      "Ambient/Layer2/goat3.wav",
+      "Ambient/Layer2/goat4.wav"
+     ]
+    },
+    "47": {
+     "name": "WOLF",
+     "weight": 100,
+     "files": [
+      "Ambient/Layer2/wolf1.wav",
+      "Ambient/Layer2/wolf2.wav",
+      "Ambient/Layer2/wolf3.wav",
+      "Ambient/Layer2/wolf4.wav"
+     ]
+    },
+    "48": {
+     "name": "SHEEP",
+     "weight": 100,
+     "files": [
+      "Ambient/Layer2/sheep1.wav",
+      "Ambient/Layer2/sheep2.wav",
+      "Ambient/Layer2/sheep3.wav",
+      "Ambient/Layer2/sheep4.wav"
+     ]
+    },
+    "49": {
+     "name": "FOUNTAIN",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/fountain1.wav",
+      "Ambient/Layer2/fountain2.wav"
+     ]
+    },
+    "50": {
+     "name": "ARTISAN",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/artisan_guild1.wav",
+      "Ambient/Layer2/artisan_guild2.wav"
+     ]
+    },
+    "51": {
+     "name": "MAINTENANCE_OFFICE",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/maintenance1.wav",
+      "Ambient/Layer2/maintenance2.wav",
+      "Ambient/Layer2/maintenance3.wav",
+      "Ambient/Layer2/maintenance4.wav"
+     ]
+    },
+    "52": {
+     "name": "RACETRACK",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/racetrack1.wav",
+      "Ambient/Layer2/racetrack2.wav"
+     ]
+    },
+    "53": {
+     "name": "BIBLIOTHEKE",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/reading1.wav",
+      "Ambient/Layer2/reading2.wav",
+      "Ambient/Layer2/get_book.wav",
+      "Ambient/Layer2/close_book.wav"
+     ]
+    },
+    "54": {
+     "name": "OBSERVATORY",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/observatory1.wav",
+      "Ambient/Layer2/observatory2.wav"
+     ]
+    },
+    "55": {
+     "name": "UNIVERSITY",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/university1.wav",
+      "Ambient/Layer2/university2.wav"
+     ]
+    },
+    "56": {
+     "name": "RESEARCH",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/invention1.wav",
+      "Ambient/Layer2/invention2.wav",
+      "Ambient/Layer2/lab1.wav",
+      "Ambient/Layer2/lab2.wav",
+      "Ambient/Layer2/reading1.wav",
+      "Ambient/Layer2/writing1.wav"
+     ]
+    },
+    "57": {
+     "name": "MUSEUM",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/museum1.wav",
+      "Ambient/Layer2/museum2.wav"
+     ]
+    },
+    "58": {
+     "name": "CHARIOT_FACTORY",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/chariot_build1.wav",
+      "Ambient/Layer2/chariot_build2.wav"
+     ]
+    },
+    "59": {
+     "name": "FRUIT_GROWERS_LODGE",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/fruit_lodge1.wav",
+      "Ambient/Layer2/fruit_lodge2.wav"
+     ]
+    },
+    "60": {
+     "name": "AGORA_CHARIOT",
+     "weight": 50,
+     "files": [
+      "Ambient/Layer2/agora_chariot1.wav",
+      "Ambient/Layer2/agora_chariot2.wav"
+     ]
+    },
+    "61": {
+     "name": "DEER",
+     "weight": 100,
+     "files": [
+      "Ambient/Layer2/deer1.wav",
+      "Ambient/Layer2/deer2.wav",
+      "Ambient/Layer2/deer3.wav",
+      "Ambient/Layer2/deer4.wav"
+     ]
+    },
+    "62": {
+     "name": "CATTLE",
+     "weight": 100,
+     "files": [
+      "Ambient/Layer2/cattle1.wav",
+      "Ambient/Layer2/cattle2.wav",
+      "Ambient/Layer2/cattle3.wav",
+      "Ambient/Layer2/cattle4.wav"
+     ]
+    },
+    "63": {
+     "name": "CORRAL",
+     "weight": 40,
+     "files": [
+      "Ambient/Layer2/corral1.wav",
+      "Ambient/Layer2/corral2.wav",
+      "Ambient/Layer2/corral3.wav",
+      "Ambient/Layer2/cattle2.wav",
+      "Ambient/Layer2/cattle3.wav",
+      "Ambient/Layer2/cattle4.wav"
+     ]
+    },
+    "64": {
+     "name": "MAMMALDROME",
+     "weight": 20,
+     "files": [
+      "Ambient/Layer2/mammaldrome1.wav",
+      "Ambient/Layer2/mammaldrome2.wav",
+      "Ambient/Layer2/mammaldrome3.wav"
+     ]
+    }
+   },
+   "rules": "1 draw per rendered frame: rand % 300 == 1 -> sample 3 random screen points (x in 0..W-10, y in 30..H), classify each tile as building / walker / terrain, draw rand(weight) for each, play from the highest; see docs/play/audio.md"
+  },
+  "terrain_to_category": {
+   "tree(0x1)": 41,
+   "rock/cliff/copper/silver(0x300002 any)": 40,
+   "water(0x4, not 0x80000)": 42,
+   "meadow(0x800)": 38,
+   "beach(0x10000)": 39,
+   "marble(0x20000)": 44,
+   "lava/disaster(0x1000000)": 43,
+   "other (bare ground)": 37
+  },
+  "terrain_order": [
+   "0x1 tree -> VEGETATION 41",
+   "0x300002 -> ROCKY 40",
+   "0x4 and not 0x80000 -> WATER 42",
+   "0x800 -> MEADOW 38",
+   "0x10000 -> BEACH 39",
+   "0x20000 -> MARBLE 44",
+   "0x1000000 -> LAVA 43",
+   "else DESERT 37 (no sounds, weight 10)"
+  ],
+  "walker_to_category": {
+   "sheep(figure 0x31)": 48,
+   "goat(0x32)": 46,
+   "boar(0x33, resource!=1)": 45,
+   "deer(0x33, resource==1)": 61,
+   "wolf(0x3b)": 47,
+   "cattle(0x4c)": 62
+  }
+ },
+ "buildings": {
+  "house": {
+   "zeus_id": 2,
+   "category": 0,
+   "category_name": "COMMON_HOUSING",
+   "ambient_files": [
+    "Ambient/Layer2/wagon1.wav",
+    "Ambient/Layer2/wagon2.wav",
+    "Ambient/Layer2/wagon3.wav",
+    "Ambient/Layer2/city1.wav",
+    "Ambient/Layer2/city3.wav",
+    "Ambient/Layer2/city4.wav",
+    "Ambient/Layer2/city5.wav",
+    "Ambient/Layer2/city8.wav",
+    "Ambient/Layer2/city9.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/city1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens",
+   "click_note": "all house levels (zeus ids 2..8 / 9..14) use the same click file"
+  },
+  "elite_house": {
+   "zeus_id": 9,
+   "category": 1,
+   "category_name": "ELITE_HOUSING",
+   "ambient_files": [
+    "Ambient/Layer2/elite1.wav",
+    "Ambient/Layer2/elite2.wav",
+    "Ambient/Layer2/city2.wav",
+    "Ambient/Layer2/city7.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/elite1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens",
+   "click_note": "all house levels (zeus ids 2..8 / 9..14) use the same click file"
+  },
+  "flower_garden": {
+   "zeus_id": 15,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "gazebo": {
+   "zeus_id": 16,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "hedge_maze": {
+   "zeus_id": 17,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "fish_pond": {
+   "zeus_id": 18,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "tall_obelisk": {
+   "zeus_id": 19,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sundial": {
+   "zeus_id": 20,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "topiary": {
+   "zeus_id": 21,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "spring": {
+   "zeus_id": 22,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "stone_circle": {
+   "zeus_id": 23,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "short_obelisk": {
+   "zeus_id": 24,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "water_park": {
+   "zeus_id": 25,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "road": {
+   "zeus_id": 28,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [],
+   "rule": "silent"
+  },
+  "wheat_farm": {
+   "zeus_id": 31,
+   "category": 2,
+   "category_name": "FARMING",
+   "ambient_files": [
+    "Ambient/Layer2/dig3.wav",
+    "Ambient/Layer2/dig4.wav",
+    "Ambient/Layer2/dig5.wav",
+    "Ambient/Layer2/dig6.wav",
+    "Ambient/Layer2/dig7.wav",
+    "Ambient/Layer2/dig8.wav",
+    "Ambient/Layer2/bird1.wav",
+    "Ambient/Layer2/bird2.wav",
+    "Ambient/Layer2/rustling1.wav",
+    "Ambient/Layer2/rustling2.wav",
+    "Ambient/Layer2/orchard1.wav",
+    "Ambient/Layer2/orchard2.wav",
+    "Ambient/Layer2/bird1.wav",
+    "Ambient/Layer2/bird2.wav",
+    "Ambient/Layer2/bird4.wav",
+    "Ambient/Layer2/rustling1.wav",
+    "Ambient/Layer2/rustling2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/bird5.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "onion_farm": {
+   "zeus_id": 32,
+   "category": 2,
+   "category_name": "FARMING",
+   "ambient_files": [
+    "Ambient/Layer2/dig3.wav",
+    "Ambient/Layer2/dig4.wav",
+    "Ambient/Layer2/dig5.wav",
+    "Ambient/Layer2/dig6.wav",
+    "Ambient/Layer2/dig7.wav",
+    "Ambient/Layer2/dig8.wav",
+    "Ambient/Layer2/bird1.wav",
+    "Ambient/Layer2/bird2.wav",
+    "Ambient/Layer2/rustling1.wav",
+    "Ambient/Layer2/rustling2.wav",
+    "Ambient/Layer2/orchard1.wav",
+    "Ambient/Layer2/orchard2.wav",
+    "Ambient/Layer2/bird1.wav",
+    "Ambient/Layer2/bird2.wav",
+    "Ambient/Layer2/bird4.wav",
+    "Ambient/Layer2/rustling1.wav",
+    "Ambient/Layer2/rustling2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/bird5.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "carrot_farm": {
+   "zeus_id": 33,
+   "category": 2,
+   "category_name": "FARMING",
+   "ambient_files": [
+    "Ambient/Layer2/dig3.wav",
+    "Ambient/Layer2/dig4.wav",
+    "Ambient/Layer2/dig5.wav",
+    "Ambient/Layer2/dig6.wav",
+    "Ambient/Layer2/dig7.wav",
+    "Ambient/Layer2/dig8.wav",
+    "Ambient/Layer2/bird1.wav",
+    "Ambient/Layer2/bird2.wav",
+    "Ambient/Layer2/rustling1.wav",
+    "Ambient/Layer2/rustling2.wav",
+    "Ambient/Layer2/orchard1.wav",
+    "Ambient/Layer2/orchard2.wav",
+    "Ambient/Layer2/bird1.wav",
+    "Ambient/Layer2/bird2.wav",
+    "Ambient/Layer2/bird4.wav",
+    "Ambient/Layer2/rustling1.wav",
+    "Ambient/Layer2/rustling2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/bird5.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "grapevine": {
+   "zeus_id": 35,
+   "category": 3,
+   "category_name": "ORCHARD",
+   "ambient_files": [],
+   "ambient_weight": 0,
+   "click": [],
+   "rule": "ambient only"
+  },
+  "olive_tree": {
+   "zeus_id": 36,
+   "category": 3,
+   "category_name": "ORCHARD",
+   "ambient_files": [],
+   "ambient_weight": 0,
+   "click": [],
+   "rule": "ambient only"
+  },
+  "growers_lodge": {
+   "zeus_id": 37,
+   "category": 3,
+   "category_name": "ORCHARD",
+   "ambient_files": [],
+   "ambient_weight": 0,
+   "click": [
+    "Ambient/Layer2/rustling1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "goat": {
+   "zeus_id": 39,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [],
+   "rule": "silent"
+  },
+  "sheep": {
+   "zeus_id": 40,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [],
+   "rule": "silent"
+  },
+  "sheep_farm": {
+   "zeus_id": 41,
+   "category": 6,
+   "category_name": "SHEEP_FARM",
+   "ambient_files": [
+    "Ambient/Layer2/shearing1.wav",
+    "Ambient/Layer2/shearing2.wav",
+    "Ambient/Layer2/shearing3.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/shearing3.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "goat_farm": {
+   "zeus_id": 42,
+   "category": 7,
+   "category_name": "GOAT_FARM",
+   "ambient_files": [
+    "Ambient/Layer2/goatherd1.wav",
+    "Ambient/Layer2/goatherd2.wav",
+    "Ambient/Layer2/goatherd3.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/goatherd1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "fishing_wharf": {
+   "zeus_id": 44,
+   "category": 8,
+   "category_name": "SEA",
+   "ambient_files": [
+    "Ambient/Layer2/dock1.wav",
+    "Ambient/Layer2/dock2.wav",
+    "Ambient/Layer2/dock3.wav",
+    "Ambient/Layer2/urchin1.wav",
+    "Ambient/Layer2/urchin2.wav",
+    "Ambient/Layer2/urchin3.wav"
+   ],
+   "ambient_weight": 100,
+   "click": [
+    "Ambient/Layer2/urchin1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "urchin_quay": {
+   "zeus_id": 45,
+   "category": 8,
+   "category_name": "SEA",
+   "ambient_files": [
+    "Ambient/Layer2/dock1.wav",
+    "Ambient/Layer2/dock2.wav",
+    "Ambient/Layer2/dock3.wav",
+    "Ambient/Layer2/urchin1.wav",
+    "Ambient/Layer2/urchin2.wav",
+    "Ambient/Layer2/urchin3.wav"
+   ],
+   "ambient_weight": 100,
+   "click": [
+    "Ambient/Layer2/urchin1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "hunting_lodge": {
+   "zeus_id": 46,
+   "category": 10,
+   "category_name": "HUNTING",
+   "ambient_files": [
+    "Ambient/Layer2/hunting1.wav",
+    "Ambient/Layer2/hunting2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/hunting1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "mint": {
+   "zeus_id": 48,
+   "category": 13,
+   "category_name": "MINT",
+   "ambient_files": [
+    "Ambient/Layer2/mint1.wav",
+    "Ambient/Layer2/mint2.wav",
+    "Ambient/Layer2/mint3.wav",
+    "Ambient/Layer2/mint4.wav"
+   ],
+   "ambient_weight": 100,
+   "click": [
+    "Ambient/Layer2/mint1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "marble_quarry": {
+   "zeus_id": 49,
+   "category": 44,
+   "category_name": "MARBLE_QUARRY",
+   "ambient_files": [
+    "Ambient/Layer2/marble1.wav",
+    "Ambient/Layer2/marble2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/marble1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "foundry": {
+   "zeus_id": 50,
+   "category": 14,
+   "category_name": "FOUNDRY",
+   "ambient_files": [
+    "Ambient/Layer2/foundry1.wav",
+    "Ambient/Layer2/foundry2.wav",
+    "Ambient/Layer2/foundry3.wav",
+    "Ambient/Layer2/foundry4.wav",
+    "Ambient/Layer2/foundry5.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/foundry1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "timber_mill": {
+   "zeus_id": 51,
+   "category": 11,
+   "category_name": "TIMBER_MILL",
+   "ambient_files": [
+    "Ambient/Layer2/timber_mill1.wav",
+    "Ambient/Layer2/timber_mill2.wav",
+    "Ambient/Layer2/timber_mill3.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/timber_mill1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "winery": {
+   "zeus_id": 53,
+   "category": 15,
+   "category_name": "WORKSHOPS",
+   "ambient_files": [
+    "Ambient/Layer2/wagon4.wav",
+    "Ambient/Layer2/wagon5.wav",
+    "Ambient/Layer2/wagon6.wav",
+    "Ambient/Layer2/wagon7.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/wagon4.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "oil_press": {
+   "zeus_id": 54,
+   "category": 15,
+   "category_name": "WORKSHOPS",
+   "ambient_files": [
+    "Ambient/Layer2/wagon4.wav",
+    "Ambient/Layer2/wagon5.wav",
+    "Ambient/Layer2/wagon6.wav",
+    "Ambient/Layer2/wagon7.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/wagon4.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sculpture_studio": {
+   "zeus_id": 55,
+   "category": 14,
+   "category_name": "FOUNDRY",
+   "ambient_files": [
+    "Ambient/Layer2/foundry1.wav",
+    "Ambient/Layer2/foundry2.wav",
+    "Ambient/Layer2/foundry3.wav",
+    "Ambient/Layer2/foundry4.wav",
+    "Ambient/Layer2/foundry5.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/wagon4.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "artisans_guild": {
+   "zeus_id": 56,
+   "category": 50,
+   "category_name": "ARTISAN",
+   "ambient_files": [
+    "Ambient/Layer2/artisan_guild1.wav",
+    "Ambient/Layer2/artisan_guild2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/artisan_guild1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "granary": {
+   "zeus_id": 57,
+   "category": 16,
+   "category_name": "STORAGE",
+   "ambient_files": [
+    "Ambient/Layer2/chest1.wav",
+    "Ambient/Layer2/chest2.wav",
+    "Ambient/Layer2/chest3.wav",
+    "Ambient/Layer2/shovel.wav",
+    "Ambient/Layer2/drop_wood.wav",
+    "Ambient/Layer2/storage_cart1.wav",
+    "Ambient/Layer2/warehouse.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/storage_cart1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "storehouse": {
+   "zeus_id": 58,
+   "category": 16,
+   "category_name": "STORAGE",
+   "ambient_files": [
+    "Ambient/Layer2/chest1.wav",
+    "Ambient/Layer2/chest2.wav",
+    "Ambient/Layer2/chest3.wav",
+    "Ambient/Layer2/shovel.wav",
+    "Ambient/Layer2/drop_wood.wav",
+    "Ambient/Layer2/storage_cart1.wav",
+    "Ambient/Layer2/warehouse.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/storage_cart1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "dock": {
+   "zeus_id": 60,
+   "category": 8,
+   "category_name": "SEA",
+   "ambient_files": [
+    "Ambient/Layer2/dock1.wav",
+    "Ambient/Layer2/dock2.wav",
+    "Ambient/Layer2/dock3.wav",
+    "Ambient/Layer2/urchin1.wav",
+    "Ambient/Layer2/urchin2.wav",
+    "Ambient/Layer2/urchin3.wav"
+   ],
+   "ambient_weight": 100,
+   "click": [
+    "Ambient/Layer2/dock1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "trading_post": {
+   "zeus_id": 62,
+   "category": 23,
+   "category_name": "TRADE",
+   "ambient_files": [
+    "Ambient/Layer2/trade1.wav",
+    "Ambient/Layer2/trade2.wav",
+    "Ambient/Layer2/trade3.wav",
+    "Ambient/Layer2/trade4.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/trade1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "agora": {
+   "zeus_id": 63,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [
+    "Ambient/Layer2/agora_gen1.wav"
+   ],
+   "rule": "click only"
+  },
+  "grand_agora": {
+   "zeus_id": 64,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [
+    "Ambient/Layer2/agora_gen1.wav"
+   ],
+   "rule": "click only"
+  },
+  "empty_stall": {
+   "zeus_id": 66,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [],
+   "rule": "silent"
+  },
+  "food_vendor": {
+   "zeus_id": 68,
+   "category": 17,
+   "category_name": "AGORA_FOOD",
+   "ambient_files": [
+    "Ambient/Layer2/agora_food1.wav",
+    "Ambient/Layer2/agora_food2.wav",
+    "Ambient/Layer2/agora_food3.wav",
+    "Ambient/Layer2/agora_food4.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/agora_gen1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "fleece_vendor": {
+   "zeus_id": 69,
+   "category": 18,
+   "category_name": "AGORA_FLEECE",
+   "ambient_files": [
+    "Ambient/Layer2/agora_fleece1.wav",
+    "Ambient/Layer2/agora_fleece2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/agora_fleece1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "oil_vendor": {
+   "zeus_id": 70,
+   "category": 19,
+   "category_name": "AGORA_OIL",
+   "ambient_files": [
+    "Ambient/Layer2/agora_oil.wav",
+    "Ambient/Layer2/agora_gen1.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/agora_oil.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "wine_vendor": {
+   "zeus_id": 71,
+   "category": 20,
+   "category_name": "AGORA_WINE",
+   "ambient_files": [
+    "Ambient/Layer2/agora_wine1.wav",
+    "Ambient/Layer2/agora_wine2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/agora_wine2.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "arms_vendor": {
+   "zeus_id": 72,
+   "category": 21,
+   "category_name": "AGORA_ARMS",
+   "ambient_files": [
+    "Ambient/Layer2/agora_arms1.wav",
+    "Ambient/Layer2/agora_arms2.wav",
+    "Ambient/Layer2/agora_gen2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/agora_arms1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "horse_trainer": {
+   "zeus_id": 73,
+   "category": 22,
+   "category_name": "AGORA_HORSE",
+   "ambient_files": [
+    "Ambient/Layer2/agora_horse1.wav",
+    "Ambient/Layer2/agora_horse2.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/agora_horse1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "fountain": {
+   "zeus_id": 74,
+   "category": 49,
+   "category_name": "FOUNTAIN",
+   "ambient_files": [
+    "Ambient/Layer2/fountain1.wav",
+    "Ambient/Layer2/fountain2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/fountain1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "infirmary": {
+   "zeus_id": 76,
+   "category": 27,
+   "category_name": "INFIRMARY",
+   "ambient_files": [
+    "Ambient/Layer2/infirmary1.wav",
+    "Ambient/Layer2/infirmary2.wav",
+    "Ambient/Layer2/infirmary3.wav",
+    "Ambient/Layer2/infirmary4.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/infirmary2.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "college": {
+   "zeus_id": 77,
+   "category": 30,
+   "category_name": "PHILOSOPHY",
+   "ambient_files": [
+    "Ambient/Layer2/Plato.wav",
+    "Ambient/Layer2/Aristotle.wav",
+    "Ambient/Layer2/Socrates.wav",
+    "Ambient/Layer2/college.wav",
+    "Ambient/Layer2/college2.wav",
+    "Ambient/Layer2/podium1.wav"
+   ],
+   "ambient_weight": 10,
+   "click": [
+    "Ambient/Layer2/college.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "drama_school": {
+   "zeus_id": 78,
+   "category": 29,
+   "category_name": "DRAMA",
+   "ambient_files": [
+    "Ambient/Layer2/thtr_mumbl1.wav",
+    "Ambient/Layer2/thtr_mumbl2.wav",
+    "Ambient/Layer2/thtr_mumbl3.wav",
+    "Ambient/Layer2/thtr_spear2.wav",
+    "Ambient/Layer2/thtr_spin1.wav",
+    "Ambient/Layer2/thtr_spin2.wav",
+    "Ambient/Layer2/thtr_women.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/thtr_mumbl3.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "gymnasium": {
+   "zeus_id": 79,
+   "category": 31,
+   "category_name": "GYMNASIUM",
+   "ambient_files": [
+    "Ambient/Layer2/gym1.wav",
+    "Ambient/Layer2/gym2.wav",
+    "Ambient/Layer2/gym3.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/gym1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "stadium": {
+   "zeus_id": 80,
+   "category": 32,
+   "category_name": "STADIUM",
+   "ambient_files": [
+    "Ambient/Layer2/cheer.wav",
+    "Ambient/Layer2/javelin.wav",
+    "Ambient/Layer2/wrestling.wav",
+    "Ambient/Layer2/cheer2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/wrestling.wav"
+   ],
+   "ambient_condition": "only if the stadium has workers and a show is running",
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "podium": {
+   "zeus_id": 81,
+   "category": 30,
+   "category_name": "PHILOSOPHY",
+   "ambient_files": [
+    "Ambient/Layer2/Plato.wav",
+    "Ambient/Layer2/Aristotle.wav",
+    "Ambient/Layer2/Socrates.wav",
+    "Ambient/Layer2/college.wav",
+    "Ambient/Layer2/college2.wav",
+    "Ambient/Layer2/podium1.wav"
+   ],
+   "ambient_weight": 10,
+   "click": [
+    "Ambient/Layer2/podium1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "theatre": {
+   "zeus_id": 82,
+   "category": 28,
+   "category_name": "THEATRE",
+   "ambient_files": [
+    "Ambient/Layer2/drama1.wav",
+    "Ambient/Layer2/flying.wav",
+    "Ambient/Layer2/thtr_spear1.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/drama1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "avenue": {
+   "zeus_id": 118,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "commemorative_monument": {
+   "zeus_id": 119,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [],
+   "rule": "silent"
+  },
+  "bridge": {
+   "zeus_id": 120,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [],
+   "rule": "silent"
+  },
+  "maintenance": {
+   "zeus_id": 121,
+   "category": 51,
+   "category_name": "MAINTENANCE_OFFICE",
+   "ambient_files": [
+    "Ambient/Layer2/maintenance1.wav",
+    "Ambient/Layer2/maintenance2.wav",
+    "Ambient/Layer2/maintenance3.wav",
+    "Ambient/Layer2/maintenance4.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/maintenance1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens",
+   "click_note": "table writes municipal1.wav (file does not exist) then maintenance1.wav; the second wins"
+  },
+  "tax_office": {
+   "zeus_id": 122,
+   "category": 24,
+   "category_name": "MUNICIPAL",
+   "ambient_files": [
+    "Ambient/Layer2/tax1.wav",
+    "Ambient/Layer2/tax2.wav",
+    "Ambient/Layer2/tax3.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/tax3.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "roadblock": {
+   "zeus_id": 123,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [],
+   "rule": "silent"
+  },
+  "guardpost": {
+   "zeus_id": 124,
+   "category": 26,
+   "category_name": "DEFENSIVE",
+   "ambient_files": [
+    "Ambient/Layer2/defensive1.wav",
+    "Ambient/Layer2/defensive2.wav",
+    "Ambient/Layer2/defensive3.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/defensive1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "heroes_hall": {
+   "zeus_id": 125,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "boulevard": {
+   "zeus_id": 126,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "bench": {
+   "zeus_id": 127,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "gardens": {
+   "zeus_id": 128,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "doric_column": {
+   "zeus_id": 129,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "click only"
+  },
+  "wall": {
+   "zeus_id": 130,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [],
+   "rule": "silent"
+  },
+  "gatehouse": {
+   "zeus_id": 131,
+   "category": 26,
+   "category_name": "DEFENSIVE",
+   "ambient_files": [
+    "Ambient/Layer2/defensive1.wav",
+    "Ambient/Layer2/defensive2.wav",
+    "Ambient/Layer2/defensive3.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/defensive1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "tower": {
+   "zeus_id": 132,
+   "category": 26,
+   "category_name": "DEFENSIVE",
+   "ambient_files": [
+    "Ambient/Layer2/defensive1.wav",
+    "Ambient/Layer2/defensive2.wav",
+    "Ambient/Layer2/defensive3.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/defensive1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "horse_ranch": {
+   "zeus_id": 133,
+   "category": 35,
+   "category_name": "HORSE_RANCH",
+   "ambient_files": [
+    "Ambient/Layer2/horse1.wav",
+    "Ambient/Layer2/horse2.wav",
+    "Ambient/Layer2/horse3.wav",
+    "Ambient/Layer2/horse4.wav",
+    "Ambient/Layer2/horse5.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/dig3.wav"
+   ],
+   "ambient_condition": "only if the ranch has walkers out",
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "armory": {
+   "zeus_id": 135,
+   "category": 34,
+   "category_name": "ARMORY",
+   "ambient_files": [
+    "Ambient/Layer2/armory1.wav",
+    "Ambient/Layer2/armory2.wav",
+    "Ambient/Layer2/armory3.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/armory1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "trireme_wharf": {
+   "zeus_id": 136,
+   "category": 9,
+   "category_name": "TRIREME_WHARF",
+   "ambient_files": [
+    "Ambient/Layer2/trireme1.wav",
+    "Ambient/Layer2/trireme2.wav",
+    "Ambient/Layer2/trireme3.wav",
+    "Ambient/Layer2/trireme4.wav"
+   ],
+   "ambient_weight": 30,
+   "click": [
+    "Ambient/Layer2/trireme1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "ionic_column": {
+   "zeus_id": 145,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "click only"
+  },
+  "corinthian_column": {
+   "zeus_id": 146,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "click only"
+  },
+  "dolphin_sculpture": {
+   "zeus_id": 148,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "orrery": {
+   "zeus_id": 149,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "shell_garden": {
+   "zeus_id": 150,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "baths": {
+   "zeus_id": 151,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "bird_bath": {
+   "zeus_id": 152,
+   "category": 36,
+   "category_name": "BEAUTIFICATION",
+   "ambient_files": [
+    "Ambient/Layer2/win_chime1.wav",
+    "Ambient/Layer2/win_chime2.wav",
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/recreation1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "ruin": {
+   "zeus_id": 169,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [],
+   "rule": "silent"
+  },
+  "race_track": {
+   "zeus_id": 199,
+   "category": 52,
+   "category_name": "RACETRACK",
+   "ambient_files": [
+    "Ambient/Layer2/racetrack1.wav",
+    "Ambient/Layer2/racetrack2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/racetrack1.wav"
+   ],
+   "ambient_condition": "only while a race is running (flags DAT_00ff80d5 and DAT_00fe6a5c both set; exact meaning unverified)",
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "bibliotheke": {
+   "zeus_id": 202,
+   "category": 53,
+   "category_name": "BIBLIOTHEKE",
+   "ambient_files": [
+    "Ambient/Layer2/reading1.wav",
+    "Ambient/Layer2/reading2.wav",
+    "Ambient/Layer2/get_book.wav",
+    "Ambient/Layer2/close_book.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/get_book.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "observatory": {
+   "zeus_id": 203,
+   "category": 54,
+   "category_name": "OBSERVATORY",
+   "ambient_files": [
+    "Ambient/Layer2/observatory1.wav",
+    "Ambient/Layer2/observatory2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/observatory2.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "university": {
+   "zeus_id": 204,
+   "category": 55,
+   "category_name": "UNIVERSITY",
+   "ambient_files": [
+    "Ambient/Layer2/university1.wav",
+    "Ambient/Layer2/university2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/university1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "laboratory": {
+   "zeus_id": 205,
+   "category": 56,
+   "category_name": "RESEARCH",
+   "ambient_files": [
+    "Ambient/Layer2/invention1.wav",
+    "Ambient/Layer2/invention2.wav",
+    "Ambient/Layer2/lab1.wav",
+    "Ambient/Layer2/lab2.wav",
+    "Ambient/Layer2/reading1.wav",
+    "Ambient/Layer2/writing1.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/lab1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "inventors_workshop": {
+   "zeus_id": 206,
+   "category": 56,
+   "category_name": "RESEARCH",
+   "ambient_files": [
+    "Ambient/Layer2/invention1.wav",
+    "Ambient/Layer2/invention2.wav",
+    "Ambient/Layer2/lab1.wav",
+    "Ambient/Layer2/lab2.wav",
+    "Ambient/Layer2/reading1.wav",
+    "Ambient/Layer2/writing1.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/invention1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "museum": {
+   "zeus_id": 207,
+   "category": 57,
+   "category_name": "MUSEUM",
+   "ambient_files": [
+    "Ambient/Layer2/museum1.wav",
+    "Ambient/Layer2/museum2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/museum1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "orichalc_refinery": {
+   "zeus_id": 211,
+   "category": 14,
+   "category_name": "FOUNDRY",
+   "ambient_files": [
+    "Ambient/Layer2/foundry1.wav",
+    "Ambient/Layer2/foundry2.wav",
+    "Ambient/Layer2/foundry3.wav",
+    "Ambient/Layer2/foundry4.wav",
+    "Ambient/Layer2/foundry5.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/foundry1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "chariot_workshop": {
+   "zeus_id": 212,
+   "category": 58,
+   "category_name": "CHARIOT_FACTORY",
+   "ambient_files": [
+    "Ambient/Layer2/chariot_build1.wav",
+    "Ambient/Layer2/chariot_build2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/chariot_build1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "black_marble_shop": {
+   "zeus_id": 213,
+   "category": 44,
+   "category_name": "MARBLE_QUARRY",
+   "ambient_files": [
+    "Ambient/Layer2/marble1.wav",
+    "Ambient/Layer2/marble2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/marble1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "fruit_lodge": {
+   "zeus_id": 214,
+   "category": 59,
+   "category_name": "FRUIT_GROWERS_LODGE",
+   "ambient_files": [
+    "Ambient/Layer2/fruit_lodge1.wav",
+    "Ambient/Layer2/fruit_lodge2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/fruit_lodge1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "chariot_vendor": {
+   "zeus_id": 215,
+   "category": 60,
+   "category_name": "AGORA_CHARIOT",
+   "ambient_files": [
+    "Ambient/Layer2/agora_chariot1.wav",
+    "Ambient/Layer2/agora_chariot2.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/agora_chariot1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "corral": {
+   "zeus_id": 216,
+   "category": 63,
+   "category_name": "CORRAL",
+   "ambient_files": [
+    "Ambient/Layer2/corral1.wav",
+    "Ambient/Layer2/corral2.wav",
+    "Ambient/Layer2/corral3.wav",
+    "Ambient/Layer2/cattle2.wav",
+    "Ambient/Layer2/cattle3.wav",
+    "Ambient/Layer2/cattle4.wav"
+   ],
+   "ambient_weight": 40,
+   "click": [
+    "Ambient/Layer2/corral1.wav"
+   ],
+   "ambient_condition": "only if the corral has animals (timer_aa or boost_timer nonzero)",
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "fruit_tree": {
+   "zeus_id": 217,
+   "category": 3,
+   "category_name": "ORCHARD",
+   "ambient_files": [],
+   "ambient_weight": 0,
+   "click": [],
+   "rule": "ambient only"
+  },
+  "cattle": {
+   "zeus_id": 220,
+   "category": null,
+   "category_name": null,
+   "ambient_files": [],
+   "ambient_weight": null,
+   "click": [],
+   "rule": "silent"
+  },
+  "endless_warehouse": {
+   "category": null,
+   "ambient_files": [],
+   "click": [],
+   "rule": "none (test building)"
+  },
+  "sanctuary_zeus": {
+   "zeus_id": 84,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_poseidon": {
+   "zeus_id": 85,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_demeter": {
+   "zeus_id": 86,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_apollo": {
+   "zeus_id": 87,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_artemis": {
+   "zeus_id": 88,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_ares": {
+   "zeus_id": 89,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_aphrodite": {
+   "zeus_id": 90,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_hermes": {
+   "zeus_id": 91,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_athena": {
+   "zeus_id": 92,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_hephaistos": {
+   "zeus_id": 93,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_dionysus": {
+   "zeus_id": 94,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_hades": {
+   "zeus_id": 95,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_hera": {
+   "zeus_id": 96,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_atlas": {
+   "zeus_id": 97,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "sanctuary_poseidon_grand": {
+   "zeus_id": 98,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "palace": {
+   "zeus_id": 117,
+   "category": 25,
+   "category_name": "PALACE",
+   "ambient_files": [
+    "Ambient/Layer2/palace1.wav",
+    "Ambient/Layer2/palace2.wav",
+    "Ambient/Layer2/palace3.wav"
+   ],
+   "ambient_weight": 50,
+   "click": [
+    "Ambient/Layer2/palace2.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_01": {
+   "zeus_id": 100,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_02": {
+   "zeus_id": 101,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_03": {
+   "zeus_id": 102,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_04": {
+   "zeus_id": 103,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_05": {
+   "zeus_id": 104,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_06": {
+   "zeus_id": 105,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_07": {
+   "zeus_id": 106,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_08": {
+   "zeus_id": 107,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_09": {
+   "zeus_id": 108,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_10": {
+   "zeus_id": 109,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_11": {
+   "zeus_id": 110,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_12": {
+   "zeus_id": 111,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_13": {
+   "zeus_id": 112,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_14": {
+   "zeus_id": 113,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  },
+  "pyramid_15": {
+   "zeus_id": 114,
+   "category": 33,
+   "category_name": "SANCTUARY",
+   "ambient_files": [
+    "Ambient/Layer2/sanctuary1.wav",
+    "Ambient/Layer2/sanctuary2.wav"
+   ],
+   "ambient_weight": 20,
+   "click": [
+    "Ambient/Layer2/sanctuary1.wav"
+   ],
+   "rule": "ambient: category pick when the building is under one of the 3 sampled screen points; click: the first click file plays when its info panel opens"
+  }
+ },
+ "events": {
+  "note": "index = FUN_005A4C00 argument; played at the sfx volume slider, centre pan; unset indexes are silent",
+  "button": {
+   "idx": 0,
+   "file": "Wavs/button.wav",
+   "when": "every left mouse press that mouse_poll accepts (any button/UI click)"
+  },
+  "collapse": {
+   "idx": 1,
+   "file": "Wavs/collapse.wav",
+   "when": "collapse_debris_spawn with the sound flag (building collapse)"
+  },
+  "earthquake": {
+   "idx": 2,
+   "file": "Wavs/D_Earthquake.wav",
+   "when": "earthquake disaster message"
+  },
+  "flood": {
+   "idx": 3,
+   "file": "Wavs/D_Flood.wav",
+   "when": "flood disaster message"
+  },
+  "landslide": {
+   "idx": 4,
+   "file": "Wavs/D_Landslide.wav",
+   "when": "landslide disaster"
+  },
+  "lava": {
+   "idx": 5,
+   "file": "Wavs/D_Lava.wav",
+   "when": "lava disaster"
+  },
+  "place_building": {
+   "idx": 6,
+   "file": "Wavs/place_building.wav",
+   "when": "a placed building/tile is committed by the build routine (flag param_6)"
+  },
+  "fire": {
+   "idx": 7,
+   "file": "Wavs/Fire.wav",
+   "when": "a building ignites (fire spread) and when a fire figure spawns"
+  },
+  "recreation_panel": {
+   "idx": 24,
+   "file": "Ambient/Layer2/recreation1.wav",
+   "when": "info panel kind 0xC is drawn (beautification building panel)"
+  },
+  "archer_impact": {
+   "idx": 25,
+   "file": "Wavs/archer_impact.wav",
+   "when": "missile/arrow hits"
+  },
+  "fireball_hit": {
+   "idx": 26,
+   "file": "Wavs/Fireball_hit.wav",
+   "when": "fireball hits"
+  },
+  "demolish": {
+   "idx": 9,
+   "file": null,
+   "when": "clear_land_commit calls idx 9 but no sample is registered: silent"
+  },
+  "message_arrive": {
+   "idx": 16,
+   "file": null,
+   "when": "new message (FUN_00521A70 calls idx 0x10) but no sample is registered: silent"
+  }
+ },
+ "combat": {
+  "note": "fight sounds per figure sound group (table 0x010E0518, filled by FUN_005A5D00; slot 1/2 attack, 7 hit, 8 die), played by FUN_005A6FE0 only when the figure is on screen, sfx volume; see docs/logic/services.md 6.1",
+  "rules": {
+   "attack": "FUN_004DB3D0: the figure that walked into the fight, at its start; criminals also every time their fight animation (8 frames, 1 per tick) reaches frame 1, and a vandal at work likewise",
+   "hit": "FUN_004DB7A0: on the figure hit by a non-lethal blow (every 24 fight ticks; criminals hit for 0 damage but still make the watchman play its hit sound)",
+   "die": "FUN_004DAB30: on the figure killed (start of its 128-tick dying)",
+   "monster": "figure_monster_update 0x004C8760: atk1/atk2 (FUN_004DB3D0(f, 0) -> FUN_004DC2E0) every tick it stands blocked (direction 11, bashing; 0x004C8C72) unless dying, and in melee (action 5) when its fight animation is at frame 1 (0x004C8D22); after a smash (end of action 27, 0x00532791); the Kraken plays slot 9 \"appear\" when spawned (0x0052F726); sound_play_sample refuses a playing sample"
+  },
+  "roles": {
+   "disgruntled": {
+    "attack": [
+     "Wavs/outlaw_attack.wav"
+    ],
+    "hit": "Wavs/outlaw_hit.wav",
+    "die": "Wavs/outlaw_die.wav",
+    "group": "0x54 (types 0x16 disgruntled, 0x17 thief, 0x1B mugger, 0x1D vandal)"
+   },
+   "thief": {
+    "attack": [
+     "Wavs/outlaw_attack.wav"
+    ],
+    "hit": "Wavs/outlaw_hit.wav",
+    "die": "Wavs/outlaw_die.wav",
+    "group": "0x54 (types 0x16 disgruntled, 0x17 thief, 0x1B mugger, 0x1D vandal)"
+   },
+   "mugger": {
+    "attack": [
+     "Wavs/outlaw_attack.wav"
+    ],
+    "hit": "Wavs/outlaw_hit.wav",
+    "die": "Wavs/outlaw_die.wav",
+    "group": "0x54 (types 0x16 disgruntled, 0x17 thief, 0x1B mugger, 0x1D vandal)"
+   },
+   "vandal": {
+    "attack": [
+     "Wavs/outlaw_attack.wav"
+    ],
+    "hit": "Wavs/outlaw_hit.wav",
+    "die": "Wavs/outlaw_die.wav",
+    "group": "0x54 (types 0x16 disgruntled, 0x17 thief, 0x1B mugger, 0x1D vandal)"
+   },
+   "watchman": {
+    "attack": [
+     "Wavs/watchman_attack.wav"
+    ],
+    "hit": "Wavs/gen_hit8.wav",
+    "die": "Wavs/gen_die8.wav",
+    "group": "0x66 (type 0x3D)"
+   },
+   "hunter": {
+    "attack": [
+     "Wavs/boar_hunter_attack.wav"
+    ],
+    "hit": "Wavs/boar_hunter_hit.wav",
+    "die": "Wavs/boar_hunter_die.wav",
+    "group": "0x41 (type 0x35 with resource 0; resource != 0 uses another group, not checked)"
+   },
+   "woodcutter": {
+    "attack": [],
+    "hit": "Wavs/gen_hit5.wav",
+    "die": "Wavs/gen_die5.wav",
+    "group": "0x62 (type 0x37; no attack sample registered)"
+   },
+   "hero:h0": {
+    "attack": [
+     "Wavs/H_achilles_atk1.wav",
+     "Wavs/H_achilles_atk2.wav"
+    ],
+    "hit": "Wavs/H_achilles_hit.wav",
+    "die": "Wavs/H_achilles_die.wav",
+    "group": "0x15 (hero type 0x45, by hero id: sim/heroes good h<id>)"
+   },
+   "hero:h1": {
+    "attack": [
+     "Wavs/H_hercules_atk1.wav",
+     "Wavs/H_hercules_atk2.wav"
+    ],
+    "hit": "Wavs/H_hercules_hit.wav",
+    "die": "Wavs/H_hercules_die.wav",
+    "group": "0x16 (hero type 0x45, by hero id: sim/heroes good h<id>)"
+   },
+   "hero:h2": {
+    "attack": [
+     "Wavs/H_jason_atk1.wav",
+     "Wavs/H_jason_atk2.wav"
+    ],
+    "hit": "Wavs/H_jason_hit.wav",
+    "die": "Wavs/H_jason_die.wav",
+    "group": "0x17 (hero type 0x45, by hero id: sim/heroes good h<id>)"
+   },
+   "hero:h3": {
+    "attack": [
+     "Wavs/H_odysseus_atk1.wav",
+     "Wavs/H_odysseus_atk2.wav"
+    ],
+    "hit": "Wavs/H_odysseus_hit.wav",
+    "die": "Wavs/H_odysseus_die.wav",
+    "group": "0x18 (hero type 0x45, by hero id: sim/heroes good h<id>)"
+   },
+   "hero:h4": {
+    "attack": [
+     "Wavs/H_perseus_atk1.wav",
+     "Wavs/H_perseus_atk2.wav"
+    ],
+    "hit": "Wavs/H_perseus_hit.wav",
+    "die": "Wavs/H_perseus_die.wav",
+    "group": "0x19 (hero type 0x45, by hero id: sim/heroes good h<id>)"
+   },
+   "hero:h5": {
+    "attack": [
+     "Wavs/H_theseus_atk1.wav",
+     "Wavs/H_theseus_atk2.wav"
+    ],
+    "hit": "Wavs/H_theseus_hit.wav",
+    "die": "Wavs/H_theseus_die.wav",
+    "group": "0x1a (hero type 0x45, by hero id: sim/heroes good h<id>)"
+   },
+   "hero:h6": {
+    "attack": [
+     "Wavs/H_atalanta_atk1.wav",
+     "Wavs/H_atalanta_atk2.wav"
+    ],
+    "hit": "Wavs/H_atalanta_hit.wav",
+    "die": "Wavs/H_atalanta_die.wav",
+    "group": "0x1b (hero type 0x45, by hero id: sim/heroes good h<id>)"
+   },
+   "hero:h7": {
+    "attack": [
+     "Wavs/H_bellerophon_atk1.wav",
+     "Wavs/H_bellerophon_atk2.wav"
+    ],
+    "hit": "Wavs/H_bellerophon_hit.wav",
+    "die": "Wavs/H_bellerophon_die.wav",
+    "group": "0x1c (hero type 0x45, by hero id: sim/heroes good h<id>)"
+   },
+   "monster:m0": {
+    "attack": [
+     "Wavs/M_hydra_atk1.wav",
+     "Wavs/M_hydra_atk2.wav",
+     "Wavs/M_hydra_atk3.wav",
+     "Wavs/M_hydra_atk4.wav"
+    ],
+    "hit": "Wavs/M_hydra_hit.wav",
+    "die": "Wavs/M_hydra_die.wav",
+    "group": "0x25 (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m1": {
+    "attack": [
+     "Wavs/M_kraken_atk1.wav",
+     "Wavs/M_kraken_atk2.wav",
+     "Wavs/M_kraken_atk3.wav",
+     "Wavs/M_kraken_atk4.wav"
+    ],
+    "hit": "Wavs/M_kraken_hit.wav",
+    "die": "Wavs/M_kraken_die.wav",
+    "group": "0x1d (monster type 0x44, by name; sim/heroes good m<id>)",
+    "appear": "Wavs/M_kraken_appear.wav"
+   },
+   "monster:m2": {
+    "attack": [
+     "Wavs/M_cerberus_atk1.wav",
+     "Wavs/M_cerberus_atk2.wav",
+     "Wavs/M_cerberus_atk3.wav",
+     "Wavs/M_cerberus_atk4.wav"
+    ],
+    "hit": "Wavs/M_cerberus_hit.wav",
+    "die": "Wavs/M_cerberus_die.wav",
+    "group": "0x23 (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m3": {
+    "attack": [
+     "Wavs/M_cyclops_atk1.wav",
+     "Wavs/M_cyclops_atk2.wav",
+     "Wavs/M_cyclops_atk3.wav",
+     "Wavs/M_cyclops_atk4.wav"
+    ],
+    "hit": "Wavs/M_cyclops_hit.wav",
+    "die": "Wavs/M_cyclops_die.wav",
+    "group": "0x24 (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m4": {
+    "attack": [
+     "Wavs/M_minotaur_atk1.wav",
+     "Wavs/M_minotaur_atk2.wav",
+     "Wavs/M_minotaur_atk3.wav",
+     "Wavs/M_minotaur_atk4.wav"
+    ],
+    "hit": "Wavs/M_minotaur_hit.wav",
+    "die": "Wavs/M_minotaur_die.wav",
+    "group": "0x20 (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m5": {
+    "attack": [
+     "Wavs/M_medusa_atk1.wav",
+     "Wavs/M_medusa_atk2.wav",
+     "Wavs/M_medusa_atk3.wav",
+     "Wavs/M_medusa_atk4.wav"
+    ],
+    "hit": "Wavs/M_medusa_hit.wav",
+    "die": "Wavs/M_medusa_die.wav",
+    "group": "0x1f (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m6": {
+    "attack": [
+     "Wavs/M_calydonian_atk1.wav",
+     "Wavs/M_calydonian_atk2.wav",
+     "Wavs/M_calydonian_atk3.wav",
+     "Wavs/M_calydonian_atk4.wav"
+    ],
+    "hit": "Wavs/M_calydonian_hit.wav",
+    "die": "Wavs/M_calydonian_die.wav",
+    "group": "0x27 (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m7": {
+    "attack": [
+     "Wavs/M_dragon_atk1.wav",
+     "Wavs/M_dragon_atk2.wav",
+     "Wavs/M_dragon_atk3.wav",
+     "Wavs/M_dragon_atk4.wav"
+    ],
+    "hit": "Wavs/M_dragon_hit.wav",
+    "die": "Wavs/M_dragon_die.wav",
+    "group": "0x28 (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m8": {
+    "attack": [
+     "Wavs/M_talos_atk1.wav",
+     "Wavs/M_talos_atk2.wav",
+     "Wavs/M_talos_atk3.wav",
+     "Wavs/M_talos_atk4.wav"
+    ],
+    "hit": "Wavs/M_talos_hit.wav",
+    "die": "Wavs/M_talos_die.wav",
+    "group": "0x22 (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m9": {
+    "attack": [
+     "Wavs/M_hector_atk1.wav",
+     "Wavs/M_hector_atk2.wav",
+     "Wavs/M_hector_atk3.wav",
+     "Wavs/M_hector_atk4.wav"
+    ],
+    "hit": "Wavs/M_hector_hit.wav",
+    "die": "Wavs/M_hector_die.wav",
+    "group": "0x26 (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m10": {
+    "attack": [
+     "Wavs/M_scylla_atk1.wav",
+     "Wavs/M_scylla_atk2.wav",
+     "Wavs/M_scylla_atk3.wav",
+     "Wavs/M_scylla_atk4.wav"
+    ],
+    "hit": "Wavs/M_scylla_hit.wav",
+    "die": "Wavs/M_scylla_die.wav",
+    "group": "0x21 (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m11": {
+    "attack": [
+     "Wavs/M_maenads_atk1.wav",
+     "Wavs/M_maenads_atk2.wav",
+     "Wavs/M_maenads_atk3.wav",
+     "Wavs/M_maenads_atk4.wav"
+    ],
+    "hit": "Wavs/M_maenads_hit.wav",
+    "die": "Wavs/M_maenads_die.wav",
+    "group": "0x1e (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m12": {
+    "attack": [
+     "Wavs/M_sphinx_atk1.wav",
+     "Wavs/M_sphinx_atk2.wav",
+     "Wavs/M_sphinx_atk3.wav",
+     "Wavs/M_sphinx_atk4.wav"
+    ],
+    "hit": "Wavs/M_sphinx_hit.wav",
+    "die": "Wavs/M_sphinx_die.wav",
+    "group": "0x2a (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m13": {
+    "attack": [
+     "Wavs/M_chimera_atk1.wav",
+     "Wavs/M_chimera_atk2.wav",
+     "Wavs/M_chimera_atk3.wav",
+     "Wavs/M_chimera_atk4.wav"
+    ],
+    "hit": "Wavs/M_chimera_hit.wav",
+    "die": "Wavs/M_chimera_die.wav",
+    "group": "0x2b (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m14": {
+    "attack": [
+     "Wavs/M_harpies_atk1.wav",
+     "Wavs/M_harpies_atk2.wav",
+     "Wavs/M_harpies_atk3.wav",
+     "Wavs/M_harpies_atk4.wav"
+    ],
+    "hit": "Wavs/M_harpies_hit.wav",
+    "die": "Wavs/M_harpies_die.wav",
+    "group": "0x2c (monster type 0x44, by name; sim/heroes good m<id>)"
+   },
+   "monster:m15": {
+    "attack": [
+     "Wavs/M_echidna_atk1.wav",
+     "Wavs/M_echidna_atk2.wav",
+     "Wavs/M_echidna_atk3.wav",
+     "Wavs/M_echidna_atk4.wav"
+    ],
+    "hit": "Wavs/M_echidna_hit.wav",
+    "die": "Wavs/M_echidna_die.wav",
+    "group": "0x2d? (monster type 0x44, by name; sim/heroes good m<id>)"
+   }
+  },
+  "samples": {
+   "0": {
+    "3": "Wavs/archer_volley1.wav",
+    "4": "Wavs/archer_volley2.wav",
+    "7": "Wavs/archer_hit.wav",
+    "8": "Wavs/archer_die.wav",
+    "16": "Wavs/archer_special.wav"
+   },
+   "1": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/rabble_rock1.wav",
+    "4": "Wavs/rabble_rock2.wav",
+    "7": null,
+    "8": "Wavs/rabble_die.wav"
+   },
+   "2": {
+    "1": "Wavs/hop_spear1.wav",
+    "2": "Wavs/hop_spear2.wav",
+    "7": "Wavs/hop_spear_hit.wav",
+    "8": "Wavs/hop_die.wav"
+   },
+   "3": {
+    "1": "Wavs/horse_sword1.wav",
+    "2": "Wavs/horse_sword2.wav",
+    "7": "Wavs/horse_sword_hit.wav",
+    "8": "Wavs/horse_sword_die.wav"
+   },
+   "4": {
+    "1": "Wavs/tri_volley1.wav",
+    "2": "Wavs/tri_volley2.wav",
+    "3": "Wavs/tri_hand1.wav",
+    "4": "Wavs/tri_hand2.wav",
+    "7": "Wavs/ship_hit.wav",
+    "8": "Wavs/ship_sink.wav"
+   },
+   "5": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/rabble_rock1.wav",
+    "4": "Wavs/rabble_rock2.wav",
+    "7": null,
+    "8": "Wavs/rabble_die.wav"
+   },
+   "6": {
+    "1": "Wavs/hop_spear1.wav",
+    "2": "Wavs/hop_spear2.wav",
+    "7": "Wavs/hop_spear_hit.wav",
+    "8": "Wavs/hop_die.wav"
+   },
+   "7": {
+    "1": "Wavs/horse_sword1.wav",
+    "2": "Wavs/horse_sword2.wav",
+    "7": "Wavs/horse_sword_hit.wav",
+    "8": "Wavs/horse_sword_die.wav"
+   },
+   "8": {
+    "1": "Wavs/tri_volley1.wav",
+    "2": "Wavs/tri_volley2.wav",
+    "3": "Wavs/tri_hand1.wav",
+    "4": "Wavs/tri_hand2.wav",
+    "7": "Wavs/ship_hit.wav",
+    "8": "Wavs/ship_sink.wav"
+   },
+   "9": {
+    "5": "Wavs/trans_load.wav",
+    "6": "Wavs/trans_unload.wav",
+    "7": "Wavs/ship_hit.wav",
+    "8": "Wavs/ship_sink.wav"
+   },
+   "10": {
+    "1": "Wavs/troj_sword1.wav",
+    "2": "Wavs/troj_sword2.wav",
+    "7": "Wavs/troj_sword_hit.wav",
+    "8": "Wavs/troj_sword_die.wav"
+   },
+   "11": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/troj_jav_throw1.wav",
+    "4": "Wavs/troj_jav_throw2.wav",
+    "7": "Wavs/troj_jav_hit.wav",
+    "8": "Wavs/troj_jav_die.wav"
+   },
+   "12": {
+    "1": null,
+    "2": null,
+    "7": "Wavs/troj_horse_hit.wav",
+    "8": "Wavs/troj_horse_die.wav"
+   },
+   "13": {
+    "1": "Wavs/pers_inf_atk1.wav",
+    "2": "Wavs/pers_inf_atk2.wav",
+    "7": "Wavs/pers_inf_hit.wav",
+    "8": "Wavs/pers_inf_die.wav"
+   },
+   "14": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/archer_volley1.wav",
+    "4": "Wavs/archer_volley2.wav",
+    "7": "Wavs/pers_missile_hit.wav",
+    "8": "Wavs/pers_missile_die.wav"
+   },
+   "15": {
+    "1": "Wavs/pers_cav_atk1.wav",
+    "2": "Wavs/pers_cav_atk2.wav",
+    "7": null,
+    "8": "Wavs/pers_cav_die.wav"
+   },
+   "16": {
+    "1": "Wavs/am_warr_atk1.wav",
+    "2": "Wavs/am_warr_atk2.wav",
+    "8": "Wavs/am_warr_die.wav"
+   },
+   "17": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/archer_volley1.wav",
+    "4": "Wavs/archer_volley2.wav",
+    "7": null,
+    "8": "Wavs/am_arch_die.wav"
+   },
+   "18": {
+    "1": null,
+    "2": null,
+    "7": "Wavs/cent_sword_hit.wav",
+    "8": "Wavs/cent_sword_die.wav"
+   },
+   "19": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/archer_volley1.wav",
+    "4": "Wavs/archer_volley2.wav",
+    "7": null,
+    "8": "Wavs/cent_arch_die.wav"
+   },
+   "20": {
+    "1": "Wavs/Ares_warr_atk1.wav",
+    "2": "Wavs/Ares_warr_atk2.wav",
+    "7": "Wavs/Ares_warr_hit.wav",
+    "8": "Wavs/Ares_warr_die.wav"
+   },
+   "21": {
+    "1": "Wavs/H_achilles_atk1.wav",
+    "2": "Wavs/H_achilles_atk2.wav",
+    "7": "Wavs/H_achilles_hit.wav",
+    "8": "Wavs/H_achilles_die.wav"
+   },
+   "22": {
+    "1": "Wavs/H_hercules_atk1.wav",
+    "2": "Wavs/H_hercules_atk2.wav",
+    "7": "Wavs/H_hercules_hit.wav",
+    "8": "Wavs/H_hercules_die.wav"
+   },
+   "23": {
+    "1": "Wavs/H_jason_atk1.wav",
+    "2": "Wavs/H_jason_atk2.wav",
+    "7": "Wavs/H_jason_hit.wav",
+    "8": "Wavs/H_jason_die.wav"
+   },
+   "24": {
+    "1": "Wavs/H_odysseus_atk1.wav",
+    "2": "Wavs/H_odysseus_atk2.wav",
+    "7": "Wavs/H_odysseus_hit.wav",
+    "8": "Wavs/H_odysseus_die.wav"
+   },
+   "25": {
+    "1": "Wavs/H_perseus_atk1.wav",
+    "2": "Wavs/H_perseus_atk2.wav",
+    "7": "Wavs/H_perseus_hit.wav",
+    "8": "Wavs/H_perseus_die.wav"
+   },
+   "26": {
+    "1": "Wavs/H_theseus_atk1.wav",
+    "2": "Wavs/H_theseus_atk2.wav",
+    "7": "Wavs/H_theseus_hit.wav",
+    "8": "Wavs/H_theseus_die.wav"
+   },
+   "27": {
+    "1": "Wavs/H_atalanta_atk1.wav",
+    "2": "Wavs/H_atalanta_atk2.wav",
+    "7": "Wavs/H_atalanta_hit.wav",
+    "8": "Wavs/H_atalanta_die.wav"
+   },
+   "28": {
+    "1": "Wavs/H_bellerophon_atk1.wav",
+    "2": "Wavs/H_bellerophon_atk2.wav",
+    "7": "Wavs/H_bellerophon_hit.wav",
+    "8": "Wavs/H_bellerophon_die.wav"
+   },
+   "29": {
+    "1": "Wavs/M_kraken_atk1.wav",
+    "2": "Wavs/M_kraken_atk2.wav",
+    "3": "Wavs/M_kraken_atk3.wav",
+    "4": "Wavs/M_kraken_atk4.wav",
+    "7": "Wavs/M_kraken_hit.wav",
+    "8": "Wavs/M_kraken_die.wav",
+    "9": "Wavs/M_kraken_appear.wav"
+   },
+   "30": {
+    "1": "Wavs/M_maenads_atk1.wav",
+    "2": "Wavs/M_maenads_atk2.wav",
+    "3": "Wavs/M_maenads_atk3.wav",
+    "4": "Wavs/M_maenads_atk4.wav",
+    "7": "Wavs/M_maenads_hit.wav",
+    "8": "Wavs/M_maenads_die.wav"
+   },
+   "31": {
+    "1": "Wavs/M_medusa_atk1.wav",
+    "2": "Wavs/M_medusa_atk2.wav",
+    "3": "Wavs/M_medusa_atk3.wav",
+    "4": "Wavs/M_medusa_atk4.wav",
+    "7": "Wavs/M_medusa_hit.wav",
+    "8": "Wavs/M_medusa_die.wav"
+   },
+   "32": {
+    "1": "Wavs/M_minotaur_atk1.wav",
+    "2": "Wavs/M_minotaur_atk2.wav",
+    "3": "Wavs/M_minotaur_atk3.wav",
+    "4": "Wavs/M_minotaur_atk4.wav",
+    "7": "Wavs/M_minotaur_hit.wav",
+    "8": "Wavs/M_minotaur_die.wav"
+   },
+   "33": {
+    "1": "Wavs/M_scylla_atk1.wav",
+    "2": "Wavs/M_scylla_atk2.wav",
+    "3": "Wavs/M_scylla_atk3.wav",
+    "4": "Wavs/M_scylla_atk4.wav",
+    "7": "Wavs/M_scylla_hit.wav",
+    "8": "Wavs/M_scylla_die.wav"
+   },
+   "34": {
+    "1": "Wavs/M_talos_atk1.wav",
+    "2": "Wavs/M_talos_atk2.wav",
+    "3": "Wavs/M_talos_atk3.wav",
+    "4": "Wavs/M_talos_atk4.wav",
+    "7": "Wavs/M_talos_hit.wav",
+    "8": "Wavs/M_talos_die.wav"
+   },
+   "35": {
+    "1": "Wavs/M_cerberus_atk1.wav",
+    "2": "Wavs/M_cerberus_atk2.wav",
+    "3": "Wavs/M_cerberus_atk3.wav",
+    "4": "Wavs/M_cerberus_atk4.wav",
+    "7": "Wavs/M_cerberus_hit.wav",
+    "8": "Wavs/M_cerberus_die.wav"
+   },
+   "36": {
+    "1": "Wavs/M_cyclops_atk1.wav",
+    "2": "Wavs/M_cyclops_atk2.wav",
+    "3": "Wavs/M_cyclops_atk3.wav",
+    "4": "Wavs/M_cyclops_atk4.wav",
+    "7": "Wavs/M_cyclops_hit.wav",
+    "8": "Wavs/M_cyclops_die.wav"
+   },
+   "37": {
+    "1": "Wavs/M_hydra_atk1.wav",
+    "2": "Wavs/M_hydra_atk2.wav",
+    "3": "Wavs/M_hydra_atk3.wav",
+    "4": "Wavs/M_hydra_atk4.wav",
+    "7": "Wavs/M_hydra_hit.wav",
+    "8": "Wavs/M_hydra_die.wav"
+   },
+   "38": {
+    "1": "Wavs/M_hector_atk1.wav",
+    "2": "Wavs/M_hector_atk2.wav",
+    "3": "Wavs/M_hector_atk3.wav",
+    "4": "Wavs/M_hector_atk4.wav",
+    "7": "Wavs/M_hector_hit.wav",
+    "8": "Wavs/M_hector_die.wav"
+   },
+   "39": {
+    "1": "Wavs/M_calydonian_atk1.wav",
+    "2": "Wavs/M_calydonian_atk2.wav",
+    "3": "Wavs/M_calydonian_atk3.wav",
+    "4": "Wavs/M_calydonian_atk4.wav",
+    "7": "Wavs/M_calydonian_hit.wav",
+    "8": "Wavs/M_calydonian_die.wav"
+   },
+   "40": {
+    "1": "Wavs/M_dragon_atk1.wav",
+    "2": "Wavs/M_dragon_atk2.wav",
+    "3": "Wavs/M_dragon_atk3.wav",
+    "4": "Wavs/M_dragon_atk4.wav",
+    "7": "Wavs/M_dragon_hit.wav",
+    "8": "Wavs/M_dragon_die.wav"
+   },
+   "41": {
+    "1": "Wavs/Satyr_atk1.wav",
+    "2": "Wavs/Satyr_atk2.wav",
+    "3": "Wavs/Satyr_atk3.wav",
+    "4": "Wavs/Satyr_atk4.wav",
+    "7": "Wavs/Satyr_hit.wav",
+    "8": "Wavs/Satyr_die.wav"
+   },
+   "42": {
+    "1": "Wavs/M_sphinx_atk1.wav",
+    "2": "Wavs/M_sphinx_atk2.wav",
+    "3": "Wavs/M_sphinx_atk3.wav",
+    "4": "Wavs/M_sphinx_atk4.wav",
+    "7": "Wavs/M_sphinx_hit.wav",
+    "8": "Wavs/M_sphinx_die.wav"
+   },
+   "43": {
+    "1": "Wavs/M_chimera_atk1.wav",
+    "2": "Wavs/M_chimera_atk2.wav",
+    "3": "Wavs/M_chimera_atk3.wav",
+    "4": "Wavs/M_chimera_atk4.wav",
+    "7": "Wavs/M_chimera_hit.wav",
+    "8": "Wavs/M_chimera_die.wav"
+   },
+   "44": {
+    "1": "Wavs/M_harpies_atk1.wav",
+    "2": "Wavs/M_harpies_atk2.wav",
+    "3": "Wavs/M_harpies_atk3.wav",
+    "4": "Wavs/M_harpies_atk4.wav",
+    "7": "Wavs/M_harpies_hit.wav",
+    "8": "Wavs/M_harpies_die.wav"
+   },
+   "45": {
+    "1": "Wavs/M_echidna_atk1.wav",
+    "2": "Wavs/M_echidna_atk2.wav",
+    "3": "Wavs/M_echidna_atk3.wav",
+    "4": "Wavs/M_echidna_atk4.wav",
+    "7": "Wavs/M_echidna_hit.wav",
+    "8": "Wavs/M_echidna_die.wav"
+   },
+   "46": {
+    "1": "Wavs/G_zeus_atk1.wav",
+    "2": "Wavs/G_zeus_atk2.wav",
+    "3": "Wavs/G_zeus_atk3.wav",
+    "4": "Wavs/G_zeus_atk4.wav",
+    "7": "Wavs/G_zeus_hit.wav",
+    "9": "Wavs/G_zeus_mat.wav",
+    "10": "Wavs/G_zeus_demat.wav",
+    "11": "Wavs/G_zeus_sanctify.wav",
+    "12": "Wavs/G_zeus_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "47": {
+    "1": "Wavs/G_poseidon_atk1.wav",
+    "2": "Wavs/G_poseidon_atk2.wav",
+    "3": "Wavs/G_poseidon_atk3.wav",
+    "4": "Wavs/G_poseidon_atk4.wav",
+    "7": "Wavs/G_poseidon_hit.wav",
+    "9": "Wavs/G_poseidon_mat.wav",
+    "10": "Wavs/G_poseidon_demat.wav",
+    "11": "Wavs/G_poseidon_sanctify.wav",
+    "12": "Wavs/G_poseidon_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "48": {
+    "1": "Wavs/G_hades_atk1.wav",
+    "2": "Wavs/G_hades_atk2.wav",
+    "3": "Wavs/G_hades_atk3.wav",
+    "4": "Wavs/G_hades_atk4.wav",
+    "7": "Wavs/G_hades_hit.wav",
+    "9": "Wavs/G_hades_mat.wav",
+    "10": "Wavs/G_hades_demat.wav",
+    "11": "Wavs/G_hades_sanctify.wav",
+    "12": "Wavs/G_hades_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "49": {
+    "1": "Wavs/G_demeter_atk1.wav",
+    "2": "Wavs/G_demeter_atk2.wav",
+    "3": "Wavs/G_demeter_atk3.wav",
+    "4": "Wavs/G_demeter_atk4.wav",
+    "7": "Wavs/G_demeter_hit.wav",
+    "9": "Wavs/G_demeter_mat.wav",
+    "10": "Wavs/G_demeter_demat.wav",
+    "11": "Wavs/G_demeter_sanctify.wav",
+    "12": "Wavs/G_demeter_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "50": {
+    "1": "Wavs/G_athena_atk1.wav",
+    "2": "Wavs/G_athena_atk2.wav",
+    "3": "Wavs/G_athena_atk3.wav",
+    "4": "Wavs/G_athena_atk4.wav",
+    "7": "Wavs/G_athena_hit.wav",
+    "9": "Wavs/G_athena_mat.wav",
+    "10": "Wavs/G_athena_demat.wav",
+    "11": "Wavs/G_athena_sanctify.wav",
+    "12": "Wavs/G_athena_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "51": {
+    "1": "Wavs/G_apollo_atk1.wav",
+    "2": "Wavs/G_apollo_atk2.wav",
+    "3": "Wavs/G_apollo_atk3.wav",
+    "4": "Wavs/G_apollo_atk4.wav",
+    "7": "Wavs/G_apollo_hit.wav",
+    "9": "Wavs/G_apollo_mat.wav",
+    "10": "Wavs/G_apollo_demat.wav",
+    "11": "Wavs/G_apollo_sanctify.wav",
+    "12": "Wavs/G_apollo_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "52": {
+    "1": "Wavs/G_artemis_atk1.wav",
+    "2": "Wavs/G_artemis_atk2.wav",
+    "3": "Wavs/G_artemis_atk3.wav",
+    "4": "Wavs/G_artemis_atk4.wav",
+    "7": "Wavs/G_artemis_hit.wav",
+    "9": "Wavs/G_artemis_mat.wav",
+    "10": "Wavs/G_artemis_demat.wav",
+    "11": "Wavs/G_artemis_sanctify.wav",
+    "12": "Wavs/G_artemis_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "53": {
+    "1": "Wavs/G_ares_atk1.wav",
+    "2": "Wavs/G_ares_atk2.wav",
+    "3": "Wavs/G_ares_atk3.wav",
+    "4": "Wavs/G_ares_atk4.wav",
+    "7": "Wavs/G_ares_hit.wav",
+    "9": "Wavs/G_ares_mat.wav",
+    "10": "Wavs/G_ares_demat.wav",
+    "11": "Wavs/G_ares_sanctify.wav",
+    "12": "Wavs/G_ares_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "54": {
+    "1": "Wavs/G_aphrodite_atk1.wav",
+    "2": "Wavs/G_aphrodite_atk2.wav",
+    "3": "Wavs/G_aphrodite_atk3.wav",
+    "4": "Wavs/G_aphrodite_atk4.wav",
+    "7": "Wavs/G_aphrodite_hit.wav",
+    "9": "Wavs/G_aphrodite_mat.wav",
+    "10": "Wavs/G_aphrodite_demat.wav",
+    "11": "Wavs/G_aphrodite_sanctify.wav",
+    "12": "Wavs/G_aphrodite_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "55": {
+    "1": "Wavs/G_hephaestus_atk1.wav",
+    "2": "Wavs/G_hephaestus_atk2.wav",
+    "3": "Wavs/G_hephaestus_atk3.wav",
+    "4": "Wavs/G_hephaestus_atk4.wav",
+    "7": "Wavs/G_hephaestus_hit.wav",
+    "9": "Wavs/G_hephaestus_mat.wav",
+    "10": "Wavs/G_hephaestus_demat.wav",
+    "11": "Wavs/G_hephaestus_sanctify.wav",
+    "12": "Wavs/G_hephaestus_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "56": {
+    "1": "Wavs/G_hermes_atk1.wav",
+    "2": "Wavs/G_hermes_atk2.wav",
+    "3": "Wavs/G_hermes_atk3.wav",
+    "4": "Wavs/G_hermes_atk4.wav",
+    "7": "Wavs/G_hermes_hit.wav",
+    "9": "Wavs/G_hermes_mat.wav",
+    "10": "Wavs/G_hermes_demat.wav",
+    "11": "Wavs/G_hermes_sanctify.wav",
+    "12": "Wavs/G_hermes_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "57": {
+    "1": "Wavs/G_dionysus_atk1.wav",
+    "2": "Wavs/G_dionysus_atk2.wav",
+    "3": "Wavs/G_dionysus_atk3.wav",
+    "4": "Wavs/G_dionysus_atk4.wav",
+    "7": "Wavs/G_dionysus_hit.wav",
+    "9": "Wavs/G_dionysus_mat.wav",
+    "10": "Wavs/G_dionysus_demat.wav",
+    "11": "Wavs/G_dionysus_sanctify.wav",
+    "12": "Wavs/G_dionysus_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "58": {
+    "1": "Wavs/G_Hera_atk1.wav",
+    "2": "Wavs/G_Hera_atk2.wav",
+    "3": "Wavs/G_Hera_atk3.wav",
+    "4": "Wavs/G_Hera_atk4.wav",
+    "7": "Wavs/G_Hera_hit.wav",
+    "9": "Wavs/G_Hera_mat.wav",
+    "10": "Wavs/G_Hera_demat.wav",
+    "11": "Wavs/G_Hera_sanctify.wav",
+    "12": "Wavs/G_Hera_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "59": {
+    "1": "Wavs/G_Atlas_atk1.wav",
+    "2": "Wavs/G_Atlas_atk2.wav",
+    "3": "Wavs/G_Atlas_atk3.wav",
+    "4": "Wavs/G_Atlas_atk4.wav",
+    "7": "Wavs/G_Atlas_hit.wav",
+    "9": "Wavs/G_Atlas_mat.wav",
+    "10": "Wavs/G_Atlas_demat.wav",
+    "11": "Wavs/G_Atlas_sanctify.wav",
+    "12": "Wavs/G_Atlas_curse.wav",
+    "13": "Wavs/G_miss.wav"
+   },
+   "60": {
+    "7": "Wavs/actor_hit.wav",
+    "8": "Wavs/actor_die.wav"
+   },
+   "61": {
+    "7": "Wavs/gen_hit1.wav",
+    "8": "Wavs/gen_die1.wav"
+   },
+   "62": {
+    "7": "Wavs/gen_hit2.wav",
+    "8": "Wavs/gen_die2.wav",
+    "14": "Wavs/artisan1.wav",
+    "15": "Wavs/artisan2.wav"
+   },
+   "63": {
+    "7": "Wavs/gen_hit3.wav",
+    "8": "Wavs/gen_die3.wav"
+   },
+   "64": {
+    "1": "Wavs/boar_attack.wav",
+    "2": "Wavs/boar_attack.wav",
+    "7": "Wavs/boar_hit.wav",
+    "8": "Wavs/boar_die.wav"
+   },
+   "65": {
+    "1": "Wavs/boar_hunter_attack.wav",
+    "2": "Wavs/boar_hunter_attack.wav",
+    "7": "Wavs/boar_hunter_hit.wav",
+    "8": "Wavs/boar_hunter_die.wav"
+   },
+   "66": {
+    "7": "Wavs/gen_hit4.wav",
+    "8": "Wavs/gen_die4.wav"
+   },
+   "67": {
+    "7": "Wavs/gen_hit5.wav",
+    "8": "Wavs/gen_die5.wav"
+   },
+   "68": {
+    "7": "Wavs/gen_hit6.wav",
+    "8": "Wavs/gen_die6.wav"
+   },
+   "69": {
+    "7": "Wavs/gen_hit7.wav",
+    "8": "Wavs/gen_die7.wav",
+    "14": "Wavs/copperminer1.wav",
+    "15": "Wavs/copperminer2.wav"
+   },
+   "70": {
+    "7": "Wavs/gen_hit8.wav",
+    "8": "Wavs/gen_die8.wav"
+   },
+   "71": {
+    "7": "Wavs/gen_hit1.wav",
+    "8": "Wavs/gen_die1.wav"
+   },
+   "72": {
+    "7": "Wavs/ship_hit.wav",
+    "8": "Wavs/ship_sink.wav"
+   },
+   "73": {
+    "7": "Wavs/gen_hit2.wav",
+    "8": "Wavs/gen_die2.wav"
+   },
+   "74": {
+    "7": "Wavs/gen_hit3.wav",
+    "8": "Wavs/gen_die3.wav"
+   },
+   "75": {
+    "1": "Wavs/goat_attack.wav",
+    "2": "Wavs/goat_attack.wav",
+    "7": "Wavs/goat_hit.wav",
+    "8": "Wavs/goat_die.wav"
+   },
+   "76": {
+    "7": "Wavs/gen_hit4.wav",
+    "8": "Wavs/gen_die4.wav"
+   },
+   "77": {
+    "7": "Wavs/gen_hit5.wav",
+    "8": "Wavs/gen_die5.wav"
+   },
+   "78": {
+    "7": "Wavs/gen_hit6.wav",
+    "8": "Wavs/gen_die6.wav"
+   },
+   "79": {
+    "7": "Wavs/horse_hit.wav",
+    "8": "Wavs/horse_die.wav",
+    "14": "Wavs/horse_nay.wav"
+   },
+   "80": {
+    "7": "Wavs/gen_hit7.wav",
+    "8": "Wavs/gen_die7.wav"
+   },
+   "81": {
+    "7": "Wavs/gen_hit8.wav",
+    "8": "Wavs/gen_die8.wav"
+   },
+   "82": {
+    "1": "Wavs/nobleman_attack.wav",
+    "2": "Wavs/nobleman_attack.wav",
+    "7": "Wavs/nobleman_hit.wav",
+    "8": "Wavs/nobleman_die.wav"
+   },
+   "83": {
+    "7": "Wavs/gen_hit4.wav",
+    "8": "Wavs/gen_die4.wav"
+   },
+   "84": {
+    "1": "Wavs/outlaw_attack.wav",
+    "2": "Wavs/outlaw_attack.wav",
+    "7": "Wavs/outlaw_hit.wav",
+    "8": "Wavs/outlaw_die.wav"
+   },
+   "85": {
+    "7": "Wavs/gen_hit1.wav",
+    "8": "Wavs/gen_die1.wav"
+   },
+   "86": {
+    "7": "Wavs/gen_hit2.wav",
+    "8": "Wavs/gen_die2.wav"
+   },
+   "87": {
+    "7": "Wavs/gen_hit3.wav",
+    "8": "Wavs/gen_die3.wav",
+    "14": null
+   },
+   "88": {
+    "7": "Wavs/gen_hit5.wav",
+    "8": "Wavs/gen_die5.wav"
+   },
+   "89": {
+    "7": "Wavs/gen_hit6.wav",
+    "8": "Wavs/gen_die6.wav"
+   },
+   "90": {
+    "7": "Wavs/sheep_hit.wav",
+    "8": "Wavs/sheep_die.wav"
+   },
+   "91": {
+    "7": "Wavs/gen_hit7.wav",
+    "8": "Wavs/gen_die7.wav"
+   },
+   "92": {
+    "7": "Wavs/gen_hit1.wav",
+    "8": "Wavs/gen_die1.wav",
+    "14": "Wavs/silverminer1.wav",
+    "15": "Wavs/silverminer2.wav"
+   },
+   "93": {
+    "7": "Wavs/gen_hit2.wav",
+    "8": "Wavs/gen_die2.wav",
+    "14": "Wavs/stonecutter1.wav",
+    "15": "Wavs/stonecutter2.wav"
+   },
+   "94": {
+    "7": "Wavs/gen_hit3.wav",
+    "8": "Wavs/gen_die3.wav"
+   },
+   "95": {
+    "7": "Wavs/trade_donkey_hit.wav",
+    "8": "Wavs/trade_donkey_die.wav"
+   },
+   "96": {
+    "7": "Wavs/ship_hit.wav",
+    "8": "Wavs/ship_sink.wav"
+   },
+   "97": {
+    "7": "Wavs/gen_hit4.wav",
+    "8": "Wavs/gen_die4.wav"
+   },
+   "98": {
+    "7": "Wavs/gen_hit5.wav",
+    "8": "Wavs/gen_die5.wav",
+    "14": "Wavs/treecutter1.wav",
+    "15": "Wavs/treecutter2.wav"
+   },
+   "99": {
+    "7": "Wavs/ship_hit.wav",
+    "8": "Wavs/ship_sink.wav"
+   },
+   "100": {
+    "7": "Wavs/gen_hit6.wav",
+    "8": "Wavs/gen_die6.wav"
+   },
+   "101": {
+    "7": "Wavs/gen_hit7.wav",
+    "8": "Wavs/gen_die7.wav"
+   },
+   "102": {
+    "1": "Wavs/watchman_attack.wav",
+    "2": "Wavs/watchman_attack.wav",
+    "7": "Wavs/gen_hit8.wav",
+    "8": "Wavs/gen_die8.wav"
+   },
+   "103": {
+    "7": "Wavs/gen_hit1.wav",
+    "8": "Wavs/gen_die1.wav"
+   },
+   "104": {
+    "7": "Wavs/gen_hit5.wav",
+    "8": "Wavs/gen_die5.wav"
+   },
+   "105": {
+    "1": "Wavs/wolf_attack.wav",
+    "2": "Wavs/wolf_attack.wav",
+    "7": "Wavs/wolf_hit.wav",
+    "8": "Wavs/wolf_die.wav"
+   },
+   "106": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/archer_volley1.wav",
+    "4": "Wavs/archer_volley2.wav",
+    "7": "Wavs/At_arch_hit.wav",
+    "8": "Wavs/At_arch_die.wav"
+   },
+   "107": {
+    "1": "Wavs/At_inf_atk1.wav",
+    "2": "Wavs/At_inf_atk2.wav",
+    "7": "Wavs/At_inf_hit.wav",
+    "8": "Wavs/At_inf_die.wav"
+   },
+   "108": {
+    "1": "Wavs/At_char_atk1.wav",
+    "2": "Wavs/At_char_atk2.wav",
+    "7": "Wavs/At_char_hit.wav",
+    "8": "Wavs/At_char_die.wav"
+   },
+   "109": {
+    "3": "Wavs/archer_volley1.wav",
+    "4": "Wavs/archer_volley2.wav",
+    "7": "Wavs/At_sentry_hit.wav",
+    "8": "Wavs/At_sentry_die.wav"
+   },
+   "110": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/archer_volley1.wav",
+    "4": "Wavs/archer_volley2.wav",
+    "7": "Wavs/At_arch_hit.wav",
+    "8": "Wavs/At_arch_die.wav"
+   },
+   "111": {
+    "1": "Wavs/At_inf_atk1.wav",
+    "2": "Wavs/At_inf_atk2.wav",
+    "7": "Wavs/At_inf_hit.wav",
+    "8": "Wavs/At_inf_die.wav"
+   },
+   "112": {
+    "1": "Wavs/At_char_atk1.wav",
+    "2": "Wavs/At_char_atk2.wav",
+    "7": "Wavs/At_char_hit.wav",
+    "8": "Wavs/At_char_die.wav"
+   },
+   "113": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/archer_volley1.wav",
+    "4": "Wavs/archer_volley2.wav",
+    "7": "Wavs/Eg_arch_hit.wav",
+    "8": "Wavs/Eg_arch_die.wav"
+   },
+   "114": {
+    "1": "Wavs/Eg_inf_atk1.wav",
+    "2": "Wavs/Eg_inf_atk2.wav",
+    "7": "Wavs/Eg_inf_hit.wav",
+    "8": "Wavs/Eg_inf_die.wav"
+   },
+   "115": {
+    "1": "Wavs/Eg_char_atk1.wav",
+    "2": "Wavs/Eg_char_atk2.wav",
+    "7": "Wavs/Eg_char_hit.wav",
+    "8": "Wavs/Eg_char_die.wav"
+   },
+   "116": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/archer_volley1.wav",
+    "4": "Wavs/archer_volley2.wav",
+    "7": "Wavs/May_arch_hit.wav",
+    "8": "Wavs/May_arch_die.wav"
+   },
+   "117": {
+    "1": "Wavs/May_inf_atk1.wav",
+    "2": "Wavs/May_inf_atk2.wav",
+    "7": "Wavs/May_inf_hit.wav",
+    "8": "Wavs/May_inf_die.wav"
+   },
+   "118": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/archer_volley1.wav",
+    "4": "Wavs/archer_volley2.wav",
+    "7": "Wavs/Phoe_arch_hit.wav",
+    "8": "Wavs/Phoe_arch_die.wav"
+   },
+   "119": {
+    "1": null,
+    "2": null,
+    "7": null,
+    "8": null
+   },
+   "120": {
+    "1": "Wavs/greek_hand1.wav",
+    "2": "Wavs/greek_hand2.wav",
+    "3": "Wavs/Mer_spear_atk1.wav",
+    "4": "Wavs/Mer_spear_atk2.wav",
+    "7": "Wavs/Mer_spear_hit.wav",
+    "8": "Wavs/Mer_spear_die.wav"
+   },
+   "121": {
+    "1": "Wavs/Mer_inf_atk1.wav",
+    "2": "Wavs/Mer_inf_atk2.wav",
+    "7": "Wavs/Mer_inf_hit.wav",
+    "8": "Wavs/Mer_inf_die.wav"
+   },
+   "122": {
+    "7": "Wavs/gen_hit1.wav",
+    "8": "Wavs/gen_die1.wav"
+   },
+   "123": {
+    "7": "Wavs/gen_hit2.wav",
+    "8": "Wavs/gen_die2.wav"
+   },
+   "124": {
+    "7": "Wavs/gen_hit3.wav",
+    "8": "Wavs/gen_die3.wav"
+   },
+   "125": {
+    "7": "Wavs/gen_hit4.wav",
+    "8": "Wavs/gen_die4.wav"
+   },
+   "126": {
+    "7": "Wavs/gen_hit5.wav",
+    "8": "Wavs/gen_die5.wav"
+   },
+   "127": {
+    "7": "Wavs/gen_hit6.wav",
+    "8": "Wavs/gen_die6.wav"
+   },
+   "128": {
+    "7": "Wavs/gen_hit1.wav",
+    "8": "Wavs/gen_die1.wav"
+   },
+   "129": {
+    "7": "Wavs/jockey_hit.wav",
+    "8": "Wavs/jockey_die.wav"
+   },
+   "130": {
+    "7": "Wavs/gen_hit4.wav",
+    "8": "Wavs/gen_die4.wav"
+   },
+   "131": {
+    "1": "Wavs/cattle_attack.wav",
+    "7": "Wavs/cattle_hit.wav",
+    "8": "Wavs/cattle_die.wav"
+   },
+   "132": {
+    "1": "Wavs/deer_attack.wav",
+    "7": "Wavs/deer_hit.wav",
+    "8": "Wavs/deer_die.wav"
+   },
+   "133": {
+    "7": null,
+    "8": "Wavs/elephant_die.wav"
+   },
+   "134": {
+    "1": "Wavs/Frigate_volley1.wav",
+    "2": "Wavs/Frigate_volley2.wav",
+    "3": "Wavs/Frigate_volley1.wav",
+    "4": "Wavs/Frigate_volley2.wav",
+    "7": "Wavs/ship_hit.wav",
+    "8": "Wavs/ship_sink.wav"
+   },
+   "135": {
+    "1": "Wavs/Fire_volley1.wav",
+    "2": "Wavs/Fire_volley2.wav",
+    "3": "Wavs/Fire_volley1.wav",
+    "4": "Wavs/Fire_volley2.wav",
+    "7": "Wavs/ship_hit.wav",
+    "8": "Wavs/ship_sink.wav"
+   },
+   "136": {
+    "3": "Wavs/Fire_volley1a.wav",
+    "4": "Wavs/Fire_volley2a.wav",
+    "7": "Wavs/At_sentry_hit.wav",
+    "8": "Wavs/At_sentry_die.wav"
+   }
+  },
+  "type_kind": {
+   "1": 81,
+   "2": 71,
+   "3": 100,
+   "4": 66,
+   "9": 66,
+   "28": 66,
+   "36": 66,
+   "5": 77,
+   "7": 67,
+   "8": 94,
+   "11": 1,
+   "12": 2,
+   "13": 3,
+   "15": 68,
+   "16": 86,
+   "17": 63,
+   "18": 60,
+   "19": 95,
+   "20": 96,
+   "21": 97,
+   "22": 84,
+   "23": 84,
+   "27": 84,
+   "29": 84,
+   "25": 72,
+   "26": 85,
+   "30": 91,
+   "31": 76,
+   "32": 78,
+   "37": 74,
+   "38": 82,
+   "39": 0,
+   "44": 99,
+   "46": 0,
+   "47": 101,
+   "49": 90,
+   "50": 75,
+   "51": 64,
+   "53": 65,
+   "55": 98,
+   "57": 4,
+   "58": 62,
+   "59": 105,
+   "60": 103,
+   "61": 102,
+   "62": 69,
+   "63": 9,
+   "64": 8,
+   "65": 88,
+   "66": 87,
+   "72": 130,
+   "73": 122,
+   "74": 128,
+   "75": 125,
+   "76": 131,
+   "77": 123
+  },
+  "attack_types": [
+   11,
+   12,
+   13,
+   22,
+   23,
+   27,
+   29,
+   38,
+   39,
+   40,
+   41,
+   42,
+   46,
+   50,
+   51,
+   53,
+   57,
+   59,
+   61,
+   63,
+   64,
+   76
+  ],
+  "army_kind": {
+   "enemy_archer": [
+    5,
+    11,
+    14,
+    19,
+    17,
+    113,
+    116,
+    118,
+    120,
+    110,
+    null
+   ],
+   "enemy_infantry": [
+    6,
+    10,
+    13,
+    18,
+    16,
+    114,
+    117,
+    null,
+    121,
+    111,
+    20
+   ],
+   "enemy_cavalry": [
+    7,
+    12,
+    15,
+    null,
+    null,
+    115,
+    null,
+    119,
+    null,
+    112,
+    null
+   ]
+  },
+  "role_type": {
+   "immigrant": 1,
+   "emigrant": 2,
+   "homeless": 3,
+   "cart": 4,
+   "buyer": 37,
+   "peddler": 26,
+   "water": 60,
+   "healer": 32,
+   "philosophy": 16,
+   "athletics": 17,
+   "drama": 18,
+   "competition": 15,
+   "maintenance": 8,
+   "watchman": 61,
+   "tax": 7,
+   "trainee": 33,
+   "scholar": 72,
+   "astronomer": 73,
+   "inventor": 74,
+   "artisan": 58,
+   "woodcutter": 55,
+   "stonecutter": 62,
+   "miner": 62,
+   "shepherd": 30,
+   "goatherd": 31,
+   "grower": 5,
+   "hunter": 53,
+   "rancher": 77,
+   "diver": 44,
+   "trader": 19,
+   "donkey": 21,
+   "ship": 20,
+   "boat": 25,
+   "trireme": 57,
+   "sheep": 49,
+   "goat": 50,
+   "cattle": 76,
+   "bull": 76,
+   "horse": 43,
+   "boar": 51,
+   "deer": 51,
+   "wolf": 59,
+   "thief": 23,
+   "vandal": 29,
+   "mugger": 27,
+   "disgruntled": 22,
+   "plagued": 66,
+   "rabble": 11,
+   "hoplite": 12,
+   "horseman": 13,
+   "nobleman": 38,
+   "vendor_assistant": 47,
+   "god": 67,
+   "monster": 68,
+   "hero": 69,
+   "priest": 65,
+   "wall_sentry": 39,
+   "tower_sentry": 46,
+   "enemy_warship": 64,
+   "enemy_transport": 63
+  },
+  "sanct_kind": {
+   "hoplite:ares": 20
+  },
+  "role_kind": {
+   "deer": 132
+  },
+  "military": {
+   "attack": "figure_fight_start 0x004D4BA0: the mover, FUN_004DB3D0(f, 0) (variant 1 or 2) at the start; horseman_charge_hit 0x004E1080 too",
+   "periodic": "fig_handler_enemy_infantry 0x004B9C20 action 5: attack_timer == 10 (cavalry none); fig_handler_hoplite 0x004B26B0 (palace and Ares warriors): attack_timer == 1; a siege (figure_check_next_tile 0x004D8BB0, direction 11): anim_frame == 1",
+   "missile": "FUN_004D9D20 = FUN_004DB3D0(f, 1) (variant 3 or 4): enemy archers at frame 1 of the shot (0x005011C0), rabble at attack_timer 1 of a throw (archer_fire_update 0x004B2F70), wall sentries with the arrow (0x004B9230), tower ballistas at attack_timer 1 (0x004BB7B0); kinds 0x27 / 0x2E are 0 (archer volley)",
+   "hit": "figure_hit 0x004D54D0: FUN_004DB7A0(target) on a blow that does not kill (variant 7)",
+   "die": "FUN_004DAB30 at the death (variant 8)",
+   "impact": "archer_impact (event 0x19) only under the flag 0x00777286 (not set in Zeus play): none"
+  }
+ },
+ "ui": {
+  "button": "Wavs/button.wav",
+  "place_building": "Wavs/place_building.wav",
+  "error": null,
+  "note": "no distinct error/deny sound exists in the exe table"
+ },
+ "walker_voices": {
+  "dir": "Voice/Walker",
+  "table_by_info_panel_class": {
+   "1": [
+    "imm_i_1.mp3",
+    "imm_e_1.mp3",
+    "imm_e_2.mp3",
+    "imm_e_3.mp3"
+   ],
+   "2": [
+    "emi_i_1.mp3",
+    "emi_e_1.mp3",
+    "emi_e_2.mp3",
+    "emi_e_3.mp3",
+    "emi_e_4.mp3",
+    "emi_e_5.mp3",
+    "emi_e_6.mp3",
+    "emi_e_7.mp3"
+   ],
+   "3": [
+    "vag_i_1.mp3",
+    "vag_e_1.mp3",
+    "vag_e_2.mp3"
+   ],
+   "4": [
+    "pla_i_1.mp3",
+    "pla_e_1.mp3"
+   ],
+   "5": [
+    "ovn_i_1.mp3",
+    "ovn_e_1.mp3",
+    "ovn_e_2.mp3",
+    "ovn_e_3.mp3",
+    "ovn_e_4.mp3",
+    "ovn_e_5.mp3",
+    "ovn_e_6.mp3",
+    "ovn_e_7.mp3"
+   ],
+   "6": [
+    "oth_i_1.mp3",
+    "oth_e_1.mp3",
+    "oth_e_2.mp3",
+    "oth_e_3.mp3",
+    "oth_e_4.mp3",
+    "oth_e_5.mp3",
+    "oth_e_6.mp3",
+    "oth_e_7.mp3"
+   ],
+   "7": [
+    "omg_i_1.mp3",
+    "omg_e_1.mp3",
+    "omg_e_2.mp3",
+    "omg_e_3.mp3",
+    "omg_e_4.mp3",
+    "omg_e_5.mp3",
+    "omg_e_6.mp3",
+    "omg_e_7.mp3"
+   ],
+   "8": [
+    "ods_i_1.mp3",
+    "ods_e_1.mp3",
+    "ods_e_2.mp3",
+    "ods_e_3.mp3",
+    "ods_e_4.mp3",
+    "ods_e_5.mp3",
+    "ods_e_6.mp3",
+    "ods_e_7.mp3"
+   ],
+   "9": [
+    "nob_g_1.mp3",
+    "nob_g_2.mp3",
+    "nob_g_3.mp3",
+    "nob_g_4.mp3",
+    "nob_g_5.mp3",
+    "nob_g_6.mp3",
+    "nob_g_7.mp3",
+    "nob_i_1.mp3",
+    "nob_e_1.mp3"
+   ],
+   "10": [
+    "bht_g_1.mp3",
+    "bht_g_2.mp3",
+    "bht_g_3.mp3",
+    "bht_g_4.mp3",
+    "bht_g_5.mp3",
+    "bht_g_6.mp3",
+    "bht_g_7.mp3",
+    "bht_i_1.mp3",
+    "bht_e_1.mp3",
+    "bht_e_2.mp3"
+   ],
+   "11": [
+    "shp_g_1.mp3",
+    "shp_g_2.mp3",
+    "shp_g_3.mp3",
+    "shp_g_4.mp3",
+    "shp_g_5.mp3",
+    "shp_g_6.mp3",
+    "shp_g_7.mp3",
+    "shp_i_1.mp3",
+    "shp_e_1.mp3",
+    "shp_e_2.mp3",
+    "shp_e_3.mp3",
+    "shp_e_4.mp3"
+   ],
+   "12": [
+    "gth_g_1.mp3",
+    "gth_g_2.mp3",
+    "gth_g_3.mp3",
+    "gth_g_4.mp3",
+    "gth_g_5.mp3",
+    "gth_g_6.mp3",
+    "gth_g_7.mp3",
+    "gth_i_1.mp3",
+    "gth_e_1.mp3",
+    "gth_e_2.mp3",
+    "gth_e_3.mp3",
+    "gth_e_4.mp3"
+   ],
+   "13": [
+    "fsh_g_1.mp3",
+    "fsh_g_2.mp3",
+    "fsh_g_3.mp3",
+    "fsh_g_4.mp3",
+    "fsh_g_5.mp3",
+    "fsh_g_6.mp3",
+    "fsh_g_7.mp3",
+    "fsh_i_1.mp3",
+    "fsh_e_1.mp3",
+    "fsh_e_2.mp3",
+    "fsh_e_3.mp3",
+    "fsh_e_4.mp3"
+   ],
+   "14": [
+    "urc_g_1.mp3",
+    "urc_g_2.mp3",
+    "urc_g_3.mp3",
+    "urc_g_4.mp3",
+    "urc_g_5.mp3",
+    "urc_g_6.mp3",
+    "urc_g_7.mp3",
+    "urc_i_1.mp3",
+    "urc_e_1.mp3",
+    "urc_e_2.mp3",
+    "urc_e_3.mp3",
+    "urc_e_4.mp3"
+   ],
+   "15": [
+    "gro_g_1.mp3",
+    "gro_g_2.mp3",
+    "gro_g_3.mp3",
+    "gro_g_4.mp3",
+    "gro_g_5.mp3",
+    "gro_g_6.mp3",
+    "gro_g_7.mp3",
+    "gro_i_1.mp3",
+    "gro_e_1.mp3",
+    "gro_e_2.mp3",
+    "gro_e_3.mp3",
+    "gro_e_4.mp3"
+   ],
+   "16": [
+    "lmb_g_1.mp3",
+    "lmb_g_2.mp3",
+    "lmb_g_3.mp3",
+    "lmb_g_4.mp3",
+    "lmb_g_5.mp3",
+    "lmb_g_6.mp3",
+    "lmb_g_7.mp3",
+    "lmb_i_1.mp3",
+    "lmb_e_1.mp3",
+    "lmb_e_2.mp3"
+   ],
+   "17": [
+    "cop_g_1.mp3",
+    "cop_g_2.mp3",
+    "cop_g_3.mp3",
+    "cop_g_4.mp3",
+    "cop_g_5.mp3",
+    "cop_g_6.mp3",
+    "cop_g_7.mp3",
+    "cop_i_1.mp3",
+    "cop_e_1.mp3",
+    "cop_e_2.mp3",
+    "cop_e_2.mp3"
+   ],
+   "18": [
+    "slv_g_1.mp3",
+    "slv_g_2.mp3",
+    "slv_g_3.mp3",
+    "slv_g_4.mp3",
+    "slv_g_5.mp3",
+    "slv_g_6.mp3",
+    "slv_g_7.mp3",
+    "slv_i_1.mp3",
+    "slv_e_1.mp3",
+    "slv_e_2.mp3",
+    "slv_e_2.mp3"
+   ],
+   "19": [
+    "stn_g_1.mp3",
+    "stn_g_2.mp3",
+    "stn_g_3.mp3",
+    "stn_g_4.mp3",
+    "stn_g_5.mp3",
+    "stn_g_6.mp3",
+    "stn_g_7.mp3",
+    "stn_i_1.mp3",
+    "stn_e_1.mp3",
+    "stn_e_2.mp3",
+    "stn_e_3.mp3"
+   ],
+   "20": [
+    "art_g_1.mp3",
+    "art_g_2.mp3",
+    "art_g_3.mp3",
+    "art_g_4.mp3",
+    "art_g_5.mp3",
+    "art_g_6.mp3",
+    "art_g_7.mp3",
+    "art_i_1.mp3",
+    "art_e_1.mp3",
+    "art_e_2.mp3",
+    "art_e_3.mp3",
+    "art_e_4.mp3"
+   ],
+   "21": [
+    "fdv_i_1.mp3",
+    "fdv_e_1.mp3",
+    "fdv_e_2.mp3"
+   ],
+   "22": [
+    "flv_i_1.mp3",
+    "flv_e_1.mp3",
+    "flv_e_2.mp3"
+   ],
+   "23": [
+    "oiv_i_1.mp3",
+    "oiv_e_1.mp3",
+    "oiv_e_2.mp3"
+   ],
+   "24": [
+    "wiv_i_1.mp3",
+    "wiv_e_1.mp3",
+    "wiv_e_2.mp3"
+   ],
+   "25": [
+    "arv_i_1.mp3",
+    "arv_e_1.mp3",
+    "arv_e_2.mp3"
+   ],
+   "26": [
+    "htr_i_1.mp3",
+    "htr_e_1.mp3",
+    "htr_e_2.mp3"
+   ],
+   "27": [
+    "vda_i_1.mp3",
+    "vda_e_1.mp3",
+    "vda_e_2.mp3",
+    "vda_e_3.mp3"
+   ],
+   "28": [
+    "pdl_i_1.mp3",
+    "pdl_e_1.mp3",
+    "pdl_e_2.mp3",
+    "pdl_e_3.mp3",
+    "pdl_e_4.mp3",
+    "pdl_e_5.mp3",
+    "pdl_e_6.mp3"
+   ],
+   "29": [
+    "crt_i_1.mp3",
+    "crt_e_1.mp3",
+    "crt_e_2.mp3",
+    "crt_e_3.mp3",
+    "crt_e_4.mp3"
+   ],
+   "30": [
+    "trs_i_1.mp3",
+    "trs_w_1.mp3",
+    "trs_w_2.mp3",
+    "trs_w_3.mp3",
+    "trs_w_4.mp3",
+    "trs_w_5.mp3",
+    "trs_e_1.mp3",
+    "trs_e_2.mp3"
+   ],
+   "31": [
+    "trd_i_1.mp3",
+    "trd_w_1.mp3",
+    "trd_w_2.mp3",
+    "trd_w_3.mp3",
+    "trd_w_4.mp3",
+    "trd_w_5.mp3",
+    "trd_e_1.mp3",
+    "trd_e_2.mp3"
+   ],
+   "32": [
+    "act_g_1.mp3",
+    "act_g_2.mp3",
+    "act_g_3.mp3",
+    "act_g_4.mp3",
+    "act_g_5.mp3",
+    "act_g_6.mp3",
+    "act_g_7.mp3",
+    "act_i_1.mp3",
+    "act_e_1.mp3",
+    "act_e_2.mp3",
+    "act_e_3.mp3",
+    "act_e_4.mp3"
+   ],
+   "33": [
+    "ath_g_1.mp3",
+    "ath_g_2.mp3",
+    "ath_g_3.mp3",
+    "ath_g_4.mp3",
+    "ath_g_5.mp3",
+    "ath_g_6.mp3",
+    "ath_g_7.mp3",
+    "ath_i_1.mp3",
+    "ath_e_1.mp3",
+    "ath_e_2.mp3",
+    "ath_e_3.mp3",
+    "ath_e_4.mp3"
+   ],
+   "34": [
+    "cmp_g_1.mp3",
+    "cmp_g_2.mp3",
+    "cmp_g_3.mp3",
+    "cmp_g_4.mp3",
+    "cmp_g_5.mp3",
+    "cmp_g_6.mp3",
+    "cmp_g_7.mp3",
+    "cmp_i_1.mp3",
+    "cmp_e_1.mp3",
+    "cmp_e_2.mp3",
+    "cmp_e_3.mp3",
+    "cmp_e_4.mp3"
+   ],
+   "35": [
+    "phl_g_1.mp3",
+    "phl_g_2.mp3",
+    "phl_g_3.mp3",
+    "phl_g_4.mp3",
+    "phl_g_5.mp3",
+    "phl_g_6.mp3",
+    "phl_g_7.mp3",
+    "phl_i_1.mp3",
+    "phl_e_1.mp3",
+    "phl_e_2.mp3",
+    "phl_e_3.mp3",
+    "phl_e_4.mp3"
+   ],
+   "36": [
+    "pre_i_1.mp3",
+    "pre_e_1.mp3",
+    "pre_e_2.mp3",
+    "pre_e_3.mp3",
+    "pre_e_4.mp3",
+    "pre_e_5.mp3",
+    "pre_e_6.mp3"
+   ],
+   "37": [
+    "wtb_g_1.mp3",
+    "wtb_g_2.mp3",
+    "wtb_g_3.mp3",
+    "wtb_g_4.mp3",
+    "wtb_g_5.mp3",
+    "wtb_g_6.mp3",
+    "wtb_g_7.mp3",
+    "wtb_i_1.mp3"
+   ],
+   "38": [
+    "hlr_g_1.mp3",
+    "hlr_g_2.mp3",
+    "hlr_g_3.mp3",
+    "hlr_g_4.mp3",
+    "hlr_g_5.mp3",
+    "hlr_g_6.mp3",
+    "hlr_g_7.mp3",
+    "hlr_i_1.mp3",
+    "hlr_e_1.mp3"
+   ],
+   "39": [
+    "sup_g_1.mp3",
+    "sup_g_2.mp3",
+    "sup_g_3.mp3",
+    "sup_g_4.mp3",
+    "sup_g_5.mp3",
+    "sup_g_6.mp3",
+    "sup_g_7.mp3",
+    "sup_i_1.mp3",
+    "sup_e_1.mp3",
+    "sup_e_2.mp3",
+    "sup_e_3.mp3",
+    "sup_e_4.mp3",
+    "sup_e_5.mp3"
+   ],
+   "40": [
+    "wtc_i_1.mp3",
+    "wtc_e_1.mp3",
+    "wtc_e_2.mp3",
+    "wtc_e_3.mp3",
+    "wtc_e_4.mp3",
+    "wtc_e_5.mp3"
+   ],
+   "41": [
+    "clk_g_1.mp3",
+    "clk_g_2.mp3",
+    "clk_g_3.mp3",
+    "clk_g_4.mp3",
+    "clk_g_5.mp3",
+    "clk_g_6.mp3",
+    "clk_g_7.mp3",
+    "clk_i_1.mp3"
+   ],
+   "42": [
+    "wsn_i_1.mp3",
+    "wsn_e_1.mp3",
+    "wsn_e_2.mp3",
+    "wsn_e_3.mp3",
+    "wsn_e_4.mp3",
+    "wsn_e_5.mp3"
+   ],
+   "43": [
+    "hsm_i_1.mp3",
+    "hsm_e_1.mp3",
+    "hsm_e_2.mp3",
+    "hsm_e_3.mp3",
+    "hsm_e_4.mp3",
+    "hsm_e_5.mp3"
+   ],
+   "44": [
+    "hpl_i_1.mp3",
+    "hpl_e_1.mp3",
+    "hpl_e_2.mp3",
+    "hpl_e_3.mp3",
+    "hpl_e_4.mp3",
+    "hpl_e_5.mp3"
+   ],
+   "45": [
+    "rbl_i_1.mp3",
+    "rbl_e_1.mp3",
+    "rbl_e_2.mp3",
+    "rbl_e_3.mp3",
+    "rbl_e_4.mp3",
+    "rbl_e_5.mp3"
+   ],
+   "46": [
+    "tri_i_1.mp3",
+    "tri_e_1.mp3",
+    "tri_e_2.mp3",
+    "tri_e_3.mp3",
+    "tri_e_4.mp3",
+    "tri_e_5.mp3"
+   ],
+   "47": [
+    "tri_i_1.mp3",
+    "tri_e_1.mp3",
+    "tri_e_2.mp3",
+    "tri_e_3.mp3",
+    "tri_e_4.mp3",
+    "tri_e_5.mp3"
+   ],
+   "48": [
+    "warship_e01.mp3",
+    "warship_e02.mp3",
+    "warship_e03.mp3",
+    "warship_e04.mp3",
+    "warship_e05.mp3"
+   ],
+   "49": [
+    "CHARIOT.mp3"
+   ],
+   "50": [
+    "guard_e01.mp3",
+    "guard_e02.mp3",
+    "guard_e03.mp3",
+    "guard_e04.mp3"
+   ]
+  },
+  "by_thought_group": {
+   "202": [
+    "Voice/Walker/imm_i_1.mp3",
+    "Voice/Walker/imm_e_1.mp3",
+    "Voice/Walker/imm_e_2.mp3",
+    "Voice/Walker/imm_e_3.mp3"
+   ],
+   "203": [
+    "Voice/Walker/emi_i_1.mp3",
+    "Voice/Walker/emi_e_1.mp3",
+    "Voice/Walker/emi_e_2.mp3",
+    "Voice/Walker/emi_e_3.mp3",
+    "Voice/Walker/emi_e_4.mp3",
+    "Voice/Walker/emi_e_5.mp3",
+    "Voice/Walker/emi_e_6.mp3",
+    "Voice/Walker/emi_e_7.mp3"
+   ],
+   "204": [
+    "Voice/Walker/vag_i_1.mp3",
+    "Voice/Walker/vag_e_1.mp3",
+    "Voice/Walker/vag_e_2.mp3"
+   ],
+   "205": [
+    "Voice/Walker/pla_i_1.mp3",
+    "Voice/Walker/pla_e_1.mp3"
+   ],
+   "206": [
+    "Voice/Walker/ovn_i_1.mp3",
+    "Voice/Walker/ovn_e_1.mp3",
+    "Voice/Walker/ovn_e_2.mp3",
+    "Voice/Walker/ovn_e_3.mp3",
+    "Voice/Walker/ovn_e_4.mp3",
+    null,
+    "Voice/Walker/ovn_e_6.mp3",
+    "Voice/Walker/ovn_e_7.mp3"
+   ],
+   "207": [
+    "Voice/Walker/oth_i_1.mp3",
+    "Voice/Walker/oth_e_1.mp3",
+    "Voice/Walker/oth_e_2.mp3",
+    "Voice/Walker/oth_e_3.mp3",
+    "Voice/Walker/oth_e_4.mp3",
+    null,
+    "Voice/Walker/oth_e_6.mp3",
+    "Voice/Walker/oth_e_7.mp3"
+   ],
+   "208": [
+    "Voice/Walker/omg_i_1.mp3",
+    "Voice/Walker/omg_e_1.mp3",
+    "Voice/Walker/omg_e_2.mp3",
+    "Voice/Walker/omg_e_3.mp3",
+    "Voice/Walker/omg_e_4.mp3",
+    null,
+    "Voice/Walker/omg_e_6.mp3",
+    "Voice/Walker/omg_e_7.mp3"
+   ],
+   "209": [
+    "Voice/Walker/ods_i_1.mp3",
+    "Voice/Walker/ods_e_1.mp3",
+    "Voice/Walker/ods_e_2.mp3",
+    "Voice/Walker/ods_e_3.mp3",
+    "Voice/Walker/ods_e_4.mp3",
+    null,
+    "Voice/Walker/ods_e_6.mp3",
+    "Voice/Walker/ods_e_7.mp3"
+   ],
+   "210": [
+    "Voice/Walker/nob_g_1.mp3",
+    "Voice/Walker/nob_g_2.mp3",
+    "Voice/Walker/nob_g_3.mp3",
+    "Voice/Walker/nob_g_4.mp3",
+    "Voice/Walker/nob_g_5.mp3",
+    "Voice/Walker/nob_g_6.mp3",
+    "Voice/Walker/nob_g_7.mp3",
+    "Voice/Walker/nob_i_1.mp3",
+    "Voice/Walker/nob_e_1.mp3"
+   ],
+   "211": [
+    "Voice/Walker/bht_g_1.mp3",
+    "Voice/Walker/bht_g_2.mp3",
+    "Voice/Walker/bht_g_3.mp3",
+    "Voice/Walker/bht_g_4.mp3",
+    "Voice/Walker/bht_g_5.mp3",
+    "Voice/Walker/bht_g_6.mp3",
+    "Voice/Walker/bht_g_7.mp3",
+    "Voice/Walker/bht_i_1.mp3",
+    "Voice/Walker/bht_e_1.mp3",
+    "Voice/Walker/bht_e_2.mp3"
+   ],
+   "212": [
+    "Voice/Walker/shp_g_1.mp3",
+    "Voice/Walker/shp_g_2.mp3",
+    "Voice/Walker/shp_g_3.mp3",
+    "Voice/Walker/shp_g_4.mp3",
+    "Voice/Walker/shp_g_5.mp3",
+    "Voice/Walker/shp_g_6.mp3",
+    "Voice/Walker/shp_g_7.mp3",
+    "Voice/Walker/shp_i_1.mp3",
+    "Voice/Walker/shp_e_1.mp3",
+    "Voice/Walker/shp_e_2.mp3",
+    "Voice/Walker/shp_e_3.mp3",
+    "Voice/Walker/shp_e_4.mp3"
+   ],
+   "213": [
+    "Voice/Walker/gth_g_1.mp3",
+    "Voice/Walker/gth_g_2.mp3",
+    "Voice/Walker/gth_g_3.mp3",
+    "Voice/Walker/gth_g_4.mp3",
+    "Voice/Walker/gth_g_5.mp3",
+    "Voice/Walker/gth_g_6.mp3",
+    "Voice/Walker/gth_g_7.mp3",
+    "Voice/Walker/gth_i_1.mp3",
+    "Voice/Walker/gth_e_1.mp3",
+    "Voice/Walker/gth_e_2.mp3",
+    "Voice/Walker/gth_e_3.mp3",
+    "Voice/Walker/gth_e_4.mp3"
+   ],
+   "214": [
+    "Voice/Walker/fsh_g_1.mp3",
+    "Voice/Walker/fsh_g_2.mp3",
+    "Voice/Walker/fsh_g_3.mp3",
+    "Voice/Walker/fsh_g_4.mp3",
+    "Voice/Walker/fsh_g_5.mp3",
+    "Voice/Walker/fsh_g_6.mp3",
+    "Voice/Walker/fsh_g_7.mp3",
+    "Voice/Walker/fsh_i_1.mp3",
+    "Voice/Walker/fsh_e_1.mp3",
+    "Voice/Walker/fsh_e_2.mp3",
+    "Voice/Walker/fsh_e_3.mp3",
+    "Voice/Walker/fsh_e_4.mp3"
+   ],
+   "215": [
+    "Voice/Walker/urc_g_1.mp3",
+    "Voice/Walker/urc_g_2.mp3",
+    "Voice/Walker/urc_g_3.mp3",
+    "Voice/Walker/urc_g_4.mp3",
+    "Voice/Walker/urc_g_5.mp3",
+    "Voice/Walker/urc_g_6.mp3",
+    "Voice/Walker/urc_g_7.mp3",
+    "Voice/Walker/urc_i_1.mp3",
+    "Voice/Walker/urc_e_1.mp3",
+    "Voice/Walker/urc_e_2.mp3",
+    "Voice/Walker/urc_e_3.mp3",
+    "Voice/Walker/urc_e_4.mp3"
+   ],
+   "216": [
+    "Voice/Walker/gro_g_1.mp3",
+    "Voice/Walker/gro_g_2.mp3",
+    "Voice/Walker/gro_g_3.mp3",
+    "Voice/Walker/gro_g_4.mp3",
+    "Voice/Walker/gro_g_5.mp3",
+    "Voice/Walker/gro_g_6.mp3",
+    "Voice/Walker/gro_g_7.mp3",
+    "Voice/Walker/gro_i_1.mp3",
+    "Voice/Walker/gro_e_1.mp3",
+    "Voice/Walker/gro_e_2.mp3",
+    "Voice/Walker/gro_e_3.mp3",
+    "Voice/Walker/gro_e_4.mp3"
+   ],
+   "217": [
+    "Voice/Walker/lmb_g_1.mp3",
+    "Voice/Walker/lmb_g_2.mp3",
+    "Voice/Walker/lmb_g_3.mp3",
+    "Voice/Walker/lmb_g_4.mp3",
+    "Voice/Walker/lmb_g_5.mp3",
+    "Voice/Walker/lmb_g_6.mp3",
+    "Voice/Walker/lmb_g_7.mp3",
+    "Voice/Walker/lmb_i_1.mp3",
+    "Voice/Walker/lmb_e_1.mp3",
+    "Voice/Walker/lmb_e_2.mp3"
+   ],
+   "218": [
+    "Voice/Walker/cop_g_1.mp3",
+    "Voice/Walker/cop_g_2.mp3",
+    "Voice/Walker/cop_g_3.mp3",
+    "Voice/Walker/cop_g_4.mp3",
+    "Voice/Walker/cop_g_5.mp3",
+    "Voice/Walker/cop_g_6.mp3",
+    "Voice/Walker/cop_g_7.mp3",
+    "Voice/Walker/cop_i_1.mp3",
+    "Voice/Walker/cop_e_1.mp3",
+    "Voice/Walker/cop_e_2.mp3",
+    "Voice/Walker/cop_e_2.mp3"
+   ],
+   "219": [
+    "Voice/Walker/slv_g_1.mp3",
+    "Voice/Walker/slv_g_2.mp3",
+    "Voice/Walker/slv_g_3.mp3",
+    "Voice/Walker/slv_g_4.mp3",
+    "Voice/Walker/slv_g_5.mp3",
+    "Voice/Walker/slv_g_6.mp3",
+    "Voice/Walker/slv_g_7.mp3",
+    "Voice/Walker/slv_i_1.mp3",
+    "Voice/Walker/slv_e_1.mp3",
+    "Voice/Walker/slv_e_2.mp3",
+    "Voice/Walker/slv_e_2.mp3"
+   ],
+   "220": [
+    "Voice/Walker/stn_g_1.mp3",
+    "Voice/Walker/stn_g_2.mp3",
+    "Voice/Walker/stn_g_3.mp3",
+    "Voice/Walker/stn_g_4.mp3",
+    "Voice/Walker/stn_g_5.mp3",
+    "Voice/Walker/stn_g_6.mp3",
+    "Voice/Walker/stn_g_7.mp3",
+    "Voice/Walker/stn_i_1.mp3",
+    "Voice/Walker/stn_e_1.mp3",
+    "Voice/Walker/stn_e_2.mp3",
+    "Voice/Walker/stn_e_3.mp3"
+   ],
+   "221": [
+    "Voice/Walker/art_g_1.mp3",
+    "Voice/Walker/art_g_2.mp3",
+    "Voice/Walker/art_g_3.mp3",
+    "Voice/Walker/art_g_4.mp3",
+    "Voice/Walker/art_g_5.mp3",
+    "Voice/Walker/art_g_6.mp3",
+    "Voice/Walker/art_g_7.mp3",
+    "Voice/Walker/art_i_1.mp3",
+    "Voice/Walker/art_e_1.mp3",
+    "Voice/Walker/art_e_2.mp3",
+    "Voice/Walker/art_e_3.mp3",
+    "Voice/Walker/art_e_4.mp3"
+   ],
+   "222": [
+    "Voice/Walker/fdv_i_1.mp3",
+    "Voice/Walker/fdv_e_1.mp3",
+    "Voice/Walker/fdv_e_2.mp3"
+   ],
+   "223": [
+    "Voice/Walker/flv_i_1.mp3",
+    "Voice/Walker/flv_e_1.mp3",
+    "Voice/Walker/flv_e_2.mp3"
+   ],
+   "224": [
+    "Voice/Walker/oiv_i_1.mp3",
+    "Voice/Walker/oiv_e_1.mp3",
+    "Voice/Walker/oiv_e_2.mp3"
+   ],
+   "225": [
+    "Voice/Walker/wiv_i_1.mp3",
+    "Voice/Walker/wiv_e_1.mp3",
+    "Voice/Walker/wiv_e_2.mp3"
+   ],
+   "226": [
+    "Voice/Walker/arv_i_1.mp3",
+    "Voice/Walker/arv_e_1.mp3",
+    "Voice/Walker/arv_e_2.mp3"
+   ],
+   "227": [
+    "Voice/Walker/htr_i_1.mp3",
+    "Voice/Walker/htr_e_1.mp3",
+    "Voice/Walker/htr_e_2.mp3"
+   ],
+   "228": [
+    "Voice/Walker/vda_i_1.mp3",
+    "Voice/Walker/vda_e_1.mp3",
+    "Voice/Walker/vda_e_2.mp3",
+    "Voice/Walker/vda_e_3.mp3"
+   ],
+   "229": [
+    "Voice/Walker/pdl_i_1.mp3",
+    "Voice/Walker/pdl_e_1.mp3",
+    "Voice/Walker/pdl_e_2.mp3",
+    "Voice/Walker/pdl_e_3.mp3",
+    "Voice/Walker/pdl_e_4.mp3",
+    "Voice/Walker/pdl_e_5.mp3",
+    "Voice/Walker/pdl_e_6.mp3"
+   ],
+   "230": [
+    "Voice/Walker/crt_i_1.mp3",
+    "Voice/Walker/crt_e_1.mp3",
+    "Voice/Walker/crt_e_2.mp3",
+    "Voice/Walker/crt_e_3.mp3",
+    "Voice/Walker/crt_e_4.mp3"
+   ],
+   "231": [
+    "Voice/Walker/trs_i_1.mp3",
+    "Voice/Walker/trs_w_1.mp3",
+    "Voice/Walker/trs_w_2.mp3",
+    "Voice/Walker/trs_w_3.mp3",
+    "Voice/Walker/trs_w_4.mp3",
+    "Voice/Walker/trs_w_5.mp3",
+    "Voice/Walker/trs_e_1.mp3",
+    "Voice/Walker/trs_e_2.mp3"
+   ],
+   "232": [
+    "Voice/Walker/trd_i_1.mp3",
+    "Voice/Walker/trd_w_1.mp3",
+    "Voice/Walker/trd_w_2.mp3",
+    "Voice/Walker/trd_w_3.mp3",
+    "Voice/Walker/trd_w_4.mp3",
+    "Voice/Walker/trd_w_5.mp3",
+    "Voice/Walker/trd_e_1.mp3",
+    "Voice/Walker/trd_e_2.mp3"
+   ],
+   "233": [
+    "Voice/Walker/act_g_1.mp3",
+    "Voice/Walker/act_g_2.mp3",
+    "Voice/Walker/act_g_3.mp3",
+    "Voice/Walker/act_g_4.mp3",
+    "Voice/Walker/act_g_5.mp3",
+    "Voice/Walker/act_g_6.mp3",
+    "Voice/Walker/act_g_7.mp3",
+    "Voice/Walker/act_i_1.mp3",
+    "Voice/Walker/act_e_1.mp3",
+    "Voice/Walker/act_e_2.mp3",
+    "Voice/Walker/act_e_3.mp3",
+    "Voice/Walker/act_e_4.mp3"
+   ],
+   "234": [
+    "Voice/Walker/ath_g_1.mp3",
+    "Voice/Walker/ath_g_2.mp3",
+    "Voice/Walker/ath_g_3.mp3",
+    "Voice/Walker/ath_g_4.mp3",
+    "Voice/Walker/ath_g_5.mp3",
+    "Voice/Walker/ath_g_6.mp3",
+    "Voice/Walker/ath_g_7.mp3",
+    "Voice/Walker/ath_i_1.mp3",
+    "Voice/Walker/ath_e_1.mp3",
+    "Voice/Walker/ath_e_2.mp3",
+    "Voice/Walker/ath_e_3.mp3",
+    "Voice/Walker/ath_e_4.mp3"
+   ],
+   "235": [
+    "Voice/Walker/cmp_g_1.mp3",
+    "Voice/Walker/cmp_g_2.mp3",
+    "Voice/Walker/cmp_g_3.mp3",
+    "Voice/Walker/cmp_g_4.mp3",
+    "Voice/Walker/cmp_g_5.mp3",
+    "Voice/Walker/cmp_g_6.mp3",
+    "Voice/Walker/cmp_g_7.mp3",
+    "Voice/Walker/cmp_i_1.mp3",
+    "Voice/Walker/cmp_e_1.mp3",
+    "Voice/Walker/cmp_e_2.mp3",
+    "Voice/Walker/cmp_e_3.mp3",
+    "Voice/Walker/cmp_e_4.mp3"
+   ],
+   "236": [
+    "Voice/Walker/phl_g_1.mp3",
+    "Voice/Walker/phl_g_2.mp3",
+    "Voice/Walker/phl_g_3.mp3",
+    "Voice/Walker/phl_g_4.mp3",
+    "Voice/Walker/phl_g_5.mp3",
+    "Voice/Walker/phl_g_6.mp3",
+    "Voice/Walker/phl_g_7.mp3",
+    "Voice/Walker/phl_i_1.mp3",
+    "Voice/Walker/phl_e_1.mp3",
+    "Voice/Walker/phl_e_2.mp3",
+    "Voice/Walker/phl_e_3.mp3",
+    "Voice/Walker/phl_e_4.mp3"
+   ],
+   "237": [
+    "Voice/Walker/pre_i_1.mp3",
+    "Voice/Walker/pre_e_1.mp3",
+    "Voice/Walker/pre_e_2.mp3",
+    "Voice/Walker/pre_e_3.mp3",
+    "Voice/Walker/pre_e_4.mp3",
+    "Voice/Walker/pre_e_5.mp3",
+    "Voice/Walker/pre_e_6.mp3"
+   ],
+   "238": [
+    "Voice/Walker/wtb_g_1.mp3",
+    "Voice/Walker/wtb_g_2.mp3",
+    "Voice/Walker/wtb_g_3.mp3",
+    "Voice/Walker/wtb_g_4.mp3",
+    "Voice/Walker/wtb_g_5.mp3",
+    "Voice/Walker/wtb_g_6.mp3",
+    "Voice/Walker/wtb_g_7.mp3",
+    "Voice/Walker/wtb_i_1.mp3"
+   ],
+   "239": [
+    "Voice/Walker/hlr_g_1.mp3",
+    "Voice/Walker/hlr_g_2.mp3",
+    "Voice/Walker/hlr_g_3.mp3",
+    "Voice/Walker/hlr_g_4.mp3",
+    "Voice/Walker/hlr_g_5.mp3",
+    "Voice/Walker/hlr_g_6.mp3",
+    "Voice/Walker/hlr_g_7.mp3",
+    "Voice/Walker/hlr_i_1.mp3",
+    "Voice/Walker/hlr_e_1.mp3"
+   ],
+   "240": [
+    "Voice/Walker/sup_g_1.mp3",
+    "Voice/Walker/sup_g_2.mp3",
+    "Voice/Walker/sup_g_3.mp3",
+    "Voice/Walker/sup_g_4.mp3",
+    "Voice/Walker/sup_g_5.mp3",
+    "Voice/Walker/sup_g_6.mp3",
+    "Voice/Walker/sup_g_7.mp3",
+    "Voice/Walker/sup_i_1.mp3",
+    "Voice/Walker/sup_e_1.mp3",
+    "Voice/Walker/sup_e_2.mp3",
+    "Voice/Walker/sup_e_3.mp3",
+    "Voice/Walker/sup_e_4.mp3",
+    "Voice/Walker/sup_e_5.mp3"
+   ],
+   "241": [
+    "Voice/Walker/wtc_i_1.mp3",
+    "Voice/Walker/wtc_e_1.mp3",
+    "Voice/Walker/wtc_e_2.mp3",
+    "Voice/Walker/wtc_e_3.mp3",
+    "Voice/Walker/wtc_e_4.mp3",
+    "Voice/Walker/wtc_e_5.mp3"
+   ],
+   "242": [
+    "Voice/Walker/clk_g_1.mp3",
+    "Voice/Walker/clk_g_2.mp3",
+    "Voice/Walker/clk_g_3.mp3",
+    "Voice/Walker/clk_g_4.mp3",
+    "Voice/Walker/clk_g_5.mp3",
+    "Voice/Walker/clk_g_6.mp3",
+    "Voice/Walker/clk_g_7.mp3",
+    "Voice/Walker/clk_i_1.mp3"
+   ],
+   "243": [
+    "Voice/Walker/wsn_i_1.mp3",
+    "Voice/Walker/wsn_e_1.mp3",
+    "Voice/Walker/wsn_e_2.mp3",
+    "Voice/Walker/wsn_e_3.mp3",
+    "Voice/Walker/wsn_e_4.mp3"
+   ],
+   "244": [
+    "Voice/Walker/hsm_i_1.mp3",
+    "Voice/Walker/hsm_e_1.mp3",
+    "Voice/Walker/hsm_e_2.mp3",
+    "Voice/Walker/hsm_e_3.mp3",
+    "Voice/Walker/hsm_e_4.mp3"
+   ],
+   "245": [
+    "Voice/Walker/hpl_i_1.mp3",
+    "Voice/Walker/hpl_e_1.mp3",
+    "Voice/Walker/hpl_e_2.mp3",
+    "Voice/Walker/hpl_e_3.mp3",
+    "Voice/Walker/hpl_e_4.mp3"
+   ],
+   "246": [
+    "Voice/Walker/rbl_i_1.mp3",
+    "Voice/Walker/rbl_e_1.mp3",
+    "Voice/Walker/rbl_e_2.mp3",
+    "Voice/Walker/rbl_e_3.mp3",
+    "Voice/Walker/rbl_e_4.mp3"
+   ],
+   "247": [
+    "Voice/Walker/tri_i_1.mp3",
+    "Voice/Walker/tri_e_1.mp3",
+    "Voice/Walker/tri_e_2.mp3",
+    "Voice/Walker/tri_e_3.mp3",
+    "Voice/Walker/tri_e_4.mp3"
+   ],
+   "248": [
+    "Voice/Walker/tri_i_1.mp3",
+    "Voice/Walker/tri_e_1.mp3",
+    "Voice/Walker/tri_e_2.mp3",
+    "Voice/Walker/tri_e_3.mp3",
+    "Voice/Walker/tri_e_4.mp3"
+   ],
+   "340": [
+    "Voice/Walker/tdr_g_1.mp3",
+    "Voice/Walker/tdr_g_2.mp3",
+    "Voice/Walker/tdr_g_3.mp3",
+    "Voice/Walker/tdr_g_4.mp3",
+    "Voice/Walker/tdr_g_5.mp3",
+    "Voice/Walker/tdr_g_6.mp3",
+    "Voice/Walker/tdr_g_7.mp3",
+    "Voice/Walker/tdr_i_1.mp3",
+    "Voice/Walker/tdr_e_1.mp3",
+    "Voice/Walker/tdr_e_2.mp3"
+   ],
+   "341": [
+    "Voice/Walker/dht_g_1.mp3",
+    "Voice/Walker/dht_g_2.mp3",
+    "Voice/Walker/dht_g_3.mp3",
+    "Voice/Walker/dht_g_4.mp3",
+    "Voice/Walker/dht_g_5.mp3",
+    "Voice/Walker/dht_g_6.mp3",
+    "Voice/Walker/dht_g_7.mp3",
+    "Voice/Walker/dht_i_1.mp3",
+    "Voice/Walker/dht_e_1.mp3",
+    "Voice/Walker/dht_e_2.mp3"
+   ],
+   "342": [
+    "Voice/Walker/rch_g_1.mp3",
+    "Voice/Walker/rch_g_2.mp3",
+    "Voice/Walker/rch_g_3.mp3",
+    "Voice/Walker/rch_g_4.mp3",
+    "Voice/Walker/rch_g_5.mp3",
+    "Voice/Walker/rch_g_6.mp3",
+    "Voice/Walker/rch_g_7.mp3",
+    "Voice/Walker/rch_i_1.mp3",
+    "Voice/Walker/rch_e_1.mp3",
+    "Voice/Walker/rch_e_2.mp3",
+    "Voice/Walker/rch_e_3.mp3"
+   ],
+   "343": [
+    "Voice/Walker/mtl_g_1.mp3",
+    "Voice/Walker/mtl_g_2.mp3",
+    "Voice/Walker/mtl_g_3.mp3",
+    "Voice/Walker/mtl_g_4.mp3",
+    "Voice/Walker/mtl_g_5.mp3",
+    "Voice/Walker/mtl_g_6.mp3",
+    "Voice/Walker/mtl_g_7.mp3",
+    "Voice/Walker/mtl_i_1.mp3",
+    "Voice/Walker/mtl_e_1.mp3",
+    "Voice/Walker/mtl_e_2.mp3"
+   ],
+   "344": [
+    "Voice/Walker/chv_i_1.mp3",
+    "Voice/Walker/chv_e_1.mp3",
+    "Voice/Walker/chv_e_2.mp3"
+   ],
+   "345": [
+    "Voice/Walker/sch_g_1.mp3",
+    "Voice/Walker/sch_g_2.mp3",
+    "Voice/Walker/sch_g_3.mp3",
+    "Voice/Walker/sch_g_4.mp3",
+    "Voice/Walker/sch_g_5.mp3",
+    "Voice/Walker/sch_g_6.mp3",
+    "Voice/Walker/sch_g_7.mp3",
+    "Voice/Walker/sch_i_1.mp3"
+   ],
+   "346": [
+    "Voice/Walker/ast_g_1.mp3",
+    "Voice/Walker/ast_g_2.mp3",
+    "Voice/Walker/ast_g_3.mp3",
+    "Voice/Walker/ast_g_4.mp3",
+    "Voice/Walker/ast_g_5.mp3",
+    "Voice/Walker/ast_g_6.mp3",
+    "Voice/Walker/ast_g_7.mp3",
+    "Voice/Walker/ast_i_1.mp3"
+   ],
+   "347": [
+    "Voice/Walker/inv_g_1.mp3",
+    "Voice/Walker/inv_g_2.mp3",
+    "Voice/Walker/inv_g_3.mp3",
+    "Voice/Walker/inv_g_4.mp3",
+    "Voice/Walker/inv_g_5.mp3",
+    "Voice/Walker/inv_g_6.mp3",
+    "Voice/Walker/inv_g_7.mp3",
+    "Voice/Walker/inv_i_1.mp3"
+   ],
+   "348": [
+    "Voice/Walker/cur_g_1.mp3",
+    "Voice/Walker/cur_g_2.mp3",
+    "Voice/Walker/cur_g_3.mp3",
+    "Voice/Walker/cur_g_4.mp3",
+    "Voice/Walker/cur_g_5.mp3",
+    "Voice/Walker/cur_g_6.mp3",
+    "Voice/Walker/cur_g_7.mp3",
+    "Voice/Walker/cur_i_1.mp3"
+   ],
+   "349": [
+    "Voice/Walker/acf_i_1.mp3",
+    "Voice/Walker/acf_e_1.mp3",
+    "Voice/Walker/acf_e_2.mp3",
+    "Voice/Walker/acf_e_3.mp3",
+    "Voice/Walker/acf_e_4.mp3"
+   ],
+   "350": [
+    "Voice/Walker/spr_i_1.mp3",
+    "Voice/Walker/spr_e_1.mp3",
+    "Voice/Walker/spr_e_2.mp3",
+    "Voice/Walker/spr_e_3.mp3",
+    "Voice/Walker/spr_e_4.mp3"
+   ],
+   "351": [
+    "Voice/Walker/cht_i_1.mp3",
+    "Voice/Walker/cht_e_1.mp3",
+    "Voice/Walker/cht_e_2.mp3",
+    "Voice/Walker/cht_e_3.mp3",
+    "Voice/Walker/cht_e_4.mp3"
+   ],
+   "352": [
+    "Voice/Walker/wsa_i_1.mp3",
+    "Voice/Walker/wsa_e_1.mp3",
+    "Voice/Walker/wsa_e_2.mp3",
+    "Voice/Walker/wsa_e_3.mp3",
+    "Voice/Walker/wsa_e_4.mp3"
+   ],
+   "353": [
+    "Voice/Walker/tdr_g_1.mp3",
+    "Voice/Walker/tdr_g_2.mp3",
+    "Voice/Walker/tdr_g_3.mp3",
+    "Voice/Walker/tdr_g_4.mp3",
+    "Voice/Walker/tdr_g_5.mp3",
+    "Voice/Walker/tdr_g_6.mp3",
+    "Voice/Walker/tdr_g_7.mp3",
+    "Voice/Walker/tdr_i_1.mp3",
+    "Voice/Walker/tdr_e_1.mp3",
+    "Voice/Walker/tdr_e_2.mp3"
+   ],
+   "354": [
+    "Voice/Walker/dht_g_1.mp3",
+    "Voice/Walker/dht_g_2.mp3",
+    "Voice/Walker/dht_g_3.mp3",
+    "Voice/Walker/dht_g_4.mp3",
+    "Voice/Walker/dht_g_5.mp3",
+    "Voice/Walker/dht_g_6.mp3",
+    "Voice/Walker/dht_g_7.mp3",
+    "Voice/Walker/dht_i_1.mp3",
+    "Voice/Walker/dht_e_1.mp3",
+    "Voice/Walker/dht_e_2.mp3"
+   ],
+   "355": [
+    "Voice/Walker/tdr_g_1.mp3",
+    "Voice/Walker/tdr_g_2.mp3",
+    "Voice/Walker/tdr_g_3.mp3",
+    "Voice/Walker/tdr_g_4.mp3",
+    "Voice/Walker/tdr_g_5.mp3",
+    "Voice/Walker/tdr_g_6.mp3",
+    "Voice/Walker/tdr_g_7.mp3",
+    "Voice/Walker/tdr_i_1.mp3",
+    "Voice/Walker/tdr_e_1.mp3",
+    "Voice/Walker/tdr_e_2.mp3"
+   ],
+   "356": [
+    "Voice/Walker/dht_g_1.mp3",
+    "Voice/Walker/dht_g_2.mp3",
+    "Voice/Walker/dht_g_3.mp3",
+    "Voice/Walker/dht_g_4.mp3",
+    "Voice/Walker/dht_g_5.mp3",
+    "Voice/Walker/dht_g_6.mp3",
+    "Voice/Walker/dht_g_7.mp3",
+    "Voice/Walker/dht_i_1.mp3",
+    "Voice/Walker/dht_e_1.mp3",
+    "Voice/Walker/dht_e_2.mp3"
+   ],
+   "357": [
+    "Voice/Walker/rch_g_1.mp3",
+    "Voice/Walker/rch_g_2.mp3",
+    "Voice/Walker/rch_g_3.mp3",
+    "Voice/Walker/rch_g_4.mp3",
+    "Voice/Walker/rch_g_5.mp3",
+    "Voice/Walker/rch_g_6.mp3",
+    "Voice/Walker/rch_g_7.mp3",
+    "Voice/Walker/rch_i_1.mp3",
+    "Voice/Walker/rch_e_1.mp3",
+    "Voice/Walker/rch_e_2.mp3",
+    "Voice/Walker/rch_e_3.mp3"
+   ],
+   "358": [
+    "Voice/Walker/mtl_g_1.mp3",
+    "Voice/Walker/mtl_g_2.mp3",
+    "Voice/Walker/mtl_g_3.mp3",
+    "Voice/Walker/mtl_g_4.mp3",
+    "Voice/Walker/mtl_g_5.mp3",
+    "Voice/Walker/mtl_g_6.mp3",
+    "Voice/Walker/mtl_g_7.mp3",
+    "Voice/Walker/mtl_i_1.mp3",
+    "Voice/Walker/mtl_e_1.mp3",
+    "Voice/Walker/mtl_e_2.mp3"
+   ],
+   "359": [
+    "Voice/Walker/tdr_g_1.mp3",
+    "Voice/Walker/tdr_g_2.mp3",
+    "Voice/Walker/tdr_g_3.mp3",
+    "Voice/Walker/tdr_g_4.mp3",
+    "Voice/Walker/tdr_g_5.mp3",
+    "Voice/Walker/tdr_g_6.mp3",
+    "Voice/Walker/tdr_g_7.mp3",
+    "Voice/Walker/tdr_i_1.mp3",
+    "Voice/Walker/tdr_e_1.mp3",
+    "Voice/Walker/tdr_e_2.mp3"
+   ],
+   "360": [
+    "Voice/Walker/dht_g_1.mp3",
+    "Voice/Walker/dht_g_2.mp3",
+    "Voice/Walker/dht_g_3.mp3",
+    "Voice/Walker/dht_g_4.mp3",
+    "Voice/Walker/dht_g_5.mp3",
+    "Voice/Walker/dht_g_6.mp3",
+    "Voice/Walker/dht_g_7.mp3",
+    "Voice/Walker/dht_i_1.mp3",
+    "Voice/Walker/dht_e_1.mp3",
+    "Voice/Walker/dht_e_2.mp3"
+   ]
+  },
+  "animals": {
+   "cattle": "Ambient/Layer2/cattle1.wav",
+   "sheep": "Ambient/Layer2/sheep1.wav",
+   "goat": "Ambient/Layer2/goat1.wav",
+   "horse": "Ambient/Layer2/horse1.wav",
+   "deer": "Ambient/Layer2/deer1.wav",
+   "boar": "Ambient/Layer2/boar1.wav",
+   "wolf": "Ambient/Layer2/wolf1.wav"
+  },
+  "rule": "walker window open (FUN_005717D0 -> FUN_005ABD00) and figure box click (0x00405E90): by_thought_group[thought group][phrase], else animals[kind]; one voice stream (AIL stream 1: a new one closes the old), played once at the speech volume (0x00F2A7D4), speech on (0x00F2A76D)",
+  "note": "row index = message index of the walker info panel (0..19); trailing nothing.mp3 removed. Class ids are the info-panel walker class (1..50), mapping to our walker keys is in docs/play/audio.md"
+ }
+}

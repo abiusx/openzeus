@@ -1,0 +1,8 @@
+# "See a working city" at 1024x768 (military-mobilize.txt's start), then screen 0x20 (the trireme panel,
+# sidebar_draw_20 0x00525C10) opened on the city's trireme (figure 1738, the wharf at (114,66)) by pokes at tick 24
+# (~63 s): ZEUS_POKE=re/oracle/scenarios/trireme-panel.poke writes what the Military page's trireme branch of
+# 0x00516A50 writes (ef57f4/7818e4 = figure, ef57f8/782884 = 1, f2a6dd = 0x20, f2a6ce = 1). The page's icon goes to
+# the wharf instead in this city ([0xf135f4] != 0). Then the panel's "Go to ship" centres the view on the ship
+# (selection flag). Track 1B (docs/play/military.md "Checks"). Replace DIR with an absolute run dir; empty
+# --write-dir; --seconds 76 --state-log /dev/null.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:click 90,10; 52:click 120,41; 55:click 320,253; 58:click 862,368; 60:move 300,450; 61:shot DIR/milpage.bmp; 65:shot DIR/panel.bmp; 66:move 932,158; 66.3:down 932,158; 66.6:up 932,158; 67:move 300,450; 69:shot DIR/ship.bmp; 70:move 897,222; 72:shot DIR/panel_hover.bmp; 74:shot DIR/ship2.bmp

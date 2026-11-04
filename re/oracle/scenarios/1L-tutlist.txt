@@ -1,0 +1,2 @@
+# 1L-1: the tutorial menu (shot). --seconds 34
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 32:shot DIR/list.bmp

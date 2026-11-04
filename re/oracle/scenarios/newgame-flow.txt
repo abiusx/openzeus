@@ -1,0 +1,3 @@
+# The exe's new-game flow at 800x600 (for the play-mode start screen, docs/play/screens.md "New game"): shots of each
+# step of the clicks every scenario uses to reach "See a working city". DIR = the run dir; --seconds 40.
+5:key 27; 8:shot DIR/s1-menu.bmp; 12:click 220,101; 15:shot DIR/s2.bmp; 17:char 78; 18:shot DIR/s3.bmp; 20:click 556,320; 24:shot DIR/s4.bmp; 27:click 644,523; 31:shot DIR/s5.bmp; 33:click 588,476; 38:shot DIR/s6.bmp

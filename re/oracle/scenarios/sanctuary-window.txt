@@ -1,0 +1,6 @@
+# The info window of a sanctuary under construction (docs/play/info.md "monument", bugs.md 183): the
+# sanctuary-build setup ("See a working city", the Ares sanctuary reset to stage 0 by the ZEUS_POKE file
+# re/oracle/runs/sanctuary-build/poke.txt from tools/oracle_monument.py --poke), right click on its terrace at
+# 452 s -> b.bmp (Ares' Fortress, 0 %, artisans on the tiles, 36 marble / 12 wood / 2 sculptures).
+# Replace DIR with an absolute run dir; empty --write-dir; --state-log /dev/null; --seconds 460 (10 s real).
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 52:move 712,203; 52.3:down 712,203; 52.6:up 712,203; 54:move 300,580; 80:click 568,574; 110:click 568,574; 140:click 568,574; 170:click 568,574; 200:click 568,574; 230:click 568,574; 260:click 568,574; 290:click 568,574; 320:click 568,574; 350:click 568,574; 380:click 568,574; 410:click 568,574; 440:click 568,574; 450:shot DIR/a.bmp; 451:move 330,240; 452:rclick 330,240; 454:shot DIR/b.bmp

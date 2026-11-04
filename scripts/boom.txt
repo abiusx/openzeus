@@ -1,0 +1,224 @@
+# Benchmark / sanity test: one residential block grown to Townhouses with a full supply chain,
+# built in phases as the city gets workers (building everything at once fails: unstaffed buildings
+# still wear out and burn, as in the original). Each phase waits for the population to grow.
+# Tune it, but keep it a fixed script (sanity test); agent players test the game properly.
+# Ring road (136,150)-(163,163), houses inside, decor in the middle, services outside,
+# industry on a spine road x=136 going north into the meadow.
+poseidon on        # baths are Poseidon (data "poseidon"); the benchmark keeps them
+gods off           # the economy benchmark without gods (sim/gods: jealous gods curse / destroy, Zeus the palace)
+wage 40
+# the sandbox's own road (bugs.md 233: from the land entry (167,170) north along x=167 to y=106, east to the exit
+# (217,106)) is cleared first (2 dr a tile, the exe's clear tool): it runs where the benchmark builds (infirmary
+# 167 164, horse ranch 167 137 and the podium spur at 199..201 106 of full.txt) and would lead the ring's roaming
+# walkers away north. The layout is the one from before 1K (10-30), which had no map road.
+clear 167 106 167 173
+clear 168 106 218 106
+road 166 169 166 163
+road 166 163 163 163
+road 136 150 163 163
+road 163 163 136 150
+road 136 150 136 112
+road 136 111 146 139
+road 146 111 150 127
+# roadblocks where roads leave the ring: service walkers stay in the housing block (carts pass);
+# the west one sits up the spine (between the maintenance at 137 142, which serves the spine, and
+# the infirmary at 137 144) and the south-east one down the entry road, so both infirmaries
+# (137 144, 167 164) roam the ring
+build roadblock 136 143
+build roadblock 166 168
+# --- phase 1: housing, water, food (farms harvest in July), one maintenance office per area
+build house 137 151
+build house 139 151
+build house 141 151
+build house 143 151
+build house 145 151
+build house 147 151
+build house 149 151
+build house 151 151
+build house 153 151
+build house 155 151
+build house 157 151
+build house 159 151
+build house 161 151
+build house 137 161
+build house 139 161
+build house 141 161
+build house 143 161
+build house 145 161
+build house 147 161
+build house 149 161
+build house 151 161
+build house 153 161
+build house 155 161
+build house 157 161
+build house 159 161
+build house 161 161
+build house 137 153
+build house 137 155
+build house 137 157
+build house 137 159
+build house 161 153
+build house 161 155
+build house 161 157
+build house 161 159
+build fountain 143 148
+build fountain 155 148
+build fountain 143 164
+build fountain 157 164
+build maintenance 157 148
+build maintenance 137 142
+build maintenance 144 130
+build maintenance 134 157
+build maintenance 141 112
+# vendors are stalls of an agora laid on the ring road (storage-distribution.md part B)
+build agora 137 148 up
+build food_vendor 137 148
+build granary 137 137
+build onion_farm 143 115
+build carrot_farm 143 118
+build wheat_farm 143 121
+# decor costs no labor: build the middle block now
+build stone_circle 139 153
+build baths 143 153
+build fish_pond 147 153
+build stone_circle 151 153
+build baths 155 153
+build fish_pond 139 157
+build stone_circle 143 157
+build baths 147 157
+build fish_pond 151 157
+build stone_circle 155 157
+build gardens 159 153
+build gardens 160 153
+build gardens 159 160
+build gardens 160 160
+# greenery for the east column, the lowest-desirability corner
+build flower_garden 159 154
+build flower_garden 159 156
+build flower_garden 159 158
+build gardens 164 149
+build gardens 165 149
+build gardens 164 150
+build gardens 165 150
+build gardens 164 151
+build gardens 165 151
+build stone_circle 157 144
+build stone_circle 161 144
+status
+until population 400 12
+# --- phase 2: more food, the other maintenance offices, watchmen, taxes, south food vendor
+build onion_farm 143 124
+build carrot_farm 143 127
+build onion_farm 147 115
+build maintenance 150 164
+build maintenance 164 155
+build maintenance 147 130
+build agora 137 163 down
+build food_vendor 137 164
+build agora 163 157 right
+build food_vendor 164 161
+build fountain 134 153
+build fountain 164 153
+build guardpost 161 148
+build guardpost 159 164
+# tax offices need a palace (6x9, by the entry road)
+build palace 160 166
+build tax_office 159 148
+build tax_office 134 160
+# infirmaries: without healers city health sinks to 50 and plague comes about once a year
+build infirmary 137 144
+build infirmary 167 164
+status
+until population 800 12
+# --- phase 3: fleece (sheep graze the meadow east of the sheep farms) and storage
+build sheep_farm 147 124
+build sheep_farm 147 126
+build sheep_farm 147 128
+build sheep 156 115
+build sheep 158 117
+build sheep 155 120
+build sheep 158 122
+build sheep 155 125
+build sheep 158 127
+build sheep 156 113
+build sheep 159 119
+# fleece: 34 houses need ~816 a year, a sheep gives 100 (production.md): 12 sheep
+build sheep 157 114
+build sheep 157 118
+build sheep 157 123
+build sheep 156 127
+build storehouse 151 121
+build storehouse 151 124
+build storehouse 133 137
+# a storehouse is 8 bays of 400, one good per bay: cap fleece so oil and wine find bays
+storage 151 121 fleece accept 1200
+storage 151 124 fleece accept 1200
+storage 133 137 fleece accept 1200
+build fleece_vendor 139 148
+build fleece_vendor 139 164
+build fleece_vendor 164 157
+build carrot_farm 147 118
+build wheat_farm 147 121
+build granary 137 132
+status
+until population 1100 12
+# --- phase 4: culture. Podiums and theatres only perform with shows brought by trainees: a
+# college (philosophers) and a drama school (actors) on the spine; gymnasiums train competitors.
+build college 133 125
+build drama_school 133 129
+build podium 145 148
+build podium 145 164
+build gymnasium 147 147
+build gymnasium 147 164
+build tax_office 161 164
+status
+until population 1400 12
+# --- phase 5: olive oil (olive trees near the growers' lodges, 1-tile gaps to walk between)
+build growers_lodge 144 133
+build growers_lodge 144 135
+build olive_tree 150 131
+build olive_tree 152 131
+build olive_tree 154 131
+build olive_tree 156 131
+build olive_tree 158 131
+build olive_tree 160 131
+build olive_tree 150 133
+build olive_tree 152 133
+build olive_tree 154 133
+build olive_tree 156 133
+build olive_tree 158 133
+build olive_tree 160 133
+build olive_tree 150 135
+build olive_tree 152 135
+build olive_tree 154 135
+build olive_tree 156 135
+build olive_tree 158 135
+build olive_tree 160 135
+build oil_press 147 133
+build oil_press 147 136
+# oil demand is 1 per house per half month (~820/yr for 34 Townhouses) and a press makes 100 per 2
+# months: olives pile up in storage behind 2 presses, so 4 presses keep oil flowing between harvests
+build oil_press 134 133
+build oil_press 134 135
+build oil_vendor 141 148
+build oil_vendor 141 164
+build oil_vendor 164 159
+build wheat_farm 151 112
+build onion_farm 151 115
+build maintenance 151 127
+# surplus sink: takes only what no workshop/storehouse/granary has room for
+build endless_warehouse 137 125
+status
+until population 1600 12
+# --- phase 6: drama
+build theatre 150 145
+build theatre 152 164
+status
+months 12
+status
+months 24
+status
+months 24
+status
+look 128 108 40 62
+history

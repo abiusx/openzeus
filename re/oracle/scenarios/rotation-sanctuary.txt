@@ -1,0 +1,4 @@
+# "See a working city" at 1024x768, scrolled up/left onto the Apollo sanctuary (type 87, orientation 0, tiles x 36..45,
+# y 57..72) and the Ares sanctuary, then PgUp x3: s0/s2/s4/s6 (views 0, 2, 4, 6). Compared in play mode with the baseline
+# save's Apollo sanctuary (docs/play/rotation.md "Verification"). Replace DIR; empty --write-dir; --seconds 86.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:click 90,10; 52:click 120,41; 55:click 320,253; 60:key 38; 61:key 38; 62:key 37; 63:key 37; 66:shot DIR/s0.bmp; 67:key 33; 70:shot DIR/s2.bmp; 71:key 33; 74:shot DIR/s4.bmp; 75:key 33; 78:shot DIR/s6.bmp

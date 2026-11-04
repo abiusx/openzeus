@@ -1,0 +1,4 @@
+# Bugs 290 / 292 (docs/logic/buildings.md §8.2): the horse ranch and an agora burn. "See a working city" with the
+# building's fire risk held at 990 (and, for the -burn runs, its counter poked to 15 after the ignition); camera on it;
+# shots DIR/s_NNNN.bmp every 15 s from 390 s. Poke, script, run and report: tools/oracle_fire_parts.py (docstring).
+# Runs 1F-ranchfire, 1F-agorafire, 1F-ranchburn (--burn 770), 1F-agoraburn (--burn 1280).

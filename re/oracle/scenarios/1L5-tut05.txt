@@ -1,0 +1,2 @@
+# 1L-5: tutorial 05 (tutorial05.sav) start. --seconds 72, ZEUS_STATE_DUMP_EVERY=51
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 32:click 212,373; 38:shot DIR/start.bmp; 40:rclick 300,300; 41:shot DIR/s41.bmp; 70:shot DIR/s70.bmp

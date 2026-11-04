@@ -1,0 +1,8 @@
+# Messages list (screen 0x11) looks: "See a working city" at 800x600 (as messages-goals.txt). DIR = the run dir.
+# messages-list12: 11 more queue entries poked in (copies of slot 0 at 0x00FD3838 + 0x3C*i, other months, every 3rd
+#   read; count 0x00FD37F0 = 12: python3 tools/oracle_message_pokes.py re/oracle/runs/messages-window/dump/tick_000000.bin 12);
+#   --seconds 66. Shots: l12 (scrollbar), hrow (row 3 hovered), hdel (Delete opened hovered), hopt (options box
+#   hovered), sdown (after one click on the down arrow), hup (mouse on the up arrow).
+# messages-empty: no poke; a right click on the one row deletes it; --seconds 58. Shot: empty.
+LIST12: 5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:move 770,494; 50.5:click 770,494; 52:move 700,10; 53:shot DIR/l12.bmp; 54:move 250,217; 55:shot DIR/hrow.bmp; 56:move 300,415; 57:shot DIR/hdel.bmp; 58:move 300,447; 59:shot DIR/hopt.bmp; 60:move 565,355; 60.5:click 565,355; 61:move 700,10; 62:shot DIR/sdown.bmp; 63:move 565,175; 64:shot DIR/hup.bmp
+EMPTY: 5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:move 770,494; 50.5:click 770,494; 52:move 250,177; 52.5:rclick 250,177; 54:move 700,10; 55:shot DIR/empty.bmp

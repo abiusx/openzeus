@@ -1,0 +1,4 @@
+# Bug 472 (tools/oracle_trade_flags.py run zl): appended to re/oracle/scenarios/trade-window.txt's steps up to the
+# post at 67 s: File > Save (name "t1"), File > Load (the first row), with re/oracle/scenarios/1F-tradeflags.poke.
+# DIR = the run dir; --seconds 200.
+; 68:rclick 590,500; 70:move 150,10; 70.5:click 150,10; 71.5:move 20,10; 72:move 30,100; 72.5:click 30,100; 74:char 116; 74.3:char 49; 75:click 490,406; 78:shot DIR/saved.bmp; 80:move 150,10; 80.5:click 150,10; 81.5:move 20,10; 82:move 30,80; 82.5:click 30,80; 84:shot DIR/loaddlg.bmp; 85:click 300,192; 86:click 490,406; 90:shot DIR/loaded.bmp

@@ -1,0 +1,13 @@
+# Building over grazing sheep (bugs.md 431, docs/logic/buildings.md 5 "Animals under the build cursor"): "See a working
+# city" (800x600), camera poked to the meadow (ZEUS_POKE=re/oracle/scenarios/sheep-build.poke: tick 20 (110,240)),
+# ZEUS_STATE_DUMP_EVERY=1 FROM=30 TO=70 ZONES=28,111,17, --state-log /dev/null, empty --write-dir, --seconds 79.
+# Sheep 288 grazes at (132,130) (screen 359,255) from tick 25 on. Runs (re/oracle/runs/):
+#   sheep-build-r1: no tool (baseline): line A only, plus "62:shot DIR/s/a0.bmp; 64:shot DIR/s/a1.bmp; 80:shot DIR/s/a2.bmp"
+#     (--seconds 82, TO=60); the sheep stays put to tick 60.
+#   sheep-build-r3: line A + B: the house-plot ghost over the sheep (tick 37/38) -> dump 38: sheep action 16 -> 7, a new
+#     destination; it walks off from tick 38; the click at tick ~41 (sheep still on the tile) is refused, nothing built.
+#   sheep-build-r4: line A + C: the same hover, the click at tick ~50 after the sheep left: the plot is placed (-10 dr).
+# A: 5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 60:click 568,574
+# B: 65:move 675,345; 65.5:down 675,345; 65.8:up 675,345; 66.5:shot DIR/s/tool.bmp; 67:move 359,255; 68:shot DIR/s/ghost.bmp; 69:down 359,255; 69.3:up 359,255; 70:shot DIR/s/after1.bmp; 73:move 300,580; 74:shot DIR/s/after2.bmp
+# C: 65:move 675,345; 65.5:down 675,345; 65.8:up 675,345; 67:move 359,255; 68:shot DIR/s/ghost.bmp; 74:shot DIR/s/ghost2.bmp; 75:down 359,255; 75.3:up 359,255; 76:move 300,580; 77:shot DIR/s/placed.bmp
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 60:click 568,574; 65:move 675,345; 65.5:down 675,345; 65.8:up 675,345; 67:move 359,255; 68:shot DIR/s/ghost.bmp; 74:shot DIR/s/ghost2.bmp; 75:down 359,255; 75.3:up 359,255; 76:move 300,580; 77:shot DIR/s/placed.bmp

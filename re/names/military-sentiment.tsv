@@ -1,0 +1,158 @@
+address	name	kind	type	evidence
+005671a0	sentiment_update	function		month_tick 0 and 8: sum of 6 components, damping by band, clamp 0..100, worst cause, hippodrome; docs/logic/sentiment.md
+00567120	sentiment_taxes	function		tax-level index (nearest of 0x641f50) -> 0x00fe695c[idx*5+difficulty]; idx 0 if tax coverage < 11
+00567170	sentiment_wages	function		wage index (nearest of 0x641f38) -> 0x641f20 table
+005670d0	sentiment_unemployment	function		+1/0/-1/-2/-3 by unemployment % thresholds 5/11/18/26
+00566f20	sentiment_houses_food_crime	function		per house: crime += col14 + (40-sentiment)/2, clamp col15..100; food +2 or -1..-3 by hunger months; rounded mean
+00566ef0	sentiment_debt	function		-2/-3/-4 by years in debt + -2 if treasury < 0
+00566e70	sentiment_military_service	function		mobilized companies count -> 0..-5 in peacetime
+005697f0	tax_level_index	function		nearest index in level table 0x00fe6918 to *0x00fe6924
+00569610	wage_level_index	function		nearest index in level table 0x00fe6928 to *0x00fe6934
+005697c0	tax_levels_install	function		sets 0xfe6918=0x641f50, count 7, text group 0x11e, value ptr 0xfe6a60
+005695e0	wage_levels_install	function		sets 0xfe6928=0x641f38, count 6, text group 0x11d, value ptr 0xfe9660
+00567450	migration_rate_update	function		cycle step 23: sentiment -> migration % (100..-25), immigrants/emigrants due = ceil(pct*12/100), cooldowns
+0056fdc0	hippodrome_sentiment_bonus	function		ECX=0x00ff80d0; sentiment += table 0x6429e8 row(length).c2 after clamp
+0056fd30	hippodrome_monthly_income	function		treasury += table row c3
+0056fc60	hippodrome_city_relations	function		January/July: relation change c0/c1 per city kind
+005666d0	games_victory_rewards	function		+20 relation to cities, message 0xd81, sentiment += 15
+00566c00	health_target_update	function		monthly: pop-weighted 50*healer + 50*fed + small-city bonus 0x641ed0, clamp 0..100
+00566b90	health_step	function		every cycle: health moves 1 toward target
+00566d40	population_births_deaths	function		yearly: rate by health tier (+3 god record 12) -> add/remove pop*rate/100
+00566950	city_record_reset	function		zero city record; sentiment 60, health 80, wages 30, tax 9
+00567620	population_remove	function		population -= n, floor 0
+00567650	population_add	function		population += n, floor 0
+00487110	houses_population_sum	function		sum of b+0x1c over live house buildings
+005bfde0	crime_spawn_pass	function		cycle step 45: per common house, per threshold met (0x65e898) one RNG draw; rand15%200==127 spawns criminal
+005bff90	house_spawn_criminal	function		create figure from house road tile if b+0x2a free; action 6
+00519910	unrest_summary	function		advisor unrest level from share of houses with crime >=81 / 71..80
+00524580	sentiment_change_message	function		UI: message when sentiment/10 changes
+00523770	migration_advisor_message	function		UI: migration reason message
+005b5af0	popularity_advisor_text	function		UI: text 61:(s/10+16), cause 61:(38+cause) or past variants
+00483b20	debt_months_update	function		monthly: months in debt, years in debt every 12
+00567680	sentiment_cause_copy	function		0xfeae68 = min(0xfeaf90, 7)
+00567910	military_recruit_targets	function		correction of houses_capacity_totals: step 13 soldier/company targets from house col 5/6/13, arms, horses
+00567c70	military_recruit_pass	function		correction of cycle_formations_pass_14: spawn/disband palace soldiers to meet targets
+004ddd70	formations_count	function		counts companies by type, mobilized (+0x90) by type -> 0xfeb440..448
+004dda00	formation_create_company	function		palace company in slot 1..20
+004e30f0	formation_create_sanctuary	function		slots 31..34 (Artemis 0xB, Ares 0xC)
+004e2ac0	formation_create_event	function		slots 21..30, mobilized, +0x78 = event
+004ddb80	formation_alloc_other	function		slots 35..99: herds and enemy companies
+004de980	formation_free	function		zeroes group, clears b+0x50 of home building
+004de080	formation_morale_add	function		morale +0x2c clamp 0..100 unless +0x94
+004ddff0	formation_member_lost	function		refresh + morale delta [-30,-30,-30,-25,-18,-12,-8,-5][count-1]
+004ddf20	formations_morale_waver	function		step 5: morale <21 company effects
+004dd8d0	formation_return_home	function		clears +0x90, members action 7
+00568d20	auto_defend_mobilize	function		option 0xf2a990, invasion in 1 month: mobilize up to 20 companies
+00569010	auto_defend_dismiss	function		first month after enemies gone: restore labour, send home
+004a3d40	palace_has_road_entry	function		gate for recruitment targets
+00542610	palace_part_is_soldier_slot	function		part class 5 or 0x6d
+004ff8d0	elite_hoplites_count	function		hoplites assigned to elite houses
+004ffa60	elite_horsemen_count	function		horsemen assigned to elite houses
+004e1b20	figure_type_value	function		Figure_model column accessor (players 0x786068, enemies 0x7851f8 stride 0x150); god buffs; armor cap 19
+004d54d0	figure_hit	function		dmg = A - (D*A)/20; mode x150%; ships hp +0x128, others damage +0x98 vs col1
+004e1080	horseman_charge_hit	function		attack x4 if 5<+0x134<20; * ((30-own armor)/20)
+004d5f10	figure_fight_tick	function		action 5: +0x6a++, hit when > 23
+004d4ba0	figure_fight_start	function		action 5, opponents +0x8b/+0x8c/+0x8e/+0x90
+004d4da0	figure_tile_contact	function		hostility table 0x639430; charge hit
+004d53d0	figure_can_kill	function		god/hero/monster kill rules
+004d61b0	figure_fight_end	function		restore action from +0x10
+004b2f70	archer_fire_update	function		reload col7, range col6, launch 0x2d at +0x6a==7
+00501940	missile_target_search	function		priority 50/30/20(40)/10, strictly higher and nearer
+004bace0	walker_player_missile	function		projectile 0x2d: move 4, figure_hit(...,1), life 120
+004d0b30	figure_charge_speed	function		+0x134 straight tiles; speed 2*col8 (<=18) until col10
+004fffd0	enemy_company_ai_update	function		mode state machine +0x91/+0x75
+004ffc10	enemy_company_morale_check	function		morale < row1.col10 -> mode 0, action 7
+004ffd00	enemy_company_go_attack	function		morale >= thr-20 -> mode 1
+004ffe00	enemy_company_special_roll	function		random_next; (state2&0x7fff)%100 < row1.col11 -> mode 2
+00501ed0	enemy_army_base_counts	function		col 9 of rows 0..2 of army
+0048ccf0	figure_combat_init	function		+0x128/+0x12c hp, +0x13c col8, +0x140 col10, +0x144 col12, +0x148 col13, +0x158 atk*20/100
+0046d520	events_next_invasion	function		next event record with type byte 2
+00471f60	event_date_in_future	function		date (+0x14+start,+3) > now
+00471f90	invasion_event_pending	function		not done/disabled, date passed, elapsed <= +0x2c
+00472000	event_months_until_due	function		+0x2c + months to date
+0046e160	event_city	function		city record for event (+0x58 if type 2, else +0x1c)
+00476e20	invasion_event_month	function		warnings 24/12/6/1 months, arrival, bribe message 0xdd
+00504a30	invasions_month_update	function		monthly loop over invasion events
+00504a70	invasion_pending_any	function		any pending invasion
+00504600	invasion_spawn	function		points 9..16 sea else land
+005044f0	invasion_spawn_land	function		counts = base*strength/100
+00503fd0	invasion_spawn_sea	function		warships 0x40 + transports 0x3f (8 per)
+00504650	enemy_army_spawn_land	function		companies of 8, types 0x29/0x28/0x2a
+00503e20	invasion_point_select	function		point 8 = random among valid land points (rnd 0xf137d4)
+00476cf0	invasion_bribe_cost	function		25/50/200 per unit * difficulty mult, clamp 1..60000
+004e3420	military_counts_on_figure	function		enemy units 0xfeb084, player soldiers 0xfeb0c8
+004e13c0	enemy_ships_recount	function		0xfeb3ec warships, 0xfeb3e8 transports
+0047ee20	cities_spontaneous_events	function		month_tick 12: gift or rival invasion, RNG pick
+0047f1c0	city_invasion_event_create	function		dynamic type-2 event, strength = city+0x1e8*3/5
+0047f100	city_gift_event_create	function		gift event when in debt
+00568540	player_military_strength	function		home strength P1/P3; peak 0xfe6a78
+004dea00	event_sent_forces_strength	function		forces sent for an event
+00461540	distant_battle_resolve	function		win/loss + casualty %
+00467a40	events_alloc	function		reuse done dynamic slot or append (<0x8c)
+00467590	event_init_defaults	function		event record defaults
+0046de00	event_chain_trigger	function		copies linked event, re-dates it
+00fe6a60	g_tax_rate	data	i32	city+0x08; tax_levels_install value pointer
+00fe6a64	g_treasury	data	i32	city+0x0c; sav.md
+00fe6a68	g_city_sentiment	data	i32	city+0x10; sentiment_update
+00fe6a6c	g_health_target	data	i32	city+0x14
+00fe6a70	g_city_health	data	i32	city+0x18
+00fe6a7c	g_population	data	i32	city+0x24; sav.md
+00fe695c	g_tax_sentiment	data	i32[35]	7 levels x 5 difficulties (Tax_Sentiment_Model.txt)
+00641f50	g_tax_rate_levels	data	i32[7]	0,3,7,9,11,15,20
+00641f38	g_wage_levels	data	i32[6]	0,20,26,30,34,40
+00641f20	g_wage_sentiment	data	i32[6]	-10,-5,-2,0,2,4
+00641ed0	g_health_small_city_bonus	data	i32[20]	(pop limit, bonus) x10
+006429e8	g_hippodrome_table	data	i32[35]	7 rows x (rel0, rel1, sentiment, income, ?)
+0065e898	g_crime_spawn_table	data	i32[8]	(70,0x16),(80,0x1b),(90,0x17),(100,0x1d)
+00fe9660	g_wages	data	i32	wage_levels_install value pointer
+00fe9654	g_unemployment_pct	data	i32	labour
+00fe9690	g_tax_coverage_pct	data	i32	tax registration %
+00fe9184	g_migration_pct	data	i32	migration_rate_update
+00fe9140	g_immigrants_due	data	i32	
+00fe9144	g_emigrants_due	data	i32	
+00fe914c	g_immigrants_accum	data	i32	cycle_city_pass_23
+00fe9148	g_emigrants_accum	data	i32	cycle_city_pass_23
+00fe9190	g_immigration_cooldown	data	i32	
+00fe918c	g_emigration_cooldown	data	i32	
+00fe9414	g_high_sentiment_months	data	i32	months in a row with sentiment > 80
+00feb0db	g_sentiment_latch	data	u8	set when population >= 350
+00feb27c	g_debt_months	data	i32	
+00feb280	g_debt_years	data	i32	
+00feaf90	g_sentiment_worst_cause	data	i32	1 food 2 jobs 3 taxes 4 wages 5 debt 6 military
+00feaf88	g_sentiment_previous	data	i32	
+00feae68	g_sentiment_cause_ui	data	i32	
+00fe916c	g_yearly_growth_flag	data	u8	set at new year, consumed by cycle_city_pass_23
+00782f18	g_hippodrome_length	data	i32	track length in stades
+00ff80d0	g_hippodrome	data	u8[]	object; +5 working
+00fe91e8	g_palace_building	data	i32	
+00feaede	g_palace_exists	data	i16	
+00feaea0	g_months_no_palace	data	i32	
+00feb424	g_target_soldiers	data	i32[3]	rabble, hoplites, horsemen
+00feb44c	g_target_companies	data	i32[3]	
+00feb430	g_soldiers_by_type	data	i32[3]	
+00feb458	g_soldiers_away_by_type	data	i32[3]	labour force -6 per rabble away
+00feb538	g_companies_by_type	data	i32[3]	
+00feb440	g_companies_mobilized	data	i32[3]	sentiment cause 6
+00feb43c	g_companies_total	data	i32	
+007818e4	g_selected_companies	data	i32[20]	
+00782884	g_selected_count	data	i32	
+00786068	g_figure_model	data	i32[1092]	78 x 14
+007851f8	g_enemy_model	data	i32[924]	66 x 14 (11 armies x 6)
+00639430	g_hostility	data	u8[121]	[attacker unit_type*11 + target unit_type]
+00feb084	g_enemy_units_alive	data	i32	military_counts_on_figure
+00feb0c8	g_player_soldiers_alive	data	i32	military_counts_on_figure
+00feb3ec	g_enemy_warships	data	i32	enemy_ships_recount
+00feb3e8	g_enemy_transports	data	i32	enemy_ships_recount
+00fe9578	g_months_since_enemy	data	i32	month_advance
+00fe957c	g_months_to_next_invasion	data	i32	month_advance
+00fe6a78	g_military_strength_peak	data	i32	month_tick 4
+00f2a990	g_opt_auto_defend	data	u8	text 68:176
+008f9828	g_invasion_serial	data	i16	spawners
+00902c10	g_invasion_points_x	data	i16[16]	0..7 land, 8..15 sea
+00902c30	g_invasion_points_y	data	i16[16]	
+00902e20	g_landing_points_x	data	i32[3]	
+00902e2c	g_landing_points_y	data	i32[3]	
+009173f0	g_events_count	data	i32	rank 14; records follow
+009173f4	g_events	data	ScenarioEvent[140]	rank 13
+0091b7c4	g_event_scratch	data	ScenarioEvent	slot 0x8c
+00633280	g_bribe_difficulty_mult	data	f64[5]	1,3,4,5,7

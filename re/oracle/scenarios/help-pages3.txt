@@ -1,0 +1,4 @@
+# Table of Contents -> link "Agora" (record 8, Back button) -> agora.bmp; 3 clicks on the down arrow (each scrolls
+# while held: the shot is at scroll range-15) -> agora-scroll.bmp; Back -> back.bmp (TOC, scroll 0).
+# "See a working city" at 800x600. Replace DIR; empty --write-dir; --seconds 68.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:move 150,10; 50.5:click 150,10; 52:move 160,42; 52.5:click 160,42; 55:move 120,211; 55.5:click 120,211; 58:move 300,560; 59:shot DIR/agora.bmp; 60:move 531,454; 60.5:click 531,454; 61:click 531,454; 61.5:click 531,454; 62:move 300,560; 63:shot DIR/agora-scroll.bmp; 64:move 110,505; 64.5:click 110,505; 66:move 300,560; 67:shot DIR/back.bmp

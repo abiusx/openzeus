@@ -1,0 +1,156 @@
+diff --git a/src/win32/desktop.cpp b/src/win32/desktop.cpp
+index 23dcc54..00120e2 100644
+--- a/src/win32/desktop.cpp
++++ b/src/win32/desktop.cpp
+@@ -6,11 +6,13 @@
+ 
+ #include <algorithm>
+ #include <cmath>
++#include <cstdio>
+ #include <cstring>
+ #include <sstream>
+ #include <stdexcept>
+ 
+ namespace zeus::win32 {
++extern uint64_t g_oracle_ticks;  // equivalence.cpp (local addition, zeus project oracle)
+ namespace {
+ 
+ // Messages Windows produits à partir des événements SDL.
+@@ -375,7 +377,10 @@ bool Desktop::pump(uint32_t now) {
+             case Kind::KeyDown: if (vk < 256) keys_[vk] = true; post(WM_KEYDOWN, vk, 1); break;
+             case Kind::KeyUp: if (vk < 256) keys_[vk] = false; post(WM_KEYUP, vk, 0xC0000001u); break;
+             case Kind::Char: post(WM_CHAR, vk, 1); break;
+-            case Kind::Shot: save_screenshot_to(s.path); break;
++            case Kind::Shot:
++                save_screenshot_to(s.path);
++                std::fprintf(stderr, "shot %s ticks %llu\n", s.path.c_str(), (unsigned long long)g_oracle_ticks);
++                break;
+         }
+     }
+     SDL_Event e;
+diff --git a/src/win32/equivalence.cpp b/src/win32/equivalence.cpp
+index f068a90..e694029 100644
+--- a/src/win32/equivalence.cpp
++++ b/src/win32/equivalence.cpp
+@@ -5,7 +5,9 @@
+ #include <algorithm>
+ #include <cinttypes>
+ #include <cstdio>
++#include <cstdlib>
+ #include <cstring>
++#include <string>
+ #include <stdexcept>
+ #include <utility>
+ #include <vector>
+@@ -14,6 +16,9 @@
+ #include "win32/process.h"
+ 
+ namespace zeus::win32 {
++// Local addition (zeus project oracle): ticks run so far, logged with each script `shot` (desktop.cpp), so a
++// shot taken after k ticks matches dump tick_k (the state at the entry of tick k).
++uint64_t g_oracle_ticks = 0;
+ namespace {
+ 
+ using namespace gog;
+@@ -138,7 +143,101 @@ public:
+         std::fputc('\n', out_);
+     }
+     void tick() {
++        poke(ticks_);
++        dump(ticks_);
+         line(std::to_string(ticks_++).c_str());
++        g_oracle_ticks = ticks_;
++    }
++    // Local addition (zeus project oracle): raw zone dumps. ZEUS_STATE_DUMP=DIR writes
++    // DIR/tick_NNNNNN.bin (all zones concatenated in kZones order) every ZEUS_STATE_DUMP_EVERY
++    // ticks (default 1) within ZEUS_STATE_DUMP_FROM..ZEUS_STATE_DUMP_TO (default all), and DIR/zones.txt once.
++    void dump(uint64_t t) {
++        static const char* dir = std::getenv("ZEUS_STATE_DUMP");
++        if (!dir) return;
++        // ZEUS_STATE_DUMP_ZONES="17,16,35": only these blocks (zones.txt lists what is written; default all).
++        static const std::string only = std::getenv("ZEUS_STATE_DUMP_ZONES")
++            ? "," + std::string(std::getenv("ZEUS_STATE_DUMP_ZONES")) + "," : "";
++        auto wanted = [](const StateZone& z) {
++            return only.empty() || only.find("," + std::to_string(z.block) + ",") != std::string::npos;
++        };
++        // ZEUS_STATE_DUMP_EXTRA="0xC5BD98:51984,...": memory outside the save zones (e.g. the invaders' presence grid),
++        // written after the zones, listed in zones.txt with block -2.
++        static const std::vector<StateZone> extra = [] {
++            std::vector<StateZone> v;
++            if (const char* e = std::getenv("ZEUS_STATE_DUMP_EXTRA")) {
++                std::string s(e);
++                size_t i = 0;
++                while (i < s.size()) {
++                    size_t j = s.find(',', i);
++                    if (j == std::string::npos) j = s.size();
++                    std::string item = s.substr(i, j - i);
++                    size_t c = item.find(':');
++                    if (c != std::string::npos)
++                        v.push_back({-2, static_cast<uint32_t>(std::strtoul(item.substr(0, c).c_str(), nullptr, 16)),
++                                     static_cast<uint32_t>(std::strtoul(item.substr(c + 1).c_str(), nullptr, 10))});
++                    i = j + 1;
++                }
++            }
++            return v;
++        }();
++        static const uint64_t every = std::getenv("ZEUS_STATE_DUMP_EVERY")
++            ? std::strtoull(std::getenv("ZEUS_STATE_DUMP_EVERY"), nullptr, 10) : 1;
++        if (t == 0) {
++            std::string idx = std::string(dir) + "/zones.txt";
++            if (std::FILE* f = std::fopen(idx.c_str(), "w")) {
++                uint32_t off = 0;
++                for (const StateZone& z : kZones) {
++                    if (!wanted(z)) continue;
++                    std::fprintf(f, "%d 0x%08X %u %u\n", z.block, z.address, z.size, off);
++                    off += z.size;
++                }
++                for (const StateZone& z : extra) {
++                    std::fprintf(f, "%d 0x%08X %u %u\n", z.block, z.address, z.size, off);
++                    off += z.size;
++                }
++                std::fclose(f);
++            }
++        }
++        static const uint64_t from = std::getenv("ZEUS_STATE_DUMP_FROM")
++            ? std::strtoull(std::getenv("ZEUS_STATE_DUMP_FROM"), nullptr, 10) : 0;
++        static const uint64_t to = std::getenv("ZEUS_STATE_DUMP_TO")
++            ? std::strtoull(std::getenv("ZEUS_STATE_DUMP_TO"), nullptr, 10) : UINT64_MAX;
++        if (every == 0 || t % every || t < from || t > to) return;
++        char name[64];
++        std::snprintf(name, sizeof name, "/tick_%06llu.bin", (unsigned long long)t);
++        std::string path = std::string(dir) + name;
++        if (std::FILE* f = std::fopen(path.c_str(), "wb")) {
++            for (const StateZone& z : kZones)
++                if (wanted(z)) std::fwrite(process_.cpu().host(z.address), 1, z.size, f);
++            for (const StateZone& z : extra) std::fwrite(process_.cpu().host(z.address), 1, z.size, f);
++            std::fclose(f);
++        }
++    }
++    // Local addition (zeus project oracle): memory pokes. ZEUS_POKE=FILE, one poke per line
++    // "TICK ADDRESS SIZE VALUE" (decimal tick, hex address, size 1/2/4, decimal value), written at the
++    // entry of simulation_tick number TICK (before the dump of that tick). '#' starts a comment.
++    void poke(uint64_t t) {
++        struct Poke { uint64_t tick; uint32_t address, size; int64_t value; };
++        static std::vector<Poke> pokes;
++        static bool loaded = false;
++        if (!loaded) {
++            loaded = true;
++            if (const char* path = std::getenv("ZEUS_POKE"))
++                if (std::FILE* f = std::fopen(path, "r")) {
++                    char buf[256];
++                    while (std::fgets(buf, sizeof buf, f)) {
++                        if (buf[0] == '#') continue;
++                        unsigned long long tk; unsigned int ad, sz; long long v;
++                        if (std::sscanf(buf, "%llu %x %u %lld", &tk, &ad, &sz, &v) == 4) pokes.push_back({tk, ad, sz, v});
++                    }
++                    std::fclose(f);
++                }
++        }
++        for (const Poke& p : pokes)
++            if (p.tick == t) {
++                uint32_t v = static_cast<uint32_t>(p.value);
++                std::memcpy(process_.cpu().host(p.address), &v, p.size);
++            }
+     }
+     void finish() {
+         line("fin");

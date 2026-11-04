@@ -1,0 +1,8 @@
+# Waiting carts under See problems (docs/play/bugs.md 208): "See a working city" (800x600) as overlays.txt PRE up to the
+# radar tab, then the Overview page twice (642,452) and See problems (729,59). Its carts at tiles (108,138), (116,149),
+# (117,146)... wait with Figure+0x7B set (dump tick 25: tools/oracle.py, figure 0x00DBD788 + 0x184 i, type +0x0A,
+# tile +0x20, waiting +0x7B). Camera poked to them: DIR/poke.txt = "20 da2f64 4 96", "20 da2f68 4 240" (and the same at
+# tick 23); ZEUS_POKE=DIR/poke.txt, --state-log /dev/null, empty --write-dir, --seconds 65; replace DIR.
+# Result (re/oracle/runs/cartwait2/p1.bmp): each '?' (Zeus_General SPR_PROBLEM_ICONS + 11) has its top-left on its cart's
+# tile point: play (60 COL - 6870, 15 ROW - 30) camera -> (tileX - cam.x, tileY - cam.y) = (210,120), (120,405), (240,375).
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 52:move 642,452; 52.3:down 642,452; 52.6:up 642,452; 54:move 642,452; 54.3:down 642,452; 54.6:up 642,452; 56:move 729,59; 56.3:down 729,59; 56.6:up 729,59; 57.5:move 300,12; 60:shot DIR/p1.bmp; 61:move 300,330; 62.5:shot DIR/p2.bmp

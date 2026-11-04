@@ -1,0 +1,14 @@
+# Road tool over a ramp (TODO slope audit, bugs.md 464): "See a working city" (e1-ramps' start), camera poked on the
+# long ramp at raw (161,102)/(161,103) (no road; elevation 0 -> 1 at (161,101)), cell (139,246) at tick 1
+# (re/oracle/scenarios/slope-road.poke). Road tool (664,453); hover shots on the ramp's low tile (161,103), its upper
+# tile (161,102), the road (161,105), flat empty ground (161,104); then a drag from (161,104) over the ramp to (161,99)
+# (elevation 1) with shots at each move, release, a shot of the built road. Screen of raw (x, y) at elevation e:
+# ((x - y) * 30 + 29 - 1470, (x + y) * 15 + 15 - 3660 - 30 e). Run (replace DIR; mkdir DIR/sh DIR/dump DIR/write):
+# ZEUS_POKE=re/oracle/scenarios/slope-road.poke ZEUS_STATE_DUMP=DIR/dump ZEUS_STATE_DUMP_EVERY=1 ZEUS_STATE_DUMP_ZONES=17,44,-1
+#   zeus-run --run zeus-original/app/Zeus.exe --headless --deterministic --write-dir DIR/write --seconds 80
+#   --state-log /dev/null --script "$(tail -1 THIS)" 2> DIR/log.txt   (stderr: "shot PATH ticks K"); fresh --write-dir.
+# The tool is picked by move/down/up (a plain click there did not take). Run 11-04: h_ramplo / h_ramphi red diamonds on
+# the ramp, h_flat the green-tinted road picture, h_road still the previous cursor (its move not taken); d1..d3c (the
+# clock stands still while the button is down, tick 34) the route in road pictures up the ramp and the red cursor with
+# the cost (4 / 8 / 12); built.bmp the same road.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 52:shot DIR/sh/a0.bmp; 54:move 664,453; 54.3:down 664,453; 54.6:up 664,453; 55:shot DIR/sh/tool.bmp; 56:move 299,315; 57:shot DIR/sh/h_ramplo.bmp; 58:move 329,300; 59:shot DIR/sh/h_ramphi.bmp; 60:move 239,345; 61:shot DIR/sh/h_road.bmp; 62:move 269,330; 63:shot DIR/sh/h_flat.bmp; 64:down 269,330; 65:move 299,315; 66:shot DIR/sh/d1.bmp; 67:move 359,255; 68:shot DIR/sh/d2.bmp; 69:move 419,225; 70:shot DIR/sh/d3.bmp; 70.5:shot DIR/sh/d3b.bmp; 71:shot DIR/sh/d3c.bmp; 72:up 419,225; 74:shot DIR/sh/built.bmp; 75:move 329,300; 76:shot DIR/sh/h_ramproad.bmp; 77:rclick 300,300; 77.5:move 300,585; 78:shot DIR/sh/end.bmp

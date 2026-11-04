@@ -1,0 +1,8 @@
+# trireme-panel.txt's start (the working city at 1024x768) with re/oracle/scenarios/trireme-overlays.poke: at tick 24
+# screen 0x20 on the city's trireme (figure 1738, logical (116, 69), action 0x18 = crew home) as trireme-panel.poke,
+# and the camera's top-left cell 0x00DA2F64 / 0x00DA2F68 = (131, 249) (the trireme near the view's centre); at tick 27
+# its action = 0x14 (anchored with the crew aboard: the crew overlay). Clicks on the panel's buttons do not reach the
+# exe in this run (the screen was poked), hence the pokes. Shots t_NN.bmp: the selection flag (standing down), then
+# the crew. Track 1B (docs/play/military.md "Checks"). Replace DIR with an absolute run dir; empty --write-dir;
+# ZEUS_POKE=re/oracle/scenarios/trireme-overlays.poke; --seconds 84 --state-log /dev/null.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:click 90,10; 52:click 120,41; 55:click 320,253; 58:click 862,368; 60:move 400,700; 62:shot DIR/t_62.bmp; 64:shot DIR/t_64.bmp; 66:shot DIR/t_66.bmp; 68:shot DIR/t_68.bmp; 70:shot DIR/t_70.bmp; 73:shot DIR/t_73.bmp; 76:shot DIR/t_76.bmp; 80:shot DIR/t_80.bmp; 83:shot DIR/t_83.bmp

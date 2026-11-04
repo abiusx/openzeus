@@ -1,0 +1,2 @@
+# tile order (tools/oracle_tile_order.py); 1024 x 768
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:click 90,10; 52:click 120,41; 55:click 320,253; 60:shot DIR/s000.bmp; 90:shot DIR/s001.bmp; 120:shot DIR/s002.bmp; 150:shot DIR/s003.bmp; 180:shot DIR/s004.bmp; 210:shot DIR/s005.bmp; 240:shot DIR/s006.bmp; 270:shot DIR/s007.bmp; 300:shot DIR/s008.bmp

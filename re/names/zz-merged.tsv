@@ -1,0 +1,96 @@
+address	name	kind	type	evidence
+# coordinator merge of conflicting names (wins: sorted last). aliases kept in evidence.
+0040d160	vendor_supply_houses	function		aliases: peddler_serve
+0040f630	building_count_nonzero_56	function		aliases: building_fields_test
+00447ff0	plague_check	function		aliases: plague_roll
+004481b0	plague_outbreak	function		aliases: plague_start
+004483f0	houses_plague_countdown	function		aliases: buildings_timer_countdown
+00470800	event_request	function		aliases: events_random_month
+00472b20	event_price_increase	function		aliases: event_price_rise
+00472d00	event_price_decrease	function		aliases: event_price_drop
+00473680	event_city_status_change	function		aliases: events_cities_month
+00474a80	event_gift	function		aliases: events_cities_random
+00484d20	houses_coverage_decay	function		aliases: cycle_buildings_pass_35
+00484de0	houses_culture_compute	function		aliases: cycle_buildings_pass_36
+00484f10	wind_direction_draw	function		aliases: year_random_draw
+00485360	cycle_production_progress_20	function		aliases: cycle_buildings_pass_20
+004860a0	house_room_update	function		aliases: cycle_houses_pass_22
+00486190	city_population_update	function		aliases: cycle_city_pass_23
+00487110	houses_occupants_sum	function		aliases: houses_population_sum
+004871b0	house_evict_overcrowded	function		aliases: cycle_houses_pass_24
+00487240	labor_needs_collect	function		aliases: cycle_labor_25a
+004873f0	building_industry_halted	function		aliases: industry_halted
+00487630	labor_unemployment_update	function		aliases: cycle_labor_25b
+00487750	labor_allocate	function		aliases: labor_allocate_sectors
+00487ba0	labor_assign_buildings	function		aliases: cycle_labor_25c
+00488220	buildings_tax_coverage_decay	function		aliases: cycle_buildings_pass_48
+00488820	plague_year_rollover	function		aliases: plagues_year_rollover
+00488a80	city_stock_add	function		aliases: storage_goods_take
+00488b20	city_stock_sub	function		aliases: storage_goods_give
+00488bc0	storage_counts_as_storage	function		aliases: storage_find
+00488c30	cycle_storage_city_totals	function		aliases: cycle_storages_pass_16
+004894e0	storage_cannot_accept	function		aliases: storage_find_goods
+00489cc0	storehouse_remove_goods	function		aliases: storage_select
+0048b570	cycle_granary_supply_list	function		aliases: cycle_storages_pass
+0048b8d0	houses_eat_food	function		aliases: houses_consume_food
+00492260	buildings_fire_collapse_risk	function		aliases: buildings_random_pass_44
+00492be0	building_to_burning_ruins	function		aliases: building_burn_to_ruins
+00492f30	building_parts_to_burning_ruins	function		aliases: building_parts_burn_to_ruins
+00493040	building_type_flammable	function		aliases: building_can_catch_fire
+00493140	buildings_fire_burn_spread	function		aliases: buildings_fire_burn, buildings_random_pass_43
+00496330	map_random_grid_fill	function		aliases: random_grid_fill
+004a5d90	maintenance_walker_reduce_risk	function		aliases: service_maintenance_box
+004a67c0	service_cover_tax	function		aliases: tax_collector_visit_area
+004ab100	building_is_farm	function		aliases: building_field_check
+004dfb70	figure_provide_service	function		aliases: walker_service_tile
+004e5ef0	food_consumption_rate	function		aliases: food_ration_percent
+004e9440	god_sanctuary_active	function		aliases: god_sanctuary_finished
+00519910	city_crime_level	function		aliases: unrest_summary
+00564560	building_status_flags	function		aliases: building_problem_flags_update
+00566930	population_peak_update	function		aliases: population_record
+00566b90	city_health_step	function		aliases: health_step, health_step_toward_target
+00566c00	city_health_target_compute	function		aliases: health_target_update
+00566e70	sentiment_from_military	function		aliases: sentiment_military_service
+00566ef0	sentiment_from_debt	function		aliases: sentiment_debt
+00566f20	houses_crime_update	function		aliases: houses_unrest_update, sentiment_from_houses, sentiment_houses_food_crime
+005670d0	sentiment_from_unemployment	function		aliases: sentiment_unemployment
+00567120	sentiment_from_taxes	function		aliases: sentiment_taxes
+00567170	sentiment_from_wages	function		aliases: sentiment_wages
+005671a0	city_sentiment_update	function		aliases: sentiment_update
+00567620	population_sub	function		aliases: population_decrease, population_remove
+00567680	sentiment_reason_copy	function		aliases: sentiment_cause_copy
+00567910	city_military_manpower	function		aliases: houses_capacity_totals, military_recruit_targets
+00567c70	military_recruit_pass	function		aliases: cycle_formations_pass_14
+005695e0	wage_slider_init	function		aliases: wage_levels_install
+005697c0	tax_slider_init	function		aliases: tax_levels_install
+0056fd30	hippodrome_income_monthly	function		aliases: hippodrome_monthly_income
+005b9810	trade_export_sell	function		aliases: trade_export_one
+005b9da0	trade_import_pay	function		aliases: trade_pay_import
+005bfde0	houses_spawn_criminals	function		aliases: buildings_random_pass_45, crime_spawn_pass
+005e8578	g_vendor_goods_table	data	i32[78]	aliases: g_vendor_desc
+005f1680	g_adjacent_ring	data	i32[7][24]	aliases: building_ring_offsets
+005f84a8	tbl_plague_chance	data	i32[14]	aliases: plague_chance_by_health
+00641ed0	tbl_health_pop_bonus	data	i32[20]	aliases: g_health_small_city_bonus, health_pop_bonus
+00641f20	wage_sentiment	data	i32[6]	aliases: g_wage_sentiment
+00641f38	wage_levels	data	i32[6]	aliases: g_wage_levels
+00641f50	tax_levels_pct	data	i32[7]	aliases: g_tax_rate_levels
+006429e8	hippodrome_table	data	i32[35]	aliases: g_hippodrome_favor, g_hippodrome_table
+0065b9b0	goods_price	data	i32[36]	aliases: g_trade_price
+0065e898	tbl_criminal_unrest	data	i32[8]	aliases: g_crime_spawn_table
+00902cb4	g_map_entry_x	data	i16	aliases: g_land_entry
+00902d00	g_scenario_climate	data	u8	aliases: g_climate
+0091ec48	g_wind_direction	data	i32	aliases: year_random
+00c753b8	g_grid_wall_damage	data	u16[51984]	aliases: grid_wall_damage
+00ef60b0	g_building_type_disabled	data	u8[221]	aliases: g_type_curse
+00f2a988	g_difficulty	data	i32	aliases: difficulty
+00fe695c	tax_sentiment	data	i32[35]	aliases: g_tax_sentiment
+00fe6a6c	g_city_health_target	data	i32	aliases: g_health_target
+00fe6a70	g_city_health	data	i32	aliases: g_health
+00fe6a7c	g_population	data	i32	aliases: g_city_population
+00fe9148	g_emigrants_pending	data	i32	aliases: g_emigrants_accum
+00fe914c	g_immigrants_pending	data	i32	aliases: g_immigrants_accum
+00fe916c	g_year_end_flag	data	u8	aliases: g_yearly_growth_flag
+00fe9184	g_migration_rate	data	i32	aliases: g_migration_pct
+00feb0db	g_population_over_349_latch	data	u8	aliases: g_crime_enabled_latch, g_population_over_349, g_sentiment_latch
+010dfda8	g_city_food_list_count	data	i32	aliases: g_food_list_count
+010dfdac	g_city_food_list	data	i32[23]	aliases: g_food_list

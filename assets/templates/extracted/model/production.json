@@ -1,0 +1,687 @@
+{
+ "notes": [
+  "1 cycle = 51 ticks; 16 cycles per month",
+  "pct = employees*100/model employees (int)",
+  "ladders are pct >=100, >=75, >=50, >=25, >=1",
+  "stock_cap table: production.md",
+  "see docs/logic/production.md for exact pseudocode"
+ ],
+ "stock_cap": {
+  "500": [
+   "0x29",
+   "0x2A",
+   "0x32",
+   "0xD3"
+  ],
+  "300": [
+   "0x30",
+   "0x35",
+   "0x36",
+   "0x51",
+   "0x87",
+   "0x88"
+  ],
+  "800": [
+   "0x31",
+   "0x85",
+   "0xD5"
+  ],
+  "400": [
+   "0x37",
+   "0xD4"
+  ],
+  "600": [
+   "0xD8"
+  ],
+  "100000": [
+   "0x7A"
+  ],
+  "default": 200
+ },
+ "harvest_months_table": "0x005D9288",
+ "producers": [
+  {
+   "type": 31,
+   "name": "@{t:28:31}",
+   "output": 7,
+   "input": null,
+   "stock_field": null,
+   "growth": {
+    "step": 20,
+    "per_cycle": "pct*10/100 (x2 while +0xAB)",
+    "max": 1920,
+    "fn": "0x004A97D0/0x004A9720"
+   },
+   "harvest": {
+    "month": 6,
+    "amount": "ceil(((growth*100/1920)<<3)/100)*100, x1.5 if blessed",
+    "one_cart": true,
+    "fn": "0x004A9A30"
+   },
+   "workers_needed_irrigated": false,
+   "addresses": [
+    "0x00485360",
+    "0x0048CFB0",
+    "0x004A9AA0",
+    "0x004A9B00"
+   ],
+   "type_hex": "0x1f"
+  },
+  {
+   "type": 32,
+   "name": "@{t:28:32}",
+   "output": 6,
+   "same_as": 31,
+   "harvest_month": 3,
+   "type_hex": "0x20"
+  },
+  {
+   "type": 33,
+   "name": "@{t:28:33}",
+   "output": 5,
+   "same_as": 31,
+   "harvest_month": 3,
+   "type_hex": "0x21"
+  },
+  {
+   "type": 35,
+   "name": "@{t:28:35}",
+   "output": 12,
+   "input": null,
+   "employees": 0,
+   "growth": {
+    "step": 20,
+    "per_cycle": "0 if tend==0, 8 if tend<=80, 19 if tend>=81 (tend=+0xB6&0xFF; set 160 by grower, -1 per cycle)",
+    "max": 1920,
+    "fn": "0x004AA780"
+   },
+   "harvest": {
+    "month": 9,
+    "picked_by": "grower (figure 5)",
+    "load": "growth*100/1920 (0..100)",
+    "fn": "0x004AB080"
+   },
+   "rot": "end of month 11",
+   "addresses": [
+    "0x004A97D0",
+    "0x004A98C0",
+    "0x004AA6D0",
+    "0x004AA640"
+   ],
+   "type_hex": "0x23"
+  },
+  {
+   "type": 36,
+   "name": "@{t:28:36}",
+   "output": 13,
+   "input": null,
+   "employees": 0,
+   "growth": {
+    "step": 20,
+    "per_cycle": "0 if tend==0, 8 if tend<=80, 19 if tend>=81 (tend=+0xB6&0xFF; set 160 by grower, -1 per cycle)",
+    "max": 1920,
+    "fn": "0x004AA780"
+   },
+   "harvest": {
+    "month": 0,
+    "picked_by": "grower (figure 5)",
+    "load": "growth*100/1920 (0..100)",
+    "fn": "0x004AB080"
+   },
+   "rot": "end of month 2",
+   "addresses": [
+    "0x004A97D0",
+    "0x004A98C0",
+    "0x004AA6D0",
+    "0x004AA640"
+   ],
+   "type_hex": "0x24"
+  },
+  {
+   "type": 217,
+   "name": "@{t:28:217}",
+   "output": 8,
+   "input": null,
+   "employees": 0,
+   "growth": {
+    "step": 20,
+    "per_cycle": "0 if tend==0, 8 if tend<=80, 19 if tend>=81 (tend=+0xB6&0xFF; set 160 by grower, -1 per cycle)",
+    "max": 1920,
+    "fn": "0x004AA780"
+   },
+   "harvest": {
+    "month": 10,
+    "picked_by": "grower (figure 5)",
+    "load": "growth*100/1920 (0..100)",
+    "fn": "0x004AB080"
+   },
+   "rot": "never (bug)",
+   "addresses": [
+    "0x004A97D0",
+    "0x004A98C0",
+    "0x004AA6D0",
+    "0x004AA640"
+   ],
+   "type_hex": "0xd9"
+  },
+  {
+   "type": 37,
+   "name": "@{t:28:37}",
+   "output": [
+    12,
+    13
+   ],
+   "stock": {
+    "grapes": "+0xDC",
+    "olives": "+0x3C"
+   },
+   "stock_max": 500,
+   "interval_cycles": {
+    ">=100": 1,
+    ">=75": 4,
+    ">=50": 8,
+    ">=25": 16,
+    ">=1": 32
+   },
+   "pickers": {
+    ">=100": 4,
+    ">=75": 3,
+    ">=50": 2,
+    ">=25": 1,
+    ">=1": 0
+   },
+   "tenders": {
+    ">=100": 1,
+    ">=75": 1,
+    ">=50": 1,
+    ">=25": 1,
+    ">=1": 0
+   },
+   "trees_per_tender": 4,
+   "cart": {
+    "threshold": 100,
+    "amount": 100,
+    "blessed": 400
+   },
+   "addresses": [
+    "0x004AB210",
+    "0x004AAF60",
+    "0x0048CFB0"
+   ],
+   "type_hex": "0x25"
+  },
+  {
+   "type": 214,
+   "name": "@{t:28:214}",
+   "output": 8,
+   "same_as": 37,
+   "stock": {
+    "oranges": "+0x3C"
+   },
+   "type_hex": "0xd6"
+  },
+  {
+   "type": 41,
+   "name": "Carding Shed (sheep farm)",
+   "output": 14,
+   "animal": 49,
+   "herder": 30,
+   "stock": "+0x3C",
+   "stock_max": 500,
+   "interval_cycles": {
+    ">=100": 1,
+    ">=75": 4,
+    ">=50": 8,
+    ">=25": 16,
+    ">=1": 32
+   },
+   "max_herders": {
+    ">=100": 2,
+    ">=50": 1,
+    "else": 0
+   },
+   "per_animal": 100,
+   "animal_ready": "Figure+0x92>=100 (regrowth rate: open)",
+   "cart": {
+    "threshold": 100,
+    "amount": 100,
+    "blessed": 400
+   },
+   "addresses": [
+    "0x004F77A0",
+    "0x004F7F60",
+    "0x004F8050",
+    "0x004F7030",
+    "0x004F70B0"
+   ],
+   "type_hex": "0x29"
+  },
+  {
+   "type": 42,
+   "name": "Dairy (goat farm)",
+   "output": 4,
+   "animal": 50,
+   "herder": 31,
+   "same_as": 41,
+   "type_hex": "0x2a"
+  },
+  {
+   "type": 216,
+   "name": "@{t:28:216}",
+   "output": 3,
+   "stock": "+0x3C",
+   "stock_max": 600,
+   "interval_cycles": {
+    ">=100": 1,
+    ">=75": 4,
+    ">=50": 8,
+    ">=25": 16,
+    ">=1": 32
+   },
+   "max_ranchers": 2,
+   "per_cow": 200,
+   "slaughter_cycles": 16,
+   "halted_flag": "0x00FE933E",
+   "addresses": [
+    "0x004F9E90",
+    "0x004F9960"
+   ],
+   "type_hex": "0xd8"
+  },
+  {
+   "type": 46,
+   "name": "@{t:28:46}",
+   "output": 3,
+   "stock": "+0x3C",
+   "stock_max": 500,
+   "interval_cycles": {
+    ">=100": 1,
+    ">=75": 4,
+    ">=50": 16,
+    ">=25": 32,
+    ">=1": 64
+   },
+   "hunters": {
+    ">=100": 3,
+    ">=75": 2,
+    ">=50": 1,
+    ">=25": 1,
+    ">=1": 0
+   },
+   "per_trip": 100,
+   "cart": {
+    "threshold": ">0",
+    "amount": 100,
+    "blessed": 400
+   },
+   "addresses": [
+    "0x0048CFB0",
+    "0x004BE260"
+   ],
+   "type_hex": "0x2e"
+  },
+  {
+   "type": 44,
+   "name": "@{t:28:44}",
+   "output": 2,
+   "boat_build": {
+    "progress_per_cycle": {
+     ">=100": 10,
+     ">=75": 8,
+     ">=50": 6,
+     ">=25": 4,
+     ">=1": 2
+    },
+    "threshold": ">199"
+   },
+   "catch_ticks": {
+    ">=100": 204,
+    ">=75": 408,
+    ">=50": 612,
+    ">=25": 816,
+    ">=1": 1020
+   },
+   "catch": "wharf +0x3C := 100",
+   "cart": {
+    "threshold": 100,
+    "amount": 100,
+    "blessed": 400
+   },
+   "addresses": [
+    "0x0048CFB0",
+    "0x004B5F10",
+    "0x004B63A8"
+   ],
+   "type_hex": "0x2c"
+  },
+  {
+   "type": 45,
+   "name": "@{t:28:45}",
+   "output": 1,
+   "stock_max": 500,
+   "interval_cycles": {
+    ">=100": 1,
+    ">=75": 4,
+    ">=50": 8,
+    ">=25": 16,
+    ">=1": 32
+   },
+   "max_divers": {
+    ">=100": 1,
+    ">=75": 1,
+    ">=50": 1,
+    ">=25": 1,
+    ">=1": 0
+   },
+   "dive_ticks": 408,
+   "unload_ticks": 200,
+   "per_trip": 100,
+   "cart": {
+    "threshold": 100,
+    "amount": 100,
+    "blessed": 400
+   },
+   "addresses": [
+    "0x0048CFB0",
+    "0x004302D0",
+    "0x00430400"
+   ],
+   "type_hex": "0x2d"
+  },
+  {
+   "type": 51,
+   "name": "@{t:28:51}",
+   "output": 9,
+   "spawn_every_cycles": 5,
+   "cutters": {
+    ">=100": 3,
+    ">=75": 2,
+    ">=50": 2,
+    ">=25": 1,
+    ">=1": 1
+   },
+   "room": "500-stock, /25 per cutter",
+   "chop_ticks": 408,
+   "per_trip": 25,
+   "cart": {
+    "threshold": 100,
+    "amount": 100,
+    "blessed": 400,
+    "action": 17
+   },
+   "addresses": [
+    "0x0048CFB0",
+    "0x004BF060"
+   ],
+   "type_hex": "0x33"
+  },
+  {
+   "type": 48,
+   "name": "@{t:28:48}",
+   "output": 23,
+   "input": "silver ore (miners)",
+   "stock_max": 300,
+   "miners": {
+    ">=100": 3,
+    ">=75": 2,
+    ">=50": 1,
+    ">=25": 1,
+    ">=1": 0
+   },
+   "mint_rate": {
+    ">=100": 6,
+    ">=75": 4,
+    ">=50": 3,
+    ">=25": 1,
+    ">=1": 0
+   },
+   "mint": {
+    "silver_per_batch": 200,
+    "drachmas": 100,
+    "blessed": 400,
+    "progress_max": 100
+   },
+   "mine_ticks": 408,
+   "per_trip": 25,
+   "resource_mask": "0x200002",
+   "addresses": [
+    "0x0048CFB0",
+    "0x004C1310"
+   ],
+   "type_hex": "0x30"
+  },
+  {
+   "type": 50,
+   "name": "@{t:28:50}",
+   "output": 10,
+   "stock_max": 500,
+   "miners": {
+    ">=100": 3,
+    ">=75": 2,
+    ">=50": 1,
+    ">=25": 1,
+    ">=1": 0
+   },
+   "mine_ticks": 408,
+   "per_trip": 25,
+   "resource_mask": "0x100002",
+   "cart": {
+    "threshold": 100,
+    "amount": 100,
+    "blessed": 400
+   },
+   "type_hex": "0x32"
+  },
+  {
+   "type": 211,
+   "name": "Refinery (orichalc)",
+   "output": 17,
+   "same_as": 50,
+   "resource_mask": "0x300000",
+   "type_hex": "0xd3"
+  },
+  {
+   "type": 49,
+   "name": "Masonry Shop (marble)",
+   "output": 11,
+   "stock_max": 800,
+   "cutters": {
+    ">=25": 1,
+    "else": 0
+   },
+   "cart_period_cycles": "trunc(1600/pct) (x66/100 with god record 13 sanctuary)",
+   "block": 800,
+   "cut_ticks": {
+    "normal": 1632,
+    "god13": 1077
+   },
+   "resource_mask": "0x20000",
+   "cart": {
+    "threshold": 100,
+    "amount": 100,
+    "blessed": 400,
+    "action": 17
+   },
+   "addresses": [
+    "0x0048CFB0",
+    "0x0048F8CA",
+    "0x004C1310"
+   ],
+   "type_hex": "0x31"
+  },
+  {
+   "type": 213,
+   "name": "@{t:28:213}",
+   "output": 16,
+   "same_as": 49,
+   "resource_mask": "0x120000",
+   "type_hex": "0xd5"
+  },
+  {
+   "type": 53,
+   "name": "@{t:28:53}",
+   "output": 21,
+   "input": 12,
+   "input_code": 4,
+   "input_stock": "+0x3C",
+   "input_cap": 300,
+   "progress": {
+    "step": 20,
+    "per_cycle": "pct/10",
+    "threshold": 320,
+    "needs_input_min": 100
+   },
+   "cart": {
+    "amount": 100,
+    "blessed": "max(4*amount,400)",
+    "consumes_input": 100
+   },
+   "addresses": [
+    "0x00485360",
+    "0x004855D0",
+    "0x00485610",
+    "0x00485310",
+    "0x0048CFB0"
+   ],
+   "type_hex": "0x35"
+  },
+  {
+   "type": 54,
+   "name": "@{t:28:54}",
+   "output": 20,
+   "input": 13,
+   "input_code": 5,
+   "input_stock": "+0x3C",
+   "input_cap": 300,
+   "progress": {
+    "step": 20,
+    "per_cycle": "pct/10",
+    "threshold": 320,
+    "needs_input_min": 100
+   },
+   "cart": {
+    "amount": 100,
+    "blessed": "max(4*amount,400)",
+    "consumes_input": 100
+   },
+   "addresses": [
+    "0x00485360",
+    "0x004855D0",
+    "0x00485610",
+    "0x00485310",
+    "0x0048CFB0"
+   ],
+   "type_hex": "0x36"
+  },
+  {
+   "type": 55,
+   "name": "@{t:28:55}",
+   "output": 19,
+   "input": 10,
+   "input_code": 3,
+   "input_stock": "+0x3C",
+   "input_cap": 400,
+   "progress": {
+    "step": 20,
+    "per_cycle": "pct/10",
+    "threshold": 320,
+    "needs_input_min": 400
+   },
+   "cart": {
+    "amount": 400,
+    "blessed": "max(4*amount,400)",
+    "consumes_input": 400
+   },
+   "addresses": [
+    "0x00485360",
+    "0x004855D0",
+    "0x00485610",
+    "0x00485310",
+    "0x0048CFB0"
+   ],
+   "type_hex": "0x37"
+  },
+  {
+   "type": 135,
+   "name": "@{t:28:135}",
+   "output": 18,
+   "input": 10,
+   "input_code": 3,
+   "input_stock": "+0x3C",
+   "input_cap": 300,
+   "progress": {
+    "step": 20,
+    "per_cycle": "pct/10",
+    "threshold": 320,
+    "needs_input_min": 100
+   },
+   "cart": {
+    "amount": 100,
+    "blessed": "max(4*amount,400)",
+    "consumes_input": 100
+   },
+   "addresses": [
+    "0x00485360",
+    "0x004855D0",
+    "0x00485610",
+    "0x00485310",
+    "0x0048CFB0"
+   ],
+   "type_hex": "0x87"
+  },
+  {
+   "type": 212,
+   "name": "@{t:28:212}",
+   "output": 22,
+   "input": [
+    9,
+    15
+   ],
+   "input_code": 2,
+   "input_stock": "+0x3C wood; +0x74 horses (hypothesis)",
+   "output_stock": "+0xDC",
+   "output_cap": 400,
+   "progress": {
+    "step": 31,
+    "per_cycle": {
+     ">=100": 10,
+     ">=75": 8,
+     ">=50": 6,
+     ">=25": 4,
+     ">=1": 2
+    },
+    "threshold": ">319",
+    "consumes_wood": 100
+   },
+   "halted_flag": "0x00FE933A",
+   "addresses": [
+    "0x0048CFB0",
+    "0x00495B20"
+   ],
+   "type_hex": "0xd4"
+  },
+  {
+   "type": 133,
+   "name": "@{t:28:133}",
+   "output": 15,
+   "input": 7,
+   "input_code": 1,
+   "input_stock": "+0x3C",
+   "input_cap": 800,
+   "max_horses": "pct*6/100 (<=6)",
+   "feeding": {
+    "when": "month_tick==15",
+    "per_horse": "model col 8 (10)"
+   },
+   "breeding": {
+    "when": "even months",
+    "cost_wheat": 50,
+    "requires_stock": "(horses+1)*10*6"
+   },
+   "addresses": [
+    "0x0048CFB0"
+   ],
+   "type_hex": "0x85"
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+# Open Play Sandbox (fresh write dir), the Husbandry page's four menus (2026-10-31, docs/campaign-format.md
+# "Open play"). DIR = the run dir; --seconds 75 --state-log /dev/null. The Elis tribute message pops at tick 102 and is
+# dismissed before the Farms menu. Result: Farms = Wheat Farm only; Hunting/fishing = Fishery, Hunting Lodge (no urchin
+# quay); Herding = Carding Shed, Sheep, Dairy, Goat; Orchards = Growers' Lodge, Grapevine, Olive Tree.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:move 622,82; 46.5:click 622,82; 49:move 700,590; 50:shot DIR/f0.bmp; 51:move 676,345; 51.5:click 676,345; 53:shot DIR/tribute.bmp; 53.5:move 567,573; 54:click 567,573; 56:move 676,345; 56.5:click 676,345; 58:shot DIR/farms.bmp; 59:rclick 300,300; 61:move 747,400; 61.5:click 747,400; 63:shot DIR/fishing.bmp; 64:rclick 300,300; 66:move 676,400; 66.5:click 676,400; 68:shot DIR/animals.bmp; 69:rclick 300,300; 71:move 747,345; 71.5:click 747,345; 73:shot DIR/orchards.bmp

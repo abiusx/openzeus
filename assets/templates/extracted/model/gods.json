@@ -1,0 +1,575 @@
+{
+ "_source": "Zeus.exe (GOG). See docs/logic/religion.md. All tables verified from code/data unless the field name ends in _hyp.",
+ "_fields": {
+  "id": "god id = index of the god record (0x00EF5DD8 + 52*id), +0x14",
+  "sanctuary_type": "BUILD_* type, god_sanctuary_type 0x004E8B40 (Poseidon in a Poseidon game: 98 = BUILD_LARGE_SANC_POSEIDON2)",
+  "help_threshold": "FUN_004E6040: help/prayer allowed while god.prayer_counter (+0x0C) <= this",
+  "help_cost_auto": "FUN_004E60B0(flag=0): added to +0x0C by an automatic blessing",
+  "help_cost_prayer": "FUN_004E60B0(flag=1): added to +0x0C by a prayer (granted or queued)",
+  "jealousy_weight": "0x0063B01C[id] + 1, weight in the jealous-god draw (FUN_004F0B50)",
+  "power": "FUN_004EE710: god-vs-god fight rank (higher wins unless a special rule applies)",
+  "curse_months_by_difficulty": "0x0063AEAC[id*5 + difficulty]; curse length in months (stored <<4 in month_advance calls)",
+  "curse_types": "building types a visiting god blesses / an attacking god curses (FUN_004E9310 -> per-god predicates)",
+  "visit_bless_chance": "FUN_004E9290: percent numerator; chance = this / building_size (0x005F6368[type*32])",
+  "monster": "FUN_00586C90: the god's monster when the god is an unfriendly god of the scenario",
+  "good_monster": "FUN_00586D50: monster that serves the city when the god's sanctuary is active",
+  "oracle": "FUN_004EA630: oracle counter +0x10 costs/threshold (Zeus, Apollo only)"
+ },
+ "gods": [
+  {
+   "id": 0,
+   "name": "@{t:5:139}",
+   "sanctuary_type": 84,
+   "sanctuary_name": "@{t:28:84}",
+   "help_threshold": 26,
+   "help_cost_auto": 24,
+   "help_cost_prayer": 36,
+   "jealousy_weight": 1,
+   "power": 14,
+   "curse_months_by_difficulty": [
+    1,
+    2,
+    4,
+    6,
+    9
+   ],
+   "curse_types": "union of all other gods' lists",
+   "visit_bless_chance": 10,
+   "monster": 3,
+   "monster_name": "@{t:190:3}",
+   "good_monster": null,
+   "blessing": "prayer only (no automatic help): Zeus figure attacks the strongest enemy army (action 0x0F)",
+   "auto_help": false,
+   "passive": [
+    "monthly: every active world city +0x164 += 1 up to 100 (FUN_004E6230)",
+    "defends against any attacking god (event 0x1B)",
+    "Oracle: counter +0x10 cost 10 (auto) / 18 (consult), threshold 14"
+   ],
+   "attack": {
+    "init": "FUN_004EC090",
+    "budget_0x120": 3,
+    "budget_0x132": 10,
+    "budget_0x12C": 10,
+    "kind_0x13C": 10,
+    "trade_block": "both (0x00FEAED8,0x00FEAEDA = 0xC0)",
+    "target": "palace (type 117)"
+   },
+   "oracle": {
+    "cost_auto": 10,
+    "cost_consult": 18,
+    "threshold": 14
+   }
+  },
+  {
+   "id": 1,
+   "name": "@{t:157:1}",
+   "sanctuary_type": 85,
+   "sanctuary_type_poseidon_game": 98,
+   "help_threshold": 14,
+   "help_cost_auto": 12,
+   "help_cost_prayer": 18,
+   "jealousy_weight": 4,
+   "power": 13,
+   "curse_months_by_difficulty": [
+    1,
+    2,
+    4,
+    6,
+    9
+   ],
+   "curse_types": [
+    44,
+    45,
+    133
+   ],
+   "visit_bless_chance": 25,
+   "monster": 1,
+   "monster_name": "@{t:190:1}",
+   "good_monster": 1,
+   "blessing": "seafood (urchin 1, fish 2) into the emptiest granary: free space capped 3200, carriers of 400 (action 0x15, FUN_004C4910)",
+   "auto_help": "when FUN_00569310 (city food need) is true and urchin+fish free space >= 3200",
+   "passive": [
+    "monthly: spawns the Kraken (monster 1) if none and sanctuary flag 0xC4&8 clear (FUN_004E6260)"
+   ],
+   "attack": {
+    "init": "FUN_004EC180",
+    "budget_0x120": 3,
+    "budget_0x132": 10,
+    "budget_0x12C": 0,
+    "kind_0x13C": 1,
+    "trade_block": "0x00FEAED8 = 0xC0 (sea, hypothesis)",
+    "arrives": "sea entry"
+   }
+  },
+  {
+   "id": 2,
+   "name": "@{t:157:2}",
+   "sanctuary_type": 86,
+   "help_threshold": 14,
+   "help_cost_auto": 12,
+   "help_cost_prayer": 18,
+   "jealousy_weight": 1,
+   "power": 10,
+   "curse_months_by_difficulty": [
+    1,
+    2,
+    4,
+    6,
+    9
+   ],
+   "curse_types": [
+    31,
+    32,
+    33
+   ],
+   "visit_bless_chance": 33,
+   "monster": 5,
+   "monster_name": "@{t:87:5}",
+   "good_monster": null,
+   "blessing": "farm food (wheat 7, carrots 5, onions 6) 3200 units, carriers of 400 (action 0x17, FUN_004C4F20)",
+   "auto_help": "when FUN_00569310 true and wheat+carrot+onion free space >= 3200",
+   "attack": {
+    "init": "FUN_004EC310",
+    "budget_0x120": 3,
+    "budget_0x132": 10,
+    "budget_0x12C": 10,
+    "kind_0x13C": 0,
+    "special": "kills every second sheep/goat figure (types 0x31,0x32)"
+   }
+  },
+  {
+   "id": 3,
+   "name": "@{t:157:3}",
+   "sanctuary_type": 87,
+   "help_threshold": 14,
+   "help_cost_auto": 12,
+   "help_cost_prayer": 18,
+   "jealousy_weight": 1,
+   "power": 7,
+   "curse_months_by_difficulty": [
+    1,
+    1,
+    2,
+    2,
+    3
+   ],
+   "curse_types": [
+    79,
+    80,
+    81,
+    82,
+    202,
+    203,
+    205,
+    207
+   ],
+   "visit_bless_chance": 50,
+   "monster": 10,
+   "monster_name": "@{t:87:10}",
+   "good_monster": null,
+   "blessing": "cures all illness (action 0x19)",
+   "auto_help": "automatic: a house with plague exists (b+0x05 && b+0x85); prayer: granted directly when city+0x18 < 100, else needs a plagued house",
+   "passive": [
+    "monthly: Apollo attacks a monster near the sanctuary (FUN_004E6440)",
+    "defends against monster attacks (event 0x1A)",
+    "+20 to the games-win rating FUN_00565D40 (hypothesis: pan-Hellenic games)",
+    "Oracle: cost 8 / 16, threshold 12"
+   ],
+   "attack": {
+    "init": "FUN_004EC4A0",
+    "budget_0x120": 2,
+    "budget_0x132": 10,
+    "budget_0x12C": 7,
+    "kind_0x13C": 6,
+    "target": "palace / highest house",
+    "special_on_palace": "FUN_004481B0(0) (plague, hypothesis)"
+   },
+   "oracle": {
+    "cost_auto": 8,
+    "cost_consult": 16,
+    "threshold": 12
+   }
+  },
+  {
+   "id": 4,
+   "name": "@{t:157:4}",
+   "sanctuary_type": 88,
+   "help_threshold": 14,
+   "help_cost_auto": 12,
+   "help_cost_prayer": 18,
+   "jealousy_weight": 2,
+   "power": 8,
+   "curse_months_by_difficulty": [
+    1,
+    2,
+    4,
+    6,
+    9
+   ],
+   "curse_types": [
+    46
+   ],
+   "visit_bless_chance": 50,
+   "monster": 6,
+   "monster_name": "@{t:190:6}",
+   "good_monster": null,
+   "blessing": "meat (resource 3) to a granary (action 0x1B / 0x20, FUN_004C5420)",
+   "auto_help": "when FUN_00569310 true and meat free space >= 2400",
+   "passive": [
+    "Amazons (FUN_0056AF80, military-sentiment)"
+   ],
+   "attack": {
+    "init": "FUN_004EC410",
+    "budget_0x120": 2,
+    "budget_0x132": 10,
+    "budget_0x12C": 10,
+    "kind_0x13C": 0,
+    "special": "FUN_00504650(4,...) spawns attackers at the land entry"
+   }
+  },
+  {
+   "id": 5,
+   "name": "@{t:72:5}",
+   "sanctuary_type": 89,
+   "help_threshold": 122,
+   "help_cost_auto": 120,
+   "help_cost_prayer": 180,
+   "jealousy_weight": 4,
+   "power": 5,
+   "curse_months_by_difficulty": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "curse_types": [],
+   "visit_bless_chance": 0,
+   "monster": 7,
+   "monster_name": "@{t:190:7}",
+   "good_monster": 7,
+   "blessing": "joins a military expedition (event type 0x18 in state 6) (action 0x22)",
+   "auto_help": "when the expedition strength gap is >= 20%",
+   "passive": [
+    "visit spawns the Dragon (monster 7) as a city monster (FUN_004E94C0)"
+   ],
+   "attack": {
+    "init": "FUN_004EC560",
+    "budget_0x120": 4,
+    "budget_0x132": 0,
+    "budget_0x12C": 10,
+    "kind_0x13C": 5,
+    "special": "FUN_00504650(10,...) spawns attackers at the land entry"
+   }
+  },
+  {
+   "id": 6,
+   "name": "@{t:157:6}",
+   "sanctuary_type": 90,
+   "help_threshold": 20,
+   "help_cost_auto": 18,
+   "help_cost_prayer": 27,
+   "jealousy_weight": 3,
+   "power": 3,
+   "curse_months_by_difficulty": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "curse_types": "houses (types 2..14) with population and no b+0x85",
+   "visit_bless_chance": 10,
+   "monster": 9,
+   "monster_name": "@{t:87:9}",
+   "good_monster": null,
+   "blessing": "fills vacant housing (action 0x19 at a tile from FUN_00547890)",
+   "auto_help": "when vacancy city+0x38 >= city+0x34 / 2",
+   "passive": [
+    "house_param cols 0 and 1 (devolve/evolve desirability) -10 (house_param 0x00433D80)",
+    "emigration stopped (FUN_00486AB0)",
+    "beats Ares, Hephaestus, Hermes, Dionysus in god fights (FUN_004EE5B0)",
+    "defends against those four (event 0x1B)"
+   ],
+   "attack": {
+    "init": "FUN_004EC650",
+    "budget_0x120": 0,
+    "budget_0x132": 0,
+    "budget_0x12C": 0,
+    "kind_0x13C": null,
+    "special": "action 0x3F/0x40"
+   }
+  },
+  {
+   "id": 7,
+   "name": "@{t:157:7}",
+   "sanctuary_type": 91,
+   "help_threshold": 32,
+   "help_cost_auto": 30,
+   "help_cost_prayer": 45,
+   "jealousy_weight": 1,
+   "power": 2,
+   "curse_months_by_difficulty": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "curse_types": [],
+   "visit_bless_chance": 0,
+   "monster": 4,
+   "monster_name": "@{t:190:4}",
+   "good_monster": null,
+   "blessing": "fulfils an outstanding request",
+   "auto_help": "when a request event can be fulfilled",
+   "passive": [
+    "figure model col 8 x133/100 for carts(4), warehousemen(9), oxcarts(0x1C), deliverymen(0x24); x150/100 for caravans/tradeships(0x13..0x15) (figure_type_value)",
+    "trader spawn delay x66/100 (cities_trade_update)",
+    "visits enter at the land entry point"
+   ],
+   "attack": {
+    "init": "FUN_004EC6A0",
+    "budget_0x120": 0,
+    "budget_0x132": 0,
+    "budget_0x12C": 10,
+    "kind_0x13C": 19,
+    "trade_block": "0x00FEAEDA = 0xC0 (land, hypothesis)"
+   }
+  },
+  {
+   "id": 8,
+   "name": "@{t:157:8}",
+   "sanctuary_type": 92,
+   "help_threshold": 20,
+   "help_cost_auto": 18,
+   "help_cost_prayer": 27,
+   "jealousy_weight": 2,
+   "power": 9,
+   "curse_months_by_difficulty": [
+    1,
+    2,
+    4,
+    6,
+    9
+   ],
+   "curse_types": [
+    41,
+    54
+   ],
+   "visit_bless_chance": 50,
+   "monster": 0,
+   "monster_name": "@{t:190:0}",
+   "good_monster": null,
+   "blessing": "olives (13) and olive oil (20); 8 grower figures (action 0x25/0x26)",
+   "auto_help": "when city+0x18A4+city+0x1934 < 400 and a house of type 7..14 exists, and free space for oil/olives >= 1600",
+   "passive": [
+    "soldiers (figure types 0xB,0xC,0xD,0x45) model cols 4 and 0x12 +4 (figure_type_value)",
+    "monthly: Athena fights an invading army (FUN_004E6340)",
+    "olive/oil goods available (FUN_005BA890)"
+   ],
+   "attack": {
+    "init": "FUN_004EC3B0",
+    "budget_0x120": 3,
+    "budget_0x132": 10,
+    "budget_0x12C": 7,
+    "kind_0x13C": 3,
+    "special_on_hit": "curses walls (130) and towers (132)"
+   }
+  },
+  {
+   "id": 9,
+   "name": "@{t:157:9}",
+   "sanctuary_type": 93,
+   "help_threshold": 32,
+   "help_cost_auto": 30,
+   "help_cost_prayer": 45,
+   "jealousy_weight": 1,
+   "power": 4,
+   "curse_months_by_difficulty": [
+    1,
+    2,
+    4,
+    6,
+    9
+   ],
+   "curse_types": [
+    55,
+    135
+   ],
+   "visit_bless_chance": 25,
+   "monster": 8,
+   "monster_name": "@{t:87:8}",
+   "good_monster": 8,
+   "blessing": "Talos (monster 8) defends the city",
+   "auto_help": "when an enemy army is stronger than the city's (FUN_005687A0)",
+   "passive": [
+    "building model col 6 (fire risk) = 0 (model_building_value 0x00433D50)",
+    "bronze goods available (FUN_005BA890)"
+   ],
+   "attack": {
+    "init": "FUN_004EC5F0",
+    "budget_0x120": 2,
+    "budget_0x132": 10,
+    "budget_0x12C": 5,
+    "kind_0x13C": 2
+   }
+  },
+  {
+   "id": 10,
+   "name": "@{t:157:10}",
+   "sanctuary_type": 94,
+   "help_threshold": 26,
+   "help_cost_auto": 24,
+   "help_cost_prayer": 36,
+   "jealousy_weight": 3,
+   "power": 1,
+   "curse_months_by_difficulty": [
+    1,
+    2,
+    4,
+    6,
+    9
+   ],
+   "curse_types": [
+    53
+   ],
+   "visit_bless_chance": 25,
+   "monster": 11,
+   "monster_name": "Maenads",
+   "good_monster": null,
+   "blessing": "wine (21) (action 0x2A, FUN_004C51E0)",
+   "auto_help": "when city wine stock < 400 and a house needing wine exists and wine free space >= 1600",
+   "passive": [
+    "house_param col 14 (crime increment) = 0",
+    "house crime -20 per update instead of the increment (FUN_00566F20)",
+    "grapes/wine goods available (FUN_005BA890)"
+   ],
+   "attack": {
+    "init": "FUN_004EC710",
+    "budget_0x120": 0,
+    "budget_0x132": 0,
+    "budget_0x12C": 0,
+    "kind_0x13C": null,
+    "special": "spawns 3 monster figures (type 0x44) next to him, then action 0x3F/0x40"
+   }
+  },
+  {
+   "id": 11,
+   "name": "@{t:72:11}",
+   "sanctuary_type": 95,
+   "help_threshold": 20,
+   "help_cost_auto": 18,
+   "help_cost_prayer": 27,
+   "jealousy_weight": 1,
+   "power": 12,
+   "curse_months_by_difficulty": [
+    1,
+    2,
+    4,
+    6,
+    9
+   ],
+   "curse_types": [
+    48,
+    50,
+    122
+   ],
+   "visit_bless_chance": 33,
+   "monster": 2,
+   "monster_name": "@{t:87:2}",
+   "good_monster": 2,
+   "blessing": "money: 8 miner figures (type 0x3E) dig silver (action 0x2C/0x2D)",
+   "auto_help": "when treasury city+0x0C < 1 and (no active city with +0x164 >= 50 and +0x175 == 0, else 50% draw)",
+   "passive": [
+    "monthly: spawns Cerberus (monster 2) if none (FUN_004E62D0)"
+   ],
+   "attack": {
+    "init": "FUN_004EC240",
+    "budget_0x120": 3,
+    "budget_0x132": 10,
+    "budget_0x12C": 10,
+    "kind_0x13C": 4,
+    "special_on_hit": "global walker block 0x00EF6163 = 4"
+   }
+  },
+  {
+   "id": 12,
+   "name": "@{t:72:12}",
+   "sanctuary_type": 96,
+   "help_threshold": 20,
+   "help_cost_auto": 18,
+   "help_cost_prayer": 27,
+   "jealousy_weight": 6,
+   "power": 11,
+   "curse_months_by_difficulty": [
+    1,
+    2,
+    4,
+    6,
+    9
+   ],
+   "curse_types": [
+    214,
+    216
+   ],
+   "visit_bless_chance": 33,
+   "monster": 12,
+   "monster_name": "@{t:190:12}",
+   "good_monster": null,
+   "blessing": "restocks agoras",
+   "auto_help": "when agoras run low (FUN_004E8430)",
+   "passive": [
+    "births +3 points (FUN_00566D40)",
+    "beats Zeus in god fights; defends against Zeus (event 0x1B)",
+    "oranges goods available (FUN_005BA890)"
+   ],
+   "attack": {
+    "init": "FUN_004EC850",
+    "budget_0x120": 3,
+    "budget_0x132": 10,
+    "budget_0x12C": 10,
+    "kind_0x13C": 9,
+    "special": "kills every second cattle figure (type 0x4C)"
+   }
+  },
+  {
+   "id": 13,
+   "name": "@{t:72:13}",
+   "sanctuary_type": 97,
+   "help_threshold": 14,
+   "help_cost_auto": 12,
+   "help_cost_prayer": 18,
+   "jealousy_weight": 1,
+   "power": 6,
+   "curse_months_by_difficulty": [
+    1,
+    2,
+    4,
+    6,
+    9
+   ],
+   "curse_types": [
+    51,
+    211
+   ],
+   "visit_bless_chance": 33,
+   "monster": 13,
+   "monster_name": "@{t:87:13}",
+   "good_monster": null,
+   "blessing": "supplies a construction project (FUN_004E8710)",
+   "auto_help": "when a monument under construction lacks materials",
+   "passive": [
+    "artisans' guild sends 2x artisans (FUN_0048CAF0)",
+    "marble (49) / black marble (213) quarry production period x66/100 (buildings_spawn_walkers)"
+   ],
+   "attack": {
+    "init": "FUN_004EC950",
+    "budget_0x120": 2,
+    "budget_0x132": 10,
+    "budget_0x12C": 10,
+    "kind_0x13C": 2
+   }
+  }
+ ]
+}

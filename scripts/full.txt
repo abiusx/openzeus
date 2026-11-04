@@ -1,0 +1,770 @@
+# Full sandbox city: the boom block plus every implemented feature, built in phases.
+# Wave 1: elite district (villas) with its chains: wine, armor (copper -> foundry -> armory), horses.
+# its trade wave uses data/trade.json's partners (Sardis, Corinth...), not the sandbox's own empire
+empire off
+include boom.txt
+# --- supply chains for the elite district
+# horse ranches (eat wheat delivered by carts): each a 3x3 house + a 4x4 corral the horses stay in (0x00637E60)
+build horse_ranch 167 137 w     # corral 163..166 x 137..140, west of the house
+build horse_ranch 171 140       # corral east (the default), 174..177 x 139..142
+# grapevines in rows next to the growers' lodges (walking rows in between), winery on the spine
+
+build grapevine 149 136
+build grapevine 150 136
+build grapevine 151 136
+build grapevine 152 136
+build grapevine 153 136
+build grapevine 154 136
+build grapevine 155 136
+build grapevine 156 136
+build grapevine 157 136
+build grapevine 147 138
+build grapevine 148 138
+build grapevine 149 138
+build grapevine 150 138
+build grapevine 151 138
+build grapevine 152 138
+build grapevine 153 138
+build grapevine 154 138
+build grapevine 155 138
+build grapevine 156 138
+build grapevine 157 138
+build grapevine 149 140
+build grapevine 150 140
+build grapevine 151 140
+build grapevine 152 140
+build grapevine 153 140
+build grapevine 154 140
+build grapevine 155 140
+build grapevine 156 140
+build winery 144 137
+build growers_lodge 149 128
+build growers_lodge 147 139
+build winery 144 139
+# more food for a bigger city: four farms along the spine
+build wheat_farm 137 112
+build onion_farm 137 115
+build carrot_farm 137 118
+build wheat_farm 137 121
+# a farm road through the sheep pasture (fleece is in surplus; food is not)
+road 157 111 157 129
+build wheat_farm 158 115
+build onion_farm 154 118
+build carrot_farm 154 121
+build wheat_farm 158 121
+build wheat_farm 154 124
+build onion_farm 158 124
+build carrot_farm 154 127
+build wheat_farm 158 127
+build maintenance 155 112
+# bronze: clear the forest south of the city, road down to the copper rock, foundry next to it
+clear 136 164 136 198
+clear 134 197 135 198
+clear 137 192 138 193
+road 136 164 136 198
+build roadblock 136 164
+build foundry 134 197
+build maintenance 137 192
+build armory 137 170
+build armory 137 172
+build armory 137 177
+build maintenance 137 175
+build maintenance 137 183
+
+# --- more olive oil: an orchard on the meadow west of the spine with its own lodge and press
+build growers_lodge 134 112
+road 136 111 136 100
+build growers_lodge 137 102
+build growers_lodge 137 106
+build oil_press 134 116
+build oil_press 134 118
+build oil_press 134 120
+build olive_tree 124 102
+build olive_tree 125 102
+build olive_tree 126 102
+build olive_tree 127 102
+build olive_tree 128 102
+build olive_tree 125 104
+build olive_tree 126 104
+build olive_tree 127 104
+build olive_tree 128 104
+build olive_tree 129 104
+build olive_tree 132 104
+build olive_tree 124 106
+build olive_tree 125 106
+build olive_tree 126 106
+build olive_tree 127 106
+build olive_tree 128 106
+build olive_tree 129 106
+build olive_tree 130 106
+build olive_tree 131 106
+build olive_tree 132 106
+build olive_tree 133 106
+build olive_tree 134 106
+build olive_tree 124 108
+build olive_tree 125 108
+build olive_tree 126 108
+build olive_tree 128 108
+build olive_tree 129 108
+build olive_tree 130 108
+build olive_tree 131 108
+build olive_tree 132 108
+build olive_tree 133 108
+build olive_tree 128 110
+build olive_tree 129 110
+build olive_tree 130 110
+build olive_tree 131 110
+build olive_tree 132 110
+build olive_tree 133 110
+build olive_tree 134 110
+# --- second foundry on the copper (more bronze for the armories)
+clear 136 199 136 201
+clear 134 200 135 201
+road 136 198 136 201
+build foundry 134 200
+clear 132 202 136 206
+road 136 201 136 204
+road 136 204 134 204
+build foundry 132 203
+# --- worker district north of the industry: villas need a big working class (elite residents
+# do not work). Ring road x 162..186, y 88..100, connected to the farm road at y=111.
+road 150 111 162 111
+road 162 111 162 100
+clear 186 88 186 100
+road 162 88 186 100
+road 186 100 162 88
+build roadblock 162 101
+build maintenance 160 90
+build maintenance 187 96
+build maintenance 160 96
+build house 163 89
+build house 165 89
+build house 167 89
+build house 169 89
+build house 171 89
+build house 173 89
+build house 175 89
+build house 177 89
+build house 179 89
+build house 181 89
+build house 183 89
+build house 163 98
+build house 165 98
+build house 167 98
+build house 169 98
+build house 171 98
+build house 173 98
+build house 175 98
+build house 177 98
+build house 179 98
+build house 181 98
+build house 183 98
+build house 163 91
+clear 184 91 185 92
+build house 184 91
+build house 163 93
+build house 184 93
+build house 163 95
+build house 184 95
+build stone_circle 165 91
+build baths 169 91
+build fish_pond 173 91
+build stone_circle 177 91
+build gardens 181 91
+build gardens 182 91
+build gardens 181 92
+build gardens 182 92
+build gardens 165 95
+build gardens 166 95
+build gardens 167 95
+build gardens 168 95
+build gardens 169 95
+build gardens 170 95
+build gardens 171 95
+build gardens 172 95
+build gardens 173 95
+build gardens 174 95
+build gardens 175 95
+build gardens 176 95
+build gardens 177 95
+build gardens 178 95
+build gardens 179 95
+build gardens 180 95
+build gardens 181 95
+build gardens 182 95
+build gardens 165 96
+build gardens 166 96
+build gardens 167 96
+build gardens 168 96
+build gardens 169 96
+build gardens 170 96
+build gardens 171 96
+build gardens 172 96
+build gardens 173 96
+build gardens 174 96
+build gardens 175 96
+build gardens 176 96
+build gardens 177 96
+build gardens 178 96
+build gardens 179 96
+build gardens 180 96
+build gardens 181 96
+build gardens 182 96
+build gardens 165 97
+build gardens 166 97
+build gardens 181 97
+build gardens 182 97
+# services north (touching y=88) and south (touching y=100)
+build fountain 163 86
+build agora 165 86 up
+build food_vendor 165 86
+build fleece_vendor 167 86
+build oil_vendor 169 86
+build podium 171 86
+build fountain 173 86
+build guardpost 175 86
+build tax_office 177 86
+build gymnasium 179 85
+build fountain 182 86
+build podium 184 86
+build theatre 163 101
+build agora 168 100 down
+build food_vendor 168 101
+build fleece_vendor 170 101
+build oil_vendor 172 101
+build podium 174 101
+build gymnasium 176 101
+build fountain 179 101
+build tax_office 181 101
+build fountain 183 101
+build winery 187 98
+build winery 187 100
+clear 187 90 191 94
+build theatre 187 90
+status
+until population 2000 12
+# healers for the worker district (plague: services.md §5)
+build infirmary 158 98
+# --- elite district east of the city: ring road x 175..201, y 112..130, 10 villas, decor inside
+# (west corners hold stone circles: a corner villa has too few decorations in range for an Estate).
+# Culture walkers roam 34 tiles (rules.walker_roam), so each long side gets its own theatre,
+# gymnasium, podium. The one stadium allowed per city stands mid-west, on the ring road: its competitors
+# reach every villa of either row (8 or 10 tiles to a corner, then along the row).
+road 166 163 170 163
+road 170 163 170 130
+road 170 130 175 130
+road 175 112 201 130
+road 201 130 175 112
+build roadblock 172 130
+# maintenance first, at the corners
+build maintenance 173 113
+build stone_circle 202 113
+build maintenance 202 127
+
+build stone_circle 176 113
+build elite_house 180 113
+build elite_house 184 113
+build elite_house 188 113
+build elite_house 192 113
+build elite_house 196 113
+build stone_circle 176 126
+build elite_house 180 126
+build elite_house 184 126
+build elite_house 188 126
+build elite_house 192 126
+build elite_house 196 126
+build stone_circle 176 117
+build fish_pond 180 117
+build baths 184 117
+build stone_circle 188 117
+build fish_pond 192 117
+build baths 196 117
+build baths 176 121
+build stone_circle 180 121
+build fish_pond 184 121
+build baths 188 121
+build stone_circle 192 121
+build fish_pond 196 121
+build gardens 176 125
+build gardens 177 125
+build gardens 178 125
+build gardens 179 125
+build gardens 180 125
+build gardens 181 125
+build gardens 182 125
+build gardens 183 125
+build gardens 184 125
+build gardens 185 125
+build gardens 186 125
+build gardens 187 125
+build gardens 188 125
+build gardens 189 125
+build gardens 190 125
+build gardens 191 125
+build gardens 192 125
+build gardens 193 125
+build gardens 194 125
+build gardens 195 125
+build gardens 196 125
+build gardens 197 125
+build gardens 198 125
+build gardens 199 125
+build gardens 200 125
+build gardens 200 113
+build gardens 200 114
+build gardens 200 115
+build gardens 200 116
+build gardens 200 117
+build gardens 200 118
+build gardens 200 119
+build gardens 200 120
+build gardens 200 121
+build gardens 200 122
+build gardens 200 123
+build gardens 200 124
+build gardens 200 126
+build gardens 200 127
+build gardens 200 128
+build gardens 200 129
+# west side (touching x=175) and east side (touching x=201)
+# west side: the stadium (5x10, x 170..174, y 120..129; its walkers start at (175,120), mid-side: they
+# turn back after about 30 tiles); the tax office (negative desirability, range 2) and the south-west
+# maintenance above it, out of the villas' range
+build stadium 170 120 v
+build tax_office 173 115
+build maintenance 173 118
+build storehouse 202 118
+build granary 202 121
+build podium 202 125
+# the north-east villa needs more desirability: decor in that corner, industry away from it
+build stone_circle 202 107
+build flower_garden 202 111
+status
+until population 2040 6
+
+# north side of the ring: theatre, gymnasium, two agoras (the podiums are on the sides); one stadium
+# per city (exe, 19:44): it stands on the west side
+build theatre 176 107
+build gymnasium 186 109
+build agora 189 110 up
+build food_vendor 189 110
+build fleece_vendor 191 110
+build oil_vendor 193 110
+build agora 195 110 up
+build wine_vendor 195 110
+build arms_vendor 197 110
+build horse_trainer 199 110
+# philosophy for the north villas: a podium above the agoras on a spur of the east road, with its own
+# maintenance (nobody else walks the spur: the podium collapsed)
+road 201 106 201 111
+build podium 199 108
+build maintenance 199 106
+# drama for the north-east villa: the north theatre (176,107) runs out of shows for months at a
+# time and its actors stop (house (196,113) devolved, 'needs culture 65/80'): one more drama school,
+# at the top of the spur
+road 201 103 201 106
+build drama_school 198 103
+# south side of the ring: the same
+build theatre 176 131
+build gymnasium 186 131
+build agora 189 130 down
+build food_vendor 189 131
+build fleece_vendor 191 131
+build oil_vendor 193 131
+build agora 195 130 down
+build wine_vendor 195 131
+build arms_vendor 197 131
+build horse_trainer 199 131
+# --- wave 2. The city is short of workers now: maintenance (hygiene) first so nothing collapses
+priority hygiene 5
+# more storage: armor, wine and sculpture pile up, and a full storehouse sends olives to the sink
+build storehouse 137 108
+build storehouse 152 108
+build storehouse 163 106
+# fleece: 100 houses need ~2400 a year; a sheep gives 100 a year (sheared when ready: +9/month,
+# production.md), so ~30 sheep. At most 8 sheep per sheep farm: 2 more farms, 40 sheep
+build sheep_farm 147 113
+build sheep_farm 151 118
+build sheep 141 114
+build sheep 141 117
+build sheep 141 120
+build sheep 141 124
+build sheep 141 127
+build sheep 163 126
+build sheep 165 128
+build sheep 158 130
+build sheep 162 131
+build sheep 140 130
+build sheep 152 120
+build sheep 161 126
+build sheep 142 126
+build sheep 161 129
+build sheep 142 123
+build sheep 142 129
+# storehouse orders (8 bays of 400, one good per bay). Uncapped, armor, oil, marble and orichalc
+# fill every bay and fleece overflows into the endless warehouse until houses run out. As a player
+# does: the three central storehouses keep fleece, olives and oil only; the others are capped.
+storage 151 121 armor refuse
+storage 151 121 bronze refuse
+storage 151 121 sculpture refuse
+storage 151 121 wood refuse
+storage 151 121 marble refuse
+storage 151 121 orichalc refuse
+storage 151 121 chariot refuse
+storage 151 121 wine refuse
+storage 151 121 grapes refuse
+storage 151 124 armor refuse
+storage 151 124 bronze refuse
+storage 151 124 sculpture refuse
+storage 151 124 wood refuse
+storage 151 124 marble refuse
+storage 151 124 orichalc refuse
+storage 151 124 chariot refuse
+storage 151 124 wine refuse
+storage 151 124 grapes refuse
+storage 133 137 armor refuse
+storage 133 137 bronze refuse
+storage 133 137 sculpture refuse
+storage 133 137 wood refuse
+storage 133 137 marble refuse
+storage 133 137 orichalc refuse
+storage 133 137 chariot refuse
+storage 133 137 wine refuse
+storage 133 137 grapes refuse
+storage 151 121 fleece accept 1600
+storage 151 121 olive_oil accept 800
+storage 151 121 olives accept 800
+storage 151 124 fleece accept 1600
+storage 151 124 olive_oil accept 800
+storage 151 124 olives accept 800
+storage 133 137 fleece accept 1600
+storage 133 137 olive_oil accept 800
+storage 133 137 olives accept 800
+storage 202 118 fleece accept 800
+storage 202 118 olive_oil accept 400
+storage 202 118 olives accept 400
+storage 202 118 wine accept 800
+storage 202 118 armor get 400    # near the villas' arms vendors (197,110), (197,131)
+storage 202 118 bronze accept 400
+storage 202 118 sculpture accept 400
+storage 202 118 wood accept 400
+storage 202 118 marble accept 400
+storage 202 118 orichalc accept 400
+storage 202 118 grapes accept 400
+storage 202 118 chariot accept 400
+storage 137 108 fleece accept 800
+storage 137 108 olive_oil accept 400
+storage 137 108 olives accept 400
+storage 137 108 wine accept 800
+storage 137 108 armor accept 400
+storage 137 108 bronze accept 400
+storage 137 108 sculpture accept 400
+storage 137 108 wood accept 400
+storage 137 108 marble accept 400
+storage 137 108 orichalc accept 400
+storage 137 108 grapes accept 400
+storage 137 108 chariot accept 400
+storage 152 108 fleece accept 800
+storage 152 108 olive_oil accept 400
+storage 152 108 olives accept 400
+storage 152 108 wine accept 800
+storage 152 108 armor accept 400
+storage 152 108 bronze accept 400
+storage 152 108 sculpture accept 400
+storage 152 108 wood accept 400
+storage 152 108 marble accept 400
+storage 152 108 orichalc accept 400
+storage 152 108 grapes accept 400
+storage 152 108 chariot accept 400
+storage 163 106 fleece accept 800
+storage 163 106 olive_oil accept 400
+storage 163 106 olives accept 400
+storage 163 106 wine accept 800
+storage 163 106 armor accept 400
+storage 163 106 bronze accept 400
+storage 163 106 sculpture accept 400
+storage 163 106 wood accept 400
+storage 163 106 marble accept 400
+storage 163 106 orichalc accept 400
+storage 163 106 grapes accept 400
+storage 163 106 chariot accept 400
+# east shore: fishing, urchins, hunting near the prey point at (125,119), sculpture; a roadblock keeps
+# spine service walkers off the shore road (and the long west road behind it)
+path 136 100 120 100
+path 120 100 120 108
+build roadblock 134 100
+build maintenance 134 114
+# the wharf and the quay stand half on the water (0x004A10C0): the wharf faces south, the quay west
+road 119 103 115 103
+build fishing_wharf 114 104
+road 121 108 121 109
+road 122 109 124 109
+road 124 110 124 113
+build urchin_quay 122 113
+build hunting_lodge 121 106
+build maintenance 121 104
+build sculpture_studio 137 104
+build maintenance 134 104
+# --- wave 2 (west colony): a long road around the lake to the meadow and silver in the far west
+path 120 108 30 125 clear
+build maintenance 30 123
+build maintenance 31 134
+build corral 31 130
+build goat_farm 28 128
+build fruit_lodge 31 125
+build hunting_lodge 31 128
+path 30 125 20 124 clear
+build mint 18 123
+build maintenance 21 122
+build cattle 29 121
+build cattle 28 122
+build cattle 33 122
+build cattle 27 123
+build cattle 32 123
+build cattle 26 124
+build cattle 35 125
+build cattle 29 126
+build goat 32 121
+build goat 27 122
+build goat 34 122
+build goat 29 123
+build goat 33 125
+build goat 28 126
+build goat 35 126
+build goat 25 128
+build fruit_tree 28 116
+build fruit_tree 29 116
+build fruit_tree 30 116
+build fruit_tree 31 116
+
+# --- wave 3: north quarter (second worker ring x 150..174, y 70..82) with the science buildings
+# (Poseidon culture: museum/observatory/bibliotheke/laboratory fill the same culture slots as
+# stadium/podium/gymnasium/theatre) and more schools: trainees go to the venue with the fewest shows
+clear 148 62 177 85
+road 150 70 174 82
+road 174 82 150 70
+road 162 82 162 88
+build maintenance 148 71
+build maintenance 175 71
+build maintenance 148 79
+build maintenance 175 79
+build house 151 71
+build house 153 71
+build house 155 71
+build house 157 71
+build house 159 71
+build house 161 71
+build house 163 71
+build house 165 71
+build house 167 71
+build house 169 71
+build house 171 71
+build house 151 80
+build house 153 80
+build house 155 80
+build house 157 80
+build house 159 80
+build house 161 80
+build house 163 80
+build house 165 80
+build house 167 80
+build house 169 80
+build house 171 80
+build house 151 73
+build house 172 73
+build house 151 75
+build house 172 75
+build house 151 77
+build house 172 77
+build stone_circle 153 73
+build baths 157 73
+build fish_pond 161 73
+build stone_circle 165 73
+build gardens 169 73
+build gardens 169 74
+build gardens 170 73
+build gardens 170 74
+build gardens 153 77
+build gardens 154 77
+build gardens 155 77
+build gardens 156 77
+build gardens 157 77
+build gardens 158 77
+build gardens 159 77
+build gardens 160 77
+build gardens 161 77
+build gardens 162 77
+build gardens 163 77
+build gardens 164 77
+build gardens 165 77
+build gardens 166 77
+build gardens 167 77
+build gardens 168 77
+build gardens 169 77
+build gardens 170 77
+build gardens 153 78
+build gardens 154 78
+build gardens 155 78
+build gardens 156 78
+build gardens 157 78
+build gardens 158 78
+build gardens 159 78
+build gardens 160 78
+build gardens 161 78
+build gardens 162 78
+build gardens 163 78
+build gardens 164 78
+build gardens 165 78
+build gardens 166 78
+build gardens 167 78
+build gardens 168 78
+build gardens 169 78
+build gardens 170 78
+build gardens 153 79
+build gardens 154 79
+build gardens 169 79
+build gardens 170 79
+# science on the north side (touching y=70)
+# no museum: the stadium is the city's one unique venue (g_unique_venue_exists 0x00FEAED0 refuses a museum)
+build observatory 157 65
+build laboratory 162 66
+build university 166 67
+build inventors_workshop 169 67
+build bibliotheke 172 68
+# services between the two rings (touching y=82)
+build fountain 151 83
+build agora 153 82 down
+build food_vendor 153 83
+build fleece_vendor 155 83
+build oil_vendor 157 83
+build maintenance 159 83
+build fountain 163 83
+build fountain 165 83
+build tax_office 167 83
+build agora 169 82 down
+build food_vendor 169 83
+build oil_vendor 171 83
+build fleece_vendor 173 83
+# schools on the flanks
+build college 147 73
+build drama_school 147 76
+build college 175 73
+build drama_school 175 76
+# Poseidon race track: buys horses from the ranches, monthly income by horses at the track
+build horse_ranch 171 144       # corral 174..177 x 143..146
+build race_track 178 141
+# schools next to the elite district: trainees from the north take weeks to walk there
+build college 171 132
+build drama_school 171 148
+build maintenance 171 151
+
+build infirmary 146 81
+build infirmary 175 81
+build infirmary 202 129
+build infirmary 172 108
+# the north quarter is ~50 tiles from the nearest granary: its own granary, agoras on the top
+# road, and more presses for the olives piling up in the storehouses
+build granary 158 86
+road 145 70 150 70    # the agora's strip lies on an existing road (0x0040BF40)
+build agora 145 68 up
+build food_vendor 149 68
+build fleece_vendor 147 68
+road 174 70 179 70    # the agora's strip lies on an existing road (0x0040BF40)
+# (174,68) is refused since 10-28: (179,68) is within 3 tiles of the map edge (map_area_buildable 0x004A0DC0);
+# the only free agora spot left in the north quarter is beside the first one
+build agora 151 68 up
+build fleece_vendor 151 68
+build food_vendor 153 68
+build oil_vendor 155 68
+build gardens 173 71
+build gardens 173 72
+build oil_press 137 100
+build oil_press 134 98
+
+# --- wave 6: trade (partners: data/trade.json, `trade` lists them). Trading posts on the open
+# block north of the y=111 road; docks on the lake's north shore (ships sail in from 33,82).
+# As in the original nothing protects home supply but the orders: export only real surplus
+# (some wine and sculpture, wood: food, fleece and the bronze/armor chain barely cover the
+# villas), cap imports.
+build trading_post 143 107 Sardis
+trade 143 107 wine export 400
+trade 143 107 sculpture export 800
+build trading_post 148 107 Babylon
+build trading_post 155 107 Susa
+trade 155 107 meat import 400
+build trading_post 158 102 Ecbatana
+# a dock (Pier) is a 2x2 pier half on the water + a 4x4 dock house on land behind it (0x00453450, 0x004534D0):
+# `build dock X Y` gives the pier's anchor; docks and wharves may not stand on beach (0x004A10C0)
+build dock 112 104 Corinth     # pier facing south (beside the fishing wharf), dock house 111..114 x 100..103
+trade 111 100 bronze import 400
+# the second dock by the sea entry
+road 108 99 108 94
+road 107 94 99 94
+road 99 93 99 80
+road 98 80 46 80
+build dock 43 83 Miletus       # pier facing south, dock house 42..45 x 79..82
+build maintenance 47 81
+build maintenance 101 92
+
+# --- wave 4: an agora (stock in the agora, one peddler) west of the worker district
+road 156 92 161 92    # the agora's strip lies on an existing road (0x0040BF40)
+build agora 156 92 down
+build food_vendor 156 93
+build wine_vendor 158 93
+build fleece_vendor 160 93
+# infrastructure: a wall line across the west road with a gatehouse (the road passes) and a tower on the
+# wall (military: idle). (The west road's "inlet" at (116,143..144) is a 2-tile pond: the exe's bridge tool
+# refuses it, FUN_0041C450 wants open water beside the span, so the road goes round it. Bridges: test_bridge.)
+road 116 142 117 145
+wall 80 142 80 147
+wall 81 142 81 147
+wall 80 153 80 156
+wall 81 153 81 156
+build gatehouse 80 148 v    # 2x5: towers 80..81 x 148..149 / 151..152, passage row 150 (FUN_004E5480)
+road 76 150 86 150
+build tower 80 142          # all 2x2 tiles wall (terrain_area_all 0x4000)
+road 79 143 79 147
+
+# --- wave 5: monuments, built by artisans from marble, wood, sculpture (and orichalc for the
+# pyramid). Marble from a quarry on the south-west marble rock, wood from a timber mill by the
+# spine's forest, more marble/wood bought from Sardis, orichalc from Susa.
+path 136 180 108 180 clear
+build marble_quarry 109 180
+build maintenance 134 181    # 107 181 now refused: (107,182) is marble rock
+build timber_mill 129 129
+trade 143 107 marble import 400
+trade 155 107 orichalc import 400
+build maintenance 132 132
+until treasury 4000 48
+build artisans_guild 160 108
+build sanctuary_aphrodite 161 112    # a friendly god of the sandbox (Hermes is unfriendly there: not in its Mythology menu)
+build pyramid_01 163 109
+
+
+status
+until population 5000 24
+status
+months 24
+# --- wave 7: military buildings (built and staffed; idle until invasions exist), once the city
+# is big: towers and trireme wharves are staffed before every other category (labor.md), and the
+# wharf needs 100 workers. It builds one trireme from wood + armor, then its workers go home.
+road 50 81 50 83     # the wharf goes to the west shore, off the beach, 3x3 half on the water (0x004A14B0)
+build trireme_wharf 50 84
+build maintenance 57 81
+build chariot_workshop 152 92
+build chariot_vendor 155 90
+# (no chariot export: posts never trade horses or chariots, storage_goods_list 0x005B12C0; the workshop keeps
+# its chariots up to 400 and stops)
+# the monuments are done: stop buying their materials (imports would refill storage forever)
+trade 143 107 marble off
+trade 155 107 orichalc off
+trade 158 102 wood export 400   # sold once the monuments no longer need it (each piece takes its own cart, one a day)
+months 8
+staff 50 84 off
+status
+months 24
+status
+# two more years past the setpoint (last order + 24 months): the stability check
+months 24
+status
+houses

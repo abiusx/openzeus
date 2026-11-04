@@ -1,0 +1,5 @@
+# Track 1D (docs/play/alerts.md "Checks"): the alert slots' balloons. "See a working city" at 800x600 (as
+# balloons-panel.txt; in the sandbox runs no panel balloon showed), ZEUS_POKE=DIR/poke.txt from `python3
+# tools/oracle_alerts.py --bal-poke` (slot 0 blocked road, slot 1 plague); the mouse on slot 0, slot 1, the messages
+# button and the map. --state-log /dev/null --seconds 60; empty --write-dir; replace DIR. Run 1D-alerts-bal.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 48:move 626,165; 48.3:down 626,165; 48.5:up 626,165; 50:move 700,90; 51:shot DIR/dist0.bmp; 52:move 624,494; 53:shot DIR/s0.bmp; 54:move 658,494; 55:shot DIR/s1.bmp; 56:move 762,494; 57:shot DIR/msg.bmp; 58:move 700,90; 59:shot DIR/none.bmp

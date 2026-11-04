@@ -1,0 +1,6 @@
+# Arrow pictures (docs/logic/military.md "Arrow 0x2D", tools/oracle_arrows.py): "See a working city" (as
+# working-city.txt) with DIR/poke.txt from `python3 tools/oracle_arrows.py --poke`: 128 arrows (0x2D of a tower
+# sentry; 0x34 of enemy archers of nations 1, 2, 0) in every direction at tick 59, the view poked to 0/2/4/6 at ticks
+# 60/62/64/66. ZEUS_POKE=DIR/poke.txt ZEUS_STATE_DUMP_EVERY=1 ZEUS_STATE_DUMP_FROM=59 ZEUS_STATE_DUMP_TO=68
+# --state-log /dev/null --seconds 140; empty --write-dir; replace DIR. Check: python3 tools/oracle_arrows.py DIR.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 60:click 568,574; 75:click 568,574; 90:click 568,574; 105:click 568,574; 120:click 568,574; 135:click 568,574

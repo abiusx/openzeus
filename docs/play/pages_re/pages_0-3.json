@@ -1,0 +1,853 @@
+{
+ "conventions": {
+  "n": "n = DAT_00F9FFF8 (number of overlay buttons on the page, 20 px each)",
+  "panelX": "DAT_010DFF34",
+  "font": "font rank k of docs/play/text.md (8=9B, 3=11C2, 13=9DKBU, 14=9DKYEL, 0=SMALL mask font with caller colour); each choice falls back to rank 0 if the font table has fewer ranks (never in practice)",
+  "paragraph": "kind=paragraph = 0x00509060 -> 0x005086E0: word-wrapped, each line CENTRED in w, line step 16 (5+line height 11); it advances the y cursor DAT_00F13A6C by 16 per line, which later items use (L = number of lines of the earlier paragraph)",
+  "text": "kind=text = text_ref_draw_centered 0x00508D40 (one line, centred in w) unless align says left",
+  "number": "kind=number centred = 0x00508F90 (value as text with sign slot '@' = one blank space-width, suffix ' ', centred in w); left = number_text_draw (0x00509370 wrapper) at x",
+  "group_text": "text [g,i] = extracted/text/zeus_text.json group g index i"
+ },
+ "pages": {
+  "0": {
+   "name": "Population",
+   "fn": "0x00518B20",
+   "items": [
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x44",
+     "w": 120,
+     "font": 8,
+     "text": [
+      55,
+      8
+     ],
+     "en": "Housing for",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "number",
+     "x": "panelX+0x37",
+     "y": "n*20+0x4E",
+     "w": 120,
+     "font": 3,
+     "align": "center",
+     "value": {
+      "exe": "0x00FE6A90",
+      "name": "g_house_room_total",
+      "meaning": "free resident capacity in houses, clamped to >= 0 for display",
+      "ours": "city.vacancies (= reports.population 'room for')"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x64",
+     "w": 120,
+     "font": 8,
+     "text": [
+      55,
+      9
+     ],
+     "en": "More people",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "separator",
+     "x": "panelX+0x32",
+     "y": "n*20+0x7C",
+     "image": "Zeus_Interface SPR_MARBLE_BAR (atlas group 28, first 604; bank1 group-table entry 0x1B)",
+     "tiles": "8 tiles x 16 px = 128 px: tile0 = first+0, tiles1..6 = first+1, tile7 = first+2",
+     "fn": "tile_row_draw 0x0059F600",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x37",
+     "y": "n*20+0x84",
+     "w": 120,
+     "font": 13,
+     "align": "center",
+     "text": [
+      55,
+      "H"
+     ],
+     "en": {
+      "20": "People wish to come to the city.",
+      "21": "People are leaving the city.",
+      "22": "Population migration is stable.",
+      "23": "Immigration and emigration are balanced."
+     },
+     "when": "H chosen by the selection table in notes.selection",
+     "ev": "exe"
+    },
+    {
+     "kind": "separator",
+     "x": "panelX+0x32",
+     "y": "n*20+0xC0",
+     "image": "Zeus_Interface SPR_MARBLE_BAR (atlas group 28, first 604; bank1 group-table entry 0x1B)",
+     "tiles": "8 tiles x 16 px = 128 px: tile0 = first+0, tiles1..6 = first+1, tile7 = first+2",
+     "fn": "tile_row_draw 0x0059F600",
+     "ev": "exe"
+    },
+    {
+     "kind": "number",
+     "x": "panelX+0x37",
+     "y": "n*20+0xC8",
+     "w": 120,
+     "font": 3,
+     "align": "center",
+     "value": {
+      "exe": "0x00FE9194",
+      "name": "g_immigrants_this_month",
+      "meaning": "immigrants arrived this month (copied to 0x00FEB1AC at month end)",
+      "ours": "no direct field; reports.population 'trend' row has 'last month +N' (closest)"
+     },
+     "when": "branch A (count shown): rows A1/A2 of notes.selection",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x37",
+     "y": "n*20+0xD8",
+     "w": 120,
+     "font": 8,
+     "align": "center",
+     "text": [
+      55,
+      "10|11"
+     ],
+     "en": {
+      "10": "Newcomers Arrived This Month",
+      "11": "Newcomer Arrived This Month"
+     },
+     "when": "branch A; 11 only when count == 1 in row A2 (row A1 always 10)",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x37",
+     "y": "n*20+0xC8",
+     "w": 120,
+     "font": 13,
+     "align": "center",
+     "text": [
+      55,
+      12
+     ],
+     "en": "Immigration Limited By",
+     "when": "branch B (a cause is shown and it is not the war case)",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x37",
+     "y": "n*20+0xC8+16*L(55:12) (= n*20+0xD8 if one line)",
+     "w": 120,
+     "font": 14,
+     "align": "center",
+     "text": [
+      55,
+      "C"
+     ],
+     "en": "cause text, see notes.causes",
+     "when": "branch B",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x37",
+     "y": "n*20+0xC8",
+     "w": 120,
+     "font": 14,
+     "align": "center",
+     "text": [
+      61,
+      51
+     ],
+     "en": "War prevents immigration.",
+     "when": "branch W (enemy units > 3); no 'Immigration Limited By' line",
+     "ev": "exe"
+    }
+   ],
+   "widgets": [],
+   "notes": {
+    "selection": {
+     "order": "evaluated top to bottom; S = DAT_00FE9198 (migration display state, see uncertain)",
+     "rows": [
+      {
+       "id": "W",
+       "if": "S==0 && g_enemy_units_alive(0x00FEB084) > 3",
+       "H": 21,
+       "second": "61:51 War prevents immigration. (font 14)",
+       "ev": "exe"
+      },
+      {
+       "id": "A1",
+       "if": "S==0 && g_immigrants_this_month > 4",
+       "H": 20,
+       "second": "count + 55:10",
+       "ev": "exe"
+      },
+      {
+       "id": "B-housing",
+       "if": "S==0 && g_house_room_total < 1",
+       "H": 20,
+       "second": "55:12 + 55:13 'lack of housing vacancies'",
+       "ev": "exe"
+      },
+      {
+       "id": "A2",
+       "if": "S==0 && g_migration_rate(0x00FE9184) > 0",
+       "H": 20,
+       "second": "count + (count==1 ? 55:11 : 55:10)",
+       "ev": "exe"
+      },
+      {
+       "id": "B-cause",
+       "if": "S==0 && g_migration_rate < 0, or S==1",
+       "H": 21,
+       "second": "55:12 + cause from FUN_00518A80 (nothing if cause none)",
+       "ev": "exe"
+      },
+      {
+       "id": "stable",
+       "if": "S==0 && g_migration_rate == 0, or S==2",
+       "H": 22,
+       "second": "none",
+       "ev": "exe"
+      },
+      {
+       "id": "other",
+       "if": "S not in {0,1,2}",
+       "H": 23,
+       "second": "none",
+       "ev": "exe"
+      }
+     ]
+    },
+    "causes": {
+     "fn": "FUN_00518A80 on g_sentiment_cause_ui 0x00FEAE68; 'past' = the present cause has gone (test function returns true)",
+     "table": [
+      {
+       "cause": 1,
+       "what": "food",
+       "past_if": "g_population <= 0x00FE96E8 (food supports that many people)",
+       "now": [
+        55,
+        16,
+        "Lack Of Food In Granaries."
+       ],
+       "past": [
+        55,
+        29,
+        "Past Hunger Problems"
+       ]
+      },
+      {
+       "cause": 2,
+       "what": "unemployment",
+       "past_if": "sentiment_from_unemployment() >= 0",
+       "now": [
+        55,
+        15,
+        "Unemployment."
+       ],
+       "past": [
+        55,
+        30,
+        "Past Unemployment Problems."
+       ]
+      },
+      {
+       "cause": 3,
+       "what": "taxes",
+       "past_if": "sentiment_from_taxes() >= 0",
+       "now": [
+        55,
+        17,
+        "High Taxes."
+       ],
+       "past": [
+        55,
+        25,
+        "Past High Taxes."
+       ]
+      },
+      {
+       "cause": 4,
+       "what": "wages",
+       "past_if": "sentiment_from_wages() >= 0",
+       "now": [
+        55,
+        14,
+        "Low Wages."
+       ],
+       "past": [
+        55,
+        26,
+        "Past Low Wages."
+       ]
+      },
+      {
+       "cause": 5,
+       "what": "debt",
+       "past_if": "sentiment_from_debt() >= 0",
+       "now": [
+        55,
+        18,
+        "Prolonged Debt"
+       ],
+       "past": [
+        55,
+        27,
+        "Past High Debt."
+       ]
+      },
+      {
+       "cause": 6,
+       "what": "military",
+       "past_if": "sentiment_from_military() >= 0",
+       "now": [
+        55,
+        19,
+        "Excessive Military Service"
+       ],
+       "past": [
+        55,
+        28,
+        "Past Military Service."
+       ]
+      },
+      {
+       "cause": 7,
+       "what": "?",
+       "text": [
+        55,
+        24,
+        "Immigrants Aren't Coming."
+       ]
+      },
+      {
+       "cause": "0/other",
+       "text": "nothing drawn"
+      }
+     ],
+     "ours": "city.sentiment_parts {taxes,wages,unemployment,food,debt} (pick the worst negative part) and reports.population 'immigration limited by'; military: no equivalent (no armies)",
+     "ev": "exe"
+    },
+    "uncertain": [
+     "DAT_00FE9198 (S): no instruction writes it by absolute address (byte scan of Zeus.exe: only 3 reads: here, 0x52378B, 0x005B5FA0 overview). Probably always 0 in play or set only via save data; treat S=0 (hyp). The overview (0x005B5FA0) maps S==1 to 'leaving' texts and S>=2 to 61:66 'Little change expected.'.",
+     "g_enemy_units_alive: ours has no armies -> always 0 (W never fires).",
+     "Line counts L depend on word wrap at width 120 with the 9-px fonts; headline 55:20-23 at font 13 is probably 2-3 lines but it is laid out at fixed y, the second block always starts at n*20+0xC8 (exe)."
+    ]
+   }
+  },
+  "1": {
+   "name": "Husbandry",
+   "fn": "0x005195B0",
+   "items": [
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x2D",
+     "y": "n*20+0x44",
+     "w": 140,
+     "font": 8,
+     "align": "center",
+     "text": [
+      57,
+      1
+     ],
+     "en": "Current food production and importation can support",
+     "ev": "exe",
+     "note": "L1 = its line count (probably 3 at w 140, hyp)"
+    },
+    {
+     "kind": "number",
+     "x": "panelX+0x2D",
+     "y": "n*20+0x44+16*L1",
+     "w": 140,
+     "font": 3,
+     "align": "center",
+     "value": {
+      "exe": "0x00FE96E8 (= g_city+0x2C90, written by FUN_00519590)",
+      "meaning": "people the food supply supports = (est. monthly food from all sources FUN_00518FF0(0) - deduction FUN_00518FA0) * 100 / 25 (food_consumption_rate 0x004E5EF0 = 25 per 100 people per month)",
+      "ours": "reports.husbandry 'production feeds' (N people)"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x2D",
+     "y": "n*20+0x54+16*L1",
+     "w": 140,
+     "font": 8,
+     "align": "center",
+     "text": [
+      57,
+      2
+     ],
+     "en": "people",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x2D",
+     "y": "n*20+0xA4",
+     "w": 140,
+     "font": "by band",
+     "align": "center",
+     "text": [
+      57,
+      "k"
+     ],
+     "value": {
+      "exe": "0x00FE96EC (= g_city+0x2C94, FUN_00519550)",
+      "meaning": "food supply as % of consumption = (food - deduction) * 100 / (population*25/100)",
+      "ours": "derived: production feeds / city.population * 100"
+     },
+     "bands": [
+      {
+       "if": "> 150",
+       "k": 8,
+       "en": "surplus",
+       "font": 13
+      },
+      {
+       "if": "111..150",
+       "k": 7,
+       "en": "plenty",
+       "font": 13
+      },
+      {
+       "if": "96..110",
+       "k": 6,
+       "en": "just enough",
+       "font": 8
+      },
+      {
+       "if": "86..95",
+       "k": 5,
+       "en": "too little",
+       "font": 14
+      },
+      {
+       "if": "71..85",
+       "k": 4,
+       "en": "much too little",
+       "font": 14
+      },
+      {
+       "if": "<= 70",
+       "k": 3,
+       "en": "far too little",
+       "font": 14
+      }
+     ],
+     "fn": "FUN_005193B0",
+     "ev": "exe",
+     "note": "y is fixed (cursor reset to 0x60), not after the previous paragraph"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x2D",
+     "y": "n*20+0xA4+16*L(57:k) (= n*20+0xB4 for one line)",
+     "w": 140,
+     "font": 8,
+     "align": "center",
+     "text": [
+      57,
+      "9..26"
+     ],
+     "en": {
+      "migration < 0": "(though population is shrinking)",
+      "migration > 0 && house room > 0": "(and population is growing)",
+      "else": "(population is not shrinking)"
+     },
+     "value": {
+      "exe": "FUN_00519340: index = 9 + 3*band(0..5 same thresholds) + (migration<0 ? 1 : migration>0 && g_house_room_total>0 ? 2 : 0); all 6 bands carry the same 3 strings",
+      "ours": "city.migration, city.vacancies"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "separator",
+     "x": "panelX+0x32",
+     "y": "n*20+0xD2",
+     "image": "Zeus_Interface SPR_MARBLE_BAR (atlas group 28, first 604; bank1 group-table entry 0x1B)",
+     "tiles": "8 tiles x 16 px = 128 px: tile0 = first+0, tiles1..6 = first+1, tile7 = first+2",
+     "fn": "tile_row_draw 0x0059F600",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x2D",
+     "y": "n*20+0xDA",
+     "w": 140,
+     "font": 13,
+     "align": "center",
+     "text": [
+      57,
+      27
+     ],
+     "en": "stored food for ",
+     "ev": "exe"
+    },
+    {
+     "kind": "number",
+     "x": "panelX+0x2D",
+     "y": "n*20+0xDA+16*L7 (= n*20+0xEA)",
+     "w": 140,
+     "font": 3,
+     "align": "center",
+     "value": {
+      "exe": "0x00FE9570",
+      "meaning": "months of stored food = granary food total (0x00FE93C4) / monthly consumption (population*25/100); if consumption 0: 1 if any food else 0; forced 12 when 0x00902C0C != 0 (hyp: cheat/no-food-needed flag). Computed in the granary scan (~0x0048xxxx, decomp line 88360)",
+      "ours": "reports.husbandry 'food stored' '(N months)'"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x2D",
+     "y": "n*20+0xEE+16*L7 (= n*20+0xFE)",
+     "w": 140,
+     "font": 13,
+     "align": "center",
+     "text": [
+      57,
+      28
+     ],
+     "en": "months",
+     "ev": "exe",
+     "note": "font via image_id_from_packed_group(0x0E) = packed rank 14 = table entry 13 = font rank 13 (exe reading of the convention)"
+    }
+   ],
+   "widgets": [],
+   "notes": "No click handling on this page (panel_click 0x00517650 has no case 1). Texts 57:29-44 (Food Sources table) belong to another view, not drawn here. FUN_00519590 (writes 0x2C90/0x2C94) is called from two places (decomp lines 83062, 179341), cadence not read (hyp: monthly)."
+  },
+  "2": {
+   "name": "Industry (Workers / wages)",
+   "fn": "0x00518750",
+   "items": [
+    {
+     "kind": "image",
+     "x": "panelX+0x5F",
+     "y": "n*20+0x61",
+     "table": "0x0063DF48 entry 1",
+     "image": "Zeus_Interface SPR_BUTTON_DOWN (atlas group 31, first 582); packed id 0x21F; +1 frame while pressed",
+     "size": [
+      24,
+      24
+     ],
+     "ev": "exe"
+    },
+    {
+     "kind": "image",
+     "x": "panelX+0x5F+0x18",
+     "y": "n*20+0x61",
+     "table": "0x0063DF48 entry 0",
+     "image": "Zeus_Interface SPR_BUTTON_UP (atlas group 32, first 580); packed id 0x220; +1 frame while pressed",
+     "size": [
+      24,
+      24
+     ],
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x44",
+     "w": 128,
+     "font": 13,
+     "text": [
+      131,
+      1
+     ],
+     "en": "Wage Rate",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x55",
+     "w": 128,
+     "font": 13,
+     "align": "center",
+     "text": [
+      285,
+      "k"
+     ],
+     "en": {
+      "0": "None",
+      "1": "Very Low",
+      "2": "Low",
+      "3": "Normal",
+      "4": "High",
+      "5": "Very High"
+     },
+     "value": {
+      "exe": "wage_level_text 0x00569670: k = index of the level nearest to g_wages in wage_levels 0x00641F38 = {0,20,26,30,34,40}",
+      "ours": "city.wage (ours 40 -> 'Very High' if the same scale; check our wage scale)"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x2D",
+     "y": "n*20+0x96",
+     "w": 140,
+     "font": 13,
+     "align": "center",
+     "text": "sprintf('%s %d dr', 50:16, v)",
+     "en": "Projected payroll this year: <v> dr",
+     "value": {
+      "exe": "0x00FEB0F0",
+      "meaning": "projected wages this year = (g_wages * g_labor_employed / 120) * (12 - month) + wages paid so far (0x00FE966C)",
+      "ours": "reports.industry 'wage' row ('≈N dr a year')"
+     },
+     "ev": "exe",
+     "note": "likely wraps to 2 lines"
+    },
+    {
+     "kind": "separator",
+     "x": "panelX+0x32",
+     "y": "n*20+0xBA",
+     "image": "Zeus_Interface SPR_MARBLE_BAR (atlas group 28, first 604; bank1 group-table entry 0x1B)",
+     "tiles": "8 tiles x 16 px = 128 px: tile0 = first+0, tiles1..6 = first+1, tile7 = first+2",
+     "fn": "tile_row_draw 0x0059F600",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x46",
+     "y": "n*20+0xC2",
+     "w": 96,
+     "font": 13,
+     "align": "center",
+     "text": "sprintf('%s %d', 50:12, v)",
+     "en": "Employed Workforce <v>",
+     "value": {
+      "exe": "0x00FE964C",
+      "name": "g_labor_employed",
+      "ours": "city.employed"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x46",
+     "y": "n*20+0xF4",
+     "w": 94,
+     "font": 13,
+     "align": "center",
+     "text": "sprintf('%d %s', v, 61:13)",
+     "en": "<v> Workers Needed",
+     "when": "g_unemployment_pct (0x00FE9654) < 1",
+     "value": {
+      "exe": "0x00FE965C",
+      "name": "g_labor_jobs_unfilled",
+      "ours": "reports.industry 'jobs open' (= sum over city.labor_jobs of need-have); NOT city.vacancies (that is housing)"
+     },
+     "ev": "exe",
+     "note": "font via image_id_from_packed_group(0x0E) = rank 13"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x46",
+     "y": "n*20+0xF4",
+     "w": 94,
+     "font": 13,
+     "align": "center",
+     "text": "sprintf('%s %d (%d%%)', 50:13, u, p)",
+     "en": "Unemployed <u> (<p>%)",
+     "when": "g_unemployment_pct >= 1",
+     "value": {
+      "exe": "0x00FE9650 g_labor_unemployed, 0x00FE9654 g_unemployment_pct",
+      "ours": "city.unemployed, round(100*unemployed/workforce)"
+     },
+     "ev": "exe"
+    }
+   ],
+   "widgets": [
+    {
+     "table": "0x0063DF48",
+     "count": 2,
+     "origin": "(panelX+0x5F, n*20+0x5C)",
+     "note": "hit-test origin y is n*20+0x5C while drawn at n*20+0x61 (exe; 5 px offset as in the exe)",
+     "entries": [
+      {
+       "rect": "x+0x18..x+0x30, y..y+24",
+       "image": "SPR_BUTTON_UP",
+       "param": 0,
+       "click": "0x00408CD0 -> 0x005696D0: g_wages = next higher wage level (no change at top)",
+       "ev": "exe"
+      },
+      {
+       "rect": "x+0..x+24, y..y+24",
+       "image": "SPR_BUTTON_DOWN",
+       "param": 1,
+       "click": "0x00408CD0 -> 0x00569740: g_wages = next lower level (no change at 0)",
+       "ev": "exe"
+      }
+     ],
+     "after": "wages_this_year_refresh 0x00488900, ledger_totals_refresh 0x00488960, redraw flag 0x00F2A6CE",
+     "repeat": "type-4 buttons: FUN_00431C80 fires on press and auto-repeats while held (counter, schedule table 0x005F0028, continuous after 47 frames)",
+     "ev": "exe",
+     "ours": "wage command (CLI 'wage'), step through levels {0,20,26,30,34,40} (map to our scale)"
+    }
+   ],
+   "notes": "Labels: 131:1 'Wage Rate', 285:k level names, 50:16 'Projected payroll this year:', 50:12 'Employed Workforce', 50:13 'Unemployed', 61:13 'Workers Needed'."
+  },
+  "3": {
+   "name": "Storage and Distribution (goods list)",
+   "fn": "0x00517F50",
+   "items": [
+    {
+     "kind": "list",
+     "rows_fn": "FUN_00517E30",
+     "rows": "up to 18 rows; row i at y = 0x55 + 12*i (FIXED, not offset by n); x origin = panelX (entry x = 0)",
+     "build": "from g_goods_list 0x010DFE40 (goods available to the city, in that order), skipping 15 Horses and 22 Chariot: [-1 header] + goods with trade status 5 (importing), [-2 header] + status 7 (exporting), then status 9 (not traded), no header; padded with -3 (stop). Trade status = 0x01607EC4[g*0x18] (docs/logic/empire.md). If no importing goods the -1 header is omitted; if no exporting goods the -2 header is omitted.",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "row": "-1",
+     "x": "panelX+0x34",
+     "y": "0x55+12*i",
+     "font": 13,
+     "align": "left",
+     "text": [
+      130,
+      17
+     ],
+     "en": "Imports",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "row": "-2",
+     "x": "panelX+0x34",
+     "y": "0x55+12*i",
+     "font": 13,
+     "align": "left",
+     "text": [
+      130,
+      18
+     ],
+     "en": "Exports",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "row": "-2",
+     "x": "panelX+0x41+pen (pen = width of 'Exports' + one space)",
+     "y": "0x55+12*i",
+     "font": 14,
+     "align": "left",
+     "text": [
+      130,
+      13
+     ],
+     "en": "Selling",
+     "ev": "exe",
+     "note": "column header over the reserved-for-export numbers at panelX+0x91"
+    },
+    {
+     "kind": "number",
+     "row": "good g (normal)",
+     "x": "panelX+0x32",
+     "y": "0x55+12*i",
+     "font": "F",
+     "align": "left",
+     "value": {
+      "exe": "((1<=g<=8 ? g_stock_granaries[g] 0x00FEB088 : 0) + g_stock_trade[g] 0x00FEB2AC + g_stock_storehouses[g] 0x00FEB33C) / 100 (Sculpture g=19: /400; g=25 Food = sum of goods 1..8, unreachable here)",
+      "meaning": "loads in storage",
+      "ours": "stocks[good] / 100 (reports.distribution 'stored')"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "row": "good g (normal)",
+     "x": "panelX+0x55",
+     "y": "0x55+12*i",
+     "font": "F",
+     "align": "left",
+     "text": [
+      23,
+      "g"
+     ],
+     "en": "good name (23:1 Urchin ... 23:22 Chariot); g=16 uses 130:41 'Blk Marble'",
+     "ev": "exe"
+    },
+    {
+     "kind": "number",
+     "row": "good g (normal)",
+     "x": "panelX+0x91",
+     "y": "0x55+12*i",
+     "font": 14,
+     "align": "left",
+     "when": "g_stock_trade_reserved[g] (0x00FE9844) != 0",
+     "value": {
+      "exe": "0x00FE9844[g] / 100 (/400 sculpture)",
+      "meaning": "loads held in trade buildings with trade_state 7/9 (export stock)",
+      "ours": "reports.distribution 'trade' column (hyp; ours has no trade posts yet)"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "row": "good g, just clicked (flash counter 0x00FA0458[i] > 0)",
+     "x": "panelX+0x34",
+     "y": "0x55+12*i",
+     "font": "0 (SMALL) colour 0xF800 (red) while counter > 0",
+     "align": "left",
+     "text": [
+      130,
+      "25|26"
+     ],
+     "en": {
+      "25": "Stockpiling (g_stockpile[g] now set)",
+      "26": "Not Stockpiling"
+     },
+     "when": "replaces number+name for 50 frames after a click; counter decremented each draw",
+     "ev": "exe"
+    },
+    {
+     "kind": "separator",
+     "x": "panelX+0x32",
+     "y": "0x5D+12*i",
+     "image": "Zeus_Interface SPR_MARBLE_BAR (atlas group 28, first 604; bank1 group-table entry 0x1B)",
+     "tiles": "8 tiles x 16 px = 128 px: tile0 = first+0, tiles1..6 = first+1, tile7 = first+2",
+     "fn": "tile_row_draw 0x0059F600",
+     "when": "after row i if row i is a good, its status != 9 and status(row i+1) differs (i.e. after the last importing row and after the last exporting row; a header/stop next row counts as different, hyp: out-of-range read)",
+     "ev": "exe"
+    }
+   ],
+   "fonts": {
+    "F": "row hovered (DAT_0078183C == i+1) -> 13 (9DKBU); else g_stockpile[g] (0x00FE94E0) set -> 14 (9DKYEL); else 8 (9B). Flash counter > 0 -> rank 0 red 0xF800",
+    "ev": "exe"
+   },
+   "widgets": [
+    {
+     "table": "0x0063DA48",
+     "count": 18,
+     "origin": "(panelX+0x3B, 0x55)",
+     "entries": "row i: rect (0,12i)-(123,12i+12) relative to origin (type 1, param i)",
+     "left_click": "0x005183A0: if row i is a good and its flash counter <= 0: g_stockpile[g] = !g_stockpile[g] (0x00FE94E0; blocks workshop/granary delivery), counter 0x00FA0458[i] = 50, 0x00665D6C = g, redraw",
+     "right_click": "0x00401000 = ret (nothing)",
+     "hover": "DAT_0078183C = i+1 (hovered row font), DAT_00781834 = i+1+1099 (hyp: tooltip/help string id)",
+     "ev": "exe",
+     "ours": "stockpile toggle (CLI 'stockpile GOOD' if present; else no equivalent)"
+    }
+   ],
+   "notes": "Hit-test origin x is panelX+0x3B while rows draw from panelX+0x32 (exe). Rows ignore n (absolute y 0x55). Our sim has no trade, so all rows are status 9: no headers, no separators, no reserved column."
+  }
+ }
+}

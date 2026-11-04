@@ -1,0 +1,5 @@
+# Track 1H (docs/play/gods.md "Oracle shots"): the sanctuary window's prayer result text. As info-apollo.txt ("See a
+# working city", 800x600, the Oracle of Apollo's window at (68,96), 58 of 60 staff), then a click on "Pray to the god
+# Apollo" (RIMS at (L+75, T+340)); DIR/s.bmp before, DIR/p.bmp after the click. Replace DIR; empty --write-dir;
+# --state-log /dev/null; --seconds 82.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 69:move 200,200; 70:rclick 200,200; 76:shot DIR/s.bmp; 77:move 290,451; 77.3:down 290,451; 77.6:up 290,451; 79:shot DIR/p.bmp; 80:move 600,580; 81:shot DIR/p2.bmp

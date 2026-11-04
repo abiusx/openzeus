@@ -1,0 +1,24 @@
+# 1L4-goals: six goals (table 0x00FE2768: +4 count, records of 76 bytes from 0x00FE2770: +0 type, +4 v1, +8 v2,
+# +0xC v3, +0x10 v4, +0x14 other byte) and, at tick 55 (after the day's cycle step 16 recount, cycle_storages_pass_16
+# 0x00488C30; the goals open at tick 58), 500 wood in the storehouse totals (g_stock_storehouses[9]).
+5 0x00FE276C 4 6
+5 0x00FE2770 4 0
+5 0x00FE2774 4 1000
+5 0x00FE27BC 4 1
+5 0x00FE27C0 4 4000
+5 0x00FE2808 4 2
+5 0x00FE280C 4 -1
+5 0x00FE2810 4 -1
+5 0x00FE2814 4 2
+5 0x00FE2818 4 0
+5 0x00FE281C 1 0
+5 0x00FE2854 4 3
+5 0x00FE2858 4 13
+5 0x00FE285C 4 4
+5 0x00FE28A0 4 14
+5 0x00FE28A4 4 9
+5 0x00FE28A8 4 3
+5 0x00FE28AC 4 0
+5 0x00FE28EC 4 12
+5 0x00FE28F0 4 5
+55 0x00FEB360 4 500

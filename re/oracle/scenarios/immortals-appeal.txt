@@ -1,0 +1,13 @@
+# See immortals and See appeal against the oracle (docs/play/pages.md "15 immortals", "17 appeal").
+# 1) immortals (runs/1D-immortals, --seconds 67): "See a working city" (800x600), camera poked to its Ares sanctuary
+#    (building 395, root tile (90,95), activity +0x32 = 20): DIR/poke.txt = "20 da2f64 4 107", "20 da2f68 4 166" (and at
+#    tick 23); ZEUS_POKE, ZEUS_STATE_DUMP=DIR/dump EVERY 25, --state-log DIR/state.txt; Mythology page (642,329) once,
+#    See immortals (729,59) -> i.bmp. The column (n = 10) stands on the altar part (2x2 at (99,96)): base at (519,442),
+#    top at (515,332) -> draw point (510,450) = tile (99,97) raised by 30.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 57.5:move 300,12; 60:shot DIR/n.bmp; 61:move 642,329; 61.3:down 642,329; 61.6:up 642,329; 63:move 729,59; 63.3:down 729,59; 63.6:up 729,59; 64.5:move 300,12; 66:shot DIR/i.bmp
+# 2) appeal (runs/1D-appeal, --seconds 70): the granary of scrub-granary.txt (Open Play Sandbox, camera poked at tick 5
+#    "5 da2f64 4 114", "5 da2f68 4 272"), then Aesthetics (642,411), See appeal (729,59) -> appeal.bmp.
+#    Play: python3 -m sim new COPY.pkl; python3 -m sim do COPY.pkl "build granary 150 141"; ... "days 3"; serve it on
+#    your own port; python3 tools/oracle_view_compare.py DIR/appeal.bmp http://127.0.0.1:PORT/play.html 114 272
+#    --eval "UIX.page = 9; UIX.tab = 0; UIX.overlay[9] = 17; 0"
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:rclick 300,300; 55:click 570,575; 56:click 622,165; 57:click 675,343; 58:move 330,330; 59:down 330,330; 59.3:up 330,330; 60:rclick 300,300; 60.5:move 300,580; 63:shot DIR/built.bmp; 64:move 642,411; 64.3:down 642,411; 64.6:up 642,411; 66:move 729,59; 66.3:down 729,59; 66.6:up 729,59; 67.5:move 300,580; 69:shot DIR/appeal.bmp

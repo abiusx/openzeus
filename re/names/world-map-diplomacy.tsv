@@ -1,0 +1,31 @@
+address	name	kind	type	evidence
+00470800	event_request	function		type-1 request state machine: city->player requests (kinds 0,3..6), player gifts (kind 9), item 0x18 -> 0x0046ED70
+0046ffa0	request_resolve_attitude	function		request outcome -> attitude of requester and same-class cities (tables 0x00632F60..0x006331A0, 0x0063322C, 0x00633254), history 0x0042EEC0, favor message 0x386/0x38C
+0046fbc0	request_tone	function		city_class -> phrase tone 0 S(ally) 1 D(rival) 2 P(vassal,colony) 3 R(parent,self)
+0046fba0	event_city_class	function		city_class of event_city, 2 if none
+00466e30	event_amount_units	function		thiscall(ev,item): drachmas/troops raw, sculpture *400, else *100
+00489b90	city_goods_remove	function		(g, units, mode): food 25 = foods 1..8 then wheat; storehouses + posts (mode&2 skips exporting posts) then granaries (mode&1)
+00489230	city_goods_add	function		(g, units, prefer_get, dry_run): storehouses accept/get within limit, granaries for food; returns units placed
+004745e0	incoming_goods_dialog	function		storage room vs amount -> phrase + option set; advances state 0/1->2/1, 2/3->4/3, 4/5->8/5
+00474f60	event_tribute_in	function		type 0x1D: city pays tribute; dialog, accept -> treasury/storage, 0xFEB500 tribute received
+004715c0	event_tribute_out	function		type 0x1E: player owes tribute to conqueror; paid early +10, on time +5, late -35, never -70
+004752a0	event_request_granted	function		type 0x20: goods/money/troops the player requested arrive (flag 0x4000: raid loot)
+004756b0	event_demand_refused	function		type 0x21: rival refuses the player's demand (message 0x3F2)
+004742a0	event_relation_message	function		type 0x1F: streak message only (codes 0..9, phrases 0x3FE..0x435)
+00477430	city_streak_consequence	function		pleased>=50 aid; displeased>=50 trade stop (ally/parent), invasion (rival), rebellion (vassal/colony); streaks reset, attitude -30/+30
+0047ecd0	cities_streak_pick	function		month day 7: one random existing city of kind 1..3 -> 0x00477430
+004776f0	city_event_trade_suspend	function		type 0x13 subtype 0, dispatched now
+00477790	city_event_tribute_suspend	function		type 0x13 subtype 4 (unused by 0x00477430 table)
+00477830	city_event_invasion	function		type 2 invasion from a displeased rival, strength 0x0042D9D0
+00477a00	city_event_rebellion	function		type 0x13 subtype 6, deadline 12
+0047f0c0	cities_spontaneous_create	function		1 money gift (debt), 2 rival invasion, 3 status change 6
+0047f380	city_event_status6	function		type 0x13 subtype 6 (rebellion), flags 0x110
+0047fbb0	player_gift_send	function		player gift: refuse if gift_fatigue>39 (0x3F8/0x3F9), else type-1 kind-9 event, paid now via 0x0046DAA0
+0047fd90	player_request_attitude	function		attitude cost of asking: tables 0x006332AC goods, 0x006332D0 troops, 0x006332F4 strike; history 0xC75..0xC77
+00462540	gift_size_units	function		(g, size): drachmas 500/1000/2500, goods 400/800/1600 units
+004624c0	item_giftable	function		1..14, 16..21, 23
+00462500	item_requestable	function		9..21, 23, 24, 25, 27
+00463e40	gift_size_dialog	function		sizes offered by stock (1..3)
+0047f630	request_outstanding	function		type 1/0x1E active and (oracle-warned or countdown<=deadline or state 1)
+00477d20	event_is_request_or_tribute	function		type 1 or 0x1E
+004e7c00	hermes_request_auto	function		Hermes help active and type 1 not kind 9: free fulfilment

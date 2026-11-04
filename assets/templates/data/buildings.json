@@ -1,0 +1,3040 @@
+{
+ "house": {
+  "zeus_id": 2,
+  "key": "house",
+  "name": "House",
+  "size": 2,
+  "cost": 20,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 15,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "house"
+ },
+ "elite_house": {
+  "zeus_id": 9,
+  "key": "elite_house",
+  "name": "Elite House",
+  "size": 4,
+  "cost": 200,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 15,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "house",
+  "elite": true
+ },
+ "flower_garden": {
+  "zeus_id": 15,
+  "key": "flower_garden",
+  "name": "@{t:28:15}",
+  "size": 2,
+  "cost": 40,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 8,
+   "step": 1,
+   "step_size": -1,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "gazebo": {
+  "zeus_id": 16,
+  "key": "gazebo",
+  "name": "@{t:28:16}",
+  "size": 2,
+  "cost": 45,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 6,
+   "step": 1,
+   "step_size": -1,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "hedge_maze": {
+  "zeus_id": 17,
+  "key": "hedge_maze",
+  "name": "@{t:28:17}",
+  "size": 3,
+  "cost": 85,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 12,
+   "step": 1,
+   "step_size": -1,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "fish_pond": {
+  "zeus_id": 18,
+  "key": "fish_pond",
+  "name": "@{t:28:18}",
+  "size": 4,
+  "cost": 125,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 18,
+   "step": 1,
+   "step_size": -3,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "tall_obelisk": {
+  "zeus_id": 19,
+  "key": "tall_obelisk",
+  "name": "@{t:28:19}",
+  "size": 1,
+  "cost": 24,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 8,
+   "step": 1,
+   "step_size": 0,
+   "range": 2
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "sundial": {
+  "zeus_id": 20,
+  "key": "sundial",
+  "name": "@{t:28:20}",
+  "size": 2,
+  "cost": 40,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 7,
+   "step": 1,
+   "step_size": -2,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "topiary": {
+  "zeus_id": 21,
+  "key": "topiary",
+  "name": "@{t:28:21}",
+  "size": 3,
+  "cost": 75,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 15,
+   "step": 1,
+   "step_size": 0,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "spring": {
+  "zeus_id": 22,
+  "key": "spring",
+  "name": "@{t:28:22}",
+  "size": 3,
+  "cost": 85,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 10,
+   "step": 2,
+   "step_size": -1,
+   "range": 5
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "stone_circle": {
+  "zeus_id": 23,
+  "key": "stone_circle",
+  "name": "@{t:28:23}",
+  "size": 4,
+  "cost": 120,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 24,
+   "step": 2,
+   "step_size": -2,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "short_obelisk": {
+  "zeus_id": 24,
+  "key": "short_obelisk",
+  "name": "@{t:28:24}",
+  "size": 1,
+  "cost": 18,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 6,
+   "step": 1,
+   "step_size": -1,
+   "range": 2
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "water_park": {
+  "zeus_id": 25,
+  "key": "water_park",
+  "name": "@{t:28:25}",
+  "size": 2,
+  "cost": 32,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 5,
+   "step": 1,
+   "step_size": -1,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "road": {
+  "zeus_id": 28,
+  "key": "road",
+  "name": "@{t:28:28}",
+  "size": 1,
+  "cost": 3,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "road"
+ },
+ "wheat_farm": {
+  "zeus_id": 31,
+  "key": "wheat_farm",
+  "name": "@{t:28:31}",
+  "size": 3,
+  "cost": 45,
+  "employees": 10,
+  "labor_category": 0,
+  "desirability": {
+   "value": -3,
+   "step": 1,
+   "step_size": 1,
+   "range": 3
+  },
+  "fire_risk": 10,
+  "damage_risk": 5,
+  "fireproof": false,
+  "kind": "producer",
+  "output": "wheat",
+  "needs": "meadow",
+  "mode": "harvest",
+  "harvest_month": 6
+ },
+ "onion_farm": {
+  "zeus_id": 32,
+  "key": "onion_farm",
+  "name": "@{t:28:32}",
+  "size": 3,
+  "cost": 45,
+  "employees": 10,
+  "labor_category": 0,
+  "desirability": {
+   "value": -4,
+   "step": 2,
+   "step_size": 1,
+   "range": 3
+  },
+  "fire_risk": 5,
+  "damage_risk": 10,
+  "fireproof": false,
+  "kind": "producer",
+  "output": "onions",
+  "needs": "meadow",
+  "mode": "harvest",
+  "harvest_month": 3
+ },
+ "carrot_farm": {
+  "zeus_id": 33,
+  "key": "carrot_farm",
+  "name": "@{t:28:33}",
+  "size": 3,
+  "cost": 45,
+  "employees": 10,
+  "labor_category": 0,
+  "desirability": {
+   "value": -2,
+   "step": 1,
+   "step_size": 1,
+   "range": 2
+  },
+  "fire_risk": 5,
+  "damage_risk": 10,
+  "fireproof": false,
+  "kind": "producer",
+  "output": "carrots",
+  "needs": "meadow",
+  "mode": "harvest",
+  "harvest_month": 3
+ },
+ "grapevine": {
+  "zeus_id": 35,
+  "key": "grapevine",
+  "name": "@{t:28:35}",
+  "size": 1,
+  "cost": 6,
+  "employees": 0,
+  "labor_category": 0,
+  "desirability": {
+   "value": 1,
+   "step": 1,
+   "step_size": -1,
+   "range": 1
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "orchard",
+  "output": "grapes",
+  "needs": "meadow",
+  "harvest_month": 9,
+  "rot_month": 11
+ },
+ "olive_tree": {
+  "zeus_id": 36,
+  "key": "olive_tree",
+  "name": "@{t:28:36}",
+  "size": 1,
+  "cost": 6,
+  "employees": 0,
+  "labor_category": 0,
+  "desirability": {
+   "value": 1,
+   "step": 1,
+   "step_size": -1,
+   "range": 1
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "orchard",
+  "output": "olives",
+  "needs": "meadow",
+  "harvest_month": 0,
+  "rot_month": 2
+ },
+ "growers_lodge": {
+  "zeus_id": 37,
+  "key": "growers_lodge",
+  "name": "Growers Lodge",
+  "size": 2,
+  "cost": 50,
+  "employees": 12,
+  "labor_category": 0,
+  "desirability": {
+   "value": -3,
+   "step": 1,
+   "step_size": 1,
+   "range": 2
+  },
+  "fire_risk": 10,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "lodge",
+  "trees": [
+   "olive_tree",
+   "grapevine"
+  ],
+  "cap": 500,
+  "work_ticks": 204
+ },
+ "goat": {
+  "zeus_id": 39,
+  "key": "goat",
+  "name": "@{t:28:39}",
+  "size": 1,
+  "cost": 8,
+  "employees": 0,
+  "labor_category": 0,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "animal",
+  "needs": "meadow",
+  "animal": "goat"
+ },
+ "sheep": {
+  "zeus_id": 40,
+  "key": "sheep",
+  "name": "@{t:28:40}",
+  "size": 1,
+  "cost": 8,
+  "employees": 0,
+  "labor_category": 0,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "animal",
+  "needs": "meadow",
+  "animal": "sheep"
+ },
+ "sheep_farm": {
+  "zeus_id": 41,
+  "key": "sheep_farm",
+  "name": "Sheep Farm",
+  "size": 2,
+  "cost": 35,
+  "employees": 8,
+  "labor_category": 0,
+  "desirability": {
+   "value": -5,
+   "step": 1,
+   "step_size": 2,
+   "range": 3
+  },
+  "fire_risk": 10,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "herd",
+  "output": "fleece",
+  "animal": "sheep",
+  "herder": "shepherd",
+  "yield": 100,
+  "cap": 500,
+  "work_ticks": 20
+ },
+ "goat_farm": {
+  "zeus_id": 42,
+  "key": "goat_farm",
+  "name": "Goat Farm",
+  "size": 2,
+  "cost": 35,
+  "employees": 8,
+  "labor_category": 0,
+  "desirability": {
+   "value": -5,
+   "step": 1,
+   "step_size": 2,
+   "range": 3
+  },
+  "fire_risk": 10,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "herd",
+  "output": "cheese",
+  "animal": "goat",
+  "herder": "goatherd",
+  "yield": 100,
+  "cap": 500,
+  "work_ticks": 20
+ },
+ "fishing_wharf": {
+  "zeus_id": 44,
+  "key": "fishing_wharf",
+  "name": "@{t:67:5}",
+  "size": 2,
+  "cost": 65,
+  "employees": 10,
+  "labor_category": 0,
+  "desirability": {
+   "value": -15,
+   "step": 1,
+   "step_size": 2,
+   "range": 4
+  },
+  "fire_risk": 10,
+  "damage_risk": 10,
+  "fireproof": false,
+  "kind": "fishery",
+  "output": "fish",
+  "needs": "coast",
+  "cap": 500,
+  "boat_rate": [
+   10,
+   8,
+   6,
+   4,
+   2
+  ],
+  "catch_ticks": [
+   408,
+   816,
+   1224,
+   1632,
+   2040
+  ],
+  "unload_ticks": [
+   204,
+   408,
+   612,
+   816,
+   1020
+  ]
+ },
+ "urchin_quay": {
+  "zeus_id": 45,
+  "key": "urchin_quay",
+  "name": "@{t:28:45}",
+  "size": 2,
+  "cost": 65,
+  "employees": 10,
+  "labor_category": 0,
+  "desirability": {
+   "value": -15,
+   "step": 1,
+   "step_size": 2,
+   "range": 4
+  },
+  "fire_risk": 10,
+  "damage_risk": 10,
+  "fireproof": false,
+  "kind": "urchin",
+  "output": "urchin",
+  "needs": "coast",
+  "cap": 500,
+  "intervals": [
+   1,
+   4,
+   8,
+   16,
+   32
+  ],
+  "divers": [
+   1,
+   1,
+   1,
+   1,
+   0
+  ],
+  "work_ticks": 488,
+  "after_ticks": 200
+ },
+ "hunting_lodge": {
+  "zeus_id": 46,
+  "key": "hunting_lodge",
+  "name": "@{t:28:46}",
+  "size": 2,
+  "cost": 40,
+  "employees": 8,
+  "labor_category": 0,
+  "desirability": {
+   "value": -6,
+   "step": 2,
+   "step_size": -2,
+   "range": 4
+  },
+  "fire_risk": 15,
+  "damage_risk": 5,
+  "fireproof": false,
+  "kind": "hunt",
+  "output": "meat",
+  "cap": 500,
+  "work_ticks": 60,
+  "hunters": [
+   3,
+   2,
+   1,
+   1,
+   0
+  ],
+  "intervals": [
+   1,
+   4,
+   16,
+   32,
+   64
+  ]
+ },
+ "mint": {
+  "zeus_id": 48,
+  "key": "mint",
+  "name": "@{t:28:48}",
+  "size": 2,
+  "cost": 200,
+  "employees": 15,
+  "labor_category": 1,
+  "desirability": {
+   "value": -10,
+   "step": 2,
+   "step_size": 2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 20,
+  "fireproof": false,
+  "kind": "gather",
+  "output": "silver",
+  "resource": "silver",
+  "worker": "miner",
+  "work_ticks": 408,
+  "yield": 25,
+  "cap": 300,
+  "mask": 3145730,
+  "match": 2097154,
+  "workers": [
+   3,
+   2,
+   1,
+   1,
+   0
+  ],
+  "keeps_output": true,
+  "mint_rate": [
+   6,
+   4,
+   3,
+   1,
+   0
+  ]
+ },
+ "marble_quarry": {
+  "zeus_id": 49,
+  "key": "marble_quarry",
+  "name": "Marble Quarry",
+  "size": 2,
+  "cost": 150,
+  "employees": 15,
+  "labor_category": 1,
+  "desirability": {
+   "value": -6,
+   "step": 1,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 20,
+  "fireproof": false,
+  "kind": "gather",
+  "output": "marble",
+  "resource": "marble",
+  "worker": "stonecutter",
+  "work_ticks": 1632,
+  "yield": 800,
+  "cap": 800,
+  "mask": 1179648,
+  "match": 131072,
+  "workers": [
+   1,
+   1,
+   1,
+   1,
+   0
+  ]
+ },
+ "foundry": {
+  "zeus_id": 50,
+  "key": "foundry",
+  "name": "@{t:28:50}",
+  "size": 2,
+  "cost": 120,
+  "employees": 15,
+  "labor_category": 1,
+  "desirability": {
+   "value": -10,
+   "step": 1,
+   "step_size": 1,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 20,
+  "fireproof": false,
+  "kind": "gather",
+  "output": "bronze",
+  "resource": "copper",
+  "worker": "miner",
+  "work_ticks": 408,
+  "yield": 25,
+  "cap": 500,
+  "mask": 3145730,
+  "match": 1048578,
+  "workers": [
+   3,
+   2,
+   1,
+   1,
+   0
+  ]
+ },
+ "timber_mill": {
+  "zeus_id": 51,
+  "key": "timber_mill",
+  "name": "@{t:28:51}",
+  "size": 2,
+  "cost": 75,
+  "employees": 12,
+  "labor_category": 1,
+  "desirability": {
+   "value": -5,
+   "step": 1,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 20,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "gather",
+  "output": "wood",
+  "resource": "trees",
+  "worker": "woodcutter",
+  "work_ticks": 408,
+  "yield": 25,
+  "cap": 500,
+  "mask": 1,
+  "match": 1,
+  "workers": [
+   3,
+   2,
+   2,
+   1,
+   1
+  ]
+ },
+ "winery": {
+  "zeus_id": 53,
+  "key": "winery",
+  "name": "@{t:28:53}",
+  "size": 2,
+  "cost": 90,
+  "employees": 12,
+  "labor_category": 1,
+  "desirability": {
+   "value": 4,
+   "step": 1,
+   "step_size": -1,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 10,
+  "fireproof": false,
+  "kind": "workshop",
+  "input": "grapes",
+  "output": "wine"
+ },
+ "oil_press": {
+  "zeus_id": 54,
+  "key": "oil_press",
+  "name": "Oil Press",
+  "size": 2,
+  "cost": 90,
+  "employees": 12,
+  "labor_category": 1,
+  "desirability": {
+   "value": -4,
+   "step": 2,
+   "step_size": 2,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 15,
+  "fireproof": false,
+  "kind": "workshop",
+  "input": "olives",
+  "output": "olive_oil"
+ },
+ "sculpture_studio": {
+  "zeus_id": 55,
+  "key": "sculpture_studio",
+  "name": "@{t:28:55}",
+  "size": 2,
+  "cost": 200,
+  "employees": 18,
+  "labor_category": 1,
+  "desirability": {
+   "value": -2,
+   "step": 1,
+   "step_size": 1,
+   "range": 2
+  },
+  "fire_risk": 2,
+  "damage_risk": 20,
+  "fireproof": false,
+  "kind": "workshop",
+  "input": "bronze",
+  "output": "sculpture",
+  "batch": 400,
+  "input_cap": 400
+ },
+ "artisans_guild": {
+  "zeus_id": 56,
+  "key": "artisans_guild",
+  "name": "Artisans Guild",
+  "size": 2,
+  "cost": 75,
+  "employees": 25,
+  "labor_category": 1,
+  "desirability": {
+   "value": -6,
+   "step": 2,
+   "step_size": 1,
+   "range": 3
+  },
+  "fire_risk": 10,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "guild"
+ },
+ "granary": {
+  "zeus_id": 57,
+  "key": "granary",
+  "name": "@{t:28:57}",
+  "size": 4,
+  "cost": 100,
+  "employees": 18,
+  "labor_category": 2,
+  "desirability": {
+   "value": -12,
+   "step": 1,
+   "step_size": 2,
+   "range": 4
+  },
+  "fire_risk": 16,
+  "damage_risk": 16,
+  "fireproof": false,
+  "kind": "storage",
+  "accepts": "food",
+  "capacity": 3200
+ },
+ "storehouse": {
+  "zeus_id": 58,
+  "key": "storehouse",
+  "name": "@{t:28:58}",
+  "size": 3,
+  "cost": 50,
+  "employees": 12,
+  "labor_category": 2,
+  "desirability": {
+   "value": -2,
+   "step": 4,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 10,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "storage",
+  "accepts": "nonfood",
+  "capacity": 3200
+ },
+ "dock": {
+  "zeus_id": 60,
+  "key": "dock",
+  "name": "Dock",
+  "size": 4,
+  "cost": 200,
+  "employees": 24,
+  "labor_category": 2,
+  "desirability": {
+   "value": -2,
+   "step": 4,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 10,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "trade",
+  "route": "sea",
+  "capacity": 6000,
+  "needs": "coast"
+ },
+ "trading_post": {
+  "zeus_id": 62,
+  "key": "trading_post",
+  "name": "@{t:28:62}",
+  "size": 4,
+  "cost": 200,
+  "employees": 24,
+  "labor_category": 2,
+  "desirability": {
+   "value": -2,
+   "step": 4,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 10,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "trade",
+  "route": "land",
+  "capacity": 6000
+ },
+ "agora": {
+  "zeus_id": 63,
+  "key": "agora",
+  "name": "@{t:28:63}",
+  "size": 0,
+  "cost": 50,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 12,
+   "step": 2,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 12,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "agora",
+  "stalls": 3
+ },
+ "grand_agora": {
+  "zeus_id": 64,
+  "key": "grand_agora",
+  "name": "@{t:28:64}",
+  "size": 0,
+  "cost": 100,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 12,
+   "step": 2,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 12,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "agora",
+  "stalls": 6
+ },
+ "empty_stall": {
+  "zeus_id": 66,
+  "key": "empty_stall",
+  "name": "Empty Stall",
+  "size": 2,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 2,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "stall"
+ },
+ "food_vendor": {
+  "zeus_id": 68,
+  "key": "food_vendor",
+  "name": "@{t:28:68}",
+  "size": 2,
+  "cost": 20,
+  "employees": 4,
+  "labor_category": 2,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "vendor",
+  "goods": "food"
+ },
+ "fleece_vendor": {
+  "zeus_id": 69,
+  "key": "fleece_vendor",
+  "name": "@{t:28:69}",
+  "size": 2,
+  "cost": 20,
+  "employees": 4,
+  "labor_category": 2,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "vendor",
+  "goods": "fleece"
+ },
+ "oil_vendor": {
+  "zeus_id": 70,
+  "key": "oil_vendor",
+  "name": "@{t:28:70}",
+  "size": 2,
+  "cost": 20,
+  "employees": 4,
+  "labor_category": 2,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "vendor",
+  "goods": "olive_oil"
+ },
+ "wine_vendor": {
+  "zeus_id": 71,
+  "key": "wine_vendor",
+  "name": "@{t:28:71}",
+  "size": 2,
+  "cost": 20,
+  "employees": 4,
+  "labor_category": 2,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "vendor",
+  "goods": "wine"
+ },
+ "arms_vendor": {
+  "zeus_id": 72,
+  "key": "arms_vendor",
+  "name": "@{t:28:72}",
+  "size": 2,
+  "cost": 20,
+  "employees": 4,
+  "labor_category": 2,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "vendor",
+  "goods": "armor"
+ },
+ "horse_trainer": {
+  "zeus_id": 73,
+  "key": "horse_trainer",
+  "name": "@{t:28:73}",
+  "size": 2,
+  "cost": 20,
+  "employees": 4,
+  "labor_category": 2,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "vendor",
+  "goods": "horses"
+ },
+ "fountain": {
+  "zeus_id": 74,
+  "key": "fountain",
+  "name": "@{t:28:74}",
+  "size": 2,
+  "cost": 35,
+  "employees": 4,
+  "labor_category": 3,
+  "desirability": {
+   "value": 4,
+   "step": 2,
+   "step_size": -2,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 8,
+  "fireproof": false,
+  "kind": "service",
+  "service": "water",
+  "spawn_days": [
+   1,
+   3,
+   7,
+   15,
+   29
+  ]
+ },
+ "infirmary": {
+  "zeus_id": 76,
+  "key": "infirmary",
+  "name": "@{t:28:76}",
+  "size": 4,
+  "cost": 70,
+  "employees": 11,
+  "labor_category": 3,
+  "desirability": {
+   "value": -2,
+   "step": 4,
+   "step_size": 0,
+   "range": 4
+  },
+  "fire_risk": 10,
+  "damage_risk": 10,
+  "fireproof": false,
+  "kind": "service",
+  "service": "healer",
+  "spawn_days": [
+   3,
+   7,
+   15,
+   29,
+   44
+  ]
+ },
+ "college": {
+  "zeus_id": 77,
+  "key": "college",
+  "name": "@{t:28:77}",
+  "size": 3,
+  "cost": 65,
+  "employees": 12,
+  "labor_category": 5,
+  "desirability": {
+   "value": -5,
+   "step": 1,
+   "step_size": -3,
+   "range": 2
+  },
+  "fire_risk": 0,
+  "damage_risk": 12,
+  "fireproof": false,
+  "kind": "school",
+  "trains": [
+   [
+    "philosopher",
+    "podium"
+   ]
+  ],
+  "spawn_days": [
+   8,
+   15,
+   30,
+   50,
+   100
+  ]
+ },
+ "drama_school": {
+  "zeus_id": 78,
+  "key": "drama_school",
+  "name": "@{t:28:78}",
+  "size": 3,
+  "cost": 35,
+  "employees": 10,
+  "labor_category": 5,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 15,
+  "fireproof": false,
+  "kind": "school",
+  "trains": [
+   [
+    "actor",
+    "theatre"
+   ]
+  ],
+  "spawn_days": [
+   8,
+   15,
+   30,
+   50,
+   100
+  ]
+ },
+ "gymnasium": {
+  "zeus_id": 79,
+  "key": "gymnasium",
+  "name": "@{t:28:79}",
+  "size": 3,
+  "cost": 75,
+  "employees": 7,
+  "labor_category": 5,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 5,
+  "fireproof": false,
+  "kind": "service",
+  "service": "athletics",
+  "spawn_days": [
+   4,
+   5,
+   10,
+   17,
+   30
+  ],
+  "trains": [
+   [
+    "competitor",
+    "stadium"
+   ]
+  ]
+ },
+ "stadium": {
+  "zeus_id": 80,
+  "key": "stadium",
+  "name": "@{t:8:34}",
+  "size": 5,
+  "cost": 400,
+  "employees": 45,
+  "labor_category": 5,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 8,
+  "fireproof": false,
+  "kind": "service",
+  "service": "competition",
+  "needs_shows": true,
+  "spawn_days": [
+   3,
+   7,
+   15,
+   29,
+   44
+  ],
+  "unique_venue": true,
+  "orientations": {
+   "v": [
+    5,
+    10
+   ],
+   "h": [
+    10,
+    5
+   ]
+  }
+ },
+ "podium": {
+  "zeus_id": 81,
+  "key": "podium",
+  "name": "@{t:8:36}",
+  "size": 2,
+  "cost": 30,
+  "employees": 4,
+  "labor_category": 5,
+  "desirability": {
+   "value": 3,
+   "step": 1,
+   "step_size": -1,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 5,
+  "fireproof": false,
+  "kind": "service",
+  "service": "philosophy",
+  "needs_shows": true,
+  "spawn_days": [
+   8,
+   15,
+   30,
+   50,
+   100
+  ]
+ },
+ "theatre": {
+  "zeus_id": 82,
+  "key": "theatre",
+  "name": "Theatre",
+  "size": 5,
+  "cost": 120,
+  "employees": 18,
+  "labor_category": 5,
+  "desirability": {
+   "value": 6,
+   "step": 1,
+   "step_size": -1,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 15,
+  "fireproof": false,
+  "kind": "service",
+  "service": "drama",
+  "needs_shows": true,
+  "spawn_days": [
+   3,
+   7,
+   15,
+   29,
+   44
+  ]
+ },
+ "avenue": {
+  "zeus_id": 118,
+  "key": "avenue",
+  "name": "@{t:28:118}",
+  "size": 1,
+  "cost": 20,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 3,
+   "step": 1,
+   "step_size": -1,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "avenue",
+  "width": 2
+ },
+ "commemorative_monument": {
+  "zeus_id": 119,
+  "key": "commemorative_monument",
+  "name": "@{t:28:119}",
+  "size": 3,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 30,
+   "step": 2,
+   "step_size": -5,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor"
+ },
+ "bridge": {
+  "zeus_id": 120,
+  "key": "bridge",
+  "name": "Bridge",
+  "size": 1,
+  "cost": 15,
+  "employees": 0,
+  "labor_category": 4,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "bridge"
+ },
+ "maintenance": {
+  "zeus_id": 121,
+  "key": "maintenance",
+  "name": "@{t:28:121}",
+  "size": 2,
+  "cost": 20,
+  "employees": 5,
+  "labor_category": 3,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 5,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "service",
+  "service": "maintenance",
+  "spawn_days": [
+   0,
+   1,
+   3,
+   7,
+   15
+  ]
+ },
+ "tax_office": {
+  "zeus_id": 122,
+  "key": "tax_office",
+  "name": "@{t:28:122}",
+  "size": 2,
+  "cost": 50,
+  "employees": 8,
+  "labor_category": 4,
+  "desirability": {
+   "value": -4,
+   "step": 1,
+   "step_size": 1,
+   "range": 2
+  },
+  "fire_risk": 10,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "service",
+  "service": "tax",
+  "spawn_days": [
+   0,
+   1,
+   3,
+   7,
+   15
+  ]
+ },
+ "roadblock": {
+  "zeus_id": 123,
+  "key": "roadblock",
+  "name": "@{t:28:123}",
+  "size": 1,
+  "cost": 4,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "roadblock"
+ },
+ "guardpost": {
+  "zeus_id": 124,
+  "key": "guardpost",
+  "name": "Guardpost",
+  "size": 2,
+  "cost": 40,
+  "employees": 6,
+  "labor_category": 3,
+  "desirability": {
+   "value": -2,
+   "step": 1,
+   "step_size": 1,
+   "range": 2
+  },
+  "fire_risk": 0,
+  "damage_risk": 10,
+  "fireproof": false,
+  "kind": "service",
+  "service": "watchman",
+  "spawn_days": [
+   0,
+   1,
+   3,
+   7,
+   15
+  ]
+ },
+ "heroes_hall": {
+  "zeus_id": 125,
+  "key": "heroes_hall",
+  "name": "@{t:28:125}",
+  "size": 4,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 15,
+   "step": 2,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "hall"
+ },
+ "boulevard": {
+  "zeus_id": 126,
+  "key": "boulevard",
+  "name": "@{t:28:126}",
+  "size": 1,
+  "cost": 30,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 3,
+   "step": 2,
+   "step_size": -2,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "avenue",
+  "width": 3
+ },
+ "bench": {
+  "zeus_id": 127,
+  "key": "bench",
+  "name": "@{t:28:127}",
+  "size": 1,
+  "cost": 12,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 2,
+   "step": 2,
+   "step_size": -1,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "decor"
+ },
+ "gardens": {
+  "zeus_id": 128,
+  "key": "gardens",
+  "name": "Gardens",
+  "size": 1,
+  "cost": 12,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 3,
+   "step": 1,
+   "step_size": -1,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "decor"
+ },
+ "doric_column": {
+  "zeus_id": 129,
+  "key": "doric_column",
+  "name": "@{t:28:129}",
+  "size": 1,
+  "cost": 16,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 4,
+   "step": 1,
+   "step_size": -2,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "decor"
+ },
+ "wall": {
+  "zeus_id": 130,
+  "key": "wall",
+  "name": "@{t:28:130}",
+  "size": 1,
+  "cost": 5,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "wall"
+ },
+ "gatehouse": {
+  "zeus_id": 131,
+  "key": "gatehouse",
+  "name": "@{t:28:131}",
+  "size": 2,
+  "cost": 80,
+  "employees": 0,
+  "labor_category": 7,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "gatehouse"
+ },
+ "tower": {
+  "zeus_id": 132,
+  "key": "tower",
+  "name": "@{t:28:132}",
+  "size": 2,
+  "cost": 100,
+  "employees": 15,
+  "labor_category": 8,
+  "desirability": {
+   "value": -4,
+   "step": 4,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "tower"
+ },
+ "horse_ranch": {
+  "zeus_id": 133,
+  "key": "horse_ranch",
+  "name": "@{t:28:133}",
+  "size": 3,
+  "cost": 200,
+  "employees": 15,
+  "labor_category": 7,
+  "desirability": {
+   "value": -10,
+   "step": 1,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 10,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "ranch",
+  "input": "wheat",
+  "output": "horses",
+  "input_cap": 800,
+  "food_per_horse": 10,
+  "max_horses": 6
+ },
+ "armory": {
+  "zeus_id": 135,
+  "key": "armory",
+  "name": "@{t:28:135}",
+  "size": 2,
+  "cost": 85,
+  "employees": 18,
+  "labor_category": 7,
+  "desirability": {
+   "value": -8,
+   "step": 1,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 15,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "workshop",
+  "input": "bronze",
+  "output": "armor"
+ },
+ "trireme_wharf": {
+  "zeus_id": 136,
+  "key": "trireme_wharf",
+  "name": "@{t:28:136}",
+  "size": 3,
+  "cost": 150,
+  "employees": 100,
+  "labor_category": 8,
+  "desirability": {
+   "value": -12,
+   "step": 2,
+   "step_size": 2,
+   "range": 4
+  },
+  "fire_risk": 10,
+  "damage_risk": 10,
+  "fireproof": false,
+  "kind": "shipyard",
+  "needs": "coast",
+  "inputs": [
+   "wood",
+   "armor"
+  ],
+  "input_cap": 300
+ },
+ "ionic_column": {
+  "zeus_id": 145,
+  "key": "ionic_column",
+  "name": "@{t:28:145}",
+  "size": 1,
+  "cost": 16,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 4,
+   "step": 1,
+   "step_size": -2,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "decor",
+  "poseidon": true
+ },
+ "corinthian_column": {
+  "zeus_id": 146,
+  "key": "corinthian_column",
+  "name": "@{t:28:146}",
+  "size": 1,
+  "cost": 16,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 4,
+   "step": 1,
+   "step_size": -2,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "decor",
+  "poseidon": true
+ },
+ "dolphin_sculpture": {
+  "zeus_id": 148,
+  "key": "dolphin_sculpture",
+  "name": "@{t:28:148}",
+  "size": 3,
+  "cost": 80,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 12,
+   "step": 2,
+   "step_size": -3,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor",
+  "poseidon": true
+ },
+ "orrery": {
+  "zeus_id": 149,
+  "key": "orrery",
+  "name": "@{t:28:149}",
+  "size": 3,
+  "cost": 90,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 9,
+   "step": 1,
+   "step_size": -1,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor",
+  "poseidon": true
+ },
+ "shell_garden": {
+  "zeus_id": 150,
+  "key": "shell_garden",
+  "name": "@{t:28:150}",
+  "size": 2,
+  "cost": 40,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 5,
+   "step": 1,
+   "step_size": 0,
+   "range": 5
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor",
+  "poseidon": true
+ },
+ "baths": {
+  "zeus_id": 151,
+  "key": "baths",
+  "name": "@{t:28:151}",
+  "size": 4,
+  "cost": 115,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 15,
+   "step": 1,
+   "step_size": -1,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor",
+  "poseidon": true
+ },
+ "bird_bath": {
+  "zeus_id": 152,
+  "key": "bird_bath",
+  "name": "@{t:28:152}",
+  "size": 1,
+  "cost": 12,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 3,
+   "step": 1,
+   "step_size": -1,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "decor",
+  "poseidon": true
+ },
+ "ruin": {
+  "zeus_id": 169,
+  "key": "ruin",
+  "name": "Burning Ruins",
+  "size": 1,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "ruin"
+ },
+ "race_track": {
+  "zeus_id": 199,
+  "key": "race_track",
+  "name": "Race Track",
+  "size": 4,
+  "cost": 60,
+  "employees": 0,
+  "labor_category": -1,
+  "desirability": {
+   "value": -6,
+   "step": 1,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "hippodrome",
+  "horses_cap": 24,
+  "income": [
+   [
+    4,
+    10
+   ],
+   [
+    12,
+    20
+   ],
+   [
+    24,
+    40
+   ],
+   [
+    36,
+    60
+   ],
+   [
+    60,
+    100
+   ],
+   [
+    100,
+    200
+   ],
+   [
+    200,
+    500
+   ]
+  ],
+  "poseidon": true
+ },
+ "bibliotheke": {
+  "zeus_id": 202,
+  "key": "bibliotheke",
+  "name": "@{t:28:202}",
+  "size": 2,
+  "cost": 35,
+  "employees": 5,
+  "labor_category": 5,
+  "desirability": {
+   "value": 3,
+   "step": 1,
+   "step_size": -1,
+   "range": 3
+  },
+  "fire_risk": 15,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "service",
+  "service": "athletics",
+  "walker": "scholar",
+  "spawn_days": [
+   4,
+   5,
+   10,
+   17,
+   30
+  ],
+  "poseidon": true
+ },
+ "observatory": {
+  "zeus_id": 203,
+  "key": "observatory",
+  "name": "@{t:28:203}",
+  "size": 5,
+  "cost": 150,
+  "employees": 18,
+  "labor_category": 5,
+  "desirability": {
+   "value": 7,
+   "step": 1,
+   "step_size": -1,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 20,
+  "fireproof": false,
+  "kind": "service",
+  "service": "philosophy",
+  "walker": "astronomer",
+  "needs_shows": true,
+  "spawn_days": [
+   8,
+   15,
+   30,
+   50,
+   100
+  ],
+  "poseidon": true
+ },
+ "university": {
+  "zeus_id": 204,
+  "key": "university",
+  "name": "@{t:28:204}",
+  "size": 3,
+  "cost": 65,
+  "employees": 12,
+  "labor_category": 5,
+  "desirability": {
+   "value": -5,
+   "step": 1,
+   "step_size": -3,
+   "range": 3
+  },
+  "fire_risk": 0,
+  "damage_risk": 12,
+  "fireproof": false,
+  "kind": "school",
+  "trains": [
+   [
+    "curator",
+    "museum"
+   ],
+   [
+    "astronomer",
+    "observatory"
+   ]
+  ],
+  "spawn_days": [
+   8,
+   15,
+   30,
+   50,
+   100
+  ],
+  "poseidon": true
+ },
+ "laboratory": {
+  "zeus_id": 205,
+  "key": "laboratory",
+  "name": "@{t:28:205}",
+  "size": 4,
+  "cost": 120,
+  "employees": 9,
+  "labor_category": 5,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 20,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "service",
+  "service": "drama",
+  "walker": "inventor",
+  "spawn_days": [
+   3,
+   7,
+   15,
+   29,
+   44
+  ],
+  "poseidon": true
+ },
+ "inventors_workshop": {
+  "zeus_id": 206,
+  "key": "inventors_workshop",
+  "name": "Inventors Workshop",
+  "size": 3,
+  "cost": 85,
+  "employees": 12,
+  "labor_category": 5,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 20,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "school",
+  "trains": [
+   [
+    "inventor",
+    "laboratory"
+   ]
+  ],
+  "spawn_days": [
+   8,
+   15,
+   30,
+   50,
+   100
+  ],
+  "poseidon": true
+ },
+ "museum": {
+  "zeus_id": 207,
+  "key": "museum",
+  "name": "@{t:28:207}",
+  "size": 6,
+  "cost": 400,
+  "employees": 50,
+  "labor_category": 5,
+  "desirability": {
+   "value": 12,
+   "step": 2,
+   "step_size": -3,
+   "range": 4
+  },
+  "fire_risk": 10,
+  "damage_risk": 15,
+  "fireproof": false,
+  "kind": "service",
+  "service": "competition",
+  "walker": "curator",
+  "needs_shows": true,
+  "spawn_days": [
+   3,
+   7,
+   15,
+   29,
+   44
+  ],
+  "unique_venue": true,
+  "poseidon": true
+ },
+ "orichalc_refinery": {
+  "zeus_id": 211,
+  "key": "orichalc_refinery",
+  "name": "Orichalc Refinery",
+  "size": 2,
+  "cost": 120,
+  "employees": 16,
+  "labor_category": 1,
+  "desirability": {
+   "value": -10,
+   "step": 1,
+   "step_size": 1,
+   "range": 5
+  },
+  "fire_risk": 5,
+  "damage_risk": 20,
+  "fireproof": false,
+  "kind": "gather",
+  "output": "orichalc",
+  "resource": "orichalc",
+  "worker": "miner",
+  "work_ticks": 408,
+  "yield": 25,
+  "cap": 500,
+  "mask": 3145730,
+  "match": 3145728,
+  "workers": [
+   3,
+   2,
+   1,
+   1,
+   0
+  ],
+  "poseidon": true
+ },
+ "chariot_workshop": {
+  "zeus_id": 212,
+  "key": "chariot_workshop",
+  "name": "Chariot Workshop",
+  "size": 4,
+  "cost": 225,
+  "employees": 30,
+  "labor_category": 7,
+  "desirability": {
+   "value": -10,
+   "step": 1,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 20,
+  "damage_risk": 10,
+  "fireproof": false,
+  "kind": "workshop",
+  "input": "wood",
+  "output": "chariot",
+  "input_cap": 400,
+  "keeps_output": true,
+  "output_cap": 400,
+  "poseidon": true
+ },
+ "black_marble_shop": {
+  "zeus_id": 213,
+  "key": "black_marble_shop",
+  "name": "Black Marble Shop",
+  "size": 2,
+  "cost": 150,
+  "employees": 15,
+  "labor_category": 1,
+  "desirability": {
+   "value": -6,
+   "step": 1,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 20,
+  "fireproof": false,
+  "kind": "gather",
+  "output": "black_marble",
+  "resource": "@{t:50:52}",
+  "worker": "stonecutter",
+  "work_ticks": 1632,
+  "yield": 800,
+  "cap": 800,
+  "mask": 1179648,
+  "match": 1179648,
+  "workers": [
+   1,
+   1,
+   1,
+   1,
+   0
+  ],
+  "poseidon": true
+ },
+ "fruit_lodge": {
+  "zeus_id": 214,
+  "key": "fruit_lodge",
+  "name": "Fruit Lodge",
+  "size": 2,
+  "cost": 45,
+  "employees": 12,
+  "labor_category": 0,
+  "desirability": {
+   "value": 2,
+   "step": 1,
+   "step_size": -1,
+   "range": 2
+  },
+  "fire_risk": 10,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "lodge",
+  "trees": [
+   "fruit_tree"
+  ],
+  "cap": 500,
+  "work_ticks": 204,
+  "poseidon": true
+ },
+ "chariot_vendor": {
+  "zeus_id": 215,
+  "key": "chariot_vendor",
+  "name": "@{t:28:215}",
+  "size": 2,
+  "cost": 20,
+  "employees": 4,
+  "labor_category": 2,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "vendor",
+  "goods": "chariot",
+  "poseidon": true
+ },
+ "corral": {
+  "zeus_id": 216,
+  "key": "corral",
+  "name": "@{t:28:216}",
+  "size": 4,
+  "cost": 150,
+  "employees": 25,
+  "labor_category": 0,
+  "desirability": {
+   "value": -12,
+   "step": 2,
+   "step_size": 1,
+   "range": 5
+  },
+  "fire_risk": 10,
+  "damage_risk": 5,
+  "fireproof": false,
+  "kind": "corral",
+  "output": "meat",
+  "cap": 600,
+  "herder": "rancher",
+  "animal": "cattle",
+  "work_ticks": 60,
+  "poseidon": true
+ },
+ "fruit_tree": {
+  "zeus_id": 217,
+  "key": "fruit_tree",
+  "name": "Fruit Tree",
+  "size": 1,
+  "cost": 6,
+  "employees": 0,
+  "labor_category": 0,
+  "desirability": {
+   "value": 1,
+   "step": 2,
+   "step_size": -1,
+   "range": 2
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "orchard",
+  "output": "oranges",
+  "needs": "meadow",
+  "harvest_month": 10,
+  "rot_month": null,
+  "poseidon": true
+ },
+ "cattle": {
+  "zeus_id": 220,
+  "key": "cattle",
+  "name": "@{t:28:220}",
+  "size": 1,
+  "cost": 15,
+  "employees": 0,
+  "labor_category": 0,
+  "desirability": {
+   "value": 0,
+   "step": 0,
+   "step_size": 0,
+   "range": 0
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "animal",
+  "needs": "meadow",
+  "animal": "cattle",
+  "poseidon": true
+ },
+ "endless_warehouse": {
+  "zeus_id": null,
+  "key": "endless_warehouse",
+  "name": "Endless Warehouse",
+  "size": 3,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 2,
+  "desirability": {
+   "value": -2,
+   "step": 4,
+   "step_size": 1,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": false,
+  "kind": "storage",
+  "accepts": "all",
+  "capacity": 1000000000,
+  "endless": true,
+  "test": true
+ },
+ "sanctuary_zeus": {
+  "zeus_id": 84,
+  "key": "sanctuary_zeus",
+  "name": "Sanctuary of Zeus",
+  "size": 0,
+  "w": 16,
+  "h": 24,
+  "cost": 2920,
+  "employees": 75,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_poseidon": {
+  "zeus_id": 85,
+  "key": "sanctuary_poseidon",
+  "name": "Sanctuary of Poseidon",
+  "size": 0,
+  "w": 14,
+  "h": 21,
+  "cost": 2480,
+  "employees": 75,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_demeter": {
+  "zeus_id": 86,
+  "key": "sanctuary_demeter",
+  "name": "Sanctuary of Demeter",
+  "size": 0,
+  "w": 12,
+  "h": 18,
+  "cost": 840,
+  "employees": 60,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_apollo": {
+  "zeus_id": 87,
+  "key": "sanctuary_apollo",
+  "name": "Sanctuary of Apollo",
+  "size": 0,
+  "w": 10,
+  "h": 16,
+  "cost": 920,
+  "employees": 60,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_artemis": {
+  "zeus_id": 88,
+  "key": "sanctuary_artemis",
+  "name": "Sanctuary of Artemis",
+  "size": 0,
+  "w": 10,
+  "h": 16,
+  "cost": 1520,
+  "employees": 60,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_ares": {
+  "zeus_id": 89,
+  "key": "sanctuary_ares",
+  "name": "Sanctuary of Ares",
+  "size": 0,
+  "w": 8,
+  "h": 13,
+  "cost": 960,
+  "employees": 50,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_aphrodite": {
+  "zeus_id": 90,
+  "key": "sanctuary_aphrodite",
+  "name": "Sanctuary of Aphrodite",
+  "size": 0,
+  "w": 6,
+  "h": 14,
+  "cost": 720,
+  "employees": 50,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_hermes": {
+  "zeus_id": 91,
+  "key": "sanctuary_hermes",
+  "name": "Sanctuary of Hermes",
+  "size": 0,
+  "w": 6,
+  "h": 12,
+  "cost": 640,
+  "employees": 45,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_athena": {
+  "zeus_id": 92,
+  "key": "sanctuary_athena",
+  "name": "Sanctuary of Athena",
+  "size": 0,
+  "w": 12,
+  "h": 16,
+  "cost": 2160,
+  "employees": 60,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_hephaistos": {
+  "zeus_id": 93,
+  "key": "sanctuary_hephaistos",
+  "name": "Sanctuary of Hephaistos",
+  "size": 0,
+  "w": 8,
+  "h": 13,
+  "cost": 760,
+  "employees": 60,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_dionysus": {
+  "zeus_id": 94,
+  "key": "sanctuary_dionysus",
+  "name": "Sanctuary of Dionysus",
+  "size": 0,
+  "w": 6,
+  "h": 10,
+  "cost": 400,
+  "employees": 45,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_hades": {
+  "zeus_id": 95,
+  "key": "sanctuary_hades",
+  "name": "Sanctuary of Hades",
+  "size": 0,
+  "w": 14,
+  "h": 21,
+  "cost": 1320,
+  "employees": 75,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument"
+ },
+ "sanctuary_hera": {
+  "zeus_id": 96,
+  "key": "sanctuary_hera",
+  "name": "Sanctuary of Hera",
+  "size": 0,
+  "w": 20,
+  "h": 12,
+  "cost": 1760,
+  "employees": 65,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "sanctuary_atlas": {
+  "zeus_id": 97,
+  "key": "sanctuary_atlas",
+  "name": "Sanctuary of Atlas",
+  "size": 0,
+  "w": 14,
+  "h": 14,
+  "cost": 1760,
+  "employees": 55,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "sanctuary_poseidon_grand": {
+  "zeus_id": 98,
+  "key": "sanctuary_poseidon_grand",
+  "name": "Sanctuary of Poseidon (grand)",
+  "size": 0,
+  "w": 20,
+  "h": 20,
+  "cost": 2080,
+  "employees": 80,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "palace": {
+  "zeus_id": 117,
+  "key": "palace",
+  "name": "@{t:28:117}",
+  "size": 0,
+  "w": 6,
+  "h": 9,
+  "cost": 250,
+  "employees": 0,
+  "labor_category": 4,
+  "desirability": {
+   "value": 18,
+   "step": 3,
+   "step_size": -3,
+   "range": 6
+  },
+  "fire_risk": 5,
+  "damage_risk": 5,
+  "fireproof": false,
+  "kind": "monument"
+ },
+ "pyramid_01": {
+  "zeus_id": 100,
+  "key": "pyramid_01",
+  "name": "Pyramid 01",
+  "size": 0,
+  "w": 4,
+  "h": 3,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 15,
+   "step": 1,
+   "step_size": -2,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_02": {
+  "zeus_id": 101,
+  "key": "pyramid_02",
+  "name": "Pyramid 02",
+  "size": 0,
+  "w": 6,
+  "h": 5,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_03": {
+  "zeus_id": 102,
+  "key": "pyramid_03",
+  "name": "Pyramid 03",
+  "size": 0,
+  "w": 8,
+  "h": 7,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 25,
+   "step": 1,
+   "step_size": -2,
+   "range": 5
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_04": {
+  "zeus_id": 103,
+  "key": "pyramid_04",
+  "name": "Pyramid 04",
+  "size": 0,
+  "w": 10,
+  "h": 9,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 30,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_05": {
+  "zeus_id": 104,
+  "key": "pyramid_05",
+  "name": "Pyramid 05",
+  "size": 0,
+  "w": 6,
+  "h": 5,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 16,
+   "step": 1,
+   "step_size": -2,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_06": {
+  "zeus_id": 105,
+  "key": "pyramid_06",
+  "name": "Pyramid 06",
+  "size": 0,
+  "w": 7,
+  "h": 6,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 1,
+   "step_size": -2,
+   "range": 5
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_07": {
+  "zeus_id": 106,
+  "key": "pyramid_07",
+  "name": "Pyramid 07",
+  "size": 0,
+  "w": 9,
+  "h": 8,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 25,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_08": {
+  "zeus_id": 107,
+  "key": "pyramid_08",
+  "name": "Pyramid 08",
+  "size": 0,
+  "w": 4,
+  "h": 3,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 20,
+   "step": 2,
+   "step_size": -2,
+   "range": 4
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_09": {
+  "zeus_id": 108,
+  "key": "pyramid_09",
+  "name": "Pyramid 09",
+  "size": 0,
+  "w": 7,
+  "h": 6,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 25,
+   "step": 2,
+   "step_size": -2,
+   "range": 5
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_10": {
+  "zeus_id": 109,
+  "key": "pyramid_10",
+  "name": "Pyramid 10",
+  "size": 0,
+  "w": 9,
+  "h": 8,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 30,
+   "step": 2,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_11": {
+  "zeus_id": 110,
+  "key": "pyramid_11",
+  "name": "Pyramid 11",
+  "size": 0,
+  "w": 10,
+  "h": 11,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 30,
+   "step": 1,
+   "step_size": -2,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_12": {
+  "zeus_id": 111,
+  "key": "pyramid_12",
+  "name": "Pyramid 12",
+  "size": 0,
+  "w": 9,
+  "h": 8,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 25,
+   "step": 1,
+   "step_size": -2,
+   "range": 5
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_13": {
+  "zeus_id": 112,
+  "key": "pyramid_13",
+  "name": "Pyramid 13",
+  "size": 0,
+  "w": 9,
+  "h": 8,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 30,
+   "step": 1,
+   "step_size": -3,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_14": {
+  "zeus_id": 113,
+  "key": "pyramid_14",
+  "name": "Pyramid 14",
+  "size": 0,
+  "w": 10,
+  "h": 9,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 25,
+   "step": 1,
+   "step_size": -1,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ },
+ "pyramid_15": {
+  "zeus_id": 114,
+  "key": "pyramid_15",
+  "name": "Pyramid 15",
+  "size": 0,
+  "w": 9,
+  "h": 8,
+  "cost": 0,
+  "employees": 0,
+  "labor_category": 6,
+  "desirability": {
+   "value": 25,
+   "step": 1,
+   "step_size": -1,
+   "range": 6
+  },
+  "fire_risk": 0,
+  "damage_risk": 0,
+  "fireproof": true,
+  "kind": "monument",
+  "poseidon": true
+ }
+}

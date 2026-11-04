@@ -1,0 +1,4 @@
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 60:click 568,574; 75:click 568,574; 90:click 568,574; 105:click 568,574; 120:click 568,574; 135:click 568,574; 150:click 568,574; 165:click 568,574; 180:click 568,574; 195:click 568,574; 210:click 568,574; 225:click 568,574; 240:click 568,574; 255:click 568,574; 270:click 568,574; 285:click 568,574; 100:key 39; 101:key 39; 102:key 40; 160:key 37; 161:key 38; 292:click 740,12; 295:click 720,235
+# working-city.txt + minimap click (740,12) + the sheep meadow (720,235); run 1F-meadow: --seconds 1300 (1978 ticks,
+# Aug 1340 BC) with --screenshot end.bmp: the meadow with sheep at the bottom of the view. For the regrowth check dump
+# the last ticks: ZEUS_STATE_DUMP_FROM=1975 ZEUS_STATE_DUMP_TO=1978 ZEUS_STATE_DUMP_EVERY=1 (the stage plan 1F).

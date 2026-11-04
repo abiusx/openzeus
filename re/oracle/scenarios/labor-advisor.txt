@@ -1,0 +1,5 @@
+# "See a working city" tutorial switched to 1024x768 -> Industry page -> magnifier (labor advisor, screen 7, advisor 1)
+# -> shot a; Industry priority up (row 1, up arrow) -> shot b; Industry priority down twice -> shot c;
+# first industry row clicked (shut down) -> shot d; Distribution page button while open (trade advisor) -> shot e;
+# exit button -> shot f. Replace DIR with an absolute run dir; empty --write-dir; --seconds 90.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:click 90,10; 52:click 120,41; 55:click 320,253; 61:move 866,113; 61.5:down 866,113; 62:up 866,113; 63:move 1004,289; 63.5:down 1004,289; 64:up 1004,289; 66:shot DIR/a.bmp; 67:move 199,230; 67.3:down 199,230; 67.6:up 199,230; 69:shot DIR/b.bmp; 70:move 182,230; 70.3:down 182,230; 70.6:up 182,230; 71:move 182,230; 71.3:down 182,230; 71.6:up 182,230; 73:shot DIR/c.bmp; 74:move 200,428; 74.3:down 200,428; 74.6:up 200,428; 76:shot DIR/d.bmp; 77:move 866,154; 77.3:down 866,154; 77.6:up 866,154; 79:shot DIR/e.bmp; 80:move 820,640; 81:shot DIR/f.bmp

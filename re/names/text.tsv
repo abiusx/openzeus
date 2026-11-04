@@ -1,0 +1,27 @@
+address	name	kind	type	evidence
+00508e50	year_text_draw	function		year >= 0: 'AD' (20:1) then number; else number then 'BC' (20:0), pen nudged -8/-11 by mode; docs/play/text.md
+00508dd0	count_noun_draw	function		number_text_draw(n,' '|'-') then string (group, rank + (n!=+-1)) at the pen; e.g. 8:12/13 Employee(s)
+005092d0	text_ref_draw_dialog	function		text_ref_draw at dialog origin 0x00F2A6AC/A8 + short[2] pos + offset
+00509370	number_text_draw_dialog	function		number_text_draw at dialog origin + pos
+00509420	string_draw_dialog	function		string_draw at dialog origin + pos
+005094c0	string_draw_right	function		string right-aligned in a width (string_width)
+00508f90	number_text_draw_centered	function		number_text_draw centred in a width
+00509020	text_ref_paragraph_draw	function		paragraph_draw of string (group, rank)
+005086e0	paragraph_draw_centered	function		paragraph_draw with each line centred
+00508640	text_ref_width	function		string_width of (group, rank)
+00512a60	text_ref_paragraph_override	function		text_ref_paragraph_draw through the dialog.loc layout override
+00513340	count_noun_draw_override	function		count_noun_draw through the layout override
+00512eb0	inset_frame_draw_override	function		window_frame_draw (inset panel) through the layout override
+005720e0	info_window_background_draw	function		info window kind 2: switch on building type -> per-type panel function (docs/play/text.md)
+00577290	info_panel_workers_line	function		worker icon + 'N Employees (M needed)' in 11CB + status 69:k at y
+00577d20	info_panel_infirmary	function		info panel of type 0x4C; texts group 76; verified against a zeus-run screenshot
+00582920	info_panel_industry	function		info panel of industries; text group by type switch
+00584520	info_panel_farm	function		info panel of farms/orchards; text group by type
+00577a10	info_panel_decoration	function		decorations/bench: title 137:(2k), k by type
+0057f4e0	info_panel_house	function		house panel: title 29:(type-2), texts group 127
+0058f650	build_menu_draw	function		build submenu: names 28:type in 11C (11CB hovered), cost number, 24 px rows
+0058eb20	top_bar_draw	function		top bar: money, population, date in 11C at y=5
+00583c60	info_panel_trireme_wharf	function		info panel of type 0x88 (group 175): stored wood/armor, staffing, trireme state; seen re/oracle/runs/wharf-window/w2.bmp; docs/play/info.md
+0057a3e0	info_panel_tower	function		info panel of type 0x84 (group 170): one status paragraph at +0x2d (fire, unmanned order 0xFEAF24, road, palace, network, workers, sentry +0x2A); docs/play/info.md
+0057a200	info_panel_gatehouse	function		info panel of type 0x83: title 168:0, text 168:1 at H*16-0x9e
+00572490	wharf_staff_button_click	function		wharf window button (table 0x00642B38): only when +0xB8 trireme == 0, flips C4 & 1 (crew sent home); docs/logic/navy.md

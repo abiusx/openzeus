@@ -1,0 +1,31 @@
+address	name	kind	type	evidence
+006aa750	g_adventure	data		adventure object (.set/.pak header) filled by adventure_read; docs/campaign-format.md
+0042b3e0	adventure_load_current	function		opens Adventures\NAME.pak (name 0x00F2A992), adventure_read + FUN_0052DF50
+0042b480	adventure_episode_record	function		(slot, from_pak): 356-byte episode record; from_pak=1 -> scenario(slot)+0x644, else object +0x14+slot*356
+0042b780	adventure_military	function		object +0x8B48[slot] -> player city military_strength at a new/continued episode
+0042b790	adventure_wealth	function		object +0x8B70[slot] -> player city wealth
+0042b7a0	adventure_attitude	function		object +0xCB264[slot] (default 50) -> player city attitude
+0042b920	adventure_is_tutorial	function		kind byte object +0x49530 == 2
+0042b950	mm_title	function		Zeus_MM record title (table 0x00F13CF4 + id*80), ids 0..999
+0042b980	mm_body	function		Zeus_MM record body (0x00F13CFC + id*80)
+0042b560	mm_caption	function		Zeus_MM record subtitle (0x00F13CF8 + id*80); colony choice text
+0042b9d0	adventure_build_category	function		object +0xCC2A0 + slot*11 + i: tutorial build category i enabled -> 0x00FEAE06[i]
+0042bab0	adventure_world_map_button	function		object +0xCC37C + slot: tutorial world map button -> 0x00FE6A5A
+00402b80	buildings_availability	function		recomputes DAT_00787178[page*75+slot] from scenario allowed table 0x00902D30 (100 i16), goods, gods, heroes
+00422fc0	episode_next_slot	function		(adv, slot, next): slot<0 -> 0; parent: next 3 -> -1 (end), else slot+1; colony -> 0x00F2A7B2+1
+00421920	episode_won_advance	function		victory: record +0x5C = 1, next via episode_next_slot; next 1 -> colony choice screen 0x34
+00421af0	colony_choice_click	function		world map click on an inactive colony city (colony_index_nth 1..4) -> 0x006A9C8C = n
+0052b610	goals_month_check	function		month_advance: scenario_goals_check; 0x00F2A6DB forces a win
+0052b720	goals_check_wrapper	function		ECX = goals 0x00FE2768; 0 in the editor
+0052b7d0	goals_status_update	function		per goal met flag 0x00FE2938[i] (goals window)
+0052de20	goals_load_episode	function		(index, colony): copy goal table 0x00FE2964/0x00FE298C (or colony 0x00FE3B5C/0x00FE3B6C) into 0x00FE2768
+0052df50	goals_read	function		reads the 4 goal globals after the .set object; v<22 -> FUN_005268D0
+005268d0	goals_remap_old_goods	function		v<22: FUN_00526500 on every stored goal
+00526500	goal_remap_old_good	function		types 6 and 14: old Zeus goods number -> new
+00526430	goals_expand_set_aside	function		type 11 goal -> up to 8 type-14 goals
+00526fc0	goal_met	function		one goal's test by type (0..16)
+00425260	adventure_remap_old_goods	function		.set v<22: renumber goods in each scenario block (+0x7A8 resources, +0x7BC/+0x7C2 lists, +0x7C8 table) and events
+00467930	event_rebase_month	function		continued/colony episode: month += current month; >11 -> year+1, month -= 11 (sic)
+0050e610	game_file_load	function		(path, flag): loads a saved game (parent.dat, tutorialNN.sav, saves); flag+colony -> extracts parent.dat
+0050e2c0	game_file_save	function		(path, flag): saves a game; flag+colony -> appends parent.dat
+005bebd0	tutorial_load_save	function		loads Adventures\tutorialNN.sav (basic 0..7 0x0065D548, advanced 0x0065DD68) = a tutorial's start

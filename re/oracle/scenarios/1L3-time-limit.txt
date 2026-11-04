@@ -1,0 +1,6 @@
+# 1L-3: the time limit (goal type 12) and the defeat: Zeus and Europa, Mortal, episode 1; 1L3-time-limit.poke turns
+# goal 1 into Time limit 0 years at tick 20 (start year + 0 <= year: reached), day 15 -> lost at the month change
+# (0x00FEB160 = 0xB95 PHRASE_lose_out_of_time). ZEUS_STATE_DUMP_EVERY=1 FROM=40 TO=130, --seconds 120.
+# The month change opens the Hydra message (a modal event message): closed by its check mark (566,573).
+# Check: python3 tools/campaign_flow_check.py time-limit DIR
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 26:move 590,260; 26.5:click 590,260; 33:move 315,442; 33.5:click 315,442; 75:move 656,491; 75.5:click 656,491; 80:shot DIR/t80.bmp; 81:move 566,573; 81.5:click 566,573; 86:shot DIR/t86.bmp; 88:move 566,573; 88.5:click 566,573; 94:shot DIR/t94.bmp; 96:move 566,573; 96.5:click 566,573; 104:shot DIR/t104.bmp; 112:shot DIR/t112.bmp; 118:shot DIR/t118.bmp

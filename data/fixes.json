@@ -1,0 +1,9 @@
+{
+ "note": "Exe bugs we fix on purpose (the decision log 2026-10-30; docs/play/bugs.md rows marked 'ours: exe bug fixed'). Hand-written data, not derived from the game. Per entry: fixed true = ours (default), false = the exe's rule (for oracle comparisons). A key missing here counts as fixed.",
+ "agora_all_foods": {
+  "fixed": true,
+  "bug": 297,
+  "exe": "an agora's food buyer takes only the first 5 foods of the city's food list (buyer_food_list 0x0040D840) and walks to the nearest storage holding any of the 8 foods (vendor_find_source 0x0040EAD0 kind 0): a city that ever held 6+ foods starves beside granaries of wheat/onions",
+  "ours": "the buyer takes every food on the city's food list and walks to the nearest storage holding a food it takes (sim/systems/agora.py food_list, sources)"
+ }
+}

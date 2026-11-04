@@ -1,0 +1,143 @@
+{
+ "difficulty": "Normal",
+ "ticks_per_day": 51,
+ "days_per_month": 16,
+ "start_year": -1000,
+ "start_funds": 15000,
+ "coverage_days": 96,
+ "coverage_radius": 2,
+ "walker_roam_max": 26,
+ "walker_spawn_days": 3,
+ "trainee_shows": 32,
+ "trainee_travel_ticks": 3200,
+ "unique_venue_culture": 10,
+ "risk_threshold": 1000,
+ "risk_reduce": 50,
+ "tax_rate": 9,
+ "wage_rate": 30,
+ "workforce": {
+  "by_difficulty": [
+   50,
+   45,
+   40,
+   37,
+   35
+  ],
+  "wage_levels": [
+   0,
+   20,
+   26,
+   30,
+   34,
+   40
+  ],
+  "by_wage": [
+   -10,
+   -6,
+   -3,
+   0,
+   3,
+   5
+  ],
+  "health_steps": [
+   20,
+   35,
+   65,
+   80
+  ],
+  "by_health": [
+   -2,
+   -1,
+   0,
+   1,
+   2
+  ]
+ },
+ "culture_points": {
+  "philosophy": 15,
+  "athletics": 20,
+  "drama": 25,
+  "competition": 20
+ },
+ "tax_levels": [
+  {
+   "rate": 0,
+   "sentiment": 3
+  },
+  {
+   "rate": 3,
+   "sentiment": 2
+  },
+  {
+   "rate": 7,
+   "sentiment": 1
+  },
+  {
+   "rate": 9,
+   "sentiment": 0
+  },
+  {
+   "rate": 11,
+   "sentiment": -1
+  },
+  {
+   "rate": 15,
+   "sentiment": -3
+  },
+  {
+   "rate": 20,
+   "sentiment": -5
+  }
+ ],
+ "migration": [
+  [
+   71,
+   100
+  ],
+  [
+   61,
+   75
+  ],
+  [
+   50,
+   50
+  ],
+  [
+   36,
+   0
+  ],
+  [
+   26,
+   -8
+  ],
+  [
+   16,
+   -17
+  ],
+  [
+   0,
+   -25
+  ]
+ ],
+ "storage_capacity": 3200,
+ "storage_good_share": 50,
+ "walker_roam": {
+  "water": 26,
+  "healer": 26,
+  "mugger": 26,
+  "disgruntled": 26,
+  "tax": 34,
+  "philosophy": 34,
+  "athletics": 34,
+  "drama": 34,
+  "competition": 34,
+  "maintenance": 43,
+  "watchman": 43,
+  "peddler": 43
+ },
+ "walker_pace": 15,
+ "animal_ready_per_month": 9,
+ "cart_load": 100,
+ "workshop_progress": 320,
+ "farm_growth_max": 1920
+}

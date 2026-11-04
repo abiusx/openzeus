@@ -1,0 +1,5 @@
+# Stadium show overlays (docs/play/buildings.md 7d, bugs.md 163; matcher tools/oracle_match.py). 1024x768,
+# empty --write-dir, --state-log /dev/null, --seconds 80; replace DIR. "See a working city",
+# palace view, then 4 x right + 1 x down arrow brings the city's stadium (and theatre) on screen; shots in view 0,
+# then PgUp (key 33) turns the view: views 2, 4, 6.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:click 90,10; 52:click 120,41; 55:click 320,253; 57:key 39; 57.5:key 39; 58:key 39; 58.5:key 39; 59:key 40; 61:shot DIR/v0_61.bmp; 61.3:shot DIR/v0_61.3.bmp; 61.6:shot DIR/v0_61.6.bmp; 62:shot DIR/v0_62.bmp; 62.5:shot DIR/v0_62.5.bmp; 63:shot DIR/v0_63.bmp; 64:shot DIR/v0_64.bmp; 66:shot DIR/v0_66.bmp; 67:key 33; 70:shot DIR/v2.bmp; 71:key 33; 74:shot DIR/v4.bmp; 75:key 33; 78:shot DIR/v6.bmp

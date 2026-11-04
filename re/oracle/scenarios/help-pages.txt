@@ -1,0 +1,4 @@
+# Help window (screen 5; also help-pages2.txt, help-pages3.txt, help_page_draw 0x004F2D80): "See a working city" tutorial at 800x600. Help menu -> Help
+# (the item click at y 32 misses: toc.bmp shows the Help dropdown open, the exe look of the dropdown); right click; land window on empty land (30,80) -> its help button
+# (L+14, T+H-40) -> land-help.bmp (record 113 "Terrain Types"). Replace DIR; empty --write-dir; --seconds 90.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 50:move 150,10; 50.5:click 150,10; 52:move 160,32; 52.5:click 160,32; 56:shot DIR/toc.bmp; 57:move 300,300; 57.5:rclick 300,300; 60:shot DIR/after.bmp; 62:move 30,80; 63:rclick 30,80; 67:shot DIR/land.bmp; 68:move 95,565; 68.5:click 95,565; 72:shot DIR/land-help.bmp; 74:move 300,500; 75:shot DIR/land-help2.bmp

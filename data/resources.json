@@ -1,0 +1,118 @@
+[
+ {
+  "key": "urchin",
+  "zeus_id": 1,
+  "food": true
+ },
+ {
+  "key": "fish",
+  "zeus_id": 2,
+  "food": true
+ },
+ {
+  "key": "meat",
+  "zeus_id": 3,
+  "food": true
+ },
+ {
+  "key": "cheese",
+  "zeus_id": 4,
+  "food": true
+ },
+ {
+  "key": "carrots",
+  "zeus_id": 5,
+  "food": true
+ },
+ {
+  "key": "onions",
+  "zeus_id": 6,
+  "food": true
+ },
+ {
+  "key": "wheat",
+  "zeus_id": 7,
+  "food": true
+ },
+ {
+  "key": "oranges",
+  "zeus_id": 8,
+  "food": true,
+  "poseidon": true
+ },
+ {
+  "key": "wood",
+  "zeus_id": 9,
+  "food": false
+ },
+ {
+  "key": "bronze",
+  "zeus_id": 10,
+  "food": false
+ },
+ {
+  "key": "marble",
+  "zeus_id": 11,
+  "food": false
+ },
+ {
+  "key": "grapes",
+  "zeus_id": 12,
+  "food": false
+ },
+ {
+  "key": "olives",
+  "zeus_id": 13,
+  "food": false
+ },
+ {
+  "key": "fleece",
+  "zeus_id": 14,
+  "food": false
+ },
+ {
+  "key": "horses",
+  "zeus_id": 15,
+  "food": false
+ },
+ {
+  "key": "black_marble",
+  "zeus_id": 16,
+  "food": false
+ },
+ {
+  "key": "orichalc",
+  "zeus_id": 17,
+  "food": false
+ },
+ {
+  "key": "armor",
+  "zeus_id": 18,
+  "food": false
+ },
+ {
+  "key": "sculpture",
+  "zeus_id": 19,
+  "food": false
+ },
+ {
+  "key": "olive_oil",
+  "zeus_id": 20,
+  "food": false
+ },
+ {
+  "key": "wine",
+  "zeus_id": 21,
+  "food": false
+ },
+ {
+  "key": "chariot",
+  "zeus_id": 22,
+  "food": false
+ },
+ {
+  "key": "silver",
+  "zeus_id": 23,
+  "food": false
+ }
+]

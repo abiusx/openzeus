@@ -1,0 +1,4 @@
+# "See a working city" (800x600) -> minimap (760,262): the dock (pier (108,65) orientation 2), then PgUp x3: d0/d2/d4/d6.
+# python3 tools/oracle_rotation.py DIR/d*.bmp -s Zeus_General:463 .. 466 (docs/play/rotation.md "Verification").
+# Replace DIR; empty --write-dir; --seconds 70.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 52:move 760,262; 52.3:down 760,262; 52.6:up 760,262; 54:move 300,580; 55:shot DIR/d0.bmp; 57:key 33; 60:shot DIR/d2.bmp; 61:key 33; 64:shot DIR/d4.bmp; 65:key 33; 68:shot DIR/d6.bmp

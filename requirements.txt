@@ -1,0 +1,19 @@
+# OpenZeus needs Python >= 3.14 (saves use the standard library's compression.zstd).
+# Versions in use (2026-11-04). Install: python3 -m pip install -r requirements.txt
+
+# the sim, play mode's server, and tools/assets.py build
+numpy==2.5.0
+# tools/assets.py build writes PNGs with Pillow: this version gives files byte-identical to the asset pack's
+# (assets/manifest.json); another version gives the same pictures in other bytes (`assets.py verify` reports them)
+Pillow==12.2.0
+
+# contributors: the tools that read Zeus.exe (tools/build_*.py, play_*.py, disasm.py; docs/assets.md "Contributors")
+# pefile==2024.8.26
+# capstone==5.0.9
+# unicorn==2.1.4            (tools/play_overlays.py, re_monument_images.py: x86 emulation of the exe's code)
+# the play-mode checks tools/*.mjs: Node >= 22 and Chrome (tools/play_cdp.mjs; no npm packages)
+
+# optional: GPU-compressed sheets (tools/assets.py build --gpu build, tools/hires_compress.py; docs/play/hires.md)
+# astc-encoder-py==0.1.12   + the bc7e binary from tools/build_bc7enc.sh
+# texture2ddecoder==1.0.6   (tools/hires_check.py only)
+# optional: hi-res sets from scratch (--hires upscale): spandrel==0.4.2 + torch, docs/play/hires.md

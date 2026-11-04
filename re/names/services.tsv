@@ -1,0 +1,82 @@
+address	name	kind	type	evidence
+004dfb70	figure_provide_service	function		per-tile service dispatch by figure type; docs/logic/services.md §1
+004a5d90	service_maintenance_box	function		superintendent: -model(0x79,9) on +0x46/+0x48 in 5x5, wall grid 0xC753B8
+004a5f70	service_watchman_unrest	function		watchman: -R on house +0xF4, clamp [col15,100]
+004a60e0	service_cover_stadium	function		sets +0x6C=0x60 (competitor/curator)
+004a6210	service_cover_philosopher	function		sets +0x6D=0x60 (philosopher/astronomer)
+004a6340	service_cover_athlete	function		sets +0x6F=0x60 (athlete/scholar)
+004a6470	service_cover_actor	function		sets +0x71=0x60 (actor/inventor)
+004a65a0	service_cover_water	function		sets +0x77=0x60 on inhabited houses (water bearer)
+004a66b0	service_cover_healer	function		sets +0x78=0x60 on inhabited houses (healer)
+004a67c0	service_cover_tax	function		sets +0x4E=50, +0x84 on inhabited houses (clerk)
+004a3100	overlay_mark_service	function		raises 2-bit field of grid 0xB1E8F8 (ORs 7<<2i)
+00484d20	houses_coverage_decay	function		step 35: -1 floor 0 on +0x6C,6D,6F,71,70,77,78
+00484de0	houses_culture_compute	function		step 36: +0x80 = weighted coverage sum (+10 unique venue); +0x81 = +0x78!=0
+00488220	buildings_tax_coverage_decay	function		step 48: +0x4E -= 1 if nonzero
+00492260	buildings_fire_collapse_risk	function		step 44: accumulate +0x46/+0x48, ignite >999, collapse >=1000
+00493140	buildings_fire_burn_spread	function		step 43: +0x4A burn timer, spread, ruin at 17, destroy at 33
+004950b0	building_ignite	function		resets risks, starts burn timer +0x4A
+00492f30	building_parts_burn_to_ruins	function		calls 0x00492BE0 on every linked part
+00492f90	building_parts_destroy_or_ignite	function		param 0: destroy parts; 1: ignite parts
+00492be0	building_burn_to_ruins	function		kills residents, turns tiles into burning RUIN (0xA9)
+00493040	building_can_catch_fire	function		false for gardens/statues/pyramid/race track
+00493e70	building_create	function		allocates record, init +0xF4 unrest from col 15 etc.
+005bfde0	houses_spawn_criminals	function		step 45: unrest thresholds table 0x65E898, 1/200 per entry
+005bff90	house_spawn_criminal	function		creates criminal walker if house +0x2A free
+005c0630	criminal_find_elite_target	function		elite houses holding goods (0x65E8E8)
+005c00c0	thief_steal_goods	function		steals goods from elite house; 0xFEAEE4++
+005c0360	vandal_update	function		countdown then destroys target; 0xFEAEE6++
+005c0440	mugger_attack	function		1/4 kill on collision; 0xFE96D8++
+005c0590	figure_mugger_immune	function		types 0x26, 0x3D
+00566f20	houses_unrest_update	function		twice monthly unrest += col14+(40-sentiment)/2; returns food mood term
+00519910	city_crime_level	function		advisor level from houses with unrest >80/>70
+00577060	house_panel_unrest_text	function		text [127:21..27] by +0xF4
+00564560	building_status_flags	function		+0x110 icon flags (risk>800, plague, unrest>80, devolve)
+00566c00	city_health_target_compute	function		month end: 50*healer+50*food weighted by pop + pop bonus 0x641ED0
+00566b90	city_health_step	function		each cycle: health 0xFE6A70 moves 1 toward target
+00447ff0	plague_check	function		each cycle: chance table 0x5F84A8, 4 decimal RNG digits
+004481b0	plague_outbreak	function		n = houses*2/5, counters, infect
+00448490	plague_infect_houses	function		sorted list by (food?20:0)+healer counter, infect n/2
+00448220	house_plague_start	function		infect + 3 plagued walkers
+00447f70	house_infect_plague	function		deaths = pop*F[difficulty]; +0x85=2, +0x100=32
+004482b0	plague_messages	function		plague message events
+004483f0	houses_plague_countdown	function		step 6: +0x100 countdown, clears +0x85 (was buildings_timer_countdown)
+00448450	plagued_walker_meet	function		removed when meeting healer/0x26/watchman
+00488820	plague_year_rollover	function		last_year = this_year; this_year = 0
+004c5690	city_heal_plague	function		hypothesis (Apollo/Asclepius): clear plague, +50 health
+00432960	spawn_bibliotheke	function		scholar 0x48 roaming
+00432b00	spawn_observatory	function		astronomer 0x49 roaming, needs +0xA9
+00432cb0	spawn_university	function		curator 0x4B + astronomer 0x49 act 6
+00432e60	spawn_laboratory	function		inventor 0x4A roaming
+00433010	spawn_inventors_workshop	function		inventor 0x4A act 6
+00433170	spawn_museum	function		curator 0x4B roaming, needs +0xA9
+0059d280	debug_building_info_panel	function		F4 debug panel; field labels pop/acc/damage/fire_risk/tax_cvr/water_sup
+00fe6a70	g_city_health	data	i32	0..100; plague table index
+00fe6a6c	g_city_health_target	data	i32	0x00566C00
+00fe6a7c	g_city_population	data	i32	0x00567650 adds; >=350 enables crime
+00feb0db	g_crime_enabled_latch	data	u8	set when city pop > 349
+00feaef4	g_plagues_this_year	data	i32	plague_outbreak
+00feaef0	g_plagues_last_year	data	i32	plague_year_rollover
+00feb528	g_plagues_this_month	data	i32	reset 0x00566C00
+00feb524	g_infected_houses	data	i32	houses_plague_countdown
+00feaed0	g_unique_venue_exists	data	i16	stadium/museum built
+00feaed2	g_unique_venue_shows	data	i16	its +0xA9, culture +10 if >0
+00902d00	g_climate	data	u8	0 humid 1 normal 2 arid (text 44:76..78)
+00f2a988	g_difficulty	data	i32	0..4 (text 153:1..5); index of plague death table
+00ef60b0	g_building_type_disabled	data	u8[221]	per-type countdown gating walker spawn
+00b1e8f8	grid_service_overlay	data	u32[51984]	2-bit per service, visual
+00c753b8	grid_wall_damage	data	u16[51984]	reduced by superintendent on wall tiles (hypothesis name)
+005f84a8	tbl_plague_chance	data	i32[14]	(health threshold, chance/10000) x7
+005f8480	tbl_plague_death_fraction	data	f64[5]	per difficulty
+00641ed0	tbl_health_pop_bonus	data	i32[20]	(pop threshold, bonus) x10
+0065e898	tbl_criminal_unrest	data	i32[8]	(70,0x16)(80,0x1B)(90,0x17)(100,0x1D)
+00fe96d8	g_muggings_month	data	i32	mugger_attack
+00feaee4	g_thefts_month	data	u16	thief_steal_goods
+00feaee6	g_vandalisms_month	data	u16	vandal_update
+004cd450	superintendent_fire_dispatch	function		every 20 ticks a roaming/returning superintendent searches; nearest idle one gets action 10; services.md §4.1
+00493510	fire_find_target	function		nearest unclaimed road-connected burning head building (Chebyshev); services.md §4.1
+004cd370	nearest_idle_superintendent	function		type 8, action not 4-7/10-13, min Chebyshev; services.md §4.1
+005c05c0	figure_muggable	function		false for criminals 0x16/0x17/0x1B/0x1D and god 0x43
+005c0030	thief_pick_target	function		action 6: elite target or removed (mugger spawn fails, +0x2A kept)
+005c02c0	vandal_pick_target	function		action 6: elite target or removed, clears +0x2A, spawns mugger
+004e3280	figure_set_target	function		f+0x82 = t; t.flags |= 2

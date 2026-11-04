@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polis Play</title>
+<style>
+  :root { --bg: #000; --text: #e8dcc0; --muted: #a89c80; --panel: rgba(28, 22, 14, .92); --line: #7a6440;
+          --btn: #3a2e1c; --btn-hi: #5a4628; --gold: #e0b860; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden;
+               font: 13px/1.4 Georgia, "Times New Roman", serif; }
+  canvas#view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: grab;
+                image-rendering: pixelated; }
+  canvas#view.drag { cursor: grabbing; }
+  #bar { position: fixed; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+         padding: 5px 10px; background: var(--panel); border-bottom: 1px solid var(--line); user-select: none; z-index: 20; }
+  #bar .grp { display: flex; align-items: center; gap: 3px; position: relative; }
+  #bar .sep { width: 1px; align-self: stretch; background: var(--line); }
+  #bar .stat { color: var(--gold); min-width: 64px; }
+  #bar .lbl { color: var(--muted); font-size: 12px; }
+  button { font: inherit; color: var(--text); background: var(--btn); border: 1px solid var(--line); border-radius: 3px;
+           padding: 2px 8px; cursor: pointer; }
+  button:hover { background: var(--btn-hi); }
+  button.on { background: var(--gold); color: #1a1208; border-color: var(--gold); }
+  #play { min-width: 34px; }
+  #zoomv { min-width: 52px; }
+  #fps { margin-left: auto; color: var(--muted); font-size: 12px; }
+  .menu { position: absolute; top: 30px; left: 0; padding: 10px 12px; background: var(--panel); border: 1px solid var(--line);
+          border-radius: 3px; min-width: 230px; z-index: 5; }
+  .menu label { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 4px 0; }
+  .menu input[type=range] { width: 120px; accent-color: var(--gold); }
+  .menu table { border-collapse: collapse; }
+  .menu td { padding: 1px 8px 1px 0; white-space: nowrap; }
+  .menu td:first-child { color: var(--gold); }
+  .lbl { color: var(--muted); font-size: 12px; }
+  #tip { position: fixed; pointer-events: none; padding: 4px 8px; background: var(--panel);
+         border: 1px solid var(--line); border-radius: 3px; display: none; white-space: pre; font-size: 12px; }
+  #loading { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  /* hi-res sprite loading (play.js hiresProgress): above the loading screen and the game */
+  #hiprog { position: fixed; left: 50%; bottom: 64px; transform: translateX(-50%); z-index: 1000; min-width: 280px;
+            padding: 8px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 3px; font-size: 13px; }
+  #hiprog[hidden] { display: none; }
+  #hiprog div { margin-top: 6px; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  #hiprog i { display: block; height: 100%; width: 0; background: var(--gold); }
+  #hiprog span.set { display: block; margin-top: 8px; }
+  #hiprog span.all:empty, #hiprog span.all:empty + div { display: none; }
+  canvas#view.building { cursor: crosshair; }
+  #build { position: fixed; top: 40px; right: 8px; bottom: 8px; width: 230px; display: flex; flex-direction: column;
+           background: var(--panel); border: 1px solid var(--line); border-radius: 3px; user-select: none; z-index: 10; }
+  #build.hidden { display: none; }
+  #build h3 { margin: 0; padding: 6px 10px; font-size: 14px; color: var(--gold); border-bottom: 1px solid var(--line);
+              display: flex; justify-content: space-between; align-items: center; }
+  #build h3 span { color: var(--muted); font-size: 11px; font-weight: normal; }
+  #btools { display: flex; gap: 4px; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+  #btools button { flex: 1; }
+  #bcats { display: flex; flex-wrap: wrap; gap: 3px; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+  #bcats button { font-size: 11px; padding: 1px 5px; }
+  #blist { flex: 1; overflow-y: auto; padding: 4px 6px; }
+  #blist .item { display: flex; justify-content: space-between; width: 100%; margin: 1px 0; text-align: left; }
+  #blist .cost, .tool .cost { color: var(--muted); font-size: 11px; }
+  #blist .item.on .cost { color: #1a1208; }
+  #bhint { padding: 6px 10px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; min-height: 30px; }
+  #msgs { position: fixed; left: 8px; bottom: 8px; display: flex; flex-direction: column-reverse; gap: 3px;
+          pointer-events: none; max-width: 50vw; }
+  .msg { padding: 3px 8px; background: var(--panel); border: 1px solid var(--line); border-radius: 3px; font-size: 12px;
+         transition: opacity 1s; }
+  .msg.bad { border-color: #a04030; color: #f0a090; }
+  .msg.old { opacity: 0; }
+  #status { position: fixed; top: 44px; left: 50%; transform: translateX(-50%); padding: 6px 14px; z-index: 30;
+            background: #5a1e14; border: 1px solid #c05030; border-radius: 3px; color: #ffd8c8; }
+  a { color: inherit; }
+  #mode { min-width: 70px; font-size: 12px; background: #2a5a2a; border-color: #4a8a4a; }
+  body.replay #mode { background: #5a3a1a; border-color: #a0703a; }
+  #timeline { width: 160px; accent-color: var(--gold); }
+  body.replay #build { opacity: 0.45; }
+  body.replay #build::after { content: "Replaying: read-only. Go live to build."; position: absolute; left: 10px; right: 10px;
+                              top: 45%; text-align: center; color: var(--gold); }
+  /* the original's UI (viewer/play/ui.js) owns the top 30 px and the right 186 px: our dev controls sit at the
+     bottom of the map area, the old build panel only in dev mode (` key) */
+  #bar { top: auto; bottom: 0; right: 186px; border-top: 1px solid var(--line); border-bottom: none; opacity: 0.92; }
+  #bar .menu { top: auto; bottom: 30px; }
+  /* ours (user 10-31): the bar folds to a small tab at the bottom left (◀ / ▶) */
+  #barc { padding: 2px 5px; }
+  body.barc #bar { right: auto; padding: 3px; opacity: 0.75; }
+  body.barc #bar > :not(#barc) { display: none; }
+  #build { display: none; }
+  body.dev #build { display: flex; right: 194px; }
+  #msgs { bottom: 44px; }
+  #status { top: 40px; }
+  /* clock stall / server silent (play.js status, bugs.md 344): a spinner in the middle of the city view (ours) */
+  /* new game / load / campaign start, proceed, replay (play.js Loading, ours 11-04): the same spinner */
+  #sync, #cityload { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 31; pointer-events: none;
+    display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 16px 22px; border-radius: 10px;
+    background: rgba(0, 0, 0, 0.55); color: #f3e6c4; font: 14px Georgia, serif; }
+  #sync[hidden], #cityload[hidden] { display: none; }
+  #sync .spin, #cityload .spin { width: 38px; height: 38px; border-radius: 50%; border: 4px solid rgba(243, 230, 196, 0.25);
+    border-top-color: #f3e6c4; animation: syncspin 0.9s linear infinite; }
+  @keyframes syncspin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<canvas id="view"></canvas>
+<div id="bar">
+  <button id="barc" title="hide the bar (click the tab to show it again)">◀</button>
+  <div class="grp"><span class="stat" id="date">…</span></div>
+  <div class="grp"><span class="lbl">pop</span><span class="stat" id="pop"></span></div>
+  <div class="grp"><span class="stat" id="money"></span></div>
+  <div class="sep"></div>
+  <div class="grp"><button id="play" title="pause / play (space)">❚❚</button></div>
+  <div class="grp" id="speeds" title="speed (+ / -); live: the city's speed; replay: playback speed. 1× = 15 ticks/s"></div>
+  <div class="grp"><button id="live" title="back to the live city">⏭ live</button>
+    <input type="range" id="timeline" min="0" max="1" value="0" title="the recording: drag back to replay (read-only)">
+    <button id="mode">● LIVE</button></div>
+  <div class="sep"></div>
+  <div class="grp"><button id="zout" title="zoom out ([ or q)">−</button><button id="zoomv" title="reset zoom (0)">100%</button><button id="zin" title="zoom in (] or e)">+</button></div>
+  <div class="sep"></div>
+  <div class="grp"><button id="soundb">Sound ▾</button>
+    <div class="menu" id="soundm" hidden>
+      <label>Mute (m) <input type="checkbox" id="mute"></label>
+      <label>Music <input type="range" id="v_music" min="0" max="100" value="60"></label>
+      <label>Effects <input type="range" id="v_sfx" min="0" max="100" value="80"></label>
+      <label>Ambience <input type="range" id="v_amb" min="0" max="100" value="70"></label>
+      <label title="god announcements and walker voices (the original's Speech volume)">Voices <input type="range" id="v_voice" min="0" max="100" value="60"></label>
+      <div class="lbl">Sound starts after the first click on the map.</div>
+    </div>
+  </div>
+  <div class="grp"><button id="optb">Options ▾</button>
+    <div class="menu" id="optm" hidden>
+      <label>Tile / building tooltip <input type="checkbox" id="tips" checked></label>
+      <label title="The original pauses while an info window (right click) is open">Pause on info windows <input type="checkbox" id="pauseinfo"></label>
+      <label title="The original pauses while an event message window is open">Pause on message windows <input type="checkbox" id="pausemsg"></label>
+      <label title="The original pauses while the world map is open; ours keeps the city running under it (off)">Pause on the world map <input type="checkbox" id="pauseworld"></label>
+      <label title="a window that doesn't pause closes itself after 10 s (not while the mouse is on it); gifts and tribute that fit are accepted">Close message windows after 10 s <input type="checkbox" id="autoclose" checked></label>
+      <label>Interface size <input type="range" id="uiscale" min="10" max="200" step="5" value="100"><span id="uiscalev">100%</span></label>
+      <label>Sharp interface (whole screen pixels) <input type="checkbox" id="uisharp"></label>
+      <label>Start over <button id="newcity">New empty city</button></label>
+      <div id="hires" title="Remacri upscaled sprites per set (docs/play/hires.md); H / Shift+H cycle figures / terrain"></div>
+      <div class="lbl"><a href="/">Sim view</a> (charts, reports, timeline)</div>
+    </div>
+  </div>
+  <div class="grp"><button id="helpb">Keys ▾</button>
+    <div class="menu" id="helpm" hidden>
+      <table>
+        <tr><th colspan=2>the original's keys</th></tr>
+        <tr><td>1 … 9, 0, -</td><td>panel pages (Population … Aesthetics, Overview)</td></tr>
+        <tr><td>space</td><td>overlay on / off (the page's "See …" view)</td></tr>
+        <tr><td>p</td><td>pause / play</td></tr>
+        <tr><td>[ ]</td><td>game speed down / up (also + )</td></tr>
+        <tr><td>Tab</td><td>info area / overview map</td></tr>
+        <tr><td>Ctrl+F1 … F4, F1 … F4</td><td>bookmark the view, go to it</td></tr>
+        <tr><td>r</td><td>rotate the footprint (agora)</td></tr>
+        <tr><td>m</td><td>hold the footprint in place; scroll, then click to build</td></tr>
+        <tr><td>arrows</td><td>scroll</td></tr>
+        <tr><td>right-click, Esc</td><td>stop building / close windows</td></tr>
+        <tr><th colspan=2>ours</th></tr>
+        <tr><td>W A S D</td><td>scroll (hold shift: faster); drag also scrolls</td></tr>
+        <tr><td>wheel, q e</td><td>zoom; Ctrl+0 resets</td></tr>
+        <tr><td>Shift+M</td><td>mute</td></tr>
+        <tr><td>`</td><td>dev mode: the old build panel</td></tr>
+        <tr><td>H, Shift+H</td><td>hi-res test: cycle the immigrant's / the grass's upscale method</td></tr>
+        <tr><td>right click a building</td><td>its info window</td></tr>
+      </table>
+    </div>
+  </div>
+  <span id="fps"></span>
+</div>
+<div id="build">
+  <h3>Build <span>b: hide</span></h3>
+  <div id="btools">
+    <button class="tool" id="t_none" title="scroll / inspect">✋</button>
+    <button class="tool" id="t_road" data-key="road" title="drag to lay a road">Road</button>
+    <button class="tool" id="t_clear" data-key="clear" title="drag to clear land">Clear</button>
+  </div>
+  <div id="bcats"></div>
+  <div id="blist"></div>
+  <div id="bhint">Drag to scroll. Pick something to build.</div>
+</div>
+<div id="msgs"></div>
+<div id="status" hidden></div>
+<div id="sync" hidden><div class="spin"></div><div id="synct"></div></div>
+<div id="cityload" hidden><div class="spin"></div><div>Loading the city...</div></div>
+<div id="tip"></div>
+<div id="loading">loading the original's sprites…</div>
+<div id="hiprog" hidden><span class="all"></span><div class="all"><i></i></div><span class="set"></span><div><i></i></div></div>
+<script src="play/gl.js"></script>
+<script src="play/audio.js"></script>
+<script src="play/order.js"></script>
+<script src="play/monuments.js"></script>
+<script src="play/scene.js"></script>
+<script src="play/bridges.js"></script>
+<script src="play/build.js"></script>
+<script src="play/text.js"></script>
+<script src="play/filemenu.js"></script>
+<script src="play/help.js"></script>
+<script src="play/options.js"></script>
+<script src="play/lists.js"></script>
+<script src="play/msgwin.js"></script>
+<script src="play/newgame.js"></script>
+<script src="play/campaign.js"></script>
+<script src="play/offers.js"></script>
+<script src="play/balloon.js"></script>
+<script src="play/info.js"></script>
+<script src="play/ui.js"></script>
+<script src="play/world.js"></script>
+<script src="play/advisors.js"></script>
+<script src="play/overlays.js"></script>
+<script src="play/military.js"></script>
+<script src="play/milpanel.js"></script>
+<script src="play/gods.js"></script>
+<script src="play/heroes.js"></script>
+<script src="play/effects.js"></script>
+<script src="play/pages.js"></script>
+<script src="play/comms.js"></script>
+<script src="play/play.js"></script>
+</body>
+</html>

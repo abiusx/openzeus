@@ -1,0 +1,4815 @@
+{
+ "overrides": {
+  "rabble": {
+   "fight": {
+    "file": "SprMain",
+    "start": 6945,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 4
+   },
+   "fight2": null,
+   "fight_rule": "rabble",
+   "work": {
+    "throw": {
+     "file": "SprMain",
+     "start": 6945,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4,
+     "counter": true,
+     "offset": 1
+    }
+   }
+  },
+  "hoplite": {
+   "fight_rule": "hoplite",
+   "die_rate": 1
+  },
+  "horseman": {},
+  "wolf": {
+   "fight": {
+    "file": "SprMain",
+    "start": 11628,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "tick",
+   "die_rate": 1,
+   "work": {
+    "stand": {
+     "file": "SprMain",
+     "start": 11692,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    },
+    "lie": {
+     "file": "SprMain",
+     "start": 11756,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   }
+  }
+ },
+ "note": "tools/play_military.py; docs/play/military.md. roles merge into walkers.json roles (by-good for invaders: good = army<N>).",
+ "roles": {
+  "enemy_archer_0": {
+   "file": "Zeus_Greek",
+   "walk": {
+    "file": "Zeus_Greek",
+    "start": 369,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_Greek",
+    "start": 465,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_Greek",
+    "start": 473,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 4
+   },
+   "fight_rule": "rate100",
+   "orig": "army 0 (Zeus_Greek) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Zeus_Greek",
+     "start": 569,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_Greek",
+     "start": 473,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer_1": {
+   "file": "Zeus_trojan",
+   "walk": {
+    "file": "Zeus_trojan",
+    "start": 185,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_trojan",
+    "start": 281,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_trojan",
+    "start": 289,
+    "dirs": 8,
+    "frames": 10,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 4
+   },
+   "fight_rule": "rate100",
+   "orig": "army 1 (Zeus_Trojan) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Zeus_trojan",
+     "start": 289,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_trojan",
+     "start": 289,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer_2": {
+   "file": "Zeus_persian",
+   "walk": {
+    "file": "Zeus_persian",
+    "start": 257,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_persian",
+    "start": 521,
+    "dirs": 1,
+    "frames": 11,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_persian",
+    "start": 377,
+    "dirs": 8,
+    "frames": 18,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 4
+   },
+   "fight_rule": "rate100",
+   "orig": "army 2 (Zeus_Persian) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Zeus_persian",
+     "start": 377,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_persian",
+     "start": 377,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer_3": {
+   "file": "Zeus_centaur",
+   "walk": {
+    "file": "Zeus_centaur",
+    "start": 280,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_centaur",
+    "start": 536,
+    "dirs": 1,
+    "frames": 15,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_centaur",
+    "start": 416,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 4
+   },
+   "fight_rule": "rate100",
+   "orig": "army 3 (Zeus_Centaur) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Zeus_centaur",
+     "start": 416,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_centaur",
+     "start": 416,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer_4": {
+   "file": "Zeus_amazon",
+   "walk": {
+    "file": "Zeus_amazon",
+    "start": 261,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_amazon",
+    "start": 525,
+    "dirs": 1,
+    "frames": 15,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_amazon",
+    "start": 381,
+    "dirs": 8,
+    "frames": 18,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 4
+   },
+   "fight_rule": "rate100",
+   "orig": "army 4 (Zeus_Amazon) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Zeus_amazon",
+     "start": 381,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_amazon",
+     "start": 381,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer_5": {
+   "file": "Poseidon_Egyptian",
+   "walk": {
+    "file": "Poseidon_Egyptian",
+    "start": 465,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Egyptian",
+    "start": 561,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Poseidon_Egyptian",
+    "start": 569,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 4
+   },
+   "fight_rule": "rate100",
+   "orig": "army 5 (Poseidon_Egyptian) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Egyptian",
+     "start": 569,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Poseidon_Egyptian",
+     "start": 569,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer_6": {
+   "file": "Poseidon_Mayan",
+   "walk": {
+    "file": "Poseidon_Mayan",
+    "start": 201,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Mayan",
+    "start": 297,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Poseidon_Mayan",
+    "start": 305,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 3
+   },
+   "fight_rule": "rate100",
+   "orig": "army 6 (Poseidon_Mayan) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Mayan",
+     "start": 305,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Poseidon_Mayan",
+     "start": 305,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer_7": {
+   "file": "Poseidon_Phoenician",
+   "walk": {
+    "file": "Poseidon_Phoenician",
+    "start": 201,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Phoenician",
+    "start": 297,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Poseidon_Phoenician",
+    "start": 305,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 4
+   },
+   "fight_rule": "rate100",
+   "orig": "army 7 (Poseidon_Phoenician) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Phoenician",
+     "start": 305,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Poseidon_Phoenician",
+     "start": 305,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer_8": {
+   "file": "Poseidon_Oceanid",
+   "walk": {
+    "file": "Poseidon_Oceanid",
+    "start": 1,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Oceanid",
+    "start": 97,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Poseidon_Oceanid",
+    "start": 105,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 3
+   },
+   "fight_rule": "rate100",
+   "orig": "army 8 (Poseidon_Oceanid) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Oceanid",
+     "start": 105,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Poseidon_Oceanid",
+     "start": 105,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer_9": {
+   "file": "Poseidon_Atlantean",
+   "walk": {
+    "file": "Poseidon_Atlantean",
+    "start": 265,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Atlantean",
+    "start": 361,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Poseidon_Atlantean",
+    "start": 369,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 3
+   },
+   "fight_rule": "rate100",
+   "orig": "army 9 (Poseidon_Atlantean) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Atlantean",
+     "start": 369,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Poseidon_Atlantean",
+     "start": 369,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer_10": {
+   "file": "Zeus_AresWarriors",
+   "walk": {
+    "file": "Zeus_AresWarriors",
+    "start": 1,
+    "dirs": 8,
+    "frames": 11,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_AresWarriors",
+    "start": 89,
+    "dirs": 8,
+    "frames": 19,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "Zeus_AresWarriors",
+    "start": 241,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "ticks_per_frame": 3
+   },
+   "fight_rule": "rate100",
+   "orig": "army 10 (Zeus_AresWarriors) enemy_archer",
+   "work": {
+    "siege": {
+     "file": "Zeus_AresWarriors",
+     "start": 241,
+     "dirs": 8,
+     "frames": 20,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Zeus_AresWarriors",
+     "start": 241,
+     "dirs": 8,
+     "frames": 20,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3,
+     "offset": 1
+    }
+   }
+  },
+  "enemy_archer": {
+   "by": "good",
+   "map": {
+    "army0": "enemy_archer_0",
+    "army1": "enemy_archer_1",
+    "army2": "enemy_archer_2",
+    "army3": "enemy_archer_3",
+    "army4": "enemy_archer_4",
+    "army5": "enemy_archer_5",
+    "army6": "enemy_archer_6",
+    "army7": "enemy_archer_7",
+    "army8": "enemy_archer_8",
+    "army9": "enemy_archer_9",
+    "army10": "enemy_archer_10"
+   },
+   "fallback_role": "enemy_archer_0"
+  },
+  "enemy_infantry_0": {
+   "file": "Zeus_Greek",
+   "walk": {
+    "file": "Zeus_Greek",
+    "start": 1,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_Greek",
+    "start": 97,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_Greek",
+    "start": 105,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 0 (Zeus_Greek) enemy_infantry",
+   "work": {
+    "siege": {
+     "file": "Zeus_Greek",
+     "start": 105,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_Greek",
+     "start": 105,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_infantry_1": {
+   "file": "Zeus_trojan",
+   "walk": {
+    "file": "Zeus_trojan",
+    "start": 1,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_trojan",
+    "start": 97,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_trojan",
+    "start": 105,
+    "dirs": 8,
+    "frames": 10,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 1 (Zeus_Trojan) enemy_infantry",
+   "work": {
+    "siege": {
+     "file": "Zeus_trojan",
+     "start": 105,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_trojan",
+     "start": 105,
+     "dirs": 8,
+     "frames": 10,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_infantry_2": {
+   "file": "Zeus_persian",
+   "walk": {
+    "file": "Zeus_persian",
+    "start": 1,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_persian",
+    "start": 241,
+    "dirs": 1,
+    "frames": 16,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_persian",
+    "start": 121,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 2 (Zeus_Persian) enemy_infantry",
+   "work": {
+    "siege": {
+     "file": "Zeus_persian",
+     "start": 121,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_persian",
+     "start": 121,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_infantry_3": {
+   "file": "Zeus_centaur",
+   "walk": {
+    "file": "Zeus_centaur",
+    "start": 1,
+    "dirs": 8,
+    "frames": 18,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_centaur",
+    "start": 265,
+    "dirs": 1,
+    "frames": 15,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_centaur",
+    "start": 145,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 3 (Zeus_Centaur) enemy_infantry",
+   "work": {
+    "siege": {
+     "file": "Zeus_centaur",
+     "start": 145,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_centaur",
+     "start": 145,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_infantry_4": {
+   "file": "Zeus_amazon",
+   "walk": {
+    "file": "Zeus_amazon",
+    "start": 1,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_amazon",
+    "start": 241,
+    "dirs": 1,
+    "frames": 20,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_amazon",
+    "start": 121,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 4 (Zeus_Amazon) enemy_infantry",
+   "work": {
+    "siege": {
+     "file": "Zeus_amazon",
+     "start": 121,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_amazon",
+     "start": 121,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_infantry_5": {
+   "file": "Poseidon_Egyptian",
+   "walk": {
+    "file": "Poseidon_Egyptian",
+    "start": 1,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Egyptian",
+    "start": 97,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Poseidon_Egyptian",
+    "start": 105,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 5 (Poseidon_Egyptian) enemy_infantry",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Egyptian",
+     "start": 105,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Poseidon_Egyptian",
+     "start": 105,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_infantry_6": {
+   "file": "Poseidon_Mayan",
+   "walk": {
+    "file": "Poseidon_Mayan",
+    "start": 1,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Mayan",
+    "start": 97,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Poseidon_Mayan",
+    "start": 105,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 6 (Poseidon_Mayan) enemy_infantry",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Mayan",
+     "start": 105,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Poseidon_Mayan",
+     "start": 105,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_infantry_8": {
+   "file": "Poseidon_Oceanid",
+   "walk": {
+    "file": "Poseidon_Oceanid",
+    "start": 201,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Oceanid",
+    "start": 297,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Poseidon_Oceanid",
+    "start": 305,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 8 (Poseidon_Oceanid) enemy_infantry",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Oceanid",
+     "start": 305,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Poseidon_Oceanid",
+     "start": 305,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_infantry_9": {
+   "file": "Poseidon_Atlantean",
+   "walk": {
+    "file": "Poseidon_Atlantean",
+    "start": 489,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Atlantean",
+    "start": 585,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Poseidon_Atlantean",
+    "start": 593,
+    "dirs": 8,
+    "frames": 8,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 9 (Poseidon_Atlantean) enemy_infantry",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Atlantean",
+     "start": 593,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Poseidon_Atlantean",
+     "start": 593,
+     "dirs": 8,
+     "frames": 8,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_infantry_10": {
+   "file": "Zeus_AresWarriors",
+   "walk": {
+    "file": "Zeus_AresWarriors",
+    "start": 1,
+    "dirs": 8,
+    "frames": 11,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_AresWarriors",
+    "start": 89,
+    "dirs": 8,
+    "frames": 19,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "Zeus_AresWarriors",
+    "start": 241,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 10 (Zeus_AresWarriors) enemy_infantry",
+   "work": {
+    "siege": {
+     "file": "Zeus_AresWarriors",
+     "start": 241,
+     "dirs": 8,
+     "frames": 20,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Zeus_AresWarriors",
+     "start": 241,
+     "dirs": 8,
+     "frames": 20,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_infantry": {
+   "by": "good",
+   "map": {
+    "army0": "enemy_infantry_0",
+    "army1": "enemy_infantry_1",
+    "army2": "enemy_infantry_2",
+    "army3": "enemy_infantry_3",
+    "army4": "enemy_infantry_4",
+    "army5": "enemy_infantry_5",
+    "army6": "enemy_infantry_6",
+    "army8": "enemy_infantry_8",
+    "army9": "enemy_infantry_9",
+    "army10": "enemy_infantry_10"
+   },
+   "fallback_role": "enemy_infantry_0"
+  },
+  "enemy_cavalry_0": {
+   "file": "Zeus_Greek",
+   "walk": {
+    "file": "Zeus_Greek",
+    "start": 169,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_Greek",
+    "start": 265,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_Greek",
+    "start": 273,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 0 (Zeus_Greek) enemy_cavalry",
+   "work": {
+    "siege": {
+     "file": "Zeus_Greek",
+     "start": 273,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_Greek",
+     "start": 273,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_cavalry_1": {
+   "file": "Zeus_trojan",
+   "walk": {
+    "file": "Zeus_trojan",
+    "start": 369,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_trojan",
+    "start": 465,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_trojan",
+    "start": 473,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 1 (Zeus_Trojan) enemy_cavalry",
+   "work": {
+    "siege": {
+     "file": "Zeus_trojan",
+     "start": 473,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_trojan",
+     "start": 473,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_cavalry_2": {
+   "file": "Zeus_persian",
+   "walk": {
+    "file": "Zeus_persian",
+    "start": 532,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_persian",
+    "start": 772,
+    "dirs": 1,
+    "frames": 15,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_persian",
+    "start": 652,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 2 (Zeus_Persian) enemy_cavalry",
+   "work": {
+    "siege": {
+     "file": "Zeus_persian",
+     "start": 652,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Zeus_persian",
+     "start": 652,
+     "dirs": 8,
+     "frames": 15,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_cavalry_5": {
+   "file": "Poseidon_Egyptian",
+   "walk": {
+    "file": "Poseidon_Egyptian",
+    "start": 201,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Egyptian",
+    "start": 297,
+    "dirs": 8,
+    "frames": 9,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "Poseidon_Egyptian",
+    "start": 369,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 5 (Poseidon_Egyptian) enemy_cavalry",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Egyptian",
+     "start": 369,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Poseidon_Egyptian",
+     "start": 369,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_cavalry_7": {
+   "file": "Poseidon_Phoenician",
+   "walk": {
+    "file": "Poseidon_Phoenician",
+    "start": 1,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Phoenician",
+    "start": 97,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Poseidon_Phoenician",
+    "start": 105,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 7 (Poseidon_Phoenician) enemy_cavalry",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Phoenician",
+     "start": 105,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 4
+    },
+    "shoot": {
+     "file": "Poseidon_Phoenician",
+     "start": 105,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_cavalry_9": {
+   "file": "Poseidon_Atlantean",
+   "walk": {
+    "file": "Poseidon_Atlantean",
+    "start": 1,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Poseidon_Atlantean",
+    "start": 97,
+    "dirs": 8,
+    "frames": 9,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight": {
+    "file": "Poseidon_Atlantean",
+    "start": 169,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "enemy",
+   "orig": "army 9 (Poseidon_Atlantean) enemy_cavalry",
+   "work": {
+    "siege": {
+     "file": "Poseidon_Atlantean",
+     "start": 169,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "rate": 100,
+     "speed": 3
+    },
+    "shoot": {
+     "file": "Poseidon_Atlantean",
+     "start": 169,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "enemy_cavalry": {
+   "by": "good",
+   "map": {
+    "army0": "enemy_cavalry_0",
+    "army1": "enemy_cavalry_1",
+    "army2": "enemy_cavalry_2",
+    "army5": "enemy_cavalry_5",
+    "army7": "enemy_cavalry_7",
+    "army9": "enemy_cavalry_9"
+   },
+   "fallback_role": "enemy_cavalry_0"
+  },
+  "tower_sentry": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4033,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4129,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4233,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "seq": [
+      13,
+      1,
+      1,
+      1,
+      1,
+      1,
+      13,
+      1,
+      1,
+      1,
+      1,
+      1
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4137,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 2
+    }
+   },
+   "orig": "FIG_BALLISTA (type 46): SprMain packed 0x6654 idle, 0x6653 shoot"
+  },
+  "wall_sentry": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4033,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4129,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "SprMain",
+    "start": 4137,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "shoot": {
+     "file": "SprMain",
+     "start": 4137,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 2,
+     "clamp": 4
+    },
+    "post": {
+     "file": "SprMain",
+     "start": 4233,
+     "dirs": 8,
+     "frames": 12,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3,
+     "loop": 4
+    }
+   },
+   "orig": "FIG_WALLGUY (type 39): SprMain packed 0x6651 walk, 0x6652 die, 0x6653 shoot, 0x6654 post"
+  },
+  "enemy_warship_0": {
+   "file": "Zeus_Greek",
+   "walk": {
+    "file": "Zeus_Greek",
+    "start": 634,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_Greek",
+    "start": 697,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "Zeus_Greek",
+     "start": 793,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "Zeus_Greek",
+     "start": 793,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "Zeus_Greek",
+     "start": 634,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 0"
+  },
+  "enemy_warship_1": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4834,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4897,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4834,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 1"
+  },
+  "enemy_warship_2": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4834,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4897,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4834,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 2"
+  },
+  "enemy_warship_3": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4834,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4897,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4834,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 3"
+  },
+  "enemy_warship_4": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4834,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4897,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4834,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 4"
+  },
+  "enemy_warship_5": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4834,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4897,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4834,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 5"
+  },
+  "enemy_warship_6": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4834,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4897,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4834,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 6"
+  },
+  "enemy_warship_7": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4834,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4897,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4834,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 7"
+  },
+  "enemy_warship_8": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4834,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4897,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4834,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 8"
+  },
+  "enemy_warship_9": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4834,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4897,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4834,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 9"
+  },
+  "enemy_warship_10": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 4834,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 4897,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 4993,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 4834,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy warship 0x40, nationality 10"
+  },
+  "enemy_warship": {
+   "by": "good",
+   "map": {
+    "army0": "enemy_warship_0",
+    "army1": "enemy_warship_1",
+    "army2": "enemy_warship_2",
+    "army3": "enemy_warship_3",
+    "army4": "enemy_warship_4",
+    "army5": "enemy_warship_5",
+    "army6": "enemy_warship_6",
+    "army7": "enemy_warship_7",
+    "army8": "enemy_warship_8",
+    "army9": "enemy_warship_9",
+    "army10": "enemy_warship_10"
+   },
+   "fallback_role": "enemy_warship_1"
+  },
+  "enemy_transport": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 9341,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 9404,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 9500,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 9500,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 9341,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "enemy transport 0x3F"
+  },
+  "trireme": {
+   "file": "SprMain",
+   "walk": {
+    "file": "SprMain",
+    "start": 6570,
+    "dirs": 8,
+    "frames": 4,
+    "order": "frame-major",
+    "stride_dir": 2,
+    "stride_frame": 16,
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "SprMain",
+    "start": 6633,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "idle": {
+     "file": "SprMain",
+     "start": 6729,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "idle_empty": {
+     "file": "SprMain",
+     "start": 6729,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "shoot": {
+     "file": "SprMain",
+     "start": 6570,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1
+    }
+   },
+   "orig": "FIG_TRIREME 0x39",
+   "layers": {
+    "walk": [
+     {
+      "file": "PoseidonImps",
+      "start": 8300,
+      "dirs": 8,
+      "frames": 4,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     }
+    ],
+    "idle": [
+     {
+      "file": "PoseidonImps",
+      "start": 8300,
+      "dirs": 8,
+      "frames": 1,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     }
+    ],
+    "idle_empty": [],
+    "shoot": [
+     {
+      "file": "PoseidonImps",
+      "start": 8428,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ],
+      "ticks_per_frame": 3
+     }
+    ],
+    "die": [
+     {
+      "file": "PoseidonImps",
+      "start": 8332,
+      "dirs": 8,
+      "frames": 12,
+      "order": "frame-major",
+      "dir_order": [
+       "NE",
+       "E",
+       "SE",
+       "S",
+       "SW",
+       "W",
+       "NW",
+       "N"
+      ]
+     }
+    ]
+   },
+   "flag": {
+    "walk": {
+     "file": "PoseidonImps",
+     "start": 8229,
+     "dirs": 8,
+     "frames": 4,
+     "order": "frame-major",
+     "stride_dir": 2,
+     "stride_frame": 16,
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    },
+    "still": {
+     "file": "PoseidonImps",
+     "start": 8292,
+     "dirs": 8,
+     "frames": 1,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   }
+  },
+  "rabble:amazon": {
+   "file": "Zeus_amazon",
+   "walk": {
+    "file": "Zeus_amazon",
+    "start": 261,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_amazon",
+    "start": 525,
+    "dirs": 1,
+    "frames": 15,
+    "order": "frame"
+   },
+   "fight": {
+    "file": "Zeus_amazon",
+    "start": 381,
+    "dirs": 8,
+    "frames": 18,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "amazon",
+   "work": {
+    "throw": {
+     "file": "Zeus_amazon",
+     "start": 381,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 1,
+     "clamp": 11,
+     "offset": 1
+    }
+   },
+   "orig": "Artemis' Amazons: rabble 0xB in formation 0x1F / 0x20, army 4 archer sprites"
+  },
+  "hoplite:ares": {
+   "file": "Zeus_AresWarriors",
+   "walk": {
+    "file": "Zeus_AresWarriors",
+    "start": 1,
+    "dirs": 8,
+    "frames": 11,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "file": "Zeus_AresWarriors",
+    "start": 89,
+    "dirs": 8,
+    "frames": 19,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ],
+    "dir0": true
+   },
+   "die_rate": 1,
+   "fight": {
+    "file": "Zeus_AresWarriors",
+    "start": 241,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "fight_rule": "hoplite",
+   "orig": "Ares' warriors: hoplite 0xC in formation 0x21 / 0x22, Zeus_AresWarriors 1 / 2 / 3"
+  }
+ },
+ "armies": [
+  {
+   "index": 0,
+   "sg3": "Zeus_Greek",
+   "file": "Zeus_Greek"
+  },
+  {
+   "index": 1,
+   "sg3": "Zeus_Trojan",
+   "file": "Zeus_trojan"
+  },
+  {
+   "index": 2,
+   "sg3": "Zeus_Persian",
+   "file": "Zeus_persian"
+  },
+  {
+   "index": 3,
+   "sg3": "Zeus_Centaur",
+   "file": "Zeus_centaur"
+  },
+  {
+   "index": 4,
+   "sg3": "Zeus_Amazon",
+   "file": "Zeus_amazon"
+  },
+  {
+   "index": 5,
+   "sg3": "Poseidon_Egyptian",
+   "file": "Poseidon_Egyptian"
+  },
+  {
+   "index": 6,
+   "sg3": "Poseidon_Mayan",
+   "file": "Poseidon_Mayan"
+  },
+  {
+   "index": 7,
+   "sg3": "Poseidon_Phoenician",
+   "file": "Poseidon_Phoenician"
+  },
+  {
+   "index": 8,
+   "sg3": "Poseidon_Oceanid",
+   "file": "Poseidon_Oceanid"
+  },
+  {
+   "index": 9,
+   "sg3": "Poseidon_Atlantean",
+   "file": "Poseidon_Atlantean"
+  },
+  {
+   "index": 10,
+   "sg3": "Zeus_AresWarriors",
+   "file": "Zeus_AresWarriors"
+  }
+ ],
+ "arrow": {
+  "file": "SprAmbient",
+  "start": 2607,
+  "dirs": 32,
+  "shadow": 2575
+ },
+ "enemy_arrows": {
+  "0": {
+   "file": "SprAmbient",
+   "start": 1491,
+   "dirs": 1,
+   "shadow": 1490
+  },
+  "1": {
+   "file": "SprAmbient",
+   "start": 2245,
+   "dirs": 32,
+   "shadow": 2213
+  }
+ },
+ "wolf": {
+  "stand": {
+   "file": "SprMain",
+   "start": 11692,
+   "dirs": 8,
+   "frames": 8,
+   "order": "frame-major",
+   "dir_order": [
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N"
+   ]
+  },
+  "lie": {
+   "file": "SprMain",
+   "start": 11756,
+   "dirs": 8,
+   "frames": 8,
+   "order": "frame-major",
+   "dir_order": [
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N"
+   ]
+  },
+  "fight": {
+   "file": "SprMain",
+   "start": 11628,
+   "dirs": 8,
+   "frames": 8,
+   "order": "frame-major",
+   "dir_order": [
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N"
+   ]
+  }
+ },
+ "standard": {
+  "file": "Zeus_General",
+  "poles": "SPR_STD_POLES",
+  "flags": "SPR_FLAG_COMPANIES",
+  "god1": "SPR_FLAG_GOD1",
+  "god2": "SPR_FLAG_GOD2",
+  "loan": "SPR_FLAG_LOAN"
+ },
+ "texts": {
+  "5": [
+   "@{t:5:0}",
+   "@{t:5:1}",
+   "@{t:5:2}",
+   "@{t:5:3}",
+   "@{t:5:4}",
+   "@{t:5:5}",
+   "@{t:5:6}",
+   "@{t:5:7}",
+   "@{t:5:6}",
+   "@{t:5:9}",
+   "@{t:5:6}",
+   "@{t:5:11}",
+   "@{t:5:12}",
+   "@{t:5:13}",
+   "@{t:5:6}",
+   "@{t:5:15}",
+   "@{t:5:16}",
+   "@{t:5:17}",
+   "@{t:5:18}",
+   "@{t:5:19}",
+   "@{t:5:20}",
+   "@{t:5:21}",
+   "@{t:5:0}",
+   "@{t:5:23}",
+   "@{t:5:24}",
+   "@{t:5:25}",
+   "@{t:5:26}",
+   "@{t:5:27}",
+   "@{t:5:26}",
+   "@{t:5:29}",
+   "@{t:5:30}",
+   "@{t:5:31}",
+   "@{t:5:32}",
+   "@{t:5:33}",
+   "@{t:5:34}",
+   "@{t:5:35}",
+   "@{t:5:36}",
+   "@{t:5:37}",
+   "@{t:5:38}",
+   "@{t:5:39}",
+   "@{t:5:40}",
+   "@{t:5:41}",
+   "@{t:5:42}",
+   "@{t:5:43}",
+   "@{t:5:44}",
+   "@{t:5:45}",
+   "@{t:5:46}",
+   "@{t:5:47}",
+   "@{t:5:48}",
+   "@{t:5:49}",
+   "@{t:5:50}",
+   "@{t:5:51}",
+   "@{t:5:52}",
+   "@{t:5:53}",
+   "@{t:5:54}",
+   "@{t:5:55}",
+   "@{t:5:56}",
+   "@{t:5:57}",
+   "@{t:5:58}",
+   "@{t:5:59}",
+   "@{t:5:60}",
+   "@{t:5:61}",
+   "@{t:5:62}",
+   "@{t:5:63}",
+   "@{t:5:64}",
+   "@{t:5:65}",
+   "@{t:5:66}",
+   "@{t:5:67}",
+   "@{t:5:68}",
+   "@{t:5:69}",
+   "@{t:5:70}",
+   "@{t:5:71}",
+   "@{t:5:72}",
+   "@{t:5:73}",
+   "@{t:5:74}",
+   "@{t:5:75}",
+   "@{t:5:76}",
+   "@{t:5:77}",
+   "@{t:5:78}",
+   "@{t:5:79}",
+   "@{t:5:80}",
+   "@{t:5:81}",
+   "@{t:5:82}",
+   "@{t:5:83}",
+   "@{t:5:84}",
+   "@{t:5:85}",
+   "@{t:5:86}",
+   "@{t:5:87}",
+   "@{t:5:88}",
+   "@{t:5:89}",
+   "@{t:5:90}",
+   "@{t:5:91}",
+   "@{t:5:92}",
+   "@{t:5:93}",
+   "@{t:5:94}",
+   "@{t:5:95}",
+   "@{t:5:96}",
+   "@{t:5:97}",
+   "@{t:5:6}",
+   "@{t:5:99}",
+   "@{t:5:6}",
+   "@{t:5:101}",
+   "@{t:5:102}",
+   "@{t:5:103}",
+   "@{t:5:104}",
+   "@{t:5:105}",
+   "@{t:5:104}",
+   "@{t:5:107}",
+   "@{t:5:108}",
+   "@{t:5:109}",
+   "@{t:5:110}",
+   "@{t:5:111}",
+   "@{t:5:112}",
+   "@{t:5:113}",
+   "@{t:5:114}",
+   "@{t:5:115}",
+   "@{t:5:116}",
+   "@{t:5:117}",
+   "@{t:5:118}",
+   "@{t:5:96}",
+   "@{t:5:120}",
+   "@{t:5:108}",
+   "@{t:5:122}",
+   "@{t:5:123}",
+   "@{t:5:124}",
+   "@{t:5:125}",
+   "@{t:5:122}",
+   "@{t:5:108}",
+   "@{t:5:128}",
+   "@{t:5:108}",
+   "@{t:5:130}",
+   "@{t:5:108}",
+   "@{t:5:132}",
+   "@{t:5:108}",
+   "@{t:5:134}",
+   "@{t:5:108}",
+   "@{t:5:136}",
+   "@{t:5:108}",
+   "@{t:5:138}",
+   "@{t:5:139}",
+   "@{t:5:140}",
+   "@{t:5:141}",
+   "@{t:5:142}",
+   "@{t:5:141}",
+   "@{t:5:144}",
+   "@{t:5:145}",
+   "@{t:5:146}",
+   "@{t:5:147}",
+   "@{t:5:148}",
+   "@{t:5:140}",
+   "@{t:5:150}",
+   "@{t:5:151}",
+   "@{t:5:152}",
+   "@{t:5:153}",
+   "@{t:5:154}",
+   "@{t:5:155}",
+   "@{t:5:156}",
+   "@{t:5:157}",
+   "@{t:5:158}",
+   "@{t:5:159}",
+   "@{t:5:160}",
+   "@{t:5:161}",
+   "@{t:5:162}",
+   "@{t:5:159}",
+   "@{t:5:164}",
+   "@{t:5:165}",
+   "@{t:5:166}",
+   "@{t:5:76}",
+   "@{t:5:168}",
+   "@{t:5:169}",
+   "@{t:5:170}",
+   "@{t:5:96}",
+   "@{t:5:172}",
+   "@{t:5:96}",
+   "@{t:5:174}",
+   "@{t:5:175}",
+   "@{t:5:176}",
+   "@{t:5:141}",
+   "@{t:5:178}",
+   "@{t:5:179}",
+   "@{t:5:180}",
+   "@{t:5:181}",
+   "@{t:5:182}",
+   "@{t:5:183}",
+   "@{t:5:184}",
+   "@{t:5:185}",
+   "@{t:5:186}",
+   "@{t:5:187}",
+   "@{t:5:188}",
+   "@{t:5:189}",
+   "@{t:5:190}",
+   "@{t:5:191}",
+   "@{t:5:192}",
+   "@{t:5:193}",
+   "@{t:5:182}",
+   "@{t:5:165}",
+   "@{t:5:196}",
+   "@{t:5:169}",
+   "@{t:5:198}",
+   "@{t:5:151}",
+   "@{t:5:200}"
+  ],
+  "13": [
+   "@{t:13:0}",
+   "@{t:11:6}",
+   "@{t:13:2}",
+   "@{t:11:6}",
+   "@{t:13:4}",
+   "@{t:13:5}",
+   "@{t:13:6}",
+   "@{t:13:7}",
+   "@{t:13:8}"
+  ],
+  "51": [
+   "@{t:51:0}",
+   "@{t:51:1}",
+   "@{t:51:2}",
+   "@{t:51:3}",
+   "@{t:51:4}",
+   "@{t:51:5}",
+   "@{t:51:6}",
+   "@{t:51:7}",
+   "@{t:51:8}",
+   "towers",
+   "tower",
+   "manning",
+   "@{t:51:12}",
+   "@{t:51:13}",
+   "@{t:51:14}",
+   "@{t:51:15}",
+   "@{t:51:16}",
+   "@{t:23:24}",
+   "@{t:51:18}",
+   "@{t:51:19}",
+   "@{t:51:20}",
+   "@{t:51:21}",
+   "@{t:51:22}",
+   "@{t:51:23}",
+   "@{t:51:24}",
+   "@{t:51:25}",
+   "@{t:51:26}",
+   "@{t:51:26}",
+   "@{t:51:28}",
+   "@{t:51:29}",
+   "@{t:51:30}",
+   "@{t:51:31}",
+   "@{t:51:32}",
+   "@{t:51:33}",
+   "@{t:51:34}",
+   "@{t:51:35}",
+   "disembarking",
+   "returning",
+   "repairing",
+   "fighting",
+   "abroad",
+   "@{t:51:41}",
+   "@{t:51:42}",
+   "@{t:51:42}",
+   "@{t:51:44}",
+   "@{t:51:45}",
+   "@{t:51:46}",
+   "@{t:51:47}",
+   "@{t:51:48}",
+   "undamaged",
+   "leaky",
+   "damaged",
+   "mangled",
+   "@{t:51:53}",
+   "@{t:51:54}",
+   "@{t:51:55}",
+   "@{t:51:56}",
+   "@{t:51:57}",
+   "@{t:51:58}",
+   "@{t:51:59}",
+   "@{t:51:60}",
+   "@{t:51:61}",
+   "@{t:51:62}",
+   "@{t:51:63}",
+   "@{t:51:64}",
+   "@{t:51:65}",
+   "@{t:51:66}",
+   "@{t:51:67}",
+   "@{t:51:68}",
+   "@{t:51:69}",
+   "@{t:51:70}",
+   "@{t:51:71}",
+   "@{t:51:72}",
+   "@{t:51:73}",
+   "@{t:51:74}",
+   "@{t:51:75}",
+   "@{t:51:76}",
+   "@{t:51:77}",
+   "@{t:51:78}",
+   "@{t:51:79}",
+   "@{t:51:80}",
+   "@{t:51:81}",
+   "@{t:51:82}",
+   "@{t:51:83}",
+   "@{t:51:84}",
+   "@{t:51:85}",
+   "@{t:51:86}",
+   "@{t:51:87}",
+   "@{t:51:88}"
+  ],
+  "138": [
+   "@{t:138:0}",
+   "@{t:138:1}",
+   "@{t:138:2}",
+   "@{t:138:3}",
+   "@{t:138:4}",
+   "@{t:138:5}",
+   "@{t:138:6}",
+   "@{t:138:7}",
+   "@{t:138:8}",
+   "@{t:138:9}",
+   "@{t:138:10}",
+   "@{t:138:11}",
+   "@{t:138:12}",
+   "@{t:138:13}",
+   "@{t:138:14}",
+   "@{t:138:15}",
+   "@{t:138:16}",
+   "@{t:138:17}",
+   "@{t:138:18}",
+   "@{t:138:19}",
+   "@{t:138:20}",
+   "@{t:138:21}",
+   "@{t:138:22}",
+   "@{t:138:23}",
+   "@{t:138:24}",
+   "@{t:138:25}",
+   "@{t:138:26}",
+   "@{t:138:27}",
+   "@{t:138:28}",
+   "@{t:138:29}",
+   "@{t:138:30}",
+   "@{t:138:31}",
+   "@{t:37:10}",
+   "@{t:138:33}",
+   "@{t:55:6}",
+   "@{t:138:35}",
+   "@{t:138:36}",
+   "@{t:138:37}",
+   "@{t:138:38}",
+   "@{t:138:39}",
+   "@{t:138:40}",
+   "@{t:138:41}",
+   "@{t:138:42}",
+   "@{t:138:43}",
+   "@{t:138:44}",
+   "@{t:138:45}",
+   "@{t:138:46}",
+   "@{t:138:47}",
+   "@{t:138:48}",
+   "@{t:138:49}",
+   "@{t:138:50}",
+   "@{t:138:51}",
+   "@{t:138:52}",
+   "@{t:138:53}",
+   "@{t:138:54}",
+   "@{t:138:55}",
+   "@{t:138:56}",
+   "@{t:138:57}",
+   "@{t:138:58}",
+   "@{t:138:59}",
+   "@{t:138:60}",
+   "@{t:138:61}",
+   "@{t:138:62}",
+   "@{t:138:63}",
+   "@{t:138:64}",
+   "@{t:138:65}",
+   "@{t:138:66}",
+   "@{t:138:67}",
+   "@{t:138:68}",
+   "@{t:8:50}",
+   "@{t:51:88}",
+   "@{t:138:36}",
+   "@{t:138:72}",
+   "@{t:8:51}",
+   "@{t:138:74}",
+   "@{t:8:62}",
+   "@{t:8:63}",
+   "@{t:138:77}",
+   "@{t:51:87}",
+   "@{t:138:79}",
+   "@{t:51:86}"
+  ],
+  "184": [
+   "@{t:184:0}",
+   "@{t:8:50}",
+   "@{t:184:2}",
+   "undamaged",
+   "leaky",
+   "damaged",
+   "mangled",
+   "@{t:51:53}",
+   "@{t:184:8}",
+   "@{t:184:9}",
+   "@{t:184:10}",
+   "@{t:184:11}",
+   "@{t:184:12}",
+   "@{t:184:13}",
+   "@{t:184:14}",
+   "@{t:184:15}",
+   "@{t:184:16}",
+   "@{t:184:17}",
+   "@{t:184:18}",
+   "@{t:184:9}",
+   "@{t:184:10}",
+   "@{t:184:21}",
+   "@{t:184:22}",
+   "@{t:184:23}",
+   "@{t:184:24}",
+   "@{t:184:25}",
+   "@{t:184:26}",
+   "@{t:184:27}",
+   "@{t:184:28}",
+   "@{t:184:29}",
+   "@{t:184:30}",
+   "@{t:184:31}",
+   "@{t:184:32}",
+   "@{t:184:33}",
+   "@{t:184:34}",
+   "@{t:184:35}",
+   "@{t:184:36}",
+   "@{t:184:37}",
+   "repairing",
+   "defending",
+   "returning",
+   "@{t:51:2}",
+   "patrolling",
+   "attacking",
+   "moving",
+   "@{t:184:45}",
+   "@{t:184:46}",
+   "returning",
+   "@{t:184:48}",
+   "@{t:184:49}",
+   "@{t:184:50}",
+   "@{t:184:51}",
+   "@{t:184:52}",
+   "@{t:184:53}",
+   "@{t:184:54}",
+   "@{t:51:79}",
+   "@{t:51:80}",
+   "trireme",
+   "@{t:51:85}",
+   "@{t:184:59}",
+   "@{t:8:62}",
+   "@{t:8:62}"
+  ],
+  "269": [
+   "@{t:269:0}",
+   "@{t:269:1}",
+   "@{t:269:2}",
+   "@{t:269:3}",
+   "@{t:269:4}",
+   "@{t:269:5}",
+   "@{t:269:6}",
+   "@{t:269:7}",
+   "@{t:269:8}",
+   "@{t:269:9}",
+   "@{t:269:10}",
+   "@{t:269:11}",
+   "@{t:269:12}",
+   "@{t:269:13}",
+   "@{t:269:14}",
+   "@{t:269:15}"
+  ],
+  "283": [
+   "@{t:283:0}",
+   "@{t:283:1}",
+   "@{t:283:2}",
+   "@{t:283:3}",
+   "@{t:283:4}",
+   "@{t:51:13}",
+   "@{t:51:32}",
+   "@{t:283:7}",
+   "@{t:283:8}",
+   "@{t:44:176}",
+   "@{t:51:68}",
+   "@{t:23:24}",
+   "@{t:40:0}",
+   "@{t:283:13}",
+   "@{t:283:14}",
+   "@{t:283:15}",
+   "@{t:51:24}",
+   "@{t:283:17}",
+   "@{t:13:4}",
+   "@{t:283:19}",
+   "@{t:283:20}",
+   "@{t:5:12}",
+   "@{t:283:22}",
+   "@{t:283:23}",
+   "@{t:283:24}",
+   "@{t:283:25}",
+   "@{t:51:86}",
+   "@{t:51:87}",
+   "@{t:51:88}"
+  ]
+ }
+}

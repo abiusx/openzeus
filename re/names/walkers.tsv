@@ -1,0 +1,86 @@
+address	name	kind	type	evidence
+# walkers agent; see docs/logic/walkers.md and docs/logic/pathfinding.md
+# correction note: 0x00B1E8F8 (grid_service_overlay) is not only visual: roaming walkers read it to choose directions (0x004A31E0, 0x004D6210, figure_wander) - walkers.md §6
+# note: 0x0063969C (g_figure_handlers) is +4 of a 40-byte row starting at 0x00639698 (+0 = enum name string); names read at 0x0063969C+36 belong to type+1
+004cc160	figure_override_go_home	function		handler used instead of the type handler when figure flags & 0x80000 (not type 0x2B): route mode 0xD, walk home, delete on dir 8/10
+004cc360	figures_refresh_images	function		calls column +0x08 of the figure type table for every live figure (skips 0x004CC3D0 unless arg)
+004cc3d0	figure_image_clear	function		column +0x08 default: clears figure +0x04 and +0x180
+004cc650	route_slot_alloc	function		(fig,&slot): reuse own slot or first free/stale slot 1..999 of route_owner 0x00EF4FE8; 0 if none
+004cc850	grid_figure_purge_free	function		monthly from walkers_update: grid_figure heads pointing to free records skip to next_on_tile
+004cde80	roamer_early_return	function		true if type not 0x43..0x45, +0x44 >= +0x42/2 and figure on roam start tile (+0x14C/+0x14E)
+004cdee0	figure_roamer_generic	function		shared roaming-service handler (types 22,26,27,32,38,60): action 1 roam / 2 return home / 4 dying / 5 fight
+004d1170	figure_move	function		(fig, speed code): speed pattern via +0x160, then figure_route_walk(n sub-steps)
+004d7bd0	figure_route_walk	function		(fig,n): n sub-steps along route; tile service at centers; tile change at progress 8
+004d7cc0	figure_progress_in_place	function		(fig,n): advances +0x39 and fine position without tile change (stops at 15)
+004d8220	figure_find_route	function		allocates a route slot and runs the search selected by route mode +0x72 (19 modes) then route_trace
+004d8990	figure_route_free	function		route_owner[+0x3A] = 0 if ours; +0x3A = 0
+004d8b10	figure_route_next_dir	function		direction = route[+0x3C] or 8 at end; without route: dir_to dest, 10 if not there
+004d8bb0	figure_check_next_tile	function		sets direction 9 (reroute) / 11 (attack obstacle) for the tile ahead
+004d9330	figure_change_tile	function		moves tile/x/y by direction, tile lists, prev tile, slope, contacts (0x004D4DA0)
+004d94f0	figure_fine_step	function		fine_x/fine_y += direction unit; slope offset update
+004d9750	figure_line_move	function		(fig,n): Bresenham steps toward +0x4E/+0x50, then x,y = fine/15; returns 1 when done
+004d9980	figure_line_move_init	function		(fig,fx0,fy0,fx1,fy1,flag): sets +0x4E..+0x58 and direction
+004d6210	roam_first_direction	function		initial roam direction (open road/ramp sides, coverage filter when >=2 sides); -1 if none
+004d6630	figure_roam_init	function		after spawn: progress 15, +0x46=0, +0x49=-1, +0x48=2, roam start tile, dest = home road tile
+004d6790	figure_roam_tick	function		(fig, speed code): +0x44 += speed; speed pattern -> figure_roam_steps
+004d69b0	figure_roam_steps	function		(fig,n,special): roaming sub-steps; direction choice at tile centers (0x004A31E0, figure_wander)
+004d60b0	figure_dying_tick	function		action 4: +0x36 += 1, delete at 127
+004d9ed0	figures_clear_all	function		zeroes 2000 records, free list 1..1999 ascending
+004d9f40	figures_rebuild_free_list	function		after load: free ids pushed 1999 down to 1; counters for live ones
+004da250	figure_delete	function		type cleanup, route free, tile unlink, target links, zero record, push id to free ring
+004dca70	figure_tile_unlink	function		removes figure from grid_figure chain of its tile
+004dc800	figure_tile_chain_fix	function		breaks a circular chain ("Corrected a circular figure list")
+004dd0b0	figure_assign_name	function		name group from 0x004E34F0 -> 0x004DD040 (not types 6,10,14)
+004dd040	figure_name_from_group	function		+0x70 = counter[g] % size[g]; counter 0x00EF5800[g] += 1
+004e34f0	figure_name_group	function		type table column +0x18 with per-building overrides; -1 none
+004e32c0	figure_clear_target_links	function		if flags&2: clear it and every figure's +0x82 equal to this id
+004a30e0	coverage_mem_get	function		(channel, tile): 2-bit field of grid 0x00B1E8F8
+004a31e0	roam_open_sides	function		(tile, fig): open road sides 0,2,4,6 into 0x00DA2470.. (stride 8); filters by coverage memory if >2
+004a37d0	road_tile_near_rect	function		(x,y,size,r): best-network road tile in rectangle; result 0x00F13944/0x00F13940/0x00DA2418
+004a39d0	road_tile_near_building	function		(x,y,size,rmax): road_tile_near_rect for r = 0..rmax
+0058cff0	direction_to	function		(x0,y0,x1,y1) -> 0..7 octant, 8 if same tile
+0058bc80	route_trace	function		(mode 4|8, slot, sx,sy,dx,dy): trace back on 0x01079460, write reversed directions to routes[slot]; returns length (<500)
+0058a6c0	route_bfs_roads	function		BFS mask 0x10C (roads only)
+005894f0	route_bfs_land	function		BFS mask 0x11C
+0058a0d0	route_bfs_roads_parts	function		BFS mask 0x12C
+00589ed0	route_bfs_land_parts	function		BFS mask 0x13C
+005896f0	route_bfs_corral	function		BFS mask 0x15C
+0058a2d0	route_bfs_regrow	function		BFS mask 0x19C
+0058ad90	route_bfs_roads_flat	function		BFS mask 0x0C
+00589ae0	route_bfs_racetrack	function		BFS mask 0x200
+0058b560	route_bfs_shore	function		BFS route & 0x3C or blocked water tile without building
+00587fb0	route_bfs_meadow	function		BFS terrain & 0x1D7FDC0F == 0x800
+0058b7d0	route_bfs_walls	function		BFS on grid 0x01039D10 values 0..2
+0058b170	route_bfs_military	function		BFS on grid 0x01046820 (!= -1; 1 and -2 by flags)
+005876f0	route_grid_build_rect	function		computes route bits 0x0105FE40 over a rectangle from terrain/buildings
+00587b30	route_grid_rebuild	function		clears 0x0105FE40 and rebuilds the whole map
+00502ba0	military_grid_build_rect	function		computes 0x01046820 (-1 blocked, 0 open, 1 building, 3 wall, 4 gatehouse, 5 bridge?)
+00587b90	ship_grid_build_rect	function		computes 0x01053330 (0xFF/0xFB/0xFE...) for ships
+004ede80	figures_flag_go_home	function		sets figure flag 0x80000, action 2, dest = home road tile for eligible live figures (0x004EF430)
+004b4370	figure_culture_handler	function		handler of types 15-18 and 72-75 (not defined as a function in Ghidra)
+00639698	figure_type_table	data	u8[3120]	78 rows x 0x28: +0 name, +4 handler, +8 image fn, +0xC coverage channel, +0x10 text id, +0x14 flags, +0x18 name group, +0x1C..+0x24 sprite groups
+00dbb84c	figure_free_ids	data	i32[1999]	ring of free figure ids (not saved)
+00dbb840	figure_free_read	data	i32	ring read index
+00dbb844	figure_free_write	data	i32	ring write index
+00dbb848	figure_free_count	data	i32	free ids in ring
+00dbb838	figure_id_high_water	data	i32	highest id ever created
+00dbb83c	figure_id_highest_live	data	i32	highest live id (shrinks on delete)
+00ef57ec	g_current_figure	data	i32	figure being updated by walkers_update; read by handlers
+00ef57e8	figures_processed	data	i32	live figures processed this tick
+00dbb830	g_roamer_route_walk	data	i32	1 while a roamer walks its pre-roam route (roadblock/gatehouse checks)
+0105fe40	grid_route	data	u16[51984]	route passability bits (pathfinding.md §2)
+010ac0a0	route_queue	data	i32[51984]	BFS ring queue
+0102d1fc	route_queue_head	data	i32	queue read index
+0102d1f8	route_queue_tail	data	i32	queue write index
+0102d1f4	route_last_tile	data	i32	source tile (search) / current tile (trace)
+0102d1c4	route_search_count	data	i32	+1 per search
+010df2c0	route_distance_dirty	data	i32	1 after a plain BFS; invalidates route_search cache
+010df0c8	route_trace_buf	data	u8[500]	reverse directions while tracing
+00e7aec8	routes	data	u8[500000]	1000 routes x 500 directions (saved rank 30)
+00ef4fe8	route_owner	data	u16[1000]	figure owning each route slot (saved rank 29)
+01046820	grid_military	data	i8[51984]	military passability/cost classes
+01039d10	grid_walls	data	u8[51984]	wall walker grid (mode 4)
+01053330	grid_ship	data	u8[51984]	ship passability
+005f1680	building_ring_offsets	data	i32[7][24]	per size: edge-adjacent tile offsets, 0-terminated
+00ef5800	figure_name_counters	data	i32[367]	per name group counter (saved rank 113)
+00f27f34	figure_name_group_sizes	data	i32[]	stride 8: names per group (0 = no name)

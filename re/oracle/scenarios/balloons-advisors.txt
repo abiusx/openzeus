@@ -1,0 +1,6 @@
+# Advisor balloons (screen 7, FUN_004F6110 by advisor 0x00665E34): "See a working city" at 800x600 (as
+# balloons-panel.txt); the trade advisor (Distribution page, magnifier (765,289)): the mouse on the Wheat row's
+# first city (FUN_005BB5F0 id 0xA8C + row -> 68:109 by the code: no box seen), on its state text and on the title;
+# exit (566,497); the military advisor (Military page + magnifier): a company name row (68:195..197 'go to company
+# standard') and its status button (68:201 'call soldiers to arms'), rows 1 and 2. DIR = run dir; --seconds 74.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 626,165; 49:click 765,289; 51:move 360,172; 51.1:move 361,172; 53:shot DIR/t1.bmp; 53.5:move 230,172; 55:shot DIR/t0.bmp; 55.5:move 400,95; 57:shot DIR/t2.bmp; 58:click 566,497; 60:click 626,370; 62:click 765,289; 64:move 100,88; 64.1:move 101,88; 66:shot DIR/m1.bmp; 66.5:move 250,88; 68:shot DIR/m2.bmp; 68.5:move 250,104; 70:shot DIR/m3.bmp; 70.5:move 400,60; 72:shot DIR/m4.bmp

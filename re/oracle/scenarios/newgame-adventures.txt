@@ -1,0 +1,2 @@
+# The exe's adventure choice at 800x600: Play Zeus, leader "N", Adventures (590,260). DIR = the run dir; --seconds 30.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 24:move 590,260; 24.5:click 590,260; 28:shot DIR/a1.bmp

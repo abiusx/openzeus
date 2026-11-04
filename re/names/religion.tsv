@@ -1,0 +1,276 @@
+address	name	kind	type	evidence
+00408da0	sanctuary_pray_click	function		pray button: result 3 refused/1 queued/2 granted in 0x00FFA184
+00430a10	conan_phase_duration	function		sum of column 6 (distance) of a conan phase's rows
+004808d0	hero_arrival_queue	function		new event 0x27, countdown rng15%3+1
+004810e0	monster_event_texts	function		text bases per god for event messages
+004812f0	monster_event_killed	function		marks active type-0x1A event of a dead monster status 2
+00481350	monster_slain_message	function		message when no event matched
+00481430	monster_event_update	function		scenario event type 0x1A handler
+00481a80	hero_arrival_event_update	function		event type 0x27 handler: countdown, create hero at entry
+00482b10	event_god_attack	function		scenario event 0x1B: hostile god arrives, defenders sent
+0048caf0	artisans_guild_max_artisans	function		0 if type disabled else 1 + Atlas (god rec 13) sanctuary finished
+004956e0	sanctuary_god_name_text	function		god id -> text id for completion message 0xE0
+004957b0	pyramid_name_text	function		pyramid type -> text id
+004abaf0	figure_set_action	function		ECX=behaviour object; saves old action at +0x10, sets +0x38, calls vtable+4
+004abb60	figure_walk_then	function		move one step; on arrival set action param_3 (or state 2 when 0)
+004abbf0	nearest_building_in_category	function		category list 0x006383E0 (50 ints/cat); cat 10 random %11
+004abe80	nearest_attackable_building	function		Manhattan <= radius, type not on cooldown 0x00EF60B0
+004ac020	nearest_figure_in_category	function		category list 0x00638C78 (15 ints/cat)
+004c0060	figure_artisan_update	function		handler type 58 in table 0x0063969C (not a Ghidra function)
+004c3cd0	god_visit_bless_try	function		visiting god sanctifies adjacent building: d0%100 < chance/size
+004c51e0	dionysus_satyrs_spawn	function		takes up to 1600 wine (res 0x15), spawns ceil(n/400) type-0x44 figures with +0x0B=0x11 (Satyr)
+004c5d00	god_help_build_monument	function		sets target b+0xDB=100, b+0xA2=8 (called from god figure code)
+004c5d40	figure_god_handler	function		figure type 0x43 handler (not a Ghidra function), switch at 0x004C854C
+004c8760	figure_monster_update	function		handler of figure type 0x44 (table 0x0063969C); action switch, jump table 0x004C8E2C; not decompiled
+004c8f50	figure_hero_update	function		handler of figure type 0x45; not decompiled
+004e1060	artisan_find_job	function		wrapper of 0x0053EC10
+004e5f30	sanctuaries_more_than_3	function		count gods with sanctuary building > 3
+004e5f60	sanctuaries_at_limit	function		count >= min(scenario+0xDC, 4)
+004e6010	god_can_be_jealous	function		ECX=god; listed && friendly && no sanctuary && may_be_jealous
+004e6040	god_help_threshold	function		ECX=god; max prayer_counter for help (26/14/122/20/32)
+004e60b0	god_help_cost	function		ECX=god, flag prayed; cost added to prayer_counter
+004e6160	god_month_tick	function		ECX=god; counters -1, pending months, passive monthly effects
+004e6230	zeus_month_world_relations	function		world cities +0x164 +1 up to 100
+004e6260	poseidon_month_kraken	function		spawn Kraken (monster 1) as city monster
+004e62d0	hades_month_cerberus	function		spawn Cerberus (monster 2)
+004e6340	athena_month_defend	function		Athena fights invasion
+004e6440	apollo_month_fight_monster	function		Apollo attacks nearby monster
+004e65f0	god_sanctuary_built	function		ECX=god; sanctuary exists and construction percent > 99
+004e6610	god_can_help	function		ECX=god; prayer_counter <= threshold && !busy
+004e6630	god_help	function		ECX=god, (prayed, force); dispatches to per-god help
+004e6780	god_gifts_deliver	function		ECX=god; delivers +0x28/+0x2C goods while +0x30 set
+004e69a0	gods_month_update	function		month_tick 5: god_month_tick all, jealousy, pick help candidate
+004e6b10	gods_help_update	function		every month_advance call: candidate auto help, gift delivery, pending prayers
+004e6b80	zeus_help	function		prayer: Zeus strikes strongest enemy army (action 0x0F)
+004e6de0	poseidon_help	function		seafood gift (action 0x15)
+004e6ff0	demeter_help	function		farm food gift (action 0x17)
+004e71f0	apollo_help	function		cure plague (action 0x19)
+004e73f0	artemis_help	function		meat gift (action 0x1B)
+004e75e0	god_figure_busy	function		ECX=god; god figure action in 0x0F..0x35
+004e7610	ares_help	function		joins military expedition (action 0x22)
+004e77e0	aphrodite_help	function		fill houses (action 0x19)
+004e7980	hermes_help	function		fulfil a request
+004e7c00	hermes_request_auto	function		request accepted while Hermes is candidate/pending
+004e7c30	hermes_pending_clear	function		ECX=god; clears pending and candidate 7
+004e7c50	athena_help	function		olives+oil gift (action 0x25)
+004e7e70	hephaestus_help	function		Talos (monster 8) defends
+004e8010	dionysus_help	function		wine gift (action 0x2A)
+004e81a0	hades_help	function		silver/money (action 0x2C)
+004e8430	hera_help	function		restock agoras
+004e8710	atlas_help	function		supply construction project
+004e8a30	god_figure_spawn	function		ECX=god (god_id byte, x, y); creates/moves figure 0x43, links sanctuary +0x2A
+004e8c40	god_sanctuary_register	function		sanctuary building -> god+0x08 (main record)
+004e8d20	building_god	function		sanctuary_type_god(b.type)
+004e9160	zeus_building_types	function		union of all gods' lists
+004e9290	god_visit_bless_chance	function		per god percent (10/25/33/50/0)
+004e9310	god_building_affected	function		god's building type list, not cursed, b+0x4A==0
+004e9440	god_sanctuary_active	function		CORRECTION of housing.tsv god_sanctuary_finished: tests sanctuary Building+0x32 != 0, which is the months-of-activity counter set to 24 by a sacrifice (0x004EA1A0) / 22 on completion and decremented monthly (0x004E97D0); docs/logic/religion.md
+004e94c0	sanctuary_update	function		cycle step 31 per sanctuary: timers, priests, god visit spawn, Ares dragon
+004e9750	sanctuary_activity_clamp	function		b+0x32 = 22
+004e97d0	sanctuary_priests_update	function		monthly +0x32 -1; send priest (0x41) when +0x32 < 20
+004ea1a0	priest_sacrifice_done	function		b+0x32 = 24 (sanctuary active)
+004ea490	god_figure_get	function		ECX=god; validates +0x18 (type 0x43, alive, same god) else clears and +0x24=-1
+004ea600	god_has_oracle	function		ECX=god; Zeus or Apollo with built sanctuary
+004ea630	oracle_consult	function		ECX=god; Zeus {10,18,14} / Apollo {8,16,12} cost/threshold on +0x10
+004eba10	god_walk_interrupt	function		Apollo/Athena/Hera leave walk to fight
+004ebbd0	god_attack_arrival	function		arrival tile: palace / sea entry / land entry
+004eca10	god_attack_init	function		per-god attack budgets (+0x120,+0x132,+0x12C,+0x13C,+0x108=96)
+004ecb00	god_attack_should_leave	function		time or budgets exhausted -> action 0x49
+004ecb70	god_attack_wander	function		action 0x37: pick A/B/C actions, 21% kind 10, roam, leave
+004ed1e0	god_curse_length	function		0x0063AEAC[god*5+difficulty] << 4
+004ed2a0	god_curse_building	function		attack frame: B-=1, g_curse_by_type[type] = curse months<<4
+004edfc0	god_special_hit	function		Zeus palace, Hera, Hades g_curse_all=4, Athena walls/towers, Apollo
+004ee270	god_can_fight	function		figure not leaving/fighting
+004ee5b0	god_fight_wins	function		Aphrodite vs Ares/Heph/Hermes/Dionysus, Hera vs Zeus, else god_power
+004ee710	god_power	function		fight rank per god
+004f0b50	jealousy_update	function		monthly jealous god attack countdown and weighted draw
+004f0ea0	god_attack_start	function		ECX=god; places attacking god near last composite building
+004f1110	god_attack_message	function		attack message (text varies with sanctuary count)
+004f1a30	god_reset	function		ECX=god; +0x04=50, clears counters/figure/pending/gifts
+004fa4a0	hero_present	function		hero figure alive
+004fa4f0	hero_create	function		figure_create(1,0x45,..), action 6, link hall
+004fa5d0	hero_record_hall	function		ECX=hero record; hall building (type 0x7D) or 0
+004fa710	hero_needed_message	function		ECX=hero record; +0x0C=1
+004faa00	hero_record_figure	function		ECX=hero record
+004faa40	hero_requirement_get	function		ECX=hero record; row of 0x0063B3D0
+004fbad0	hero_requirements_eval	function		ECX=hero record; fills +0x0D..+0x12
+004fbc20	hero_requirement_met	function		ECX=hero record; evaluator switch on type
+004fc2b0	hero_send_for	function		ECX=hero record; queue arrival, pay requirements once
+004fcd60	hero_can_fight	function		hero id vs monster id pairs
+004fcf90	hero_find_target	function		hero picks his monster, action 10
+004fd060	hero_return_to_hall	function		
+004fd2b0	hero_combat_update	function		duel timer fig+0x68 = 300 (monster) / 150 (god)
+004fd900	hero_monster_text	function		ECX=hero record; text id for monster
+00524860	heroes_month_check	function		month_tick 6: re-evaluate needed heroes, announce
+0052eef0	monster_spawn	function		creates figure 0x44 at lair/entry, copies event bytes
+0052f120	figure_is_sea_monster	function		type 0x44 with id 1 or 10
+0052f150	monster_is_1_10_16	function		ECX=monster record; true for ids 1,10,16
+0052f190	monster_walks_land	function		ECX=monster record; false for Kraken(1), Scylla(10)
+0052f1d0	monster_record_figure	function		ECX=monster record; validates and compacts figure list
+0052f370	monster_record_note_figure	function		ECX=monster record
+0052f460	monster_behavior_load	function		reads monster_behavior_<level>.txt, 9 bytes per row into 0x00FE42F0
+0052f6e0	monster_spawn_and_act	function		spawn then set action
+0052f750	monster_on_action_enter	function		vtable+4 of 0x005D9880; jump table 0x0052F984
+0052fa00	monster_has_ranged	function		false for Medusa(5) and 16
+0052fa80	monster_rest_timer_start	function		on-enter action 7: fig+0x36 = rest_base + rng15 % rest_span
+0052fba0	monster_god_engages	function		Apollo (rec 3) or Zeus (rec 0) god figure targeting monster within 12
+0052fd30	monster_seek_enemy_rings	function		ring search radius obj+4 with hostility table 0x00639430
+005300d0	monster_seek_enemy	function		good monster vs armies, else ring search
+00530180	monster_seek_building	function		bad monster: nearest building within 2+msrand()*4>>15
+005304b0	monster_rest_update	function		action 7: day countdown, scan every 30..59 ticks, start rampage
+00530ed0	monster_missile_attack	function		action 28: missile at frame 0x006409F0[monster]
+00531320	monster_pick_targets	function		on-enter action 10: up to 3 target categories (obj+0x14..0x1C)
+00531550	monster_rampage_update	function		action 10: rampage timer fig+0x108 per day
+005321f0	monster_copy_event_params	function		fig+0x7B, +0x115..0x117 from event type 0x1A
+00532290	monster_params_load	function		ECX=0x00FE43B0; selects rest range by fig+0x7B, aggro rings b[8], rampage months b[6], target cats fig+0x115..117
+00532340	monster_devour	function		victim action 4, +0x178=0x7C00, flag 0x10
+005323a0	monster_petrify	function		creates figure 0x46 (turned to stone)
+00532700	monster_smash_building	function		action 25: destroy target building when fig+0x36 < 1
+005327a0	monster_walk_to_building	function		action 26
+00532c70	monster_smash_building2	function		action 27: destroy target building when fig+0x114 reaches 0
+00532cf0	monster_hit_victim	function		Hydra/Kraken eat, Medusa petrify, others kill
+00533b60	monster_anim_info	function		sprite group and frame count per monster/action
+00534060	monster_engage_hero	function		monster action 0x17
+00534500	monument_class_conan_phase	function		thiscall: phase entry for index if it has rows
+00534540	monument_class_load_conan	function		parses *_conan.txt phases into obj+8 (n phases)
+00534750	pyramid_raise_level	function		adds 2 to grid_8e01fa on pieces not yet at height when a level completes
+00534a70	pyramid_figure_height	function		draw height offset -15*(((stage-1)&3)+1)
+00534b50	pyramid_lift_request	function		hypothesis: artisan requests a lift to a level
+00535070	pyramid_level_majority_black	function		more pieces of a level use the vt+0xE8 variant than not
+00535240	monument_part_work	function		vt+0x58: artisan work tick, 51 ticks or conan duration per stage
+00535600	monument_part_at_height	function		vt+0x0C: sanctuary true; pyramid elev+b+0x6C <= grid_8e01fa[tile]
+005356b0	monument_part_level_at_stage	function		vt+0xF0: min(elev,(s/4)*2)
+00535760	monument_part_level_reached	function		vt+0x10
+005358e0	monument_part_base_stages	function		vt+0x18: (elev/2)*4 for pyramid pieces, 0 for sanctuaries
+0053c200	composite_part_object	function		class object of a piece building, sets obj+4=b
+0053c9f0	monument_apply_extras	function		on completion: extras list terrain flags and resources (+0xE0)
+0053e210	monument_part_stage	function		vt+0x04: b+0x58
+0053e250	monument_part_phase_index	function		vt+0x1C: stage-E
+0053e630	monument_part_work_call	function		calls vt+0x58 of a piece
+0053e650	monument_part_has_working_artisan	function		b+0x5C is artisan (type 0x3A) in action 7/8 targeting b
+0053e740	monument_pick_part	function		build order tiles>temple>statues/sculptures>rest; pyramids by layout build order
+0053ec10	monuments_find_artisan_job	function		scan buildings for a composite piece accepting the artisan
+0053eca0	monument_progress	function		thiscall ECX=0x00FE5100 (b, info*): weighted stage completion % (done*100/total, 100 if total 0); return at 0x0053F567; docs/logic/monuments.md
+00541670	monument_part_is_complete	function		vt+0x60: stage >= n-1
+00541690	pyramid_piece_ready	function		hypothesis: piece may be worked at current heights
+00541ed0	monument_part_assign_artisan	function		vt+0x50: accept artisan, f.action=7, b+0x5C=f
+00542900	monument_share_load	function		hypothesis: reserve/split a cart load among sibling pieces at the same stage
+005435b0	monument_part_set_stage	function		vt+0x38: sets b+0x58, clears held materials
+00543de0	monument_dispatch_cart	function		cart (type 4) + 2 helpers (0x1C) from storage, max 400
+005442f0	monument_part_request_materials	function		vt+0xD8: dispatch carts wood/marble/black marble/sculpture/orichalc
+00544aa0	monument_part_god_supply	function		vt+0xF4: instant materials while root+0xDB set (root+0xA2 deliveries)
+00544fc0	monument_part_unload_carts	function		vt+0xDC: add arrived cart loads (action 0x17) to held fields
+005463d0	monument_piece_damage	function		damages a piece (+matching temple back), root+0x64|=0x200
+00546db0	sanctuary_type_to_god	function		BUILD type 0x54..0x62 -> god id
+00556020	monument_part_damage	function		vt+0x90: b+0x69=1,b+0x9D=1,set_stage(0)
+00569360	sanctuary_spawn_guardians	function		Artemis: figures 0x0B, Ares: figures 0x0C
+005695a0	sanctuary_spawn_guardians_check	function		types 0x58/0x59 -> 0x00569360
+00586b30	scenario_slot_god	function		ECX=scenario; slot -> god id
+00586b40	scenario_monster_of_slot	function		ECX=0x00FFA450; k 0..8 -> monster id
+00586c90	god_monster	function		god id -> monster id (Zeus->Cyclops ... Atlas->Chimera)
+00586d50	god_guardian_monster	function		Poseidon/Ares/Hephaistos/Hades -> guardian monster
+00586db0	monster_hero	function		monster id -> hero id needed to slay it
+00586e50	scenario_god_slot	function		ECX=scenario; god id -> slot 0..23 or -1
+00586e70	scenario_monster_slot_of	function		ECX=0x00FFA450; monster -> slot 0..8 or -1
+00586f70	scenario_gods_apply	function		ECX=scenario gods; copies slot roles to god +0x00,+0x01,+0x21
+00586fe0	god_is_friendly	function		scenario slot of god in 12..23
+00587000	god_is_unfriendly	function		scenario slot of god in 0..11
+00587020	monster_is_guardian	function		slot 3..8
+00587080	scenario_slot_listed	function		slot -> god+0x01 (1 for 0..3,12..17; 0 for 4..11,18..23)
+00587110	scenario_slot_unfriendly	function		slot -> god+0x00 (1 for 0..11, 0 for 12..23)
+005871a0	scenario_slot_jealous_flag	function		slot -> may_be_jealous byte (scenario+0xC4+slot) for slots 12..17
+00587280	init_god_ids	function		writes god+0x14 = index (also 0xFE43F0, 0xF0E4F0 tables)
+00587390	god_attack_slot_assign	function		ECX=scenario; assigns god+0x24 attack slot 0..3, returns message id 0x17+slot (unfriendly) or 0x1B+slot (friendly)
+005ba890	god_resource_available	function		oranges(Hera), bronze(Heph), grapes/wine(Dion), olives/oil(Athena)
+005ccf57	crt_ceil	function		ceil(double): -1.5 -> -1 (emulated)
+006383e0	g_target_buildings	data	i32[11][50]	monster/god target categories
+00638c78	g_target_figures	data	i32[11][15]	
+0063a888	g_god_help_candidate	data	i32	god chosen monthly for automatic help (0x004E69A0), -1 none; sav rank 131
+0063a8fc	g_god_attack_frame	data	i32[14]	animation frame at which an attacking god's hit lands
+0063aeac	g_god_curse_months	data	i32[70]	[god*5+difficulty] curse length in months
+0063b01c	g_god_jealousy_weight	data	i32[14]	weight-1 in jealousy draw
+0063b3d0	g_hero_requirements	data	i32[8][5][6]	
+006409f0	g_monster_missile_frame	data	u32[18]	
+00640e08	g_part_class_objects	data	ptr[164]	component id -> class object
+00641098	g_part_extra_class_objects	data	ptr[7]	ids 1000..1006
+00665c7c	g_commemorative_placed	data	u8[75]	sav rank 130; placed per variant
+00665cc8	g_commemorative_available	data	u8[75]	sav rank 116; granted, not placed (<=10)
+00ef5dd8	g_gods	data	GodRecord[14]	sav rank 120; record i = god id i (init_god_ids writes +0x14=i); docs/logic/religion.md
+00ef618d	g_god_on_map	data	u8	set to 1 whenever a god figure is placed
+00f0e4e8	g_hero_records	data	HeroRecord[8]	sav rank 124
+00fe42f0	g_monster_behavior	data	u8[16][12]	monster_behavior file bytes
+00fe43b0	g_monster_behavior_obj	data		vtable 0x005D9880 + params (+4 aggro rings, +8 rest base, +0xC rest span, +0x10 rampage months, +0x14..0x1C target cats)
+00fe43f0	g_monster_records	data	MonsterRecord[18]	sav rank 123
+00fe5100	g_composite_layouts	data		this of composite_parts/composite_parts_count
+00ffa450	g_scenario_gods	data	u8[300]	int[24] god per slot, +0x60 independent monster, +0xC4 u8[24] may_be_jealous; sav rank 122
+004ebd50	god_attack_action_enter	function		vtable 0x005D93F8 slot 1 (object 0x00EF5DC8): enter callback per action 0x1D..0x49; religion.md handlers
+004ede40	god_figure_hostile	function		god record of figure: unfriendly==1 and listed==1
+004f1720	god_figure_is_poseidon	function		figure type 0x43 and god id 1
+004ea4e0	god_sprite_frames	function		ECX=god; frame count of sprite group g (header +0x1E)
+004ea500	god_sprite_group	function		ECX=god; sprite id of group g from 0x0063A934[god*5+g], flag 0x800 = not directional
+004ed080	god_curse_target_enter	function		enter 0x38: pick curse target, B-1 if none
+004ece60	god_curse_target_find	function		nearest alive root building of g_god_curse_types[god]; Zeus random row 1..14
+004ed160	god_curse_anim_enter	function		enter 0x39: +0x92=frames(4), face target
+004ed200	god_destroy_category	function		god -> g_target_buildings category for budget A
+004ed400	god_destroy_target_enter	function		enter 0x3A: nearest building in category, A-1 if none
+004ed510	god_destroy_anim_enter	function		enter 0x3B: 5 shots, random tile of target
+004ed800	god_destroy_tick	function		action 0x3B: bolts (fig 0x34) then building_destroyed_by_attack, A-1
+004ed790	god_missile_alive	function		(god, bolt): bolt.building_id==god and type 0x34 (hostile) / 0x2D (friendly)
+004ed350	god_curse_effect_hit	function		called by curse effect (0x00410AE0): boats of wharves die, then god_special_hit
+00412980	curse_effects_spawn	function		4 effect figures kind 0xF flying to the cursed building
+004127e0	bless_effect_spawn	function		effect kind 0xB from god to blessed building (visual)
+004ef890	god_kill_target_enter	function		enter 0x43: first figure within 15 of unit type 1/2/7, C-1 if none
+004ef9b0	god_kill_anim_enter	function		enter 0x44: 3 shots
+004efa50	god_kill_tick	function		action 0x44: bolts then target action 4 (hero sent home), C-1
+004efde0	hermes_caravan_target_enter	function		enter 0x45: first figure of type +0x13C (0x13 caravan)
+004efe80	hermes_caravan_anim_enter	function		enter 0x46: timer=frames(2)
+004efec0	hermes_caravan_tick	function		action 0x46: caravan action 4, then 0x47
+004eff20	god_treasury_target_enter	function		enter 0x47: palace or first building with +0x44
+004effd0	god_treasury_anim_enter	function		enter 0x48: timer=frames(4)
+004ec000	god_leave_enter	function		enter 0x49: dest = god_attack_arrival tile, release armies/followers
+004ef770	god_leave_release	function		Ares/Artemis armies retreat; Aphrodite/Dionysus followers 0x004EF0F0
+004f1fa0	god_target_reset	function		clear target/+0x5E/+0x100; hostile -> 0x37, friendly -> 8
+004f1c90	god_roam_pick	function		dest = pos + rnd%15-8 each axis, snapped to land/water
+004f18c0	god_water_hop	function		action 0x59: vanish, 0x004F1750, appear, resume
+004ee0c0	god_hostile_aura	function		per anim cycle: Poseidon kills boats r<6; Hephaestus 6% fire_risk 1000 on houses r4
+004ee2b0	god_encounter_check	function		per anim cycle: opposite-hostility god within 15 (or any for Zeus/Hera/Aphrodite rules) -> both 0x3C
+004ee570	god_duel_enter	function		enter 0x3C: 5 shots, timer frames(2)
+004ee850	god_duel_tick	function		action 0x3C: approach to 8, bolts, god_fight_wins -> 0x3D/0x3E
+004eef30	god_duel_lost	function		action 0x3D: friendly walks home (9, flags 0x10), hostile leaves
+004ef080	god_duel_won	function		action 0x3E: resume saved action
+004ef330	god_entrance_target_enter	function		enter 0x3F (Aphrodite/Dionysus): palace or first building
+004ef3f0	god_entrance_roam_enter	function		enter 0x40: +0x42=2400, roam
+004ef6f0	god_entrance_roam_tick	function		action 0x40: production stop, roam +6/tick, entrance walkers
+004ef550	god_entrance_pose_tick	function		action 0x41
+004ef4c0	god_entrance_scan	function		walkers within 8 -> god_entrance_charm
+004ef2f0	god_entrance_charm	function		walker replaced by follower 0x47
+004ef150	god_follower_create	function		figure 0x47 Entranced chained via +0x5C/+0x68
+004ef430	figure_is_ordinary_walker	function		false for effects, fire, soldiers, animals, ships, gods, monsters, missiles...
+004ef850	god_exit_target_enter	function		enter 0x42: dest = land entry
+004ec1f0	highest_house_building	function		alive building with max house_level (palace fallback of attacks)
+004ac270	next_figure_in_radius	function		next slot after start: alive, not dying, not hidden, Chebyshev < r, type list or excluded types
+00568700	building_find_first	function		first building from index: flags 1 alive, 2 workers, 4 root, 8 type, 0x10 +0x44
+004c41b0	free_tile_near	function		best empty land tile within radius of a point (edge-distance score)
+004e9930	priest_find_offering	function		animal (action 7) or storage (action 8)
+004e99f0	priest_fetch_tick	function		actions 7/8: reach animal or storage
+004e9d90	priest_find_animal	function		first sheep/goat/bull, else cow, not bound to a priest
+004ea060	priest_find_storage	function		first granary/storehouse with >= 400 food
+004e9e50	storage_take_400_food	function		removes 400 food, returns the main resource
+004ea140	priest_arrive_altar	function		action 0x0C, altar+0xA1 -1
+004ea2b0	priest_deleted	function		from figure_delete: altar+0xA1 -1 unless in 0x0C, home+0x9E -1
+004ea330	sanctuary_max_priests	function		3/2/1 per god
+004e9770	sanctuary_fully_staffed	function		workers >= model col 5
+004ea390	sanctuary_altar_part	function		first composite part with part-object vtable+0xAC true
+004ea3f0	sanctuary_spawn_part	function		first composite part with part-object vtable+0xB0 true
+004ea450	sanctuary_altar_access	function		altar part road access
+004f8300	animal_unbind	function		clears +0x138 of figures bound to this animal
+0063aa4c	g_god_curse_types	data	i32[14][20]	curse target types per god, 0-terminated (row 14 overlaps 0x0063AEAC)
+0063a8c4	g_god_shot_frame	data	i32[14]	anim frame at which a god throws its bolt
+0063a934	g_god_sprite_groups	data	u32[14][5]	sprite group per god: walk, vanish, attack, appear, cast
+0063afc4	g_poseidon_aura_types	data	i32[]	figure types killed near hostile Poseidon: 0x19, 0x14, 0x39, 0x2C
+0063afd8	g_hephaestus_aura_types	data	i32[]	house types 14..3 set on fire near hostile Hephaestus
+004c5780	ares_return_after_battle	function		distant_battle_resolve, event flag 0x1000: Ares action 10 (hidden) -> 0x14 home
+004714f0	request_is_open	function		ECX=event; request/tribute, active, not 0x40000; state 0 announced or 1 (Hermes)
+00483040	request_list_rebuild	function		the open requests list 0x00916E10 (UI), sorted
+004f1070	god_jealous_arrive	function		action 0x56 (Hermes walks in x3) -> 0x57, next 0x49
+004f1300	god_jealous_roam	function		action 0x57: hidden 0; visit_elapsed >= length -> 0x0B; else figure_roam_tick (Poseidon: water wander +-8); no targets

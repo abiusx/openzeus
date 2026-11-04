@@ -1,0 +1,13 @@
+address	name	kind	type	evidence
+00433d80	house_param	function		returns house table[level][col] with Aphrodite/Dionysus adjustments; docs/logic/housing-evolution.md
+00484360	house_desirability_gate	function		-1/0/1 from desirability vs cols 0,1
+00484660	house_evolve_reason_panel	function		info-panel evolve/devolve reason; reason code at +0x83 (not the sim path)
+004e9440	god_sanctuary_finished	function		ECX = god record; sanctuary building of that god exists and +0x32 set
+004e8bf0	god_sanctuary_building	function		ECX = god record; returns building id of its sanctuary or 0
+004e8b40	god_sanctuary_type	function		ECX = god record; god id (+0x14) -> sanctuary BUILD type
+005b0c20	load_zeus_model	function		loads Model/Zeus_Model_<diff>.txt
+0078b24c	g_house_model	data	i32[273]	13 rows x 21 cols
+00782f70	g_building_model	data	i32[2210]	221 rows x 10 cols
+0092e658	g_buildings	data	Building[4000]	sav rank 35
+00dbd788	g_figures	data	Figure[2000]	sav rank 28
+00f0e60c	g_cheat_houses_evolve	data	u8	forces desirability gate to +1

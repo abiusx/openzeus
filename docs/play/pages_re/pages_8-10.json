@@ -1,0 +1,1356 @@
+{
+ "common": {
+  "title": {
+   "kind": "text",
+   "fn": "0x00517480",
+   "x": "panelX+0x32",
+   "y": "0x1e",
+   "w": 130,
+   "font": 1,
+   "text": [
+    88,
+    "page"
+   ],
+   "en": "88:8 'Military', 88:9 'Aesthetics', 88:10 'Overview'",
+   "align": "center",
+   "ev": "exe"
+  },
+  "frame": {
+   "kind": "frame",
+   "fn": "window_frame_draw (0x00517480)",
+   "x": "panelX+0x32",
+   "y": "300 - H",
+   "cols": 8,
+   "rows": "H/16",
+   "formula": "u=(11-n)*20; H=u+(32-(u&15))",
+   "when": "category 0 (every page) or page 10 in category 1",
+   "ev": "exe"
+  }
+ },
+ "pages": {
+  "8": {
+   "name": "Military",
+   "fn": "FUN_0051B060 (lists built by FUN_0051AA40)",
+   "items": [
+    {
+     "kind": "text",
+     "x": "panelX+0x35",
+     "y": "n*20+0x40",
+     "w": 140,
+     "font": 13,
+     "text": [
+      51,
+      0
+     ],
+     "en": "Forces in city",
+     "align": "center",
+     "when": "0x00F9FF20 != 0 (list 'in city' non-empty); Y = running y after previous list",
+     "ev": "exe"
+    },
+    {
+     "kind": "image_grid",
+     "x": "panelX+0x35 + col*24",
+     "y": "n*20+0x4b + row*17",
+     "cols": 5,
+     "cell": [
+      24,
+      17
+     ],
+     "max": 26,
+     "count": "0x00F9FF20",
+     "membership": "palace company 1..20 in_use, Formation+0x90 mobilized=1 and +0x82 abroad==-1; or warship wharf (type 0x88) with trireme (b+0xB8) and workers>0 and trireme figure +0x132 == -1",
+     "image": {
+      "company (flag 1), FUN_0051abe0, Zeus game": "Zeus_Interface atlas 26 SPR_MIL_ADVISOR_TYPES (26x18) + k: palace company (1..20) figure_type 0xD horseman k=0, 0xC hoplite k=1, 0xB rabble k=2; event troops (>20) 0xB k=4, 0xC k=5, 0xD k=0",
+      "company, Poseidon game": "packed 0x680A (collection 52 rank 10) + k (0xB rabble->1, 0xC hoplite->2, 0xD horseman->0)",
+      "warship wharf (flag 0), FUN_0051AD20": "Zeus_Interface atlas 26 SPR_MIL_ADVISOR_TYPES image +3 (trireme, hyp)"
+     },
+     "after": "Y += bottom of last row: count%5==0 ? table[count-1].y2 : table[count].y2 (i.e. 17*ceil(count/5)); not added when count>=26 (exe quirk)",
+     "when": "0x00F9FF20 != 0",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x35",
+     "y": "Y+6",
+     "w": 140,
+     "font": 13,
+     "text": [
+      51,
+      1
+     ],
+     "en": "forces abroad",
+     "align": "center",
+     "when": "0x00F9FE48 != 0 (list 'abroad' non-empty); Y = running y after previous list",
+     "ev": "exe"
+    },
+    {
+     "kind": "image_grid",
+     "x": "panelX+0x35 + col*24",
+     "y": "Y+0x11 + row*17",
+     "cols": 5,
+     "cell": [
+      24,
+      17
+     ],
+     "max": 26,
+     "count": "0x00F9FE48",
+     "membership": "palace company with +0x82 abroad != -1 (mobilized or not); or wharf whose crewed trireme has fig+0x132 != -1",
+     "image": {
+      "company (flag 1), FUN_0051abe0, Zeus game": "Zeus_Interface atlas 26 SPR_MIL_ADVISOR_TYPES (26x18) + k: palace company (1..20) figure_type 0xD horseman k=0, 0xC hoplite k=1, 0xB rabble k=2; event troops (>20) 0xB k=4, 0xC k=5, 0xD k=0",
+      "company, Poseidon game": "packed 0x680A (collection 52 rank 10) + k (0xB rabble->1, 0xC hoplite->2, 0xD horseman->0)",
+      "warship wharf (flag 0), FUN_0051AD20": "Zeus_Interface atlas 26 SPR_MIL_ADVISOR_TYPES image +3 (trireme, hyp)"
+     },
+     "after": "Y += bottom of last row: count%5==0 ? table[count-1].y2 : table[count].y2 (i.e. 17*ceil(count/5)); not added when count>=26 (exe quirk)",
+     "when": "0x00F9FE48 != 0",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x35",
+     "y": "Y+6",
+     "w": 128,
+     "font": 13,
+     "text": [
+      51,
+      2
+     ],
+     "en": "standing down",
+     "align": "center",
+     "when": "0x00F9FD74 != 0 (list 'standing down' non-empty); Y = running y after previous list",
+     "ev": "exe"
+    },
+    {
+     "kind": "image_grid",
+     "x": "panelX+0x35 + col*24",
+     "y": "Y+0x11 + row*17",
+     "cols": 5,
+     "cell": [
+      24,
+      17
+     ],
+     "max": 26,
+     "count": "0x00F9FD74",
+     "membership": "palace company not mobilized (+0x90==0) and in city; or wharf with no trireme or 0 workers (flag 0)",
+     "image": {
+      "company (flag 1), FUN_0051abe0, Zeus game": "Zeus_Interface atlas 26 SPR_MIL_ADVISOR_TYPES (26x18) + k: palace company (1..20) figure_type 0xD horseman k=0, 0xC hoplite k=1, 0xB rabble k=2; event troops (>20) 0xB k=4, 0xC k=5, 0xD k=0",
+      "company, Poseidon game": "packed 0x680A (collection 52 rank 10) + k (0xB rabble->1, 0xC hoplite->2, 0xD horseman->0)",
+      "warship wharf (flag 0), FUN_0051AD20": "Zeus_Interface atlas 26 SPR_MIL_ADVISOR_TYPES image +3 (trireme, hyp)"
+     },
+     "after": "Y += bottom of last row: count%5==0 ? table[count-1].y2 : table[count].y2 (i.e. 17*ceil(count/5)); not added when count>=26 (exe quirk)",
+     "when": "0x00F9FD74 != 0",
+     "ev": "exe"
+    },
+    {
+     "kind": "widget_table",
+     "x": "panelX+0x46",
+     "y": "n*20+0xe6",
+     "table": "0x0063ED68",
+     "count": 4,
+     "note": "drawn by widget_table_draw; see widgets[]",
+     "ev": "exe"
+    },
+    {
+     "kind": "image",
+     "x": "panelX+0x35",
+     "y": "n*20+0xe4",
+     "image": "Zeus_Interface atlas 24 SPR_MIL_ADVISOR_INFO img 0 (20x17)",
+     "meaning": "soldiers row icon (hyp)",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x45",
+     "y": "n*20+0xea",
+     "w": 88,
+     "font": 10,
+     "align": "center",
+     "fn": "FUN_0051AD60",
+     "text": [
+      51,
+      "k"
+     ],
+     "alternatives": [
+      {
+       "k": 82,
+       "en": "no soldiers",
+       "when": "no palace (g_palace_exists==0) or no in_use company 1..20"
+      },
+      {
+       "k": 7,
+       "en": "call all",
+       "when": "some in_use company not mobilized whose standard bearer (+0x40) is not on its home building tile (FUN_004DD1F0)"
+      },
+      {
+       "k": 6,
+       "en": "all called",
+       "when": "else, if any company is mobilized (+0x90)"
+      },
+      {
+       "k": 8,
+       "en": "at palace",
+       "when": "else (all companies home, none mobilized)"
+      }
+     ],
+     "value": {
+      "exe": "Formation array 0x00DB7B40 stride 0x9C, slots 1..20",
+      "ours": "reports.military 'Forces/companies' + city has palace; our companies are never mobilized -> 'at palace' (or 'no soldiers' without palace/companies)"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "image",
+     "x": "panelX+0x35",
+     "y": "n*20+0xf5",
+     "image": "Zeus_Interface atlas 24 SPR_MIL_ADVISOR_INFO img 1 (18x14)",
+     "meaning": "ships row icon (hyp)",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x45",
+     "y": "n*20+0xfb",
+     "w": 88,
+     "font": "10 (12 when 'crewing all')",
+     "align": "center",
+     "fn": "FUN_0051AE00",
+     "text": [
+      51,
+      "k"
+     ],
+     "alternatives": [
+      {
+       "k": 83,
+       "en": "no ships",
+       "when": "count of warship wharves (0x00782E1C = per-type building count table 0x00782BFC[0x88]) == 0"
+      },
+      {
+       "k": 5,
+       "en": "crew all",
+       "when": "crew-all flag 0x00FEAF20 == 0"
+      },
+      {
+       "k": 3,
+       "en": "crewing all",
+       "when": "flag set and some wharf under construction or workers < model col 5 (full staff); font 12 (9LTYEL)"
+      },
+      {
+       "k": 4,
+       "en": "all crewed",
+       "when": "flag set and every wharf fully staffed"
+      }
+     ],
+     "value": {
+      "ours": "reports.military Forces 'warship wharves' (none) -> 'no ships'; wharf misc 'off' = crew flag off"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "image",
+     "x": "panelX+0x35",
+     "y": "n*20+0x106",
+     "image": "Zeus_Interface atlas 24 SPR_MIL_ADVISOR_INFO img 2 (14x16)",
+     "meaning": "towers row icon (hyp)",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x45",
+     "y": "n*20+0x10c",
+     "w": 88,
+     "font": "10 (12 when understaffed)",
+     "align": "center",
+     "fn": "FUN_0051AF30",
+     "text": [
+      51,
+      "k"
+     ],
+     "alternatives": [
+      {
+       "k": 84,
+       "en": "no towers",
+       "when": "tower count 0x00782E0C (=0x00782BFC[0x84]) == 0"
+      },
+      {
+       "k": 12,
+       "en": "not manning",
+       "when": "man-towers flag 0x00FEAF24 == 0"
+      },
+      {
+       "k": 11,
+       "en": "manning",
+       "when": "flag set; font 12 if total tower workers != 0 and workers*100/(1+sum capacity col5 of finished towers) < 50"
+      }
+     ],
+     "value": {
+      "ours": "reports.military Forces 'towers' + g.towers_off ('towers on/off' command) -> 'no towers' / 'not manning' / 'manning'"
+     },
+     "ev": "exe"
+    }
+   ],
+   "widgets": [
+    {
+     "table": "0x0063E4E0 / 0x0063E7B8 / 0x0063EA90 (28-byte hit entries, handler 0x00516A50, param = index)",
+     "hit_origin": "(panelX+0x35, list y) where list-1 y = n*20+0x4d (2 px below the drawn icons), next lists add 0x11 after previous rows",
+     "rect": "cell col*24..+24, row*17..+17",
+     "tooltip_id": "0x00781834 = idx+0x4AF / +0x513 / +0x577",
+     "click": "0x00516A50: list 'abroad' -> nothing. Company icon -> scroll view to its standard bearer (0x0044A7D0), select company (Formation+0x92=1, 0x00DB7B38=id), open company sidebar screen 0x48. Ship in city -> scroll to trireme figure, screen 0x20 (ship sidebar). Idle wharf -> scroll to the wharf building.",
+     "ev": "exe (screen meaning hyp)"
+    },
+    {
+     "table": "0x0063ED68 (40-byte draw table, origin panelX+0x46, n*20+0xe6), hit 0x00431C00/0x004319C0 (tooltip base 0x5DC)",
+     "entries": [
+      {
+       "i": 0,
+       "rect": [
+        0,
+        0,
+        88,
+        14
+       ],
+       "sprite": "packed 0x219 = Zeus_Interface atlas 25 SPR_THIN_BUTTON, stretched (+0x24 bit0)",
+       "label": "soldiers label above",
+       "click": "0x00516BA0: if label is 'call all' (7): for every in_use company not mobilized and not at home -> set +0x90=1 and order move (0x004DD250); else: mobilized companies away from home -> 0x004E2100 (send home / standing down, hyp)",
+       "ev": "exe (semantics hyp)"
+      },
+      {
+       "i": 1,
+       "rect": [
+        0,
+        17,
+        88,
+        14
+       ],
+       "sprite": "SPR_THIN_BUTTON stretched",
+       "click": "0x0040A380: toggle crew-all flag 0x00FEAF20 and update every warship wharf (type 0x88)",
+       "ev": "exe"
+      },
+      {
+       "i": 2,
+       "rect": [
+        0,
+        34,
+        88,
+        14
+       ],
+       "sprite": "SPR_THIN_BUTTON stretched",
+       "click": "0x0040A4A0: toggle man-towers flag 0x00FEAF24",
+       "ev": "exe"
+      },
+      {
+       "i": 3,
+       "rect": [
+        86,
+        0,
+        18,
+        28
+       ],
+       "sprite": "packed 0x2B1/0x2B2 = Zeus_Interface atlas 177 SPR_AUTO_COMBAT_OFF / 178 SPR_AUTO_COMBAT_ON (18x28) by g_opt_auto_defend (0x00F2A990)",
+       "click": "0x005692D0: toggle g_opt_auto_defend; refused (no change) when turning ON while 0x00FEB084 or 0x00FEB3EC != 0 (threat pending, hyp); sets Options-menu item text 2:11/2:12 'Auto Defend - ON/OFF'",
+       "ev": "exe"
+      }
+     ]
+    }
+   ],
+   "notes": "Top: up to three icon grids (only non-empty ones, each with its centred 9DKBU header); bottom block is fixed at n*20+0xe4..0x11a regardless of the lists. Note the thin-button rects (x 70..158) overlap the auto-defend button (x 156..174) by 2 px as stored. Our sim: 20 palace companies idle -> all in 'standing down' grid (18 rabble img2, 1 hoplite img1, 1 horseman img0), labels 'at palace', 'no ships', 'no towers'; auto-defend shown OFF. Source counts: state.json reports.military 'Companies' table."
+  },
+  "9": {
+   "name": "Aesthetics",
+   "fn": "FUN_0051C330 -> FUN_0051BEE0 in a Zeus (non-Poseidon) game",
+   "items": [
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x2b",
+     "y": "n*20+0x3e",
+     "w": 140,
+     "font": 13,
+     "text": [
+      133,
+      1
+     ],
+     "en": "Commemorative Monuments",
+     "align": "center",
+     "when": "Zeus game (poseidon_game()==0) -> FUN_0051BEE0",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+0x2b",
+     "y": "n*20+0x60",
+     "w": 140,
+     "font": 14,
+     "text": [
+      133,
+      2
+     ],
+     "en": "No Commemorative Monuments",
+     "align": "center",
+     "when": "no g_commemorative_placed[0..74] != 0",
+     "ev": "exe"
+    },
+    {
+     "kind": "text_list",
+     "x": "panelX+0x2b (FUN_0051BD00 x-10 of panelX+0x35)",
+     "y": "n*20+0x60 + 12*row",
+     "w": 140,
+     "font": 8,
+     "align": "center",
+     "text": "[133,3] '[commemorative_monument]' if count==1 else [133,4] '[commemorative_monument] ([amount])'",
+     "value": {
+      "exe": "g_commemorative_placed 0x00665C7C u8[75] (per monument id); name via 0x0051BB20",
+      "names": {
+       "1": "133:5 'Population '",
+       "2": "133:7 'City Defense'",
+       "3": "133:10 'Colony'",
+       "5": "133:8 'Conquest'",
+       "6": "133:11 'Happiness'",
+       "7": "133:6 'Slain Monster'",
+       "8": "133:9 'Diplomacy'",
+       "9": "133:12 'Scholar' (133:15 'Games victories' when collapsed)",
+       "4": "133:13 'Athlete' (133:15 when collapsed)",
+       "god ids 10..0x15,0x16..0x21,0x22..0x25,0x26..0x31,0x32..0x3D,0x3E..0x41": "category c=FUN_0051B9D0(id) 0..13 -> 157:c god name (Zeus, Poseidon, Demeter, Apollo, Artemis, Ares, Aphrodite, Hermes, Athena, Hephaestus, Dionysus, Hades, Hera, Atlas); 133:14 'Gods' when collapsed",
+       "0, 66..74": "no name (empty)"
+      },
+      "ours": "reports.aesthetics 'Commemorative monuments' (buildings key commemorative_monument); no per-variant type in our sim"
+     },
+     "order": "1) each non-god id except 4 and 9 in id order (own count); 2) gods: one row per god category (sum of its ids) or, if collapsed (0x00FA04A1), one row 'Gods (total)'; 3) Scholar (id 9) then Athlete (id 4), or if collapsed (0x00FA04A2) one row 'Games victories (n)' with n = number of the two types present",
+     "collapse": "lines = types(4,9) + god categories + other ids; if lines>=16: if god categories+1+others < 16 -> collapse games; else if types(4,9)+1+others <= 15 -> collapse gods; (else flags keep stale values)",
+     "overflow": "after the Scholar row, if it is row 8, x moves to panelX+0xC1 and y restarts (exe quirk, only there)",
+     "row_ids": "stored in 0x00F9FA38 (u16 per row) for clicks",
+     "ev": "exe"
+    },
+    {
+     "kind": "poseidon_variant",
+     "fn": "FUN_0051C330 when poseidon_game()!=0",
+     "ev": "exe",
+     "items": [
+      {
+       "kind": "paragraph",
+       "x": "panelX+0x2b",
+       "y": "n*20+0x3e",
+       "w": 140,
+       "font": 13,
+       "text": [
+        133,
+        16
+       ],
+       "en": "Pyramids",
+       "align": "center"
+      },
+      {
+       "kind": "paragraph_list",
+       "x": "panelX+0x2b",
+       "y": "n*20+0x49 + 24*row",
+       "w": 140,
+       "font": 13,
+       "text": "building name (0x005876C0, building types 100..114 root parts)",
+       "align": "center"
+      },
+      {
+       "kind": "text",
+       "x": "panelX+0x2b",
+       "y": "row y + 0xc",
+       "w": 140,
+       "align": "center",
+       "alternatives": [
+        {
+         "text": [
+          59,
+          7
+         ],
+         "en": "complete ",
+         "font": 8,
+         "when": "monument_progress >= 100"
+        },
+        {
+         "text": [
+          59,
+          67
+         ],
+         "en": "Halted",
+         "font": 14,
+         "when": "flags (b+0x54) & 0x100"
+        },
+        {
+         "text": [
+          59,
+          14
+         ],
+         "en": "needs artisans ",
+         "font": 14,
+         "when": "no artisans (info[0x12] < 1)"
+        },
+        {
+         "text": [
+          59,
+          9
+         ],
+         "en": "needs materials ",
+         "font": 14,
+         "when": "any material outstanding (info[0x14..0x18] > 0)"
+        },
+        {
+         "fmt": "'%d %% %s' with 59:7",
+         "en": "'45 % complete '",
+         "font": 8,
+         "when": "otherwise"
+        }
+       ]
+      },
+      {
+       "kind": "paragraph",
+       "x": "panelX+0x2b",
+       "y": "n*20+0xda",
+       "w": 140,
+       "font": 13,
+       "text": [
+        133,
+        1
+       ],
+       "en": "Commemorative Monuments",
+       "align": "center"
+      },
+      {
+       "kind": "text",
+       "x": "panelX+0x2b",
+       "y": "n*20+0xf8",
+       "w": 140,
+       "font": 8,
+       "fmt": "'%s (%d)'",
+       "text": [
+        133,
+        17
+       ],
+       "en": "In the City (N)",
+       "value": {
+        "exe": "sum g_commemorative_placed"
+       },
+       "align": "center"
+      },
+      {
+       "kind": "text",
+       "x": "panelX+0x2b",
+       "y": "n*20+0x104",
+       "w": 140,
+       "font": 8,
+       "fmt": "'%s (%d)'",
+       "text": [
+        133,
+        18
+       ],
+       "en": "not built (M)",
+       "value": {
+        "exe": "sum g_commemorative_available 0x00665CC8"
+       },
+       "align": "center"
+      }
+     ]
+    }
+   ],
+   "widgets": [
+    {
+     "table": "0x0063F058 (Zeus game), 15 rows 123x12 at (panelX+0x35, n*20+0x60 + 12i), handler 0x0051B630, param=row",
+     "click": "cycles to the next commemorative monument building (type 0x77) whose variant (b+0x12) matches the row's id (0x00F9FA38[row]); start after last index 0x0063EFAC; then presumably scrolls the view to it (hyp)",
+     "ev": "exe (scroll hyp)"
+    },
+    {
+     "table": "0x0063EFB0 (Poseidon game), 6 rows 123x24 at (panelX+0x35, n*20+0x49 + 24i), handler 0x0051B8A0",
+     "click": "go to that pyramid (lookup in 0x00FA0008 per-row building ids) (hyp)",
+     "ev": "exe (purpose hyp)"
+    }
+   ],
+   "notes": "No appeal/desirability figures are shown on this page in the original: only commemorative monuments (and pyramids in Poseidon). Our sandbox has none -> 'No Commemorative Monuments' in 9DKYEL. Our report's Appeal/Beautification sections have no original equivalent here."
+  },
+  "10": {
+   "name": "Overview",
+   "fn": "FUN_005B6F00 (also drawn in category 1 for page 10)",
+   "items": [
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0",
+     "font": 13,
+     "text": [
+      61,
+      1
+     ],
+     "en": "Popularity",
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0",
+     "w": 120,
+     "align": "right (x+w-width, FUN_005094C0)",
+     "fn": "popularity_advisor_text",
+     "alternatives": [
+      {
+       "text": [
+        61,
+        27
+       ],
+       "en": "Terrible",
+       "font": 14,
+       "when": "sentiment < 1"
+      },
+      {
+       "text": [
+        61,
+        28
+       ],
+       "en": "Awful",
+       "font": 14,
+       "when": "sentiment 1..9"
+      },
+      {
+       "text": [
+        61,
+        29
+       ],
+       "en": "Awful",
+       "font": 14,
+       "when": "sentiment 10..19"
+      },
+      {
+       "text": [
+        61,
+        30
+       ],
+       "en": "Bad",
+       "font": 14,
+       "when": "sentiment 20..29"
+      },
+      {
+       "text": [
+        61,
+        31
+       ],
+       "en": "Bad",
+       "font": 8,
+       "when": "sentiment 30..39"
+      },
+      {
+       "text": [
+        61,
+        32
+       ],
+       "en": "Poor",
+       "font": 8,
+       "when": "sentiment 40..49"
+      },
+      {
+       "text": [
+        61,
+        33
+       ],
+       "en": "Ok",
+       "font": 8,
+       "when": "sentiment 50..59"
+      },
+      {
+       "text": [
+        61,
+        34
+       ],
+       "en": "Good",
+       "font": 8,
+       "when": "sentiment 60..69"
+      },
+      {
+       "text": [
+        61,
+        35
+       ],
+       "en": "Good",
+       "font": 8,
+       "when": "sentiment 70..79"
+      },
+      {
+       "text": [
+        61,
+        36
+       ],
+       "en": "High",
+       "font": 8,
+       "when": "sentiment 80..89"
+      },
+      {
+       "text": [
+        61,
+        37
+       ],
+       "en": "Great",
+       "font": 8,
+       "when": "sentiment 90..99"
+      },
+      {
+       "text": [
+        61,
+        38
+       ],
+       "en": "Superb",
+       "font": 8,
+       "when": "sentiment >= 100"
+      }
+     ],
+     "value": {
+      "exe": "g_city_sentiment 0x00FE6A68 (popularity_advisor_text 0x005B5AF0, short form)",
+      "ours": "city.sentiment"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0xf",
+     "font": 13,
+     "text": [
+      61,
+      4
+     ],
+     "en": "Food level",
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0xf",
+     "w": 120,
+     "align": "right (x+w-width, FUN_005094C0)",
+     "fn": "FUN_005B5E10",
+     "alternatives": [
+      {
+       "text": [
+        61,
+        93
+       ],
+       "en": "good",
+       "font": 8,
+       "when": "0x00902C0C (scenario no-food flag) set"
+      },
+      {
+       "text": [
+        61,
+        94
+       ],
+       "en": "too low",
+       "font": 14,
+       "when": "pct <= 0"
+      },
+      {
+       "text": [
+        61,
+        95
+       ],
+       "en": "low",
+       "font": 14,
+       "when": "pct 1..49"
+      },
+      {
+       "text": [
+        61,
+        96
+       ],
+       "en": "low",
+       "font": 8,
+       "when": "pct 50..99"
+      },
+      {
+       "text": [
+        61,
+        97
+       ],
+       "en": "good",
+       "font": 8,
+       "when": "pct >= 100"
+      }
+     ],
+     "value": {
+      "exe": "pct = 0x00FE93C4 (food stored in granaries) *100 / g_food_eaten_month 0x00FEB02C (0 if none eaten); months 0x00FE9570 computed but not shown here",
+      "ours": "reports food_stored(g)*100 / food_per_month(g) (overview 'food' row shows months)"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x1e",
+     "fn": "FUN_005B6350",
+     "align": "left",
+     "alternatives": [
+      {
+       "text": [
+        61,
+        107
+       ],
+       "en": "unemployment",
+       "font": 14,
+       "num": "unemployment %",
+       "when": "g_unemployment_pct >= 11"
+      },
+      {
+       "text": [
+        61,
+        109
+       ],
+       "en": "unemployment",
+       "font": 8,
+       "num": "unemployment %",
+       "when": "6..10"
+      },
+      {
+       "text": [
+        61,
+        110
+       ],
+       "en": "unemployment",
+       "font": 8,
+       "num": "unemployment %",
+       "when": "1..5 and jobs unfilled >= 6"
+      },
+      {
+       "text": [
+        61,
+        111
+       ],
+       "en": "workers needed",
+       "font": 14,
+       "num": "jobs",
+       "when": "unemployment 0, jobs unfilled >= 21"
+      },
+      {
+       "text": [
+        61,
+        112
+       ],
+       "en": "workers needed",
+       "font": 14,
+       "num": "jobs",
+       "when": "11..20"
+      },
+      {
+       "text": [
+        61,
+        113
+       ],
+       "en": "workers needed",
+       "font": 8,
+       "num": "jobs",
+       "when": "6..10"
+      },
+      {
+       "text": [
+        61,
+        115
+       ],
+       "en": "employment good",
+       "font": 13,
+       "num": "none",
+       "when": "unemployment < 6 and jobs unfilled < 6 (overrides)"
+      }
+     ],
+     "value": {
+      "exe": "g_unemployment_pct 0x00FE9654, g_labor_jobs_unfilled 0x00FE965C",
+      "ours": "city.unemployed/city.workforce %; jobs = sum(labor_jobs need-filled) (= reports overview 'employment' / city.vacancies)"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "number",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x1e",
+     "w": 115,
+     "font": "same as label",
+     "fmt": "'@' blank-sign + digits + '%' (0x0063B368)",
+     "align": "right",
+     "when": "unemployment variant",
+     "value": {
+      "exe": "g_unemployment_pct 0x00FE9654",
+      "ours": "pct(city.unemployed, city.workforce)"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "number",
+     "x": "panelX+0x30",
+     "y": "n*20+0x3c+0x1e",
+     "w": 120,
+     "font": "same as label",
+     "fmt": "'@' + digits (empty suffix 0x00665E40)",
+     "align": "right",
+     "when": "workers-needed variant",
+     "value": {
+      "exe": "g_labor_jobs_unfilled 0x00FE965C",
+      "ours": "sum over city.labor_jobs of (need - filled)"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x2d",
+     "font": 13,
+     "text": [
+      61,
+      6
+     ],
+     "en": "Hygiene",
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x2d",
+     "w": 120,
+     "align": "right (x+w-width, FUN_005094C0)",
+     "fn": "FUN_005B65C0",
+     "alternatives": [
+      {
+       "text": [
+        61,
+        127
+       ],
+       "en": "Appalling",
+       "font": 14,
+       "when": "health 0..9"
+      },
+      {
+       "text": [
+        61,
+        128
+       ],
+       "en": "Terrible",
+       "font": 14,
+       "when": "health 10..19"
+      },
+      {
+       "text": [
+        61,
+        129
+       ],
+       "en": "Bad",
+       "font": 14,
+       "when": "health 20..29"
+      },
+      {
+       "text": [
+        61,
+        130
+       ],
+       "en": "Poor",
+       "font": 8,
+       "when": "health 30..39"
+      },
+      {
+       "text": [
+        61,
+        131
+       ],
+       "en": "Not good",
+       "font": 8,
+       "when": "health 40..49"
+      },
+      {
+       "text": [
+        61,
+        132
+       ],
+       "en": "Ok",
+       "font": 8,
+       "when": "health 50..59"
+      },
+      {
+       "text": [
+        61,
+        133
+       ],
+       "en": "Good",
+       "font": 8,
+       "when": "health 60..69"
+      },
+      {
+       "text": [
+        61,
+        134
+       ],
+       "en": "Very good",
+       "font": 8,
+       "when": "health 70..79"
+      },
+      {
+       "text": [
+        61,
+        135
+       ],
+       "en": "Excellent",
+       "font": 8,
+       "when": "health 80..89"
+      },
+      {
+       "text": [
+        61,
+        136
+       ],
+       "en": "Great",
+       "font": 8,
+       "when": "health 90..99"
+      },
+      {
+       "text": [
+        61,
+        137
+       ],
+       "en": "Perfect",
+       "font": 8,
+       "when": "health 100"
+      }
+     ],
+     "value": {
+      "exe": "g_city_health 0x00FE6A70 (0..100), text 61:(health/10+127)",
+      "ours": "health_state.health (reports overview 'hygiene')"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x3c",
+     "font": 13,
+     "text": [
+      61,
+      7
+     ],
+     "en": "Unrest",
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x3c",
+     "w": 120,
+     "align": "right (x+w-width, FUN_005094C0)",
+     "fn": "FUN_005B6690",
+     "alternatives": [
+      {
+       "text": [
+        61,
+        144
+       ],
+       "en": "severe",
+       "font": 14,
+       "when": "0x00FEB544=0x8A: >50% of houses crime>=81 (hyp exact split)"
+      },
+      {
+       "text": [
+        61,
+        145
+       ],
+       "en": "severe",
+       "font": 14,
+       "when": "0x8B: share >= 26%"
+      },
+      {
+       "text": [
+        61,
+        146
+       ],
+       "en": "high",
+       "font": 14,
+       "when": "0x8C: share 11..25%"
+      },
+      {
+       "text": [
+        61,
+        148
+       ],
+       "en": "low",
+       "font": 8,
+       "when": "0x8E: share < 11%"
+      },
+      {
+       "text": [
+        61,
+        149
+       ],
+       "en": "none",
+       "font": 8,
+       "when": "0x8F: no crime / no houses"
+      }
+     ],
+     "value": {
+      "exe": "0x00FEB544 (set by 0x00519910 unrest summary), text 61:(v+6)",
+      "ours": "reports overview 'unrest' (from avg crime of common houses; different thresholds)"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x4b",
+     "font": 13,
+     "text": [
+      61,
+      8
+     ],
+     "en": "Finances",
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x4b",
+     "w": 120,
+     "align": "right (x+w-width, FUN_005094C0)",
+     "fn": "FUN_005B6730",
+     "alternatives": [
+      {
+       "text": [
+        61,
+        153
+       ],
+       "en": "up",
+       "font": 8,
+       "when": "g_treasury > treasury at start of year (0x00FE971C)"
+      },
+      {
+       "text": [
+        61,
+        154
+       ],
+       "en": "ok",
+       "font": 8,
+       "when": "equal"
+      },
+      {
+       "text": [
+        61,
+        155
+       ],
+       "en": "down",
+       "font": 14,
+       "when": "lower"
+      }
+     ],
+     "value": {
+      "exe": "g_treasury vs 0x00FE971C (set to treasury at the year rollover, 0x00488xxx at line 86576)",
+      "ours": "city.treasury vs history (reports 'finances' uses last 12 months)"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x5a",
+     "align": "left",
+     "fn": "FUN_005B6AE0",
+     "alternatives": [
+      {
+       "text": [
+        61,
+        190
+       ],
+       "en": "No known threats",
+       "font": 8,
+       "when": "no enemy units alive and no pending invasion"
+      },
+      {
+       "text": [
+        61,
+        191
+       ],
+       "en": "Enemies closing!",
+       "font": 14,
+       "when": "pending invasion(s) from several cities"
+      },
+      {
+       "text": [
+        61,
+        193
+       ],
+       "en": "Enemy advancing",
+       "font": 14,
+       "when": "pending invasion, single city"
+      },
+      {
+       "text": [
+        61,
+        192
+       ],
+       "en": "Enemies attacking!",
+       "font": 14,
+       "when": "g_enemy_units_alive != 0, several cities"
+      },
+      {
+       "text": [
+        61,
+        194
+       ],
+       "en": "Enemy attacking",
+       "font": 14,
+       "when": "enemy units alive, single city"
+      }
+     ],
+     "value": {
+      "exe": "g_enemy_units_alive, events_next_invasion",
+      "ours": "no equivalent (always 'No known threats')"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "separator",
+     "x": "panelX+0x32",
+     "y": "n*20+0x3c+0x69",
+     "tiles": 8,
+     "fn": "tile_row_draw (8 marble 16-px tiles = 128 px)",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x70",
+     "w": 130,
+     "font": 3,
+     "text": [
+      61,
+      195
+     ],
+     "en": "Requests",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "request_rows",
+     "max_rows": 3,
+     "row_y_icon": "n*20+0x3c+0x7f + 20*i",
+     "row_y_text": "n*20+0x3c+0x83 + 20*i",
+     "source": "0x00916E08 count, 0x00916E10 (event idx, value) pairs built by FUN_00483040: active city requests sorted by value ascending, then god quests",
+     "city_request (event +2 in {1,0x1E})": [
+      {
+       "kind": "image",
+       "x": "panelX+0x37",
+       "image": "Zeus_Interface atlas 13 SPR_REQUEST_COMPLETE if FUN_004713E0 (can fulfil: enough money/goods) else atlas 19 SPR_REQUEST_INCOMPLETE (16x16)"
+      },
+      {
+       "kind": "image",
+       "x": "panelX+0x47",
+       "image": "subtype 0x17 money: Zeus_General atlas 4 SPR_REQUEST_CASH_ICON; 0x18/0x1B troops: atlas 6 SPR_REQUEST_TROOPS_ICON; else atlas 123 SPR_GOODS_ICONS + map(resource) (0x0040FD80); 8/0x10/0x11/0x16 Poseidon packed 0x6828..0x682B"
+      },
+      {
+       "kind": "text",
+       "x": "panelX+0x61",
+       "text": "city name 21:city (or short name 331:city if wider than 41 px)",
+       "font": "13 if can fulfil, else 14 if city+0xD4==1 else 8 (hyp: font_group_entry this-pointer ambiguity)"
+      },
+      {
+       "kind": "text",
+       "x": "panelX+0x8b",
+       "text": [
+        61,
+        206
+       ],
+       "en": "O.D.",
+       "font": 14,
+       "when": "subtype != 0x18 and event state == 1 (overdue)"
+      },
+      {
+       "kind": "number",
+       "x": "panelX+0x8b",
+       "fmt": "'@'+digits",
+       "value": "months left (FUN_0046D940)",
+       "when": "subtype != 0x18 and not overdue"
+      },
+      {
+       "kind": "image",
+       "x": "panelX+0x9f",
+       "image": "Zeus_Interface atlas 20 SPR_MOON (16x16)",
+       "when": "same as number"
+      }
+     ],
+     "god_quest (other events)": [
+      {
+       "kind": "image",
+       "x": "panelX+0x37",
+       "image": "SPR_REQUEST_COMPLETE if FUN_005BDDD0 (needed hero available) else SPR_REQUEST_INCOMPLETE"
+      },
+      {
+       "kind": "image",
+       "x": "panelX+0x47",
+       "image": "Zeus_General atlas 7 SPR_GOD_QUEST_ICON + request_kind (god); Hera/Atlas Poseidon images"
+      },
+      {
+       "kind": "text",
+       "x": "panelX+0x61",
+       "text": [
+        157,
+        "request_kind"
+       ],
+       "en": "god name (Zeus, Poseidon, ...)",
+       "font": "13 if complete else 8"
+      }
+     ],
+     "value": {
+      "ours": "no equivalent (requests not simulated) -> list empty"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+0x37",
+     "y": "n*20+0x3c+0x7f+60-5",
+     "w": 130,
+     "font": 13,
+     "text": [
+      61,
+      196
+     ],
+     "en": "(more)",
+     "align": "center",
+     "when": "more than 3 requests",
+     "ev": "exe (font via image_id_from_packed_group(0xE) = rank 14 -> font entry 13, hyp)"
+    },
+    {
+     "kind": "minimap",
+     "fn": "FUN_00454980 from FUN_00517480 (only when page==10)",
+     "x": "panelX+0x32",
+     "y": "0x13e",
+     "w": 128,
+     "h": 110,
+     "note": "args (x, y, 0x40 half-width, 0x6e); see docs/play/ui.md section 6",
+     "ev": "exe"
+    }
+   ],
+   "widgets": [
+    {
+     "table": "0x0065B878 (3 rows 123x20, handler 0x005B6E50, param row) via FUN_005B7680",
+     "origin": "(panelX+0x37, n*20+0xbb)",
+     "rows": "min(count,3)",
+     "tooltip_id": "0x63F+row (balloon text likely 61:207 'click on any request to fulfill it', hyp)",
+     "click": "event kind (+2)==4 or subtype 0x18 (troops) -> 0x005BD950(event); else tail-jumps to 0x00408F20 (request/fulfil dialog, hyp)",
+     "ev": "exe (dialog meaning hyp)"
+    }
+   ],
+   "notes": "Base y B = n*20+0x3c; rows every 15 px; labels 9DKBU at panelX+0x37, values right-aligned to panelX+0xAF (unemployment % to +0xAA, jobs to +0xA8). Fonts: 8=9B dark (normal), 14=9DKYEL (warning), 13=9DKBU. Our expected state: Superb, good, workers needed 215 (font 14) / employment good, hygiene by health, unrest low/none, finances up, No known threats, Requests empty."
+  },
+  "cat1": {
+   "name": "Category tab 1 (radar) for pages != 10",
+   "fn": "FUN_0051C7E0",
+   "items": [
+    {
+     "kind": "minimap",
+     "fn": "FUN_00454980(panelX+0x32, 0xa5, 0x40, 0x6e)",
+     "x": "panelX+0x32",
+     "y": "0xa5",
+     "w": 128,
+     "h": 110,
+     "ev": "exe"
+    }
+   ],
+   "notes": "Category 1 draws only the minimap (no frame, since FUN_00517480 draws the info frame only for category 0 or page 10). Page 10 in category 1 draws the Overview text instead (FUN_00517000), plus the minimap at y 0x13e as always for page 10."
+  }
+ }
+}

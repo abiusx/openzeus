@@ -1,0 +1,5 @@
+# Open Play Sandbox 2 (Zeus > Custom Adventures, row 3; fresh write dir), the Husbandry page's four menus after the five
+# start dialogs (tributes; Thasus declined) (2026-10-31, docs/campaign-format.md "Open play"). DIR = the run dir;
+# --seconds 77 --state-log /dev/null. Result: Farms = Wheat Farm only; Hunting/fishing = Hunting Lodge only (no fishery,
+# no urchin quay); Herding = Carding Shed, Sheep, Dairy, Goat; Orchards = Growers' Lodge, Grapevine, Olive Tree.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,288; 31:click 120,194; 33:click 315,442; 37:shot DIR/intro.bmp; 38:click 656,491; 45.5:move 567,573; 46:click 567,573; 47.5:move 567,573; 48:click 567,573; 49.5:move 567,573; 50:click 567,573; 51.5:move 567,573; 52:click 567,573; 53:shot DIR/d5.bmp; 54:move 622,82; 54.5:click 622,82; 56:move 700,590; 57:shot DIR/f0.bmp; 58:move 676,345; 58.5:click 676,345; 60:shot DIR/farms.bmp; 61:rclick 300,300; 63:move 747,400; 63.5:click 747,400; 65:shot DIR/fishing.bmp; 66:rclick 300,300; 68:move 676,400; 68.5:click 676,400; 70:shot DIR/animals.bmp; 71:rclick 300,300; 73:move 747,345; 73.5:click 747,345; 75:shot DIR/orchards.bmp

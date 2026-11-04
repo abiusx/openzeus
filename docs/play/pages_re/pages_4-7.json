@@ -1,0 +1,702 @@
+{
+ "conventions": {
+  "panelX": "DAT_010dff34, left edge of the 186-px control panel",
+  "n": "DAT_00f9fff8, number of overlay buttons on the page (20 px each)",
+  "font": "rank in docs/play/text.md table: 3 11C2, 4 11C3 (orange), 8 9B, 10 9LTBK, 13 9DKBU, 14 9DKYEL. The exe falls back to rank 0 only when fewer fonts are loaded (never in practice).",
+  "align": "center = text_ref_draw_centered / FUN_00509060 / FUN_005086e0 (word-wrapped, each line centred in w, 16 px per line); left = text_ref_draw / string_draw (one line, no wrap); paragraph = paragraph_draw / FUN_00509020 (word-wrapped, left, 16 px per line)",
+  "y_accum": "DAT_00f13a6c: every wrapped line drawn by the centred/left paragraph routines adds 5+11=16 to it; several y's are base + DAT_00f13a6c. Wrapped line counts below were computed with data/play/fonts.json widths and the exe wrap rule (scratchpad/wrap.py).",
+  "pen": "DAT_00f13a70: pen after the last string_draw; reset to 0 before the value rows, so 'x+pen' is just x unless noted."
+ },
+ "pages": {
+  "4": {
+   "name": "Hygiene/Safety (88:4)",
+   "draw_fn": "0x00519A50",
+   "items": [
+    {
+     "kind": "text",
+     "x": "panelX+45",
+     "y": "n*20+0x44",
+     "w": 140,
+     "font": 3,
+     "text": [
+      56,
+      1
+     ],
+     "en": "City Hygiene",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+45",
+     "y": "n*20+0x44+16 (after 1 line of the title)",
+     "w": 140,
+     "font": "4 if health<30 else 3",
+     "text": [
+      56,
+      "health/10+2"
+     ],
+     "en": "56:2..12 = Appalling (0-9), Terrible (10-19), Bad (20-29), Poor (30-39), Not good (40-49), Ok (50-59), Good (60-69), Very good (70-79), Excellent (80-89), Near perfect (90-99), Perfect (100)",
+     "value": {
+      "exe": "0x00FE6A70",
+      "name": "g_city_health",
+      "meaning": "city health 0..100, moves 1/cycle toward g_city_health_target",
+      "ours": "reports.hygiene[0] row 'health' ('76 (target 76)'; parse the first number) = sim health_state.health"
+     },
+     "align": "center",
+     "ev": "exe (FUN_00519820)"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+45",
+     "y": "n*20+0x44+40 (= +32 for two lines, +8)",
+     "w": 140,
+     "font": "13 if rising, 14 if dropping",
+     "text": [
+      56,
+      "13..16"
+     ],
+     "en": "health<target: 'but rising' (56:15, health<=49) / 'and rising' (56:16, health>=50); health>target: 'getting worse' (56:13, health<=49) / 'but dropping' (56:14, health>=50); equal: nothing drawn",
+     "value": {
+      "exe": "0x00FE6A6C",
+      "name": "g_city_health_target",
+      "meaning": "monthly target (healer+food coverage weighted by population + small-city bonus)",
+      "ours": "reports.hygiene[0] row 'health' '(target N)'"
+     },
+     "align": "center",
+     "when": "health != target",
+     "ev": "exe (FUN_00519820)"
+    },
+    {
+     "kind": "separator",
+     "x": "panelX+50",
+     "y": "n*20+0x7C",
+     "w": "8 marble tiles (tile_row_draw)",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+45",
+     "y": "n*20+0x84",
+     "w": 140,
+     "font": 13,
+     "text": [
+      56,
+      17
+     ],
+     "en": "Unrest",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+65",
+     "y": "n*20+0x94 (0x84 + 16, the line of 'Unrest')",
+     "w": 100,
+     "font": "14 if index 18/19, else 8",
+     "text": [
+      56,
+      "18..23"
+     ],
+     "en": "18/19 'There is a lot of unrest in the city' (3 lines), 21 'There is some unrest in the city', 22 'There are stirrings of unrest in the city' (4 lines), 23 'There is no unrest in the city' (3 lines)",
+     "value": {
+      "exe": "0x00FEB520 (city+0x4AC8)",
+      "name": "set by city_crime_level 0x00519910",
+      "meaning": "over all houses (state 1, is_house): H = count with unrest >80, M = count with unrest 71..80, N = all houses. No house with unrest >=51 -> 23. Else M*100/N >=51 -> 18; else H*100/N >=26 -> 19; else H*100/N <11 -> 22; else 21. (Houses with 51..70 only flip 'any' so give 22 at least.)",
+      "ours": "needs per-house unrest (Building.crime, exported as 'unrest' by the overlay columns in sim/export.py ~l.84, not in the saved state.json buildings[]); fallback reports.hygiene[2] 'average unrest (common houses)'"
+     },
+     "align": "center (FUN_005086e0: wrapped, each line centred)",
+     "ev": "exe"
+    }
+   ],
+   "widgets": [],
+   "notes": "No clickable widgets on this page (panel_click 0x00517650 has no case 4). The page draws nothing about fire/collapse, plague or crime counts; those strings (56:24-84) are for the hygiene advisor/reports. Bug-compatible detail: health word index = health/10+2 so 100 -> 12 'Perfect'."
+  },
+  "5": {
+   "name": "Administration (88:5)",
+   "draw_fn": "0x00518420 finance_panel_draw",
+   "items": [
+    {
+     "kind": "image",
+     "x": "panelX+0x5F+24",
+     "y": "n*20+0x61",
+     "w": 24,
+     "img": "Zeus_Interface group 32 SPR_BUTTON_UP (image 580; 581 while pressed)",
+     "text": null,
+     "en": "tax up arrow",
+     "ev": "exe (table 0x0063DF10 entry 0, packed 0x220)"
+    },
+    {
+     "kind": "image",
+     "x": "panelX+0x5F",
+     "y": "n*20+0x61",
+     "w": 24,
+     "img": "Zeus_Interface group 31 SPR_BUTTON_DOWN (image 582; 583 while pressed)",
+     "text": null,
+     "en": "tax down arrow",
+     "ev": "exe (entry 1, packed 0x21F)"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+55",
+     "y": "n*20+0x44",
+     "w": 128,
+     "font": 13,
+     "text": [
+      131,
+      0
+     ],
+     "en": "Tax Rate",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+55",
+     "y": "n*20+0x55",
+     "w": 128,
+     "font": 13,
+     "text": [
+      286,
+      "tax_level_index"
+     ],
+     "en": "286:0..6 None / Very Low / Low / Normal / High / Very High / Outrageous for tax 0/3/7/9/11/15/20 % (nearest value of table 0x00641F50)",
+     "value": {
+      "exe": "g_city tax_rate via tax_slider 0x00FE6918 {values 0x00641F50, 7, group 286, &tax_rate}",
+      "meaning": "tax rate %, shown only as its level name",
+      "ours": "city.tax (9 -> 'Normal')"
+     },
+     "align": "center",
+     "ev": "exe (tax_level_text 0x00569850)"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+45",
+     "y": "n*20+0x7E",
+     "w": 139,
+     "font": 13,
+     "text": [
+      60,
+      4
+     ],
+     "fmt": "'%s %d %s' = 60:4 + N + 8:1",
+     "en": "yields an estimated N Drachma (2 lines: 'yields an estimated' / ' N Drachma')",
+     "value": {
+      "exe": "0x00FEB03C (city+0x45E4)",
+      "name": "taxes_projected",
+      "meaning": "this year's taxes so far + this month's rate * (12-month) (finance.md 3.3; predicts half the real monthly tax)",
+      "ours": "no equivalent field; approx city.last_month.taxes*(12-month)+taxes so far this year (not exported)"
+     },
+     "align": "center (wrapped)",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+45",
+     "y": "n*20+0xA2",
+     "w": 139,
+     "font": 8,
+     "text": [
+      60,
+      5
+     ],
+     "fmt": "'%d%% %s'",
+     "en": "N% of population visited by clerk (2 lines)",
+     "value": {
+      "exe": "0x00FE9690 (city+0x2C38)",
+      "name": "g_tax_coverage_pct",
+      "meaning": "population in clerk-covered houses *100 / all house population (monthly)",
+      "ours": "reports.administration[0] 'houses registered by a clerk' pct (ours counts houses, exe weights by population)"
+     },
+     "align": "center (wrapped)",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+45",
+     "y": "n*20+0xC0",
+     "w": 139,
+     "font": 8,
+     "text": [
+      60,
+      23
+     ],
+     "fmt": "'%d dr %s'",
+     "en": "N dr uncollected this year (3 lines: 'N dr' / ' uncollected this' / ' year')",
+     "value": {
+      "exe": "0x00FE969C + 0x00FE96A0 (city+0x2C44 uncollected_common + city+0x2C48 uncollected_elite)",
+      "meaning": "tax that houses without clerk coverage would have paid this year",
+      "ours": "no equivalent"
+     },
+     "align": "center (wrapped)",
+     "ev": "exe"
+    },
+    {
+     "kind": "separator",
+     "x": "panelX+50",
+     "y": "n*20+0xE9",
+     "w": "8 marble tiles",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+55",
+     "y": "n*20+0xF1",
+     "w": 139,
+     "font": 13,
+     "text": [
+      60,
+      17
+     ],
+     "fmt": "'%s %d dr'",
+     "en": "Expenses N dr",
+     "value": {
+      "exe": "0x00FE9710 (city+0x2CB8)",
+      "name": "total expenses this year (ledger_totals_refresh 0x00488960)",
+      "meaning": "imports+wages+construction+tribute/gifts paid, year to date",
+      "ours": "no year-to-date field; city.last_month.wages is only last month"
+     },
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+55",
+     "y": "n*20+0x104",
+     "w": 139,
+     "font": 13,
+     "text": [
+      60,
+      10
+     ],
+     "fmt": "'%s %d dr'",
+     "en": "Income N dr",
+     "value": {
+      "exe": "0x00FE9708 (city+0x2CB0)",
+      "name": "total income this year",
+      "meaning": "taxes+exports+gifts+silver+tribute received, year to date",
+      "ours": "no year-to-date field; city.last_month.taxes is only last month"
+     },
+     "align": "left",
+     "ev": "exe (font = image_id_from_packed_group(0xE) on bank 0 = rank 13)"
+    }
+   ],
+   "widgets": [
+    {
+     "table": "0x0063DF10",
+     "entries": 2,
+     "entry_size": 28,
+     "origin_draw": "(panelX+0x5F, n*20+0x61)",
+     "origin_click": "(panelX+0x5F, n*20+0x5C)  [exe quirk: hit box 5 px above the drawn arrow]",
+     "list": [
+      {
+       "i": 0,
+       "rect": "x+24..x+48, y..y+24",
+       "sprite": "SPR_BUTTON_UP",
+       "callback": "0x00408D20 with 0x00F135F8=0 -> 0x005698B0: tax = next higher level of {0,3,7,9,11,15,20}; then taxes_this_year_refresh 0x004885B0, ledger_totals_refresh 0x00488960, repaint 0x00F2A6CE=1",
+       "does": "raise tax one level",
+       "ev": "exe"
+      },
+      {
+       "i": 1,
+       "rect": "x..x+24, y..y+24",
+       "sprite": "SPR_BUTTON_DOWN",
+       "callback": "0x00408D20 with 0x00F135F8=1 -> 0x00569920: tax = next lower level (stops at 0)",
+       "does": "lower tax one level",
+       "ev": "exe"
+      }
+     ],
+     "behaviour": "FUN_00431E10 hit-test (square of side +0x08 = 24) and FUN_00431C80: fires on press; while held, a counter (+0x12) increments per frame and re-fires from 8 frames on per the repeat mask PTR_DAT_005F0028 (auto-repeat); +0x11 = press timer 3 -> pressed image (first+1) while > 0",
+     "ev": "exe"
+    }
+   ],
+   "notes": "There is no wage widget on this page in the exe (131:1 'Wage Rate' is unused here). The tax setter snaps to the 7 levels. Our sim's tax is a free %: map to these levels or keep the 7-step table."
+  },
+  "6": {
+   "name": "Culture (88:6)",
+   "draw_fn": "0x00519FA0 (Zeus); Poseidon variant 0x00519D50 if poseidon_game(0)",
+   "modes": "G = (0x00902C50 != -1): the scenario schedules Panhellenic games (scenario field = start-year offset). Open-play sandbox: hyp G false -> 'Culture in your city' layout.",
+   "items": [
+    {
+     "kind": "paragraph",
+     "x": "panelX+45 (G) / panelX+65",
+     "y": "n*20+0x41",
+     "w": "140 (G) / 100",
+     "font": 13,
+     "text": "[58,1] (G) / [58,15]",
+     "en": "G: 'Likely Standing in Panhellenic Games' (2 lines); else 'Culture in your city' (2 lines: 'Culture in' / ' your city')",
+     "align": "center (wrapped)",
+     "ev": "exe"
+    },
+    {
+     "kind": "separator",
+     "x": "panelX+50",
+     "y": "n*20+0x41+lines*16-8 = n*20+0x59 (both titles wrap to 2 lines)",
+     "w": "8 marble tiles",
+     "ev": "exe (lines: computed)"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+55",
+     "y": "n*20+0x61",
+     "font": 13,
+     "text": "[58,2] (G) / [58,16]",
+     "en": "'Isthmian Games' / 'Philosophy'",
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+55 (+ pen-4 after the G prefix)",
+     "y": "n*20+0x6D",
+     "font": "see rating",
+     "text": "G: [58,3] 'Philosophy ' (font 13) then rating; else rating",
+     "en": "rating",
+     "rating": "R1",
+     "value": {
+      "exe": "0x0091EA74",
+      "meaning": "% population with philosopher coverage (+0x6D) \u2014 Building +0x6D/+0x6F/+0x71/+0x6C coverage bytes; FUN_00566A90 (cycle step 33) = population of houses with byte != 0 *100 / all house population",
+      "ours": "pop-weighted share of houses with buildings[].coverage.philosophy>0; or reports.culture[0].table row philosophy 'houses reached'"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+55",
+     "y": "n*20+0x7B",
+     "font": 13,
+     "text": "[58,4] (G) / [58,17]",
+     "en": "'Nemean Games' / 'Athletics'",
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+55 (+pen)",
+     "y": "n*20+0x87",
+     "font": "see rating",
+     "text": "G: [58,5] 'Athletics ' then rating",
+     "rating": "R2",
+     "value": {
+      "exe": "0x0091EA78",
+      "meaning": "% population with athlete/gymnasium coverage (+0x6F)",
+      "ours": "coverage.athletics / culture table row athletics"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+55",
+     "y": "n*20+0x95",
+     "font": 13,
+     "text": "[58,6] (G) / [58,18]",
+     "en": "'Pythian Games' / 'Drama'",
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+55 (+pen)",
+     "y": "n*20+0xA1",
+     "font": "see rating",
+     "text": "G: [58,7] 'Drama ' then rating",
+     "rating": "R3",
+     "value": {
+      "exe": "0x0091EA7C",
+      "meaning": "% population with actor coverage (+0x71)",
+      "ours": "coverage.drama / culture table row drama"
+     },
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+55",
+     "y": "n*20+0xAF",
+     "font": 13,
+     "text": "[58,8] (G) / [58,19]",
+     "en": "'Olympian Games' / 'Competitions'",
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+55 (+pen)",
+     "y": "n*20+0xBB",
+     "font": "G: rating font; else 13 for Yes, 14 for No",
+     "text": "G: [58,9] 'All' then rating R0; else [18,1] 'Yes' / [18,0] 'No'",
+     "en": "not G: 'Yes' iff a stadium exists (g_unique_venue_exists 0x00FEAED0 != 0) and staffed stadiums (0x007829C8 = count[0x50]) >= 1 and g_unique_venue_shows 0x00FEAED2 >= 1; else 'No'",
+     "value": {
+      "exe": "0x00FEAED0, 0x007829C8, 0x00FEAED2",
+      "meaning": "stadium built, staffed, and holding shows",
+      "ours": "any stadium with employees>0 in buildings[] (culture table row competition venues)"
+     },
+     "ev": "exe"
+    }
+   ],
+   "ratings": {
+    "not_G (FUN_00519C80, coverage %)": [
+     [
+      "<20",
+      "58:24 Terrible",
+      14
+     ],
+     [
+      "20-39",
+      "58:23 Poor",
+      14
+     ],
+     [
+      "40-59",
+      "58:22 OK",
+      8
+     ],
+     [
+      "60-79",
+      "58:21 Not Bad",
+      8
+     ],
+     [
+      ">=80",
+      "58:20 Good ",
+      8
+     ]
+    ],
+    "G (FUN_00519BD0, games score S=FUN_00565D40(k))": [
+     [
+      "<5",
+      "58:14 Terrible",
+      14
+     ],
+     [
+      "5-9",
+      "58:13 Poor",
+      14
+     ],
+     [
+      "10-19",
+      "58:12 OK",
+      8
+     ],
+     [
+      "20-29",
+      "58:11 Not Bad",
+      8
+     ],
+     [
+      ">=30",
+      "58:10 Good ",
+      8
+     ]
+    ],
+    "score": "S1 = cov_phil/4 + staffed colleges(0x4D) + staffed podiums(0x51); S2 = cov_ath/4 + 5*staffed stadiums(0x50) + staffed gymnasiums(0x4F); S3 = cov_drama/4 + staffed drama schools(0x4E) + staffed theatres(0x52); S0 = (S1+S2+S3)/3 + 4*staffed stadiums; each +20 if god_sanctuary_active() (which god: hyp). Staffed counts = 0x00782888[type] (buildings_count_by_type 0x00491820, workers>0: hyp for these types)",
+    "ev": "exe"
+   },
+   "poseidon_variant": "0x00519D50: title 58:75 'Science in the city' (panelX+65, w100, 2 lines); separator; rows 58:76 'Astronomy' + rating(0x0091EA74), 58:77 'Research' + rating(0x0091EA7C), 58:78 'Learning' + rating(0x0091EA78), 58:79 'Exhibits' + 18:1 'Yes' (font 13) iff unique venue exists, staffed museums 0x00782BC4 (type 0xCF) >= 1 and shows >= 1, else 18:0 'No' (font 14). Same y's. (exe)",
+   "widgets": [],
+   "notes": "No widgets (panel_click has no case 6). Ratings show words only, never percentages. Our sim: compute R1-R3 from buildings[] house coverage (pop-weighted by occupants) and 'Yes' if a staffed stadium exists; the G layout is not needed (no games)."
+  },
+  "7": {
+   "name": "Mythology (88:7)",
+   "draw_fn": "0x0051A5D0",
+   "items": [
+    {
+     "kind": "text",
+     "x": "panelX+45",
+     "y": "n*20+60",
+     "w": 140,
+     "font": 13,
+     "text": [
+      59,
+      1
+     ],
+     "en": "Sanctuaries",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "repeat": "for each god (g_gods 0x00EF5DD8.., 0x34 bytes, index g) that has a sanctuary (god_sanctuary_building() > 0), at most min(scenario god count g_scenario_gods[0xDC], 4) rows, row i=0..3",
+     "x": "panelX+45",
+     "y": "n*20+72+24*i",
+     "w": 140,
+     "font": "14 if hovered (0x0078183C == 2i+1) else 13",
+     "text": [
+      157,
+      "g"
+     ],
+     "en": "god name: Zeus, Poseidon, Demeter, Apollo, Artemis, Ares, Aphrodite, Hermes, Athena, Hephaestus, Dionysus, Hades, Hera, Atlas",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "repeat": "same row i",
+     "x": "panelX+45",
+     "y": "n*20+84+24*i",
+     "w": 140,
+     "font": "from status (below); 10 (9LTBK) if hovered (0x0078183C == 2i+2)",
+     "text": [
+      59,
+      "status"
+     ],
+     "en": "status via FUN_004F0130(&font, 1); statuses 7/8 are drawn as '%d %% %s' = 'N % complete ' / 'N % rebuilt ' with N = monument_progress",
+     "value": {
+      "exe": "FUN_004F0130",
+      "meaning": "sanctuary state",
+      "ours": "no equivalent (no gods); our reports.mythology table 'Sanctuaries and monuments' could fill name/status"
+     },
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "separator",
+     "x": "panelX+50",
+     "y": "n*20+0xA4",
+     "w": "8 marble tiles",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "x": "panelX+45",
+     "y": "n*20+0xAC",
+     "w": 140,
+     "font": 13,
+     "text": [
+      59,
+      16
+     ],
+     "en": "Gods attacking",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "repeat": "gods g with god_is_unfriendly(g), scenario_slot_listed(scenario_god_slot(g))==1 and god_figure_get() > 0 (on the map); at most 4, row j",
+     "x": "panelX+45",
+     "y": "n*20+0xB8+12*j",
+     "w": 140,
+     "font": "13 if hovered (0x0078183C == j+9) else 14",
+     "text": [
+      157,
+      "g"
+     ],
+     "en": "god name",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "when": "no attacking god",
+     "x": "panelX+45",
+     "y": "n*20+0xB8",
+     "w": 140,
+     "font": 8,
+     "text": [
+      58,
+      55
+     ],
+     "en": "None",
+     "align": "center",
+     "ev": "exe"
+    },
+    {
+     "kind": "paragraph",
+     "x": "panelX+55",
+     "y": "n*20+0xE8 (fixed: block always reserves 4 rows)",
+     "w": 150,
+     "font": 13,
+     "text": [
+      59,
+      17
+     ],
+     "en": "Monsters attacking",
+     "align": "left",
+     "ev": "exe"
+    },
+    {
+     "kind": "text",
+     "repeat": "monster records r (g_monster_records, 0x20 bytes, up to 0x00FE4630) whose figure (monster_record_figure) is alive (state 1), action != 4 and figure_type_value(f,0)==8; at most 3, row j",
+     "x": "panelX+45",
+     "y": "n*20+0xF4+12*j",
+     "w": 140,
+     "font": "13 if hovered (0x0078183C == j+13) else 14",
+     "text": [
+      190,
+      "r"
+     ],
+     "en": "monster name by record index: Hydra, Kraken, Cerberus, Cyclops, Minotaur, Medusa, Calydonian Boar, Dragon, Talos, Hector, Scylla, Maenad, Sphinx, Chimera, Harpy, Echidna, Black Warrior, Satyr",
+     "align": "center",
+     "ev": "exe (meaning of type value 8: hyp 'attacking')"
+    },
+    {
+     "kind": "text",
+     "when": "no monster",
+     "x": "panelX+45",
+     "y": "n*20+0xF4",
+     "w": 140,
+     "font": 8,
+     "text": [
+      58,
+      55
+     ],
+     "en": "None",
+     "align": "center",
+     "ev": "exe"
+    }
+   ],
+   "sanctuary_status": {
+    "complete (progress>=100)": [
+     "workers>0, complete and active: FUN_004E9470(b) ? 59:3 'sacrificing ' (font 13) : 59:2 'working ' (font 8)",
+     "workers>0, not active, no walker out: 59:5 'needs sacrifice ' (font 8)",
+     "workers>0, not active, walker out: 59:6 'awaiting sacrifice ' (font 14)",
+     "workers==0: 59:4 'needs priests ' (font 14)"
+    ],
+    "under construction, not rebuilding": [
+     "halt flag (Building wine field bit 8): 59:67 'Halted' (font 14)",
+     "artisans needed and no staffed Artisans' Guild (0x00782968 = count[0x38]==0): 59:14 'needs artisans ' (14)",
+     "material resource 0xB short: 59:10 'needs materials ' (14)",
+     "resource 0x10 short: 59:11 'needs black marble ' (14)",
+     "resource 0x13 short: 59:9 'needs materials ' (14)",
+     "resource 9 short: 59:12 'needs materials' (14)",
+     "resource 0x11 sufficient: 59:7 -> 'N % complete ' (font 8)",
+     "else 59:13 'needs orichalc' (14)"
+    ],
+    "rebuilding (flag set)": "same order with fonts 14; if every material is short and artisans are missing: 59:15 'destroyed '; final OK case 59:8 -> 'N % rebuilt ' (font 8)",
+    "stock_test": "available = stock(FUN_004654f0(res) ? city stock : 0) + two other counters, compared with the sanctuary's needs from monument_progress",
+    "ev": "exe (structure); resource ids -> goods names: hyp"
+   },
+   "widgets": [
+    {
+     "table": "0x0063EE08",
+     "entries": 15,
+     "entry_size": 28,
+     "origin": "(panelX+55, n*20+60)",
+     "hit": "widget_hit_test 0x00432300 sets hover 0x0078183C = entry+1 every frame (drives the highlight fonts above); widget_click_dispatch 0x004321E0: left release on the pressed entry -> callback +0x08 = 0x0051A3E0; right click (type 3) -> 0x00401000 (no-op)",
+     "list": [
+      {
+       "entries": "0-7",
+       "rects": "x 0..123, y 12+12k..24+12k (k=0..7): pairs (god name row, status row) of sanctuary rows 1-4",
+       "params": "+0x14 = row 1..4, +0x18 = 0 name / 1 status",
+       "does": "kind 0: centre the map on the nth sanctuary-god's figure (if on map); kind 1: centre on the nth sanctuary building (Building tile at 0x0092E664)"
+      },
+      {
+       "entries": "8-11",
+       "rects": "x 0..123, y 124..172 step 12",
+       "params": "row 1..4, kind 2",
+       "does": "centre the map on the nth attacking god's figure"
+      },
+      {
+       "entries": "12-14",
+       "rects": "x 0..123, y 184..220 step 12",
+       "params": "row 1..3, kind 3",
+       "does": "centre the map on the nth attacking monster's figure"
+      }
+     ],
+     "centre": "0x0044A7D0(tile): view origin = tile pos - view size/2, repaint; if screen mode 0x00F2A6DD == 7 it switches to 1 first (hyp: leaves the overview map)",
+     "ev": "exe (rects, params, jump table 0x0051A5B8); kind 4 = heroes (hero_record_figure) exists in the jump table but no entry uses it"
+    }
+   ],
+   "notes": "Our sim has no gods/monsters: the page would show 'Sanctuaries' with no rows, 'Gods attacking' / 'None', 'Monsters attacking' / 'None'. Row y's in the click table match the drawn rows (sanctuary rows start at n*20+72; gods at n*20+0xB8; monsters at n*20+0xF4)."
+  }
+ }
+}

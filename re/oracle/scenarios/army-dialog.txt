@@ -1,0 +1,5 @@
+# Open Play Sandbox at 1024x768 (the worldmap.txt start) -> world map -> Sparta (rival) -> Raid (panel button 6,
+# (838+13, 518) 79x45) -> the army dialog "Enlist Forces" (screen 0x21); then its plunder button (ox+346..486,
+# oy+5..25 with (ox, oy) = (192, 144)) -> the goods popup (screen 0x0F). Track 1B (docs/play/military.md).
+# Replace DIR with an absolute run dir; empty --write-dir; --seconds 100.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:rclick 300,300; 48:move 568,574; 48.3:down 568,574; 48.6:up 568,574; 50:click 90,10; 52:click 120,41; 55:click 320,253; 57:move 808,740; 57.3:down 808,740; 57.6:up 808,740; 60:move 985,578; 60.3:down 985,578; 60.6:up 985,578; 65:move 285,506; 65.3:down 285,506; 65.6:up 285,506; 68:shot DIR/wm_rival3.bmp; 70:move 890,540; 70.3:down 890,540; 70.6:up 890,540; 74:shot DIR/army.bmp; 76:move 608,159; 76.3:down 608,159; 76.6:up 608,159; 80:shot DIR/plunder.bmp; 82:rclick 300,300; 85:shot DIR/after.bmp

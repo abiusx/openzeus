@@ -1,0 +1,4 @@
+# Balloon help over the Options title (FUN_004F6110 / FUN_004F6BA0): "See a working city" at 800x600; a click on a
+# menu title right after start shows its balloon instead of opening the menu -> o1.bmp (box (90,50) 320x42).
+# Then Help opened and the mouse moved over Options switches menus -> o2.bmp / o3.bmp. DIR = run dir; --seconds 55.
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 48:move 70,10; 48.5:down 70,10; 48.7:up 70,10; 49.5:shot DIR/o1.bmp; 50:move 150,10; 50.5:click 150,10; 51:move 90,10; 52:shot DIR/o2.bmp; 52.5:move 95,12; 53:click 95,12; 54:shot DIR/o3.bmp

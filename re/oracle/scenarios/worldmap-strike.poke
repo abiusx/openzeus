@@ -1,0 +1,17 @@
+# Tiryns (g_cities 0x008FBAC0 + 2 x 0x23C + 0x1E8 = 0x008FC120) army = 20: two fifths (8) can strike (FUN_0042DB70); written at
+# several ticks (the scenario load may follow the first ones; the monthly update only adds)
+1 8fc120 4 20
+5 8fc120 4 20
+10 8fc120 4 20
+20 8fc120 4 20
+40 8fc120 4 20
+80 8fc120 4 20
+120 8fc120 4 20
+# and its attitude (+0x164 = 0x008FC09C) = 100: regarded highly enough to ask for a strike (city_request_threshold)
+1 8fc09c 4 100
+5 8fc09c 4 100
+10 8fc09c 4 100
+20 8fc09c 4 100
+40 8fc09c 4 100
+80 8fc09c 4 100
+120 8fc09c 4 100

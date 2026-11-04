@@ -1,0 +1,5 @@
+# Sanctuary completion extras (bugs.md 214): Open Play Sandbox, Easy, Mythology -> Sanctuaries -> the god at row MENU_Y,
+# placed at screen (330,303) (camera cell (109,118) poked), its pieces completed by pokes; run by
+# tools/oracle_sanct_complete.sh OUT KEY MENU_Y ORIENT (replaces DIR and MENU_Y, writes the pokes), checked by
+# tools/e1_sanct_check.py. Runs 10-30: Athena orientations 0..3, Demeter 0/1, Hades 0/1 (Hades 2/3: the box did not fit).
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 590,256; 31:click 120,306; 33:click 315,442; 38:click 656,491; 46:rclick 300,300; 55:click 570,575; 56:move 626,329; 56.3:down 626,329; 56.6:up 626,329; 58:move 678,345; 58.3:down 678,345; 58.6:up 678,345; 60:move 415,MENU_Y; 60.3:down 415,MENU_Y; 60.6:up 415,MENU_Y; 62:move 330,303; 63.5:shot DIR/ghost.bmp; 64:down 330,303; 64.3:up 330,303; 65:rclick 300,580; 66:move 300,585; 68:shot DIR/placed.bmp; 140:click 568,574; 145:move 300,585; 160:shot DIR/done.bmp

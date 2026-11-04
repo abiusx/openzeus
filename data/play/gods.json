@@ -1,0 +1,2199 @@
+{
+ "_doc": "tools/play_gods.py (docs/play/gods.md)",
+ "roles": {
+  "god": {
+   "by": "good",
+   "map": {
+    "zeus": "god_zeus",
+    "poseidon": "god_poseidon",
+    "demeter": "god_demeter",
+    "apollo": "god_apollo",
+    "artemis": "god_artemis",
+    "ares": "god_ares",
+    "aphrodite": "god_aphrodite",
+    "hermes": "god_hermes",
+    "athena": "god_athena",
+    "hephaistos": "god_hephaistos",
+    "dionysus": "god_dionysus",
+    "hades": "god_hades",
+    "hera": "god_hera",
+    "atlas": "god_atlas"
+   },
+   "fallback_role": "god_zeus",
+   "orig": "FIG_GOD (type 67): picture file by god (figure +0x0B)"
+  },
+  "god_zeus": {
+   "file": "Zeus_Zeus",
+   "walk": {
+    "file": "Zeus_Zeus",
+    "start": 1,
+    "dirs": 8,
+    "frames": 23,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Zeus",
+     "start": 185,
+     "dirs": 1,
+     "frames": 41,
+     "order": "frame",
+     "clamp": 40,
+     "ticks_per_frame": 3
+    },
+    "vanish": {
+     "file": "Zeus_Zeus",
+     "start": 185,
+     "dirs": 8,
+     "frames": 41,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 40
+    },
+    "vanish_gated": {
+     "file": "Zeus_Zeus",
+     "start": 185,
+     "dirs": 8,
+     "frames": 41,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 40,
+     "ticks_per_frame": 3
+    },
+    "attack": {
+     "file": "Zeus_Zeus",
+     "start": 226,
+     "dirs": 8,
+     "frames": 21,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 2
+    },
+    "cast": {
+     "file": "Zeus_Zeus",
+     "start": 395,
+     "dirs": 8,
+     "frames": 32,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "duel": {
+     "file": "Zeus_Zeus",
+     "start": 226,
+     "dirs": 8,
+     "frames": 21,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD zeus: Zeus_Zeus groups [0, 1, 2, 2049, 4]",
+   "frame_rule": "tick"
+  },
+  "god_poseidon": {
+   "file": "Zeus_Poseidon",
+   "walk": {
+    "file": "Zeus_Poseidon",
+    "start": 1,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Poseidon",
+     "start": 137,
+     "dirs": 1,
+     "frames": 33,
+     "order": "frame",
+     "clamp": 32,
+     "ticks_per_frame": 4
+    },
+    "vanish": {
+     "file": "Zeus_Poseidon",
+     "start": 137,
+     "dirs": 8,
+     "frames": 33,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 32
+    },
+    "vanish_gated": {
+     "file": "Zeus_Poseidon",
+     "start": 137,
+     "dirs": 8,
+     "frames": 33,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 32,
+     "ticks_per_frame": 4
+    },
+    "attack": {
+     "file": "Zeus_Poseidon",
+     "start": 170,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 2
+    },
+    "cast": {
+     "file": "Zeus_Poseidon",
+     "start": 170,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 2
+    },
+    "duel": {
+     "file": "Zeus_Poseidon",
+     "start": 170,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD poseidon: Zeus_Poseidon groups [0, 1, 2, 2049, 2]",
+   "frame_rule": "tick"
+  },
+  "god_demeter": {
+   "file": "Zeus_Demeter",
+   "walk": {
+    "file": "Zeus_Demeter",
+    "start": 1,
+    "dirs": 8,
+    "frames": 28,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Demeter",
+     "start": 225,
+     "dirs": 1,
+     "frames": 18,
+     "order": "frame",
+     "clamp": 17,
+     "ticks_per_frame": 4
+    },
+    "vanish": {
+     "file": "Zeus_Demeter",
+     "start": 225,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 17
+    },
+    "vanish_gated": {
+     "file": "Zeus_Demeter",
+     "start": 225,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 17,
+     "ticks_per_frame": 4
+    },
+    "attack": {
+     "file": "Zeus_Demeter",
+     "start": 243,
+     "dirs": 8,
+     "frames": 33,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 2
+    },
+    "cast": {
+     "file": "Zeus_Demeter",
+     "start": 243,
+     "dirs": 8,
+     "frames": 33,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 2
+    },
+    "duel": {
+     "file": "Zeus_Demeter",
+     "start": 243,
+     "dirs": 8,
+     "frames": 33,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD demeter: Zeus_Demeter groups [0, 1, 2, 2049, 2]",
+   "frame_rule": "tick"
+  },
+  "god_apollo": {
+   "file": "Zeus_Apollo",
+   "walk": {
+    "file": "Zeus_Apollo",
+    "start": 1,
+    "dirs": 8,
+    "frames": 23,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Apollo",
+     "start": 185,
+     "dirs": 1,
+     "frames": 17,
+     "order": "frame",
+     "clamp": 16,
+     "ticks_per_frame": 5
+    },
+    "vanish": {
+     "file": "Zeus_Apollo",
+     "start": 185,
+     "dirs": 8,
+     "frames": 17,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 16
+    },
+    "vanish_gated": {
+     "file": "Zeus_Apollo",
+     "start": 185,
+     "dirs": 8,
+     "frames": 17,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 16,
+     "ticks_per_frame": 5
+    },
+    "attack": {
+     "file": "Zeus_Apollo",
+     "start": 202,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "cast": {
+     "file": "Zeus_Apollo",
+     "start": 347,
+     "dirs": 8,
+     "frames": 21,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "duel": {
+     "file": "Zeus_Apollo",
+     "start": 202,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD apollo: Zeus_Apollo groups [0, 1, 2, 2049, 4]",
+   "frame_rule": "tick"
+  },
+  "god_artemis": {
+   "file": "Zeus_Artemis",
+   "walk": {
+    "file": "Zeus_Artemis",
+    "start": 1,
+    "dirs": 8,
+    "frames": 13,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Artemis",
+     "start": 105,
+     "dirs": 1,
+     "frames": 17,
+     "order": "frame",
+     "clamp": 16,
+     "ticks_per_frame": 4
+    },
+    "vanish": {
+     "file": "Zeus_Artemis",
+     "start": 105,
+     "dirs": 8,
+     "frames": 17,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 16
+    },
+    "vanish_gated": {
+     "file": "Zeus_Artemis",
+     "start": 105,
+     "dirs": 8,
+     "frames": 17,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 16,
+     "ticks_per_frame": 4
+    },
+    "attack": {
+     "file": "Zeus_Artemis",
+     "start": 122,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "cast": {
+     "file": "Zeus_Artemis",
+     "start": 267,
+     "dirs": 8,
+     "frames": 17,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "duel": {
+     "file": "Zeus_Artemis",
+     "start": 122,
+     "dirs": 8,
+     "frames": 18,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD artemis: Zeus_Artemis groups [0, 1, 2, 2049, 4]",
+   "frame_rule": "tick"
+  },
+  "god_ares": {
+   "file": "Zeus_Ares",
+   "walk": {
+    "file": "Zeus_Ares",
+    "start": 1,
+    "dirs": 8,
+    "frames": 31,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Ares",
+     "start": 249,
+     "dirs": 1,
+     "frames": 16,
+     "order": "frame",
+     "clamp": 15,
+     "ticks_per_frame": 5
+    },
+    "vanish": {
+     "file": "Zeus_Ares",
+     "start": 249,
+     "dirs": 8,
+     "frames": 16,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 15
+    },
+    "vanish_gated": {
+     "file": "Zeus_Ares",
+     "start": 249,
+     "dirs": 8,
+     "frames": 16,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 15,
+     "ticks_per_frame": 5
+    },
+    "attack": {
+     "file": "Zeus_Ares",
+     "start": 265,
+     "dirs": 8,
+     "frames": 21,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "cast": {
+     "file": "Zeus_Ares",
+     "start": 265,
+     "dirs": 8,
+     "frames": 21,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "duel": {
+     "file": "Zeus_Ares",
+     "start": 265,
+     "dirs": 8,
+     "frames": 21,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD ares: Zeus_Ares groups [0, 1, 2, 2049, 2]",
+   "frame_rule": "tick"
+  },
+  "god_aphrodite": {
+   "file": "Zeus_Aphrodite",
+   "walk": {
+    "file": "Zeus_Aphrodite",
+    "start": 1,
+    "dirs": 8,
+    "frames": 26,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Aphrodite",
+     "start": 209,
+     "dirs": 1,
+     "frames": 32,
+     "order": "frame",
+     "clamp": 31,
+     "ticks_per_frame": 2
+    },
+    "vanish": {
+     "file": "Zeus_Aphrodite",
+     "start": 209,
+     "dirs": 8,
+     "frames": 32,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 31
+    },
+    "vanish_gated": {
+     "file": "Zeus_Aphrodite",
+     "start": 209,
+     "dirs": 8,
+     "frames": 32,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 31,
+     "ticks_per_frame": 2
+    },
+    "attack": {
+     "file": "Zeus_Aphrodite",
+     "start": 241,
+     "dirs": 8,
+     "frames": 25,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 2
+    },
+    "cast": {
+     "file": "Zeus_Aphrodite",
+     "start": 241,
+     "dirs": 8,
+     "frames": 25,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 2
+    },
+    "duel": {
+     "file": "Zeus_Aphrodite",
+     "start": 241,
+     "dirs": 8,
+     "frames": 25,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD aphrodite: Zeus_Aphrodite groups [0, 1, 2, 2049, 2]",
+   "frame_rule": "tick"
+  },
+  "god_hermes": {
+   "file": "Zeus_Hermes",
+   "walk": {
+    "file": "Zeus_Hermes",
+    "start": 1,
+    "dirs": 8,
+    "frames": 23,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Hermes",
+     "start": 185,
+     "dirs": 8,
+     "frames": 23,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 22,
+     "ticks_per_frame": 1
+    },
+    "vanish": {
+     "file": "Zeus_Hermes",
+     "start": 185,
+     "dirs": 8,
+     "frames": 23,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 22
+    },
+    "vanish_gated": {
+     "file": "Zeus_Hermes",
+     "start": 185,
+     "dirs": 8,
+     "frames": 23,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 22,
+     "ticks_per_frame": 1
+    },
+    "attack": {
+     "file": "Zeus_Hermes",
+     "start": 369,
+     "dirs": 8,
+     "frames": 21,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "cast": {
+     "file": "Zeus_Hermes",
+     "start": 369,
+     "dirs": 8,
+     "frames": 21,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "duel": {
+     "file": "Zeus_Hermes",
+     "start": 369,
+     "dirs": 8,
+     "frames": 21,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD hermes: Zeus_Hermes groups [0, 1, 2, 1, 2]",
+   "frame_rule": "tick"
+  },
+  "god_athena": {
+   "file": "Zeus_Athena",
+   "walk": {
+    "file": "Zeus_Athena",
+    "start": 1,
+    "dirs": 8,
+    "frames": 15,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Athena",
+     "start": 121,
+     "dirs": 1,
+     "frames": 16,
+     "order": "frame",
+     "clamp": 15,
+     "ticks_per_frame": 5
+    },
+    "vanish": {
+     "file": "Zeus_Athena",
+     "start": 121,
+     "dirs": 8,
+     "frames": 16,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 15
+    },
+    "vanish_gated": {
+     "file": "Zeus_Athena",
+     "start": 121,
+     "dirs": 8,
+     "frames": 16,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 15,
+     "ticks_per_frame": 5
+    },
+    "attack": {
+     "file": "Zeus_Athena",
+     "start": 137,
+     "dirs": 8,
+     "frames": 20,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3
+    },
+    "cast": {
+     "file": "Zeus_Athena",
+     "start": 298,
+     "dirs": 8,
+     "frames": 16,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "duel": {
+     "file": "Zeus_Athena",
+     "start": 137,
+     "dirs": 8,
+     "frames": 20,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD athena: Zeus_Athena groups [0, 1, 2, 2049, 4]",
+   "frame_rule": "tick"
+  },
+  "god_hephaistos": {
+   "file": "Zeus_Hephaestus",
+   "walk": {
+    "file": "Zeus_Hephaestus",
+    "start": 1,
+    "dirs": 8,
+    "frames": 17,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Hephaestus",
+     "start": 137,
+     "dirs": 1,
+     "frames": 34,
+     "order": "frame",
+     "clamp": 33,
+     "ticks_per_frame": 3
+    },
+    "vanish": {
+     "file": "Zeus_Hephaestus",
+     "start": 137,
+     "dirs": 8,
+     "frames": 34,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 33
+    },
+    "vanish_gated": {
+     "file": "Zeus_Hephaestus",
+     "start": 137,
+     "dirs": 8,
+     "frames": 34,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 33,
+     "ticks_per_frame": 3
+    },
+    "attack": {
+     "file": "Zeus_Hephaestus",
+     "start": 171,
+     "dirs": 8,
+     "frames": 17,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3
+    },
+    "cast": {
+     "file": "Zeus_Hephaestus",
+     "start": 171,
+     "dirs": 8,
+     "frames": 17,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3
+    },
+    "duel": {
+     "file": "Zeus_Hephaestus",
+     "start": 171,
+     "dirs": 8,
+     "frames": 17,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD hephaistos: Zeus_Hephaestus groups [0, 1, 2, 2049, 2]",
+   "frame_rule": "tick"
+  },
+  "god_dionysus": {
+   "file": "Zeus_Dionysus",
+   "walk": {
+    "file": "Zeus_Dionysus",
+    "start": 1,
+    "dirs": 8,
+    "frames": 24,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Dionysus",
+     "start": 476,
+     "dirs": 8,
+     "frames": 22,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 21,
+     "ticks_per_frame": 6
+    },
+    "vanish": {
+     "file": "Zeus_Dionysus",
+     "start": 193,
+     "dirs": 8,
+     "frames": 19,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 18
+    },
+    "vanish_gated": {
+     "file": "Zeus_Dionysus",
+     "start": 193,
+     "dirs": 8,
+     "frames": 19,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 18,
+     "ticks_per_frame": 5
+    },
+    "attack": {
+     "file": "Zeus_Dionysus",
+     "start": 212,
+     "dirs": 8,
+     "frames": 33,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3
+    },
+    "cast": {
+     "file": "Zeus_Dionysus",
+     "start": 212,
+     "dirs": 8,
+     "frames": 33,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3
+    },
+    "duel": {
+     "file": "Zeus_Dionysus",
+     "start": 212,
+     "dirs": 8,
+     "frames": 33,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD dionysus: Zeus_Dionysus groups [0, 1, 2, 3, 2]",
+   "frame_rule": "tick"
+  },
+  "god_hades": {
+   "file": "Zeus_Hades",
+   "walk": {
+    "file": "Zeus_Hades",
+    "start": 1,
+    "dirs": 8,
+    "frames": 23,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Zeus_Hades",
+     "start": 185,
+     "dirs": 1,
+     "frames": 32,
+     "order": "frame",
+     "clamp": 31,
+     "ticks_per_frame": 3
+    },
+    "vanish": {
+     "file": "Zeus_Hades",
+     "start": 185,
+     "dirs": 8,
+     "frames": 32,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 31
+    },
+    "vanish_gated": {
+     "file": "Zeus_Hades",
+     "start": 185,
+     "dirs": 8,
+     "frames": 32,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 31,
+     "ticks_per_frame": 3
+    },
+    "attack": {
+     "file": "Zeus_Hades",
+     "start": 217,
+     "dirs": 8,
+     "frames": 16,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "cast": {
+     "file": "Zeus_Hades",
+     "start": 217,
+     "dirs": 8,
+     "frames": 16,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 4
+    },
+    "duel": {
+     "file": "Zeus_Hades",
+     "start": 217,
+     "dirs": 8,
+     "frames": 16,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD hades: Zeus_Hades groups [0, 1, 2, 2049, 2]",
+   "frame_rule": "tick"
+  },
+  "god_hera": {
+   "file": "Poseidon_Hera",
+   "walk": {
+    "file": "Poseidon_Hera",
+    "start": 1,
+    "dirs": 8,
+    "frames": 22,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Poseidon_Hera",
+     "start": 177,
+     "dirs": 1,
+     "frames": 31,
+     "order": "frame",
+     "clamp": 30,
+     "ticks_per_frame": 3
+    },
+    "vanish": {
+     "file": "Poseidon_Hera",
+     "start": 177,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 30
+    },
+    "vanish_gated": {
+     "file": "Poseidon_Hera",
+     "start": 177,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 30,
+     "ticks_per_frame": 3
+    },
+    "attack": {
+     "file": "Poseidon_Hera",
+     "start": 208,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3
+    },
+    "cast": {
+     "file": "Poseidon_Hera",
+     "start": 208,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3
+    },
+    "duel": {
+     "file": "Poseidon_Hera",
+     "start": 208,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD hera: Poseidon_Hera groups [0, 1, 2, 2049, 2]",
+   "frame_rule": "tick"
+  },
+  "god_atlas": {
+   "file": "Poseidon_Atlas",
+   "walk": {
+    "file": "Poseidon_Atlas",
+    "start": 1,
+    "dirs": 8,
+    "frames": 20,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "work": {
+    "appear": {
+     "file": "Poseidon_Atlas",
+     "start": 161,
+     "dirs": 1,
+     "frames": 34,
+     "order": "frame",
+     "clamp": 33,
+     "ticks_per_frame": 3
+    },
+    "vanish": {
+     "file": "Poseidon_Atlas",
+     "start": 161,
+     "dirs": 8,
+     "frames": 34,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 33
+    },
+    "vanish_gated": {
+     "file": "Poseidon_Atlas",
+     "start": 161,
+     "dirs": 8,
+     "frames": 34,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "clamp": 33,
+     "ticks_per_frame": 3
+    },
+    "attack": {
+     "file": "Poseidon_Atlas",
+     "start": 195,
+     "dirs": 8,
+     "frames": 20,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3
+    },
+    "cast": {
+     "file": "Poseidon_Atlas",
+     "start": 356,
+     "dirs": 8,
+     "frames": 31,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ],
+     "ticks_per_frame": 3
+    },
+    "duel": {
+     "file": "Poseidon_Atlas",
+     "start": 195,
+     "dirs": 8,
+     "frames": 20,
+     "order": "frame-major",
+     "dir_order": [
+      "NE",
+      "E",
+      "SE",
+      "S",
+      "SW",
+      "W",
+      "NW",
+      "N"
+     ]
+    }
+   },
+   "orig": "FIG_GOD atlas: Poseidon_Atlas groups [0, 1, 2, 2049, 4]",
+   "frame_rule": "tick"
+  },
+  "priest": {
+   "file": "SprMain",
+   "walk": {
+    "start": 8105,
+    "dirs": 8,
+    "frames": 12,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "die": {
+    "start": 8201,
+    "dirs": 1,
+    "frames": 8,
+    "order": "frame"
+   },
+   "orig": "FIG_PRIEST (type 65): 0x6692/0x6693"
+  },
+  "follower_satyr": {
+   "file": "zeus_satyr",
+   "walk": {
+    "file": "zeus_satyr",
+    "start": 1,
+    "dirs": 8,
+    "frames": 16,
+    "order": "frame-major",
+    "dir_order": [
+     "NE",
+     "E",
+     "SE",
+     "S",
+     "SW",
+     "W",
+     "NW",
+     "N"
+    ]
+   },
+   "orig": "FIG_ENTRANCED (type 71), resource 0x44: Zeus_Satyr 0x6201"
+  },
+  "entranced": {
+   "by": "good",
+   "map": {
+    "contestant_philosopher": "contestant_philosopher",
+    "contestant_athlete": "contestant_athlete",
+    "contestant_competitor": "contestant_competitor",
+    "contestant_actor": "contestant_actor",
+    "immigrant": "immigrant",
+    "emigrant": "emigrant",
+    "homeless": "homeless",
+    "cart": "cart",
+    "buyer": "buyer",
+    "peddler": "peddler",
+    "water": "water",
+    "healer": "healer",
+    "philosophy": "philosophy",
+    "athletics": "athletics",
+    "drama": "drama",
+    "competition": "competition",
+    "maintenance": "maintenance",
+    "watchman": "watchman",
+    "tax": "tax",
+    "scholar": "scholar",
+    "astronomer": "astronomer",
+    "inventor": "inventor",
+    "artisan": "artisan",
+    "woodcutter": "woodcutter",
+    "stonecutter": "stonecutter",
+    "miner": "miner",
+    "shepherd": "shepherd",
+    "goatherd": "goatherd",
+    "grower": "grower",
+    "hunter": "hunter",
+    "rancher": "rancher",
+    "diver": "diver",
+    "trader": "trader",
+    "donkey": "donkey",
+    "ship": "ship",
+    "boat": "boat",
+    "trireme": "trireme",
+    "sheep": "sheep",
+    "goat": "goat",
+    "cattle": "cattle",
+    "bull": "bull",
+    "horse": "horse",
+    "boar": "boar",
+    "deer": "deer",
+    "wolf": "wolf",
+    "thief": "thief",
+    "vandal": "vandal",
+    "mugger": "mugger",
+    "disgruntled": "disgruntled",
+    "plagued": "plagued",
+    "rabble": "rabble",
+    "hoplite": "hoplite",
+    "horseman": "horseman",
+    "nobleman": "nobleman",
+    "vendor_assistant": "vendor_assistant",
+    "satyr": "follower_satyr"
+   },
+   "fallback_role": "immigrant",
+   "orig": "FIG_ENTRANCED (type 71): the walker's own walk group"
+  },
+  "god_helper": {
+   "by": "good",
+   "map": {
+    "miner": "miner",
+    "grower": "grower"
+   },
+   "fallback_role": "miner",
+   "orig": "FIG_MINER (62) / FIG_GROWER (5) sent by Hades / Athena"
+  }
+ },
+ "bolts": [
+  {
+   "file": "destruction",
+   "start": 1276,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2230",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1750,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x223a",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1532,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2234",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1103,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2229",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1404,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2232",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1340,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2231",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1814,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x223b",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1686,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2239",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1468,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2233",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1340,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2231",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1596,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2235",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1340,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2231",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1686,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2239",
+   "ticks_per_frame": 4
+  },
+  {
+   "file": "destruction",
+   "start": 1596,
+   "frames": 8,
+   "dirs": 8,
+   "packed": "0x2235",
+   "ticks_per_frame": 4
+  }
+ ],
+ "sounds": [
+  {
+   "mat": "Wavs/G_zeus_mat.wav",
+   "demat": "Wavs/G_zeus_demat.wav",
+   "atk": [
+    "Wavs/G_zeus_atk1.wav",
+    "Wavs/G_zeus_atk2.wav",
+    "Wavs/G_zeus_atk3.wav",
+    "Wavs/G_zeus_atk4.wav"
+   ],
+   "hit": "Wavs/G_zeus_hit.wav",
+   "sanctify": "Wavs/G_zeus_sanctify.wav",
+   "curse": "Wavs/G_zeus_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_poseidon_mat.wav",
+   "demat": "Wavs/G_poseidon_demat.wav",
+   "atk": [
+    "Wavs/G_poseidon_atk1.wav",
+    "Wavs/G_poseidon_atk2.wav",
+    "Wavs/G_poseidon_atk3.wav",
+    "Wavs/G_poseidon_atk4.wav"
+   ],
+   "hit": "Wavs/G_poseidon_hit.wav",
+   "sanctify": "Wavs/G_poseidon_sanctify.wav",
+   "curse": "Wavs/G_poseidon_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_demeter_mat.wav",
+   "demat": "Wavs/G_demeter_demat.wav",
+   "atk": [
+    "Wavs/G_demeter_atk1.wav",
+    "Wavs/G_demeter_atk2.wav",
+    "Wavs/G_demeter_atk3.wav",
+    "Wavs/G_demeter_atk4.wav"
+   ],
+   "hit": "Wavs/G_demeter_hit.wav",
+   "sanctify": "Wavs/G_demeter_sanctify.wav",
+   "curse": "Wavs/G_demeter_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_apollo_mat.wav",
+   "demat": "Wavs/G_apollo_demat.wav",
+   "atk": [
+    "Wavs/G_apollo_atk1.wav",
+    "Wavs/G_apollo_atk2.wav",
+    "Wavs/G_apollo_atk3.wav",
+    "Wavs/G_apollo_atk4.wav"
+   ],
+   "hit": "Wavs/G_apollo_hit.wav",
+   "sanctify": "Wavs/G_apollo_sanctify.wav",
+   "curse": "Wavs/G_apollo_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_artemis_mat.wav",
+   "demat": "Wavs/G_artemis_demat.wav",
+   "atk": [
+    "Wavs/G_artemis_atk1.wav",
+    "Wavs/G_artemis_atk2.wav",
+    "Wavs/G_artemis_atk3.wav",
+    "Wavs/G_artemis_atk4.wav"
+   ],
+   "hit": "Wavs/G_artemis_hit.wav",
+   "sanctify": "Wavs/G_artemis_sanctify.wav",
+   "curse": "Wavs/G_artemis_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_ares_mat.wav",
+   "demat": "Wavs/G_ares_demat.wav",
+   "atk": [
+    "Wavs/G_ares_atk1.wav",
+    "Wavs/G_ares_atk2.wav",
+    "Wavs/G_ares_atk3.wav",
+    "Wavs/G_ares_atk4.wav"
+   ],
+   "hit": "Wavs/G_ares_hit.wav",
+   "sanctify": "Wavs/G_ares_sanctify.wav",
+   "curse": "Wavs/G_ares_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_aphrodite_mat.wav",
+   "demat": "Wavs/G_aphrodite_demat.wav",
+   "atk": [
+    "Wavs/G_aphrodite_atk1.wav",
+    "Wavs/G_aphrodite_atk2.wav",
+    "Wavs/G_aphrodite_atk3.wav",
+    "Wavs/G_aphrodite_atk4.wav"
+   ],
+   "hit": "Wavs/G_aphrodite_hit.wav",
+   "sanctify": "Wavs/G_aphrodite_sanctify.wav",
+   "curse": "Wavs/G_aphrodite_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_hermes_mat.wav",
+   "demat": "Wavs/G_hermes_demat.wav",
+   "atk": [
+    "Wavs/G_hermes_atk1.wav",
+    "Wavs/G_hermes_atk2.wav",
+    "Wavs/G_hermes_atk3.wav",
+    "Wavs/G_hermes_atk4.wav"
+   ],
+   "hit": "Wavs/G_hermes_hit.wav",
+   "sanctify": "Wavs/G_hermes_sanctify.wav",
+   "curse": "Wavs/G_hermes_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_athena_mat.wav",
+   "demat": "Wavs/G_athena_demat.wav",
+   "atk": [
+    "Wavs/G_athena_atk1.wav",
+    "Wavs/G_athena_atk2.wav",
+    "Wavs/G_athena_atk3.wav",
+    "Wavs/G_athena_atk4.wav"
+   ],
+   "hit": "Wavs/G_athena_hit.wav",
+   "sanctify": "Wavs/G_athena_sanctify.wav",
+   "curse": "Wavs/G_athena_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_hephaestus_mat.wav",
+   "demat": "Wavs/G_hephaestus_demat.wav",
+   "atk": [
+    "Wavs/G_hephaestus_atk1.wav",
+    "Wavs/G_hephaestus_atk2.wav",
+    "Wavs/G_hephaestus_atk3.wav",
+    "Wavs/G_hephaestus_atk4.wav"
+   ],
+   "hit": "Wavs/G_hephaestus_hit.wav",
+   "sanctify": "Wavs/G_hephaestus_sanctify.wav",
+   "curse": "Wavs/G_hephaestus_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_dionysus_mat.wav",
+   "demat": "Wavs/G_dionysus_demat.wav",
+   "atk": [
+    "Wavs/G_dionysus_atk1.wav",
+    "Wavs/G_dionysus_atk2.wav",
+    "Wavs/G_dionysus_atk3.wav",
+    "Wavs/G_dionysus_atk4.wav"
+   ],
+   "hit": "Wavs/G_dionysus_hit.wav",
+   "sanctify": "Wavs/G_dionysus_sanctify.wav",
+   "curse": "Wavs/G_dionysus_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_hades_mat.wav",
+   "demat": "Wavs/G_hades_demat.wav",
+   "atk": [
+    "Wavs/G_hades_atk1.wav",
+    "Wavs/G_hades_atk2.wav",
+    "Wavs/G_hades_atk3.wav",
+    "Wavs/G_hades_atk4.wav"
+   ],
+   "hit": "Wavs/G_hades_hit.wav",
+   "sanctify": "Wavs/G_hades_sanctify.wav",
+   "curse": "Wavs/G_hades_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_Hera_mat.wav",
+   "demat": "Wavs/G_Hera_demat.wav",
+   "atk": [
+    "Wavs/G_Hera_atk1.wav",
+    "Wavs/G_Hera_atk2.wav",
+    "Wavs/G_Hera_atk3.wav",
+    "Wavs/G_Hera_atk4.wav"
+   ],
+   "hit": "Wavs/G_Hera_hit.wav",
+   "sanctify": "Wavs/G_Hera_sanctify.wav",
+   "curse": "Wavs/G_Hera_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  },
+  {
+   "mat": "Wavs/G_Atlas_mat.wav",
+   "demat": "Wavs/G_Atlas_demat.wav",
+   "atk": [
+    "Wavs/G_Atlas_atk1.wav",
+    "Wavs/G_Atlas_atk2.wav",
+    "Wavs/G_Atlas_atk3.wav",
+    "Wavs/G_Atlas_atk4.wav"
+   ],
+   "hit": "Wavs/G_Atlas_hit.wav",
+   "sanctify": "Wavs/G_Atlas_sanctify.wav",
+   "curse": "Wavs/G_Atlas_curse.wav",
+   "miss": "Wavs/G_miss.wav"
+  }
+ ]
+}

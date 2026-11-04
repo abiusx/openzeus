@@ -1,0 +1,14 @@
+# Building overlays (docs/play/buildings.md 7c "Oracle check"; matcher tools/oracle_match.py). 800x600, empty
+# --write-dir, --state-log /dev/null; replace DIR. Arrow keys scroll 60 px; a minimap click lands differently
+# depending on earlier steps; `key 27` with a build menu open brings up the Exit dialog.
+# PRE = "See a working city", minimap tab:
+#   5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12
+# 1) grid survey (--seconds 360): PRE, then for my in 170..270 step 10, mx in 652..772 step 12, t from 52 by 2.5:
+#   T:move mx,my; T+0.3:down mx,my; T+0.6:up mx,my; T+1:move 300,580; T+2:shot DIR/g_mx_my.bmp
+# 2) guardpost sentry (--seconds 235): Hygiene/Safety -> Watchpost placed beside the road at (420,150):
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 52:move 760,262; 52.3:down 760,262; 52.6:up 760,262; 54:move 642,206; 54.3:down 642,206; 54.6:up 642,206; 56:move 763,400; 56.3:down 763,400; 56.6:up 763,400; 58:move 420,150; 59.5:down 420,150; 59.8:up 420,150; 60.5:move 300,580; 61:shot DIR/placed.bmp; 80:shot DIR/t80.bmp; 110:shot DIR/t110.bmp; 140:shot DIR/t140.bmp; 170:shot DIR/t170.bmp; 200:shot DIR/t200.bmp; 230:shot DIR/t230.bmp
+# 3) idle workshop (--seconds 252): Industry -> Workshops -> Winery at (420,150), staffed, no grapes (olive press: menu
+#    row 500,414; sculpture studio: 500,390); add T:shot DIR/tT.bmp for T = 70..250 step 6:
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 52:move 760,262; 52.3:down 760,262; 52.6:up 760,262; 54:move 642,124; 54.3:down 642,124; 54.6:up 642,124; 56:move 763,345; 56.3:down 763,345; 56.6:up 763,345; 59:move 500,438; 59.3:down 500,438; 59.6:up 500,438; 61:move 420,150; 62:down 420,150; 62.3:up 420,150; 63:move 300,580; 64:shot DIR/placed.bmp
+# 4) marble quarry (--seconds 162):
+5:key 27; 12:click 220,101; 17:char 78; 20:click 556,320; 27:click 644,523; 33:click 588,476; 45:rclick 300,300; 47:click 568,574; 49:click 568,574; 51:click 740,12; 52:move 736,220; 52.3:down 736,220; 52.6:up 736,220; 54:move 300,580; 56:key 40; 58:key 40; 60:key 39; 60.5:key 39; 61:key 39; 61.5:key 39; 62:key 39; 64:shot DIR/r1.bmp; 70:shot DIR/r2.bmp; 80:shot DIR/r3.bmp; 100:shot DIR/r4.bmp; 130:shot DIR/r5.bmp; 160:shot DIR/r6.bmp
