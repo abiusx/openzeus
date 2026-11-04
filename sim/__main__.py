@@ -84,7 +84,8 @@ def main(argv):
         from .live import live
         save = argv[1] if len(argv) > 1 and not argv[1].startswith("--") else None
         live(save, opt("--script", None), int(opt("--port", 8765)), int(opt("--speed", 120)),
-             opt("--map", None), int(opt("--seed", 1)), no_test="--no-test-commands" in argv)
+             opt("--map", None), int(opt("--seed", 1)), no_test="--no-test-commands" in argv,
+             host=opt("--host", "127.0.0.1"))
         return 0
     if op == "serve":
         from .serve import serve

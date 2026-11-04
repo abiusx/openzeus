@@ -1916,7 +1916,7 @@ def campaign_op(r, body):
         return dict(ok=False, out=f"{type(e).__name__}: {e}")
 
 
-def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no_test=False):
+def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no_test=False, host="127.0.0.1"):
     from . import testcmds
     if map_name is None:                # the scripts/ benchmarks build everything: the unrestricted sandbox
         map_name = "sandbox_open" if script else "sandbox"
@@ -2217,7 +2217,8 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
                 return self.send_bytes(_dumps(dict(ok=ok, out=out, tick=tick)))
             self.send_error(404)
 
-    httpd = ThreadingHTTPServer(("127.0.0.1", port), Handler)
-    print(f"live sim on http://127.0.0.1:{port}/  (save: {save}, script: {script}, {speed} ticks/s"
+    # host: 127.0.0.1 (this machine only) by default; --host 0.0.0.0 serves other machines too (a remote server)
+    httpd = ThreadingHTTPServer((host, port), Handler)
+    print(f"live sim on http://{host}:{port}/  (save: {save}, script: {script}, {speed} ticks/s"
           f"{', test commands refused' if no_test else ''})")
     httpd.serve_forever()

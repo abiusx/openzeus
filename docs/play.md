@@ -66,7 +66,7 @@ python3 -m sim campaign win saves/eu.pkl                      # TEST COMMAND: wi
   city of the episode before (play through, or use `campaign win` while testing).
 
 ## Watching (viewer)
-- Animated: `python3 -m sim live saves/me.pkl [--script S] [--speed TICKS/S]`, open http://127.0.0.1:8765/ .
+- Animated: `python3 -m sim live saves/me.pkl [--script S] [--speed TICKS/S] [--port P] [--host H]`, open http://127.0.0.1:8765/ . `--host 0.0.0.0` serves other machines too (default 127.0.0.1: this machine only).
   Runs the game itself; every walker (immigrants, carts, shepherds, woodcutters, sheep...) moves on the
   map. Works like a video: the timeline bar under the map shows what has been simulated (light part);
   click/drag to seek back, click past the light part to fast-forward (the server simulates at full
