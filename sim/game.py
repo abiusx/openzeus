@@ -1412,6 +1412,7 @@ class Game:
             if wk.role in ("rabble", "hoplite") and not wk.good and getattr(wk, "comp", 0) in SANCT_LOOK:
                 wk.good = SANCT_LOOK[wk.comp]
         systems.agora.repair(g)                   # stalls lost to "clear" before 2026-10-28
+        systems.walkers.reschedule_lost(g)        # walkers lost from the queue by a failed pass (bugs.md 484)
         g.cat = Catalog(difficulty=getattr(g, "difficulty", "Normal"))      # saves from before difficulty: Normal
         g.rules = g.cat.rules
         w = g.world

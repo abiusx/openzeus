@@ -225,8 +225,33 @@ def move_all(g):
                 continue
             g._pass[1] = s
             act(g, w)
+    except BaseException:
+        # a walker's code failed: the tick's bucket is already popped, so the walkers after it would never act again
+        # (bugs.md 484: 84 froze on the shared server). They act on the next tick; the error goes on up.
+        for _s, wid in heap:
+            w = ws.get(wid)
+            if w is not None and w.next_move == g.tick:
+                w.next_move = g.tick + 1
+                q.setdefault(g.tick + 1, []).append(wid)
+        raise
     finally:
         g.__dict__.pop("_pass", None)
+
+
+def reschedule_lost(g):
+    """Walkers that would never act again: due in the past, or not in the bucket of their next_move (a walker pass
+    that failed before 11-04, bugs.md 484), are due on the next tick. Returns how many. Game.load runs it."""
+    q = getattr(g, "queue", None)
+    if q is None:
+        q = g.sd("queue", {})
+    n = 0
+    for w in g.walkers.values():
+        # due only from the bucket of its own next_move (move_all skips an id whose next_move is another tick)
+        if w.next_move <= g.tick or w.id not in q.get(w.next_move, ()):
+            w.next_move = g.tick + 1
+            q.setdefault(g.tick + 1, []).append(w.id)
+            n += 1
+    return n
 
 
 def wake_now(g, w):

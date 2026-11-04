@@ -1705,6 +1705,15 @@ class Runner:
                     self.note_stall("slow", (now - last_t) * 1000, "clock", ticks=tick - last_tick, want=round(want))
             last_t, last_tick = now, tick
 
+    def fail(self, e):
+        """An exception in the sim: logged, shown to the browser (meta.error), the city paused; play resumes on
+        request. The loop (run) and a synced tab's poll (frames.json want=) both land here (bugs.md 484: a poll's
+        failure was only a broken request, the next poll ran on)."""
+        traceback.print_exc()
+        self.error = f"{type(e).__name__}: {e} (tick {self.g.tick}); the city is paused"
+        self.log.append("! internal error: " + self.error)
+        self.set_speed(paused=True)
+
     def run(self):
         """The one live timeline: the sim advances with the wall clock at self.rate (tabs only watch,
         or replay recorded frames; they never pace the sim). An exception never ends the loop: it is
@@ -1727,10 +1736,7 @@ class Runner:
                     last_save = time.time()
                 self.compact()
             except Exception as e:
-                traceback.print_exc()
-                self.error = f"{type(e).__name__}: {e} (tick {self.g.tick}); the city is paused"
-                self.log.append("! internal error: " + self.error)
-                self.set_speed(paused=True)
+                self.fail(e)
                 target = float(self.g.tick)
                 worked = False
             if not worked:
@@ -2115,7 +2121,10 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
                         r.held_at = r.driven_at
                     if not r.paused and not r.error:
                         t0, k0 = time.perf_counter(), r.g.tick
-                        r.advance(min(int(float(q["want"])), r.g.tick + max(2 * r.rate, REC)))
+                        try:
+                            r.advance(min(int(float(q["want"])), r.g.tick + max(2 * r.rate, REC)))
+                        except Exception as e:
+                            r.fail(e)
                         work, ran = time.perf_counter() - t0, r.g.tick - k0
                     with r.lock:              # the tab wants only ticks the sim has passed, and its newest frame is
                         # behind the sim (the sim stood between two frames): one at the sim's tick, else both wait

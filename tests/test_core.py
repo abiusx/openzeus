@@ -505,3 +505,52 @@ def test_tick_order_cycle_step_before_pass():
 if __name__ == "__main__":
     import test_sim
     test_sim.main([__file__])
+
+
+def test_no_duplicate_functions():
+    """bugs.md 484: navy.py defined _hunt twice, the enemy warship's replaced the player trireme's (it crashed the
+    shared server's walker pass). No module of sim/ may define a top-level name twice."""
+    import ast
+    import collections
+    import pathlib
+    bad = []
+    for p in sorted(pathlib.Path(ROOT, "sim").rglob("*.py")):
+        c = collections.Counter(n.name for n in ast.parse(p.read_text()).body
+                                if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)))
+        bad += [f"{p.relative_to(ROOT)}: {k}" for k, v in c.items() if v > 1]
+    assert not bad, bad
+
+
+def test_failed_walker_pass_requeues():
+    """bugs.md 484: a walker's code raising in move_all left the rest of the tick's bucket unscheduled (they froze
+    for good); now they act on the next tick, and Game.load repairs saves where walkers were lost."""
+    from sim.systems import walkers
+    g = play(1)
+    due = sorted(((w.fslot, w.id) for w in g.walkers.values() if w.next_move == g.tick + 1))
+    assert len(due) >= 3, len(due)
+    first = g.walkers[due[0][1]]
+    real = walkers.act
+    def boom(gg, w):
+        if w is first:
+            raise RuntimeError("test")
+        return real(gg, w)
+    walkers.act = boom
+    try:
+        assert isinstance(_raises(lambda: g.step(1)), RuntimeError)
+    finally:
+        walkers.act = real
+    g.__dict__.pop("_in_tick", None)
+    rest = [g.walkers[i] for _, i in due[1:]]
+    assert all(w.next_move == g.tick + 1 and w.id in g.queue[g.tick + 1] for w in rest)
+    assert walkers.reschedule_lost(g) == 1          # the walker that raised: due in the past, now rescheduled
+    assert walkers.reschedule_lost(g) == 0
+    # a lost walker (as in the shared server's save): Game.load puts it back
+    w = rest[0]
+    g.queue[g.tick + 1].remove(w.id)
+    w.next_move = g.tick - 100
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        g.save(os.path.join(d, "s.pkl"))
+        h = Game.load(os.path.join(d, "s.pkl"))
+    assert h.walkers[w.id].next_move == h.tick + 1 and w.id in h.queue[h.tick + 1]
+    h.step(30)

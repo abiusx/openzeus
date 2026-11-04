@@ -974,7 +974,7 @@ def warship_act(g, w):
         _sail_target(g, w, sp)
         return _warship_fire(g, w)
     if a == 8:
-        return _hunt(g, w, sp)
+        return _warship_hunt(g, w, sp)
     if a == 9:                                      # 0x4D3BF0 (no writer found) + fire
         w.hidden = False
         if w.dest is not None:
@@ -1017,8 +1017,9 @@ def _sail_target(g, w, sp):
     return r
 
 
-def _hunt(g, w, sp):
-    """0x4D3F90 (action 8), r = col6. A target not alive: sub 0xD, target 0. Sub 0xD: the target, or
+def _warship_hunt(g, w, sp):
+    """0x4D3F90 (action 8), r = col6. (Named _hunt before 11-04, which replaced the player trireme's _hunt 0x4D1860:
+    player triremes ran this, and crashed on a hunt with no target; bugs.md 484.) A target not alive: sub 0xD, target 0. Sub 0xD: the target, or
     warship_target(F, 228); at r or farther: released and picked again (228); none -> 0xE. A soldier or trireme
     target: one RNG step, odd -> +0x80 = (month + 1) % 12 (leaves a month later). Soldier: dest = its own tile
     (shoots from here); ship: dest = its tile unless within 2. Sub 7, the old target released, target = t, its
