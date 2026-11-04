@@ -1965,6 +1965,11 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
         def do_GET(self):
             path = self.path.split("?")[0]
             q = self.query()
+            if path == "/":                     # the game (play mode); the developer map viewer stays at /index.html
+                self.send_response(302)
+                self.send_header("Location", "/play.html" + (self.path[1:] if self.path.startswith("/?") else ""))
+                self.end_headers()
+                return
             if path == "/frame.json":
                 with r.lock:
                     live_tick = r.g.tick
