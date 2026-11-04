@@ -1916,7 +1916,8 @@ def campaign_op(r, body):
         return dict(ok=False, out=f"{type(e).__name__}: {e}")
 
 
-def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no_test=False, host="127.0.0.1"):
+def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no_test=False, host="127.0.0.1",
+         shared=False):
     from . import testcmds
     if map_name is None:                # the scripts/ benchmarks build everything: the unrestricted sandbox
         map_name = "sandbox_open" if script else "sandbox"
@@ -1938,7 +1939,12 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
             pass
 
         def end_headers(self):                  # viewer files change while we work: never serve stale JS
-            if not self.path.split("?")[0].endswith((".png", ".mp3", ".wav")):
+            p = self.path.split("?")[0]
+            if p.startswith("/play/atlas/") and p.endswith((".png", ".bin", ".jpg")):
+                # sprite sheets (built or installed assets, hundreds of MB): cacheable, so a CDN in front of a remote
+                # server (Cloudflare) serves them instead of the server; a day, as they change only with a new build
+                self.send_header("Cache-Control", "public, max-age=86400")
+            elif not p.endswith((".png", ".mp3", ".wav")):
                 self.send_header("Cache-Control", "no-cache")
             super().end_headers()
 
@@ -1967,7 +1973,10 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
             q = self.query()
             if path == "/":                     # the game (play mode); the developer map viewer stays at /index.html
                 self.send_response(302)
-                self.send_header("Location", "/play.html" + (self.path[1:] if self.path.startswith("/?") else ""))
+                q0 = self.path[2:] if self.path.startswith("/?") else ""
+                if shared:                      # --shared: visitors go straight into the city (newgame.js boot)
+                    q0 = "shared=1" + ("&" + q0 if q0 else "")
+                self.send_header("Location", "/play.html" + ("?" + q0 if q0 else ""))
                 self.end_headers()
                 return
             if path == "/frame.json":
