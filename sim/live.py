@@ -1639,6 +1639,23 @@ class Runner:
             return ok, out, self.g.tick, warn
 
     # --- loop ----------------------------------------------------------------------------------
+    def terrain_doc(self):
+        """The terrain answer for the current map version (self._terrain = (map_version, JSON); the last 3 kept in
+        self._terrains for protocol 2's deltas), built when the map changed. Call under the lock. The first one
+        builds the terrain view (sim/terrain_view.py: ~0.7 s here, ~2 s on a small cloud machine), so live() builds
+        it before serving: on the first tab's request after a restart it held the lock that long (bugs.md 482)."""
+        v = getattr(self.g, "map_version", 0)
+        if getattr(self, "_terrain", (None,))[0] != v:
+            if getattr(self, "_tview", None) is None:
+                from .terrain_view import TerrainView
+                self._tview = TerrainView(self.g)
+            # tid: a serial unique across new games / loads and server processes (protocol 2's base; BOOT)
+            self.tserial = getattr(self, "tserial", BOOT) + 1
+            enc = comms.encode(dict(terrain(self.g, self._tview), tid=self.tserial), grids=comms.TERRAIN_GRIDS)
+            self._terrain = (v, comms.join(enc))
+            self._terrains = (self._terrains + [(self.tserial, enc)])[-3:]
+        return self._terrain[1]
+
     def live_window(self):
         """How far behind live a tab may be and still count as live (its commands are accepted): three seconds of
         play (at least 45 ticks) plus the frame interval and polling. A synced tab trails the city by its margin,
@@ -1942,6 +1959,8 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
         g = Game(map_name, seed)
     r = Runner(g, save, script, speed)
     r.shared = shared
+    with r.lock:                        # the terrain view and the first terrain answer before the first tab asks
+        r.terrain_doc()
     threading.Thread(target=r.run, daemon=True).start()
     threading.Thread(target=r.watch, daemon=True).start()   # stalls: stderr + /stalls.json
 
@@ -2147,16 +2166,7 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
                 return self.wfile.write(body[a:b + 1])
             if path == "/terrain.json":          # play mode (viewer/play.html): the map's terrain images
                 with r.lock:
-                    v = getattr(r.g, "map_version", 0)
-                    if getattr(r, "_terrain", (None,))[0] != v:
-                        if getattr(r, "_tview", None) is None:
-                            from .terrain_view import TerrainView
-                            r._tview = TerrainView(r.g)
-                        # tid: a serial unique across new games / loads (protocol 2's base; map_version restarts)
-                        r.tserial = getattr(r, "tserial", BOOT) + 1
-                        enc = comms.encode(dict(terrain(r.g, r._tview), tid=r.tserial), grids=comms.TERRAIN_GRIDS)
-                        r._terrain = (v, comms.join(enc))
-                        r._terrains = (r._terrains + [(r.tserial, enc)])[-3:]
+                    r.terrain_doc()
                     base = q.get("base", "")
                     if q.get("v") == "2" and base.isdigit():   # protocol 2: a delta on the terrain the tab holds
                         if r._terrains and r._terrains[-1][0] == int(base):
