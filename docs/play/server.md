@@ -39,3 +39,17 @@ A restart (deploy, reset.sh) is seen by open tabs (frames meta `boot`): they fet
   it also stopped briefly on most polls). After 482: see "Measured after 482" below.
 - Smoothness over a slow link: `node tools/sync_check.mjs URL --rates 15,30,60 --secs 30` (docs/play/comms.md
   "Margin over a slow link").
+
+## Measured after 482 (11-04, the same machine and city, from the developer's machine through the CDN)
+`node tools/sync_check.mjs https://openzeus-play.abiusx.com/ --rates 15,30,60 --secs 30`, poll round trip median
+190-250 ms (max 400-800 ms now and then):
+- with CPU credit left: 1x 14.9 t/s, 2 stalls >= 50 ms in 30 s (longest 150 ms); 2x 29.3 t/s, 3 (longest 416 ms,
+  a 190 ms socket write under the lock plus a 241 ms sim step at the same moment: the write is outside the lock
+  now); 4x 59.0 t/s, 2 (longest 171 ms). Before (bug 482's margin) a tab stopped on most polls over such a link.
+- Fresh browser profile, sheets cached at the CDN: the city on screen after 10.8-12.6 s (124 MB).
+- The machine is burstable: after about an hour of tests its CPU credit ran out (vmstat: 40-56 % steal, 10 % user),
+  and the sim fell to ~20 ticks/s (60 ticks took ~3 s): 4x reached 42.8 t/s, then less than 2x. A city nobody
+  watches stands still (SHARED_IDLE), so the credit comes back; for steady 4x and above take a machine with a
+  higher baseline (Lightsail's larger bundles, or a non-burstable instance). The baseline share of this bundle
+  was not checked.
+
