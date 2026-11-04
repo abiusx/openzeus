@@ -68,7 +68,10 @@ A live server at 1x with one tab used ~6 % of a laptop core; the 2 vCPU burstabl
 Fixed: the build-menu table (sim/allowed.py `unavailable`, every frame) scanned every building for each good's
 stock (12 times a frame) and for the palace / venue per rule: the stocks are now taken once per read (`_memo`)
 and the scans once per table; comms.dumps reuses one C JSON encoder (JSONEncoder.encode built one per call).
-Output unchanged (tests, state hash, comms_check verify). Left, by size: frames every tick at <= 2x (a frame every
-3 ticks would cut recording ~3x; the tab moves walkers by their step records, but per-tick animations were tuned
-against per-tick frames: needs a look), reusing unchanged walkers' JSON between frames, and the exe's timing for
+Output unchanged (tests, state hash, comms_check verify). Then (user 11-04) the frames' build-menu table is cached for 1 s of wall time,
+and recomputed at once on a map change (Runner.episode_frame): 1x with recording 491 -> 554 ticks/s.
+A frame's parts after that (296 walkers, 0.96 ms before the cache): menu table 0.23, walker animation state 0.15,
+walker JSON 0.14, walker step 0.08, carried good 0.07, other walker fields 0.03, houses 0.03, waiting carts and
+destinations 0.03, delta 0.03, alerts / sanctuaries / heroes / lava 0.02, the rest of the frame's JSON ~0.14. Left, by size: frames every tick at <= 2x (a frame every
+3 ticks would cut recording ~3x; user 11-04: not done, per-tick animations were tuned against per-tick frames), reusing unchanged walkers' JSON between frames, and the exe's timing for
 the menu table (buildings_availability 0x00402B80 runs at episode start and a few events, ours every frame).

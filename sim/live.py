@@ -66,6 +66,7 @@ from .game import Game, CommandError
 from .serve import VIEWER
 from .script import apply as script_apply
 
+EPISODE_WALL = 1.0       # s: the build-menu table in frames is refreshed this often at most (Runner.episode_frame)
 REC = 15                 # ticks between recorded frames (one tile step at normal walking speed)
 SAVES = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "saves", "play")
 STATE_EVERY = 408        # ticks between building snapshots (8 days) when nothing was built
@@ -1382,6 +1383,7 @@ class Runner:
 
     def setup(self, game, save=None, script=None, speed=120):
         self.g = game
+        self._ep = None               # the frames' build-menu table cache (episode_frame)
         self.save_path = save
         # live speed (ticks per wall-clock second) and pause: set by live tabs, kept in the save so a
         # load or a server restart keeps them
@@ -1483,6 +1485,19 @@ class Runner:
         except Exception:                   # noqa: BLE001  (a frame never fails over the heroes module)
             return {}
 
+    def episode_frame(self):
+        """export.episode_export for the frame, at most once per EPISODE_WALL s of wall time, and again at once when
+        the map changes (map_version: a building placed or removed) or a game is swapped in. It only sets which build
+        menu buttons show (Game.build checks allowed.check itself); it was a quarter of a frame's recording, every
+        tick at <= 2x (server.md "Where the CPU goes"). The exe refreshes its table (buildings_availability
+        0x00402B80) only at episode start and a few events, so a second's delay is nearer the exe than every tick."""
+        g, now = self.g, time.time()
+        key = (id(g), getattr(g, "map_version", 0))
+        c = getattr(self, "_ep", None)
+        if c is None or c[0] != key or now - c[1] >= EPISODE_WALL:
+            c = self._ep = (key, now, export.episode_export(g))
+        return c[2]
+
     def record_frame(self):
         g = self.g
         self.fserial = getattr(self, "fserial", BOOT) + 1
@@ -1490,7 +1505,7 @@ class Runner:
                  sentiment=g.city.sentiment, version=getattr(g, "map_version", 0),
                  poseidon=bool(getattr(g, "poseidon", False)),     # build menus hide Poseidon buildings when off
                  sanct=self.sanct_menu(),           # the Mythology menu's sanctuaries (sim/gods; None = all)
-                 episode=export.episode_export(g),  # an episode's unavailable buildings, tutorial switches (None:
+                 episode=self.episode_frame(),      # an episode's unavailable buildings, tutorial switches (None:
                                                     # open play; sim/allowed.py, sim/episode.py)
                  undo=not g.undo_state(),           # the panel's undo button is enabled (panel_draw 0x00517BF0)
                  alerts=alerts.export(g),           # the panel's 4 alert slots (sim/alerts.py; ui.js drawAlerts)
