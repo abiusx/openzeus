@@ -40,5 +40,5 @@
   (world map), [military.md](play/military.md), [gods.md](play/gods.md)
 - Drawing: [draw-order.md](play/draw-order.md), [buildings.md](play/buildings.md), [walkers.md](play/walkers.md),
   [terrain.md](play/terrain.md), [monuments.md](play/monuments.md), [rotation.md](play/rotation.md),
-  [hires.md](play/hires.md) (upscaled sprites, reproducible), [gpu.md](play/gpu.md)
+  [hires.md](play/hires.md) (upscaled sprites, reproducible), [server.md](play/server.md) (a shared server), [gpu.md](play/gpu.md)
 - [audio.md](play/audio.md), [comms.md](play/comms.md) (client/server protocol)

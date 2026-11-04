@@ -2165,13 +2165,6 @@ def live(save=None, script=None, port=8765, speed=120, map_name=None, seed=1, no
 
         def do_POST(self):
             body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
-            # --shared: one city for every visitor; nobody may replace or delete it from a tab (user 11-04: a visitor's
-            # campaign start from the main menu replaced the shared city). Playing, saving and the campaign's own
-            # screens (briefed, stay, set aside) stay allowed.
-            if r.shared and ((self.path == "/control" and (body.get("new") or "load" in body or "delete" in body))
-                             or (self.path == "/campaign" and body.get("op") in ("start", "replay", "proceed", "win"))):
-                return self.send_bytes(_dumps(dict(ok=False, out="this is a shared city: New, Load and campaign "
-                                                                 "starts are switched off on this server")))
             if self.path == "/control" and body.get("new"):     # play mode: start an empty city
                 with r.lock:
                     try:                                         # {"new": true[, "difficulty": "Hard"]}: else the map's default
