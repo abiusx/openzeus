@@ -887,6 +887,8 @@ def _hop(g, w, cx, cy, lo, hi, meadow):
     # regrows +15/16 a day (terrain_regrow 0x004A7D30), so it is eligible again 4 days later
     occ_free = lambda x, y: ok[y * n + x] and (not meadow or (fl[y * n + x] & (0x800 | 0x10000)
                                                               and day - bare.get((x, y), -9) >= 4))
+    if meadow and not fl[w.y * n + w.x] & (0x800 | 0x10000):
+        return None                           # 0x004F83E0 refuses at once off meadow: it grazes where it stands
     for _ in range(100):
         x, y = cx + lo + g.rng.randrange(hi - lo + 1), cy + lo + g.rng.randrange(hi - lo + 1)
         if (x, y) == (w.x, w.y) or not (0 <= x < n and 0 <= y < n) or not occ_free(x, y):

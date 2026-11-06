@@ -617,3 +617,23 @@ def test_quarry_yard_figure():
 if __name__ == "__main__":
     import test_sim
     test_sim.main([__file__])
+
+
+def test_grazer_stays_on_lone_meadow():
+    """animal_pick_dest 0x004F83E0 (oracle re/oracle/runs/sheep-isolated, bugs.md 486): a sheep on a lone meadow
+    tile never leaves it, and one whose tile is not meadow never moves (the exe refuses off meadow at once)."""
+    from sim.systems import walkers
+    g = Game("sandbox_open", 1)
+    fl = g.world.flags
+    x, y = 136, 112
+    assert fl[y, x] & 0x800
+    for yy in range(y - 6, y + 7):
+        for xx in range(x - 6, x + 7):
+            if (xx, yy) != (x, y):
+                fl[yy, xx] &= ~(0x800 | 0x10000) & 0xFFFFFFFF
+    g.__dict__.pop("_flagl", None)
+    lone = walkers.spawn_animal(g, "sheep", x, y)
+    off = walkers.spawn_animal(g, "sheep", x + 1, y)    # beside the meadow tile, not on it
+    for _ in range(40):
+        assert walkers._hop(g, lone, x, y, -4, 4, True) is None
+        assert walkers._hop(g, off, x + 1, y, -4, 4, True) is None
