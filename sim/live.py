@@ -1629,7 +1629,9 @@ class Runner:
             finally:
                 if undoable:
                     self.g.action_end()
-            if self.g.tick % REC == 0:
+            # a paused city records no frames: the top bar (treasury, population) would keep the old numbers
+            # until play resumes (bugs.md 485); the exe deducts at build_commit and its panel shows it at once
+            if self.g.tick % REC == 0 or self.paused:
                 self.record_frame()
             self.record_state()
             return res

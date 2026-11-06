@@ -226,3 +226,18 @@ def test_live_stall_watcher():
 if __name__ == "__main__":
     import test_sim
     test_sim.main([__file__])
+
+
+def test_paused_build_updates_treasury():
+    """A build while paused shows its cost at once: the command re-records the frame at the paused tick (bugs.md 485)."""
+    import json
+    from sim import live
+    g = Game("sandbox_open", 1)
+    g.step(7)                                     # not a multiple of REC
+    r = live.Runner(g, speed=15)
+    r.set_speed(paused=True)
+    t0 = g.city.treasury
+    ok, *_ = r.command("road 50 81 50 85")
+    assert ok and g.city.treasury < t0
+    f = r.frames[-1]
+    assert f[0] == g.tick and json.loads(f[1])["treasury"] == g.city.treasury
